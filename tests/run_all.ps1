@@ -5,10 +5,16 @@
 # Each suite is its own SceneTree script (quit code 0 = pass). Godot's shutdown
 # leak/RID warnings are filtered so real output stays readable.
 
-$ErrorActionPreference = "Stop"
+# NOT "Stop": Godot writes shutdown warnings to stderr, and with 2>&1 on a native
+# exe PowerShell 5.1 turns each stderr line into a terminating error. Pass/fail is
+# read from $LASTEXITCODE (each suite quits non-zero on failure) instead.
+$ErrorActionPreference = "Continue"
 $godot = "C:\Users\curby\Godot\Godot_v4.7.1-stable_win64_console.exe"
 $project = Split-Path -Parent $PSScriptRoot
-$suites = @("smoke_db", "smoke_world", "test_srs", "test_learning", "smoke_autoloads")
+$suites = @(
+	"smoke_db", "smoke_world", "test_srs", "test_learning",
+	"test_lesson_gate", "test_recall_loop", "smoke_autoloads"
+)
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
 
 $failed = @()

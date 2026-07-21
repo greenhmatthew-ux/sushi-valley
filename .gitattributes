@@ -1,0 +1,16 @@
+# Normalize line endings so Windows checkouts stop warning on every add.
+# Godot text resources and scripts are all LF in-repo.
+*.gd    text eol=lf
+*.tscn  text eol=lf
+*.tres  text eol=lf
+*.godot text eol=lf
+*.import text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.cfg   text eol=lf
+*.uid   text eol=lf
+
+# Binary assets: never touch.
+*.png   binary
+*.ogg   binary
+*.wav   binary

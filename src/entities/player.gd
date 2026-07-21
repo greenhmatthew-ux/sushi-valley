@@ -26,6 +26,7 @@ var control_enabled: bool = true
 var _current_anim: String = ""
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
+@onready var _interact_probe: Area2D = $InteractProbe
 
 
 func _ready() -> void:
@@ -58,6 +59,31 @@ func _physics_process(_delta: float) -> void:
 		_play("walk_" + facing)
 
 	move_and_slide()
+
+
+## Interact is handled as unhandled input so any open UI (dialogue, recall) gets
+## first claim on the key. Movement stays a polled read in _physics_process.
+func _unhandled_input(event: InputEvent) -> void:
+	if control_enabled and event.is_action_pressed("interact"):
+		_try_interact()
+
+
+## Trigger the nearest interactable in reach. Interactables are Area2Ds in the
+## "interactable" group that expose an interact(player) method; the probe detects
+## them by collision mask (layer 8), and nearest-by-distance breaks ties so
+## standing between two objects picks the closer one.
+func _try_interact() -> void:
+	var nearest: Node = null
+	var nearest_dist := INF
+	for area in _interact_probe.get_overlapping_areas():
+		if not area.is_in_group("interactable") or not area.has_method("interact"):
+			continue
+		var d := global_position.distance_squared_to(area.global_position)
+		if d < nearest_dist:
+			nearest_dist = d
+			nearest = area
+	if nearest != null:
+		nearest.interact(self)
 
 
 ## Face a direction without moving — used by dialogue, cutscenes, and spawn points.

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
+[ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
+[ext_resource type="Script" path="res://src/ui/toast_layer.gd" id="3_toast"]
+
+[node name="UILayer" type="Node"]
+
+[node name="DialogueBox" type="CanvasLayer" parent="."]
+script = ExtResource("2_dialogue")
+
+[node name="RecallPanel" type="CanvasLayer" parent="."]
+script = ExtResource("1_recall")
+
+[node name="ToastLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_toast")

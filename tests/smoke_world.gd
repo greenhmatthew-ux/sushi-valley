@@ -1,16 +1,18 @@
 extends SceneTree
-## Slice 1 smoke test: the world scene loads, the player animates, moves under
-## real input, and is actually stopped by collision.
+## Slice 1/3 smoke test: the harness scene loads, the player animates, moves under
+## real input, is stopped by the boundary walls, and the recall gate is present
+## and starts closed.
 ##
 ##   godot --headless --path . --script res://tests/smoke_world.gd
 ##
 ## Physics runs headless, so collision is genuinely exercised here rather than
 ## assumed. Rendering is not, so this says nothing about how it *looks* — that is
-## a hand-test.
+## a hand-test. The harness is deliberately minimal (no level design); this checks
+## the plumbing, not a designed map.
 
 const TILE := 16
-const MAP_W := 40
-const MAP_H := 30
+const MAP_W := 32
+const MAP_H := 22
 
 var failures: int = 0
 
@@ -26,19 +28,22 @@ func _run() -> void:
 
 	# --- structure ---
 	var player: CharacterBody2D = world.get_node_or_null("Player")
-	check_true("world has a Player", player != null)
 	var ground: TileMapLayer = world.get_node_or_null("Ground")
-	var water: TileMapLayer = world.get_node_or_null("Water")
-	check_true("world has Ground and Water layers", ground != null and water != null)
-	check_true("Props holds 10 trees", world.get_node("Props").get_child_count() == 10)
+	var gate: Node = world.get_node_or_null("Props/LessonGate")
+	check_true("harness has a Player", player != null)
+	check_true("harness has a Ground layer", ground != null)
+	check_true("harness has a recall gate", gate != null)
 
-	if player == null or ground == null or water == null:
+	if player == null or ground == null or gate == null:
 		_finish()
 		return
 
 	check_true("ground is fully tiled (%d cells)" % ground.get_used_cells().size(),
 		ground.get_used_cells().size() == MAP_W * MAP_H)
-	check_true("pond has water tiles", water.get_used_cells().size() > 30)
+
+	# --- the gate starts closed ---
+	var barrier: CollisionShape2D = gate.get_node("Barrier/Collision")
+	check_true("gate barrier starts active", not barrier.disabled)
 
 	# --- camera is clamped to the map ---
 	var camera: Camera2D = player.get_node("Camera")
@@ -55,16 +60,8 @@ func _run() -> void:
 			check_true("idle_%s exists" % dir, frames.has_animation("idle_" + dir))
 		check_true("starts idle facing down", sprite.animation == "idle_down")
 
-	# --- water is solid ---
-	var tile_set := water.tile_set
-	check_true("tileset declares a physics layer", tile_set.get_physics_layers_count() == 1)
-	var water_cell: Vector2i = water.get_used_cells()[0]
-	var data := water.get_cell_tile_data(water_cell)
-	check_true("water tiles carry a collision polygon",
-		data != null and data.get_collision_polygons_count(0) == 1)
-
 	# --- movement under real input ---
-	player.position = Vector2(20 * TILE, 16 * TILE)
+	player.position = Vector2(16 * TILE, 13 * TILE)
 	var start := player.position
 	Input.action_press("move_right")
 	await _physics_frames(20)
@@ -78,7 +75,7 @@ func _run() -> void:
 	check_true("returns to idle_right when input stops", sprite.animation == "idle_right")
 
 	# --- diagonals must not be faster than a straight line ---
-	player.position = Vector2(20 * TILE, 16 * TILE)
+	player.position = Vector2(16 * TILE, 13 * TILE)
 	start = player.position
 	Input.action_press("move_right")
 	Input.action_press("move_down")
@@ -89,22 +86,14 @@ func _run() -> void:
 	check_true("diagonal speed matches straight-line (%.1f vs %.1f)" % [diagonal, moved],
 		absf(diagonal - moved) < 2.0)
 
-	# --- collision actually stops the player ---
-	player.position = Vector2(2 * TILE, 16 * TILE)
+	# --- boundary walls actually stop the player ---
+	player.position = Vector2(2 * TILE, 13 * TILE)
 	Input.action_press("move_left")
 	await _physics_frames(60)
 	Input.action_release("move_left")
-	# The feet box is 8px wide, so the centre stops 4px shy of the wall face at x=0.
+	# The feet box is 8px wide, so the centre stops ~4px shy of the wall face at x=0.
 	check_true("west wall stops the player (x=%.1f, expected ~4)" % player.position.x,
 		absf(player.position.x - 4.0) < 0.5)
-
-	# Walk into the pond from the south; the water tiles must block.
-	player.position = Vector2(31 * TILE, 12 * TILE)
-	Input.action_press("move_up")
-	await _physics_frames(60)
-	Input.action_release("move_up")
-	check_true("pond blocks the player (y=%.1f, water ends at y=160)" % player.position.y,
-		player.position.y > 160.0)
 
 	_finish()
 
@@ -116,10 +105,8 @@ func _physics_frames(n: int) -> void:
 
 func _finish() -> void:
 	print("")
-	if failures == 0:
-		print("PASS — world loads, player moves, collision holds.")
-	else:
-		print("FAIL — %d check(s) failed." % failures)
+	print(("PASS — harness loads, player moves, walls hold, gate present."
+		if failures == 0 else "FAIL — %d check(s) failed." % failures))
 	quit(1 if failures > 0 else 0)
 
 
