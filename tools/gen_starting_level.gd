@@ -78,15 +78,36 @@ const WATER := {
 	"WGGW": [Vector2i(12, 1), 0],
 }
 
-# Water atlas tiles that block movement: >=2 water corners (interior, straight
-# edges, inner corners). Outer corners (1 water corner) are walkable shoreline.
-const WATER_SOLID := [
-	Vector2i(12, 1), Vector2i(12, 2), Vector2i(17, 6),
-	Vector2i(14, 0), Vector2i(14, 1), Vector2i(18, 6), Vector2i(16, 6),
-]
+# Per-tile water collision, shaped to the water PART of each tile so the shore
+# stays walkable (no invisible wall out on the grass). Flipped/transposed
+# placements transform their collision with them, so one entry covers a tile and
+# all its mirror uses (e.g. the TL-notch also serves the BL/TR/BR notches).
+# Outer-corner tiles (1 water corner) get no collision at all — walkable shore.
+const T := 8.0   # half a tile
+const WATER_COLLISION := {
+	Vector2i(12, 1): "full",     # interior
+	Vector2i(12, 2): "top",      # top edge (water north)
+	Vector2i(17, 6): "bottom",   # bottom edge (water south)
+	Vector2i(14, 1): "left",     # left edge (water west)
+	Vector2i(14, 0): "right",    # right edge (water east)
+	Vector2i(18, 6): "notch_tl", # inner corner, water in all but the TL quadrant
+	Vector2i(16, 6): "notch_tr", # inner corner, water in all but the TR quadrant
+}
+
+
+func _water_poly(kind: String) -> PackedVector2Array:
+	match kind:
+		"top": return PackedVector2Array([Vector2(-T, -T), Vector2(T, -T), Vector2(T, 0), Vector2(-T, 0)])
+		"bottom": return PackedVector2Array([Vector2(-T, 0), Vector2(T, 0), Vector2(T, T), Vector2(-T, T)])
+		"left": return PackedVector2Array([Vector2(-T, -T), Vector2(0, -T), Vector2(0, T), Vector2(-T, T)])
+		"right": return PackedVector2Array([Vector2(0, -T), Vector2(T, -T), Vector2(T, T), Vector2(0, T)])
+		"notch_tl": return PackedVector2Array([Vector2(0, -T), Vector2(T, -T), Vector2(T, T), Vector2(-T, T), Vector2(-T, 0), Vector2(0, 0)])
+		"notch_tr": return PackedVector2Array([Vector2(-T, -T), Vector2(0, -T), Vector2(0, 0), Vector2(T, 0), Vector2(T, T), Vector2(-T, T)])
+		_: return PackedVector2Array([Vector2(-T, -T), Vector2(T, -T), Vector2(T, T), Vector2(-T, T)])
 
 var _dirt_corner := {}    # Vector2i corner -> true
 var _water_corner := {}
+var _water_cells := {}     # Vector2i cell -> true (pre-smoothing water footprint)
 
 
 func _initialize() -> void:
@@ -118,26 +139,26 @@ func _build_tileset() -> TileSet:
 		source.create_tile(c)
 	tileset.add_source(source, 0)
 
-	# Full-tile collision for solid water tiles (added after the source joins the
-	# set, or TileData has no physics layer to attach to).
-	var full := PackedVector2Array([
-		Vector2(-TILE / 2.0, -TILE / 2.0), Vector2(TILE / 2.0, -TILE / 2.0),
-		Vector2(TILE / 2.0, TILE / 2.0), Vector2(-TILE / 2.0, TILE / 2.0),
-	])
-	for c in WATER_SOLID:
+	# Water-shaped collision per tile (added after the source joins the set, or
+	# TileData has no physics layer to attach to).
+	for c in WATER_COLLISION:
 		var data := source.get_tile_data(c, 0)
 		data.add_collision_polygon(0)
-		data.set_collision_polygon_points(0, 0, full)
+		data.set_collision_polygon_points(0, 0, _water_poly(WATER_COLLISION[c]))
 	return tileset
 
 
 func _build_world(tileset: TileSet) -> int:
 	# --- author the terrain shapes at the corner-grid level ---
-	# Pond tucked into the NE corner, clear of the roads.
-	_paint_pond(Vector2i(37, 6), 5, 3)
-	# Main east-west road, and a north road out of the village to the torii gate.
-	_paint_path_h(3, 40, 19, 3)
-	_paint_path_v(19, 6, 19, 3)
+	# A larger pond in the NE, then smoothed so its outline reads as a pond rather
+	# than a lumpy ellipse (single-cell steps become clean curves).
+	_paint_pond(Vector2i(33, 8), 6, 4)
+	_smooth_water(2)
+	# Straight roads meeting at a central plaza — intentional, not a stamped blob.
+	# Width 2 keeps them road-like; the plaza gives the junction some room.
+	_paint_road_h(4, 39, 19, 2)
+	_paint_road_v(19, 7, 19, 2)
+	_paint_plaza(Rect2i(17, 17, 5, 5))
 
 	var world := Node2D.new()
 	world.name = "World"
@@ -215,20 +236,20 @@ func _cell_corners(cell: Vector2i) -> Array:
 	return [cell, cell + Vector2i(1, 0), cell + Vector2i(0, 1), cell + Vector2i(1, 1)]
 
 
-func _paint_path_h(x0: int, x1: int, y_center: int, width: int) -> void:
-	var half := width / 2
+func _paint_road_h(x0: int, x1: int, y_top: int, width: int) -> void:
 	for x in range(x0, x1 + 1):
-		# A gentle wander so the road doesn't read as a stamped rectangle.
-		var cy := y_center + int(round(sin(x * 0.3) * 0.8))
-		for i in range(-half, half + 1):
-			_mark_cell_dirt(Vector2i(x, cy + i))
+		for i in width:
+			_mark_cell_dirt(Vector2i(x, y_top + i))
 
-func _paint_path_v(x_center: int, y0: int, y1: int, width: int) -> void:
-	var half := width / 2
+func _paint_road_v(x_left: int, y0: int, y1: int, width: int) -> void:
 	for y in range(y0, y1 + 1):
-		var cx := x_center + int(round(sin(y * 0.3) * 0.8))
-		for i in range(-half, half + 1):
-			_mark_cell_dirt(Vector2i(cx + i, y))
+		for i in width:
+			_mark_cell_dirt(Vector2i(x_left + i, y))
+
+func _paint_plaza(rect: Rect2i) -> void:
+	for y in range(rect.position.y, rect.end.y):
+		for x in range(rect.position.x, rect.end.x):
+			_mark_cell_dirt(Vector2i(x, y))
 
 func _paint_pond(center: Vector2i, rx: int, ry: int) -> void:
 	for y in range(center.y - ry - 1, center.y + ry + 2):
@@ -236,7 +257,35 @@ func _paint_pond(center: Vector2i, rx: int, ry: int) -> void:
 			var dx := float(x - center.x) / rx
 			var dy := float(y - center.y) / ry
 			if dx * dx + dy * dy <= 1.0:
-				_mark_cell_water(Vector2i(x, y))
+				_water_cells[Vector2i(x, y)] = true
+
+## Morphological smoothing of the water CELL set: fill single-cell notches, shave
+## single-cell spikes. Then convert to corner marks. This turns a rasterized
+## ellipse (which steps by whole cells, and so renders as a bumpy shore) into a
+## smooth pond outline.
+func _smooth_water(passes: int) -> void:
+	for _p in passes:
+		var next := _water_cells.duplicate()
+		for y in range(0, MAP_H):
+			for x in range(0, MAP_W):
+				var cell := Vector2i(x, y)
+				var n := _water_neighbors(cell)
+				if _water_cells.has(cell):
+					if n <= 1:
+						next.erase(cell)   # shave a spike
+				elif n >= 3:
+					next[cell] = true      # fill a notch
+		_water_cells = next
+	# A cell's corner is water if any of the 4 cells touching it is water.
+	for cell in _water_cells:
+		_mark_cell_water(cell)
+
+func _water_neighbors(cell: Vector2i) -> int:
+	var n := 0
+	for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		if _water_cells.has(cell + d):
+			n += 1
+	return n
 
 
 func _place_cell(ground: TileMapLayer, cell: Vector2i) -> void:
@@ -293,26 +342,57 @@ func _add_prop(parent: Node2D, region: Rect2i, base_pos: Vector2, body_size: Vec
 	parent.add_child(body)
 
 
-## Tree cells: a loose perimeter ring plus a couple of clusters. Anything on a
-## road, in the pond, or under a house is skipped so nothing blocks a route.
+## Tree cells: a natural-looking scatter, denser near the map edges (a soft
+## treeline framing the village) and thinning toward the middle, with a few
+## deliberate groves. Jittered off the grid so it never reads as a planted row.
+## Roads, plaza, pond, house footprints, and the spawn are kept clear.
 func _tree_spots() -> Array:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 20260721
 	var spots: Array = []
-	var blocked := func(c: Vector2i) -> bool:
-		return _dirt_corner.has(c) or _water_corner.has(c) \
-			or _dirt_corner.has(c + Vector2i(1, 1)) or _water_corner.has(c + Vector2i(1, 1))
-	# Perimeter ring, 2 in from the edge, spaced out.
-	for x in range(2, MAP_W - 1, 3):
-		for y in [2, MAP_H - 3]:
-			spots.append(Vector2i(x, y))
-	for y in range(4, MAP_H - 3, 3):
-		for x in [2, MAP_W - 3]:
-			spots.append(Vector2i(x, y))
-	# A couple of small groves.
-	for c in [Vector2i(7, 11), Vector2i(8, 12), Vector2i(26, 11), Vector2i(27, 12),
-			Vector2i(14, 24), Vector2i(24, 25)]:
+	var taken := {}
+
+	var try_add := func(c: Vector2i) -> void:
+		if c.x < 1 or c.y < 1 or c.x >= MAP_W - 1 or c.y >= MAP_H - 1:
+			return
+		if taken.has(c) or _tree_blocked(c):
+			return
+		# no two trunks adjacent, so canopies don't merge into a wall
+		for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+			if taken.has(c + d):
+				return
+		taken[c] = true
 		spots.append(c)
-	return spots.filter(func(c): return not blocked.call(c) \
-		and c.x >= 1 and c.y >= 1 and c.x < MAP_W - 1 and c.y < MAP_H - 1)
+
+	# Edge treeline: probability of a tree falls off with distance from the border.
+	for y in range(1, MAP_H - 1):
+		for x in range(1, MAP_W - 1):
+			var edge := mini(mini(x, MAP_W - 1 - x), mini(y, MAP_H - 1 - y))
+			var p := clampf(0.55 - edge * 0.12, 0.0, 0.55)
+			if rng.randf() < p:
+				try_add.call(Vector2i(x, y))
+
+	# A few interior groves for depth.
+	for center in [Vector2i(8, 11), Vector2i(27, 12), Vector2i(13, 25)]:
+		for _i in range(rng.randi_range(3, 5)):
+			try_add.call(center + Vector2i(rng.randi_range(-2, 2), rng.randi_range(-1, 2)))
+
+	return spots
+
+
+func _tree_blocked(c: Vector2i) -> bool:
+	# Blocked if any of the cell's own corners is road/pond, plus a small margin so
+	# a trunk never crowds a road or the shore.
+	for dy in range(-1, 2):
+		for dx in range(-1, 2):
+			var cc := c + Vector2i(dx, dy)
+			if _dirt_corner.has(cc) or _water_corner.has(cc):
+				return true
+	# Keep the spawn and house plots clear.
+	for keep: Rect2i in [Rect2i(17, 22, 6, 5), Rect2i(9, 13, 6, 5), Rect2i(31, 13, 6, 5)]:
+		if keep.has_point(c):
+			return true
+	return false
 
 
 func _build_bounds() -> StaticBody2D:

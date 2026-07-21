@@ -60,8 +60,8 @@ func _run() -> void:
 			check_true("idle_%s exists" % dir, frames.has_animation("idle_" + dir))
 		check_true("starts idle facing down", sprite.animation == "idle_down")
 
-	# --- movement under real input (open grass in the SW, clear of props) ---
-	var open := Vector2(6 * TILE, 24 * TILE)
+	# --- movement under real input (the central plaza is open dirt, prop-free) ---
+	var open := Vector2(19 * TILE, 19 * TILE)
 	player.position = open
 	var start := player.position
 	Input.action_press("move_right")
@@ -87,14 +87,15 @@ func _run() -> void:
 	check_true("diagonal speed matches straight-line (%.1f vs %.1f)" % [diagonal, moved],
 		absf(diagonal - moved) < 2.0)
 
-	# --- boundary walls actually stop the player (x=2, y=12 is clear of the tree ring) ---
-	player.position = Vector2(2 * TILE, 12 * TILE)
-	Input.action_press("move_left")
-	await _physics_frames(60)
-	Input.action_release("move_left")
-	# The feet box is 8px wide, so the centre stops ~4px shy of the wall face at x=0.
-	check_true("west wall stops the player (x=%.1f, expected ~4)" % player.position.x,
-		absf(player.position.x - 4.0) < 0.5)
+	# --- the pond blocks: walking up into it from the south is stopped by water ---
+	# (33,14) sits under the pond in the right-house keep-zone, so it's tree-free.
+	check_true("bounds wall has 4 sides", world.get_node("Bounds").get_child_count() == 4)
+	player.position = Vector2(33 * TILE, 14 * TILE)
+	Input.action_press("move_up")
+	await _physics_frames(70)
+	Input.action_release("move_up")
+	check_true("pond stops the player short of its interior (y=%.1f)" % player.position.y,
+		player.position.y > 150.0)
 
 	_finish()
 
