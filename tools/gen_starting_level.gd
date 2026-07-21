@@ -29,6 +29,13 @@ const GRASS := Vector2i(4, 0)
 const TREE_GREEN := Rect2i(144, 208, 32, 32)
 const TREE_TEAL := Rect2i(208, 208, 32, 32)
 const HOUSE_RED := Rect2i(144, 336, 80, 64)
+# Cozy dressing (all from the Serene Village sheet).
+const FLOWERS := [Rect2i(32, 192, 16, 16), Rect2i(48, 192, 16, 16),
+	Rect2i(64, 192, 16, 16), Rect2i(80, 192, 16, 16)]   # red / blue / yellow / white
+const BUSH := Rect2i(112, 192, 16, 16)
+const SIGN := Rect2i(112, 208, 16, 32)
+const ROCK_SM := Rect2i(32, 240, 16, 16)
+const ROCK_TALL := Rect2i(48, 224, 16, 32)
 
 # Transform flags for placing a mirrored/transposed tile without a separate atlas
 # entry. OR-ed into the alternative_tile arg of set_cell.
@@ -193,13 +200,30 @@ func _build_world(tileset: TileSet) -> int:
 		_add_prop(props, region, Vector2(spot.x * TILE + TILE / 2.0, spot.y * TILE + TILE),
 			Vector2(8, 5), Vector2(0, -2))
 
+	# Cozy dressing: flowerbeds by the cottages, a couple of signs and rocks.
+	var flowers := [Vector2i(9, 18), Vector2i(13, 18), Vector2i(31, 18), Vector2i(35, 18),
+		Vector2i(16, 16), Vector2i(22, 16), Vector2i(16, 22), Vector2i(23, 22)]
+	for i in flowers.size():
+		var f: Vector2i = flowers[i]
+		_add_deco(props, FLOWERS[i % FLOWERS.size()], _base(f))
+	_add_deco(props, BUSH, _base(Vector2i(25, 16)))
+	_add_deco(props, BUSH, _base(Vector2i(14, 16)))
+
+	# Signs point the way; rocks add a little texture. Small solid bases.
+	_add_prop(props, SIGN, _base(Vector2i(17, 15)), Vector2(10, 5), Vector2(0, -2))
+	_add_prop(props, ROCK_TALL, _base(Vector2i(6, 16)), Vector2(12, 6), Vector2(0, -3))
+	_add_prop(props, ROCK_SM, _base(Vector2i(38, 22)), Vector2(11, 6), Vector2(0, -3))
+	_add_prop(props, ROCK_SM, _base(Vector2i(9, 25)), Vector2(11, 6), Vector2(0, -3))
+	_add_prop(props, ROCK_TALL, _base(Vector2i(37, 12)), Vector2(12, 6), Vector2(0, -3))
+
 	# The torii recall gate at the north end of the road — the way out of town.
 	var gate: Node2D = load("res://src/entities/lesson_gate.tscn").instantiate()
 	gate.gate_id = "north_torii"
 	gate.required_lesson = "kana-vowels"
 	gate.required_level = 1
 	gate.fail_message = "The gate hums. Recall your kana to pass."
-	gate.position = Vector2(19 * TILE + TILE / 2.0, 6 * TILE + TILE)
+	# Centered on the 2-wide road (cols 19-20), at its north end.
+	gate.position = Vector2(20 * TILE, 7 * TILE)
 	props.add_child(gate)
 	world.add_child(props)
 
@@ -340,6 +364,26 @@ func _add_prop(parent: Node2D, region: Rect2i, base_pos: Vector2, body_size: Vec
 	body.add_child(collider)
 
 	parent.add_child(body)
+
+
+## A flat, walkable decoration (flowers, bushes): the sprite only, no collision.
+## Y-sorted so tall bushes still tuck behind the player correctly.
+func _add_deco(parent: Node2D, region: Rect2i, base_pos: Vector2) -> void:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = load(SHEET)
+	atlas.region = region
+	var sprite := Sprite2D.new()
+	sprite.texture = atlas
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sprite.position = base_pos
+	sprite.offset = Vector2(0, -region.size.y / 2.0)
+	sprite.y_sort_enabled = true
+	parent.add_child(sprite)
+
+
+## World position of a cell's bottom-center (a prop's feet).
+func _base(cell: Vector2i) -> Vector2:
+	return Vector2(cell.x * TILE + TILE / 2.0, cell.y * TILE + TILE)
 
 
 ## Tree cells: a natural-looking scatter, denser near the map edges (a soft

@@ -22,8 +22,6 @@ extends Area2D
 var _busy := false
 var _open := false
 
-@onready var _barrier: StaticBody2D = $Barrier
-
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -123,11 +121,10 @@ func _clear_and_open() -> void:
 	Bus.toast.emit("Recall accepted — the path opens.")
 
 
-## Lift or lower the barrier, visual and collision together.
+## Open or close the gate: the closable rail (and its collision) come and go, while
+## the two posts stay as a frame.
 func _set_open(open: bool) -> void:
 	_open = open
-	_barrier.visible = not open
+	($GateBar as Node2D).visible = not open
 	# Deferred: collision state can't change during a physics query/callback.
 	($Barrier/Collision as CollisionShape2D).set_deferred("disabled", open)
-	# The placeholder gate posts brighten from a dim red (closed) to green (open).
-	($Marker as Node2D).modulate = Color(0.4, 0.85, 0.45) if open else Color(0.85, 0.4, 0.4)

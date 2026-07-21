@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://src/entities/lesson_gate.gd" id="1_gate"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sheet"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_reach"]
-radius = 26.0
+[sub_resource type="AtlasTexture" id="picket"]
+atlas = ExtResource("2_sheet")
+region = Rect2(80, 240, 16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bar"]
-size = Vector2(22, 16)
+[sub_resource type="CircleShape2D" id="reach"]
+radius = 28.0
+
+[sub_resource type="RectangleShape2D" id="bar"]
+size = Vector2(30, 14)
 
 [node name="LessonGate" type="Area2D"]
 y_sort_enabled = true
@@ -16,33 +21,39 @@ monitoring = false
 monitorable = true
 script = ExtResource("1_gate")
 
-[node name="Marker" type="Node2D" parent="."]
-modulate = Color(0.85, 0.4, 0.4, 1)
+[node name="FenceEndL" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-24, 0)
+offset = Vector2(0, -8)
+texture = SubResource("picket")
 
-[node name="PostLeft" type="Polygon2D" parent="Marker"]
-color = Color(0.55, 0.35, 0.28, 1)
-polygon = PackedVector2Array(-15, -34, -9, -34, -9, 0, -15, 0)
+[node name="FenceEndR" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(24, 0)
+offset = Vector2(0, -8)
+texture = SubResource("picket")
 
-[node name="PostRight" type="Polygon2D" parent="Marker"]
-color = Color(0.55, 0.35, 0.28, 1)
-polygon = PackedVector2Array(9, -34, 15, -34, 15, 0, 9, 0)
+[node name="GateBar" type="Node2D" parent="."]
 
-[node name="Lintel" type="Polygon2D" parent="Marker"]
-color = Color(0.62, 0.4, 0.32, 1)
-polygon = PackedVector2Array(-17, -38, 17, -38, 17, -30, -17, -30)
+[node name="GateL" type="Sprite2D" parent="GateBar"]
+texture_filter = 1
+position = Vector2(-8, 0)
+offset = Vector2(0, -8)
+texture = SubResource("picket")
+
+[node name="GateR" type="Sprite2D" parent="GateBar"]
+texture_filter = 1
+position = Vector2(8, 0)
+offset = Vector2(0, -8)
+texture = SubResource("picket")
 
 [node name="Reach" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_reach")
+shape = SubResource("reach")
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 collision_layer = 1
 collision_mask = 0
 
-[node name="Bar" type="Polygon2D" parent="Barrier"]
-position = Vector2(0, -8)
-color = Color(0.85, 0.2, 0.2, 0.45)
-polygon = PackedVector2Array(-11, -8, 11, -8, 11, 8, -11, 8)
-
 [node name="Collision" type="CollisionShape2D" parent="Barrier"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_bar")
+position = Vector2(0, -7)
+shape = SubResource("bar")

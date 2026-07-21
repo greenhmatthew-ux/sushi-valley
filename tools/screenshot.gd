@@ -20,6 +20,12 @@ func _run() -> void:
 	var scene: Node = load(scene_path).instantiate()
 	root.add_child(scene)
 
+	# Optional 4th/5th args: place the player at cell (cx,cy) to frame a spot.
+	if args.size() > 4:
+		var player := scene.get_node_or_null("Player")
+		if player != null:
+			player.position = Vector2(float(args[3]) * 16.0, float(args[4]) * 16.0)
+
 	if zoom > 0.0:
 		var camera: Camera2D = scene.get_node_or_null("Player/Camera")
 		if camera != null:
