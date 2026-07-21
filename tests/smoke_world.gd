@@ -11,8 +11,8 @@ extends SceneTree
 ## the plumbing, not a designed map.
 
 const TILE := 16
-const MAP_W := 32
-const MAP_H := 22
+const MAP_W := 44
+const MAP_H := 30
 
 var failures: int = 0
 
@@ -60,8 +60,9 @@ func _run() -> void:
 			check_true("idle_%s exists" % dir, frames.has_animation("idle_" + dir))
 		check_true("starts idle facing down", sprite.animation == "idle_down")
 
-	# --- movement under real input ---
-	player.position = Vector2(16 * TILE, 13 * TILE)
+	# --- movement under real input (open grass in the SW, clear of props) ---
+	var open := Vector2(6 * TILE, 24 * TILE)
+	player.position = open
 	var start := player.position
 	Input.action_press("move_right")
 	await _physics_frames(20)
@@ -75,7 +76,7 @@ func _run() -> void:
 	check_true("returns to idle_right when input stops", sprite.animation == "idle_right")
 
 	# --- diagonals must not be faster than a straight line ---
-	player.position = Vector2(16 * TILE, 13 * TILE)
+	player.position = open
 	start = player.position
 	Input.action_press("move_right")
 	Input.action_press("move_down")
@@ -86,8 +87,8 @@ func _run() -> void:
 	check_true("diagonal speed matches straight-line (%.1f vs %.1f)" % [diagonal, moved],
 		absf(diagonal - moved) < 2.0)
 
-	# --- boundary walls actually stop the player ---
-	player.position = Vector2(2 * TILE, 13 * TILE)
+	# --- boundary walls actually stop the player (x=2, y=12 is clear of the tree ring) ---
+	player.position = Vector2(2 * TILE, 12 * TILE)
 	Input.action_press("move_left")
 	await _physics_frames(60)
 	Input.action_release("move_left")
