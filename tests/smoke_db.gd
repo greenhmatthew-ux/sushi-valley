@@ -3,8 +3,9 @@ extends SceneTree
 ##
 ## Run: godot --headless --path D:\SushiValleyGodot --script res://tests/smoke_db.gd
 ##
-## Autoloads are not installed in --script mode, so DB is instantiated by hand.
-## That is deliberate — it also proves the loader has no hidden autoload coupling.
+## DB is instantiated by hand rather than read off the autoload. That is
+## deliberate: it proves the loader has no hidden autoload coupling and lets the
+## test assert exact load-time state, independent of the boot sequence.
 
 var failures: int = 0
 
