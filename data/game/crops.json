@@ -1,0 +1,38 @@
+[
+  {
+    "id": "rice",
+    "name": "Rice",
+    "seedItem": "rice_seed",
+    "produceItem": "rice",
+    "days": 2,
+    "value": 3,
+    "seasons": ["summer", "autumn"]
+  },
+  {
+    "id": "cucumber",
+    "name": "Cucumber",
+    "seedItem": "cucumber_seed",
+    "produceItem": "cucumber",
+    "days": 2,
+    "value": 5,
+    "seasons": ["spring", "summer"]
+  },
+  {
+    "id": "mushroom",
+    "name": "Mushroom",
+    "seedItem": "mushroom_seed",
+    "produceItem": "mushroom",
+    "days": 3,
+    "value": 8,
+    "seasons": ["autumn", "winter"]
+  },
+  {
+    "id": "herb",
+    "name": "Herb",
+    "seedItem": "herb_seed",
+    "produceItem": "wild_herb",
+    "days": 1,
+    "value": 4,
+    "seasons": ["spring", "summer", "autumn", "winter"]
+  }
+]

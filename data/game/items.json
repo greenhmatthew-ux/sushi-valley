@@ -1,0 +1,1965 @@
+[
+    {
+        "id":  "wooden_katana",
+        "name":  "Wooden Katana",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "stats":  {
+                      "atk":  2
+                  },
+        "value":  55,
+        "icon":  true,
+        "desc":  "A practice blade. Light and reliable. Required by samurai skills."
+    },
+    {
+        "id":  "bamboo_spear",
+        "name":  "Bamboo Spear",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "stats":  {
+                      "atk":  3,
+                      "spd":  -1
+                  },
+        "value":  60,
+        "icon":  true,
+        "desc":  "Longer reach, a touch slower. Required by guardian skills."
+    },
+    {
+        "id":  "wrist_bow",
+        "name":  "Wrist Bow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "1h",
+        "stats":  {
+                      "atk":  2,
+                      "spd":  1
+                  },
+        "value":  65,
+        "desc":  "A compact hand bow. Quick and precise. Required by ranger skills.",
+        "icon":  true
+    },
+    {
+        "id":  "calligraphy_brush",
+        "name":  "Calligraphy Brush",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "1h",
+        "stats":  {
+                      "atk":  1,
+                      "hp":  4
+                  },
+        "value":  70,
+        "desc":  "A brush imbued with kanji power. Required by scholar skills.",
+        "icon":  true
+    },
+    {
+        "id":  "straw_hat",
+        "name":  "Straw Hat",
+        "kind":  "gear",
+        "slot":  "head",
+        "stats":  {
+                      "hp":  6
+                  },
+        "value":  35,
+        "icon":  true,
+        "desc":  "A woven kasa. Keeps the sun off."
+    },
+    {
+        "id":  "cloth_gi",
+        "name":  "Cloth Gi",
+        "kind":  "gear",
+        "slot":  "body",
+        "stats":  {
+                      "def":  2,
+                      "hp":  4
+                  },
+        "value":  40,
+        "icon":  true,
+        "desc":  "A simple training gi."
+    },
+    {
+        "id":  "leather_guards",
+        "name":  "Leather Guards",
+        "kind":  "gear",
+        "slot":  "hands",
+        "stats":  {
+                      "def":  1
+                  },
+        "value":  30,
+        "icon":  true,
+        "desc":  "Worn but sturdy bracers."
+    },
+    {
+        "id":  "hakama",
+        "name":  "Indigo Hakama",
+        "kind":  "gear",
+        "slot":  "legs",
+        "stats":  {
+                      "def":  1,
+                      "spd":  1
+                  },
+        "value":  45,
+        "icon":  true,
+        "desc":  "Flowing trousers, easy to move in."
+    },
+    {
+        "id":  "straw_sandals",
+        "name":  "Straw Sandals",
+        "kind":  "gear",
+        "slot":  "feet",
+        "stats":  {
+                      "spd":  1
+                  },
+        "value":  25,
+        "icon":  true,
+        "desc":  "Zori sandals. Quick and quiet."
+    },
+    {
+        "id":  "jade_ring",
+        "name":  "Jade Ring",
+        "kind":  "gear",
+        "slot":  "ring",
+        "stats":  {
+                      "atk":  1
+                  },
+        "value":  65,
+        "icon":  true,
+        "desc":  "A carved jade band, faintly warm."
+    },
+    {
+        "id":  "omamori_charm",
+        "name":  "Omamori Charm",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "stats":  {
+                      "hp":  8
+                  },
+        "value":  70,
+        "icon":  true,
+        "desc":  "A protective shrine charm."
+    },
+    {
+        "id":  "rice_ball",
+        "name":  "Rice Ball",
+        "kind":  "consumable",
+        "heal":  12,
+        "value":  8,
+        "icon":  true,
+        "desc":  "Onigiri. Restores a little HP."
+    },
+    {
+        "id":  "spore_cap",
+        "name":  "Spore Cap",
+        "kind":  "material",
+        "value":  6,
+        "desc":  "Harvested from a Spore Mushroom.",
+        "icon":  true
+    },
+    {
+        "id":  "kappa_scale",
+        "name":  "Kappa Scale",
+        "kind":  "material",
+        "value":  14,
+        "icon":  true,
+        "desc":  "A slick green scale from a River Kappa."
+    },
+    {
+        "id":  "kappa_scale_guard",
+        "name":  "Kappa Scale Guard",
+        "kind":  "gear",
+        "slot":  "hands",
+        "stats":  {
+                      "def":  2,
+                      "hp":  3
+                  },
+        "value":  90,
+        "desc":  "Bracers plated with river-kappa scale. Cool to the touch.",
+        "icon":  true
+    },
+    {
+        "id":  "iron_claw",
+        "name":  "Iron Claw",
+        "kind":  "material",
+        "value":  30,
+        "desc":  "A mole\u0027s digging claw, hard as pig iron. Smiths pay well for these.",
+        "icon":  true
+    },
+    {
+        "id":  "raw_iron_ore",
+        "name":  "Raw Iron Ore",
+        "kind":  "material",
+        "value":  9,
+        "desc":  "Unrefined ore chipped from mountain seams. Smelt it before smithing.",
+        "icon":  true
+    },
+    {
+        "id":  "wild_herb",
+        "name":  "Wild Herb",
+        "kind":  "material",
+        "value":  7,
+        "desc":  "A fragrant herb gathered from sheltered gardens and woodland clearings.",
+        "icon":  true
+    },
+    {
+        "id":  "compost",
+        "name":  "Garden Compost",
+        "kind":  "material",
+        "value":  5,
+        "desc":  "Rich compost used to shorten a crop's growing time by one day.",
+        "icon":  true
+    },
+    {
+        "id":  "recipe_stamp",
+        "name":  "Recipe Stamp",
+        "kind":  "material",
+        "value":  40,
+        "rarity":  "rare",
+        "iconAlias":  "fortune_cookie",
+        "desc":  "Hana's permanent seal for completing an applied food-recall trial.",
+        "icon":  true
+    },
+    {
+        "id":  "forest_lunchbox",
+        "name":  "Forest Lunchbox",
+        "kind":  "consumable",
+        "heal":  48,
+        "value":  52,
+        "rarity":  "rare",
+        "iconAlias":  "sushi_platter",
+        "desc":  "A trail bento of rice, mushrooms, and woodland herbs. The recovered recipe restores a hearty amount of HP.",
+        "icon":  true
+    },
+    {
+        "id":  "starfall_shard",
+        "name":  "Starfall Shard",
+        "kind":  "material",
+        "value":  85,
+        "rarity":  "rare",
+        "iconAlias":  "stormglass",
+        "desc":  "A blue-white fragment recovered from a temporary Mountain Pass starfall vein.",
+        "icon":  true
+    },
+    {
+        "id":  "starfall_charm",
+        "name":  "Starfall Charm",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "requiredLevel":  12,
+        "stats":  { "hp":  10, "spd":  1 },
+        "value":  210,
+        "rarity":  "rare",
+        "iconAlias":  "omamori_charm",
+        "desc":  "A scalable level-12 charm made from two recurring Starfall Vein discoveries.",
+        "icon":  true
+    },
+    {
+        "id":  "river_fish",
+        "name":  "River Fish",
+        "kind":  "material",
+        "value":  13,
+        "desc":  "A fresh catch from cool woodland water. Best cooked promptly.",
+        "icon":  true
+    },
+    {
+        "id":  "foragers_poultice",
+        "name":  "Forager's Poultice",
+        "kind":  "consumable",
+        "heal":  32,
+        "value":  28,
+        "rarity":  "uncommon",
+        "iconAlias":  "herb_tea",
+        "desc":  "Aoi's field dressing of fragrant herbs and garden compost. Restores a moderate amount of HP.",
+        "icon":  true
+    },
+    {
+        "id":  "iron_ingot",
+        "name":  "Iron Ingot",
+        "kind":  "material",
+        "value":  32,
+        "desc":  "Refined iron ready for serious metalwork.",
+        "icon":  true
+    },
+    {
+        "id":  "iron_geta",
+        "name":  "Iron Geta",
+        "kind":  "gear",
+        "slot":  "feet",
+        "stats":  {
+                      "def":  3,
+                      "hp":  2
+                  },
+        "value":  120,
+        "desc":  "Iron-shod sandals left in a summit chest. Heavy, but they hold the trail.",
+        "icon":  true
+    },
+    {
+        "id":  "tempura_set",
+        "name":  "Tempura Set",
+        "kind":  "consumable",
+        "heal":  25,
+        "value":  15,
+        "desc":  "Crispy tempura over rice. A hearty meal from the izakaya.",
+        "icon":  true
+    },
+    {
+        "id":  "matcha_latte",
+        "name":  "Matcha Latte",
+        "kind":  "consumable",
+        "heal":  10,
+        "value":  10,
+        "desc":  "A warm cup of matcha. Soothing and restorative.",
+        "icon":  true
+    },
+    {
+        "id":  "tengu_fan",
+        "name":  "Tengu Fan",
+        "kind":  "material",
+        "value":  40,
+        "desc":  "A feather-light fan dropped by a Mountain Tengu. Smiths prize its wind-edge.",
+        "icon":  true
+    },
+    {
+        "id":  "kitsune_tail",
+        "name":  "Kitsune Tail",
+        "kind":  "material",
+        "value":  35,
+        "desc":  "A fluffy tail tuft from a Shrine Kitsune. Faintly warm to the touch.",
+        "icon":  true
+    },
+    {
+        "id":  "slime_gel",
+        "name":  "Slime Gel",
+        "kind":  "material",
+        "value":  5,
+        "desc":  "A wobbly clump of slime gel. Surprisingly useful for crafting.",
+        "icon":  true
+    },
+    {
+        "id":  "bone_shard",
+        "name":  "Bone Shard",
+        "kind":  "material",
+        "value":  12,
+        "desc":  "A sharpened shard from a Floating Skull. Cold to the touch.",
+        "icon":  true
+    },
+    {
+        "id":  "spirit_essence",
+        "name":  "Spirit Essence",
+        "kind":  "material",
+        "value":  25,
+        "desc":  "A flickering mote of spirit energy, trapped in a glass vial.",
+        "icon":  true
+    },
+    {
+        "id":  "snake_fang",
+        "name":  "Snake Fang",
+        "kind":  "material",
+        "value":  8,
+        "desc":  "A hollow fang from a Grass Snake. Still drips with venom.",
+        "icon":  true
+    },
+    {
+        "id":  "lantern_oil",
+        "name":  "Lantern Oil",
+        "kind":  "material",
+        "value":  15,
+        "desc":  "Unusual oil from a Red Lantern. Burns with an eerie red glow.",
+        "icon":  true
+    },
+    {
+        "id":  "bear_pelt",
+        "name":  "Bear Pelt",
+        "kind":  "material",
+        "value":  50,
+        "desc":  "A thick, warm pelt from a Cave Bear. Highly valued by armorers.",
+        "icon":  true
+    },
+    {
+        "id":  "raccoon_tail",
+        "name":  "Raccoon Tail",
+        "kind":  "material",
+        "value":  10,
+        "desc":  "A striped tail from a Sly Raccoon. Said to bring fortune.",
+        "icon":  true
+    },
+    {
+        "id":  "dragon_scale",
+        "name":  "Green Dragon Scale",
+        "kind":  "material",
+        "value":  80,
+        "rarity":  "uncommon",
+        "dragonScaleColor":  "green",
+        "desc":  "A vitality-aligned scale from a Lesser Dragon. Harder than steel.",
+        "icon":  true
+    },
+    {
+        "id":  "blue_dragon_scale",
+        "name":  "Blue Dragon Scale",
+        "kind":  "material",
+        "value":  125,
+        "rarity":  "rare",
+        "dragonScaleColor":  "blue",
+        "iconAlias":  "dragon_scale",
+        "desc":  "A focus-aligned scale that holds cold and arcane energy.",
+        "icon":  true
+    },
+    {
+        "id":  "silver_dragon_scale",
+        "name":  "Silver Dragon Scale",
+        "kind":  "material",
+        "value":  180,
+        "rarity":  "epic",
+        "dragonScaleColor":  "silver",
+        "iconAlias":  "dragon_scale",
+        "desc":  "A defense-aligned scale with the sheen and resilience of moonlit steel.",
+        "icon":  true
+    },
+    {
+        "id":  "black_dragon_scale",
+        "name":  "Black Dragon Scale",
+        "kind":  "material",
+        "value":  240,
+        "rarity":  "epic",
+        "dragonScaleColor":  "black",
+        "iconAlias":  "dragon_scale",
+        "desc":  "A precision-aligned scale that drinks in light around its edge.",
+        "icon":  true
+    },
+    {
+        "id":  "red_dragon_scale",
+        "name":  "Red Dragon Scale",
+        "kind":  "material",
+        "value":  320,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "red",
+        "iconAlias":  "dragon_scale",
+        "desc":  "A power-aligned scale warm enough to temper starsteel.",
+        "icon":  true
+    },
+    {
+        "id":  "gold_dragon_scale",
+        "name":  "Gold Dragon Scale",
+        "kind":  "material",
+        "value":  450,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "gold",
+        "iconAlias":  "dragon_scale",
+        "desc":  "The rare balanced affinity, prized for apex Dragon Scale equipment.",
+        "icon":  true
+    },
+    {
+        "id":  "bamboo_shoot",
+        "name":  "Bamboo Shoot",
+        "kind":  "material",
+        "value":  8,
+        "desc":  "A fresh bamboo shoot. Crisp and edible, but also a crafting material.",
+        "icon":  true
+    },
+    {
+        "id":  "cyclops_eye",
+        "name":  "Cyclops Eye",
+        "kind":  "material",
+        "value":  60,
+        "desc":  "A massive, clouded eye from a Cyclops. Still glows faintly.",
+        "icon":  true
+    },
+    {
+        "id":  "flame_ember",
+        "name":  "Flame Ember",
+        "kind":  "material",
+        "value":  30,
+        "desc":  "A still-burning ember from a Flame Spirit. Warm in your hand.",
+        "icon":  true
+    },
+    {
+        "id":  "spider_silk",
+        "name":  "Spider Silk",
+        "kind":  "material",
+        "value":  12,
+        "desc":  "Strong, fine silk from a Red Spider. Lighter than it looks.",
+        "icon":  true
+    },
+    {
+        "id":  "bat_wing",
+        "name":  "Bat Wing",
+        "kind":  "material",
+        "value":  7,
+        "desc":  "A leathery wing from a Cave Bat. Useful for crafting.",
+        "icon":  true
+    },
+    {
+        "id":  "eye_lens",
+        "name":  "Eye Lens",
+        "kind":  "material",
+        "value":  20,
+        "desc":  "A crystalline lens from a Wandering Eye. Remarkably clear.",
+        "icon":  true
+    },
+    {
+        "id":  "lizard_hide",
+        "name":  "Lizard Hide",
+        "kind":  "material",
+        "value":  18,
+        "desc":  "Tough, scaly hide from a Rock Lizard. Good for crafting armor.",
+        "icon":  true
+    },
+    {
+        "id":  "owl_feather",
+        "name":  "Owl Feather",
+        "kind":  "material",
+        "value":  14,
+        "desc":  "A silent feather from a Night Owl. Used in wind-charms.",
+        "icon":  true
+    },
+    {
+        "id":  "octopus_ink",
+        "name":  "Octopus Ink",
+        "kind":  "material",
+        "value":  16,
+        "desc":  "A vial of dark ink from a River Octopus. Used by calligraphers.",
+        "icon":  true
+    },
+    {
+        "id":  "beast_pelt",
+        "name":  "Beast Pelt",
+        "kind":  "material",
+        "value":  55,
+        "desc":  "A rugged pelt from a Wild Beast. Tough and weather-resistant.",
+        "icon":  true
+    },
+    {
+        "id":  "gold_pelt",
+        "name":  "Golden Pelt",
+        "kind":  "material",
+        "value":  100,
+        "desc":  "A rare golden pelt from a Golden Raccoon. Merchants pay a premium.",
+        "icon":  true
+    },
+    {
+        "id":  "oni_horn",
+        "name":  "Oni Horn",
+        "kind":  "material",
+        "value":  120,
+        "desc":  "A massive horn from an Oni. Pulsing with dark energy.",
+        "icon":  true
+    },
+    {
+        "id":  "honey",
+        "name":  "Wild Honey",
+        "kind":  "consumable",
+        "heal":  18,
+        "value":  12,
+        "desc":  "Sweet wild honey. Restores HP and soothes the spirit.",
+        "icon":  true
+    },
+    {
+        "id":  "noodle_bowl",
+        "name":  "Noodle Bowl",
+        "kind":  "consumable",
+        "heal":  30,
+        "value":  18,
+        "desc":  "A steaming bowl of noodles. Very filling.",
+        "icon":  true
+    },
+    {
+        "id":  "fortune_cookie",
+        "name":  "Fortune Cookie",
+        "kind":  "consumable",
+        "heal":  8,
+        "value":  6,
+        "desc":  "A crisp cookie with a paper inside. Restores a little HP.",
+        "icon":  true
+    },
+    {
+        "id":  "yakitori",
+        "name":  "Yakitori Skewer",
+        "kind":  "consumable",
+        "heal":  20,
+        "value":  14,
+        "desc":  "Grilled chicken on a stick. A tasty trail snack.",
+        "icon":  true
+    },
+    {
+        "id":  "life_potion",
+        "name":  "Life Potion",
+        "kind":  "consumable",
+        "heal":  50,
+        "value":  40,
+        "desc":  "A red potion that restores a significant amount of HP.",
+        "icon":  true
+    },
+    {
+        "id":  "samurai_helmet",
+        "name":  "Samurai Helmet",
+        "kind":  "gear",
+        "slot":  "head",
+        "stats":  {
+                      "hp":  12,
+                      "def":  2
+                  },
+        "value":  150,
+        "desc":  "A lacquered samurai helmet. Sturdy and imposing.",
+        "icon":  true
+    },
+    {
+        "id":  "dragon_armor",
+        "name":  "Dragon Scale Armor",
+        "kind":  "gear",
+        "slot":  "body",
+        "requiredLevel":  48,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "green",
+        "setId":  "dragon_scale",
+        "stats":  {
+                      "def":  18,
+                      "hp":  55
+                  },
+        "value":  1100,
+        "desc":  "Apex craftable armor whose green scales emphasize vitality and sustained defense.",
+        "icon":  true
+    },
+    {
+        "id":  "bear_greaves",
+        "name":  "Bear Pelt Greaves",
+        "kind":  "gear",
+        "slot":  "feet",
+        "stats":  {
+                      "def":  4,
+                      "hp":  5
+                  },
+        "value":  100,
+        "desc":  "Greaves lined with warm bear pelt. Tough and comfortable.",
+        "icon":  true
+    },
+    {
+        "id":  "spider_silk_gi",
+        "name":  "Spider Silk Gi",
+        "kind":  "gear",
+        "slot":  "body",
+        "stats":  {
+                      "def":  5,
+                      "spd":  2
+                  },
+        "value":  180,
+        "desc":  "A gi woven from spider silk. Light as air, strong as iron.",
+        "icon":  true
+    },
+    {
+        "id":  "oni_blade",
+        "name":  "Oni Blade",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "stats":  {
+                      "atk":  8,
+                      "hp":  5
+                  },
+        "value":  250,
+        "desc":  "A blade forged from an Oni Horn. Hungers for battle.",
+        "icon":  true
+    },
+    {
+        "id":  "flame_staff",
+        "name":  "Flame Staff",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "2h",
+        "stats":  {
+                      "atk":  6,
+                      "spd":  1
+                  },
+        "value":  200,
+        "desc":  "A staff topped with a burning ember. Crackles with heat.",
+        "icon":  true
+    },
+    {
+        "id":  "spirit_amulet",
+        "name":  "Spirit Amulet",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "stats":  {
+                      "hp":  15,
+                      "def":  2
+                  },
+        "value":  160,
+        "desc":  "An amulet glowing with spirit essence. Protects body and soul.",
+        "icon":  true
+    },
+    {
+        "id":  "lizard_guards",
+        "name":  "Lizard Hide Guards",
+        "kind":  "gear",
+        "slot":  "hands",
+        "stats":  {
+                      "def":  4,
+                      "spd":  1
+                  },
+        "value":  80,
+        "desc":  "Bracers crafted from lizard hide. Flexible and tough.",
+        "icon":  true
+    },
+    {
+        "id":  "owl_feather_cape",
+        "name":  "Owl Feather Cape",
+        "kind":  "gear",
+        "slot":  "body",
+        "stats":  {
+                      "def":  3,
+                      "spd":  3
+                  },
+        "value":  140,
+        "desc":  "A cape of silent owl feathers. Move like a shadow.",
+        "icon":  true
+    },
+    {
+        "id":  "tempered_iron",
+        "name":  "Tempered Iron",
+        "kind":  "material",
+        "value":  55,
+        "desc":  "Mountain iron folded for level-12 equipment.",
+        "icon":  true
+    },
+    {
+        "id":  "moonwood",
+        "name":  "Moonwood",
+        "kind":  "material",
+        "value":  105,
+        "desc":  "Pale heartwood harvested from the deepest woodland route.",
+        "icon":  true
+    },
+    {
+        "id":  "stormglass",
+        "name":  "Stormglass",
+        "kind":  "material",
+        "value":  180,
+        "desc":  "Lightning-fused crystal from exposed mountain shelves.",
+        "icon":  true
+    },
+    {
+        "id":  "starsteel",
+        "name":  "Starsteel",
+        "kind":  "material",
+        "value":  290,
+        "desc":  "Dark alloy refined with high-peak meteor fragments.",
+        "icon":  true
+    },
+    {
+        "id":  "elder_core",
+        "name":  "Elder Core",
+        "kind":  "material",
+        "value":  440,
+        "desc":  "A living knot of ancient woodland energy.",
+        "icon":  true
+    },
+    {
+        "id":  "crown_shard",
+        "name":  "Crown Shard",
+        "kind":  "material",
+        "value":  700,
+        "desc":  "An apex crystal reserved for level-cap masterwork.",
+        "icon":  true
+    },
+    {
+        "id":  "trail_elixir",
+        "name":  "Trail Elixir",
+        "kind":  "consumable",
+        "heal":  70,
+        "value":  65,
+        "desc":  "A concentrated restorative for the first veteran routes.",
+        "icon":  true
+    },
+    {
+        "id":  "moonbroth",
+        "name":  "Moonwood Broth",
+        "kind":  "consumable",
+        "heal":  105,
+        "value":  115,
+        "desc":  "A luminous woodland broth for level-24 journeys.",
+        "icon":  true
+    },
+    {
+        "id":  "storm_tonic",
+        "name":  "Storm Tonic",
+        "kind":  "consumable",
+        "heal":  145,
+        "value":  190,
+        "desc":  "A sharp tonic that steadies travelers in violent weather.",
+        "icon":  true
+    },
+    {
+        "id":  "starfruit_feast",
+        "name":  "Starfruit Feast",
+        "kind":  "consumable",
+        "heal":  195,
+        "value":  300,
+        "desc":  "A veteran meal served before high-peak expeditions.",
+        "icon":  true
+    },
+    {
+        "id":  "elder_draught",
+        "name":  "Elder Draught",
+        "kind":  "consumable",
+        "heal":  250,
+        "value":  460,
+        "desc":  "Ancient woodland sap refined into a potent recovery drink.",
+        "icon":  true
+    },
+    {
+        "id":  "sovereign_elixir",
+        "name":  "Sovereign Elixir",
+        "kind":  "consumable",
+        "heal":  330,
+        "value":  720,
+        "desc":  "A level-cap restorative made from crown shards.",
+        "icon":  true
+    },
+    {
+        "id":  "ironwood_saber",
+        "name":  "Ironwood Saber",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  12,
+        "stats":  {
+                      "atk":  5,
+                      "spd":  1
+                  },
+        "value":  140,
+        "desc":  "A tempered level-12 blade with a moonwood grip.",
+        "icon":  true
+    },
+    {
+        "id":  "hunter_longbow",
+        "name":  "Hunter Longbow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "2h",
+        "requiredLevel":  12,
+        "stats":  {
+                      "atk":  4,
+                      "spd":  2
+                  },
+        "value":  140,
+        "desc":  "A longbow built for veteran woodland trails.",
+        "icon":  true
+    },
+    {
+        "id":  "rune_quill",
+        "name":  "Rune Quill",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "1h",
+        "requiredLevel":  12,
+        "stats":  {
+                      "atk":  4,
+                      "hp":  10
+                  },
+        "value":  145,
+        "desc":  "A scholar focus cut from clear mountain crystal.",
+        "icon":  true
+    },
+    {
+        "id":  "iron_maul",
+        "name":  "Iron Maul",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  12,
+        "stats":  {
+                      "atk":  6,
+                      "def":  2,
+                      "spd":  -1
+                  },
+        "value":  150,
+        "desc":  "A tempered maul for holding the front line.",
+        "icon":  true
+    },
+    {
+        "id":  "moonsteel_blade",
+        "name":  "Moonsteel Blade",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  24,
+        "stats":  {
+                      "atk":  9,
+                      "spd":  2
+                  },
+        "value":  280,
+        "desc":  "Moonwood and metal balanced into a level-24 blade.",
+        "icon":  true
+    },
+    {
+        "id":  "gale_recurve",
+        "name":  "Gale Recurve",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "2h",
+        "requiredLevel":  24,
+        "stats":  {
+                      "atk":  8,
+                      "spd":  3
+                  },
+        "value":  280,
+        "desc":  "A mountain recurve that stays steady in hard wind.",
+        "icon":  true
+    },
+    {
+        "id":  "moon_script",
+        "name":  "Moon Script",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "1h",
+        "requiredLevel":  24,
+        "stats":  {
+                      "atk":  8,
+                      "hp":  18
+                  },
+        "value":  290,
+        "desc":  "A luminous writing focus for advanced recall magic.",
+        "icon":  true
+    },
+    {
+        "id":  "pass_breaker",
+        "name":  "Pass Breaker",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  24,
+        "stats":  {
+                      "atk":  10,
+                      "def":  4,
+                      "spd":  -1
+                  },
+        "value":  300,
+        "desc":  "A heavy hammer made to crack mountain armor.",
+        "icon":  true
+    },
+    {
+        "id":  "stormglass_edge",
+        "name":  "Stormglass Edge",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  36,
+        "stats":  {
+                      "atk":  14,
+                      "spd":  3
+                  },
+        "value":  500,
+        "desc":  "A veteran blade that hums before a storm.",
+        "icon":  true
+    },
+    {
+        "id":  "thunderbow",
+        "name":  "Thunderbow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "2h",
+        "requiredLevel":  36,
+        "stats":  {
+                      "atk":  13,
+                      "spd":  4
+                  },
+        "value":  500,
+        "desc":  "A stormglass bow with a sharp, electric report.",
+        "icon":  true
+    },
+    {
+        "id":  "tempest_grimoire",
+        "name":  "Tempest Grimoire",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "2h",
+        "requiredLevel":  36,
+        "stats":  {
+                      "atk":  13,
+                      "hp":  28
+                  },
+        "value":  520,
+        "desc":  "A weatherproof grimoire for battlefield inscriptions.",
+        "icon":  true
+    },
+    {
+        "id":  "storm_ram",
+        "name":  "Storm Ram",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  36,
+        "stats":  {
+                      "atk":  16,
+                      "def":  6,
+                      "spd":  -2
+                  },
+        "value":  540,
+        "desc":  "A massive stormglass-headed guardian weapon.",
+        "icon":  true
+    },
+    {
+        "id":  "starsteel_sabre",
+        "name":  "Red Dragon Sabre",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  48,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "red",
+        "setId":  "dragon_scale",
+        "stats":  {
+                      "atk":  21,
+                      "spd":  4
+                  },
+        "value":  820,
+        "desc":  "The highest normally craftable blade, power-aligned with red dragon scale.",
+        "icon":  true
+    },
+    {
+        "id":  "horizon_bow",
+        "name":  "Silver Dragon Bow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "2h",
+        "requiredLevel":  48,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "silver",
+        "setId":  "dragon_scale",
+        "stats":  {
+                      "atk":  19,
+                      "spd":  6
+                  },
+        "value":  820,
+        "desc":  "The highest normally craftable bow, stabilized by silver dragon scale.",
+        "icon":  true
+    },
+    {
+        "id":  "astral_codex",
+        "name":  "Blue Dragon Codex",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "2h",
+        "requiredLevel":  48,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "blue",
+        "setId":  "dragon_scale",
+        "stats":  {
+                      "atk":  20,
+                      "hp":  42
+                  },
+        "value":  850,
+        "desc":  "The highest normally craftable focus, charged through blue dragon scale.",
+        "icon":  true
+    },
+    {
+        "id":  "red_dragon_maul",
+        "name":  "Red Dragon Maul",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  48,
+        "rarity":  "legendary",
+        "dragonScaleColor":  "red",
+        "setId":  "dragon_scale",
+        "stats":  { "atk":  23, "def":  9, "spd":  -2 },
+        "value":  900,
+        "iconAlias":  "titan_maul",
+        "desc":  "The highest normally craftable heavy weapon, forged around red dragon scale.",
+        "icon":  true
+    },
+    {
+        "id":  "titan_maul",
+        "name":  "Titan Maul",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  48,
+        "rarity":  "titan",
+        "acquisition":  "boss-only",
+        "stats":  {
+                      "atk":  23,
+                      "def":  9,
+                      "spd":  -2
+                  },
+        "value":  880,
+        "desc":  "A very rare Titan relic. It can only fall from world, Raid, or Expedition bosses.",
+        "icon":  true
+    },
+    {
+        "id":  "sovereign_blade",
+        "name":  "Titan Sovereign Blade",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  60,
+        "rarity":  "titan",
+        "acquisition":  "boss-only",
+        "stats":  {
+                      "atk":  31,
+                      "spd":  6,
+                      "hp":  20
+                  },
+        "value":  1400,
+        "desc":  "Level-cap blade masterwork set with a crown shard.",
+        "icon":  true
+    },
+    {
+        "id":  "worldpiercer_bow",
+        "name":  "Titan Worldpiercer Bow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "2h",
+        "requiredLevel":  60,
+        "rarity":  "titan",
+        "acquisition":  "boss-only",
+        "stats":  {
+                      "atk":  29,
+                      "spd":  8
+                  },
+        "value":  1400,
+        "desc":  "Level-cap bow built for the farthest lands.",
+        "icon":  true
+    },
+    {
+        "id":  "living_archive",
+        "name":  "Titan Living Archive",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "2h",
+        "requiredLevel":  60,
+        "rarity":  "titan",
+        "acquisition":  "boss-only",
+        "stats":  {
+                      "atk":  30,
+                      "hp":  65
+                  },
+        "value":  1450,
+        "desc":  "A level-cap focus whose pages rewrite themselves.",
+        "icon":  true
+    },
+    {
+        "id":  "world_anvil",
+        "name":  "Titan World Anvil",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "heavy",
+        "handedness":  "2h",
+        "requiredLevel":  60,
+        "rarity":  "titan",
+        "acquisition":  "boss-only",
+        "stats":  {
+                      "atk":  34,
+                      "def":  13,
+                      "spd":  -3
+                  },
+        "value":  1500,
+        "desc":  "A level-cap guardian weapon made from every regional tier.",
+        "icon":  true
+    },
+    {
+        "id":  "rice_seed",
+        "name":  "Rice Seed",
+        "kind":  "seed",
+        "value":  3,
+        "desc":  "A handful of rice seed. Plant in summer or autumn.",
+        "icon":  true
+    },
+    {
+        "id":  "cucumber_seed",
+        "name":  "Cucumber Seed",
+        "kind":  "seed",
+        "value":  4,
+        "desc":  "Cucumber seeds. Plant in spring or summer.",
+        "icon":  true
+    },
+    {
+        "id":  "mushroom_seed",
+        "name":  "Mushroom Spore",
+        "kind":  "seed",
+        "value":  6,
+        "desc":  "Spores that fruit in autumn and winter.",
+        "icon":  true
+    },
+    {
+        "id":  "herb_seed",
+        "name":  "Herb Seed",
+        "kind":  "seed",
+        "value":  2,
+        "desc":  "Hardy herb seeds that grow in any season.",
+        "icon":  true
+    },
+    {
+        "id":  "rice",
+        "name":  "Rice",
+        "kind":  "material",
+        "value":  3,
+        "desc":  "Staple grain used in many regional dishes.",
+        "icon":  true
+    },
+    {
+        "id":  "cucumber",
+        "name":  "Cucumber",
+        "kind":  "material",
+        "value":  5,
+        "desc":  "A crisp vegetable for salads and sushi.",
+        "icon":  true
+    },
+    {
+        "id":  "mushroom",
+        "name":  "Mushroom",
+        "kind":  "material",
+        "value":  8,
+        "desc":  "An earthy fungus valued by chefs and alchemists.",
+        "icon":  true
+    },
+    {
+        "id":  "cucumber_roll",
+        "name":  "Cucumber Roll",
+        "kind":  "consumable",
+        "heal":  22,
+        "value":  15,
+        "desc":  "Fresh cucumber sushi. Restores a modest amount of HP.",
+        "icon":  true
+    },
+    {
+        "id":  "mushroom_soup",
+        "name":  "Mushroom Soup",
+        "kind":  "consumable",
+        "heal":  38,
+        "value":  26,
+        "desc":  "A warming soup of mushrooms and herbs.",
+        "icon":  true
+    },
+    {
+        "id":  "herb_tea",
+        "name":  "Herb Tea",
+        "kind":  "consumable",
+        "heal":  18,
+        "value":  12,
+        "desc":  "A soothing tea brewed from garden herbs.",
+        "icon":  true
+    },
+    {
+        "id":  "sushi_platter",
+        "name":  "Sushi Platter",
+        "kind":  "consumable",
+        "heal":  48,
+        "value":  35,
+        "desc":  "Rice and fresh fish arranged for the road.",
+        "icon":  true
+    },
+    {
+        "id":  "shrine_charm",
+        "name":  "Shrine Charm",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "requiredLevel":  30,
+        "stats":  {
+                      "atk":  3,
+                      "def":  5,
+                      "hp":  30
+                  },
+        "value":  350,
+        "desc":  "A protective charm carved from the Eastern Reach shrine stone. Worn after defeating the Elder Wraith.",
+        "icon":  true
+    },
+    {
+        "id":  "frost_essence",
+        "name":  "Frost Essence",
+        "kind":  "material",
+        "value":  30,
+        "desc":  "A shard of crystallized cold from a Northern Reach creature.",
+        "icon":  true
+    },
+    {
+        "id":  "boreal_pelt",
+        "name":  "Boreal Pelt",
+        "kind":  "material",
+        "value":  65,
+        "desc":  "A thick frost-touched pelt from a northern predator.",
+        "icon":  true
+    },
+    {
+        "id":  "frost_core",
+        "name":  "Frost Core",
+        "kind":  "material",
+        "value":  380,
+        "desc":  "A pulsing sphere of primordial cold from the Frost Titan.",
+        "icon":  true
+    },
+    {
+        "id":  "frost_broth",
+        "name":  "Frost Broth",
+        "kind":  "consumable",
+        "heal":  120,
+        "value":  100,
+        "desc":  "A warming broth brewed from boreal herbs. Restores HP and wards off the cold.",
+        "icon":  true
+    },
+    {
+        "id":  "boreal_charm",
+        "name":  "Boreal Charm",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "requiredLevel":  25,
+        "stats":  {
+                      "atk":  4,
+                      "def":  4,
+                      "hp":  25,
+                      "spd":  1
+                  },
+        "value":  300,
+        "desc":  "A charm carved from frost-touched bone. Worn by rangers of the Northern Reach.",
+        "icon":  true
+    },
+    {
+        "id":  "boreal_pelt_bracers",
+        "name":  "Boreal Pelt Bracers",
+        "kind":  "gear",
+        "slot":  "hands",
+        "requiredLevel":  22,
+        "stats":  {
+                      "def":  3,
+                      "hp":  8
+                  },
+        "value":  120,
+        "desc":  "Thick bracers lined with boreal pelt. Warm and surprisingly tough.",
+        "icon":  true
+    },
+    {
+        "id":  "ice_claw_boots",
+        "name":  "Ice-Claw Boots",
+        "kind":  "gear",
+        "slot":  "feet",
+        "requiredLevel":  24,
+        "stats":  {
+                      "def":  2,
+                      "spd":  2
+                  },
+        "value":  130,
+        "desc":  "Boots shod with frost-essence treated iron. Grip ice without losing speed.",
+        "icon":  true
+    },
+    {
+        "id":  "frost_edge",
+        "name":  "Frost Edge",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  36,
+        "stats":  {
+                      "atk":  13,
+                      "spd":  2,
+                      "def":  2,
+                      "hp":  5
+                  },
+        "value":  480,
+        "desc":  "A frost-touched blade that chills armor on impact. Discovered after defeating the Frost Titan.",
+        "icon":  true
+    },
+    {
+        "id":  "wraith_signet",
+        "name":  "Wraith Signet",
+        "kind":  "gear",
+        "slot":  "ring",
+        "requiredLevel":  45,
+        "stats":  {
+                      "atk":  5,
+                      "spd":  3,
+                      "hp":  20
+                  },
+        "value":  520,
+        "desc":  "A ring bearing the sigil of the Elder Wraith. Its wearer moves like grove-mist.",
+        "icon":  true
+    },
+    {
+        "id": "copper_ore",
+        "name": "Copper Ore",
+        "kind": "material",
+        "value": 4,
+        "desc": "Unrefined copper ore found in the Whispering Woods. Smelt it with iron.",
+        "icon": true,
+        "iconAlias": "raw_iron_ore"
+    },
+    {
+        "id": "bronze_ingot",
+        "name": "Bronze Ingot",
+        "kind": "material",
+        "value": 18,
+        "desc": "A strong alloy of copper and iron ore, useful for intermediate smithing.",
+        "icon": true,
+        "iconAlias": "iron_ingot"
+    },
+    {
+        "id": "kitsune_dango",
+        "name": "Kitsune Dango",
+        "kind": "consumable",
+        "heal": 24,
+        "value": 15,
+        "desc": "A sweet skewered treat made from local honey and kitsune tails.",
+        "icon": true,
+        "iconAlias": "fortune_cookie"
+    },
+    {
+        "id": "fire_ward_amulet",
+        "name": "Fire Ward Amulet",
+        "kind": "gear",
+        "slot": "amulet",
+        "stats": {
+            "hp": 12,
+            "def": 2
+        },
+        "value": 110,
+        "desc": "A heavy stone amulet that shields the wearer from intense heat.",
+        "icon": true,
+        "iconAlias": "spirit_amulet"
+    },
+    {
+        "id": "canyon_crusher",
+        "name": "Canyon Crusher",
+        "kind": "gear",
+        "slot": "weapon",
+        "weaponType": "heavy",
+        "handedness": "2h",
+        "stats": {
+            "atk": 5,
+            "spd": -1
+        },
+        "value": 140,
+        "desc": "A heavy sandstone mallet. Slow but devastating. Required by guardian skills.",
+        "icon": true,
+        "iconAlias": "iron_maul"
+    },
+    {
+        "id": "canyon_carp",
+        "name": "Canyon Carp",
+        "kind": "material",
+        "value": 8,
+        "desc": "A hardy, gold-scaled carp caught in the desert stream of Southern Reach.",
+        "icon": true,
+        "iconAlias": "river_fish"
+    },
+    {
+        "id": "boreal_salmon",
+        "name": "Boreal Salmon",
+        "kind": "material",
+        "value": 15,
+        "desc": "A silver salmon swimming in ice-cold waters of Northern Reach.",
+        "icon": true,
+        "iconAlias": "river_fish"
+    },
+    {
+        "id": "void_eel",
+        "name": "Void Eel",
+        "kind": "material",
+        "value": 25,
+        "desc": "A shimmering violet eel found in deep mountain crevice pools.",
+        "icon": true,
+        "iconAlias": "river_fish"
+    },
+    {
+        "id": "spicy_curry",
+        "name": "Spicy Curry",
+        "kind": "consumable",
+        "value": 50,
+        "desc": "A burning curry cooked with desert herbs. Grants +6 ATK for 3 turns in combat.",
+        "icon": true,
+        "iconAlias": "noodle_bowl",
+        "buffType": "atk",
+        "buffValue": 6,
+        "buffDuration": 3
+    },
+    {
+        "id": "salmon_sushi",
+        "name": "Salmon Sushi",
+        "kind": "consumable",
+        "heal": 35,
+        "value": 80,
+        "desc": "Premium sushi rolled with boreal salmon. Restores 35 HP and grants 20 Shield.",
+        "icon": true,
+        "iconAlias": "sushi_platter",
+        "buffType": "shield",
+        "buffValue": 20
+    },
+    {
+        "id": "void_elixir",
+        "name": "Void Elixir",
+        "kind": "consumable",
+        "value": 120,
+        "desc": "A dark potion made from void eel. Restores 4 Energy instantly.",
+        "icon": true,
+        "iconAlias": "sovereign_elixir",
+        "buffType": "energy",
+        "buffValue": 4
+    },
+    {
+        "id": "stone_soup",
+        "name": "Stone Soup",
+        "kind": "consumable",
+        "heal": 15,
+        "value": 60,
+        "desc": "A mineral-dense soup. Restores 15 HP and grants +4 DEF for 4 turns.",
+        "icon": true,
+        "iconAlias": "mushroom_soup",
+        "buffType": "def",
+        "buffValue": 4,
+        "buffDuration": 4
+    },
+    {
+        "id": "fire_oil",
+        "name": "Fire Oil Flask",
+        "kind": "consumable",
+        "value": 45,
+        "desc": "A highly combustible oil flask. Throw in combat to deal 25 damage.",
+        "icon": true,
+        "iconAlias": "lantern_oil",
+        "attackDmg": 25
+    },
+    {
+        "id":  "iron_shortsword",
+        "name":  "Iron Shortsword",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "stats":  {
+                      "atk":  3,
+                      "spd":  1
+                  },
+        "value":  60,
+        "icon":  true,
+        "desc":  "A reliable one-handed blade. Light and quick."
+    },
+    {
+        "id":  "steel_broadsword",
+        "name":  "Steel Broadsword",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "1h",
+        "requiredLevel":  6,
+        "stats":  {
+                      "atk":  5,
+                      "spd":  1
+                  },
+        "value":  100,
+        "icon":  true,
+        "desc":  "A wider steel blade that keeps a good edge."
+    },
+    {
+        "id":  "claymore",
+        "name":  "Claymore",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "2h",
+        "requiredLevel":  18,
+        "stats":  {
+                      "atk":  12,
+                      "spd":  -1
+                  },
+        "value":  220,
+        "icon":  true,
+        "desc":  "A heavy two-handed greatsword. Cuts deep but slows the swing."
+    },
+    {
+        "id":  "great_nodachi",
+        "name":  "Great Nodachi",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "blade",
+        "handedness":  "2h",
+        "requiredLevel":  30,
+        "stats":  {
+                      "atk":  17,
+                      "spd":  -2
+                  },
+        "value":  580,
+        "icon":  true,
+        "desc":  "A long two-handed sword that demands respect and reach."
+    },
+    {
+        "id":  "hunter_crossbow",
+        "name":  "Hunter Crossbow",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "ranged",
+        "handedness":  "1h",
+        "requiredLevel":  8,
+        "stats":  {
+                      "atk":  4,
+                      "spd":  1
+                  },
+        "value":  90,
+        "icon":  true,
+        "desc":  "A compact one-handed crossbow for close skirmishes."
+    },
+    {
+        "id":  "apprentice_wand",
+        "name":  "Apprentice Wand",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "1h",
+        "requiredLevel":  4,
+        "stats":  {
+                      "atk":  2,
+                      "hp":  6
+                  },
+        "value":  75,
+        "icon":  true,
+        "desc":  "A short wand for practicing kanji channeling."
+    },
+    {
+        "id":  "sage_staff",
+        "name":  "Sage Staff",
+        "kind":  "gear",
+        "slot":  "weapon",
+        "weaponType":  "kana",
+        "handedness":  "2h",
+        "requiredLevel":  20,
+        "stats":  {
+                      "atk":  10,
+                      "hp":  22
+                  },
+        "value":  300,
+        "icon":  true,
+        "desc":  "A tall staff carved with old scripture. Two-handed."
+    },
+    {
+        "id":  "wooden_buckler",
+        "name":  "Wooden Buckler",
+        "kind":  "gear",
+        "slot":  "offhand",
+        "stats":  {
+                      "def":  2,
+                      "hp":  3
+                  },
+        "value":  40,
+        "icon":  true,
+        "desc":  "A small round shield that leaves the other hand free."
+    },
+    {
+        "id":  "iron_kite",
+        "name":  "Iron Kite Shield",
+        "kind":  "gear",
+        "slot":  "offhand",
+        "requiredLevel":  10,
+        "stats":  {
+                      "def":  4,
+                      "hp":  5
+                  },
+        "value":  120,
+        "icon":  true,
+        "desc":  "A sturdy metal shield for turning aside blades."
+    },
+    {
+        "id":  "templar_tower",
+        "name":  "Templar Tower Shield",
+        "kind":  "gear",
+        "slot":  "offhand",
+        "requiredLevel":  28,
+        "stats":  {
+                      "def":  8,
+                      "hp":  12,
+                      "spd":  -1
+                  },
+        "value":  480,
+        "icon":  true,
+        "desc":  "A massive tower shield that blocks nearly anything."
+    },
+    {
+        "id":  "crystal_orb",
+        "name":  "Crystal Orb",
+        "kind":  "gear",
+        "slot":  "offhand",
+        "requiredLevel":  16,
+        "stats":  {
+                      "atk":  3,
+                      "hp":  10
+                  },
+        "value":  160,
+        "icon":  true,
+        "desc":  "A glassy focus that hums with kana resonance."
+    },
+    {
+        "id":  "scholar_tome",
+        "name":  "Scholar Tome",
+        "kind":  "gear",
+        "slot":  "offhand",
+        "requiredLevel":  22,
+        "stats":  {
+                      "atk":  5,
+                      "def":  2
+                  },
+        "value":  260,
+        "icon":  true,
+        "desc":  "A bound reference of protective glyphs."
+    },
+    {
+        "id":  "leather_hood",
+        "name":  "Leather Hood",
+        "kind":  "gear",
+        "slot":  "head",
+        "requiredLevel":  2,
+        "stats":  {
+                      "def":  1,
+                      "hp":  4,
+                      "spd":  1
+                  },
+        "value":  35,
+        "icon":  true,
+        "desc":  "A soft hood that covers the head without weighing it down."
+    },
+    {
+        "id":  "chain_coif",
+        "name":  "Chain Coif",
+        "kind":  "gear",
+        "slot":  "head",
+        "requiredLevel":  14,
+        "stats":  {
+                      "def":  3,
+                      "hp":  8
+                  },
+        "value":  90,
+        "icon":  true,
+        "desc":  "A woven steel cap that turns light blows."
+    },
+    {
+        "id":  "quilted_armor",
+        "name":  "Quilted Armor",
+        "kind":  "gear",
+        "slot":  "body",
+        "requiredLevel":  4,
+        "stats":  {
+                      "def":  2,
+                      "hp":  6
+                  },
+        "value":  50,
+        "icon":  true,
+        "desc":  "Layered cloth padding with light protection."
+    },
+    {
+        "id":  "scale_armor",
+        "name":  "Scale Armor",
+        "kind":  "gear",
+        "slot":  "body",
+        "requiredLevel":  16,
+        "stats":  {
+                      "def":  5,
+                      "hp":  12
+                  },
+        "value":  150,
+        "icon":  true,
+        "desc":  "Overlapping metal scales that flex with the body."
+    },
+    {
+        "id":  "leather_gloves",
+        "name":  "Leather Gloves",
+        "kind":  "gear",
+        "slot":  "hands",
+        "requiredLevel":  3,
+        "stats":  {
+                      "def":  1
+                  },
+        "value":  25,
+        "icon":  true,
+        "desc":  "Tough leather gloves for rough work."
+    },
+    {
+        "id":  "traveler_boots",
+        "name":  "Traveler Boots",
+        "kind":  "gear",
+        "slot":  "feet",
+        "requiredLevel":  5,
+        "stats":  {
+                      "def":  1,
+                      "spd":  2
+                  },
+        "value":  40,
+        "icon":  true,
+        "desc":  "Light boots made for long roads."
+    },
+    {
+        "id":  "iron_sabatons",
+        "name":  "Iron Sabatons",
+        "kind":  "gear",
+        "slot":  "feet",
+        "requiredLevel":  15,
+        "stats":  {
+                      "def":  3,
+                      "hp":  6,
+                      "spd":  -1
+                  },
+        "value":  110,
+        "icon":  true,
+        "desc":  "Reinforced metal boots that anchor the wearer."
+    },
+    {
+        "id":  "silver_band",
+        "name":  "Silver Band",
+        "kind":  "gear",
+        "slot":  "ring",
+        "requiredLevel":  10,
+        "stats":  {
+                      "atk":  2,
+                      "spd":  1
+                  },
+        "value":  120,
+        "icon":  true,
+        "desc":  "A slender silver ring that sharpens reflexes."
+    },
+    {
+        "id":  "pearl_pendant",
+        "name":  "Pearl Pendant",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "requiredLevel":  8,
+        "stats":  {
+                      "hp":  15
+                  },
+        "value":  100,
+        "icon":  true,
+        "desc":  "A smooth pearl on a silk cord. Calming and restorative."
+    },
+    {
+        "id":  "scroll_fire",
+        "name":  "Scroll of Fire",
+        "kind":  "consumable",
+        "value":  25,
+        "attackDmg":  25,
+        "icon":  true,
+        "desc":  "A one-use parchment that scorches a single foe for 25 damage."
+    },
+    {
+        "id":  "scroll_ice",
+        "name":  "Scroll of Ice",
+        "kind":  "consumable",
+        "value":  30,
+        "attackDmg":  20,
+        "icon":  true,
+        "desc":  "A one-use parchment that pierces a foe with cold for 20 damage."
+    },
+    {
+        "id":  "scroll_heal",
+        "name":  "Scroll of Healing",
+        "kind":  "consumable",
+        "value":  20,
+        "heal":  30,
+        "icon":  true,
+        "desc":  "A one-use parchment that restores 30 HP."
+    },
+    {
+        "id":  "leather_shoulders",
+        "name":  "Leather Shoulderpads",
+        "kind":  "gear",
+        "slot":  "shoulders",
+        "armorType":  "light",
+        "stats":  {
+                      "def":  2,
+                      "hp":  2
+                  },
+        "value":  40,
+        "icon":  true,
+        "desc":  "Padded leather guards that sit lightly on the shoulders."
+    },
+    {
+        "id":  "iron_pauldrons",
+        "name":  "Iron Pauldrons",
+        "kind":  "gear",
+        "slot":  "shoulders",
+        "armorType":  "medium",
+        "requiredLevel":  12,
+        "stats":  {
+                      "def":  4
+                  },
+        "value":  90,
+        "icon":  true,
+        "desc":  "Rigid shoulder plates that turn away heavy blows."
+    },
+    {
+        "id":  "traveler_cloak",
+        "name":  "Traveler Cloak",
+        "kind":  "gear",
+        "slot":  "cape",
+        "armorType":  "light",
+        "stats":  {
+                      "def":  1,
+                      "spd":  1
+                  },
+        "value":  35,
+        "icon":  true,
+        "desc":  "A light cloak that billows behind the wearer."
+    },
+    {
+        "id":  "mage_shawl",
+        "name":  "Mage Shawl",
+        "kind":  "gear",
+        "slot":  "cape",
+        "armorType":  "light",
+        "requiredLevel":  8,
+        "stats":  {
+                      "atk":  2,
+                      "hp":  4
+                  },
+        "value":  80,
+        "icon":  true,
+        "desc":  "A hooded shawl threaded with faint kana patterns."
+    },
+    {
+        "id":  "leather_belt",
+        "name":  "Leather Belt",
+        "kind":  "gear",
+        "slot":  "belt",
+        "armorType":  "light",
+        "stats":  {
+                      "def":  1,
+                      "hp":  2
+                  },
+        "value":  30,
+        "icon":  true,
+        "desc":  "A sturdy belt with room for pouches and tools."
+    },
+    {
+        "id":  "iron_girdle",
+        "name":  "Iron Girdle",
+        "kind":  "gear",
+        "slot":  "belt",
+        "armorType":  "medium",
+        "requiredLevel":  14,
+        "stats":  {
+                      "def":  3
+                  },
+        "value":  85,
+        "icon":  true,
+        "desc":  "A broad metal belt that braces the core."
+    }
+]

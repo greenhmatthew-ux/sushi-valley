@@ -1,0 +1,1024 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "japanese-basic-hiragana",
+    "deckName": "Japanese Basic Hiragana",
+    "author": "",
+    "url": "",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-basic-hiragana-1",
+      "sourceNoteId": "1296169988801",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "あ",
+      "answer": "a",
+      "choices": [
+        "a",
+        "wa",
+        "ma",
+        "tsu"
+      ],
+      "meaning": "a",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-2",
+      "sourceNoteId": "1296169993713",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "い",
+      "answer": "i",
+      "choices": [
+        "i",
+        "he",
+        "ta",
+        "nu"
+      ],
+      "meaning": "i",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-3",
+      "sourceNoteId": "1296169998651",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "う",
+      "answer": "u",
+      "choices": [
+        "u",
+        "ku",
+        "wo",
+        "ne"
+      ],
+      "meaning": "u",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-4",
+      "sourceNoteId": "1296170005160",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "え",
+      "answer": "e",
+      "choices": [
+        "e",
+        "ya",
+        "ha",
+        "ke"
+      ],
+      "meaning": "e",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-5",
+      "sourceNoteId": "1296170010342",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "お",
+      "answer": "o",
+      "choices": [
+        "o",
+        "ro",
+        "ta",
+        "ka"
+      ],
+      "meaning": "o",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-6",
+      "sourceNoteId": "1296170163831",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "か",
+      "answer": "ka",
+      "choices": [
+        "ka",
+        "n",
+        "to",
+        "a"
+      ],
+      "meaning": "ka",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-7",
+      "sourceNoteId": "1296170171483",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "き",
+      "answer": "ki",
+      "choices": [
+        "ki",
+        "ni",
+        "no",
+        "u"
+      ],
+      "meaning": "ki",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-8",
+      "sourceNoteId": "1296170177799",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "く",
+      "answer": "ku",
+      "choices": [
+        "ku",
+        "he",
+        "ta",
+        "ni"
+      ],
+      "meaning": "ku",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-9",
+      "sourceNoteId": "1296170182854",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "け",
+      "answer": "ke",
+      "choices": [
+        "ke",
+        "su",
+        "ki",
+        "wo"
+      ],
+      "meaning": "ke",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-10",
+      "sourceNoteId": "1296170187462",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "こ",
+      "answer": "ko",
+      "choices": [
+        "ko",
+        "so",
+        "sa",
+        "chi"
+      ],
+      "meaning": "ko",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-11",
+      "sourceNoteId": "1296170629876",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "さ",
+      "answer": "sa",
+      "choices": [
+        "sa",
+        "o",
+        "ro",
+        "e"
+      ],
+      "meaning": "sa",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-12",
+      "sourceNoteId": "1296170647928",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "し",
+      "answer": "shi",
+      "choices": [
+        "shi",
+        "mi",
+        "wo",
+        "su"
+      ],
+      "meaning": "shi",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-13",
+      "sourceNoteId": "1296170659896",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "す",
+      "answer": "su",
+      "choices": [
+        "su",
+        "ni",
+        "ho",
+        "ma"
+      ],
+      "meaning": "su",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-14",
+      "sourceNoteId": "1296170667520",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "せ",
+      "answer": "se",
+      "choices": [
+        "se",
+        "ya",
+        "o",
+        "ri"
+      ],
+      "meaning": "se",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-15",
+      "sourceNoteId": "1296170680856",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "そ",
+      "answer": "so",
+      "choices": [
+        "so",
+        "a",
+        "mi",
+        "yu"
+      ],
+      "meaning": "so",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-16",
+      "sourceNoteId": "1296171622945",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "た",
+      "answer": "ta",
+      "choices": [
+        "ta",
+        "se",
+        "ho",
+        "so"
+      ],
+      "meaning": "ta",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-17",
+      "sourceNoteId": "1296171633048",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ち",
+      "answer": "chi",
+      "choices": [
+        "chi",
+        "ni",
+        "to",
+        "me"
+      ],
+      "meaning": "chi",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-18",
+      "sourceNoteId": "1296171644323",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "つ",
+      "answer": "tsu",
+      "choices": [
+        "tsu",
+        "ku",
+        "su",
+        "ra"
+      ],
+      "meaning": "tsu",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-19",
+      "sourceNoteId": "1296171647773",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "て",
+      "answer": "te",
+      "choices": [
+        "te",
+        "ma",
+        "no",
+        "a"
+      ],
+      "meaning": "te",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-20",
+      "sourceNoteId": "1296171650735",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "と",
+      "answer": "to",
+      "choices": [
+        "to",
+        "i",
+        "re",
+        "ro"
+      ],
+      "meaning": "to",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-21",
+      "sourceNoteId": "1296171655310",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "な",
+      "answer": "na",
+      "choices": [
+        "na",
+        "ki",
+        "ya",
+        "ro"
+      ],
+      "meaning": "na",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-22",
+      "sourceNoteId": "1296171658886",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "に",
+      "answer": "ni",
+      "choices": [
+        "ni",
+        "no",
+        "shi",
+        "n"
+      ],
+      "meaning": "ni",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-23",
+      "sourceNoteId": "1296171661648",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ぬ",
+      "answer": "nu",
+      "choices": [
+        "nu",
+        "ho",
+        "su",
+        "n"
+      ],
+      "meaning": "nu",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-24",
+      "sourceNoteId": "1296171670048",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ね",
+      "answer": "ne",
+      "choices": [
+        "ne",
+        "ta",
+        "u",
+        "se"
+      ],
+      "meaning": "ne",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-25",
+      "sourceNoteId": "1296171672185",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "の",
+      "answer": "no",
+      "choices": [
+        "no",
+        "shi",
+        "nu",
+        "a"
+      ],
+      "meaning": "no",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-26",
+      "sourceNoteId": "1296171674910",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "は",
+      "answer": "ha",
+      "choices": [
+        "ha",
+        "yo",
+        "ho",
+        "wa"
+      ],
+      "meaning": "ha",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-27",
+      "sourceNoteId": "1296171677399",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ひ",
+      "answer": "hi",
+      "choices": [
+        "hi",
+        "ke",
+        "ta",
+        "ya"
+      ],
+      "meaning": "hi",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-28",
+      "sourceNoteId": "1296171681436",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ふ",
+      "answer": "fu",
+      "choices": [
+        "fu",
+        "su",
+        "ko",
+        "ya"
+      ],
+      "meaning": "fu",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-29",
+      "sourceNoteId": "1296171685872",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "へ",
+      "answer": "he",
+      "choices": [
+        "he",
+        "na",
+        "su",
+        "u"
+      ],
+      "meaning": "he",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-30",
+      "sourceNoteId": "1296171689961",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ほ",
+      "answer": "ho",
+      "choices": [
+        "ho",
+        "wo",
+        "tsu",
+        "hi"
+      ],
+      "meaning": "ho",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-31",
+      "sourceNoteId": "1296171692486",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ま",
+      "answer": "ma",
+      "choices": [
+        "ma",
+        "so",
+        "ra",
+        "fu"
+      ],
+      "meaning": "ma",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-32",
+      "sourceNoteId": "1296171696935",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "み",
+      "answer": "mi",
+      "choices": [
+        "mi",
+        "te",
+        "a",
+        "nu"
+      ],
+      "meaning": "mi",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-33",
+      "sourceNoteId": "1296171700323",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "む",
+      "answer": "mu",
+      "choices": [
+        "mu",
+        "ha",
+        "ni",
+        "u"
+      ],
+      "meaning": "mu",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-34",
+      "sourceNoteId": "1296171702761",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "め",
+      "answer": "me",
+      "choices": [
+        "me",
+        "re",
+        "u",
+        "i"
+      ],
+      "meaning": "me",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-35",
+      "sourceNoteId": "1296171709510",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "も",
+      "answer": "mo",
+      "choices": [
+        "mo",
+        "ko",
+        "a",
+        "i"
+      ],
+      "meaning": "mo",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-36",
+      "sourceNoteId": "1296171711835",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "や",
+      "answer": "ya",
+      "choices": [
+        "ya",
+        "e",
+        "ra",
+        "ku"
+      ],
+      "meaning": "ya",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-37",
+      "sourceNoteId": "1296171714072",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ゆ",
+      "answer": "yu",
+      "choices": [
+        "yu",
+        "ru",
+        "su",
+        "ha"
+      ],
+      "meaning": "yu",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-38",
+      "sourceNoteId": "1296171716511",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "よ",
+      "answer": "yo",
+      "choices": [
+        "yo",
+        "ki",
+        "yu",
+        "ta"
+      ],
+      "meaning": "yo",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-39",
+      "sourceNoteId": "1296171718947",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ら",
+      "answer": "ra",
+      "choices": [
+        "ra",
+        "wo",
+        "mi",
+        "shi"
+      ],
+      "meaning": "ra",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-40",
+      "sourceNoteId": "1296171721835",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "り",
+      "answer": "ri",
+      "choices": [
+        "ri",
+        "i",
+        "so",
+        "ha"
+      ],
+      "meaning": "ri",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-41",
+      "sourceNoteId": "1296171724911",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "る",
+      "answer": "ru",
+      "choices": [
+        "ru",
+        "o",
+        "ma",
+        "ra"
+      ],
+      "meaning": "ru",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-42",
+      "sourceNoteId": "1296171727910",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "れ",
+      "answer": "re",
+      "choices": [
+        "re",
+        "to",
+        "ro",
+        "n"
+      ],
+      "meaning": "re",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-43",
+      "sourceNoteId": "1296171730810",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ろ",
+      "answer": "ro",
+      "choices": [
+        "ro",
+        "mi",
+        "a",
+        "i"
+      ],
+      "meaning": "ro",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-44",
+      "sourceNoteId": "1296171733498",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "わ",
+      "answer": "wa",
+      "choices": [
+        "wa",
+        "nu",
+        "ki",
+        "fu"
+      ],
+      "meaning": "wa",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-45",
+      "sourceNoteId": "1296171737661",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "を",
+      "answer": "wo",
+      "choices": [
+        "wo",
+        "fu",
+        "ri",
+        "ha"
+      ],
+      "meaning": "wo",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    },
+    {
+      "id": "japanese-basic-hiragana-46",
+      "sourceNoteId": "1296171740337",
+      "lessonId": "japanese-basic-hiragana-1",
+      "type": "kana",
+      "prompt": "ん",
+      "answer": "n",
+      "choices": [
+        "n",
+        "a",
+        "i",
+        "mi"
+      ],
+      "meaning": "n",
+      "tags": [
+        "Hiragana",
+        "Japanese",
+        "basic",
+        "imported",
+        "kana-hiragana"
+      ]
+    }
+  ]
+}

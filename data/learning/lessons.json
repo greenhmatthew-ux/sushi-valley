@@ -1,0 +1,2751 @@
+[
+  {
+    "id": "kana-vowels",
+    "title": "Hiragana Vowels",
+    "category": "kana-hiragana",
+    "description": "The five vowel sounds: あ い う え お.",
+    "cardIds": [
+      "kana-a",
+      "kana-i",
+      "kana-u",
+      "kana-e",
+      "kana-o"
+    ]
+  },
+  {
+    "id": "kana-k-row",
+    "title": "Hiragana K Row",
+    "category": "kana-hiragana",
+    "description": "か き く け こ — the K sounds.",
+    "cardIds": [
+      "kana-ka",
+      "kana-ki",
+      "kana-ku",
+      "kana-ke",
+      "kana-ko"
+    ]
+  },
+  {
+    "id": "kana-s-row",
+    "title": "Hiragana S Row",
+    "category": "kana-hiragana",
+    "description": "さ し す せ そ — the S sounds.",
+    "cardIds": [
+      "kana-sa",
+      "kana-shi",
+      "kana-su",
+      "kana-se",
+      "kana-so"
+    ]
+  },
+  {
+    "id": "kana-t-row",
+    "title": "Hiragana T Row",
+    "category": "kana-hiragana",
+    "description": "た ち つ て と — the T sounds.",
+    "cardIds": [
+      "kana-ta",
+      "kana-chi",
+      "kana-tsu",
+      "kana-te",
+      "kana-to"
+    ]
+  },
+  {
+    "id": "kana-n-row",
+    "title": "Hiragana N Row",
+    "category": "kana-hiragana",
+    "description": "な に ぬ ね の — the N sounds.",
+    "cardIds": [
+      "kana-na",
+      "kana-ni",
+      "kana-nu",
+      "kana-ne",
+      "kana-no"
+    ]
+  },
+  {
+    "id": "kana-h-row",
+    "title": "Hiragana H Row",
+    "category": "kana-hiragana",
+    "description": "は ひ ふ へ ほ — the H sounds.",
+    "cardIds": [
+      "kana-ha",
+      "kana-hi",
+      "kana-fu",
+      "kana-he",
+      "kana-ho"
+    ]
+  },
+  {
+    "id": "kana-m-row",
+    "title": "Hiragana M Row",
+    "category": "kana-hiragana",
+    "description": "ま み む め も — the M sounds.",
+    "cardIds": [
+      "kana-ma",
+      "kana-mi",
+      "kana-mu",
+      "kana-me",
+      "kana-mo"
+    ]
+  },
+  {
+    "id": "kana-y-row",
+    "title": "Hiragana Y Row",
+    "category": "kana-hiragana",
+    "description": "や ゆ よ — the Y sounds.",
+    "cardIds": [
+      "kana-ya",
+      "kana-yu",
+      "kana-yo"
+    ]
+  },
+  {
+    "id": "kana-r-row",
+    "title": "Hiragana R Row",
+    "category": "kana-hiragana",
+    "description": "ら り る れ ろ — the R sounds.",
+    "cardIds": [
+      "kana-ra",
+      "kana-ri",
+      "kana-ru",
+      "kana-re",
+      "kana-ro"
+    ]
+  },
+  {
+    "id": "kana-w-row",
+    "title": "Hiragana W & N",
+    "category": "kana-hiragana",
+    "description": "わ を ん — the W sounds and syllabic N.",
+    "cardIds": [
+      "kana-wa",
+      "kana-wo",
+      "kana-n"
+    ]
+  },
+  {
+    "id": "kana-sushi",
+    "title": "Kana for Sushi",
+    "category": "kana-hiragana",
+    "description": "Kana you'll read on signs in the valley: す し た.",
+    "cardIds": [
+      "kana-su",
+      "kana-shi",
+      "kana-ta"
+    ]
+  },
+  {
+    "id": "greetings",
+    "title": "Greetings",
+    "category": "greetings",
+    "description": "Everyday greetings for talking to villagers.",
+    "cardIds": [
+      "greet-konnichiwa",
+      "greet-arigatou",
+      "greet-ohayou",
+      "greet-sayounara",
+      "greet-sumimasen"
+    ]
+  },
+  {
+    "id": "food-words",
+    "title": "Food & Drink",
+    "category": "food",
+    "description": "Core food and drink words for the shop and kitchen.",
+    "cardIds": [
+      "food-sushi",
+      "food-ocha",
+      "food-mizu",
+      "food-gohan",
+      "food-sakana",
+      "food-niku"
+    ]
+  },
+  {
+    "id": "common-phrases",
+    "title": "Common Phrases",
+    "category": "phrases",
+    "description": "Essential question words and responses.",
+    "cardIds": [
+      "phrase-hai",
+      "phrase-iie",
+      "phrase-doko",
+      "phrase-nani",
+      "phrase-ikura"
+    ]
+  },
+  {
+    "id": "travel-arrival",
+    "title": "Arrival Essentials",
+    "category": "travel-arrival",
+    "description": "Five high-use phrases for getting help, facilities, and a connection after arrival.",
+    "cardIds": [
+      "travel-arrival-sumimasen",
+      "travel-arrival-thank-you",
+      "travel-arrival-repeat",
+      "travel-arrival-bathroom",
+      "travel-arrival-wifi"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1203744822"
+    ]
+  },
+  {
+    "id": "travel-dining",
+    "title": "Dining Out",
+    "category": "travel-dining",
+    "description": "Restaurant phrases for ordering, checking food, and closing a meal politely.",
+    "cardIds": [
+      "travel-dining-itadakimasu",
+      "travel-dining-thanks-meal",
+      "travel-dining-english-menu",
+      "travel-dining-recommendation",
+      "travel-dining-meat",
+      "travel-dining-order"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1203744822"
+    ]
+  },
+  {
+    "id": "travel-stay-payment",
+    "title": "Stay & Payment",
+    "category": "travel-stay-payment",
+    "description": "Hotel, taxi, connection, and payment phrases for settling in.",
+    "cardIds": [
+      "travel-stay-password",
+      "travel-stay-price",
+      "travel-stay-card",
+      "travel-stay-taxi",
+      "travel-stay-duration"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1203744822"
+    ]
+  },
+  {
+    "id": "travel-transit",
+    "title": "Transit Navigator",
+    "category": "travel-transit",
+    "description": "Train and airport questions for reaching the right stop.",
+    "cardIds": [
+      "travel-transit-asakusa",
+      "travel-transit-omotesando",
+      "travel-transit-akihabara",
+      "travel-transit-haneda"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1203744822"
+    ]
+  },
+  {
+    "id": "anki-hira-1",
+    "title": "Hiragana 1",
+    "category": "kana-hiragana",
+    "description": "10 cards from Japanese Basic Hiragana",
+    "cardIds": [
+      "japanese-basic-hiragana-1",
+      "japanese-basic-hiragana-2",
+      "japanese-basic-hiragana-3",
+      "japanese-basic-hiragana-4",
+      "japanese-basic-hiragana-5",
+      "japanese-basic-hiragana-6",
+      "japanese-basic-hiragana-7",
+      "japanese-basic-hiragana-8",
+      "japanese-basic-hiragana-9",
+      "japanese-basic-hiragana-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-basic-hiragana"
+    ]
+  },
+  {
+    "id": "anki-hira-2",
+    "title": "Hiragana 2",
+    "category": "kana-hiragana",
+    "description": "10 cards from Japanese Basic Hiragana",
+    "cardIds": [
+      "japanese-basic-hiragana-11",
+      "japanese-basic-hiragana-12",
+      "japanese-basic-hiragana-13",
+      "japanese-basic-hiragana-14",
+      "japanese-basic-hiragana-15",
+      "japanese-basic-hiragana-16",
+      "japanese-basic-hiragana-17",
+      "japanese-basic-hiragana-18",
+      "japanese-basic-hiragana-19",
+      "japanese-basic-hiragana-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-basic-hiragana"
+    ]
+  },
+  {
+    "id": "anki-hira-3",
+    "title": "Hiragana 3",
+    "category": "kana-hiragana",
+    "description": "10 cards from Japanese Basic Hiragana",
+    "cardIds": [
+      "japanese-basic-hiragana-21",
+      "japanese-basic-hiragana-22",
+      "japanese-basic-hiragana-23",
+      "japanese-basic-hiragana-24",
+      "japanese-basic-hiragana-25",
+      "japanese-basic-hiragana-26",
+      "japanese-basic-hiragana-27",
+      "japanese-basic-hiragana-28",
+      "japanese-basic-hiragana-29",
+      "japanese-basic-hiragana-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-basic-hiragana"
+    ]
+  },
+  {
+    "id": "anki-hira-4",
+    "title": "Hiragana 4",
+    "category": "kana-hiragana",
+    "description": "10 cards from Japanese Basic Hiragana",
+    "cardIds": [
+      "japanese-basic-hiragana-31",
+      "japanese-basic-hiragana-32",
+      "japanese-basic-hiragana-33",
+      "japanese-basic-hiragana-34",
+      "japanese-basic-hiragana-35",
+      "japanese-basic-hiragana-36",
+      "japanese-basic-hiragana-37",
+      "japanese-basic-hiragana-38",
+      "japanese-basic-hiragana-39",
+      "japanese-basic-hiragana-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-basic-hiragana"
+    ]
+  },
+  {
+    "id": "anki-hira-5",
+    "title": "Hiragana 5",
+    "category": "kana-hiragana",
+    "description": "6 cards from Japanese Basic Hiragana",
+    "cardIds": [
+      "japanese-basic-hiragana-41",
+      "japanese-basic-hiragana-42",
+      "japanese-basic-hiragana-43",
+      "japanese-basic-hiragana-44",
+      "japanese-basic-hiragana-45",
+      "japanese-basic-hiragana-46"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-basic-hiragana"
+    ]
+  },
+  {
+    "id": "anki-kana-full-1",
+    "title": "Kana 1",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-2",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-3",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-4",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-5",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-6",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-7",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-8",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-9",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-2",
+    "title": "Kana 2",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-11",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-12",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-13",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-14",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-15",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-16",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-17",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-18",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-19",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-3",
+    "title": "Kana 3",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-21",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-22",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-23",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-24",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-25",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-26",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-27",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-28",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-29",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-4",
+    "title": "Kana 4",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-31",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-32",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-33",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-34",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-35",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-36",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-37",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-38",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-39",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-5",
+    "title": "Kana 5",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-41",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-42",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-43",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-44",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-45",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-46",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-47",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-48",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-49",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-6",
+    "title": "Kana 6",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-51",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-52",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-53",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-54",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-55",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-56",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-57",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-58",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-59",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-7",
+    "title": "Kana 7",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-61",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-62",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-63",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-64",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-65",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-66",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-67",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-68",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-69",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-8",
+    "title": "Kana 8",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-71",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-72",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-73",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-74",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-75",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-76",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-77",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-78",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-79",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-9",
+    "title": "Kana 9",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-81",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-82",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-83",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-84",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-85",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-86",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-87",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-88",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-89",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-10",
+    "title": "Kana 10",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-91",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-92",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-93",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-94",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-95",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-96",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-97",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-98",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-99",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-11",
+    "title": "Kana 11",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-101",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-102",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-103",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-104",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-105",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-106",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-107",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-108",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-109",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-110"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-12",
+    "title": "Kana 12",
+    "category": "kana",
+    "description": "10 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-111",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-112",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-113",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-114",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-115",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-116",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-117",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-118",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-119",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-120"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "anki-kana-full-13",
+    "title": "Kana 13",
+    "category": "kana",
+    "description": "2 cards from Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "cardIds": [
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-121",
+      "japanese-kana-hiragana-katakana-rmaji-audio-strokes-122"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:576084877"
+    ]
+  },
+  {
+    "id": "kaishi-1",
+    "title": "Core Vocab 1",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-1",
+      "kaishi-15k-basic-japanese-vocabulary-2",
+      "kaishi-15k-basic-japanese-vocabulary-3",
+      "kaishi-15k-basic-japanese-vocabulary-4",
+      "kaishi-15k-basic-japanese-vocabulary-5",
+      "kaishi-15k-basic-japanese-vocabulary-6",
+      "kaishi-15k-basic-japanese-vocabulary-7",
+      "kaishi-15k-basic-japanese-vocabulary-8",
+      "kaishi-15k-basic-japanese-vocabulary-9",
+      "kaishi-15k-basic-japanese-vocabulary-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-2",
+    "title": "Core Vocab 2",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-11",
+      "kaishi-15k-basic-japanese-vocabulary-12",
+      "kaishi-15k-basic-japanese-vocabulary-13",
+      "kaishi-15k-basic-japanese-vocabulary-14",
+      "kaishi-15k-basic-japanese-vocabulary-15",
+      "kaishi-15k-basic-japanese-vocabulary-16",
+      "kaishi-15k-basic-japanese-vocabulary-17",
+      "kaishi-15k-basic-japanese-vocabulary-18",
+      "kaishi-15k-basic-japanese-vocabulary-19",
+      "kaishi-15k-basic-japanese-vocabulary-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-3",
+    "title": "Core Vocab 3",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-21",
+      "kaishi-15k-basic-japanese-vocabulary-22",
+      "kaishi-15k-basic-japanese-vocabulary-23",
+      "kaishi-15k-basic-japanese-vocabulary-24",
+      "kaishi-15k-basic-japanese-vocabulary-25",
+      "kaishi-15k-basic-japanese-vocabulary-26",
+      "kaishi-15k-basic-japanese-vocabulary-27",
+      "kaishi-15k-basic-japanese-vocabulary-28",
+      "kaishi-15k-basic-japanese-vocabulary-29",
+      "kaishi-15k-basic-japanese-vocabulary-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-4",
+    "title": "Core Vocab 4",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-31",
+      "kaishi-15k-basic-japanese-vocabulary-32",
+      "kaishi-15k-basic-japanese-vocabulary-33",
+      "kaishi-15k-basic-japanese-vocabulary-34",
+      "kaishi-15k-basic-japanese-vocabulary-35",
+      "kaishi-15k-basic-japanese-vocabulary-36",
+      "kaishi-15k-basic-japanese-vocabulary-37",
+      "kaishi-15k-basic-japanese-vocabulary-38",
+      "kaishi-15k-basic-japanese-vocabulary-39",
+      "kaishi-15k-basic-japanese-vocabulary-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-5",
+    "title": "Core Vocab 5",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-41",
+      "kaishi-15k-basic-japanese-vocabulary-42",
+      "kaishi-15k-basic-japanese-vocabulary-43",
+      "kaishi-15k-basic-japanese-vocabulary-44",
+      "kaishi-15k-basic-japanese-vocabulary-45",
+      "kaishi-15k-basic-japanese-vocabulary-46",
+      "kaishi-15k-basic-japanese-vocabulary-47",
+      "kaishi-15k-basic-japanese-vocabulary-48",
+      "kaishi-15k-basic-japanese-vocabulary-49",
+      "kaishi-15k-basic-japanese-vocabulary-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-6",
+    "title": "Core Vocab 6",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-51",
+      "kaishi-15k-basic-japanese-vocabulary-52",
+      "kaishi-15k-basic-japanese-vocabulary-53",
+      "kaishi-15k-basic-japanese-vocabulary-54",
+      "kaishi-15k-basic-japanese-vocabulary-55",
+      "kaishi-15k-basic-japanese-vocabulary-56",
+      "kaishi-15k-basic-japanese-vocabulary-57",
+      "kaishi-15k-basic-japanese-vocabulary-58",
+      "kaishi-15k-basic-japanese-vocabulary-59",
+      "kaishi-15k-basic-japanese-vocabulary-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-7",
+    "title": "Core Vocab 7",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-61",
+      "kaishi-15k-basic-japanese-vocabulary-62",
+      "kaishi-15k-basic-japanese-vocabulary-63",
+      "kaishi-15k-basic-japanese-vocabulary-64",
+      "kaishi-15k-basic-japanese-vocabulary-65",
+      "kaishi-15k-basic-japanese-vocabulary-66",
+      "kaishi-15k-basic-japanese-vocabulary-67",
+      "kaishi-15k-basic-japanese-vocabulary-68",
+      "kaishi-15k-basic-japanese-vocabulary-69",
+      "kaishi-15k-basic-japanese-vocabulary-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-8",
+    "title": "Core Vocab 8",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-71",
+      "kaishi-15k-basic-japanese-vocabulary-72",
+      "kaishi-15k-basic-japanese-vocabulary-73",
+      "kaishi-15k-basic-japanese-vocabulary-74",
+      "kaishi-15k-basic-japanese-vocabulary-75",
+      "kaishi-15k-basic-japanese-vocabulary-76",
+      "kaishi-15k-basic-japanese-vocabulary-77",
+      "kaishi-15k-basic-japanese-vocabulary-78",
+      "kaishi-15k-basic-japanese-vocabulary-79",
+      "kaishi-15k-basic-japanese-vocabulary-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-9",
+    "title": "Core Vocab 9",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-81",
+      "kaishi-15k-basic-japanese-vocabulary-82",
+      "kaishi-15k-basic-japanese-vocabulary-83",
+      "kaishi-15k-basic-japanese-vocabulary-84",
+      "kaishi-15k-basic-japanese-vocabulary-85",
+      "kaishi-15k-basic-japanese-vocabulary-86",
+      "kaishi-15k-basic-japanese-vocabulary-87",
+      "kaishi-15k-basic-japanese-vocabulary-88",
+      "kaishi-15k-basic-japanese-vocabulary-89",
+      "kaishi-15k-basic-japanese-vocabulary-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-10",
+    "title": "Core Vocab 10",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-91",
+      "kaishi-15k-basic-japanese-vocabulary-92",
+      "kaishi-15k-basic-japanese-vocabulary-93",
+      "kaishi-15k-basic-japanese-vocabulary-94",
+      "kaishi-15k-basic-japanese-vocabulary-95",
+      "kaishi-15k-basic-japanese-vocabulary-96",
+      "kaishi-15k-basic-japanese-vocabulary-97",
+      "kaishi-15k-basic-japanese-vocabulary-98",
+      "kaishi-15k-basic-japanese-vocabulary-99",
+      "kaishi-15k-basic-japanese-vocabulary-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-11",
+    "title": "Core Vocab 11",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-101",
+      "kaishi-15k-basic-japanese-vocabulary-102",
+      "kaishi-15k-basic-japanese-vocabulary-103",
+      "kaishi-15k-basic-japanese-vocabulary-104",
+      "kaishi-15k-basic-japanese-vocabulary-105",
+      "kaishi-15k-basic-japanese-vocabulary-106",
+      "kaishi-15k-basic-japanese-vocabulary-107",
+      "kaishi-15k-basic-japanese-vocabulary-108",
+      "kaishi-15k-basic-japanese-vocabulary-109",
+      "kaishi-15k-basic-japanese-vocabulary-110"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-12",
+    "title": "Core Vocab 12",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-111",
+      "kaishi-15k-basic-japanese-vocabulary-112",
+      "kaishi-15k-basic-japanese-vocabulary-113",
+      "kaishi-15k-basic-japanese-vocabulary-114",
+      "kaishi-15k-basic-japanese-vocabulary-115",
+      "kaishi-15k-basic-japanese-vocabulary-116",
+      "kaishi-15k-basic-japanese-vocabulary-117",
+      "kaishi-15k-basic-japanese-vocabulary-118",
+      "kaishi-15k-basic-japanese-vocabulary-119",
+      "kaishi-15k-basic-japanese-vocabulary-120"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-13",
+    "title": "Core Vocab 13",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-121",
+      "kaishi-15k-basic-japanese-vocabulary-122",
+      "kaishi-15k-basic-japanese-vocabulary-123",
+      "kaishi-15k-basic-japanese-vocabulary-124",
+      "kaishi-15k-basic-japanese-vocabulary-125",
+      "kaishi-15k-basic-japanese-vocabulary-126",
+      "kaishi-15k-basic-japanese-vocabulary-127",
+      "kaishi-15k-basic-japanese-vocabulary-128",
+      "kaishi-15k-basic-japanese-vocabulary-129",
+      "kaishi-15k-basic-japanese-vocabulary-130"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-14",
+    "title": "Core Vocab 14",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-131",
+      "kaishi-15k-basic-japanese-vocabulary-132",
+      "kaishi-15k-basic-japanese-vocabulary-133",
+      "kaishi-15k-basic-japanese-vocabulary-134",
+      "kaishi-15k-basic-japanese-vocabulary-135",
+      "kaishi-15k-basic-japanese-vocabulary-136",
+      "kaishi-15k-basic-japanese-vocabulary-137",
+      "kaishi-15k-basic-japanese-vocabulary-138",
+      "kaishi-15k-basic-japanese-vocabulary-139",
+      "kaishi-15k-basic-japanese-vocabulary-140"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-15",
+    "title": "Core Vocab 15",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-141",
+      "kaishi-15k-basic-japanese-vocabulary-142",
+      "kaishi-15k-basic-japanese-vocabulary-143",
+      "kaishi-15k-basic-japanese-vocabulary-144",
+      "kaishi-15k-basic-japanese-vocabulary-145",
+      "kaishi-15k-basic-japanese-vocabulary-146",
+      "kaishi-15k-basic-japanese-vocabulary-147",
+      "kaishi-15k-basic-japanese-vocabulary-148",
+      "kaishi-15k-basic-japanese-vocabulary-149",
+      "kaishi-15k-basic-japanese-vocabulary-150"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-16",
+    "title": "Core Vocab 16",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-151",
+      "kaishi-15k-basic-japanese-vocabulary-152",
+      "kaishi-15k-basic-japanese-vocabulary-153",
+      "kaishi-15k-basic-japanese-vocabulary-154",
+      "kaishi-15k-basic-japanese-vocabulary-155",
+      "kaishi-15k-basic-japanese-vocabulary-156",
+      "kaishi-15k-basic-japanese-vocabulary-157",
+      "kaishi-15k-basic-japanese-vocabulary-158",
+      "kaishi-15k-basic-japanese-vocabulary-159",
+      "kaishi-15k-basic-japanese-vocabulary-160"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-17",
+    "title": "Core Vocab 17",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-161",
+      "kaishi-15k-basic-japanese-vocabulary-162",
+      "kaishi-15k-basic-japanese-vocabulary-163",
+      "kaishi-15k-basic-japanese-vocabulary-164",
+      "kaishi-15k-basic-japanese-vocabulary-165",
+      "kaishi-15k-basic-japanese-vocabulary-166",
+      "kaishi-15k-basic-japanese-vocabulary-167",
+      "kaishi-15k-basic-japanese-vocabulary-168",
+      "kaishi-15k-basic-japanese-vocabulary-169",
+      "kaishi-15k-basic-japanese-vocabulary-170"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-18",
+    "title": "Core Vocab 18",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-171",
+      "kaishi-15k-basic-japanese-vocabulary-172",
+      "kaishi-15k-basic-japanese-vocabulary-173",
+      "kaishi-15k-basic-japanese-vocabulary-174",
+      "kaishi-15k-basic-japanese-vocabulary-175",
+      "kaishi-15k-basic-japanese-vocabulary-176",
+      "kaishi-15k-basic-japanese-vocabulary-177",
+      "kaishi-15k-basic-japanese-vocabulary-178",
+      "kaishi-15k-basic-japanese-vocabulary-179",
+      "kaishi-15k-basic-japanese-vocabulary-180"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-19",
+    "title": "Core Vocab 19",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-181",
+      "kaishi-15k-basic-japanese-vocabulary-182",
+      "kaishi-15k-basic-japanese-vocabulary-183",
+      "kaishi-15k-basic-japanese-vocabulary-184",
+      "kaishi-15k-basic-japanese-vocabulary-185",
+      "kaishi-15k-basic-japanese-vocabulary-186",
+      "kaishi-15k-basic-japanese-vocabulary-187",
+      "kaishi-15k-basic-japanese-vocabulary-188",
+      "kaishi-15k-basic-japanese-vocabulary-189",
+      "kaishi-15k-basic-japanese-vocabulary-190"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "kaishi-20",
+    "title": "Core Vocab 20",
+    "category": "vocab-core",
+    "description": "10 cards from Kaishi 15k - Basic Japanese Vocabulary",
+    "cardIds": [
+      "kaishi-15k-basic-japanese-vocabulary-191",
+      "kaishi-15k-basic-japanese-vocabulary-192",
+      "kaishi-15k-basic-japanese-vocabulary-193",
+      "kaishi-15k-basic-japanese-vocabulary-194",
+      "kaishi-15k-basic-japanese-vocabulary-195",
+      "kaishi-15k-basic-japanese-vocabulary-196",
+      "kaishi-15k-basic-japanese-vocabulary-197",
+      "kaishi-15k-basic-japanese-vocabulary-198",
+      "kaishi-15k-basic-japanese-vocabulary-199",
+      "kaishi-15k-basic-japanese-vocabulary-200"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:kaishi-15k-basic-japanese-vocabulary"
+    ]
+  },
+  {
+    "id": "core2k-1",
+    "title": "Core 2k6k 1",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-3",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-4",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-5",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-6",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-7",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-8",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-9",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-2",
+    "title": "Core 2k6k 2",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-11",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-12",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-13",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-14",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-15",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-16",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-17",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-18",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-19",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-3",
+    "title": "Core 2k6k 3",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-21",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-22",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-23",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-24",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-25",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-26",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-27",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-28",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-29",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-4",
+    "title": "Core 2k6k 4",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-31",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-32",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-33",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-34",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-35",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-36",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-37",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-38",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-39",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-5",
+    "title": "Core 2k6k 5",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-41",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-42",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-43",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-44",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-45",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-46",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-47",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-48",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-49",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-6",
+    "title": "Core 2k6k 6",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-51",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-52",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-53",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-54",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-55",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-56",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-57",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-58",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-59",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-7",
+    "title": "Core 2k6k 7",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-61",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-62",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-63",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-64",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-65",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-66",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-67",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-68",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-69",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-8",
+    "title": "Core 2k6k 8",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-71",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-72",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-73",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-74",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-75",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-76",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-77",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-78",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-79",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-9",
+    "title": "Core 2k6k 9",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-81",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-82",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-83",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-84",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-85",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-86",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-87",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-88",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-89",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-10",
+    "title": "Core 2k6k 10",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-91",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-92",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-93",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-94",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-95",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-96",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-97",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-98",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-99",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-11",
+    "title": "Core 2k6k 11",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-101",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-102",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-103",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-104",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-105",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-106",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-107",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-108",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-109",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-110"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-12",
+    "title": "Core 2k6k 12",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-111",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-112",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-113",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-114",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-115",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-116",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-117",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-118",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-119",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-120"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-13",
+    "title": "Core 2k6k 13",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-121",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-122",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-123",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-124",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-125",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-126",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-127",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-128",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-129",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-130"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-14",
+    "title": "Core 2k6k 14",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-131",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-132",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-133",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-134",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-135",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-136",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-137",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-138",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-139",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-140"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-15",
+    "title": "Core 2k6k 15",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-141",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-142",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-143",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-144",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-145",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-146",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-147",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-148",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-149",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-150"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-16",
+    "title": "Core 2k6k 16",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-151",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-152",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-153",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-154",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-155",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-156",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-157",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-158",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-159",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-160"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-17",
+    "title": "Core 2k6k 17",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-161",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-162",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-163",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-164",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-165",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-166",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-167",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-168",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-169",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-170"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-18",
+    "title": "Core 2k6k 18",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-171",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-172",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-173",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-174",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-175",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-176",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-177",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-178",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-179",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-180"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-19",
+    "title": "Core 2k6k 19",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-181",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-182",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-183",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-184",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-185",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-186",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-187",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-188",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-189",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-190"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-20",
+    "title": "Core 2k6k 20",
+    "category": "vocab-core",
+    "description": "10 cards from Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "cardIds": [
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-191",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-192",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-193",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-194",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-195",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-196",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-197",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-198",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-199",
+      "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-200"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1880390099"
+    ]
+  },
+  {
+    "id": "core2k-natural-1",
+    "title": "Core 2K 1",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-2",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-3",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-4",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-5",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-6",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-7",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-8",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-9",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-2",
+    "title": "Core 2K 2",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-11",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-12",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-13",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-14",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-15",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-16",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-17",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-18",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-19",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-3",
+    "title": "Core 2K 3",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-21",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-22",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-23",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-24",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-25",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-26",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-27",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-28",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-29",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-4",
+    "title": "Core 2K 4",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-31",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-32",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-33",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-34",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-35",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-36",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-37",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-38",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-39",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-5",
+    "title": "Core 2K 5",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-41",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-42",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-43",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-44",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-45",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-46",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-47",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-48",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-49",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-6",
+    "title": "Core 2K 6",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-51",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-52",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-53",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-54",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-55",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-56",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-57",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-58",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-59",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-7",
+    "title": "Core 2K 7",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-61",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-62",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-63",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-64",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-65",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-66",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-67",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-68",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-69",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-8",
+    "title": "Core 2K 8",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-71",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-72",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-73",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-74",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-75",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-76",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-77",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-78",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-79",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-9",
+    "title": "Core 2K 9",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-81",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-82",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-83",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-84",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-85",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-86",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-87",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-88",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-89",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-10",
+    "title": "Core 2K 10",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-91",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-92",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-93",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-94",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-95",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-96",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-97",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-98",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-99",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-11",
+    "title": "Core 2K 11",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-101",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-102",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-103",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-104",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-105",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-106",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-107",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-108",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-109",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-110"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-12",
+    "title": "Core 2K 12",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-111",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-112",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-113",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-114",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-115",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-116",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-117",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-118",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-119",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-120"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-13",
+    "title": "Core 2K 13",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-121",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-122",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-123",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-124",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-125",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-126",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-127",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-128",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-129",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-130"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-14",
+    "title": "Core 2K 14",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-131",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-132",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-133",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-134",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-135",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-136",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-137",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-138",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-139",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-140"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-15",
+    "title": "Core 2K 15",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-141",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-142",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-143",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-144",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-145",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-146",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-147",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-148",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-149",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-150"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-16",
+    "title": "Core 2K 16",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-151",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-152",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-153",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-154",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-155",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-156",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-157",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-158",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-159",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-160"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-17",
+    "title": "Core 2K 17",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-161",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-162",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-163",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-164",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-165",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-166",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-167",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-168",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-169",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-170"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-18",
+    "title": "Core 2K 18",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-171",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-172",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-173",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-174",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-175",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-176",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-177",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-178",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-179",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-180"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-19",
+    "title": "Core 2K 19",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-181",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-182",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-183",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-184",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-185",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-186",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-187",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-188",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-189",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-190"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "core2k-natural-20",
+    "title": "Core 2K 20",
+    "category": "vocab-core",
+    "description": "10 cards from Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "cardIds": [
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-191",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-192",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-193",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-194",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-195",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-196",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-197",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-198",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-199",
+      "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-200"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:1121302366"
+    ]
+  },
+  {
+    "id": "common-words-1",
+    "title": "Common Words 1",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-2",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-3",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-4",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-5",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-6",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-7",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-8",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-9",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-2",
+    "title": "Common Words 2",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-11",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-12",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-13",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-14",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-15",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-16",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-17",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-18",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-19",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-3",
+    "title": "Common Words 3",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-21",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-22",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-23",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-24",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-25",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-26",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-27",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-28",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-29",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-4",
+    "title": "Common Words 4",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-31",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-32",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-33",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-34",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-35",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-36",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-37",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-38",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-39",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-5",
+    "title": "Common Words 5",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-41",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-42",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-43",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-44",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-45",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-46",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-47",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-48",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-49",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-6",
+    "title": "Common Words 6",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-51",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-52",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-53",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-54",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-55",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-56",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-57",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-58",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-59",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-7",
+    "title": "Common Words 7",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-61",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-62",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-63",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-64",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-65",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-66",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-67",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-68",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-69",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-8",
+    "title": "Common Words 8",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-71",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-72",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-73",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-74",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-75",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-76",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-77",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-78",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-79",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-9",
+    "title": "Common Words 9",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-81",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-82",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-83",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-84",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-85",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-86",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-87",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-88",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-89",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-10",
+    "title": "Common Words 10",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-91",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-92",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-93",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-94",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-95",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-96",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-97",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-98",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-99",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-11",
+    "title": "Common Words 11",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-101",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-102",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-103",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-104",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-105",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-106",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-107",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-108",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-109",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-110"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-12",
+    "title": "Common Words 12",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-111",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-112",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-113",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-114",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-115",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-116",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-117",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-118",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-119",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-120"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-13",
+    "title": "Common Words 13",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-121",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-122",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-123",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-124",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-125",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-126",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-127",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-128",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-129",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-130"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-14",
+    "title": "Common Words 14",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-131",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-132",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-133",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-134",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-135",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-136",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-137",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-138",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-139",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-140"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-15",
+    "title": "Common Words 15",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-141",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-142",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-143",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-144",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-145",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-146",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-147",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-148",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-149",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-150"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-16",
+    "title": "Common Words 16",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-151",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-152",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-153",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-154",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-155",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-156",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-157",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-158",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-159",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-160"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-17",
+    "title": "Common Words 17",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-161",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-162",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-163",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-164",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-165",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-166",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-167",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-168",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-169",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-170"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-18",
+    "title": "Common Words 18",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-171",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-172",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-173",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-174",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-175",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-176",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-177",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-178",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-179",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-180"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-19",
+    "title": "Common Words 19",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-181",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-182",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-183",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-184",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-185",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-186",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-187",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-188",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-189",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-190"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "common-words-20",
+    "title": "Common Words 20",
+    "category": "phrases",
+    "description": "10 cards from Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "cardIds": [
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-191",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-192",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-193",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-194",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-195",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-196",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-197",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-198",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-199",
+      "japanese-common-words-and-phrases-with-audio-kanji-romaji-200"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-common-words-and-phrases-with-audio-kanji-romaji"
+    ]
+  },
+  {
+    "id": "travel-vocab-1",
+    "title": "Travel Vocab 1",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-1",
+      "japanese-travel-vocabulary-2",
+      "japanese-travel-vocabulary-3",
+      "japanese-travel-vocabulary-4",
+      "japanese-travel-vocabulary-5",
+      "japanese-travel-vocabulary-6",
+      "japanese-travel-vocabulary-7",
+      "japanese-travel-vocabulary-8",
+      "japanese-travel-vocabulary-9",
+      "japanese-travel-vocabulary-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-2",
+    "title": "Travel Vocab 2",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-11",
+      "japanese-travel-vocabulary-12",
+      "japanese-travel-vocabulary-13",
+      "japanese-travel-vocabulary-14",
+      "japanese-travel-vocabulary-15",
+      "japanese-travel-vocabulary-16",
+      "japanese-travel-vocabulary-17",
+      "japanese-travel-vocabulary-18",
+      "japanese-travel-vocabulary-19",
+      "japanese-travel-vocabulary-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-3",
+    "title": "Travel Vocab 3",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-21",
+      "japanese-travel-vocabulary-22",
+      "japanese-travel-vocabulary-23",
+      "japanese-travel-vocabulary-24",
+      "japanese-travel-vocabulary-25",
+      "japanese-travel-vocabulary-26",
+      "japanese-travel-vocabulary-27",
+      "japanese-travel-vocabulary-28",
+      "japanese-travel-vocabulary-29",
+      "japanese-travel-vocabulary-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-4",
+    "title": "Travel Vocab 4",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-31",
+      "japanese-travel-vocabulary-32",
+      "japanese-travel-vocabulary-33",
+      "japanese-travel-vocabulary-34",
+      "japanese-travel-vocabulary-35",
+      "japanese-travel-vocabulary-36",
+      "japanese-travel-vocabulary-37",
+      "japanese-travel-vocabulary-38",
+      "japanese-travel-vocabulary-39",
+      "japanese-travel-vocabulary-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-5",
+    "title": "Travel Vocab 5",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-41",
+      "japanese-travel-vocabulary-42",
+      "japanese-travel-vocabulary-43",
+      "japanese-travel-vocabulary-44",
+      "japanese-travel-vocabulary-45",
+      "japanese-travel-vocabulary-46",
+      "japanese-travel-vocabulary-47",
+      "japanese-travel-vocabulary-48",
+      "japanese-travel-vocabulary-49",
+      "japanese-travel-vocabulary-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-6",
+    "title": "Travel Vocab 6",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-51",
+      "japanese-travel-vocabulary-52",
+      "japanese-travel-vocabulary-53",
+      "japanese-travel-vocabulary-54",
+      "japanese-travel-vocabulary-55",
+      "japanese-travel-vocabulary-56",
+      "japanese-travel-vocabulary-57",
+      "japanese-travel-vocabulary-58",
+      "japanese-travel-vocabulary-59",
+      "japanese-travel-vocabulary-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-7",
+    "title": "Travel Vocab 7",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-61",
+      "japanese-travel-vocabulary-62",
+      "japanese-travel-vocabulary-63",
+      "japanese-travel-vocabulary-64",
+      "japanese-travel-vocabulary-65",
+      "japanese-travel-vocabulary-66",
+      "japanese-travel-vocabulary-67",
+      "japanese-travel-vocabulary-68",
+      "japanese-travel-vocabulary-69",
+      "japanese-travel-vocabulary-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-8",
+    "title": "Travel Vocab 8",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-71",
+      "japanese-travel-vocabulary-72",
+      "japanese-travel-vocabulary-73",
+      "japanese-travel-vocabulary-74",
+      "japanese-travel-vocabulary-75",
+      "japanese-travel-vocabulary-76",
+      "japanese-travel-vocabulary-77",
+      "japanese-travel-vocabulary-78",
+      "japanese-travel-vocabulary-79",
+      "japanese-travel-vocabulary-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-9",
+    "title": "Travel Vocab 9",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-81",
+      "japanese-travel-vocabulary-82",
+      "japanese-travel-vocabulary-83",
+      "japanese-travel-vocabulary-84",
+      "japanese-travel-vocabulary-85",
+      "japanese-travel-vocabulary-86",
+      "japanese-travel-vocabulary-87",
+      "japanese-travel-vocabulary-88",
+      "japanese-travel-vocabulary-89",
+      "japanese-travel-vocabulary-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-vocab-10",
+    "title": "Travel Vocab 10",
+    "category": "travel",
+    "description": "10 cards from Japanese Travel Vocabulary",
+    "cardIds": [
+      "japanese-travel-vocabulary-91",
+      "japanese-travel-vocabulary-92",
+      "japanese-travel-vocabulary-93",
+      "japanese-travel-vocabulary-94",
+      "japanese-travel-vocabulary-95",
+      "japanese-travel-vocabulary-96",
+      "japanese-travel-vocabulary-97",
+      "japanese-travel-vocabulary-98",
+      "japanese-travel-vocabulary-99",
+      "japanese-travel-vocabulary-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-travel-vocabulary"
+    ]
+  },
+  {
+    "id": "travel-fun-1",
+    "title": "Travel Fun 1",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-2",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-3",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-4",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-5",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-6",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-7",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-8",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-9",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-2",
+    "title": "Travel Fun 2",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-11",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-12",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-13",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-14",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-15",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-16",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-17",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-18",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-19",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-3",
+    "title": "Travel Fun 3",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-21",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-22",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-23",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-24",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-25",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-26",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-27",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-28",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-29",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-30"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-4",
+    "title": "Travel Fun 4",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-31",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-32",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-33",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-34",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-35",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-36",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-37",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-38",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-39",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-40"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-5",
+    "title": "Travel Fun 5",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-41",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-42",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-43",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-44",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-45",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-46",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-47",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-48",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-49",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-50"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-6",
+    "title": "Travel Fun 6",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-51",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-52",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-53",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-54",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-55",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-56",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-57",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-58",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-59",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-60"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-7",
+    "title": "Travel Fun 7",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-61",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-62",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-63",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-64",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-65",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-66",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-67",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-68",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-69",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-70"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-8",
+    "title": "Travel Fun 8",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-71",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-72",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-73",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-74",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-75",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-76",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-77",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-78",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-79",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-80"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-9",
+    "title": "Travel Fun 9",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-81",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-82",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-83",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-84",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-85",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-86",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-87",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-88",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-89",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-90"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "travel-fun-10",
+    "title": "Travel Fun 10",
+    "category": "travel",
+    "description": "10 cards from Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "cardIds": [
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-91",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-92",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-93",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-94",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-95",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-96",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-97",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-98",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-99",
+      "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-100"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:travel-japanese-w-audio-nihongo-fun-easy-2nd-edition"
+    ]
+  },
+  {
+    "id": "tae-kim-1",
+    "title": "Grammar 1",
+    "category": "grammar",
+    "description": "10 cards from Japanese course based on Tae Kims grammar guide anime",
+    "cardIds": [
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-2",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-3",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-4",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-5",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-6",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-7",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-8",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-9",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-10"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-course-based-on-tae-kims-grammar-guide-anime"
+    ]
+  },
+  {
+    "id": "tae-kim-2",
+    "title": "Grammar 2",
+    "category": "grammar",
+    "description": "10 cards from Japanese course based on Tae Kims grammar guide anime",
+    "cardIds": [
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-11",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-12",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-13",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-14",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-15",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-16",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-17",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-18",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-19",
+      "japanese-course-based-on-tae-kims-grammar-guide-anime-20"
+    ],
+    "sourceDeckIds": [
+      "ankiweb:japanese-course-based-on-tae-kims-grammar-guide-anime"
+    ]
+  }
+]

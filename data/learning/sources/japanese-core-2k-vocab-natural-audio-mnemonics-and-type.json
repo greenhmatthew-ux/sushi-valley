@@ -1,0 +1,4212 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "1121302366",
+    "deckName": "Japanese Core 2K Vocab Natural Audio Mnemonics and Type",
+    "author": "",
+    "url": "https://ankiweb.net/shared/info/1121302366",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "sourceNoteId": "1621385855103",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "凄い",
+      "answer": "amazing, incredible, great, intense",
+      "choices": [
+        "amazing, incredible, great, intense",
+        "shallow, superficial",
+        "(someone else's) wife, married woman",
+        "last month"
+      ],
+      "reading": "すごい",
+      "meaning": "amazing, incredible, great, intense",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-2",
+      "sourceNoteId": "1621385855104",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "親切",
+      "answer": "kind, considerate, kindhearted, gentle (な adj)",
+      "choices": [
+        "kind, considerate, kindhearted, gentle (な adj)",
+        "to sting, stab, pierce (direct object)",
+        "ball",
+        "to refuse, turn down, decline (direct object を)"
+      ],
+      "reading": "しんせつ",
+      "meaning": "kind, considerate, kindhearted, gentle (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-3",
+      "sourceNoteId": "1621385855105",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "絶対",
+      "answer": "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+      "choices": [
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "traditional Japanese inn",
+        "sofa, couch",
+        "rent (for a place to live)"
+      ],
+      "reading": "ぜったい",
+      "meaning": "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-4",
+      "sourceNoteId": "1621385855106",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "先月",
+      "answer": "last month",
+      "choices": [
+        "last month",
+        "gram (of weight)",
+        "normally, usually, generally, ordinarily, habitually",
+        "invitation"
+      ],
+      "reading": "せんげつ",
+      "meaning": "last month",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-5",
+      "sourceNoteId": "1621385855107",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "一昨年",
+      "answer": "the year before last",
+      "choices": [
+        "the year before last",
+        "gram (of weight)",
+        "day off, holiday, break, short vacation",
+        "to break (something), destroy (direct object を)"
+      ],
+      "reading": "おととし",
+      "meaning": "the year before last",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-6",
+      "sourceNoteId": "1621385855108",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "冬休み",
+      "answer": "winter break / vacation / holiday",
+      "choices": [
+        "winter break / vacation / holiday",
+        "memo, note",
+        "rent (for a place to live)",
+        "deep red, bright red, vivid red (な adj noun)"
+      ],
+      "reading": "ふゆやすみ",
+      "meaning": "winter break / vacation / holiday",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-7",
+      "sourceNoteId": "1621385855109",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "夏休み",
+      "answer": "summer vacation/break",
+      "choices": [
+        "summer vacation/break",
+        "small boat, small craft",
+        "to lay (out), spread (direct object を)",
+        "baby"
+      ],
+      "reading": "なつやすみ",
+      "meaning": "summer vacation/break",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-8",
+      "sourceNoteId": "1621385855110",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "休日",
+      "answer": "day off, holiday, break, short vacation",
+      "choices": [
+        "day off, holiday, break, short vacation",
+        "trouble, inconvenience, annoyance (な adj/noun)",
+        "to throw (direct object)",
+        "restaurant"
+      ],
+      "reading": "きゅうじつ",
+      "meaning": "day off, holiday, break, short vacation",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-9",
+      "sourceNoteId": "1621385855111",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "正月",
+      "answer": "New Year",
+      "choices": [
+        "New Year",
+        "cafeteria, dining hall, canteen",
+        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "card"
+      ],
+      "reading": "しょうがつ",
+      "meaning": "New Year",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-10",
+      "sourceNoteId": "1621385855112",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "思い出",
+      "answer": "memory",
+      "choices": [
+        "memory",
+        "shallow, superficial",
+        "to roll up, wrap (direct object を)",
+        "every week"
+      ],
+      "reading": "おもいで",
+      "meaning": "memory",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-11",
+      "sourceNoteId": "1621385855113",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "たまに",
+      "answer": "sometimes, occasionally, rarely, once in a while",
+      "choices": [
+        "sometimes, occasionally, rarely, once in a while",
+        "smell, odor, scent",
+        "memo, note",
+        "earlier, recently, just now, a little while ago"
+      ],
+      "reading": "たまに",
+      "meaning": "sometimes, occasionally, rarely, once in a while",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-12",
+      "sourceNoteId": "1621385855114",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "おかしい",
+      "answer": "strange, weird, odd, peculiar",
+      "choices": [
+        "strange, weird, odd, peculiar",
+        "(sound) recording",
+        "part-time job",
+        "silver (metal)"
+      ],
+      "reading": "おかしい",
+      "meaning": "strange, weird, odd, peculiar",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-13",
+      "sourceNoteId": "1621385855115",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "浅い",
+      "answer": "shallow, superficial",
+      "choices": [
+        "shallow, superficial",
+        "inside, interior, inner side",
+        "to pick up (direct object を)",
+        "20 years old"
+      ],
+      "reading": "あさい",
+      "meaning": "shallow, superficial",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-14",
+      "sourceNoteId": "1621385855116",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "君",
+      "answer": "you (referring to fellows or subordinates)",
+      "choices": [
+        "you (referring to fellows or subordinates)",
+        "amazing, incredible, great, intense",
+        "notebook",
+        "cherry tree, cherry blossom"
+      ],
+      "reading": "きみ",
+      "meaning": "you (referring to fellows or subordinates)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-15",
+      "sourceNoteId": "1621385855117",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "奥さん",
+      "answer": "(someone else's) wife, married woman",
+      "choices": [
+        "(someone else's) wife, married woman",
+        "weight",
+        "plastic",
+        "strong, concentrated, thick, dense, deep, rich"
+      ],
+      "reading": "おくさん",
+      "meaning": "(someone else's) wife, married woman",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-16",
+      "sourceNoteId": "1621385855118",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "赤ちゃん",
+      "answer": "baby",
+      "choices": [
+        "baby",
+        "ball",
+        "plan",
+        "small boat, small craft"
+      ],
+      "reading": "あかちゃん",
+      "meaning": "baby",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-17",
+      "sourceNoteId": "1621385855119",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "小学生",
+      "answer": "elementary school student",
+      "choices": [
+        "elementary school student",
+        "earlier, recently, just now, a little while ago",
+        "to turn, rotate (direct object)",
+        "commuting to school"
+      ],
+      "reading": "しょうがくせい",
+      "meaning": "elementary school student",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-18",
+      "sourceNoteId": "1621385855120",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "貸す",
+      "answer": "to lend, loan, lease",
+      "choices": [
+        "to lend, loan, lease",
+        "that much, so much, such",
+        "department store",
+        "to be surprised, be startled (casual) (no direct object)"
+      ],
+      "reading": "かす",
+      "meaning": "to lend, loan, lease",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-19",
+      "sourceNoteId": "1621385855121",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "数える",
+      "answer": "to count (direct object)",
+      "choices": [
+        "to count (direct object)",
+        "piano",
+        "to collide with, bump into (no direct object) (casual)",
+        "convenient (な adj)"
+      ],
+      "reading": "かぞえる",
+      "meaning": "to count (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-20",
+      "sourceNoteId": "1621385855122",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "生む",
+      "answer": "to give birth, produce (direct object を)",
+      "choices": [
+        "to give birth, produce (direct object を)",
+        "returning home, going home (noun form)",
+        "repair, fixing",
+        "message (left by someone)"
+      ],
+      "reading": "うむ",
+      "meaning": "to give birth, produce (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-21",
+      "sourceNoteId": "1621385855123",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "育つ",
+      "answer": "to be raised, grow (up), be brought up (no direct object)",
+      "choices": [
+        "to be raised, grow (up), be brought up (no direct object)",
+        "shallow, superficial",
+        "to become dirty, become stained, get soiled",
+        "egg"
+      ],
+      "reading": "そだつ",
+      "meaning": "to be raised, grow (up), be brought up (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-22",
+      "sourceNoteId": "1621385855124",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "是非",
+      "answer": "by all means, please (do), definitely",
+      "choices": [
+        "by all means, please (do), definitely",
+        "notebook",
+        "toilet, bathroom, restroom, lavatory",
+        "to spread on, paint, coat (direct object)"
+      ],
+      "reading": "ぜひ",
+      "meaning": "by all means, please (do), definitely",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-23",
+      "sourceNoteId": "1621385855125",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "黒",
+      "answer": "black (color)",
+      "choices": [
+        "black (color)",
+        "commuting to school",
+        "practice, training",
+        "section, division"
+      ],
+      "reading": "くろ",
+      "meaning": "black (color)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-24",
+      "sourceNoteId": "1621385855126",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "おもちゃ",
+      "answer": "toy, plaything",
+      "choices": [
+        "toy, plaything",
+        "to pick up (direct object を)",
+        "to sting, stab, pierce (direct object)",
+        "you (referring to fellows or subordinates)"
+      ],
+      "reading": "おもちゃ",
+      "meaning": "toy, plaything",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-25",
+      "sourceNoteId": "1621385855127",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "靴",
+      "answer": "shoes",
+      "choices": [
+        "shoes",
+        "to quit (one’s job), resign, leave(no direct object)",
+        "long time (no see), after a long time",
+        "1. how many times2. how many degrees"
+      ],
+      "reading": "くつ",
+      "meaning": "shoes",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-26",
+      "sourceNoteId": "1621385855128",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "連絡",
+      "answer": "contact, communication, notification",
+      "choices": [
+        "contact, communication, notification",
+        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "roof",
+        "winter break / vacation / holiday"
+      ],
+      "reading": "れんらく",
+      "meaning": "contact, communication, notification",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-27",
+      "sourceNoteId": "1621385855129",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "伝言",
+      "answer": "message (left by someone)",
+      "choices": [
+        "message (left by someone)",
+        "gram (of weight)",
+        "Fine, Elegant, Magnificent (な adj)",
+        "kitchen"
+      ],
+      "reading": "でんごん",
+      "meaning": "message (left by someone)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-28",
+      "sourceNoteId": "1621385855130",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "預ける",
+      "answer": "to leave (something in someone’s care), entrust (direct object)",
+      "choices": [
+        "to leave (something in someone’s care), entrust (direct object)",
+        "(assigned) number",
+        "coat, jacket (loan word)",
+        "summer vacation/break"
+      ],
+      "reading": "あずける",
+      "meaning": "to leave (something in someone’s care), entrust (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-29",
+      "sourceNoteId": "1621385855131",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "下がる",
+      "answer": "to go down, drop (in height) (no direct object が)",
+      "choices": [
+        "to go down, drop (in height) (no direct object が)",
+        "every week",
+        "right hand, the right hand side",
+        "leaf"
+      ],
+      "reading": "さがる",
+      "meaning": "to go down, drop (in height) (no direct object が)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-30",
+      "sourceNoteId": "1621385855132",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "泳ぐ",
+      "answer": "to swim",
+      "choices": [
+        "to swim",
+        "strange, weird, odd, peculiar",
+        "amazing, incredible, great, intense",
+        "to shake (back and forth), sway, tremble (no direct object が)"
+      ],
+      "reading": "およぐ",
+      "meaning": "to swim",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-31",
+      "sourceNoteId": "1621385855133",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "アルバイト",
+      "answer": "part-time job",
+      "choices": [
+        "part-time job",
+        "to roll up, wrap (direct object を)",
+        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "sometimes, occasionally, rarely, once in a while"
+      ],
+      "reading": "あるばいと",
+      "meaning": "part-time job",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-32",
+      "sourceNoteId": "1621385855134",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "コート",
+      "answer": "coat, jacket (loan word)",
+      "choices": [
+        "coat, jacket (loan word)",
+        "hobby, taste, pastime, interest",
+        "to hit, tap, strike, clap, play (drums)",
+        "ski, skiing"
+      ],
+      "reading": "こーと",
+      "meaning": "coat, jacket (loan word)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-33",
+      "sourceNoteId": "1621385855135",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "趣味",
+      "answer": "hobby, taste, pastime, interest",
+      "choices": [
+        "hobby, taste, pastime, interest",
+        "driver",
+        "the year before last",
+        "piano"
+      ],
+      "reading": "しゅみ",
+      "meaning": "hobby, taste, pastime, interest",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-34",
+      "sourceNoteId": "1621385855136",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "散歩",
+      "answer": "(leisurely) walk, stroll",
+      "choices": [
+        "(leisurely) walk, stroll",
+        "to sink (no direct object)",
+        "to cross, go across (no direct object)",
+        "plastic"
+      ],
+      "reading": "さんぽ",
+      "meaning": "(leisurely) walk, stroll",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-35",
+      "sourceNoteId": "1621385855137",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "幸せ",
+      "answer": "happiness (casual) (な adj)",
+      "choices": [
+        "happiness (casual) (な adj)",
+        "to encounter (something bad), get caught in (no direct object)",
+        "shoes",
+        "to give birth, produce (direct object を)"
+      ],
+      "reading": "しあわせ",
+      "meaning": "happiness (casual) (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-36",
+      "sourceNoteId": "1621385855138",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "安心",
+      "answer": "peace of mind, relief",
+      "choices": [
+        "peace of mind, relief",
+        "20 years old",
+        "bed",
+        "coat, jacket (loan word)"
+      ],
+      "reading": "あんしん",
+      "meaning": "peace of mind, relief",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-37",
+      "sourceNoteId": "1621385855139",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "大勢",
+      "answer": "crowd (of people), large number of people",
+      "choices": [
+        "crowd (of people), large number of people",
+        "(someone else's) wife, married woman",
+        "to cook, burn, bake, grill (direct object)",
+        "inner part, the back, depths, interior"
+      ],
+      "reading": "おおぜい",
+      "meaning": "crowd (of people), large number of people",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-38",
+      "sourceNoteId": "1621385855140",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "医者",
+      "answer": "doctor",
+      "choices": [
+        "doctor",
+        "kitchen",
+        "to step on, tread on (direct object)",
+        "shoes"
+      ],
+      "reading": "いしゃ",
+      "meaning": "doctor",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-39",
+      "sourceNoteId": "1621385855141",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "運転手",
+      "answer": "driver",
+      "choices": [
+        "driver",
+        "to collide with, bump into (no direct object) (casual)",
+        "to wipe, dry(direct object を)",
+        "ball"
+      ],
+      "reading": "うんてんしゅ",
+      "meaning": "driver",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-40",
+      "sourceNoteId": "1621385855142",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "新幹線",
+      "answer": "bullet train",
+      "choices": [
+        "bullet train",
+        "to make it on time, be enough, suffice(no direct object)",
+        "amazing, incredible, great, intense",
+        "way of speaking, expression"
+      ],
+      "reading": "しんかんせん",
+      "meaning": "bullet train",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-41",
+      "sourceNoteId": "1621385855143",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "往復",
+      "answer": "round trip, back and forth",
+      "choices": [
+        "round trip, back and forth",
+        "driver",
+        "museum",
+        "copy, photocopy"
+      ],
+      "reading": "おうふく",
+      "meaning": "round trip, back and forth",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-42",
+      "sourceNoteId": "1621385855144",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "コピー",
+      "answer": "copy, photocopy",
+      "choices": [
+        "copy, photocopy",
+        "to inquire, ask (direct object)(formal)",
+        "every week",
+        "festival, celebration"
+      ],
+      "reading": "こぴー",
+      "meaning": "copy, photocopy",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-43",
+      "sourceNoteId": "1621385855145",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "奥",
+      "answer": "inner part, the back, depths, interior",
+      "choices": [
+        "inner part, the back, depths, interior",
+        "peace of mind, relief",
+        "right hand, the right hand side",
+        "commuting to school"
+      ],
+      "reading": "おく",
+      "meaning": "inner part, the back, depths, interior",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-44",
+      "sourceNoteId": "1621385855146",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "重さ",
+      "answer": "weight",
+      "choices": [
+        "weight",
+        "hallway, corridor",
+        "way of speaking, expression",
+        "greeting, salutation"
+      ],
+      "reading": "おもさ",
+      "meaning": "weight",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-45",
+      "sourceNoteId": "1621385855147",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "親しい",
+      "answer": "intimate, close",
+      "choices": [
+        "intimate, close",
+        "card",
+        "gram (of weight)",
+        "a moment, a short period of time"
+      ],
+      "reading": "したしい",
+      "meaning": "intimate, close",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-46",
+      "sourceNoteId": "1621385855148",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "修理",
+      "answer": "repair, fixing",
+      "choices": [
+        "repair, fixing",
+        "air temperature",
+        "ball",
+        "part-time job"
+      ],
+      "reading": "しゅうり",
+      "meaning": "repair, fixing",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-47",
+      "sourceNoteId": "1621385855149",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "カード",
+      "answer": "card",
+      "choices": [
+        "card",
+        "to step on, tread on (direct object)",
+        "baby",
+        "to inquire, ask (direct object)(formal)"
+      ],
+      "reading": "かーど",
+      "meaning": "card",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-48",
+      "sourceNoteId": "1621385855150",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "挨拶",
+      "answer": "greeting, salutation",
+      "choices": [
+        "greeting, salutation",
+        "(to be) good at, one's specialty (な adj)",
+        "gram (of weight)",
+        "right hand, the right hand side"
+      ],
+      "reading": "あいさつ",
+      "meaning": "greeting, salutation",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-49",
+      "sourceNoteId": "1621385855151",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "階段",
+      "answer": "stairs, staircase, steps",
+      "choices": [
+        "stairs, staircase, steps",
+        "wine",
+        "long time (no see), after a long time",
+        "commuting to school"
+      ],
+      "reading": "かいだん",
+      "meaning": "stairs, staircase, steps",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-50",
+      "sourceNoteId": "1621385855152",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "配る",
+      "answer": "to hand out, distribute (direct object を)",
+      "choices": [
+        "to hand out, distribute (direct object を)",
+        "inside, interior, inner side",
+        "ice",
+        "left hand"
+      ],
+      "reading": "くばる",
+      "meaning": "to hand out, distribute (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-51",
+      "sourceNoteId": "1621385855153",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "断る",
+      "answer": "to refuse, turn down, decline (direct object を)",
+      "choices": [
+        "to refuse, turn down, decline (direct object を)",
+        "black (color)",
+        "every week",
+        "happiness (casual) (な adj)"
+      ],
+      "reading": "ことわる",
+      "meaning": "to refuse, turn down, decline (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-52",
+      "sourceNoteId": "1621385855154",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "グラム",
+      "answer": "gram (of weight)",
+      "choices": [
+        "gram (of weight)",
+        "ball",
+        "(someone else's) wife, married woman",
+        "New Year"
+      ],
+      "reading": "ぐらむ",
+      "meaning": "gram (of weight)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-53",
+      "sourceNoteId": "1621385855155",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "濃い",
+      "answer": "strong, concentrated, thick, dense, deep, rich",
+      "choices": [
+        "strong, concentrated, thick, dense, deep, rich",
+        "a moment, a short period of time",
+        "restaurant",
+        "to turn (toward), face (no direct object)"
+      ],
+      "reading": "こい",
+      "meaning": "strong, concentrated, thick, dense, deep, rich",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-54",
+      "sourceNoteId": "1621385855156",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "壊す",
+      "answer": "to break (something), destroy (direct object を)",
+      "choices": [
+        "to break (something), destroy (direct object を)",
+        "software, program (for short)",
+        "baby",
+        "foreigner, alien"
+      ],
+      "reading": "こわす",
+      "meaning": "to break (something), destroy (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-55",
+      "sourceNoteId": "1621385855157",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "桜",
+      "answer": "cherry tree, cherry blossom",
+      "choices": [
+        "cherry tree, cherry blossom",
+        "black (color)",
+        "piano",
+        "every week"
+      ],
+      "reading": "さくら",
+      "meaning": "cherry tree, cherry blossom",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-56",
+      "sourceNoteId": "1621385855158",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "仕方",
+      "answer": "way, method, how to do something",
+      "choices": [
+        "way, method, how to do something",
+        "strange, weird, odd, peculiar",
+        "ski, skiing",
+        "amazing, incredible, great, intense"
+      ],
+      "reading": "しかた",
+      "meaning": "way, method, how to do something",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-57",
+      "sourceNoteId": "1621385855159",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "絵",
+      "answer": "picture, painting, drawing",
+      "choices": [
+        "picture, painting, drawing",
+        "inner part, the back, depths, interior",
+        "to quit (one’s job), resign, leave(no direct object)",
+        "egg"
+      ],
+      "reading": "え",
+      "meaning": "picture, painting, drawing",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-58",
+      "sourceNoteId": "1621385855160",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "気温",
+      "answer": "air temperature",
+      "choices": [
+        "air temperature",
+        "last month",
+        "notebook",
+        "to hit, tap, strike, clap, play (drums)"
+      ],
+      "reading": "きおん",
+      "meaning": "air temperature",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-59",
+      "sourceNoteId": "1621385855161",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "品物",
+      "answer": "goods, merchandise, items (usually in the context of shopping or inventory)",
+      "choices": [
+        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "repair, fixing",
+        "bread",
+        "a moment, a short period of time"
+      ],
+      "reading": "しなもの",
+      "meaning": "goods, merchandise, items (usually in the context of shopping or inventory)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-60",
+      "sourceNoteId": "1621385855162",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "吸う",
+      "answer": "to smoke, inhale, suck (straw, etc)",
+      "choices": [
+        "to smoke, inhale, suck (straw, etc)",
+        "summer vacation/break",
+        "sudden, urgent, steep (な adj)",
+        "rent (for a place to live)"
+      ],
+      "reading": "すう",
+      "meaning": "to smoke, inhale, suck (straw, etc)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-61",
+      "sourceNoteId": "1621385855163",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "案内",
+      "answer": "guidance, guide, showing/leading the way",
+      "choices": [
+        "guidance, guide, showing/leading the way",
+        "part-time job",
+        "black (color)",
+        "winter break / vacation / holiday"
+      ],
+      "reading": "あんない",
+      "meaning": "guidance, guide, showing/leading the way",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-62",
+      "sourceNoteId": "1621385855164",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "スキー",
+      "answer": "ski, skiing",
+      "choices": [
+        "ski, skiing",
+        "commuting to school",
+        "to break (something), destroy (direct object を)",
+        "traffic accident"
+      ],
+      "reading": "すきー",
+      "meaning": "ski, skiing",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-63",
+      "sourceNoteId": "1621385855165",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "金持ち",
+      "answer": "wealthy person",
+      "choices": [
+        "wealthy person",
+        "color (loan word)",
+        "pork",
+        "part, section, portion"
+      ],
+      "reading": "かねもち",
+      "meaning": "wealthy person",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-64",
+      "sourceNoteId": "1621385855166",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "尋ねる",
+      "answer": "to inquire, ask (direct object)(formal)",
+      "choices": [
+        "to inquire, ask (direct object)(formal)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "to sting, stab, pierce (direct object)",
+        "happiness (casual) (な adj)"
+      ],
+      "reading": "たずねる",
+      "meaning": "to inquire, ask (direct object)(formal)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-65",
+      "sourceNoteId": "1621385855167",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "叩く",
+      "answer": "to hit, tap, strike, clap, play (drums)",
+      "choices": [
+        "to hit, tap, strike, clap, play (drums)",
+        "to grasp, grip, hold (tightly) (direct object)",
+        "kind, considerate, kindhearted, gentle (な adj)",
+        "toy, plaything"
+      ],
+      "reading": "たたく",
+      "meaning": "to hit, tap, strike, clap, play (drums)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-66",
+      "sourceNoteId": "1621385855168",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "帰り",
+      "answer": "returning home, going home (noun form)",
+      "choices": [
+        "returning home, going home (noun form)",
+        "material, ingredient",
+        "piano",
+        "to shine, sparkle, glow, emit light, glitter (no direct object)"
+      ],
+      "reading": "かえり",
+      "meaning": "returning home, going home (noun form)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-67",
+      "sourceNoteId": "1621385855169",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "卵",
+      "answer": "egg",
+      "choices": [
+        "egg",
+        "inner part, the back, depths, interior",
+        "to invite (direct object)",
+        "wealthy person"
+      ],
+      "reading": "たまご",
+      "meaning": "egg",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-68",
+      "sourceNoteId": "1621385855170",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "氷",
+      "answer": "ice",
+      "choices": [
+        "ice",
+        "to pick up (direct object を)",
+        "that much, so much, such",
+        "restaurant"
+      ],
+      "reading": "こおり",
+      "meaning": "ice",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-69",
+      "sourceNoteId": "1621385855171",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "留学生",
+      "answer": "international student, foreign student, student studying abroad",
+      "choices": [
+        "international student, foreign student, student studying abroad",
+        "normally, usually, generally, ordinarily, habitually",
+        "shallow, superficial",
+        "strong, concentrated, thick, dense, deep, rich"
+      ],
+      "reading": "りゅうがくせい",
+      "meaning": "international student, foreign student, student studying abroad",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-70",
+      "sourceNoteId": "1621385855172",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ソフト",
+      "answer": "software, program (for short)",
+      "choices": [
+        "software, program (for short)",
+        "not at all ➖",
+        "on the way, half way, in the middle of",
+        "to collide with, bump into (no direct object) (casual)"
+      ],
+      "reading": "そふと",
+      "meaning": "software, program (for short)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-71",
+      "sourceNoteId": "1621385855173",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "歯医者",
+      "answer": "dentist",
+      "choices": [
+        "dentist",
+        "to shake (back and forth), sway, tremble (no direct object が)",
+        "way, method, how to do something",
+        "New Year"
+      ],
+      "reading": "はいしゃ",
+      "meaning": "dentist",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-72",
+      "sourceNoteId": "1621385855174",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "蹴る",
+      "answer": "to kick (direct object)",
+      "choices": [
+        "to kick (direct object)",
+        "black (color)",
+        "memory",
+        "wine"
+      ],
+      "reading": "ける",
+      "meaning": "to kick (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-73",
+      "sourceNoteId": "1621385855175",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "敷く",
+      "answer": "to lay (out), spread (direct object を)",
+      "choices": [
+        "to lay (out), spread (direct object を)",
+        "department store",
+        "sofa, couch",
+        "to cry, weep"
+      ],
+      "reading": "しく",
+      "meaning": "to lay (out), spread (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-74",
+      "sourceNoteId": "1621385855176",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "ひととき",
+      "answer": "a moment, a short period of time",
+      "choices": [
+        "a moment, a short period of time",
+        "that much, so much, such",
+        "the year before last",
+        "museum"
+      ],
+      "reading": "ひととき",
+      "meaning": "a moment, a short period of time",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-75",
+      "sourceNoteId": "1621385855177",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "交通事故",
+      "answer": "traffic accident",
+      "choices": [
+        "traffic accident",
+        "to burn, catch on fire (no direct object)",
+        "smell, odor, scent",
+        "order"
+      ],
+      "reading": "こうつうじこ",
+      "meaning": "traffic accident",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-76",
+      "sourceNoteId": "1621385855178",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "遭う",
+      "answer": "to encounter (something bad), get caught in (no direct object)",
+      "choices": [
+        "to encounter (something bad), get caught in (no direct object)",
+        "sofa, couch",
+        "toilet, bathroom, restroom, lavatory",
+        "cat"
+      ],
+      "reading": "あう",
+      "meaning": "to encounter (something bad), get caught in (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-77",
+      "sourceNoteId": "1621385855179",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "招待",
+      "answer": "invitation",
+      "choices": [
+        "invitation",
+        "to roll up, wrap (direct object を)",
+        "subway",
+        "(to be) good at, one's specialty (な adj)"
+      ],
+      "reading": "しょうたい",
+      "meaning": "invitation",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-78",
+      "sourceNoteId": "1621385855180",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "咲く",
+      "answer": "to bloom, blossom",
+      "choices": [
+        "to bloom, blossom",
+        "material, ingredient",
+        "round trip, back and forth",
+        "kitchen"
+      ],
+      "reading": "さく",
+      "meaning": "to bloom, blossom",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-79",
+      "sourceNoteId": "1621385855181",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "二十歳",
+      "answer": "20 years old",
+      "choices": [
+        "20 years old",
+        "greeting, salutation",
+        "earlier, recently, just now, a little while ago",
+        "contact, communication, notification"
+      ],
+      "reading": "はたち",
+      "meaning": "20 years old",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-80",
+      "sourceNoteId": "1621385855182",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "銀",
+      "answer": "silver (metal)",
+      "choices": [
+        "silver (metal)",
+        "day off, holiday, break, short vacation",
+        "toy, plaything",
+        "foreigner, alien"
+      ],
+      "reading": "ぎん",
+      "meaning": "silver (metal)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-81",
+      "sourceNoteId": "1621385855183",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "内側",
+      "answer": "inside, interior, inner side",
+      "choices": [
+        "inside, interior, inner side",
+        "sometimes, occasionally, rarely, once in a while",
+        "(assigned) number",
+        "copy, photocopy"
+      ],
+      "reading": "うちがわ",
+      "meaning": "inside, interior, inner side",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-82",
+      "sourceNoteId": "1621385855184",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "池",
+      "answer": "pond",
+      "choices": [
+        "pond",
+        "not at all ➖",
+        "smell, odor, scent",
+        "to make it on time, be enough, suffice(no direct object)"
+      ],
+      "reading": "いけ",
+      "meaning": "pond",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-83",
+      "sourceNoteId": "1621385855185",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "石",
+      "answer": "stone, (small) rock",
+      "choices": [
+        "stone, (small) rock",
+        "section, division",
+        "on the way, half way, in the middle of",
+        "to lend, loan, lease"
+      ],
+      "reading": "いし",
+      "meaning": "stone, (small) rock",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-84",
+      "sourceNoteId": "1621385855186",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "愛",
+      "answer": "love, affection, care, compassion",
+      "choices": [
+        "love, affection, care, compassion",
+        "cat",
+        "repair, fixing",
+        "(sound) recording"
+      ],
+      "reading": "あい",
+      "meaning": "love, affection, care, compassion",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-85",
+      "sourceNoteId": "1621385855187",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "課",
+      "answer": "section, division",
+      "choices": [
+        "section, division",
+        "subway",
+        "intimate, close",
+        "to bloom, blossom"
+      ],
+      "reading": "か",
+      "meaning": "section, division",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-86",
+      "sourceNoteId": "1621385855188",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "大学院",
+      "answer": "graduate school",
+      "choices": [
+        "graduate school",
+        "relation, relationship, connection",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "way of speaking, expression"
+      ],
+      "reading": "だいがくいん",
+      "meaning": "graduate school",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-87",
+      "sourceNoteId": "1621385855189",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "台所",
+      "answer": "kitchen",
+      "choices": [
+        "kitchen",
+        "to leave (something in someone’s care), entrust (direct object)",
+        "copy, photocopy",
+        "every week"
+      ],
+      "reading": "だいどころ",
+      "meaning": "kitchen",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-88",
+      "sourceNoteId": "1621385855190",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "カラー",
+      "answer": "color (loan word)",
+      "choices": [
+        "color (loan word)",
+        "to break (something), destroy (direct object を)",
+        "summer vacation/break",
+        "amazing, incredible, great, intense"
+      ],
+      "reading": "からー",
+      "meaning": "color (loan word)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-89",
+      "sourceNoteId": "1621385855191",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "すり",
+      "answer": "pickpocket",
+      "choices": [
+        "pickpocket",
+        "baby",
+        "to steal, rob (direct object を)",
+        "silver (metal)"
+      ],
+      "reading": "すり",
+      "meaning": "pickpocket",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-90",
+      "sourceNoteId": "1621385855192",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "キャンプ",
+      "answer": "camping, camp",
+      "choices": [
+        "camping, camp",
+        "to pick up (direct object を)",
+        "earlier, recently, just now, a little while ago",
+        "not easily, just not, not readily, hardly (➖ negative sentence)"
+      ],
+      "reading": "きゃんぷ",
+      "meaning": "camping, camp",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-91",
+      "sourceNoteId": "1621385855193",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "オートバイ",
+      "answer": "motorbike, motorcycle (formal)",
+      "choices": [
+        "motorbike, motorcycle (formal)",
+        "to bloom, blossom",
+        "that much, so much, such",
+        "to lend, loan, lease"
+      ],
+      "reading": "おーとばい",
+      "meaning": "motorbike, motorcycle (formal)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-92",
+      "sourceNoteId": "1621385855194",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "建つ",
+      "answer": "to be built, be erected, stand (no direct object が)",
+      "choices": [
+        "to be built, be erected, stand (no direct object が)",
+        "wealthy person",
+        "department store",
+        "air temperature"
+      ],
+      "reading": "たつ",
+      "meaning": "to be built, be erected, stand (no direct object が)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-93",
+      "sourceNoteId": "1621385855195",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "刺す",
+      "answer": "to sting, stab, pierce (direct object)",
+      "choices": [
+        "to sting, stab, pierce (direct object)",
+        "gram (of weight)",
+        "transportation fare/fee (for train, taxi, etc)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)"
+      ],
+      "reading": "さす",
+      "meaning": "to sting, stab, pierce (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-94",
+      "sourceNoteId": "1621385855196",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "言い方",
+      "answer": "way of speaking, expression",
+      "choices": [
+        "way of speaking, expression",
+        "pork",
+        "to turn (toward), face (no direct object)",
+        "that much, so much, such"
+      ],
+      "reading": "いいかた",
+      "meaning": "way of speaking, expression",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-95",
+      "sourceNoteId": "1621385855197",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "沈む",
+      "answer": "to sink (no direct object)",
+      "choices": [
+        "to sink (no direct object)",
+        "convenient (な adj)",
+        "message (left by someone)",
+        "winter break / vacation / holiday"
+      ],
+      "reading": "しずむ",
+      "meaning": "to sink (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-96",
+      "sourceNoteId": "1621385855198",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "組み立てる",
+      "answer": "to set up, put together, assemble (direct object)",
+      "choices": [
+        "to set up, put together, assemble (direct object)",
+        "winter break / vacation / holiday",
+        "to refuse, turn down, decline (direct object を)",
+        "toilet, bathroom, restroom, lavatory"
+      ],
+      "reading": "くみたてる",
+      "meaning": "to set up, put together, assemble (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-97",
+      "sourceNoteId": "1621385855199",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "恐ろしい",
+      "answer": "terrible, dreadful, frightening, awful, terrifying",
+      "choices": [
+        "terrible, dreadful, frightening, awful, terrifying",
+        "to kick (direct object)",
+        "plastic",
+        "parking lot / area"
+      ],
+      "reading": "おそろしい",
+      "meaning": "terrible, dreadful, frightening, awful, terrifying",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-98",
+      "sourceNoteId": "1621385855200",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "外人",
+      "answer": "foreigner, alien",
+      "choices": [
+        "foreigner, alien",
+        "you (referring to fellows or subordinates)",
+        "to learn, take lessons",
+        "last month"
+      ],
+      "reading": "がいじん",
+      "meaning": "foreigner, alien",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-99",
+      "sourceNoteId": "1621385855201",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "牛",
+      "answer": "cow, cattle, bull, ox",
+      "choices": [
+        "cow, cattle, bull, ox",
+        "cherry tree, cherry blossom",
+        "to grasp, grip, hold (tightly) (direct object)",
+        "to be built, be erected, stand (no direct object が)"
+      ],
+      "reading": "うし",
+      "meaning": "cow, cattle, bull, ox",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-100",
+      "sourceNoteId": "1621385855202",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "食堂",
+      "answer": "cafeteria, dining hall, canteen",
+      "choices": [
+        "cafeteria, dining hall, canteen",
+        "deep red, bright red, vivid red (な adj noun)",
+        "to smoke, inhale, suck (straw, etc)",
+        "to inquire, ask (direct object)(formal)"
+      ],
+      "reading": "しょくどう",
+      "meaning": "cafeteria, dining hall, canteen",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-101",
+      "sourceNoteId": "1621385855203",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "毎年",
+      "answer": "every year (formal)",
+      "choices": [
+        "every year (formal)",
+        "divorce",
+        "to turn (toward), face (no direct object)",
+        "to be enough, suffice (no direct object)"
+      ],
+      "reading": "まいねん",
+      "meaning": "every year (formal)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-102",
+      "sourceNoteId": "1621385855204",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "毎週",
+      "answer": "every week",
+      "choices": [
+        "every week",
+        "sudden, urgent, steep (な adj)",
+        "message (left by someone)",
+        "software, program (for short)"
+      ],
+      "reading": "まいしゅう",
+      "meaning": "every week",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-103",
+      "sourceNoteId": "1621385855205",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "何度",
+      "answer": "1. how many times2. how many degrees",
+      "choices": [
+        "1. how many times2. how many degrees",
+        "coat, jacket (loan word)",
+        "separately",
+        "to see (someone) off, send someone off (direct object)"
+      ],
+      "reading": "なんど",
+      "meaning": "1. how many times2. how many degrees",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-104",
+      "sourceNoteId": "1621385855206",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "なかなか",
+      "answer": "not easily, just not, not readily, hardly (➖ negative sentence)",
+      "choices": [
+        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "to move, relocate (home or office)",
+        "sofa, couch",
+        "to tear, break, breach, defeat, violate"
+      ],
+      "reading": "なかなか",
+      "meaning": "not easily, just not, not readily, hardly (➖ negative sentence)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-105",
+      "sourceNoteId": "1621385855207",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "さっき",
+      "answer": "earlier, recently, just now, a little while ago",
+      "choices": [
+        "earlier, recently, just now, a little while ago",
+        "luggage, baggage, package, load",
+        "bread",
+        "to make it on time, be enough, suffice(no direct object)"
+      ],
+      "reading": "さっき",
+      "meaning": "earlier, recently, just now, a little while ago",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-106",
+      "sourceNoteId": "1621385855208",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "久しぶり",
+      "answer": "long time (no see), after a long time",
+      "choices": [
+        "long time (no see), after a long time",
+        "to move, relocate (home or office)",
+        "ball",
+        "to learn, take lessons"
+      ],
+      "reading": "ひさしぶり",
+      "meaning": "long time (no see), after a long time",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-107",
+      "sourceNoteId": "1621385855209",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "便利",
+      "answer": "convenient (な adj)",
+      "choices": [
+        "convenient (な adj)",
+        "winter break / vacation / holiday",
+        "kitchen",
+        "contact, communication, notification"
+      ],
+      "reading": "べんり",
+      "meaning": "convenient (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-108",
+      "sourceNoteId": "1621385855210",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "迷惑",
+      "answer": "trouble, inconvenience, annoyance (な adj/noun)",
+      "choices": [
+        "trouble, inconvenience, annoyance (な adj/noun)",
+        "20 years old",
+        "sometimes, occasionally, rarely, once in a while",
+        "way, method, how to do something"
+      ],
+      "reading": "めいわく",
+      "meaning": "trouble, inconvenience, annoyance (な adj/noun)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-109",
+      "sourceNoteId": "1621385855211",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "そんなに",
+      "answer": "that much, so much, such",
+      "choices": [
+        "that much, so much, such",
+        "air temperature",
+        "day off, holiday, break, short vacation",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)"
+      ],
+      "reading": "そんなに",
+      "meaning": "that much, so much, such",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-110",
+      "sourceNoteId": "1621385855212",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "びっくりする",
+      "answer": "to be surprised, be startled (casual) (no direct object)",
+      "choices": [
+        "to be surprised, be startled (casual) (no direct object)",
+        "luggage, baggage, package, load",
+        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to burn, catch on fire (no direct object)"
+      ],
+      "reading": "びっくりする",
+      "meaning": "to be surprised, be startled (casual) (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-111",
+      "sourceNoteId": "1621385855213",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "足りる",
+      "answer": "to be enough, suffice (no direct object)",
+      "choices": [
+        "to be enough, suffice (no direct object)",
+        "every year (formal)",
+        "cafeteria, dining hall, canteen",
+        "coat, jacket (loan word)"
+      ],
+      "reading": "たりる",
+      "meaning": "to be enough, suffice (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-112",
+      "sourceNoteId": "1621385855214",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "疲れる",
+      "answer": "to get tired, become fatigued",
+      "choices": [
+        "to get tired, become fatigued",
+        "to become dirty, become stained, get soiled",
+        "to steal, rob (direct object を)",
+        "piano"
+      ],
+      "reading": "つかれる",
+      "meaning": "to get tired, become fatigued",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-113",
+      "sourceNoteId": "1621385855215",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ひどい",
+      "answer": "terrible, awful, cruel",
+      "choices": [
+        "terrible, awful, cruel",
+        "to refuse, turn down, decline (direct object を)",
+        "museum",
+        "amazing, incredible, great, intense"
+      ],
+      "reading": "ひどい",
+      "meaning": "terrible, awful, cruel",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-114",
+      "sourceNoteId": "1621385855216",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "全然",
+      "answer": "not at all ➖",
+      "choices": [
+        "not at all ➖",
+        "wine",
+        "copy, photocopy",
+        "to bloom, blossom"
+      ],
+      "reading": "ぜんぜん",
+      "meaning": "not at all ➖",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-115",
+      "sourceNoteId": "1621385855217",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "猫",
+      "answer": "cat",
+      "choices": [
+        "cat",
+        "winter break / vacation / holiday",
+        "ski, skiing",
+        "software, program (for short)"
+      ],
+      "reading": "ねこ",
+      "meaning": "cat",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-116",
+      "sourceNoteId": "1621385855218",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "デパート",
+      "answer": "department store",
+      "choices": [
+        "department store",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "winter break / vacation / holiday",
+        "to inquire, ask (direct object)(formal)"
+      ],
+      "reading": "でぱーと",
+      "meaning": "department store",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-117",
+      "sourceNoteId": "1621385855219",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "トイレ",
+      "answer": "toilet, bathroom, restroom, lavatory",
+      "choices": [
+        "toilet, bathroom, restroom, lavatory",
+        "to roll up, wrap (direct object を)",
+        "to turn, rotate (direct object)",
+        "plan"
+      ],
+      "reading": "といれ",
+      "meaning": "toilet, bathroom, restroom, lavatory",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-118",
+      "sourceNoteId": "1621385855220",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "地下鉄",
+      "answer": "subway",
+      "choices": [
+        "subway",
+        "not at all ➖",
+        "to turn (toward), face (no direct object)",
+        "left hand"
+      ],
+      "reading": "ちかてつ",
+      "meaning": "subway",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-119",
+      "sourceNoteId": "1621385855221",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "駐車場",
+      "answer": "parking lot / area",
+      "choices": [
+        "parking lot / area",
+        "memory",
+        "cherry tree, cherry blossom",
+        "leaf"
+      ],
+      "reading": "ちゅうしゃじょう",
+      "meaning": "parking lot / area",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-120",
+      "sourceNoteId": "1621385855222",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "ぶつかる",
+      "answer": "to collide with, bump into (no direct object) (casual)",
+      "choices": [
+        "to collide with, bump into (no direct object) (casual)",
+        "message (left by someone)",
+        "convenient (な adj)",
+        "to be raised, grow (up), be brought up (no direct object)"
+      ],
+      "reading": "ぶつかる",
+      "meaning": "to collide with, bump into (no direct object) (casual)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-121",
+      "sourceNoteId": "1621385855223",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "運賃",
+      "answer": "transportation fare/fee (for train, taxi, etc)",
+      "choices": [
+        "transportation fare/fee (for train, taxi, etc)",
+        "commuting to school",
+        "not at all ➖",
+        "leaf"
+      ],
+      "reading": "うんちん",
+      "meaning": "transportation fare/fee (for train, taxi, etc)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-122",
+      "sourceNoteId": "1621385855224",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "通学",
+      "answer": "commuting to school",
+      "choices": [
+        "commuting to school",
+        "to lay (out), spread (direct object を)",
+        "trouble, inconvenience, annoyance (な adj/noun)",
+        "part, section, portion"
+      ],
+      "reading": "つうがく",
+      "meaning": "commuting to school",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-123",
+      "sourceNoteId": "1621385855225",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "見送る",
+      "answer": "to see (someone) off, send someone off (direct object)",
+      "choices": [
+        "to see (someone) off, send someone off (direct object)",
+        "pork",
+        "small boat, small craft",
+        "piano"
+      ],
+      "reading": "みおくる",
+      "meaning": "to see (someone) off, send someone off (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-124",
+      "sourceNoteId": "1621385855226",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "泣く",
+      "answer": "to cry, weep",
+      "choices": [
+        "to cry, weep",
+        "returning home, going home (noun form)",
+        "stone, (small) rock",
+        "camping, camp"
+      ],
+      "reading": "なく",
+      "meaning": "to cry, weep",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-125",
+      "sourceNoteId": "1621385855227",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "レストラン",
+      "answer": "restaurant",
+      "choices": [
+        "restaurant",
+        "dentist",
+        "1. how many times2. how many degrees",
+        "not at all ➖"
+      ],
+      "reading": "れすとらん",
+      "meaning": "restaurant",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-126",
+      "sourceNoteId": "1621385855228",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "メモ",
+      "answer": "memo, note",
+      "choices": [
+        "memo, note",
+        "you (referring to fellows or subordinates)",
+        "ski, skiing",
+        "plastic"
+      ],
+      "reading": "めも",
+      "meaning": "memo, note",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-127",
+      "sourceNoteId": "1621385855229",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "予約",
+      "answer": "reservation, booking, appointment",
+      "choices": [
+        "reservation, booking, appointment",
+        "inside, interior, inner side",
+        "to become dirty, become stained, get soiled",
+        "every week"
+      ],
+      "reading": "よやく",
+      "meaning": "reservation, booking, appointment",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-128",
+      "sourceNoteId": "1621385855230",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "番号",
+      "answer": "(assigned) number",
+      "choices": [
+        "(assigned) number",
+        "to swim",
+        "wealthy person",
+        "strong, concentrated, thick, dense, deep, rich"
+      ],
+      "reading": "ばんごう",
+      "meaning": "(assigned) number",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-129",
+      "sourceNoteId": "1621385855231",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "注文",
+      "answer": "order",
+      "choices": [
+        "order",
+        "New Year",
+        "piano",
+        "ski, skiing"
+      ],
+      "reading": "ちゅうもん",
+      "meaning": "order",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-130",
+      "sourceNoteId": "1621385855232",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "パン",
+      "answer": "bread",
+      "choices": [
+        "bread",
+        "baby",
+        "repair, fixing",
+        "to break (something), destroy (direct object を)"
+      ],
+      "reading": "ぱん",
+      "meaning": "bread",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-131",
+      "sourceNoteId": "1621385855233",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ワイン",
+      "answer": "wine",
+      "choices": [
+        "wine",
+        "to crack, split, break, shatter (direct object)",
+        "to get tired, become fatigued",
+        "subway"
+      ],
+      "reading": "わいん",
+      "meaning": "wine",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-132",
+      "sourceNoteId": "1621385855234",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "材料",
+      "answer": "material, ingredient",
+      "choices": [
+        "material, ingredient",
+        "piano",
+        "to cook, burn, bake, grill (direct object)",
+        "not easily, just not, not readily, hardly (➖ negative sentence)"
+      ],
+      "reading": "ざいりょう",
+      "meaning": "material, ingredient",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-133",
+      "sourceNoteId": "1621385855235",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "豚肉",
+      "answer": "pork",
+      "choices": [
+        "pork",
+        "day off, holiday, break, short vacation",
+        "to be enough, suffice (no direct object)",
+        "practice, training"
+      ],
+      "reading": "ぶたにく",
+      "meaning": "pork",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-134",
+      "sourceNoteId": "1621385855236",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "焼く",
+      "answer": "to cook, burn, bake, grill (direct object)",
+      "choices": [
+        "to cook, burn, bake, grill (direct object)",
+        "notebook",
+        "dentist",
+        "part-time job"
+      ],
+      "reading": "やく",
+      "meaning": "to cook, burn, bake, grill (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-135",
+      "sourceNoteId": "1621385855237",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "匂い",
+      "answer": "smell, odor, scent",
+      "choices": [
+        "smell, odor, scent",
+        "department store",
+        "ball",
+        "deep red, bright red, vivid red (な adj noun)"
+      ],
+      "reading": "におい",
+      "meaning": "smell, odor, scent",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-136",
+      "sourceNoteId": "1621385855238",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "付ける",
+      "answer": "to attach, apply, put (on) (direct object を)",
+      "choices": [
+        "to attach, apply, put (on) (direct object を)",
+        "attention, notice, focus",
+        "repair, fixing",
+        "returning home, going home (noun form)"
+      ],
+      "reading": "つける",
+      "meaning": "to attach, apply, put (on) (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-137",
+      "sourceNoteId": "1621385855239",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "痩せる",
+      "answer": "to lose weight, become thin",
+      "choices": [
+        "to lose weight, become thin",
+        "love, affection, care, compassion",
+        "copy, photocopy",
+        "by all means, please (do), definitely"
+      ],
+      "reading": "やせる",
+      "meaning": "to lose weight, become thin",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-138",
+      "sourceNoteId": "1621385855240",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "届ける",
+      "answer": "to deliver, send, report/submit (direct object)",
+      "choices": [
+        "to deliver, send, report/submit (direct object)",
+        "to move, relocate (home or office)",
+        "terrible, dreadful, frightening, awful, terrifying",
+        "summer vacation/break"
+      ],
+      "reading": "とどける",
+      "meaning": "to deliver, send, report/submit (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-139",
+      "sourceNoteId": "1621385855241",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "間に合う",
+      "answer": "to make it on time, be enough, suffice(no direct object)",
+      "choices": [
+        "to make it on time, be enough, suffice(no direct object)",
+        "to refuse, turn down, decline (direct object を)",
+        "cafeteria, dining hall, canteen",
+        "silver (metal)"
+      ],
+      "reading": "まにあう",
+      "meaning": "to make it on time, be enough, suffice(no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-140",
+      "sourceNoteId": "1621385855242",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "向く",
+      "answer": "to turn (toward), face (no direct object)",
+      "choices": [
+        "to turn (toward), face (no direct object)",
+        "shallow, superficial",
+        "greeting, salutation",
+        "to leave (something in someone’s care), entrust (direct object)"
+      ],
+      "reading": "むく",
+      "meaning": "to turn (toward), face (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-141",
+      "sourceNoteId": "1621385855243",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "強さ",
+      "answer": "strength",
+      "choices": [
+        "strength",
+        "egg",
+        "silver (metal)",
+        "last month"
+      ],
+      "reading": "つよさ",
+      "meaning": "strength",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-142",
+      "sourceNoteId": "1621385855244",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "得意",
+      "answer": "(to be) good at, one's specialty (な adj)",
+      "choices": [
+        "(to be) good at, one's specialty (な adj)",
+        "ski, skiing",
+        "last month",
+        "baby"
+      ],
+      "reading": "とくい",
+      "meaning": "(to be) good at, one's specialty (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-143",
+      "sourceNoteId": "1621385855245",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "塗る",
+      "answer": "to spread on, paint, coat (direct object)",
+      "choices": [
+        "to spread on, paint, coat (direct object)",
+        "restaurant",
+        "wine",
+        "(assigned) number"
+      ],
+      "reading": "ぬる",
+      "meaning": "to spread on, paint, coat (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-144",
+      "sourceNoteId": "1621385855246",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "投げる",
+      "answer": "to throw (direct object)",
+      "choices": [
+        "to throw (direct object)",
+        "1. how many times2. how many degrees",
+        "amazing, incredible, great, intense",
+        "memory"
+      ],
+      "reading": "なげる",
+      "meaning": "to throw (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-145",
+      "sourceNoteId": "1621385855247",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "習う",
+      "answer": "to learn, take lessons",
+      "choices": [
+        "to learn, take lessons",
+        "way of speaking, expression",
+        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "summer vacation/break"
+      ],
+      "reading": "ならう",
+      "meaning": "to learn, take lessons",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-146",
+      "sourceNoteId": "1621385855248",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "注目",
+      "answer": "attention, notice, focus",
+      "choices": [
+        "attention, notice, focus",
+        "color (loan word)",
+        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "shallow, superficial"
+      ],
+      "reading": "ちゅうもく",
+      "meaning": "attention, notice, focus",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-147",
+      "sourceNoteId": "1621385855249",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "未来",
+      "answer": "future",
+      "choices": [
+        "future",
+        "to lay (out), spread (direct object を)",
+        "last month",
+        "strong, concentrated, thick, dense, deep, rich"
+      ],
+      "reading": "みらい",
+      "meaning": "future",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-148",
+      "sourceNoteId": "1621385855250",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "箱",
+      "answer": "box, case, container",
+      "choices": [
+        "box, case, container",
+        "Fine, Elegant, Magnificent (な adj)",
+        "restaurant",
+        "to be enough, suffice (no direct object)"
+      ],
+      "reading": "はこ",
+      "meaning": "box, case, container",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-149",
+      "sourceNoteId": "1621385855251",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "右手",
+      "answer": "right hand, the right hand side",
+      "choices": [
+        "right hand, the right hand side",
+        "that much, so much, such",
+        "cow, cattle, bull, ox",
+        "a moment, a short period of time"
+      ],
+      "reading": "みぎて",
+      "meaning": "right hand, the right hand side",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-150",
+      "sourceNoteId": "1621385855252",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "左手",
+      "answer": "left hand",
+      "choices": [
+        "left hand",
+        "air temperature",
+        "driver",
+        "round trip, back and forth"
+      ],
+      "reading": "ひだりて",
+      "meaning": "left hand",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-151",
+      "sourceNoteId": "1621385855253",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "プール",
+      "answer": "pool",
+      "choices": [
+        "pool",
+        "coat, jacket (loan word)",
+        "to break (something), destroy (direct object を)",
+        "to inquire, ask (direct object)(formal)"
+      ],
+      "reading": "ぷーる",
+      "meaning": "pool",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-152",
+      "sourceNoteId": "1621385855254",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ピアノ",
+      "answer": "piano",
+      "choices": [
+        "piano",
+        "black (color)",
+        "hobby, taste, pastime, interest",
+        "happiness (casual) (な adj)"
+      ],
+      "reading": "ぴあの",
+      "meaning": "piano",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-153",
+      "sourceNoteId": "1621385855255",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "光る",
+      "answer": "to shine, sparkle, glow, emit light, glitter (no direct object)",
+      "choices": [
+        "to shine, sparkle, glow, emit light, glitter (no direct object)",
+        "way of speaking, expression",
+        "every year (formal)",
+        "left hand"
+      ],
+      "reading": "ひかる",
+      "meaning": "to shine, sparkle, glow, emit light, glitter (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-154",
+      "sourceNoteId": "1621385855256",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "踏む",
+      "answer": "to step on, tread on (direct object)",
+      "choices": [
+        "to step on, tread on (direct object)",
+        "memo, note",
+        "memory",
+        "ceiling"
+      ],
+      "reading": "ふむ",
+      "meaning": "to step on, tread on (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-155",
+      "sourceNoteId": "1621385855257",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "別々",
+      "answer": "separately",
+      "choices": [
+        "separately",
+        "camping, camp",
+        "normally, usually, generally, ordinarily, habitually",
+        "to see (someone) off, send someone off (direct object)"
+      ],
+      "reading": "べつべつ",
+      "meaning": "separately",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-156",
+      "sourceNoteId": "1621385855258",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ボール",
+      "answer": "ball",
+      "choices": [
+        "ball",
+        "to hit, tap, strike, clap, play (drums)",
+        "silver (metal)",
+        "ceiling"
+      ],
+      "reading": "ぼーる",
+      "meaning": "ball",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-157",
+      "sourceNoteId": "1621385855259",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "握る",
+      "answer": "to grasp, grip, hold (tightly) (direct object)",
+      "choices": [
+        "to grasp, grip, hold (tightly) (direct object)",
+        "bread",
+        "inner part, the back, depths, interior",
+        "baby"
+      ],
+      "reading": "にぎる",
+      "meaning": "to grasp, grip, hold (tightly) (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-158",
+      "sourceNoteId": "1621385855260",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "真っ赤",
+      "answer": "deep red, bright red, vivid red (な adj noun)",
+      "choices": [
+        "deep red, bright red, vivid red (な adj noun)",
+        "to move, relocate (home or office)",
+        "bullet train",
+        "to encounter (something bad), get caught in (no direct object)"
+      ],
+      "reading": "まっか",
+      "meaning": "deep red, bright red, vivid red (な adj noun)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-159",
+      "sourceNoteId": "1621385855261",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "拾う",
+      "answer": "to pick up (direct object を)",
+      "choices": [
+        "to pick up (direct object を)",
+        "card",
+        "contact, communication, notification",
+        "strength"
+      ],
+      "reading": "ひろう",
+      "meaning": "to pick up (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-160",
+      "sourceNoteId": "1621385855262",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "回す",
+      "answer": "to turn, rotate (direct object)",
+      "choices": [
+        "to turn, rotate (direct object)",
+        "trouble, inconvenience, annoyance (な adj/noun)",
+        "(someone else's) wife, married woman",
+        "terrible, dreadful, frightening, awful, terrifying"
+      ],
+      "reading": "まわす",
+      "meaning": "to turn, rotate (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-161",
+      "sourceNoteId": "1621385855263",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ノート",
+      "answer": "notebook",
+      "choices": [
+        "notebook",
+        "transportation fare/fee (for train, taxi, etc)",
+        "silver (metal)",
+        "baby"
+      ],
+      "reading": "のーと",
+      "meaning": "notebook",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-162",
+      "sourceNoteId": "1621385855264",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "辞める",
+      "answer": "to quit (one’s job), resign, leave(no direct object)",
+      "choices": [
+        "to quit (one’s job), resign, leave(no direct object)",
+        "section, division",
+        "future",
+        "elementary school student"
+      ],
+      "reading": "やめる",
+      "meaning": "to quit (one’s job), resign, leave(no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-163",
+      "sourceNoteId": "1621385855265",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "揺れる",
+      "answer": "to shake (back and forth), sway, tremble (no direct object が)",
+      "choices": [
+        "to shake (back and forth), sway, tremble (no direct object が)",
+        "weight",
+        "1. how many times2. how many degrees",
+        "department store"
+      ],
+      "reading": "ゆれる",
+      "meaning": "to shake (back and forth), sway, tremble (no direct object が)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-164",
+      "sourceNoteId": "1621385855266",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "立派",
+      "answer": "Fine, Elegant, Magnificent (な adj)",
+      "choices": [
+        "Fine, Elegant, Magnificent (な adj)",
+        "1. how many times2. how many degrees",
+        "sudden, urgent, steep (な adj)",
+        "hobby, taste, pastime, interest"
+      ],
+      "reading": "りっぱ",
+      "meaning": "Fine, Elegant, Magnificent (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-165",
+      "sourceNoteId": "1621385855267",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "練習",
+      "answer": "practice, training",
+      "choices": [
+        "practice, training",
+        "to refuse, turn down, decline (direct object を)",
+        "summer vacation/break",
+        "baby"
+      ],
+      "reading": "れんしゅう",
+      "meaning": "practice, training",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-166",
+      "sourceNoteId": "1621385855268",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "割る",
+      "answer": "to crack, split, break, shatter (direct object)",
+      "choices": [
+        "to crack, split, break, shatter (direct object)",
+        "to grasp, grip, hold (tightly) (direct object)",
+        "subway",
+        "order"
+      ],
+      "reading": "わる",
+      "meaning": "to crack, split, break, shatter (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-167",
+      "sourceNoteId": "1621385855269",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "部分",
+      "answer": "part, section, portion",
+      "choices": [
+        "part, section, portion",
+        "guidance, guide, showing/leading the way",
+        "air temperature",
+        "section, division"
+      ],
+      "reading": "ぶぶん",
+      "meaning": "part, section, portion",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-168",
+      "sourceNoteId": "1621385855270",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "拭く",
+      "answer": "to wipe, dry(direct object を)",
+      "choices": [
+        "to wipe, dry(direct object を)",
+        "deep red, bright red, vivid red (な adj noun)",
+        "earlier, recently, just now, a little while ago",
+        "to be enough, suffice (no direct object)"
+      ],
+      "reading": "ふく",
+      "meaning": "to wipe, dry(direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-169",
+      "sourceNoteId": "1621385855271",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "招く",
+      "answer": "to invite (direct object)",
+      "choices": [
+        "to invite (direct object)",
+        "motorbike, motorcycle (formal)",
+        "trouble, inconvenience, annoyance (な adj/noun)",
+        "to visit (a place)(no direct object)"
+      ],
+      "reading": "まねく",
+      "meaning": "to invite (direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-170",
+      "sourceNoteId": "1621385855272",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "急",
+      "answer": "sudden, urgent, steep (な adj)",
+      "choices": [
+        "sudden, urgent, steep (な adj)",
+        "to tear, break, breach, defeat, violate",
+        "hobby, taste, pastime, interest",
+        "air temperature"
+      ],
+      "reading": "きゅう",
+      "meaning": "sudden, urgent, steep (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-171",
+      "sourceNoteId": "1621385855273",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "汚れる",
+      "answer": "to become dirty, become stained, get soiled",
+      "choices": [
+        "to become dirty, become stained, get soiled",
+        "normally, usually, generally, ordinarily, habitually",
+        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "to be built, be erected, stand (no direct object が)"
+      ],
+      "reading": "よごれる",
+      "meaning": "to become dirty, become stained, get soiled",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-172",
+      "sourceNoteId": "1621385855274",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "渡る",
+      "answer": "to cross, go across (no direct object)",
+      "choices": [
+        "to cross, go across (no direct object)",
+        "strong, concentrated, thick, dense, deep, rich",
+        "normally, usually, generally, ordinarily, habitually",
+        "shoes"
+      ],
+      "reading": "わたる",
+      "meaning": "to cross, go across (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-173",
+      "sourceNoteId": "1621385855275",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "途中",
+      "answer": "on the way, half way, in the middle of",
+      "choices": [
+        "on the way, half way, in the middle of",
+        "air temperature",
+        "to hit, tap, strike, clap, play (drums)",
+        "to crack, split, break, shatter (direct object)"
+      ],
+      "reading": "とちゅう",
+      "meaning": "on the way, half way, in the middle of",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-174",
+      "sourceNoteId": "1621385855276",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "インタビュー",
+      "answer": "interview",
+      "choices": [
+        "interview",
+        "way, method, how to do something",
+        "pool",
+        "to break (something), destroy (direct object を)"
+      ],
+      "reading": "いんたびゅー",
+      "meaning": "interview",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-175",
+      "sourceNoteId": "1621385855277",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "盗む",
+      "answer": "to steal, rob (direct object を)",
+      "choices": [
+        "to steal, rob (direct object を)",
+        "festival, celebration",
+        "way, method, how to do something",
+        "weight"
+      ],
+      "reading": "ぬすむ",
+      "meaning": "to steal, rob (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-176",
+      "sourceNoteId": "1621385855278",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "普段",
+      "answer": "normally, usually, generally, ordinarily, habitually",
+      "choices": [
+        "normally, usually, generally, ordinarily, habitually",
+        "to hit, tap, strike, clap, play (drums)",
+        "earlier, recently, just now, a little while ago",
+        "to steal, rob (direct object を)"
+      ],
+      "reading": "ふだん",
+      "meaning": "normally, usually, generally, ordinarily, habitually",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-177",
+      "sourceNoteId": "1621385855279",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "旅館",
+      "answer": "traditional Japanese inn",
+      "choices": [
+        "traditional Japanese inn",
+        "every year (formal)",
+        "coat, jacket (loan word)",
+        "terrible, dreadful, frightening, awful, terrifying"
+      ],
+      "reading": "りょかん",
+      "meaning": "traditional Japanese inn",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-178",
+      "sourceNoteId": "1621385855280",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "博物館",
+      "answer": "museum",
+      "choices": [
+        "museum",
+        "to inquire, ask (direct object)(formal)",
+        "a moment, a short period of time",
+        "intimate, close"
+      ],
+      "reading": "はくぶつかん",
+      "meaning": "museum",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-179",
+      "sourceNoteId": "1621385855281",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ホーム",
+      "answer": "platform (trains)",
+      "choices": [
+        "platform (trains)",
+        "to refuse, turn down, decline (direct object を)",
+        "to throw (direct object)",
+        "to swim"
+      ],
+      "reading": "ほーむ",
+      "meaning": "platform (trains)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-180",
+      "sourceNoteId": "1621385855282",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "引っ越す",
+      "answer": "to move, relocate (home or office)",
+      "choices": [
+        "to move, relocate (home or office)",
+        "air temperature",
+        "shallow, superficial",
+        "bullet train"
+      ],
+      "reading": "ひっこす",
+      "meaning": "to move, relocate (home or office)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-181",
+      "sourceNoteId": "1621385855283",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "荷物",
+      "answer": "luggage, baggage, package, load",
+      "choices": [
+        "luggage, baggage, package, load",
+        "part, section, portion",
+        "day off, holiday, break, short vacation",
+        "pool"
+      ],
+      "reading": "にもつ",
+      "meaning": "luggage, baggage, package, load",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-182",
+      "sourceNoteId": "1621385855284",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "家賃",
+      "answer": "rent (for a place to live)",
+      "choices": [
+        "rent (for a place to live)",
+        "to set up, put together, assemble (direct object)",
+        "to bloom, blossom",
+        "way, method, how to do something"
+      ],
+      "reading": "やちん",
+      "meaning": "rent (for a place to live)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-183",
+      "sourceNoteId": "1621385855285",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "計画",
+      "answer": "plan",
+      "choices": [
+        "plan",
+        "to kick (direct object)",
+        "weight",
+        "camping, camp"
+      ],
+      "reading": "けいかく",
+      "meaning": "plan",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-184",
+      "sourceNoteId": "1621385855286",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "廊下",
+      "answer": "hallway, corridor",
+      "choices": [
+        "hallway, corridor",
+        "ball",
+        "rent (for a place to live)",
+        "Fine, Elegant, Magnificent (な adj)"
+      ],
+      "reading": "ろうか",
+      "meaning": "hallway, corridor",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-185",
+      "sourceNoteId": "1621385855287",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "天井",
+      "answer": "ceiling",
+      "choices": [
+        "ceiling",
+        "long time (no see), after a long time",
+        "to quit (one’s job), resign, leave(no direct object)",
+        "earlier, recently, just now, a little while ago"
+      ],
+      "reading": "てんじょう",
+      "meaning": "ceiling",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-186",
+      "sourceNoteId": "1621385855288",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ベッド",
+      "answer": "bed",
+      "choices": [
+        "bed",
+        "cat",
+        "baby",
+        "the year before last"
+      ],
+      "reading": "べっど",
+      "meaning": "bed",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-187",
+      "sourceNoteId": "1621385855289",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ソファー",
+      "answer": "sofa, couch",
+      "choices": [
+        "sofa, couch",
+        "pool",
+        "to break (something), destroy (direct object を)",
+        "to be built, be erected, stand (no direct object が)"
+      ],
+      "reading": "そふぁー",
+      "meaning": "sofa, couch",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-188",
+      "sourceNoteId": "1621385855290",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "屋根",
+      "answer": "roof",
+      "choices": [
+        "roof",
+        "divorce",
+        "to encounter (something bad), get caught in (no direct object)",
+        "to smoke, inhale, suck (straw, etc)"
+      ],
+      "reading": "やね",
+      "meaning": "roof",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-189",
+      "sourceNoteId": "1621385855291",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "祭り",
+      "answer": "festival, celebration",
+      "choices": [
+        "festival, celebration",
+        "pool",
+        "to bloom, blossom",
+        "motorbike, motorcycle (formal)"
+      ],
+      "reading": "まつり",
+      "meaning": "festival, celebration",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-190",
+      "sourceNoteId": "1621385855292",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "離婚",
+      "answer": "divorce",
+      "choices": [
+        "divorce",
+        "normally, usually, generally, ordinarily, habitually",
+        "relation, relationship, connection",
+        "to invite (direct object)"
+      ],
+      "reading": "りこん",
+      "meaning": "divorce",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-191",
+      "sourceNoteId": "1621385855293",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "葉",
+      "answer": "leaf",
+      "choices": [
+        "leaf",
+        "motorbike, motorcycle (formal)",
+        "you (referring to fellows or subordinates)",
+        "earlier, recently, just now, a little while ago"
+      ],
+      "reading": "は",
+      "meaning": "leaf",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-192",
+      "sourceNoteId": "1621385855294",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "ボート",
+      "answer": "small boat, small craft",
+      "choices": [
+        "small boat, small craft",
+        "deep red, bright red, vivid red (な adj noun)",
+        "to break (something), destroy (direct object を)",
+        "to be raised, grow (up), be brought up (no direct object)"
+      ],
+      "reading": "ぼーと",
+      "meaning": "small boat, small craft",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-193",
+      "sourceNoteId": "1621385855295",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "燃える",
+      "answer": "to burn, catch on fire (no direct object)",
+      "choices": [
+        "to burn, catch on fire (no direct object)",
+        "inside, interior, inner side",
+        "way, method, how to do something",
+        "returning home, going home (noun form)"
+      ],
+      "reading": "もえる",
+      "meaning": "to burn, catch on fire (no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-194",
+      "sourceNoteId": "1621385855296",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "巻く",
+      "answer": "to roll up, wrap (direct object を)",
+      "choices": [
+        "to roll up, wrap (direct object を)",
+        "bed",
+        "cat",
+        "terrible, awful, cruel"
+      ],
+      "reading": "まく",
+      "meaning": "to roll up, wrap (direct object を)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-195",
+      "sourceNoteId": "1621385855297",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "プラスチック",
+      "answer": "plastic",
+      "choices": [
+        "plastic",
+        "summer vacation/break",
+        "traffic accident",
+        "Fine, Elegant, Magnificent (な adj)"
+      ],
+      "reading": "ぷらすちっく",
+      "meaning": "plastic",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-196",
+      "sourceNoteId": "1621385855298",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "訪れる",
+      "answer": "to visit (a place)(no direct object)",
+      "choices": [
+        "to visit (a place)(no direct object)",
+        "to leave (something in someone’s care), entrust (direct object)",
+        "to burn, catch on fire (no direct object)",
+        "future"
+      ],
+      "reading": "おとずれる",
+      "meaning": "to visit (a place)(no direct object)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-197",
+      "sourceNoteId": "1621385855299",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "phrase",
+      "prompt": "破る",
+      "answer": "to tear, break, breach, defeat, violate",
+      "choices": [
+        "to tear, break, breach, defeat, violate",
+        "to go down, drop (in height) (no direct object が)",
+        "to shake (back and forth), sway, tremble (no direct object が)",
+        "trouble, inconvenience, annoyance (な adj/noun)"
+      ],
+      "reading": "やぶる",
+      "meaning": "to tear, break, breach, defeat, violate",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-198",
+      "sourceNoteId": "1621385855300",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "関係",
+      "answer": "relation, relationship, connection",
+      "choices": [
+        "relation, relationship, connection",
+        "kind, considerate, kindhearted, gentle (な adj)",
+        "hallway, corridor",
+        "inside, interior, inner side"
+      ],
+      "reading": "かんけい",
+      "meaning": "relation, relationship, connection",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-199",
+      "sourceNoteId": "1621385855301",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "不幸",
+      "answer": "unhappiness, misfortune (な adj)",
+      "choices": [
+        "unhappiness, misfortune (な adj)",
+        "to set up, put together, assemble (direct object)",
+        "coat, jacket (loan word)",
+        "picture, painting, drawing"
+      ],
+      "reading": "ふこう",
+      "meaning": "unhappiness, misfortune (な adj)",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-200",
+      "sourceNoteId": "1621385855302",
+      "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
+      "type": "vocab",
+      "prompt": "録音",
+      "answer": "(sound) recording",
+      "choices": [
+        "(sound) recording",
+        "to shake (back and forth), sway, tremble (no direct object が)",
+        "traffic accident",
+        "sudden, urgent, steep (な adj)"
+      ],
+      "reading": "ろくおん",
+      "meaning": "(sound) recording",
+      "tags": [
+        "core2000",
+        "imported",
+        "vocab-core"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "stock_the_stall",
+    "title": "Stock the Stall",
+    "giver": "Mako",
+    "desc": "Mako wants forage for her stall shelves. Spar the Spore Mushroom south of town — it always drops a cap — and bring her three.",
+    "goal": { "item": "spore_cap", "qty": 3 },
+    "reward": { "coins": 40, "items": [{ "id": "rice_ball", "qty": 2 }] },
+    "offerLines": ["My shelves are bare, actually — care to help?", "Bring me three spore caps and I will pay well. The mushroom south of town drops one every time."],
+    "progressLines": ["Those spore caps — {progress} of {goal} so far?", "The mushroom south of town drops one every single time. Easy money."],
+    "turnInLines": ["Three spore caps! Fresh ones, too — the shelves thank you."]
+  },
+  {
+    "id": "river_guard",
+    "title": "River Guard",
+    "giver": "Mako",
+    "desc": "Mako heard the Whispering Woods kappa leaves behind scales tough enough to plate a bracer. Bring her two.",
+    "goal": { "item": "kappa_scale", "qty": 2 },
+    "reward": { "coins": 20, "items": [{ "id": "kappa_scale_guard", "qty": 1 }] },
+    "offerLines": ["Since you're headed into the Whispering Woods anyway — the kappa there leave behind scales, slick and tough.", "Bring me two and I'll have a bracer plated for you. Better than anything I stock."],
+    "progressLines": ["Kappa scales — {progress} of {goal}. The river kappa east in the woods always drops one."],
+    "turnInLines": ["Two scales, and good ones. Here, I had this plated while you were out."]
+  },
+  {
+    "id": "smiths_first_order",
+    "title": "A Smith's First Order",
+    "giver": "Kaji",
+    "desc": "Kaji needs a refined iron ingot to repair the guild anvil. Mine ore in Mountain Pass, refine it at a forge, then bring the ingot back.",
+    "goal": { "item": "iron_ingot", "qty": 1 },
+    "reward": { "coins": 65, "items": [{ "id": "raw_iron_ore", "qty": 3 }] },
+    "offerLines": ["A forge is only as good as its anvil.", "Bring me one iron ingot. Ore from Mountain Pass must be refined here first."],
+    "progressLines": ["I still need that iron ingot. Mine three raw ore, then use the forge's refining recipe."],
+    "turnInLines": ["Clean grain, even heat. This ingot will hold. You have the hands for this work."]
+  },
+  {
+    "id": "east_spirit_gather",
+    "title": "Spiritwood Gathering",
+    "giver": "Elder Rowan",
+    "desc": "Elder Rowan needs spirit essence from the wraiths haunting the Eastern Reach ruins. Bring him three.",
+    "goal": { "item": "spirit_essence", "qty": 3 },
+    "reward": { "coins": 80, "items": [{ "id": "trail_elixir", "qty": 2 }] },
+    "offerLines": ["The ruins stir with old spirits — not all rest easily.", "Bring me three spirit essences from the wraiths here. I can brew something useful from them."],
+    "progressLines": ["Spirit essence — {progress} of {goal}. The wraiths drift near the old shrine stones."],
+    "turnInLines": ["Yes, this will do nicely. Here — a trail elixir for the road ahead."]
+  },
+  {
+    "id": "east_moonwood_trade",
+    "title": "Moonwood for the Shrine",
+    "giver": "Elder Rowan",
+    "desc": "Elder Rowan wants to repair the collapsed shrine. He needs two moonwood to begin the restoration.",
+    "goal": { "item": "moonwood", "qty": 2 },
+    "reward": { "coins": 120, "items": [{ "id": "moonbroth", "qty": 2 }] },
+    "offerLines": ["The shrine shortcut collapsed long ago. I can reopen it — but I need moonwood.", "Refine it at a workshop from bamboo and essence. Bring me two pieces."],
+    "progressLines": ["Moonwood — {progress} of {goal}. The workshop can refine it from bamboo shoots and spirit essence."],
+    "turnInLines": ["Beautiful grain. The shrine will stand again. Take this broth — it will keep you warm on deeper roads."]
+  },
+  {
+    "id": "east_shrine_restoration",
+    "title": "Shrine Restoration",
+    "giver": "Elder Rowan",
+    "desc": "Elder Rowan asks you to defeat the ruin's guardian — the Elder Wraith — and bring back proof: one elder core.",
+    "goal": { "item": "elder_core", "qty": 1 },
+    "reward": { "coins": 200, "items": [{ "id": "shrine_charm", "qty": 1 }] },
+    "offerLines": ["The shrine's heart still holds a guardian — an Elder Wraith, older than the stones.", "Defeat it and bring me its core. The shrine cannot be fully restored while it lingers."],
+    "progressLines": ["The Elder Wraith still guards the ruin heart. {progress}/{goal} elder cores — it rarely drops one, so be persistent."],
+    "turnInLines": ["The core pulses, then stills. The shrine is clean. Take this charm — it was carved from the same stone."]
+  },
+  {
+    "id": "north_frost_gather",
+    "title": "Frost Essences",
+    "giver": "Sven",
+    "desc": "Sven needs frost essence from the creatures roaming the Northern Reach. Bring him three.",
+    "goal": { "item": "frost_essence", "qty": 3 },
+    "reward": { "coins": 90, "items": [{ "id": "frost_broth", "qty": 2 }] },
+    "offerLines": ["The ridge is alive with frost-touched creatures — wolves, boars, spiders.", "Bring me three frost essences from the beasts here. I can brew a warming broth from them."],
+    "progressLines": ["Frost essence — {progress} of {goal}. The wolves and boars carry it in their bones."],
+    "turnInLines": ["Good, good. Still cold. Here — a broth to keep the frost out of your own bones."]
+  },
+  {
+    "id": "north_pelt_trade",
+    "title": "Boreal Pelts for the Outpost",
+    "giver": "Sven",
+    "desc": "Sven wants to line the outpost walls with thick boreal pelts. Bring him two from the northern predators.",
+    "goal": { "item": "boreal_pelt", "qty": 2 },
+    "reward": { "coins": 140, "items": [{ "id": "bear_greaves", "qty": 1 }] },
+    "offerLines": ["The outpost walls are thin — wind cuts right through.", "Bring me two boreal pelts from the predators up here. I will line the walls and have enough left for proper greaves."],
+    "progressLines": ["Boreal pelts — {progress} of {goal}. The frost wolves and ice boars shed them most reliably."],
+    "turnInLines": ["Thick and warm. The outpost will hold through the next storm. Here, these greaves are your size."]
+  },
+  {
+    "id": "north_titan_hunt",
+    "title": "The Frost Titan",
+    "giver": "Sven",
+    "desc": "Sven asks you to summon and defeat the Frost Titan — the ancient guardian of the Northern Reach — and bring back its frost core.",
+    "goal": { "item": "frost_core", "qty": 1 },
+    "reward": { "coins": 250, "items": [{ "id": "boreal_charm", "qty": 1 }] },
+    "offerLines": ["The ridge has a guardian — a Frost Titan, older than the snow itself.", "Summon it at the circle north of the outpost. Defeat it and bring me its core. The Reach will never be safe while it sleeps."],
+    "progressLines": ["The Frost Titan still waits at the summoning circle. {progress}/{goal} frost cores — it rarely drops one, so be persistent."],
+    "turnInLines": ["The core is cold enough to numb my hand. The ridge is quiet now — truly quiet. Take this charm. It was carved from frost-touched bone by the first rangers."]
+  },
+  {
+    "id": "blue_scale_route",
+    "title": "Blue Scale Route",
+    "giver": "Mako",
+    "desc": "Mako wants proof that the Frostpine trade road is viable. Bring one blue dragon scale from a Glacial Drake.",
+    "goal": { "item": "blue_dragon_scale", "qty": 1 },
+    "reward": { "coins": 180, "items": [{ "id": "storm_tonic", "qty": 2 }] },
+    "offerLines": ["Traders keep calling Frostpine too dangerous. I call it expensive.", "Bring me one blue dragon scale from a Glacial Drake and I can price the route honestly."],
+    "progressLines": ["One blue scale. Glacial Drakes patrol the upper Frostpine ridge."],
+    "turnInLines": ["Cold, clean, and intact. This changes the whole northern price sheet."]
+  },
+  {
+    "id": "scale_spectrum",
+    "title": "The Scale Spectrum",
+    "giver": "Kaji",
+    "desc": "Kaji is cataloguing dragon affinities. Bring three green scales from Lesser Dragons or Tyrant Lizards.",
+    "goal": { "item": "dragon_scale", "qty": 3 },
+    "reward": { "coins": 160, "items": [{ "id": "silver_dragon_scale", "qty": 1 }] },
+    "offerLines": ["Dragon colors are not decoration. Green holds life; blue carries focus; silver braces the whole piece.", "Bring me three green scales. I will show you how the grain differs."],
+    "progressLines": ["Green scales: {progress}/{goal}. Lesser Dragons and Tyrant Lizards are the reliable source."],
+    "turnInLines": ["See the fibers under the light? Good. Keep this silver scale as your comparison piece."]
+  },
+  {
+    "id": "red_tempering",
+    "title": "Red Tempering",
+    "giver": "Kaji",
+    "desc": "Kaji needs one red dragon scale to prove the apex Dragon Scale forging method.",
+    "goal": { "item": "red_dragon_scale", "qty": 1 },
+    "reward": { "coins": 300, "items": [{ "id": "starsteel", "qty": 2 }] },
+    "offerLines": ["Red scale carries force straight through the metal. It is how an apex weapon keeps growing with its wielder.", "Bring me one. Inferno bosses carry them; Raid bosses can very rarely leave one too."],
+    "progressLines": ["Red scales are rare by design. Bosses, not roadside creatures."],
+    "turnInLines": ["That heat is natural. With starsteel around it, the weapon will answer a stronger hand instead of becoming obsolete."]
+  },
+  {
+    "id": "karim_caravan_supplies",
+    "title": "Karim's Caravan Supplies",
+    "giver": "south_trader",
+    "desc": "Karim needs iron ingots to secure the caravan wheels for the journey across the Southern Reach wastes.",
+    "goal": { "item": "iron_ingot", "qty": 3 },
+    "reward": { "coins": 200, "items": [{ "id": "wild_herb", "qty": 5 }] },
+    "offerLines": ["The road to Basalt Ridge is rocky. My caravan wheels need fresh iron bands.", "Bring me three iron ingots. I have surplus woodland herbs to trade."],
+    "progressLines": ["Caravan wheels need three ingots. Do you have them?"],
+    "turnInLines": ["Excellent. These bands will hold. Take these fresh herbs for your journey."]
+  },
+  {
+    "id": "karim_desert_ward",
+    "title": "The Desert Monolith",
+    "giver": "south_trader",
+    "desc": "Craft a Fire Ward Amulet to help Karim withstand the canyon temperatures.",
+    "goal": { "item": "fire_ward_amulet", "qty": 1 },
+    "reward": { "coins": 300, "items": [{ "id": "trail_elixir", "qty": 3 }] },
+    "offerLines": ["The heat is climbing near the ruins. A Fire Ward Amulet would secure my scouting run.", "Craft one using flame embers, bronze ingots, and a jade ring at a guild workshop."],
+    "progressLines": ["Need one Fire Ward Amulet. Basalt and flame hold the key."],
+    "turnInLines": ["Ah, the stone is cool to the touch. This ward will let me reach the monolith safely. Take these elixirs."]
+  },
+  {
+    "id": "kaji_copper_testing",
+    "title": "Copper Forging",
+    "giver": "Kaji",
+    "desc": "Kaji wants to test your smelting skill. Smelt two bronze ingots using copper and iron.",
+    "goal": { "item": "bronze_ingot", "qty": 2 },
+    "reward": { "coins": 80, "items": [{ "id": "copper_ore", "qty": 5 }] },
+    "offerLines": ["Bronze is the beginning of the alloy path. Smelt copper ore and iron ore together at my forge.", "Smelt two bronze ingots and bring them here. Show me your hand is steady."],
+    "progressLines": ["Two bronze ingots. Copper and iron seams in the woods are the raw source."],
+    "turnInLines": ["Perfect smelting color. You are ready for the forge's deeper plans. Keep these copper chunks for your next run."]
+  },
+  {
+    "id": "karim_canyon_golem_hunt",
+    "title": "Canyon Golem Survey",
+    "giver": "south_trader",
+    "desc": "Karim needs starsteel from the Canyon Golems roaming the basalt ridge. Bring him two pieces to reinforce the caravan axles.",
+    "goal": { "item": "starsteel", "qty": 2 },
+    "reward": { "coins": 350, "items": [{ "id": "iron_maul", "qty": 1 }] },
+    "offerLines": ["The basalt ridge is crawling with Canyon Golems — their hides carry starsteel veins.", "Bring me two pieces and I can reinforce the caravan axles for the deep wastes. I will trade you a fine iron maul for the trouble."],
+    "progressLines": ["Canyon Golems drop starsteel — {progress} of {goal}. They roam the ridge south of the oasis."],
+    "turnInLines": ["Pure vein starsteel. The axles will hold through the worst of it. Here — this maul has seen more canyons than either of us."]
+  },
+  {
+    "id": "karim_dune_tyrant_crown",
+    "title": "The Dune Tyrant's Crown",
+    "giver": "south_trader",
+    "desc": "Karim wants proof the Dune Tyrant is defeated. Bring him one crown shard from the boss at the basalt ridge.",
+    "goal": { "item": "crown_shard", "qty": 1 },
+    "reward": { "coins": 500, "items": [{ "id": "stormglass_edge", "qty": 1 }] },
+    "offerLines": ["The Dune Tyrant rules the basalt ridge — a crown of fused sand and bone.", "Summon it at the circle on the ridge. Bring me one crown shard and the southern road is safe. I will give you a stormglass edge for the trade."],
+    "progressLines": ["The Dune Tyrant still rules the ridge. {progress}/{goal} crown shards — it rarely drops one, so be persistent."],
+    "turnInLines": ["The shard is warm still. The wastes are quiet for the first time in years. Take this stormglass edge — it was carved from a golem's heart."]
+  },
+  {
+    "id": "east_watcher_lens",
+    "title": "The Watcher's Lens",
+    "giver": "Elder Rowan",
+    "desc": "Elder Rowan wants to study the Watcher Eyes that drift through the Eastern Reach ruins. Bring him three eye lenses.",
+    "goal": { "item": "eye_lens", "qty": 3 },
+    "reward": { "coins": 150, "items": [{ "id": "spirit_amulet", "qty": 1 }] },
+    "offerLines": ["The Watcher Eyes see more than they should — old ruins, old roads, old sins.", "Bring me three of their lenses. I can read the inscriptions they have stared at for centuries. A spirit amulet for your trouble."],
+    "progressLines": ["Watcher lenses — {progress} of {goal}. The eyes drift near the ruin heart and the watcher circles."],
+    "turnInLines": ["Each lens holds a fragment of the old script. This amulet was carved from a similar lens — it will guard you on deeper roads."]
+  }
+]

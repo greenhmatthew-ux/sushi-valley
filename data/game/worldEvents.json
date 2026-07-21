@@ -1,0 +1,226 @@
+{
+  "rules": {
+    "minimumCollisionClearance": 0,
+    "minimumStaticEntityClearance": 32,
+    "minimumRuntimeReservedClearance": 32,
+    "minimumPathDistance": 0,
+    "maximumPathDistance": 128,
+    "pathTileFrames": [
+      110,
+      111,
+      112,
+      113,
+      114,
+      485
+    ]
+  },
+  "runtimeReserved": {
+    "ValleyHub": [
+      {
+        "id": "seed_seller",
+        "x": 416,
+        "y": 320
+      },
+      {
+        "id": "valley_titan_circle",
+        "x": 640,
+        "y": 352
+      },
+      {
+        "id": "irrigation",
+        "x": 424,
+        "y": 384
+      },
+      {
+        "id": "farm_plot_west",
+        "x": 448,
+        "y": 384
+      },
+      {
+        "id": "farm_plot_east",
+        "x": 514,
+        "y": 406
+      },
+      {
+        "id": "guild_herbs",
+        "x": 544,
+        "y": 416
+      },
+      {
+        "id": "hana_garden_stop",
+        "x": 528,
+        "y": 352
+      }
+    ],
+    "MountainPass": [
+      {
+        "id": "field_smith",
+        "x": 96,
+        "y": 246
+      },
+      {
+        "id": "field_forge",
+        "x": 126,
+        "y": 246
+      },
+      {
+        "id": "iron_seam",
+        "x": 472,
+        "y": 244
+      },
+      {
+        "id": "stormglass_vein",
+        "x": 620,
+        "y": 96
+      },
+      {
+        "id": "starsteel_fall",
+        "x": 632,
+        "y": 280
+      },
+      {
+        "id": "crown_crystal",
+        "x": 350,
+        "y": 76
+      },
+      {
+        "id": "mountain_king_circle",
+        "x": 336,
+        "y": 336
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "valley_forager",
+      "kind": "exchange",
+      "displayName": "Traveling Forager",
+      "clue": "A traveling forager was seen beside the Valley road.",
+      "levelId": "ValleyHub",
+      "npc": {
+        "name": "Aoi",
+        "texture": "npc_woman",
+        "duty": "Traveling Forager"
+      },
+      "schedule": {
+        "intervalDays": 3,
+        "offsetDay": 2
+      },
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "lessonFocus": "kana-h-row",
+      "request": {
+        "items": [
+          {
+            "id": "wild_herb",
+            "qty": 2
+          }
+        ]
+      },
+      "reward": {
+        "coins": 30,
+        "items": [
+          {
+            "id": "compost",
+            "qty": 2
+          },
+          {
+            "id": "herb_seed",
+            "qty": 3
+          }
+        ]
+      },
+      "unlockFlags": [
+        "world_event_forager_met"
+      ],
+      "discoverySource": "world-event:valley_forager",
+      "anchors": [
+        {
+          "id": "lake_east_bank",
+          "x": 272,
+          "y": 416,
+          "clearanceRadius": 30
+        },
+        {
+          "id": "lake_north_verge",
+          "x": 312,
+          "y": 376,
+          "clearanceRadius": 30
+        },
+        {
+          "id": "garden_lane_meadow",
+          "x": 520,
+          "y": 248,
+          "clearanceRadius": 30
+        }
+      ]
+    },
+    {
+      "id": "mountain_starfall",
+      "kind": "resource",
+      "displayName": "Starfall Vein",
+      "clue": "A blue-white star fell somewhere along Mountain Pass.",
+      "levelId": "MountainPass",
+      "presentation": {
+        "texture": "resource_stormglass",
+        "label": "Inspect the Starfall Vein",
+        "scale": 1.15
+      },
+      "schedule": {
+        "intervalDays": 4,
+        "offsetDay": 3
+      },
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "lessonFocus": "kana-s-row",
+      "request": {
+        "items": []
+      },
+      "reward": {
+        "coins": 12,
+        "items": [
+          {
+            "id": "starfall_shard",
+            "qty": 1
+          },
+          {
+            "id": "raw_iron_ore",
+            "qty": 2
+          }
+        ]
+      },
+      "unlockFlags": [
+        "world_event_starfall_found"
+      ],
+      "discoverySource": "world-event:mountain_starfall",
+      "anchors": [
+        {
+          "id": "west_shelf",
+          "x": 320,
+          "y": 480,
+          "clearanceRadius": 10
+        },
+        {
+          "id": "west_ridge",
+          "x": 280,
+          "y": 320,
+          "clearanceRadius": 10
+        },
+        {
+          "id": "east_shelf",
+          "x": 576,
+          "y": 160,
+          "clearanceRadius": 10
+        }
+      ]
+    }
+  ]
+}

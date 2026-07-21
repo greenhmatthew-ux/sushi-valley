@@ -1,0 +1,781 @@
+[
+  {
+    "id": "mushroom",
+    "name": "Spore Mushroom",
+    "sprite": "enemy_mushroom",
+    "level": 1,
+    "maxHp": 30,
+    "atk": 6,
+    "def": 1,
+    "speed": 3,
+    "xp": 14,
+    "intro": "A grumpy Spore Mushroom puffs up, blocking the trail.",
+    "drops": [
+      {
+        "item": "spore_cap",
+        "chance": 1
+      },
+      {
+        "item": "straw_hat",
+        "chance": 0.3
+      },
+      {
+        "item": "rice_ball",
+        "chance": 0.4
+      }
+    ]
+  },
+  {
+    "id": "kappa",
+    "name": "River Kappa",
+    "sprite": "enemy_kappa",
+    "level": 3,
+    "maxHp": 55,
+    "atk": 9,
+    "def": 4,
+    "speed": 6,
+    "xp": 26,
+    "intro": "A nimble River Kappa hops up, water dish balanced on its head.",
+    "drops": [
+      {
+        "item": "kappa_scale",
+        "chance": 1
+      },
+      {
+        "item": "hakama",
+        "chance": 0.35
+      },
+      {
+        "item": "jade_ring",
+        "chance": 0.15
+      }
+    ]
+  },
+  {
+    "id": "mole",
+    "name": "Tunnel Mole",
+    "sprite": "enemy_mole",
+    "level": 5,
+    "maxHp": 80,
+    "atk": 13,
+    "def": 6,
+    "speed": 4,
+    "xp": 42,
+    "intro": "A Tunnel Mole bursts from the scree, claws first.",
+    "drops": [
+      {
+        "item": "iron_claw",
+        "chance": 1
+      },
+      {
+        "item": "rice_ball",
+        "chance": 0.35
+      },
+      {
+        "item": "omamori_charm",
+        "chance": 0.12
+      }
+    ]
+  },
+  {
+    "id": "tengu",
+    "name": "Mountain Tengu",
+    "sprite": "npc_tengu",
+    "level": 7,
+    "maxHp": 110,
+    "atk": 17,
+    "def": 8,
+    "speed": 9,
+    "xp": 60,
+    "intro": "A Mountain Tengu swoops down, fan raised and eyes sharp.",
+    "drops": [
+      {
+        "item": "tengu_fan",
+        "chance": 0.8
+      },
+      {
+        "item": "iron_geta",
+        "chance": 0.2
+      },
+      {
+        "item": "omamori_charm",
+        "chance": 0.25
+      }
+    ]
+  },
+  {
+    "id": "kitsune",
+    "name": "Shrine Kitsune",
+    "sprite": "enemy_racoon",
+    "level": 4,
+    "rarity": "normal",
+    "zoneHint": "shrine",
+    "maxHp": 70,
+    "atk": 11,
+    "def": 5,
+    "speed": 8,
+    "xp": 34,
+    "intro": "A Shrine Kitsune watches from the torii, tails flickering.",
+    "drops": [
+      { "item": "kitsune_tail", "chance": 0.8 },
+      { "item": "jade_ring", "chance": 0.3 },
+      { "item": "omamori_charm", "chance": 0.2 },
+      { "item": "rice_ball", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "slime",
+    "name": "Green Slime",
+    "sprite": "enemy_slime",
+    "level": 1,
+    "zoneHint": "ValleyHub",
+    "maxHp": 22,
+    "atk": 5,
+    "def": 0,
+    "speed": 2,
+    "xp": 10,
+    "intro": "A Green Slime jiggles menacingly in your path.",
+    "drops": [
+      { "item": "slime_gel", "chance": 1 },
+      { "item": "rice_ball", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "skull",
+    "name": "Floating Skull",
+    "sprite": "enemy_skull",
+    "level": 6,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 90,
+    "atk": 15,
+    "def": 5,
+    "speed": 7,
+    "xp": 48,
+    "intro": "A Floating Skull grins in the dark, eye sockets flickering with malice.",
+    "drops": [
+      { "item": "bone_shard", "chance": 1 },
+      { "item": "omamori_charm", "chance": 0.15 }
+    ]
+  },
+  {
+    "id": "spirit",
+    "name": "Wandering Spirit",
+    "sprite": "enemy_spirit",
+    "level": 5,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 75,
+    "atk": 14,
+    "def": 3,
+    "speed": 8,
+    "xp": 40,
+    "intro": "A Wandering Spirit drifts through the trees, moaning softly.",
+    "drops": [
+      { "item": "spirit_essence", "chance": 0.8 },
+      { "item": "matcha_latte", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "snake",
+    "name": "Grass Snake",
+    "sprite": "enemy_snake",
+    "level": 2,
+    "zoneHint": "ValleyHub",
+    "maxHp": 35,
+    "atk": 7,
+    "def": 2,
+    "speed": 6,
+    "xp": 16,
+    "intro": "A Grass Snake coils in the sun, tongue flicking.",
+    "drops": [
+      { "item": "snake_fang", "chance": 0.9 },
+      { "item": "rice_ball", "chance": 0.25 }
+    ]
+  },
+  {
+    "id": "lantern",
+    "name": "Red Lantern",
+    "sprite": "enemy_lanternred",
+    "level": 4,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 60,
+    "atk": 10,
+    "def": 4,
+    "speed": 5,
+    "xp": 28,
+    "intro": "A Red Lantern bobs in the gloom, its glow unnatural and hungry.",
+    "drops": [
+      { "item": "lantern_oil", "chance": 0.8 },
+      { "item": "omamori_charm", "chance": 0.1 }
+    ]
+  },
+  {
+    "id": "bear",
+    "name": "Cave Bear",
+    "sprite": "enemy_bear",
+    "level": 8,
+    "zoneHint": "MountainPass",
+    "maxHp": 140,
+    "atk": 20,
+    "def": 10,
+    "speed": 5,
+    "xp": 70,
+    "intro": "A Cave Bear rears up, fur matted and claws bared.",
+    "drops": [
+      { "item": "bear_pelt", "chance": 0.8 },
+      { "item": "iron_claw", "chance": 0.4 },
+      { "item": "tempura_set", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "racoon",
+    "name": "Sly Raccoon",
+    "sprite": "enemy_racoon",
+    "level": 3,
+    "zoneHint": "ValleyHub",
+    "maxHp": 45,
+    "atk": 8,
+    "def": 3,
+    "speed": 7,
+    "xp": 20,
+    "intro": "A Sly Raccoon snatches at your pack, chittering defiantly.",
+    "drops": [
+      { "item": "raccoon_tail", "chance": 0.9 },
+      { "item": "rice_ball", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "dragon",
+    "name": "Lesser Dragon",
+    "sprite": "enemy_dragon",
+    "level": 12,
+    "zoneHint": "MountainPass",
+    "maxHp": 200,
+    "atk": 28,
+    "def": 14,
+    "speed": 8,
+    "xp": 120,
+    "intro": "A Lesser Dragon lands with a thud, smoke curling from its nostrils.",
+    "drops": [
+      { "item": "dragon_scale", "chance": 0.8 },
+      { "item": "tengu_fan", "chance": 0.3 },
+      { "item": "iron_geta", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "panda",
+    "name": "Bamboo Panda",
+    "sprite": "enemy_panda",
+    "level": 5,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 100,
+    "atk": 12,
+    "def": 8,
+    "speed": 3,
+    "xp": 38,
+    "intro": "A Bamboo Panda sits chewing stalks, then rises with surprising speed.",
+    "drops": [
+      { "item": "bamboo_shoot", "chance": 1 },
+      { "item": "honey", "chance": 0.4 }
+    ]
+  },
+  {
+    "id": "cyclope",
+    "name": "One-Eyed Cyclops",
+    "sprite": "enemy_cyclope",
+    "level": 9,
+    "zoneHint": "MountainPass",
+    "maxHp": 160,
+    "atk": 22,
+    "def": 12,
+    "speed": 4,
+    "xp": 80,
+    "intro": "A One-Eyed Cyclops stomps into view, its single eye burning red.",
+    "drops": [
+      { "item": "cyclops_eye", "chance": 0.6 },
+      { "item": "iron_claw", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "flam",
+    "name": "Flame Spirit",
+    "sprite": "enemy_flam",
+    "level": 7,
+    "zoneHint": "MountainPass",
+    "maxHp": 95,
+    "atk": 18,
+    "def": 4,
+    "speed": 9,
+    "xp": 55,
+    "intro": "A Flame Spirit dances in the air, trailing embers and ash.",
+    "drops": [
+      { "item": "flame_ember", "chance": 0.9 },
+      { "item": "matcha_latte", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "spider",
+    "name": "Red Spider",
+    "sprite": "enemy_spiderred",
+    "level": 4,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 50,
+    "atk": 11,
+    "def": 2,
+    "speed": 10,
+    "xp": 24,
+    "intro": "A Red Spider drops on a silk line, fangs dripping.",
+    "drops": [
+      { "item": "spider_silk", "chance": 0.9 },
+      { "item": "rice_ball", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "butterfly",
+    "name": "Powder Butterfly",
+    "sprite": "enemy_butterfly",
+    "level": 2,
+    "zoneHint": "ValleyHub",
+    "maxHp": 28,
+    "atk": 6,
+    "def": 1,
+    "speed": 12,
+    "xp": 14,
+    "intro": "A Powder Butterfly flutters by, leaving a trail of irritating spores.",
+    "drops": [
+      { "item": "spore_cap", "chance": 0.7 },
+      { "item": "slime_gel", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "bat",
+    "name": "Cave Bat",
+    "sprite": "enemy_bluebat",
+    "level": 3,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 32,
+    "atk": 9,
+    "def": 1,
+    "speed": 11,
+    "xp": 18,
+    "intro": "A Cave Bat swoops from the canopy, shrieking.",
+    "drops": [
+      { "item": "bat_wing", "chance": 0.8 },
+      { "item": "rice_ball", "chance": 0.15 }
+    ]
+  },
+  {
+    "id": "eye",
+    "name": "Wandering Eye",
+    "sprite": "enemy_eye",
+    "level": 6,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 65,
+    "atk": 13,
+    "def": 4,
+    "speed": 6,
+    "xp": 36,
+    "intro": "A Wandering Eye stares unblinkingly, its iris tracking your every move.",
+    "drops": [
+      { "item": "eye_lens", "chance": 0.7 },
+      { "item": "jade_ring", "chance": 0.1 }
+    ]
+  },
+  {
+    "id": "lizard",
+    "name": "Rock Lizard",
+    "sprite": "enemy_lizard",
+    "level": 5,
+    "zoneHint": "MountainPass",
+    "maxHp": 85,
+    "atk": 12,
+    "def": 7,
+    "speed": 4,
+    "xp": 32,
+    "intro": "A Rock Lizard basks on a warm stone, then hisses as you approach.",
+    "drops": [
+      { "item": "lizard_hide", "chance": 0.9 },
+      { "item": "kappa_scale", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "owl",
+    "name": "Night Owl",
+    "sprite": "enemy_owl",
+    "level": 4,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 55,
+    "atk": 11,
+    "def": 3,
+    "speed": 9,
+    "xp": 26,
+    "intro": "A Night Owl swivels its head, feathers ruffling in silence.",
+    "drops": [
+      { "item": "owl_feather", "chance": 0.8 },
+      { "item": "matcha_latte", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "octopus",
+    "name": "River Octopus",
+    "sprite": "enemy_octopus",
+    "level": 6,
+    "zoneHint": "ValleyHub",
+    "maxHp": 70,
+    "atk": 14,
+    "def": 5,
+    "speed": 5,
+    "xp": 38,
+    "intro": "A River Octopus rises from the water, tentacles writhing.",
+    "drops": [
+      { "item": "octopus_ink", "chance": 0.8 },
+      { "item": "kappa_scale", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "beast",
+    "name": "Wild Beast",
+    "sprite": "enemy_beast",
+    "level": 10,
+    "zoneHint": "MountainPass",
+    "maxHp": 170,
+    "atk": 24,
+    "def": 10,
+    "speed": 8,
+    "xp": 90,
+    "intro": "A Wild Beast circles, hackles raised and fangs bared.",
+    "drops": [
+      { "item": "beast_pelt", "chance": 0.8 },
+      { "item": "iron_claw", "chance": 0.5 },
+      { "item": "tempura_set", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "trex",
+    "name": "Tyrant Lizard",
+    "sprite": "enemy_trex",
+    "level": 14,
+    "zoneHint": "MountainPass",
+    "maxHp": 280,
+    "atk": 32,
+    "def": 18,
+    "speed": 7,
+    "xp": 160,
+    "intro": "A Tyrant Lizard crashes through the rocks, jaws gaping wide.",
+    "drops": [
+      { "item": "dragon_scale", "chance": 0.9 },
+      { "item": "iron_geta", "chance": 0.4 },
+      { "item": "tengu_fan", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "bamboo_warrior",
+    "name": "Bamboo Warrior",
+    "sprite": "enemy_bamboo",
+    "level": 7,
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 110,
+    "atk": 16,
+    "def": 9,
+    "speed": 6,
+    "xp": 52,
+    "intro": "A Bamboo Warrior rises from the grove, stalks creaking like armor.",
+    "drops": [
+      { "item": "bamboo_shoot", "chance": 1 },
+      { "item": "straw_hat", "chance": 0.2 }
+    ]
+  },
+  {
+    "id": "gold_racoon",
+    "name": "Golden Raccoon",
+    "sprite": "enemy_goldracoon",
+    "level": 6,
+    "rarity": "elite",
+    "zoneHint": "ValleyHub",
+    "maxHp": 120,
+    "atk": 14,
+    "def": 6,
+    "speed": 8,
+    "xp": 60,
+    "intro": "A Golden Raccoon shimmers in the light — rarer and tougher than its cousins.",
+    "drops": [
+      { "item": "gold_pelt", "chance": 1 },
+      { "item": "jade_ring", "chance": 0.4 },
+      { "item": "honey", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "skull_blue",
+    "name": "Azure Skull",
+    "sprite": "enemy_skullblue",
+    "level": 8,
+    "rarity": "elite",
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 140,
+    "atk": 19,
+    "def": 7,
+    "speed": 9,
+    "xp": 75,
+    "intro": "An Azure Skull hovers in a cold blue glow, its gaze piercing.",
+    "drops": [
+      { "item": "bone_shard", "chance": 1 },
+      { "item": "spirit_essence", "chance": 0.6 },
+      { "item": "omamori_charm", "chance": 0.3 }
+    ]
+  },
+  {
+    "id": "demon_cyclop",
+    "name": "Demon Cyclops",
+    "sprite": "boss_demoncyclop",
+    "level": 15,
+    "rarity": "boss",
+    "zoneHint": "MountainPass",
+    "maxHp": 350,
+    "atk": 35,
+    "def": 18,
+    "speed": 5,
+    "xp": 200,
+    "intro": "A Demon Cyclops erupts from the rock, its eye a furnace of rage.",
+    "drops": [
+      { "item": "cyclops_eye", "chance": 1 },
+      { "item": "black_dragon_scale", "chance": 0.35 },
+      { "item": "iron_geta", "chance": 0.6 },
+      { "item": "tengu_fan", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "giant_frog",
+    "name": "Giant Frog",
+    "sprite": "boss_giantfrog",
+    "level": 12,
+    "rarity": "boss",
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 300,
+    "atk": 28,
+    "def": 14,
+    "speed": 7,
+    "xp": 180,
+    "intro": "A Giant Frog swells from the marsh, tongue lashing and eyes bulging.",
+    "drops": [
+      { "item": "kappa_scale", "chance": 1 },
+      { "item": "kappa_scale_guard", "chance": 0.5 },
+      { "item": "omamori_charm", "chance": 0.6 }
+    ]
+  },
+  {
+    "id": "giant_bamboo",
+    "name": "Giant Bamboo",
+    "sprite": "boss_giantbamboo",
+    "level": 14,
+    "rarity": "boss",
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 380,
+    "atk": 30,
+    "def": 20,
+    "speed": 4,
+    "xp": 220,
+    "intro": "A Giant Bamboo towers over the grove, roots tearing free like grasping hands.",
+    "drops": [
+      { "item": "bamboo_shoot", "chance": 1 },
+      { "item": "straw_hat", "chance": 0.8 },
+      { "item": "iron_geta", "chance": 0.4 }
+    ]
+  },
+  {
+    "id": "tengu_lord",
+    "name": "Tengu Lord",
+    "sprite": "boss_tengured",
+    "level": 18,
+    "rarity": "boss",
+    "zoneHint": "MountainPass",
+    "maxHp": 450,
+    "atk": 40,
+    "def": 22,
+    "speed": 10,
+    "xp": 300,
+    "intro": "A Tengu Lord descends from the peak, wings spread and fan raised high.",
+    "drops": [
+      { "item": "tengu_fan", "chance": 1 },
+      { "item": "iron_geta", "chance": 0.8 },
+      { "item": "jade_ring", "chance": 0.6 },
+      { "item": "omamori_charm", "chance": 0.8 }
+    ]
+  },
+  {
+    "id": "giant_samurai",
+    "name": "Blue Oni Samurai",
+    "sprite": "boss_giantbluesamurai",
+    "level": 20,
+    "rarity": "boss",
+    "zoneHint": "MountainPass",
+    "maxHp": 550,
+    "atk": 45,
+    "def": 25,
+    "speed": 6,
+    "xp": 400,
+    "intro": "A Blue Oni Samurai blocks the mountain path, blade drawn and eyes cold as ice.",
+    "drops": [
+      { "item": "oni_horn", "chance": 1 },
+      { "item": "iron_geta", "chance": 1 },
+      { "item": "tengu_fan", "chance": 0.8 },
+      { "item": "blue_dragon_scale", "chance": 0.45 }
+    ]
+  },
+  {
+    "id": "giant_squid",
+    "name": "Red Giant Squid",
+    "sprite": "boss_squidred",
+    "level": 16,
+    "rarity": "boss",
+    "zoneHint": "ValleyHub",
+    "maxHp": 400,
+    "atk": 36,
+    "def": 16,
+    "speed": 5,
+    "xp": 260,
+    "intro": "A Red Giant Squid surfaces from the river, tentacles churning the water to foam.",
+    "drops": [
+      { "item": "octopus_ink", "chance": 1 },
+      { "item": "kappa_scale_guard", "chance": 0.6 },
+      { "item": "jade_ring", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "giant_spirit",
+    "name": "Ancient Spirit",
+    "sprite": "boss_giantspirit",
+    "level": 13,
+    "rarity": "boss",
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 320,
+    "atk": 26,
+    "def": 10,
+    "speed": 9,
+    "xp": 200,
+    "intro": "An Ancient Spirit materializes from the mist, form flickering like candlelight.",
+    "drops": [
+      { "item": "spirit_essence", "chance": 1 },
+      { "item": "omamori_charm", "chance": 0.8 },
+      { "item": "kitsune_tail", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "giant_flam",
+    "name": "Inferno Flam",
+    "sprite": "boss_giantflam",
+    "level": 17,
+    "rarity": "boss",
+    "zoneHint": "MountainPass",
+    "maxHp": 380,
+    "atk": 38,
+    "def": 8,
+    "speed": 11,
+    "xp": 280,
+    "intro": "An Inferno Flam erupts in a pillar of fire, heat shimmering the air around it.",
+    "drops": [
+      { "item": "flame_ember", "chance": 1 },
+      { "item": "red_dragon_scale", "chance": 0.3 },
+      { "item": "tengu_fan", "chance": 0.5 }
+    ]
+  },
+  {
+    "id": "valley_titan",
+    "name": "Valley Titan",
+    "sprite": "boss_giantracoon",
+    "level": 5,
+    "rarity": "world-boss",
+    "zoneHint": "ValleyHub",
+    "maxHp": 180,
+    "atk": 18,
+    "def": 8,
+    "speed": 6,
+    "xp": 200,
+    "intro": "The earth trembles. A Valley Titan rises from the gorge, moss-crusted and ancient.",
+    "drops": [
+      { "item": "iron_geta", "chance": 1 },
+      { "item": "omamori_charm", "chance": 0.8 },
+      { "item": "tengu_fan", "chance": 0.5 },
+      { "item": "jade_ring", "chance": 0.5 },
+      { "item": "sovereign_blade", "chance": 0.005 }
+    ]
+  },
+  {
+    "id": "forest_wraith",
+    "name": "Forest Wraith",
+    "sprite": "boss_giantspirit",
+    "level": 8,
+    "rarity": "world-boss",
+    "zoneHint": "WhisperingWoods",
+    "maxHp": 220,
+    "atk": 22,
+    "def": 10,
+    "speed": 10,
+    "xp": 250,
+    "intro": "The canopy darkens. A Forest Wraith materializes from spore-mist and tangled roots.",
+    "drops": [
+      { "item": "straw_hat", "chance": 1 },
+      { "item": "omamori_charm", "chance": 0.6 },
+      { "item": "kitsune_tail", "chance": 0.4 },
+      { "item": "spore_cap", "chance": 1 },
+      { "item": "worldpiercer_bow", "chance": 0.005 }
+    ]
+  },
+  {
+    "id": "mountain_king",
+    "name": "Mountain King",
+    "sprite": "boss_giantredsamurai",
+    "level": 15,
+    "rarity": "world-boss",
+    "zoneHint": "MountainPass",
+    "maxHp": 300,
+    "atk": 30,
+    "def": 18,
+    "speed": 5,
+    "xp": 500,
+    "intro": "The peak rumbles. The Mountain King rises — a Red Oni of terrible size, crowned in stone.",
+    "drops": [
+      { "item": "oni_horn", "chance": 1 },
+      { "item": "gold_dragon_scale", "chance": 0.35 },
+      { "item": "iron_geta", "chance": 1 },
+      { "item": "tengu_fan", "chance": 0.8 },
+      { "item": "titan_maul", "chance": 0.005 },
+      { "item": "living_archive", "chance": 0.005 }
+    ]
+  },
+  { "id": "thornback", "name": "Thornback Bear", "sprite": "enemy_bear", "level": 12, "zoneHint": "WhisperingWoods", "maxHp": 76, "atk": 16, "def": 8, "speed": 6, "xp": 48, "intro": "A veteran thornback shoulders through the undergrowth.", "drops": [{ "item": "bear_pelt", "chance": 0.8 }, { "item": "tempered_iron", "chance": 0.18 }] },
+  { "id": "iron_tengu", "name": "Iron Tengu", "sprite": "npc_tengu2", "level": 12, "zoneHint": "MountainPass", "maxHp": 70, "atk": 18, "def": 7, "speed": 9, "xp": 50, "intro": "An iron-masked tengu drops from the pass wall.", "drops": [{ "item": "tengu_fan", "chance": 0.65 }, { "item": "tempered_iron", "chance": 0.22 }] },
+  { "id": "moonstalker", "name": "Moonstalker Owl", "sprite": "enemy_owl", "level": 24, "zoneHint": "WhisperingWoods", "maxHp": 142, "atk": 29, "def": 13, "speed": 14, "xp": 105, "intro": "Pale wings cut silently between the old trees.", "drops": [{ "item": "owl_feather", "chance": 0.9 }, { "item": "moonwood", "chance": 0.2 }] },
+  { "id": "cliff_drake", "name": "Cliff Drake", "sprite": "enemy_dragon", "level": 24, "zoneHint": "MountainPass", "maxHp": 168, "atk": 32, "def": 16, "speed": 10, "xp": 115, "intro": "A slate-scaled drake guards the narrow climb.", "drops": [{ "item": "silver_dragon_scale", "chance": 0.4 }, { "item": "dragon_scale", "chance": 0.45 }, { "item": "moonwood", "chance": 0.14 }] },
+  { "id": "storm_spider", "name": "Storm Spider", "sprite": "enemy_spiderred", "level": 36, "zoneHint": "WhisperingWoods", "maxHp": 238, "atk": 43, "def": 20, "speed": 18, "xp": 190, "intro": "Static crawls over a web stretched across the trail.", "drops": [{ "item": "spider_silk", "chance": 1 }, { "item": "stormglass", "chance": 0.2 }] },
+  { "id": "storm_cyclops", "name": "Storm Cyclops", "sprite": "enemy_cyclope", "level": 36, "zoneHint": "MountainPass", "maxHp": 290, "atk": 47, "def": 24, "speed": 10, "xp": 210, "intro": "A lightning-scarred cyclops blocks the shelf road.", "drops": [{ "item": "cyclops_eye", "chance": 0.85 }, { "item": "stormglass", "chance": 0.25 }] },
+  { "id": "elder_wraith", "name": "Elder Wraith", "sprite": "enemy_spirit", "level": 48, "zoneHint": "WhisperingWoods", "maxHp": 390, "atk": 61, "def": 31, "speed": 20, "xp": 320, "intro": "The oldest grove gathers itself into a watchful spirit.", "drops": [{ "item": "spirit_essence", "chance": 1 }, { "item": "elder_core", "chance": 0.2 }] },
+  { "id": "star_oni", "name": "Starsteel Oni", "sprite": "boss_demoncyclop", "level": 48, "zoneHint": "MountainPass", "rarity": "boss", "maxHp": 430, "atk": 67, "def": 35, "speed": 12, "xp": 360, "intro": "An oni plated in dark starsteel claims the upper road.", "drops": [{ "item": "oni_horn", "chance": 1 }, { "item": "starsteel", "chance": 0.28 }] },
+  { "id": "crown_beast", "name": "Crown Beast", "sprite": "enemy_beast", "level": 58, "zoneHint": "WhisperingWoods", "rarity": "boss", "maxHp": 560, "atk": 82, "def": 42, "speed": 24, "xp": 520, "intro": "A vast antlered beast steps from the elder canopy.", "drops": [{ "item": "elder_core", "chance": 0.7 }, { "item": "crown_shard", "chance": 0.16 }] },
+  { "id": "summit_titan", "name": "Summit Titan", "sprite": "boss_giantredsamurai", "level": 58, "zoneHint": "MountainPass", "rarity": "boss", "maxHp": 620, "atk": 88, "def": 48, "speed": 13, "xp": 560, "intro": "The summit itself appears to stand and draw a weapon.", "drops": [{ "item": "starsteel", "chance": 0.75 }, { "item": "crown_shard", "chance": 0.18 }] },
+  { "id": "sewer_rat", "name": "Sewer Rat", "sprite": "enemy_rat", "level": 2, "zoneHint": "WhisperingWoods", "maxHp": 28, "atk": 7, "def": 1, "speed": 8, "xp": 12, "intro": "A mangy rat with glowing eyes darts from the undergrowth.", "drops": [{ "item": "spore_cap", "chance": 0.3 }, { "item": "rice_ball", "chance": 0.25 }] },
+  { "id": "gray_wolf", "name": "Gray Wolf", "sprite": "enemy_wolf", "level": 5, "zoneHint": "WhisperingWoods", "maxHp": 48, "atk": 11, "def": 3, "speed": 10, "xp": 22, "intro": "A lean gray wolf stalks through the trees, ears flat.", "drops": [{ "item": "bear_pelt", "chance": 0.2 }, { "item": "kappa_scale", "chance": 0.15 }] },
+  { "id": "wild_dog", "name": "Wild Dog", "sprite": "enemy_wild_dog", "level": 4, "zoneHint": "WhisperingWoods", "maxHp": 38, "atk": 9, "def": 2, "speed": 9, "xp": 18, "intro": "A feral dog bares its teeth, hackles raised.", "drops": [{ "item": "rice_ball", "chance": 0.3 }, { "item": "spore_cap", "chance": 0.2 }] },
+  { "id": "feral_cat", "name": "Feral Cat", "sprite": "enemy_feral_cat", "level": 3, "zoneHint": "WhisperingWoods", "maxHp": 32, "atk": 8, "def": 2, "speed": 12, "xp": 16, "intro": "A hissing feral cat arches its back, claws out.", "drops": [{ "item": "spore_cap", "chance": 0.25 }, { "item": "straw_hat", "chance": 0.1 }] },
+  { "id": "cave_spider", "name": "Cave Spider", "sprite": "enemy_spider", "level": 6, "zoneHint": "MountainPass", "maxHp": 52, "atk": 12, "def": 4, "speed": 7, "xp": 24, "intro": "A brown spider skitters from a crevice, mandibles clicking.", "drops": [{ "item": "spider_silk", "chance": 0.5 }, { "item": "raw_iron_ore", "chance": 0.15 }] },
+  { "id": "void_spider", "name": "Void Spider", "sprite": "enemy_purple_spider", "level": 18, "zoneHint": "MountainPass", "maxHp": 110, "atk": 24, "def": 10, "speed": 11, "xp": 75, "intro": "A purple-veined spider drops on a silk line, fangs dripping.", "drops": [{ "item": "spider_silk", "chance": 0.8 }, { "item": "stormglass", "chance": 0.12 }] },
+  { "id": "wild_boar", "name": "Wild Boar", "sprite": "enemy_boar", "level": 7, "zoneHint": "WhisperingWoods", "maxHp": 65, "atk": 13, "def": 5, "speed": 6, "xp": 30, "intro": "A bristled boar snorts and paws the earth, tusks lowered.", "drops": [{ "item": "bear_pelt", "chance": 0.3 }, { "item": "rice_ball", "chance": 0.35 }] },
+  { "id": "tusked_boar", "name": "Tusked Boar", "sprite": "enemy_gray_boar", "level": 14, "zoneHint": "MountainPass", "maxHp": 95, "atk": 20, "def": 9, "speed": 7, "xp": 55, "intro": "A scarred gray boar blocks the path, tusks chipped and yellow.", "drops": [{ "item": "bear_pelt", "chance": 0.45 }, { "item": "tempered_iron", "chance": 0.15 }] },
+  { "id": "shadow_panther", "name": "Shadow Panther", "sprite": "enemy_panther", "level": 20, "zoneHint": "WhisperingWoods", "maxHp": 130, "atk": 28, "def": 12, "speed": 16, "xp": 90, "intro": "Green eyes gleam from the dark between the trunks.", "drops": [{ "item": "spirit_essence", "chance": 0.3 }, { "item": "moonwood", "chance": 0.18 }] },
+  { "id": "frost_wolf", "name": "Frost Wolf", "sprite": "enemy_wolf", "level": 20, "zoneHint": "NorthernReach", "maxHp": 125, "atk": 27, "def": 11, "speed": 15, "xp": 88, "intro": "A white-furred wolf stalks through the snow, breath misting.", "drops": [{ "item": "boreal_pelt", "chance": 0.4 }, { "item": "frost_essence", "chance": 0.25 }] },
+  { "id": "ice_boar", "name": "Ice Boar", "sprite": "enemy_gray_boar", "level": 22, "zoneHint": "NorthernReach", "maxHp": 150, "atk": 30, "def": 13, "speed": 8, "xp": 100, "intro": "A frost-rimed boar charges through the snow, tusks like icicles.", "drops": [{ "item": "boreal_pelt", "chance": 0.5 }, { "item": "frost_essence", "chance": 0.2 }] },
+  { "id": "boreal_owl", "name": "Boreal Owl", "sprite": "enemy_owl", "level": 26, "zoneHint": "NorthernReach", "maxHp": 175, "atk": 35, "def": 15, "speed": 17, "xp": 130, "intro": "A great snow owl banks silently between the pines.", "drops": [{ "item": "owl_feather", "chance": 0.9 }, { "item": "frost_essence", "chance": 0.35 }] },
+  { "id": "frost_spider", "name": "Frost Spider", "sprite": "enemy_spider", "level": 28, "zoneHint": "NorthernReach", "maxHp": 210, "atk": 40, "def": 18, "speed": 12, "xp": 155, "intro": "A pale spider scuttles from an ice-crusted crevice.", "drops": [{ "item": "spider_silk", "chance": 0.8 }, { "item": "frost_essence", "chance": 0.4 }] },
+  { "id": "glacial_drake", "name": "Glacial Drake", "sprite": "enemy_dragon", "level": 32, "zoneHint": "NorthernReach", "maxHp": 280, "atk": 50, "def": 24, "speed": 11, "xp": 220, "intro": "A drake with scales like glacier ice guards the upper ridge.", "drops": [{ "item": "blue_dragon_scale", "chance": 0.55 }, { "item": "frost_essence", "chance": 0.5 }, { "item": "starsteel", "chance": 0.12 }] },
+  { "id": "frost_titan", "name": "Frost Titan", "sprite": "boss_giantredsamurai", "level": 35, "rarity": "world-boss", "zoneHint": "NorthernReach", "maxHp": 420, "atk": 58, "def": 28, "speed": 8, "xp": 800, "intro": "The ridge shudders. A titan of frost and stone rises from the snow, crowned in ice.", "drops": [{ "item": "frost_core", "chance": 1 }, { "item": "boreal_pelt", "chance": 1 }, { "item": "starsteel", "chance": 0.5 }, { "item": "stormglass", "chance": 0.8 }, { "item": "world_anvil", "chance": 0.005 }] },
+  { "id": "grove_wisp", "name": "Grove Wisp", "sprite": "enemy_spirit", "level": 30, "zoneHint": "EasternReach", "maxHp": 235, "atk": 44, "def": 18, "speed": 19, "xp": 175, "intro": "A pale light drifts between the ancient trunks, watching.", "drops": [{ "item": "spirit_essence", "chance": 0.6 }, { "item": "wild_herb", "chance": 0.3 }] },
+  { "id": "moss_kappa", "name": "Moss Kappa", "sprite": "enemy_kappagreen", "level": 32, "zoneHint": "EasternReach", "maxHp": 270, "atk": 46, "def": 24, "speed": 10, "xp": 195, "intro": "A moss-backed kappa rises dripping from the marsh pool.", "drops": [{ "item": "river_fish", "chance": 0.7 }, { "item": "spirit_essence", "chance": 0.3 }] },
+  { "id": "ruin_lizard", "name": "Ruin Lizard", "sprite": "enemy_lizard", "level": 34, "zoneHint": "EasternReach", "maxHp": 290, "atk": 50, "def": 26, "speed": 14, "xp": 215, "intro": "A stone-scaled lizard slides out from under a fallen pillar.", "drops": [{ "item": "raw_iron_ore", "chance": 0.5 }, { "item": "eye_lens", "chance": 0.2 }] },
+  { "id": "watcher_eye", "name": "Watcher Eye", "sprite": "enemy_eye", "level": 37, "zoneHint": "EasternReach", "maxHp": 300, "atk": 55, "def": 22, "speed": 21, "xp": 250, "intro": "An unblinking eye peels itself from a ruin relief and floats closer.", "drops": [{ "item": "eye_lens", "chance": 0.8 }, { "item": "spirit_essence", "chance": 0.4 }] },
+  { "id": "moon_moth", "name": "Moon Moth", "sprite": "enemy_butterflyblue", "level": 40, "zoneHint": "EasternReach", "maxHp": 330, "atk": 58, "def": 25, "speed": 24, "xp": 285, "intro": "A moth the size of a shield sheds silver dust as it circles.", "drops": [{ "item": "moonwood", "chance": 0.35 }, { "item": "spirit_essence", "chance": 0.5 }] },
+  { "id": "grove_tengu", "name": "Grove Tengu", "sprite": "npc_tengu", "level": 42, "zoneHint": "EasternReach", "maxHp": 360, "atk": 62, "def": 28, "speed": 18, "xp": 320, "intro": "A tengu drops from the canopy, fan raised in challenge.", "drops": [{ "item": "spirit_essence", "chance": 0.7 }, { "item": "elder_core", "chance": 0.08 }, { "item": "moonwood", "chance": 0.4 }] },
+  { "id": "sand_serpent", "name": "Sand Serpent", "sprite": "enemy_snake3", "level": 38, "zoneHint": "SouthernReach", "maxHp": 310, "atk": 54, "def": 24, "speed": 16, "xp": 260, "intro": "A serpent coils from beneath the sand, scales rasping against stone.", "drops": [{ "item": "raw_iron_ore", "chance": 0.5 }, { "item": "spore_cap", "chance": 0.3 }] },
+  { "id": "dune_kitsune", "name": "Dune Kitsune", "sprite": "enemy_racoon", "level": 42, "zoneHint": "SouthernReach", "maxHp": 340, "atk": 58, "def": 26, "speed": 22, "xp": 290, "intro": "A fox spirit flickers between the canyon pillars, eyes glowing amber.", "drops": [{ "item": "kitsune_tail", "chance": 0.6 }, { "item": "flame_ember", "chance": 0.3 }] },
+  { "id": "canyon_golem", "name": "Canyon Golem", "sprite": "enemy_beast", "level": 45, "zoneHint": "SouthernReach", "maxHp": 400, "atk": 65, "def": 35, "speed": 8, "xp": 340, "intro": "A basalt golem pulls itself from the ridge, stone grinding against stone.", "drops": [{ "item": "raw_iron_ore", "chance": 0.8 }, { "item": "starsteel", "chance": 0.12 }] },
+  { "id": "mirage_wraith", "name": "Mirage Wraith", "sprite": "enemy_spirit", "level": 48, "zoneHint": "SouthernReach", "maxHp": 380, "atk": 68, "def": 28, "speed": 21, "xp": 380, "intro": "Heat shimmers and coalesces into a vengeful spirit of the deep desert.", "drops": [{ "item": "spirit_essence", "chance": 0.7 }, { "item": "flame_ember", "chance": 0.4 }] },
+  { "id": "dune_tyrant", "name": "Dune Tyrant", "sprite": "boss_giantredsamurai", "level": 50, "zoneHint": "SouthernReach", "rarity": "boss", "maxHp": 520, "atk": 75, "def": 40, "speed": 14, "xp": 480, "intro": "The sand erupts. A colossal figure in sandstone armor rises from the dune floor.", "drops": [{ "item": "starsteel", "chance": 0.6 }, { "item": "crown_shard", "chance": 0.15 }, { "item": "flame_ember", "chance": 0.8 }] },
+  { "id": "pantry_oni", "name": "Pantry Oni", "sprite": "boss_demoncyclop2", "level": 6, "rarity": "boss", "zoneHint": "Raid:sushi_prep", "maxHp": 72, "atk": 13, "def": 5, "speed": 7, "xp": 80, "intro": "A hungry oni crashes into Hana's trial kitchen and reaches for the prepared rice.", "drops": [{ "item": "rice_ball", "chance": 1 }, { "item": "red_dragon_scale", "chance": 0.02 }] }
+]

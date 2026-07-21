@@ -1,0 +1,4012 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "kaishi-15k-basic-japanese-vocabulary",
+    "deckName": "Kaishi 15k - Basic Japanese Vocabulary",
+    "author": "",
+    "url": "",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-1",
+      "sourceNoteId": "1708637439854",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "私",
+      "answer": "I (polite, general)",
+      "choices": [
+        "I (polite, general)",
+        "stand, rise",
+        "wait",
+        "that"
+      ],
+      "reading": "わたし",
+      "meaning": "I (polite, general)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-2",
+      "sourceNoteId": "1708637439855",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "あなた",
+      "answer": "you (usually when one doesn't know the person)",
+      "choices": [
+        "you (usually when one doesn't know the person)",
+        "interesting, amusing",
+        "very",
+        "when"
+      ],
+      "reading": "あなた",
+      "meaning": "you (usually when one doesn't know the person)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-3",
+      "sourceNoteId": "1708637439856",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "さん",
+      "answer": "san",
+      "choices": [
+        "san",
+        "when",
+        "feeling, sensation",
+        "(speaker's) father"
+      ],
+      "reading": "さん",
+      "meaning": "san",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-4",
+      "sourceNoteId": "1708637439857",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "彼",
+      "answer": "he, him",
+      "choices": [
+        "he, him",
+        "to continue, to keep up",
+        "raise, increase",
+        "what kind of..."
+      ],
+      "reading": "かれ",
+      "meaning": "he, him",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-5",
+      "sourceNoteId": "1708637439858",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "好き",
+      "answer": "like, fond of",
+      "choices": [
+        "like, fond of",
+        "to buy",
+        "child, kid",
+        "raise, increase"
+      ],
+      "reading": "すき",
+      "meaning": "like, fond of",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-6",
+      "sourceNoteId": "1708637439859",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "人",
+      "answer": "person",
+      "choices": [
+        "person",
+        "have, hold",
+        "this time",
+        "who"
+      ],
+      "reading": "ひと",
+      "meaning": "person",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-7",
+      "sourceNoteId": "1708637439860",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いい",
+      "answer": "good",
+      "choices": [
+        "good",
+        "voice, sound",
+        "bad",
+        "that one there"
+      ],
+      "reading": "いい",
+      "meaning": "good",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-8",
+      "sourceNoteId": "1708637439861",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "人",
+      "answer": "person from (nationality)",
+      "choices": [
+        "person from (nationality)",
+        "return, go back",
+        "I (male)",
+        "have, exist (inanimate)"
+      ],
+      "reading": "じん",
+      "meaning": "person from (nationality)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-9",
+      "sourceNoteId": "1708637439862",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "日本語",
+      "answer": "Japanese language",
+      "choices": [
+        "Japanese language",
+        "to forgive, to permit",
+        "person",
+        "appearance, state"
+      ],
+      "reading": "にほんご",
+      "meaning": "Japanese language",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-10",
+      "sourceNoteId": "1708637439863",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "勉強",
+      "answer": "study",
+      "choices": [
+        "study",
+        "give (receiver is not in the speaker's group)",
+        "she, her, girlfriend",
+        "country"
+      ],
+      "reading": "べんきょう",
+      "meaning": "study",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-11",
+      "sourceNoteId": "1708637439864",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "本",
+      "answer": "book",
+      "choices": [
+        "book",
+        "think",
+        "teach, tell",
+        "no (polite)"
+      ],
+      "reading": "ほん",
+      "meaning": "book",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-12",
+      "sourceNoteId": "1708637439865",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "これ",
+      "answer": "this",
+      "choices": [
+        "this",
+        "girl",
+        "I see, really",
+        "grandmother"
+      ],
+      "reading": "これ",
+      "meaning": "this",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-13",
+      "sourceNoteId": "1708637439866",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "何",
+      "answer": "what",
+      "choices": [
+        "what",
+        "truth, reality",
+        "sorry, inexcusable",
+        "san"
+      ],
+      "reading": "なに・なん",
+      "meaning": "what",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-14",
+      "sourceNoteId": "1708637439867",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "それ",
+      "answer": "that",
+      "choices": [
+        "that",
+        "all, everybody",
+        "which one",
+        "thank you (formal)"
+      ],
+      "reading": "それ",
+      "meaning": "that",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-15",
+      "sourceNoteId": "1708637439868",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あれ",
+      "answer": "that over there",
+      "choices": [
+        "that over there",
+        "gentle, kind",
+        "happy, glad",
+        "to continue, to keep up"
+      ],
+      "reading": "あれ",
+      "meaning": "that over there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-16",
+      "sourceNoteId": "1708637439869",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どれ",
+      "answer": "which, what",
+      "choices": [
+        "which, what",
+        "go",
+        "to ask, to request",
+        "this one"
+      ],
+      "reading": "どれ",
+      "meaning": "which, what",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-17",
+      "sourceNoteId": "1708637439870",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "毎日",
+      "answer": "every day",
+      "choices": [
+        "every day",
+        "person (polite form)",
+        "room",
+        "please give..., please do..."
+      ],
+      "reading": "まいにち",
+      "meaning": "every day",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-18",
+      "sourceNoteId": "1708637439871",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "兄",
+      "answer": "older brother",
+      "choices": [
+        "older brother",
+        "to not be",
+        "another, again",
+        "which, what"
+      ],
+      "reading": "あに",
+      "meaning": "older brother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-19",
+      "sourceNoteId": "1708637439872",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いる",
+      "answer": "have, exist (animate)",
+      "choices": [
+        "have, exist (animate)",
+        "school",
+        "if, in the event of...",
+        "come"
+      ],
+      "reading": "いる",
+      "meaning": "have, exist (animate)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-20",
+      "sourceNoteId": "1708637439873",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ある",
+      "answer": "have, exist (inanimate)",
+      "choices": [
+        "have, exist (inanimate)",
+        "what kind of...",
+        "voice, sound",
+        "over there"
+      ],
+      "reading": "ある",
+      "meaning": "have, exist (inanimate)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-21",
+      "sourceNoteId": "1708637439874",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "あまり",
+      "answer": "(not) very, (not) much",
+      "choices": [
+        "(not) very, (not) much",
+        "book",
+        "wait",
+        "to continue, to keep up"
+      ],
+      "reading": "あまり",
+      "meaning": "(not) very, (not) much",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-22",
+      "sourceNoteId": "1708637439875",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "今",
+      "answer": "now",
+      "choices": [
+        "now",
+        "to show",
+        "promise, appointment",
+        "to change, to alter"
+      ],
+      "reading": "いま",
+      "meaning": "now",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-23",
+      "sourceNoteId": "1708637439876",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "時間",
+      "answer": "time, hour",
+      "choices": [
+        "time, hour",
+        "which, what",
+        "(not) at all",
+        "she, her, girlfriend"
+      ],
+      "reading": "じかん",
+      "meaning": "time, hour",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-24",
+      "sourceNoteId": "1708637439877",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "無い",
+      "answer": "to not be",
+      "choices": [
+        "to not be",
+        "person",
+        "to protect, to observe",
+        "(not) at all"
+      ],
+      "reading": "ない",
+      "meaning": "to not be",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-25",
+      "sourceNoteId": "1708637439878",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "この",
+      "answer": "this one",
+      "choices": [
+        "this one",
+        "meet",
+        "sorry, inexcusable",
+        "(speaker's) father"
+      ],
+      "reading": "この",
+      "meaning": "this one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-26",
+      "sourceNoteId": "1708637439879",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "その",
+      "answer": "that one",
+      "choices": [
+        "that one",
+        "I (polite, general)",
+        "he, him",
+        "you (usually when one doesn't know the person)"
+      ],
+      "reading": "その",
+      "meaning": "that one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-27",
+      "sourceNoteId": "1708637439880",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あの",
+      "answer": "that one there",
+      "choices": [
+        "that one there",
+        "when",
+        "(only) a moment ago",
+        "family"
+      ],
+      "reading": "あの",
+      "meaning": "that one there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-28",
+      "sourceNoteId": "1708637439881",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どの",
+      "answer": "which one",
+      "choices": [
+        "which one",
+        "grandfather",
+        "that one",
+        "hear"
+      ],
+      "reading": "どの",
+      "meaning": "which one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-29",
+      "sourceNoteId": "1708637439882",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "見る",
+      "answer": "see, look at",
+      "choices": [
+        "see, look at",
+        "like, fond of",
+        "in such manner, that way",
+        "look up, search"
+      ],
+      "reading": "みる",
+      "meaning": "see, look at",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-30",
+      "sourceNoteId": "1708637439883",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "全然",
+      "answer": "(not) at all",
+      "choices": [
+        "(not) at all",
+        "which one",
+        "like, fond of",
+        "(not) very, (not) much"
+      ],
+      "reading": "ぜんぜん",
+      "meaning": "(not) at all",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-31",
+      "sourceNoteId": "1708637439884",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "面白い",
+      "answer": "interesting, amusing",
+      "choices": [
+        "interesting, amusing",
+        "what kind of...",
+        "love",
+        "until now"
+      ],
+      "reading": "おもしろい",
+      "meaning": "interesting, amusing",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-32",
+      "sourceNoteId": "1708637439885",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "する",
+      "answer": "do, make",
+      "choices": [
+        "do, make",
+        "a little",
+        "to believe, to trust",
+        "disliking, unwilling (to do)"
+      ],
+      "reading": "する",
+      "meaning": "do, make",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-33",
+      "sourceNoteId": "1708637439886",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "なる",
+      "answer": "become, result in, come (to do)",
+      "choices": [
+        "become, result in, come (to do)",
+        "appearance, state",
+        "evening, night",
+        "talk, story"
+      ],
+      "reading": "なる",
+      "meaning": "become, result in, come (to do)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-34",
+      "sourceNoteId": "1708637439887",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "先生",
+      "answer": "teacher",
+      "choices": [
+        "teacher",
+        "every day",
+        "that one there",
+        "give (receiver is not in the speaker's group)"
+      ],
+      "reading": "せんせい",
+      "meaning": "teacher",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-35",
+      "sourceNoteId": "1708637439888",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ください",
+      "answer": "please give..., please do...",
+      "choices": [
+        "please give..., please do...",
+        "have, exist (animate)",
+        "good",
+        "(not) at all"
+      ],
+      "reading": "ください",
+      "meaning": "please give..., please do...",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-36",
+      "sourceNoteId": "1708637439889",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "名前",
+      "answer": "name",
+      "choices": [
+        "name",
+        "time, hour",
+        "understanding, comprehension",
+        "voice, sound"
+      ],
+      "reading": "なまえ",
+      "meaning": "name",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-37",
+      "sourceNoteId": "1708637439890",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "教える",
+      "answer": "teach, tell",
+      "choices": [
+        "teach, tell",
+        "in such manner, that way",
+        "this one",
+        "this"
+      ],
+      "reading": "おしえる",
+      "meaning": "teach, tell",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-38",
+      "sourceNoteId": "1708637439891",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ここ",
+      "answer": "here",
+      "choices": [
+        "here",
+        "who",
+        "book",
+        "which one"
+      ],
+      "reading": "ここ",
+      "meaning": "here",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-39",
+      "sourceNoteId": "1708637439892",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "そこ",
+      "answer": "there",
+      "choices": [
+        "there",
+        "live, reside",
+        "now",
+        "interesting, amusing"
+      ],
+      "reading": "そこ",
+      "meaning": "there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-40",
+      "sourceNoteId": "1708637439893",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あそこ",
+      "answer": "over there",
+      "choices": [
+        "over there",
+        "what",
+        "small",
+        "yes (polite)"
+      ],
+      "reading": "あそこ",
+      "meaning": "over there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-41",
+      "sourceNoteId": "1708637439894",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どこ",
+      "answer": "where",
+      "choices": [
+        "where",
+        "slowly",
+        "next, subsequent",
+        "yesterday"
+      ],
+      "reading": "どこ",
+      "meaning": "where",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-42",
+      "sourceNoteId": "1708637439895",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "置く",
+      "answer": "put, place",
+      "choices": [
+        "put, place",
+        "place, location",
+        "come",
+        "over there"
+      ],
+      "reading": "おく",
+      "meaning": "put, place",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-43",
+      "sourceNoteId": "1708637439896",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "家",
+      "answer": "house, home",
+      "choices": [
+        "house, home",
+        "what kind of...",
+        "Japanese language",
+        "one's household"
+      ],
+      "reading": "いえ",
+      "meaning": "house, home",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-44",
+      "sourceNoteId": "1708637439897",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "帰る",
+      "answer": "return, go back",
+      "choices": [
+        "return, go back",
+        "house, home",
+        "to buy",
+        "hear"
+      ],
+      "reading": "かえる",
+      "meaning": "return, go back",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-45",
+      "sourceNoteId": "1708637439898",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "話",
+      "answer": "talk, story",
+      "choices": [
+        "talk, story",
+        "front, before",
+        "good",
+        "where"
+      ],
+      "reading": "はなし",
+      "meaning": "talk, story",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-46",
+      "sourceNoteId": "1708637439899",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "知る",
+      "answer": "know",
+      "choices": [
+        "know",
+        "more, a bit more",
+        "to protect, to observe",
+        "wait"
+      ],
+      "reading": "しる",
+      "meaning": "know",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-47",
+      "sourceNoteId": "1708637439900",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "彼女",
+      "answer": "she, her, girlfriend",
+      "choices": [
+        "she, her, girlfriend",
+        "to forgive, to permit",
+        "to forget",
+        "to sit"
+      ],
+      "reading": "かのじょ",
+      "meaning": "she, her, girlfriend",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-48",
+      "sourceNoteId": "1708637439901",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ちゃん",
+      "answer": "chan",
+      "choices": [
+        "chan",
+        "go",
+        "one's household",
+        "that"
+      ],
+      "reading": "ちゃん",
+      "meaning": "chan",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-49",
+      "sourceNoteId": "1708637439902",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "はい",
+      "answer": "yes (polite)",
+      "choices": [
+        "yes (polite)",
+        "feeling, sensation",
+        "always, usually",
+        "grandmother"
+      ],
+      "reading": "はい",
+      "meaning": "yes (polite)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-50",
+      "sourceNoteId": "1708637439903",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いいえ",
+      "answer": "no (polite)",
+      "choices": [
+        "no (polite)",
+        "who",
+        "she, her, girlfriend",
+        "this one"
+      ],
+      "reading": "いいえ",
+      "meaning": "no (polite)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-51",
+      "sourceNoteId": "1708637439904",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "日本",
+      "answer": "Japan",
+      "choices": [
+        "Japan",
+        "again, also",
+        "expensive",
+        "say"
+      ],
+      "reading": "にほん",
+      "meaning": "Japan",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-52",
+      "sourceNoteId": "1708637439905",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "学校",
+      "answer": "school",
+      "choices": [
+        "school",
+        "how, what",
+        "good",
+        "time, hour"
+      ],
+      "reading": "がっこう",
+      "meaning": "school",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-53",
+      "sourceNoteId": "1708637439906",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "行く",
+      "answer": "go",
+      "choices": [
+        "go",
+        "to convey, to transmit",
+        "I (polite, general)",
+        "town, city"
+      ],
+      "reading": "いく",
+      "meaning": "go",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-54",
+      "sourceNoteId": "1708637439907",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "明日",
+      "answer": "tomorrow",
+      "choices": [
+        "tomorrow",
+        "do, make",
+        "enter",
+        "there"
+      ],
+      "reading": "あした",
+      "meaning": "tomorrow",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-55",
+      "sourceNoteId": "1708637439908",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "来る",
+      "answer": "come",
+      "choices": [
+        "come",
+        "see, look at",
+        "house, home",
+        "chan"
+      ],
+      "reading": "くる",
+      "meaning": "come",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-56",
+      "sourceNoteId": "1708637439909",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "また",
+      "answer": "again, also",
+      "choices": [
+        "again, also",
+        "hear",
+        "know",
+        "I (polite, general)"
+      ],
+      "reading": "また",
+      "meaning": "again, also",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-57",
+      "sourceNoteId": "1708637439910",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いつ",
+      "answer": "when",
+      "choices": [
+        "when",
+        "next time",
+        "that over there",
+        "person (polite form)"
+      ],
+      "reading": "いつ",
+      "meaning": "when",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-58",
+      "sourceNoteId": "1708637439911",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "思う",
+      "answer": "think",
+      "choices": [
+        "think",
+        "return, go back",
+        "study",
+        "talk, story"
+      ],
+      "reading": "おもう",
+      "meaning": "think",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-59",
+      "sourceNoteId": "1708637439912",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "こう",
+      "answer": "like this, this kind of",
+      "choices": [
+        "like this, this kind of",
+        "to change, to alter",
+        "family",
+        "big, large"
+      ],
+      "reading": "こう",
+      "meaning": "like this, this kind of",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-60",
+      "sourceNoteId": "1708637439913",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "そう",
+      "answer": "in such manner, that way",
+      "choices": [
+        "in such manner, that way",
+        "yesterday",
+        "always, usually",
+        "use"
+      ],
+      "reading": "そう",
+      "meaning": "in such manner, that way",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-61",
+      "sourceNoteId": "1708637439914",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どう",
+      "answer": "how, what",
+      "choices": [
+        "how, what",
+        "expensive",
+        "sorry, inexcusable",
+        "like this, this kind of"
+      ],
+      "reading": "どう",
+      "meaning": "how, what",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-62",
+      "sourceNoteId": "1708637439915",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "会う",
+      "answer": "meet",
+      "choices": [
+        "meet",
+        "live, reside",
+        "simple, easy",
+        "that over there"
+      ],
+      "reading": "あう",
+      "meaning": "meet",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-63",
+      "sourceNoteId": "1708637439916",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "次",
+      "answer": "next, subsequent",
+      "choices": [
+        "next, subsequent",
+        "what",
+        "ask",
+        "like, fond of"
+      ],
+      "reading": "つぎ",
+      "meaning": "next, subsequent",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-64",
+      "sourceNoteId": "1708637439917",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "方",
+      "answer": "direction, side",
+      "choices": [
+        "direction, side",
+        "energetic, healthy",
+        "see, look at",
+        "hear"
+      ],
+      "reading": "ほう",
+      "meaning": "direction, side",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-65",
+      "sourceNoteId": "1708637439918",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "方",
+      "answer": "person (polite form)",
+      "choices": [
+        "person (polite form)",
+        "same, identical",
+        "this one",
+        "raise, increase"
+      ],
+      "reading": "かた",
+      "meaning": "person (polite form)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-66",
+      "sourceNoteId": "1708637439919",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "聞く",
+      "answer": "hear",
+      "choices": [
+        "hear",
+        "to protect, to observe",
+        "why",
+        "school"
+      ],
+      "reading": "きく",
+      "meaning": "hear",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-67",
+      "sourceNoteId": "1708637439920",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "聞く",
+      "answer": "ask",
+      "choices": [
+        "ask",
+        "child, kid",
+        "person from (nationality)",
+        "family"
+      ],
+      "reading": "きく",
+      "meaning": "ask",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-68",
+      "sourceNoteId": "1708637439921",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "お願いします",
+      "answer": "please",
+      "choices": [
+        "please",
+        "(only) a moment ago",
+        "no (polite)",
+        "think"
+      ],
+      "reading": "おねがいします",
+      "meaning": "please",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-69",
+      "sourceNoteId": "1708637439922",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "分かる",
+      "answer": "understand",
+      "choices": [
+        "understand",
+        "boy",
+        "bad",
+        "she, her, girlfriend"
+      ],
+      "reading": "わかる",
+      "meaning": "understand",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-70",
+      "sourceNoteId": "1708637439923",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "よく",
+      "answer": "well",
+      "choices": [
+        "well",
+        "what kind of...",
+        "busy, occupied",
+        "again, also"
+      ],
+      "reading": "よく",
+      "meaning": "well",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-71",
+      "sourceNoteId": "1708637439924",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "よく",
+      "answer": "often",
+      "choices": [
+        "often",
+        "one's household",
+        "good",
+        "next, subsequent"
+      ],
+      "reading": "よく",
+      "meaning": "often",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-72",
+      "sourceNoteId": "1708637439925",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "考える",
+      "answer": "think, consider",
+      "choices": [
+        "think, consider",
+        "again, also",
+        "this one",
+        "know"
+      ],
+      "reading": "かんがえる",
+      "meaning": "think, consider",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-73",
+      "sourceNoteId": "1708637439926",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ありがとうございます",
+      "answer": "thank you (formal)",
+      "choices": [
+        "thank you (formal)",
+        "move",
+        "that one there",
+        "truth, reality"
+      ],
+      "reading": "ありがとうございます",
+      "meaning": "thank you (formal)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-74",
+      "sourceNoteId": "1708637439927",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "話す",
+      "answer": "talk, speak",
+      "choices": [
+        "talk, speak",
+        "gentle, kind",
+        "to continue, to keep up",
+        "to show"
+      ],
+      "reading": "はなす",
+      "meaning": "talk, speak",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-75",
+      "sourceNoteId": "1708637439928",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "もっと",
+      "answer": "more, a bit more",
+      "choices": [
+        "more, a bit more",
+        "to continue, to keep up",
+        "another, again",
+        "book"
+      ],
+      "reading": "もっと",
+      "meaning": "more, a bit more",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-76",
+      "sourceNoteId": "1708637439929",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ゆっくり",
+      "answer": "slowly",
+      "choices": [
+        "slowly",
+        "truth, reality",
+        "expensive",
+        "where"
+      ],
+      "reading": "ゆっくり",
+      "meaning": "slowly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-77",
+      "sourceNoteId": "1708637439930",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "言う",
+      "answer": "say",
+      "choices": [
+        "say",
+        "please give..., please do...",
+        "fun, enjoyable",
+        "san"
+      ],
+      "reading": "いう",
+      "meaning": "say",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-78",
+      "sourceNoteId": "1708637439931",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "友達",
+      "answer": "friend, companion",
+      "choices": [
+        "friend, companion",
+        "strange, suspicious",
+        "enter",
+        "raise, increase"
+      ],
+      "reading": "ともだち",
+      "meaning": "friend, companion",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-79",
+      "sourceNoteId": "1708637439932",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "待つ",
+      "answer": "wait",
+      "choices": [
+        "wait",
+        "a little",
+        "talk, speak",
+        "he, him"
+      ],
+      "reading": "まつ",
+      "meaning": "wait",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-80",
+      "sourceNoteId": "1708637439933",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "昨日",
+      "answer": "yesterday",
+      "choices": [
+        "yesterday",
+        "dream",
+        "know",
+        "san"
+      ],
+      "reading": "きのう",
+      "meaning": "yesterday",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-81",
+      "sourceNoteId": "1708637439934",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "町",
+      "answer": "town, city",
+      "choices": [
+        "town, city",
+        "friend, companion",
+        "how, what",
+        "ask"
+      ],
+      "reading": "まち",
+      "meaning": "town, city",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-82",
+      "sourceNoteId": "1708637439935",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "高い",
+      "answer": "expensive",
+      "choices": [
+        "expensive",
+        "hand",
+        "child, kid",
+        "voice, sound"
+      ],
+      "reading": "たかい",
+      "meaning": "expensive",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-83",
+      "sourceNoteId": "1708637439936",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "高い",
+      "answer": "high, tall",
+      "choices": [
+        "high, tall",
+        "already, yet",
+        "very",
+        "expensive"
+      ],
+      "reading": "たかい",
+      "meaning": "high, tall",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-84",
+      "sourceNoteId": "1708637439937",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "一番",
+      "answer": "(the) most",
+      "choices": [
+        "(the) most",
+        "have, exist (inanimate)",
+        "to change, to alter",
+        "to forgive, to permit"
+      ],
+      "reading": "いちばん",
+      "meaning": "(the) most",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-85",
+      "sourceNoteId": "1708637439938",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ちょっと",
+      "answer": "a little",
+      "choices": [
+        "a little",
+        "alright, OK",
+        "think, consider",
+        "this"
+      ],
+      "reading": "ちょっと",
+      "meaning": "a little",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-86",
+      "sourceNoteId": "1708637439939",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "もう",
+      "answer": "already, yet",
+      "choices": [
+        "already, yet",
+        "simple, easy",
+        "fun, enjoyable",
+        "family"
+      ],
+      "reading": "もう",
+      "meaning": "already, yet",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-87",
+      "sourceNoteId": "1708637439940",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "もう",
+      "answer": "another, again",
+      "choices": [
+        "another, again",
+        "expensive",
+        "evening, night",
+        "more, a bit more"
+      ],
+      "reading": "もう",
+      "meaning": "another, again",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-88",
+      "sourceNoteId": "1708637439941",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "父",
+      "answer": "(speaker's) father",
+      "choices": [
+        "(speaker's) father",
+        "have, hold",
+        "I (polite, general)",
+        "inside, middle"
+      ],
+      "reading": "ちち",
+      "meaning": "(speaker's) father",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-89",
+      "sourceNoteId": "1708637439942",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "大好き",
+      "answer": "love",
+      "choices": [
+        "love",
+        "free, not busy",
+        "Japan",
+        "which one"
+      ],
+      "reading": "だいすき",
+      "meaning": "love",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-90",
+      "sourceNoteId": "1708637439943",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "母",
+      "answer": "(speaker's) mother",
+      "choices": [
+        "(speaker's) mother",
+        "next, subsequent",
+        "person",
+        "all, everybody"
+      ],
+      "reading": "はは",
+      "meaning": "(speaker's) mother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-91",
+      "sourceNoteId": "1708637439944",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "あげる",
+      "answer": "give (receiver is not in the speaker's group)",
+      "choices": [
+        "give (receiver is not in the speaker's group)",
+        "promise, appointment",
+        "to not be",
+        "to forgive, to permit"
+      ],
+      "reading": "あげる",
+      "meaning": "give (receiver is not in the speaker's group)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-92",
+      "sourceNoteId": "1708637439945",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "くれる",
+      "answer": "give (receiver is in the speaker's group)",
+      "choices": [
+        "give (receiver is in the speaker's group)",
+        "book",
+        "know",
+        "eye"
+      ],
+      "reading": "くれる",
+      "meaning": "give (receiver is in the speaker's group)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-93",
+      "sourceNoteId": "1708637439946",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "もらう",
+      "answer": "receive",
+      "choices": [
+        "receive",
+        "next, subsequent",
+        "talk, story",
+        "until now"
+      ],
+      "reading": "もらう",
+      "meaning": "receive",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-94",
+      "sourceNoteId": "1708637439947",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "物",
+      "answer": "thing, object",
+      "choices": [
+        "thing, object",
+        "to protect, to observe",
+        "can do, be good at",
+        "to ask, to request"
+      ],
+      "reading": "もの",
+      "meaning": "thing, object",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-95",
+      "sourceNoteId": "1708637439948",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "君",
+      "answer": "you (to someone of equal or lower status)",
+      "choices": [
+        "you (to someone of equal or lower status)",
+        "yes (polite)",
+        "eat",
+        "here"
+      ],
+      "reading": "きみ",
+      "meaning": "you (to someone of equal or lower status)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-96",
+      "sourceNoteId": "1708637439949",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "中",
+      "answer": "inside, middle",
+      "choices": [
+        "inside, middle",
+        "who",
+        "another, again",
+        "I (polite, general)"
+      ],
+      "reading": "なか",
+      "meaning": "inside, middle",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-97",
+      "sourceNoteId": "1708637439950",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "出来る",
+      "answer": "can do, be good at",
+      "choices": [
+        "can do, be good at",
+        "no (polite)",
+        "Japanese language",
+        "hear"
+      ],
+      "reading": "できる",
+      "meaning": "can do, be good at",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-98",
+      "sourceNoteId": "1708637439951",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "本当",
+      "answer": "truth, reality",
+      "choices": [
+        "truth, reality",
+        "grandfather",
+        "you (usually when one doesn't know the person)",
+        "front, before"
+      ],
+      "reading": "ほんとう",
+      "meaning": "truth, reality",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-99",
+      "sourceNoteId": "1708637439952",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "立つ",
+      "answer": "stand, rise",
+      "choices": [
+        "stand, rise",
+        "(speaker's) mother",
+        "I see, really",
+        "family"
+      ],
+      "reading": "たつ",
+      "meaning": "stand, rise",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-100",
+      "sourceNoteId": "1708637439953",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "前",
+      "answer": "front, before",
+      "choices": [
+        "front, before",
+        "that one",
+        "expensive",
+        "person (polite form)"
+      ],
+      "reading": "まえ",
+      "meaning": "front, before",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-101",
+      "sourceNoteId": "1708637439954",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "入る",
+      "answer": "enter",
+      "choices": [
+        "enter",
+        "give (receiver is in the speaker's group)",
+        "more, a bit more",
+        "truth, reality"
+      ],
+      "reading": "はいる",
+      "meaning": "enter",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-102",
+      "sourceNoteId": "1708637439955",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "家族",
+      "answer": "family",
+      "choices": [
+        "family",
+        "person (polite form)",
+        "raise, increase",
+        "a lot, plenty"
+      ],
+      "reading": "かぞく",
+      "meaning": "family",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-103",
+      "sourceNoteId": "1708637439956",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "住む",
+      "answer": "live, reside",
+      "choices": [
+        "live, reside",
+        "do, make",
+        "in short, basically",
+        "enter"
+      ],
+      "reading": "すむ",
+      "meaning": "live, reside",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-104",
+      "sourceNoteId": "1708637439957",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "大きな",
+      "answer": "big, large",
+      "choices": [
+        "big, large",
+        "you (to someone of equal or lower status)",
+        "no (polite)",
+        "always, usually"
+      ],
+      "reading": "おおきな",
+      "meaning": "big, large",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-105",
+      "sourceNoteId": "1708637439958",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "大きい",
+      "answer": "big, large",
+      "choices": [
+        "big, large",
+        "voice, sound",
+        "Japan",
+        "which, what"
+      ],
+      "reading": "おおきい",
+      "meaning": "big, large",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-106",
+      "sourceNoteId": "1708637439959",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "声",
+      "answer": "voice, sound",
+      "choices": [
+        "voice, sound",
+        "understand",
+        "ask",
+        "put, place"
+      ],
+      "reading": "こえ",
+      "meaning": "voice, sound",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-107",
+      "sourceNoteId": "1708637439960",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "目",
+      "answer": "eye",
+      "choices": [
+        "eye",
+        "that guy",
+        "expensive",
+        "please give..., please do..."
+      ],
+      "reading": "め",
+      "meaning": "eye",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-108",
+      "sourceNoteId": "1708637439961",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "手",
+      "answer": "hand",
+      "choices": [
+        "hand",
+        "again, also",
+        "eye",
+        "name"
+      ],
+      "reading": "て",
+      "meaning": "hand",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-109",
+      "sourceNoteId": "1708637439962",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "上げる",
+      "answer": "raise, increase",
+      "choices": [
+        "raise, increase",
+        "until now",
+        "to forget",
+        "high, tall"
+      ],
+      "reading": "あげる",
+      "meaning": "raise, increase",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-110",
+      "sourceNoteId": "1708637439963",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "嫌い",
+      "answer": "dislike",
+      "choices": [
+        "dislike",
+        "promise, appointment",
+        "to buy",
+        "where"
+      ],
+      "reading": "きらい",
+      "meaning": "dislike",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-111",
+      "sourceNoteId": "1708637439964",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "おじいさん",
+      "answer": "grandfather",
+      "choices": [
+        "grandfather",
+        "study",
+        "I (polite, general)",
+        "that over there"
+      ],
+      "reading": "おじいさん",
+      "meaning": "grandfather",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-112",
+      "sourceNoteId": "1708637439965",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "おばあさん",
+      "answer": "grandmother",
+      "choices": [
+        "grandmother",
+        "Japanese language",
+        "(speaker's) mother",
+        "meaning, significance"
+      ],
+      "reading": "おばあさん",
+      "meaning": "grandmother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-113",
+      "sourceNoteId": "1708637439966",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "元気",
+      "answer": "energetic, healthy",
+      "choices": [
+        "energetic, healthy",
+        "give (receiver is in the speaker's group)",
+        "high, tall",
+        "come"
+      ],
+      "reading": "げんき",
+      "meaning": "energetic, healthy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-114",
+      "sourceNoteId": "1708637439967",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いつも",
+      "answer": "always, usually",
+      "choices": [
+        "always, usually",
+        "person",
+        "he, him",
+        "chan"
+      ],
+      "reading": "いつも",
+      "meaning": "always, usually",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-115",
+      "sourceNoteId": "1708637439968",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "持つ",
+      "answer": "have, hold",
+      "choices": [
+        "have, hold",
+        "to continue, to keep up",
+        "all, everybody",
+        "busy, occupied"
+      ],
+      "reading": "もつ",
+      "meaning": "have, hold",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-116",
+      "sourceNoteId": "1708637439969",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "みんな",
+      "answer": "all, everybody",
+      "choices": [
+        "all, everybody",
+        "to stop (at some place)",
+        "to not be",
+        "well"
+      ],
+      "reading": "みんな",
+      "meaning": "all, everybody",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-117",
+      "sourceNoteId": "1708637439970",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "使う",
+      "answer": "use",
+      "choices": [
+        "use",
+        "he, him",
+        "time, hour",
+        "become, result in, come (to do)"
+      ],
+      "reading": "つかう",
+      "meaning": "use",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-118",
+      "sourceNoteId": "1708637439971",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "大丈夫",
+      "answer": "alright, OK",
+      "choices": [
+        "alright, OK",
+        "can do, be good at",
+        "person",
+        "how, what"
+      ],
+      "reading": "だいじょうぶ",
+      "meaning": "alright, OK",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-119",
+      "sourceNoteId": "1708637439972",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "始める",
+      "answer": "start",
+      "choices": [
+        "start",
+        "town, city",
+        "water",
+        "front, before"
+      ],
+      "reading": "はじめる",
+      "meaning": "start",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-120",
+      "sourceNoteId": "1708637439973",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "今日",
+      "answer": "today",
+      "choices": [
+        "today",
+        "time, hour",
+        "inside, middle",
+        "well"
+      ],
+      "reading": "きょう",
+      "meaning": "today",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-121",
+      "sourceNoteId": "1708637439974",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "部屋",
+      "answer": "room",
+      "choices": [
+        "room",
+        "to continue, to keep up",
+        "promise, appointment",
+        "that guy"
+      ],
+      "reading": "へや",
+      "meaning": "room",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-122",
+      "sourceNoteId": "1708637439975",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "悪い",
+      "answer": "bad",
+      "choices": [
+        "bad",
+        "there",
+        "think, consider",
+        "meet"
+      ],
+      "reading": "わるい",
+      "meaning": "bad",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-123",
+      "sourceNoteId": "1708637439976",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "まあ",
+      "answer": "well...",
+      "choices": [
+        "well...",
+        "dream",
+        "appearance, state",
+        "become, result in, come (to do)"
+      ],
+      "reading": "まあ",
+      "meaning": "well...",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-124",
+      "sourceNoteId": "1708637439977",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "食べる",
+      "answer": "eat",
+      "choices": [
+        "eat",
+        "if, in the event of...",
+        "again, also",
+        "person (polite form)"
+      ],
+      "reading": "たべる",
+      "meaning": "eat",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-125",
+      "sourceNoteId": "1708637439978",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "沢山",
+      "answer": "a lot, plenty",
+      "choices": [
+        "a lot, plenty",
+        "enter",
+        "what",
+        "well"
+      ],
+      "reading": "たくさん",
+      "meaning": "a lot, plenty",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-126",
+      "sourceNoteId": "1708637439979",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "場所",
+      "answer": "place, location",
+      "choices": [
+        "place, location",
+        "drink",
+        "well",
+        "often"
+      ],
+      "reading": "ばしょ",
+      "meaning": "place, location",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-127",
+      "sourceNoteId": "1708637439980",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "呼ぶ",
+      "answer": "call, name",
+      "choices": [
+        "call, name",
+        "time, hour",
+        "san",
+        "teacher"
+      ],
+      "reading": "よぶ",
+      "meaning": "call, name",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-128",
+      "sourceNoteId": "1708637439981",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "動く",
+      "answer": "move",
+      "choices": [
+        "move",
+        "use",
+        "understanding, comprehension",
+        "to believe, to trust"
+      ],
+      "reading": "うごく",
+      "meaning": "move",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-129",
+      "sourceNoteId": "1708637439982",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "気持ち",
+      "answer": "feeling, sensation",
+      "choices": [
+        "feeling, sensation",
+        "see, look at",
+        "go",
+        "(not) at all"
+      ],
+      "reading": "きもち",
+      "meaning": "feeling, sensation",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-130",
+      "sourceNoteId": "1708637439983",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "誰",
+      "answer": "who",
+      "choices": [
+        "who",
+        "(speaker's) father",
+        "I see, really",
+        "no (polite)"
+      ],
+      "reading": "だれ",
+      "meaning": "who",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-131",
+      "sourceNoteId": "1708637439984",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "子",
+      "answer": "child, kid",
+      "choices": [
+        "child, kid",
+        "Japanese language",
+        "see, look at",
+        "that one"
+      ],
+      "reading": "こ",
+      "meaning": "child, kid",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-132",
+      "sourceNoteId": "1708637439985",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どんな",
+      "answer": "what kind of...",
+      "choices": [
+        "what kind of...",
+        "stand, rise",
+        "drink",
+        "to show"
+      ],
+      "reading": "どんな",
+      "meaning": "what kind of...",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-133",
+      "sourceNoteId": "1708637439986",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "意味",
+      "answer": "meaning, significance",
+      "choices": [
+        "meaning, significance",
+        "to continue, to keep up",
+        "pardon me, excuse me (e.g. when leaving)",
+        "voice, sound"
+      ],
+      "reading": "いみ",
+      "meaning": "meaning, significance",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-134",
+      "sourceNoteId": "1708637439987",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "言葉",
+      "answer": "word, language",
+      "choices": [
+        "word, language",
+        "well...",
+        "meet",
+        "do, make"
+      ],
+      "reading": "ことば",
+      "meaning": "word, language",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-135",
+      "sourceNoteId": "1708637439988",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "心配",
+      "answer": "worry",
+      "choices": [
+        "worry",
+        "raise, increase",
+        "eat",
+        "family"
+      ],
+      "reading": "しんぱい",
+      "meaning": "worry",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-136",
+      "sourceNoteId": "1708637439989",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "様子",
+      "answer": "appearance, state",
+      "choices": [
+        "appearance, state",
+        "what kind of...",
+        "every day",
+        "(speaker's) mother"
+      ],
+      "reading": "ようす",
+      "meaning": "appearance, state",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-137",
+      "sourceNoteId": "1708637439990",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "信じる",
+      "answer": "to believe, to trust",
+      "choices": [
+        "to believe, to trust",
+        "love",
+        "direction, side",
+        "think, consider"
+      ],
+      "reading": "しんじる",
+      "meaning": "to believe, to trust",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-138",
+      "sourceNoteId": "1708637439991",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "自分",
+      "answer": "self, oneself",
+      "choices": [
+        "self, oneself",
+        "this",
+        "strange, suspicious",
+        "to forget"
+      ],
+      "reading": "じぶん",
+      "meaning": "self, oneself",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-139",
+      "sourceNoteId": "1708637439992",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "調べる",
+      "answer": "look up, search",
+      "choices": [
+        "look up, search",
+        "yes (polite)",
+        "(not) at all",
+        "voice, sound"
+      ],
+      "reading": "しらべる",
+      "meaning": "look up, search",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-140",
+      "sourceNoteId": "1708637439993",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "事",
+      "answer": "thing, incident",
+      "choices": [
+        "thing, incident",
+        "think, consider",
+        "to persevere, to do one's best",
+        "talk, story"
+      ],
+      "reading": "こと",
+      "meaning": "thing, incident",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-141",
+      "sourceNoteId": "1708637439994",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "同じ",
+      "answer": "same, identical",
+      "choices": [
+        "same, identical",
+        "that one",
+        "eye",
+        "small"
+      ],
+      "reading": "おなじ",
+      "meaning": "same, identical",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-142",
+      "sourceNoteId": "1708637439995",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "申し訳ない",
+      "answer": "sorry, inexcusable",
+      "choices": [
+        "sorry, inexcusable",
+        "hand",
+        "become, result in, come (to do)",
+        "no (polite)"
+      ],
+      "reading": "もうしわけない",
+      "meaning": "sorry, inexcusable",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-143",
+      "sourceNoteId": "1708637439996",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "もちろん",
+      "answer": "of course, no doubt",
+      "choices": [
+        "of course, no doubt",
+        "say",
+        "if, in the event of...",
+        "what"
+      ],
+      "reading": "もちろん",
+      "meaning": "of course, no doubt",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-144",
+      "sourceNoteId": "1708637439997",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "とても",
+      "answer": "very",
+      "choices": [
+        "very",
+        "grandmother",
+        "ask",
+        "I (polite, general)"
+      ],
+      "reading": "とても",
+      "meaning": "very",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-145",
+      "sourceNoteId": "1708637439998",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "楽しい",
+      "answer": "fun, enjoyable",
+      "choices": [
+        "fun, enjoyable",
+        "put, place",
+        "like this, this kind of",
+        "room"
+      ],
+      "reading": "たのしい",
+      "meaning": "fun, enjoyable",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-146",
+      "sourceNoteId": "1708637439999",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "失礼します",
+      "answer": "pardon me, excuse me (e.g. when leaving)",
+      "choices": [
+        "pardon me, excuse me (e.g. when leaving)",
+        "that guy",
+        "look up, search",
+        "to stop (at some place)"
+      ],
+      "reading": "しつれいします",
+      "meaning": "pardon me, excuse me (e.g. when leaving)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-147",
+      "sourceNoteId": "1708637440000",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "手伝う",
+      "answer": "to help",
+      "choices": [
+        "to help",
+        "have, exist (animate)",
+        "Japan",
+        "yesterday"
+      ],
+      "reading": "てつだう",
+      "meaning": "to help",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-148",
+      "sourceNoteId": "1708637440001",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "忙しい",
+      "answer": "busy, occupied",
+      "choices": [
+        "busy, occupied",
+        "direction, side",
+        "come",
+        "time, hour"
+      ],
+      "reading": "いそがしい",
+      "meaning": "busy, occupied",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-149",
+      "sourceNoteId": "1708637440002",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "仕事",
+      "answer": "work, job",
+      "choices": [
+        "work, job",
+        "stand, rise",
+        "san",
+        "busy, occupied"
+      ],
+      "reading": "しごと",
+      "meaning": "work, job",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-150",
+      "sourceNoteId": "1708637440003",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "続ける",
+      "answer": "to continue, to keep up",
+      "choices": [
+        "to continue, to keep up",
+        "a little",
+        "in such manner, that way",
+        "work, job"
+      ],
+      "reading": "つづける",
+      "meaning": "to continue, to keep up",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-151",
+      "sourceNoteId": "1708637440004",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "見せる",
+      "answer": "to show",
+      "choices": [
+        "to show",
+        "how, what",
+        "which, what",
+        "from now on, after this"
+      ],
+      "reading": "みせる",
+      "meaning": "to show",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-152",
+      "sourceNoteId": "1708637440005",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "うち",
+      "answer": "one's household",
+      "choices": [
+        "one's household",
+        "talk, speak",
+        "(speaker's) father",
+        "inside, middle"
+      ],
+      "reading": "うち",
+      "meaning": "one's household",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-153",
+      "sourceNoteId": "1708637440006",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "約束",
+      "answer": "promise, appointment",
+      "choices": [
+        "promise, appointment",
+        "to persevere, to do one's best",
+        "to not be",
+        "Japan"
+      ],
+      "reading": "やくそく",
+      "meaning": "promise, appointment",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-154",
+      "sourceNoteId": "1708637440007",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "忘れる",
+      "answer": "to forget",
+      "choices": [
+        "to forget",
+        "girl",
+        "Japan",
+        "work, job"
+      ],
+      "reading": "わすれる",
+      "meaning": "to forget",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-155",
+      "sourceNoteId": "1708637440008",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "守る",
+      "answer": "to protect, to observe",
+      "choices": [
+        "to protect, to observe",
+        "every day",
+        "to buy",
+        "that guy, (s)he (usu. derogatory)"
+      ],
+      "reading": "まもる",
+      "meaning": "to protect, to observe",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-156",
+      "sourceNoteId": "1708637440009",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "変える",
+      "answer": "to change, to alter",
+      "choices": [
+        "to change, to alter",
+        "big, large",
+        "study",
+        "do, make"
+      ],
+      "reading": "かえる",
+      "meaning": "to change, to alter",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-157",
+      "sourceNoteId": "1708637440010",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "さっき",
+      "answer": "(only) a moment ago",
+      "choices": [
+        "(only) a moment ago",
+        "say",
+        "meet",
+        "a little"
+      ],
+      "reading": "さっき",
+      "meaning": "(only) a moment ago",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-158",
+      "sourceNoteId": "1708637440011",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "今度",
+      "answer": "next time",
+      "choices": [
+        "next time",
+        "live, reside",
+        "you (to someone of equal or lower status)",
+        "person from (nationality)"
+      ],
+      "reading": "こんど",
+      "meaning": "next time",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-159",
+      "sourceNoteId": "1708637440012",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "これから",
+      "answer": "from now on, after this",
+      "choices": [
+        "from now on, after this",
+        "use",
+        "say",
+        "meet"
+      ],
+      "reading": "これから",
+      "meaning": "from now on, after this",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-160",
+      "sourceNoteId": "1708637440013",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "止める",
+      "answer": "to stop (at some place)",
+      "choices": [
+        "to stop (at some place)",
+        "to move forward",
+        "where",
+        "yes (polite)"
+      ],
+      "reading": "とめる",
+      "meaning": "to stop (at some place)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-161",
+      "sourceNoteId": "1708637440014",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "止める",
+      "answer": "to stop (doing something)",
+      "choices": [
+        "to stop (doing something)",
+        "town, city",
+        "understanding, comprehension",
+        "I (polite, general)"
+      ],
+      "reading": "やめる",
+      "meaning": "to stop (doing something)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-162",
+      "sourceNoteId": "1708637440015",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "頼む",
+      "answer": "to ask, to request",
+      "choices": [
+        "to ask, to request",
+        "thing, object",
+        "if, in the event of...",
+        "evening, night"
+      ],
+      "reading": "たのむ",
+      "meaning": "to ask, to request",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-163",
+      "sourceNoteId": "1708637440016",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "許す",
+      "answer": "to forgive, to permit",
+      "choices": [
+        "to forgive, to permit",
+        "that one",
+        "until now",
+        "already, yet"
+      ],
+      "reading": "ゆるす",
+      "meaning": "to forgive, to permit",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-164",
+      "sourceNoteId": "1708637440017",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "嬉しい",
+      "answer": "happy, glad",
+      "choices": [
+        "happy, glad",
+        "friend, companion",
+        "a little",
+        "this time"
+      ],
+      "reading": "うれしい",
+      "meaning": "happy, glad",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-165",
+      "sourceNoteId": "1708637440018",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "頑張る",
+      "answer": "to persevere, to do one's best",
+      "choices": [
+        "to persevere, to do one's best",
+        "(speaker's) mother",
+        "do, make",
+        "that one"
+      ],
+      "reading": "がんばる",
+      "meaning": "to persevere, to do one's best",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-166",
+      "sourceNoteId": "1708637440019",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "なるほど",
+      "answer": "I see, really",
+      "choices": [
+        "I see, really",
+        "like, fond of",
+        "Japanese language",
+        "house, home"
+      ],
+      "reading": "なるほど",
+      "meaning": "I see, really",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-167",
+      "sourceNoteId": "1708637440020",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "つまり",
+      "answer": "in short, basically",
+      "choices": [
+        "in short, basically",
+        "all, everybody",
+        "difficult",
+        "(not) at all"
+      ],
+      "reading": "つまり",
+      "meaning": "in short, basically",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-168",
+      "sourceNoteId": "1708637440021",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "国",
+      "answer": "country",
+      "choices": [
+        "country",
+        "I (polite, general)",
+        "name",
+        "house, home"
+      ],
+      "reading": "くに",
+      "meaning": "country",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-169",
+      "sourceNoteId": "1708637440022",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "優しい",
+      "answer": "gentle, kind",
+      "choices": [
+        "gentle, kind",
+        "he, him",
+        "to continue, to keep up",
+        "room"
+      ],
+      "reading": "やさしい",
+      "meaning": "gentle, kind",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-170",
+      "sourceNoteId": "1708637440023",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "嫌",
+      "answer": "disliking, unwilling (to do)",
+      "choices": [
+        "disliking, unwilling (to do)",
+        "(the) most",
+        "to buy",
+        "boy"
+      ],
+      "reading": "いや",
+      "meaning": "disliking, unwilling (to do)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-171",
+      "sourceNoteId": "1708637440024",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "そんなに",
+      "answer": "that much",
+      "choices": [
+        "that much",
+        "chan",
+        "when",
+        "to protect, to observe"
+      ],
+      "reading": "そんなに",
+      "meaning": "that much",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-172",
+      "sourceNoteId": "1708637440025",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "今回",
+      "answer": "this time",
+      "choices": [
+        "this time",
+        "you (usually when one doesn't know the person)",
+        "meet",
+        "stand, rise"
+      ],
+      "reading": "こんかい",
+      "meaning": "this time",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-173",
+      "sourceNoteId": "1708637440026",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "夜",
+      "answer": "evening, night",
+      "choices": [
+        "evening, night",
+        "well",
+        "disliking, unwilling (to do)",
+        "have, hold"
+      ],
+      "reading": "よる",
+      "meaning": "evening, night",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-174",
+      "sourceNoteId": "1708637440027",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "買う",
+      "answer": "to buy",
+      "choices": [
+        "to buy",
+        "every day",
+        "move",
+        "next, subsequent"
+      ],
+      "reading": "かう",
+      "meaning": "to buy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-175",
+      "sourceNoteId": "1708637440028",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "今まで",
+      "answer": "until now",
+      "choices": [
+        "until now",
+        "to show",
+        "always, usually",
+        "to protect, to observe"
+      ],
+      "reading": "いままで",
+      "meaning": "until now",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-176",
+      "sourceNoteId": "1708637440029",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "奴",
+      "answer": "that guy, (s)he (usu. derogatory)",
+      "choices": [
+        "that guy, (s)he (usu. derogatory)",
+        "I see, really",
+        "dream",
+        "to protect, to observe"
+      ],
+      "reading": "やつ",
+      "meaning": "that guy, (s)he (usu. derogatory)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-177",
+      "sourceNoteId": "1708637440030",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あいつ",
+      "answer": "that guy",
+      "choices": [
+        "that guy",
+        "to stop (at some place)",
+        "child, kid",
+        "grandmother"
+      ],
+      "reading": "あいつ",
+      "meaning": "that guy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-178",
+      "sourceNoteId": "1708637440031",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "phrase",
+      "prompt": "もし",
+      "answer": "if, in the event of...",
+      "choices": [
+        "if, in the event of...",
+        "love",
+        "san",
+        "that"
+      ],
+      "reading": "もし",
+      "meaning": "if, in the event of...",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-179",
+      "sourceNoteId": "1708637440032",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "理解",
+      "answer": "understanding, comprehension",
+      "choices": [
+        "understanding, comprehension",
+        "that guy, (s)he (usu. derogatory)",
+        "stand, rise",
+        "room"
+      ],
+      "reading": "りかい",
+      "meaning": "understanding, comprehension",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-180",
+      "sourceNoteId": "1708637440033",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "夢",
+      "answer": "dream",
+      "choices": [
+        "dream",
+        "move",
+        "hand",
+        "look up, search"
+      ],
+      "reading": "ゆめ",
+      "meaning": "dream",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-181",
+      "sourceNoteId": "1708637440034",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "俺",
+      "answer": "I (male)",
+      "choices": [
+        "I (male)",
+        "well",
+        "work, job",
+        "come"
+      ],
+      "reading": "おれ",
+      "meaning": "I (male)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-182",
+      "sourceNoteId": "1708637440035",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "難しい",
+      "answer": "difficult",
+      "choices": [
+        "difficult",
+        "to help",
+        "very",
+        "dislike"
+      ],
+      "reading": "むずかしい",
+      "meaning": "difficult",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-183",
+      "sourceNoteId": "1708637440036",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "今度",
+      "answer": "this time",
+      "choices": [
+        "this time",
+        "appearance, state",
+        "good",
+        "same, identical"
+      ],
+      "reading": "こんど",
+      "meaning": "this time",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-184",
+      "sourceNoteId": "1708637440037",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "おかしい",
+      "answer": "strange, suspicious",
+      "choices": [
+        "strange, suspicious",
+        "interesting, amusing",
+        "who",
+        "meaning, significance"
+      ],
+      "reading": "おかしい",
+      "meaning": "strange, suspicious",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-185",
+      "sourceNoteId": "1708637440038",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "男の子",
+      "answer": "boy",
+      "choices": [
+        "boy",
+        "work, job",
+        "to forgive, to permit",
+        "come"
+      ],
+      "reading": "おとこのこ",
+      "meaning": "boy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-186",
+      "sourceNoteId": "1708637440039",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "女の子",
+      "answer": "girl",
+      "choices": [
+        "girl",
+        "call, name",
+        "front, before",
+        "difficult"
+      ],
+      "reading": "おんなのこ",
+      "meaning": "girl",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-187",
+      "sourceNoteId": "1708637440040",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "寝る",
+      "answer": "sleep",
+      "choices": [
+        "sleep",
+        "say",
+        "have, exist (animate)",
+        "pardon me, excuse me (e.g. when leaving)"
+      ],
+      "reading": "ねる",
+      "meaning": "sleep",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-188",
+      "sourceNoteId": "1708637440041",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "伝える",
+      "answer": "to convey, to transmit",
+      "choices": [
+        "to convey, to transmit",
+        "no (polite)",
+        "country",
+        "that guy"
+      ],
+      "reading": "つたえる",
+      "meaning": "to convey, to transmit",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-189",
+      "sourceNoteId": "1708637440042",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "小さい",
+      "answer": "small",
+      "choices": [
+        "small",
+        "good",
+        "(not) at all",
+        "wait"
+      ],
+      "reading": "ちいさい",
+      "meaning": "small",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-190",
+      "sourceNoteId": "1708637440043",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "選ぶ",
+      "answer": "to choose, to elect",
+      "choices": [
+        "to choose, to elect",
+        "town, city",
+        "now",
+        "see, look at"
+      ],
+      "reading": "えらぶ",
+      "meaning": "to choose, to elect",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-191",
+      "sourceNoteId": "1708637440044",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "座る",
+      "answer": "to sit",
+      "choices": [
+        "to sit",
+        "one's household",
+        "in such manner, that way",
+        "what"
+      ],
+      "reading": "すわる",
+      "meaning": "to sit",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-192",
+      "sourceNoteId": "1708637440045",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "簡単",
+      "answer": "simple, easy",
+      "choices": [
+        "simple, easy",
+        "more, a bit more",
+        "strange, suspicious",
+        "today"
+      ],
+      "reading": "かんたん",
+      "meaning": "simple, easy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-193",
+      "sourceNoteId": "1708637440046",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "お願い",
+      "answer": "favor",
+      "choices": [
+        "favor",
+        "he, him",
+        "you (usually when one doesn't know the person)",
+        "there"
+      ],
+      "reading": "おねがい",
+      "meaning": "favor",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-194",
+      "sourceNoteId": "1708637440047",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "進む",
+      "answer": "to move forward",
+      "choices": [
+        "to move forward",
+        "well...",
+        "do, make",
+        "move"
+      ],
+      "reading": "すすむ",
+      "meaning": "to move forward",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-195",
+      "sourceNoteId": "1708637440048",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "全く",
+      "answer": "entirely, truly",
+      "choices": [
+        "entirely, truly",
+        "that one there",
+        "time, hour",
+        "this"
+      ],
+      "reading": "まったく",
+      "meaning": "entirely, truly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-196",
+      "sourceNoteId": "1708637440049",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "なぜ",
+      "answer": "why",
+      "choices": [
+        "why",
+        "chan",
+        "talk, story",
+        "know"
+      ],
+      "reading": "なぜ",
+      "meaning": "why",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-197",
+      "sourceNoteId": "1708637440050",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "僕",
+      "answer": "I (male)",
+      "choices": [
+        "I (male)",
+        "have, exist (inanimate)",
+        "book",
+        "voice, sound"
+      ],
+      "reading": "ぼく",
+      "meaning": "I (male)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-198",
+      "sourceNoteId": "1708637440051",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "水",
+      "answer": "water",
+      "choices": [
+        "water",
+        "person",
+        "that over there",
+        "that one"
+      ],
+      "reading": "みず",
+      "meaning": "water",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-199",
+      "sourceNoteId": "1708637440052",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "飲む",
+      "answer": "drink",
+      "choices": [
+        "drink",
+        "to show",
+        "promise, appointment",
+        "why"
+      ],
+      "reading": "のむ",
+      "meaning": "drink",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "kaishi-15k-basic-japanese-vocabulary-200",
+      "sourceNoteId": "1708637440053",
+      "lessonId": "kaishi-15k-basic-japanese-vocabulary-1",
+      "type": "vocab",
+      "prompt": "暇",
+      "answer": "free, not busy",
+      "choices": [
+        "free, not busy",
+        "house, home",
+        "understanding, comprehension",
+        "that guy, (s)he (usu. derogatory)"
+      ],
+      "reading": "ひま",
+      "meaning": "free, not busy",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    }
+  ]
+}

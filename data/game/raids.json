@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sushi_prep",
+    "displayName": "Sushi Prep Raid",
+    "description": "Prove Hana's food vocabulary, then defend the trial kitchen from a hungry oni.",
+    "npcId": "hana",
+    "requiredFlags": ["hana_first_lesson"],
+    "learningFocus": "food-words",
+    "encounterId": "pantry_oni",
+    "reward": {
+      "coins": 80,
+      "items": [
+        { "id": "recipe_stamp", "qty": 1 },
+        { "id": "rice_ball", "qty": 2 }
+      ]
+    },
+    "unlockFlags": ["raid_sushi_prep_done", "expedition_forest_unlocked"],
+    "unlockExpeditionIds": ["forest_lunchbox"],
+    "repeatable": false
+  }
+]

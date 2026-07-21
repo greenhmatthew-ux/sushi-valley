@@ -1,0 +1,435 @@
+[
+  {
+    "id": "grammar-particles-wa",
+    "type": "grammar-rule",
+    "title": "The Particle は (wa)",
+    "category": "grammar",
+    "subtitle": "Topic marker",
+    "japanese": "私は学生です。",
+    "reading": "わたし は がくせい です。",
+    "romaji": "watashi wa gakusei desu.",
+    "english": "I am a student.",
+    "explanation": "は marks the topic of the sentence. It tells the listener 'as for X...' — what follows is a comment about X. Despite being written with the hiragana character 'ha', it is always pronounced 'wa' when used as a particle.",
+    "examples": [
+      { "jp": "これは本です。", "reading": "これ は ほん です。", "romaji": "kore wa hon desu.", "en": "This is a book." },
+      { "jp": "今日はいい天気です。", "reading": "きょう は いい てんき です。", "romaji": "kyou wa ii tenki desu.", "en": "Today the weather is good." },
+      { "jp": "私は寿司が好きです。", "reading": "わたし は すし が すき です。", "romaji": "watashi wa sushi ga suki desu.", "en": "I like sushi." }
+    ],
+    "tips": [
+      "は is the most common particle in Japanese — look for it early when parsing a sentence.",
+      "The topic is often 'known information' — both speaker and listener are aware of it.",
+      "は can be omitted in casual speech once the topic is established."
+    ],
+    "relatedLessonIds": ["greetings", "common-phrases"],
+    "placement": ["valley_school", "woods_library"]
+  },
+  {
+    "id": "grammar-particles-ga",
+    "type": "grammar-rule",
+    "title": "The Particle が (ga)",
+    "category": "grammar",
+    "subtitle": "Subject marker",
+    "japanese": "猫が寝ている。",
+    "reading": "ねこ が ねている。",
+    "romaji": "neko ga neteiru.",
+    "english": "The cat is sleeping.",
+    "explanation": "が marks the grammatical subject — the thing performing the action or being described. Unlike は (which marks known topics), が introduces new or emphasized information. Think of it as answering 'what' or 'who' is doing something.",
+    "examples": [
+      { "jp": "誰が来ましたか？", "reading": "だれ が きました か？", "romaji": "dare ga kimashita ka?", "en": "Who came?" },
+      { "jp": "雨が降っています。", "reading": "あめ が ふっています。", "romaji": "ame ga futteimasu.", "en": "It is raining (rain is falling)." },
+      { "jp": "すしが美味しいです。", "reading": "すし が おいしい です。", "romaji": "sushi ga oishii desu.", "en": "The sushi is delicious." }
+    ],
+    "tips": [
+      "は vs が: は introduces a known topic; が introduces new or focused information.",
+      "が is used with question words like 誰 (だれ, who) and 何 (なに, what).",
+      "With adjectives expressing preference (好き, 嫌い), が marks the thing liked/disliked."
+    ],
+    "relatedLessonIds": ["common-phrases"],
+    "placement": ["valley_school"]
+  },
+  {
+    "id": "grammar-desu-masu",
+    "type": "grammar-rule",
+    "title": "です and ます — Polite Form",
+    "category": "grammar",
+    "subtitle": "Polite sentence endings",
+    "japanese": "私は寿司を食べます。",
+    "reading": "わたし は すし を たべます。",
+    "romaji": "watashi wa sushi o tabemasu.",
+    "english": "I eat sushi.",
+    "explanation": "です (desu) is the polite copula — roughly equivalent to 'is/am/are'. ます (masu) is the polite verb ending. Both make sentences formal and are used with strangers, elders, and in business. Drop them for casual speech with friends.",
+    "examples": [
+      { "jp": "学生です。", "reading": "がくせい です。", "romaji": "gakusei desu.", "en": "(I am) a student." },
+      { "jp": "毎日日本語を勉強します。", "reading": "まいにち にほんご を べんきょう します。", "romaji": "mainichi nihongo o benkyou shimasu.", "en": "I study Japanese every day." },
+      { "jp": "寿司を食べません。", "reading": "すし を たべません。", "romaji": "sushi o tabemasen.", "en": "I don't eat sushi." }
+    ],
+    "tips": [
+      "ません (masen) is the negative of ます — 'I don't do X'.",
+      "でした (deshita) is the past of です — 'was/were'.",
+      "Polite form is always safe — when in doubt, use it."
+    ],
+    "relatedLessonIds": ["greetings", "common-phrases"],
+    "placement": ["valley_school", "frontier_nexus"]
+  },
+  {
+    "id": "grammar-particles-wo",
+    "type": "grammar-rule",
+    "title": "The Particle を (wo)",
+    "category": "grammar",
+    "subtitle": "Direct object marker",
+    "japanese": "水を飲みます。",
+    "reading": "みず を のみます。",
+    "romaji": "mizu o nomimasu.",
+    "english": "I drink water.",
+    "explanation": "を marks the direct object of a verb — the thing receiving the action. It's pronounced 'o' even though it's written with the character 'wo'. Only transitive verbs (verbs that take an object) use を.",
+    "examples": [
+      { "jp": "本を読みます。", "reading": "ほん を よみます。", "romaji": "hon o yomimasu.", "en": "I read a book." },
+      { "jp": "日本語を勉強します。", "reading": "にほんご を べんきょう します。", "romaji": "nihongo o benkyou shimasu.", "en": "I study Japanese." },
+      { "jp": "茶を飲みましょう。", "reading": "ちゃ を のみましょう。", "romaji": "cha o nomimashou.", "en": "Let's drink tea." }
+    ],
+    "tips": [
+      "を is always pronounced 'o', never 'wo'.",
+      "を only appears before verbs — never at the end of a sentence.",
+      "Some verbs like する (suru, to do) and なる (naru, to become) don't take を."
+    ],
+    "relatedLessonIds": ["common-phrases"],
+    "placement": ["valley_school"]
+  },
+  {
+    "id": "grammar-particles-ni",
+    "type": "grammar-rule",
+    "title": "The Particle に (ni)",
+    "category": "grammar",
+    "subtitle": "Destination, time, and indirect object",
+    "japanese": "学校に行きます。",
+    "reading": "がっこう に いきます。",
+    "romaji": "gakkou ni ikimasu.",
+    "english": "I go to school.",
+    "explanation": "に is a versatile particle. It marks: (1) destination of movement ('to'), (2) specific points in time ('at'), (3) the indirect object ('to/for'), and (4) location of existence (with ある/いる). Context determines which meaning applies.",
+    "examples": [
+      { "jp": "三時に会いましょう。", "reading": "さんじ に あいましょう。", "romaji": "sanji ni aimashou.", "en": "Let's meet at three o'clock." },
+      { "jp": "東京に住んでいます。", "reading": "とうきょう に すんでいます。", "romaji": "toukyou ni sundeimasu.", "en": "I live in Tokyo." },
+      { "jp": "先生に花をあげました。", "reading": "せんせい に はな を あげました。", "romaji": "sensei ni hana o agemashita.", "en": "I gave flowers to the teacher." }
+    ],
+    "tips": [
+      "に for time: only specific times (3:00, Monday) — not relative time like 'today' or 'tomorrow'.",
+      "に vs へ: both can mean 'to', but に implies arrival while へ emphasizes direction.",
+      "に with ある/いる: marks where something exists."
+    ],
+    "relatedLessonIds": ["travel-arrival", "travel-transit"],
+    "placement": ["valley_school", "frontier_nexus"]
+  },
+  {
+    "id": "phrase-greetings-guide",
+    "type": "phrase-guide",
+    "title": "Essential Greetings",
+    "category": "phrases",
+    "subtitle": "First words for every situation",
+    "japanese": "こんにちは",
+    "reading": "こんにちは",
+    "romaji": "konnichiwa",
+    "english": "Hello / Good afternoon",
+    "explanation": "Japanese greetings change with the time of day and social context. Using the right greeting shows cultural awareness and respect. Here are the essential ones you'll hear throughout the valley.",
+    "examples": [
+      { "jp": "おはようございます", "reading": "おはようございます", "romaji": "ohayou gozaimasu", "en": "Good morning (polite)" },
+      { "jp": "こんにちは", "reading": "こんにちは", "romaji": "konnichiwa", "en": "Hello / Good afternoon" },
+      { "jp": "こんばんは", "reading": "こんばんは", "romaji": "konbanwa", "en": "Good evening" },
+      { "jp": "さようなら", "reading": "さようなら", "romaji": "sayounara", "en": "Goodbye (formal)" },
+      { "jp": "またね", "reading": "またね", "romaji": "mata ne", "en": "See you (casual)" },
+      { "jp": "おやすみなさい", "reading": "おやすみなさい", "romaji": "oyasumi nasai", "en": "Good night" }
+    ],
+    "tips": [
+      "おはよう is casual, おはようございます is polite — use the polite form with strangers.",
+      "こんにちは is used from late morning until evening.",
+      "さようなら is formal — またね is the casual 'see you' for friends."
+    ],
+    "relatedLessonIds": ["greetings"],
+    "placement": ["valley_hub", "valley_school"]
+  },
+  {
+    "id": "phrase-shopping-guide",
+    "type": "phrase-guide",
+    "title": "Shopping Phrases",
+    "category": "phrases",
+    "subtitle": "Buying and bargaining at shops",
+    "japanese": "いくらですか？",
+    "reading": "いくら です か？",
+    "romaji": "ikura desu ka?",
+    "english": "How much is it?",
+    "explanation": "When shopping at the market or a shop, these phrases will help you ask about prices, request items, and complete purchases politely. The shopkeepers in the valley will appreciate your effort!",
+    "examples": [
+      { "jp": "これをください。", "reading": "これ を ください。", "romaji": "kore o kudasai.", "en": "I'll take this one, please." },
+      { "jp": "いくらですか？", "reading": "いくら です か？", "romaji": "ikura desu ka?", "en": "How much is it?" },
+      { "jp": "高いですね。", "reading": "たかい ですね。", "romaji": "takai desu ne.", "en": "It's expensive, isn't it?" },
+      { "jp": "安い！", "reading": "やすい！", "romaji": "yasui!", "en": "It's cheap!" },
+      { "jp": "もう少し安くなりませんか？", "reading": "もう すこし やすく なりません か？", "romaji": "mou sukoshi yasuku narimasen ka?", "en": "Could it be a little cheaper?" }
+    ],
+    "tips": [
+      "ください (kudasai) is the magic word — 'please give me X'.",
+      "高い (takai) means both 'expensive' and 'high/tall' — context tells you which.",
+      "Bargaining is uncommon in regular shops but fine at markets and festivals."
+    ],
+    "relatedLessonIds": ["food-words", "travel-dining"],
+    "placement": ["valley_shop", "frontier_nexus"]
+  },
+  {
+    "id": "phrase-dining-guide",
+    "type": "phrase-guide",
+    "title": "Dining Phrases",
+    "category": "phrases",
+    "subtitle": "Eating out with confidence",
+    "japanese": "いただきます！",
+    "reading": "いただきます！",
+    "romaji": "itadakimasu!",
+    "english": "Let's eat! (gratitude before meals)",
+    "explanation": "Japanese dining etiquette includes specific phrases before and after meals. いただきます expresses gratitude for the food and those who prepared it. ごちそうさまでした thanks the host or cook after finishing.",
+    "examples": [
+      { "jp": "いただきます。", "reading": "いただきます。", "romaji": "itadakimasu.", "en": "Gratitude before eating." },
+      { "jp": "ごちそうさまでした。", "reading": "ごちそうさま でした。", "romaji": "gochisousama deshita.", "en": "Thanks for the meal (after eating)." },
+      { "jp": "メニューをください。", "reading": "メニュー を ください。", "romaji": "menyuu o kudasai.", "en": "Please give me a menu." },
+      { "jp": "おいしいです！", "reading": "おいしい です！", "romaji": "oishii desu!", "en": "It's delicious!" },
+      { "jp": "お会計をください。", "reading": "おかいけい を ください。", "romaji": "okaikei o kudasai.", "en": "The check, please." }
+    ],
+    "tips": [
+      "Say いただきます before eating, not after ordering.",
+      "ごちそうさま (casual) or ごちそうさまでした (polite) after finishing.",
+      "Slurping noodles is acceptable and shows enjoyment!"
+    ],
+    "relatedLessonIds": ["food-words", "travel-dining"],
+    "placement": ["valley_shop", "valley_hub"]
+  },
+  {
+    "id": "cultural-bow-guide",
+    "type": "cultural-note",
+    "title": "The Art of Bowing (お辞儀)",
+    "category": "culture",
+    "subtitle": "More than just a greeting",
+    "japanese": "お辞儀",
+    "reading": "おじぎ",
+    "romaji": "ojigi",
+    "english": "bow / bowing",
+    "explanation": "Bowing is central to Japanese communication. It conveys greeting, gratitude, apology, and respect. The depth and duration of a bow carry meaning: a slight nod for casual greetings, 15° for customers, 30° for formal situations, and 45° for deep apologies.",
+    "examples": [
+      { "jp": "よろしくお願いします。", "reading": "よろしく おねがい します。", "romaji": "yoroshiku onegai shimasu.", "en": "Please treat me well (said with a bow)." },
+      { "jp": "ありがとうございます。", "reading": "ありがとう ございます。", "romaji": "arigatou gozaimasu.", "en": "Thank you very much (said with a bow)." },
+      { "jp": "すみません。", "reading": "すみません。", "romaji": "sumimasen.", "en": "Excuse me / I'm sorry (said with a bow)." }
+    ],
+    "tips": [
+      "A slight nod (会釈, eshaku) ~15° is fine for everyday greetings.",
+      "The deepest bow (最敬礼, saikeirei) ~45° is for apologies or profound gratitude.",
+      "Foreigners aren't expected to bow perfectly — effort is appreciated."
+    ],
+    "relatedLessonIds": ["greetings", "travel-arrival"],
+    "placement": ["valley_hub", "frontier_nexus"]
+  },
+  {
+    "id": "cultural-omotenashi",
+    "type": "cultural-note",
+    "title": "おもてなし — Japanese Hospitality",
+    "category": "culture",
+    "subtitle": "The spirit of selfless service",
+    "japanese": "おもてなし",
+    "reading": "おもてなし",
+    "romaji": "omotenashi",
+    "english": "hospitality",
+    "explanation": "おもてなし is the Japanese philosophy of hospitality — anticipating needs before they're expressed and providing service from the heart without expectation of return. You'll see it in shops, restaurants, and inns throughout the valley.",
+    "examples": [
+      { "jp": "いらっしゃいませ！", "reading": "いらっしゃいませ！", "romaji": "irasshaimase!", "en": "Welcome! (shop greeting)" },
+      { "jp": "どうぞお座りください。", "reading": "どうぞ おすわり ください。", "romaji": "douzo osuwari kudasai.", "en": "Please, have a seat." },
+      { "jp": "お待たせしました。", "reading": "おまたせ しました。", "romaji": "omatase shimashita.", "en": "Sorry to keep you waiting." }
+    ],
+    "tips": [
+      "Shop staff say いらっしゃいませ when you enter — a simple nod is a fine response.",
+      "おもてなし means the staff anticipates your needs — don't be surprised by attentive service.",
+      "Tipping is not customary in Japan — good service is included."
+    ],
+    "relatedLessonIds": ["travel-arrival", "travel-dining"],
+    "placement": ["valley_shop", "frontier_nexus"]
+  },
+  {
+    "id": "vocab-nature-guide",
+    "type": "vocab-spotlight",
+    "title": "Nature Words in the Valley",
+    "category": "vocab",
+    "subtitle": "Words you'll see on signs and shrines",
+    "japanese": "森",
+    "reading": "もり",
+    "romaji": "mori",
+    "english": "forest",
+    "explanation": "As you explore the valley and beyond, you'll encounter nature words on signposts and shrines. These words appear frequently in place names and directions. Learning them will help you navigate the world.",
+    "examples": [
+      { "jp": "森", "reading": "もり", "romaji": "mori", "en": "forest" },
+      { "jp": "山", "reading": "やま", "romaji": "yama", "en": "mountain" },
+      { "jp": "川", "reading": "かわ", "romaji": "kawa", "en": "river" },
+      { "jp": "海", "reading": "うみ", "romaji": "umi", "en": "sea / ocean" },
+      { "jp": "空", "reading": "そら", "romaji": "sora", "en": "sky" },
+      { "jp": "花", "reading": "はな", "romaji": "hana", "en": "flower" },
+      { "jp": "木", "reading": "き", "romaji": "ki", "en": "tree" },
+      { "jp": "石", "reading": "いし", "romaji": "ishi", "en": "stone" }
+    ],
+    "tips": [
+      "Many place names combine these: 山 (yama) + something = 'Mt. Something'.",
+      "森 (mori) means a large forest; 林 (hayashi) is a smaller woods.",
+      "Look for these kanji on signposts throughout the world!"
+    ],
+    "relatedLessonIds": ["kana-vowels", "kana-k-row"],
+    "placement": ["woods_entrance", "woods_shrine", "northern_reach"]
+  },
+  {
+    "id": "vocab-directions-guide",
+    "type": "vocab-spotlight",
+    "title": "Direction Words — Finding Your Way",
+    "category": "vocab",
+    "subtitle": "Compass directions for navigation",
+    "japanese": "北",
+    "reading": "きた",
+    "romaji": "kita",
+    "english": "north",
+    "explanation": "Direction words appear on every signpost in the world. The cardinal directions are also used in place names — knowing them helps you read maps and understand where NPCs are directing you.",
+    "examples": [
+      { "jp": "北", "reading": "きた", "romaji": "kita", "en": "north" },
+      { "jp": "南", "reading": "みなみ", "romaji": "minami", "en": "south" },
+      { "jp": "東", "reading": "ひがし", "romaji": "higashi", "en": "east" },
+      { "jp": "西", "reading": "にし", "romaji": "nishi", "en": "west" },
+      { "jp": "右", "reading": "みぎ", "romaji": "migi", "en": "right" },
+      { "jp": "左", "reading": "ひだり", "romaji": "hidari", "en": "left" },
+      { "jp": "まっすぐ", "reading": "まっすぐ", "romaji": "massugu", "en": "straight ahead" }
+    ],
+    "tips": [
+      "Mnemonic: 北 (kita) has the same first sound as 'kita' in 'kita e' (to the north).",
+      "東 (higashi) has 日 (sun/day) + 木 (tree) — 'sun rising from behind trees' = east.",
+      "Look for these on the colored signposts at road junctions!"
+    ],
+    "relatedLessonIds": ["common-phrases", "travel-transit"],
+    "placement": ["woods_entrance", "frontier_nexus", "northern_reach"]
+  },
+  {
+    "id": "grammar-adjectives-i-na",
+    "type": "grammar-rule",
+    "title": "い-adjectives and な-adjectives",
+    "category": "grammar",
+    "subtitle": "Two types of adjectives",
+    "japanese": "高い山、静かな森",
+    "reading": "たかい やま、しずか な もり",
+    "romaji": "takai yama, shizuka na mori",
+    "english": "Tall mountain, quiet forest",
+    "explanation": "Japanese has two types of adjectives. い-adjectives end in い and conjugate on their own (高い→高くない). な-adjectives need な before a noun (静かな森). Some look like い-adjectives but are actually な-adjectives — memorize each one.",
+    "examples": [
+      { "jp": "高い山", "reading": "たかい やま", "romaji": "takai yama", "en": "tall mountain (i-adjective)" },
+      { "jp": "静かな森", "reading": "しずか な もり", "romaji": "shizuka na mori", "en": "quiet forest (na-adjective)" },
+      { "jp": "美味しい寿司", "reading": "おいしい すし", "romaji": "oishii sushi", "en": "delicious sushi (i-adjective)" },
+      { "jp": "きれいな花", "reading": "きれい な はな", "romaji": "kirei na hana", "en": "beautiful flower (na-adjective)" }
+    ],
+    "tips": [
+      "い-adjectives: 高い (takai), 大きい (ookii), 小さい (chiisai), 美味しい (oishii).",
+      "な-adjectives: 静か (shizuka), きれい (kirei), 元気 (genki), 有名 (yuumei).",
+      "きれい ends in い but is a な-adjective — watch out for exceptions!"
+    ],
+    "relatedLessonIds": ["common-phrases"],
+    "placement": ["valley_school", "northern_reach"]
+  },
+  {
+    "id": "grammar-verb-te-form",
+    "type": "grammar-rule",
+    "title": "て-form of Verbs",
+    "category": "grammar",
+    "subtitle": "The Swiss Army verb form",
+    "japanese": "食べてください。",
+    "reading": "たべて ください。",
+    "romaji": "tabete kudasai.",
+    "english": "Please eat.",
+    "explanation": "The て-form is a verb form used for requests, connecting sentences, and many grammatical patterns. To make it: る-verbs drop る and add て (食べる→食べて). う-verbs change the ending (書く→書いて). This form is essential for everyday conversation.",
+    "examples": [
+      { "jp": "食べてください。", "reading": "たべて ください。", "romaji": "tabete kudasai.", "en": "Please eat." },
+      { "jp": "見て！", "reading": "みて！", "romaji": "mite!", "en": "Look!" },
+      { "jp": "書いて、読んで、話して。", "reading": "かいて、よんで、はなして。", "romaji": "kaite, yonde, hanashite.", "en": "Write, read, speak (connected)." }
+    ],
+    "tips": [
+      "て + ください = polite request: 'please do X'.",
+      "て-form alone (casual) = 'do X' — a direct but friendly command.",
+      "て-form connects verbs: 'I did A and B and C'."
+    ],
+    "relatedLessonIds": ["common-phrases"],
+    "placement": ["valley_school", "frontier_nexus"]
+  },
+  {
+    "id": "reading-valley-signs",
+    "type": "reading-practice",
+    "title": "Reading Valley Signs",
+    "category": "reading",
+    "subtitle": "Practice reading real signposts",
+    "japanese": "寿司谷へようこそ",
+    "reading": "すしだに へ ようこそ",
+    "romaji": "sushi-dani e youkoso",
+    "english": "Welcome to Sushi Valley",
+    "explanation": "Signs throughout the valley use basic kanji and kana. Practice reading them! Each sign you encounter in the world teaches a real word. Try to read the Japanese first, then check the reading and meaning.",
+    "examples": [
+      { "jp": "入口", "reading": "いりぐち", "romaji": "iriguchi", "en": "entrance" },
+      { "jp": "出口", "reading": "でぐち", "romaji": "deguchi", "en": "exit" },
+      { "jp": "注意", "reading": "ちゅうい", "romaji": "chuii", "en": "caution / watch out" },
+      { "jp": "休憩", "reading": "きゅうけい", "romaji": "kyuukei", "en": "rest area" },
+      { "jp": "禁煙", "reading": "きんえん", "romaji": "kin'en", "en": "no smoking" },
+      { "jp": "水", "reading": "みず", "romaji": "mizu", "en": "water" }
+    ],
+    "tips": [
+      "入口 and 出口 are everywhere — learn them first!",
+      "注意 (chuii) appears on warning signs — slow down when you see it.",
+      "Many signs use kanji you'll learn from shrines and books in the world."
+    ],
+    "relatedLessonIds": ["kana-vowels", "kana-k-row", "common-phrases"],
+    "placement": ["valley_hub", "woods_entrance"]
+  },
+  {
+    "id": "cultural-seasons-guide",
+    "type": "cultural-note",
+    "title": "四季 — The Four Seasons",
+    "category": "culture",
+    "subtitle": "Seasons shape Japanese life",
+    "japanese": "四季",
+    "reading": "しき",
+    "romaji": "shiki",
+    "english": "four seasons",
+    "explanation": "Japan's four distinct seasons influence food, festivals, clothing, and speech. Each season has associated words and customs. The game's seasonal system (Bloomtide, Builder's Muster, Champion's Week) mirrors this cultural rhythm.",
+    "examples": [
+      { "jp": "春", "reading": "はる", "romaji": "haru", "en": "spring" },
+      { "jp": "夏", "reading": "なつ", "romaji": "natsu", "en": "summer" },
+      { "jp": "秋", "reading": "あき", "romaji": "aki", "en": "autumn" },
+      { "jp": "冬", "reading": "ふゆ", "romaji": "fuyu", "en": "winter" },
+      { "jp": "桜", "reading": "さくら", "romaji": "sakura", "en": "cherry blossom (spring symbol)" },
+      { "jp": "紅葉", "reading": "もみじ", "romaji": "momiji", "en": "autumn leaves" }
+    ],
+    "tips": [
+      "桜 (sakura) viewing in spring is a national tradition called 花見 (hanami).",
+      "紅葉 (momiji) viewing in autumn is called 紅葉狩り (momijigari).",
+      "Seasonal words appear in the game's seasonal events — look for them!"
+    ],
+    "relatedLessonIds": ["food-words", "common-phrases"],
+    "placement": ["valley_hub", "frontier_nexus", "northern_reach"]
+  },
+  {
+    "id": "phrase-emergency-guide",
+    "type": "phrase-guide",
+    "title": "Emergency & Help Phrases",
+    "category": "phrases",
+    "subtitle": "When you need assistance",
+    "japanese": "助けてください！",
+    "reading": "たすけて ください！",
+    "romaji": "tasukete kudasai!",
+    "english": "Please help me!",
+    "explanation": "These phrases could be important in real travel situations. In the game, you'll hear them from NPCs in trouble. Learn them for both game quests and real-world travel safety.",
+    "examples": [
+      { "jp": "助けてください！", "reading": "たすけて ください！", "romaji": "tasukete kudasai!", "en": "Please help me!" },
+      { "jp": "大変です！", "reading": "たいへん です！", "romaji": "taihen desu!", "en": "It's an emergency!" },
+      { "jp": "病院はどこですか？", "reading": "びょういん は どこ です か？", "romaji": "byouin wa doko desu ka?", "en": "Where is the hospital?" },
+      { "jp": "警察を呼んでください。", "reading": "けいさつ を よんで ください。", "romaji": "keisatsu o yonde kudasai.", "en": "Please call the police." },
+      { "jp": "道に迷いました。", "reading": "みち に まよいました。", "romaji": "michi ni mayoimashita.", "en": "I'm lost." }
+    ],
+    "tips": [
+      "すみません (sumimasen) also means 'excuse me' — use it to get attention.",
+      "道に迷いました is useful when exploring — NPCs may give you directions!",
+      "In the game, NPCs in trouble use these phrases — recognizing them starts quests."
+    ],
+    "relatedLessonIds": ["travel-arrival", "common-phrases"],
+    "placement": ["woods_entrance", "frontier_nexus"]
+  }
+]

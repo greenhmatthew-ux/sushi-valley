@@ -1,0 +1,76 @@
+[
+  { "id": "kana-a", "lessonId": "kana-vowels", "type": "kana", "prompt": "あ", "answer": "a", "choices": ["a", "i", "u", "e", "o"], "reading": "a", "meaning": "vowel a", "tags": ["hiragana", "vowel"] },
+  { "id": "kana-i", "lessonId": "kana-vowels", "type": "kana", "prompt": "い", "answer": "i", "choices": ["a", "i", "u", "e", "o"], "reading": "i", "meaning": "vowel i", "tags": ["hiragana", "vowel"] },
+  { "id": "kana-u", "lessonId": "kana-vowels", "type": "kana", "prompt": "う", "answer": "u", "choices": ["a", "i", "u", "e", "o"], "reading": "u", "meaning": "vowel u", "tags": ["hiragana", "vowel"] },
+  { "id": "kana-e", "lessonId": "kana-vowels", "type": "kana", "prompt": "え", "answer": "e", "choices": ["a", "i", "u", "e", "o"], "reading": "e", "meaning": "vowel e", "tags": ["hiragana", "vowel"] },
+  { "id": "kana-o", "lessonId": "kana-vowels", "type": "kana", "prompt": "お", "answer": "o", "choices": ["a", "i", "u", "e", "o"], "reading": "o", "meaning": "vowel o", "tags": ["hiragana", "vowel"] },
+
+  { "id": "kana-ka", "lessonId": "kana-k-row", "type": "kana", "prompt": "か", "answer": "ka", "choices": ["ka", "ki", "ku", "ke"], "reading": "ka", "meaning": "ka", "tags": ["hiragana"] },
+  { "id": "kana-ki", "lessonId": "kana-k-row", "type": "kana", "prompt": "き", "answer": "ki", "choices": ["ki", "ka", "ku", "ke"], "reading": "ki", "meaning": "ki", "tags": ["hiragana"] },
+  { "id": "kana-ku", "lessonId": "kana-k-row", "type": "kana", "prompt": "く", "answer": "ku", "choices": ["ku", "ka", "ki", "ke"], "reading": "ku", "meaning": "ku", "tags": ["hiragana"] },
+  { "id": "kana-ke", "lessonId": "kana-k-row", "type": "kana", "prompt": "け", "answer": "ke", "choices": ["ke", "ka", "ki", "ku"], "reading": "ke", "meaning": "ke", "tags": ["hiragana"] },
+  { "id": "kana-ko", "lessonId": "kana-k-row", "type": "kana", "prompt": "こ", "answer": "ko", "choices": ["ko", "ka", "ki", "ku"], "reading": "ko", "meaning": "ko", "tags": ["hiragana"] },
+
+  { "id": "kana-sa", "lessonId": "kana-s-row", "type": "kana", "prompt": "さ", "answer": "sa", "choices": ["sa", "shi", "su", "se"], "reading": "sa", "meaning": "sa", "tags": ["hiragana"] },
+  { "id": "kana-shi", "lessonId": "kana-s-row", "type": "kana", "prompt": "し", "answer": "shi", "choices": ["shi", "sa", "su", "se"], "reading": "shi", "meaning": "shi", "tags": ["hiragana"] },
+  { "id": "kana-su", "lessonId": "kana-s-row", "type": "kana", "prompt": "す", "answer": "su", "choices": ["su", "sa", "shi", "se"], "reading": "su", "meaning": "su", "tags": ["hiragana"] },
+  { "id": "kana-se", "lessonId": "kana-s-row", "type": "kana", "prompt": "せ", "answer": "se", "choices": ["se", "sa", "shi", "su"], "reading": "se", "meaning": "se", "tags": ["hiragana"] },
+  { "id": "kana-so", "lessonId": "kana-s-row", "type": "kana", "prompt": "そ", "answer": "so", "choices": ["so", "sa", "shi", "su"], "reading": "so", "meaning": "so", "tags": ["hiragana"] },
+
+  { "id": "kana-ta", "lessonId": "kana-t-row", "type": "kana", "prompt": "た", "answer": "ta", "choices": ["ta", "chi", "tsu", "te"], "reading": "ta", "meaning": "ta", "tags": ["hiragana"] },
+  { "id": "kana-chi", "lessonId": "kana-t-row", "type": "kana", "prompt": "ち", "answer": "chi", "choices": ["chi", "ta", "tsu", "te"], "reading": "chi", "meaning": "chi", "tags": ["hiragana"] },
+  { "id": "kana-tsu", "lessonId": "kana-t-row", "type": "kana", "prompt": "つ", "answer": "tsu", "choices": ["tsu", "ta", "chi", "te"], "reading": "tsu", "meaning": "tsu", "tags": ["hiragana"] },
+  { "id": "kana-te", "lessonId": "kana-t-row", "type": "kana", "prompt": "て", "answer": "te", "choices": ["te", "ta", "chi", "tsu"], "reading": "te", "meaning": "te", "tags": ["hiragana"] },
+  { "id": "kana-to", "lessonId": "kana-t-row", "type": "kana", "prompt": "と", "answer": "to", "choices": ["to", "ta", "chi", "tsu"], "reading": "to", "meaning": "to", "tags": ["hiragana"] },
+
+  { "id": "kana-na", "lessonId": "kana-n-row", "type": "kana", "prompt": "な", "answer": "na", "choices": ["na", "ni", "nu", "ne"], "reading": "na", "meaning": "na", "tags": ["hiragana"] },
+  { "id": "kana-ni", "lessonId": "kana-n-row", "type": "kana", "prompt": "に", "answer": "ni", "choices": ["ni", "na", "nu", "ne"], "reading": "ni", "meaning": "ni", "tags": ["hiragana"] },
+  { "id": "kana-nu", "lessonId": "kana-n-row", "type": "kana", "prompt": "ぬ", "answer": "nu", "choices": ["nu", "na", "ni", "ne"], "reading": "nu", "meaning": "nu", "tags": ["hiragana"] },
+  { "id": "kana-ne", "lessonId": "kana-n-row", "type": "kana", "prompt": "ね", "answer": "ne", "choices": ["ne", "na", "ni", "nu"], "reading": "ne", "meaning": "ne", "tags": ["hiragana"] },
+  { "id": "kana-no", "lessonId": "kana-n-row", "type": "kana", "prompt": "の", "answer": "no", "choices": ["no", "na", "ni", "nu"], "reading": "no", "meaning": "no", "tags": ["hiragana"] },
+
+  { "id": "kana-ha", "lessonId": "kana-h-row", "type": "kana", "prompt": "は", "answer": "ha", "choices": ["ha", "hi", "fu", "he"], "reading": "ha", "meaning": "ha", "tags": ["hiragana"] },
+  { "id": "kana-hi", "lessonId": "kana-h-row", "type": "kana", "prompt": "ひ", "answer": "hi", "choices": ["hi", "ha", "fu", "he"], "reading": "hi", "meaning": "hi", "tags": ["hiragana"] },
+  { "id": "kana-fu", "lessonId": "kana-h-row", "type": "kana", "prompt": "ふ", "answer": "fu", "choices": ["fu", "ha", "hi", "he"], "reading": "fu", "meaning": "fu", "tags": ["hiragana"] },
+  { "id": "kana-he", "lessonId": "kana-h-row", "type": "kana", "prompt": "へ", "answer": "he", "choices": ["he", "ha", "hi", "fu"], "reading": "he", "meaning": "he", "tags": ["hiragana"] },
+  { "id": "kana-ho", "lessonId": "kana-h-row", "type": "kana", "prompt": "ほ", "answer": "ho", "choices": ["ho", "ha", "hi", "fu"], "reading": "ho", "meaning": "ho", "tags": ["hiragana"] },
+
+  { "id": "kana-ma", "lessonId": "kana-m-row", "type": "kana", "prompt": "ま", "answer": "ma", "choices": ["ma", "mi", "mu", "me"], "reading": "ma", "meaning": "ma", "tags": ["hiragana"] },
+  { "id": "kana-mi", "lessonId": "kana-m-row", "type": "kana", "prompt": "み", "answer": "mi", "choices": ["mi", "ma", "mu", "me"], "reading": "mi", "meaning": "mi", "tags": ["hiragana"] },
+  { "id": "kana-mu", "lessonId": "kana-m-row", "type": "kana", "prompt": "む", "answer": "mu", "choices": ["mu", "ma", "mi", "me"], "reading": "mu", "meaning": "mu", "tags": ["hiragana"] },
+  { "id": "kana-me", "lessonId": "kana-m-row", "type": "kana", "prompt": "め", "answer": "me", "choices": ["me", "ma", "mi", "mu"], "reading": "me", "meaning": "me", "tags": ["hiragana"] },
+  { "id": "kana-mo", "lessonId": "kana-m-row", "type": "kana", "prompt": "も", "answer": "mo", "choices": ["mo", "ma", "mi", "mu"], "reading": "mo", "meaning": "mo", "tags": ["hiragana"] },
+
+  { "id": "kana-ya", "lessonId": "kana-y-row", "type": "kana", "prompt": "や", "answer": "ya", "choices": ["ya", "yu", "yo", "wa"], "reading": "ya", "meaning": "ya", "tags": ["hiragana"] },
+  { "id": "kana-yu", "lessonId": "kana-y-row", "type": "kana", "prompt": "ゆ", "answer": "yu", "choices": ["yu", "ya", "yo", "wa"], "reading": "yu", "meaning": "yu", "tags": ["hiragana"] },
+  { "id": "kana-yo", "lessonId": "kana-y-row", "type": "kana", "prompt": "よ", "answer": "yo", "choices": ["yo", "ya", "yu", "wa"], "reading": "yo", "meaning": "yo", "tags": ["hiragana"] },
+
+  { "id": "kana-ra", "lessonId": "kana-r-row", "type": "kana", "prompt": "ら", "answer": "ra", "choices": ["ra", "ri", "ru", "re"], "reading": "ra", "meaning": "ra", "tags": ["hiragana"] },
+  { "id": "kana-ri", "lessonId": "kana-r-row", "type": "kana", "prompt": "り", "answer": "ri", "choices": ["ri", "ra", "ru", "re"], "reading": "ri", "meaning": "ri", "tags": ["hiragana"] },
+  { "id": "kana-ru", "lessonId": "kana-r-row", "type": "kana", "prompt": "る", "answer": "ru", "choices": ["ru", "ra", "ri", "re"], "reading": "ru", "meaning": "ru", "tags": ["hiragana"] },
+  { "id": "kana-re", "lessonId": "kana-r-row", "type": "kana", "prompt": "れ", "answer": "re", "choices": ["re", "ra", "ri", "ru"], "reading": "re", "meaning": "re", "tags": ["hiragana"] },
+  { "id": "kana-ro", "lessonId": "kana-r-row", "type": "kana", "prompt": "ろ", "answer": "ro", "choices": ["ro", "ra", "ri", "ru"], "reading": "ro", "meaning": "ro", "tags": ["hiragana"] },
+
+  { "id": "kana-wa", "lessonId": "kana-w-row", "type": "kana", "prompt": "わ", "answer": "wa", "choices": ["wa", "wo", "n", "ra"], "reading": "wa", "meaning": "wa", "tags": ["hiragana"] },
+  { "id": "kana-wo", "lessonId": "kana-w-row", "type": "kana", "prompt": "を", "answer": "wo", "choices": ["wo", "wa", "n", "ra"], "reading": "wo", "meaning": "wo", "tags": ["hiragana"] },
+  { "id": "kana-n", "lessonId": "kana-w-row", "type": "kana", "prompt": "ん", "answer": "n", "choices": ["n", "wa", "wo", "mu"], "reading": "n", "meaning": "n (syllabic n)", "tags": ["hiragana"] },
+
+  { "id": "greet-konnichiwa", "lessonId": "greetings", "type": "phrase", "prompt": "こんにちは", "answer": "hello", "choices": ["hello", "thank you", "good morning", "goodbye"], "reading": "konnichiwa", "meaning": "hello / good afternoon", "tags": ["greeting"] },
+  { "id": "greet-arigatou", "lessonId": "greetings", "type": "phrase", "prompt": "ありがとう", "answer": "thank you", "choices": ["thank you", "hello", "sorry", "please"], "reading": "arigatou", "meaning": "thank you", "tags": ["greeting"] },
+  { "id": "greet-ohayou", "lessonId": "greetings", "type": "phrase", "prompt": "おはよう", "answer": "good morning", "choices": ["good morning", "good night", "hello", "welcome"], "reading": "ohayou", "meaning": "good morning", "tags": ["greeting"] },
+  { "id": "greet-sayounara", "lessonId": "greetings", "type": "phrase", "prompt": "さようなら", "answer": "goodbye", "choices": ["goodbye", "hello", "good morning", "sorry"], "reading": "sayounara", "meaning": "goodbye", "tags": ["greeting"] },
+  { "id": "greet-sumimasen", "lessonId": "greetings", "type": "phrase", "prompt": "すみません", "answer": "excuse me", "choices": ["excuse me", "thank you", "hello", "sorry"], "reading": "sumimasen", "meaning": "excuse me / sorry", "tags": ["greeting"] },
+
+  { "id": "food-sushi", "lessonId": "food-words", "type": "vocab", "prompt": "すし", "answer": "sushi", "choices": ["sushi", "rice", "tea", "water"], "reading": "sushi", "meaning": "sushi", "tags": ["food"] },
+  { "id": "food-ocha", "lessonId": "food-words", "type": "vocab", "prompt": "おちゃ", "answer": "tea", "choices": ["tea", "water", "rice", "sushi"], "reading": "ocha", "meaning": "green tea", "tags": ["food", "drink"] },
+  { "id": "food-mizu", "lessonId": "food-words", "type": "vocab", "prompt": "みず", "answer": "water", "choices": ["water", "tea", "rice", "fish"], "reading": "mizu", "meaning": "water", "tags": ["food", "drink"] },
+  { "id": "food-gohan", "lessonId": "food-words", "type": "vocab", "prompt": "ごはん", "answer": "rice", "choices": ["rice", "sushi", "tea", "fish"], "reading": "gohan", "meaning": "cooked rice / meal", "tags": ["food"] },
+  { "id": "food-sakana", "lessonId": "food-words", "type": "vocab", "prompt": "さかな", "answer": "fish", "choices": ["fish", "rice", "tea", "meat"], "reading": "sakana", "meaning": "fish", "tags": ["food"] },
+  { "id": "food-niku", "lessonId": "food-words", "type": "vocab", "prompt": "にく", "answer": "meat", "choices": ["meat", "fish", "rice", "tea"], "reading": "niku", "meaning": "meat", "tags": ["food"] },
+
+  { "id": "phrase-hai", "lessonId": "common-phrases", "type": "phrase", "prompt": "はい", "answer": "yes", "choices": ["yes", "no", "maybe", "ok"], "reading": "hai", "meaning": "yes", "tags": ["phrase"] },
+  { "id": "phrase-iie", "lessonId": "common-phrases", "type": "phrase", "prompt": "いいえ", "answer": "no", "choices": ["no", "yes", "maybe", "ok"], "reading": "iie", "meaning": "no", "tags": ["phrase"] },
+  { "id": "phrase-doko", "lessonId": "common-phrases", "type": "phrase", "prompt": "どこ", "answer": "where", "choices": ["where", "what", "when", "who"], "reading": "doko", "meaning": "where", "tags": ["phrase"] },
+  { "id": "phrase-nani", "lessonId": "common-phrases", "type": "phrase", "prompt": "なに", "answer": "what", "choices": ["what", "where", "when", "who"], "reading": "nani", "meaning": "what", "tags": ["phrase"] },
+  { "id": "phrase-ikura", "lessonId": "common-phrases", "type": "phrase", "prompt": "いくら", "answer": "how much", "choices": ["how much", "where", "what", "why"], "reading": "ikura", "meaning": "how much", "tags": ["phrase"] }
+]

@@ -1,0 +1,4012 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "1880390099",
+    "deckName": "Core 2k6k Optimized Japanese Vocabulary with Sound Part 01",
+    "author": "",
+    "url": "https://ankiweb.net/shared/info/1880390099",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "sourceNoteId": "1339252520768",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "それ",
+      "answer": "that, that one",
+      "choices": [
+        "that, that one",
+        "stomach",
+        "switch on",
+        "amount, part, share"
+      ],
+      "reading": "それ",
+      "meaning": "that, that one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2",
+      "sourceNoteId": "1339252520769",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一つ",
+      "answer": "one (thing)",
+      "choices": [
+        "one (thing)",
+        "last year",
+        "like this, this kind of",
+        "do, make"
+      ],
+      "reading": "一[ひと]つ",
+      "meaning": "one (thing)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-3",
+      "sourceNoteId": "1339252520770",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一",
+      "answer": "one",
+      "choices": [
+        "one",
+        "rest, holiday, absence",
+        "place",
+        "one, one person"
+      ],
+      "reading": "一[いち]",
+      "meaning": "one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-4",
+      "sourceNoteId": "1339252520771",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "二",
+      "answer": "two",
+      "choices": [
+        "two",
+        "all, everybody",
+        "that, that one",
+        "one (thing)"
+      ],
+      "reading": "二[に]",
+      "meaning": "two",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-5",
+      "sourceNoteId": "1339252520772",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "二つ",
+      "answer": "two (things)",
+      "choices": [
+        "two (things)",
+        "three days, 3rd of the month",
+        "downhill, going down",
+        "until now, so far"
+      ],
+      "reading": "二[ふた]つ",
+      "meaning": "two (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-6",
+      "sourceNoteId": "1339252520773",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "三",
+      "answer": "three",
+      "choices": [
+        "three",
+        "downhill, going down",
+        "ride, take",
+        "cut"
+      ],
+      "reading": "三[さん]",
+      "meaning": "three",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-7",
+      "sourceNoteId": "1339252520774",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "三つ",
+      "answer": "three (things)",
+      "choices": [
+        "three (things)",
+        "two (things)",
+        "inside, middle",
+        "that over there"
+      ],
+      "reading": "三[みっ]つ",
+      "meaning": "three (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-8",
+      "sourceNoteId": "1339252520777",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "これ",
+      "answer": "this, this one",
+      "choices": [
+        "this, this one",
+        "three days, 3rd of the month",
+        "eight (things)",
+        "one"
+      ],
+      "reading": "これ",
+      "meaning": "this, this one",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-9",
+      "sourceNoteId": "1339252520779",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "五つ",
+      "answer": "five (things)",
+      "choices": [
+        "five (things)",
+        "system",
+        "six",
+        "where"
+      ],
+      "reading": "五[いつ]つ",
+      "meaning": "five (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-10",
+      "sourceNoteId": "1339252520780",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "五",
+      "answer": "five",
+      "choices": [
+        "five",
+        "nine",
+        "friend, companion",
+        "how, what"
+      ],
+      "reading": "五[ご]",
+      "meaning": "five",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-11",
+      "sourceNoteId": "1339252520781",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "六つ",
+      "answer": "six (things)",
+      "choices": [
+        "six (things)",
+        "ten",
+        "good, skilled",
+        "this evening, tonight"
+      ],
+      "reading": "六[むっ]つ",
+      "meaning": "six (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-12",
+      "sourceNoteId": "1339252520782",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "六",
+      "answer": "six",
+      "choices": [
+        "six",
+        "full, plentiful",
+        "one",
+        "body, health"
+      ],
+      "reading": "六[ろく]",
+      "meaning": "six",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-13",
+      "sourceNoteId": "1339252520783",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "七",
+      "answer": "seven",
+      "choices": [
+        "seven",
+        "one way",
+        "cooked rice, meal",
+        "full, plentiful"
+      ],
+      "reading": "七[なな]",
+      "meaning": "seven",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-14",
+      "sourceNoteId": "1339252520784",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "七つ",
+      "answer": "seven (things)",
+      "choices": [
+        "seven (things)",
+        "amount, part, share",
+        "body, health",
+        "put in"
+      ],
+      "reading": "七[なな]つ",
+      "meaning": "seven (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-15",
+      "sourceNoteId": "1339252520785",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "八",
+      "answer": "eight",
+      "choices": [
+        "eight",
+        "take a day off, take a break",
+        "program",
+        "going up, ascent"
+      ],
+      "reading": "八[はち]",
+      "meaning": "eight",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-16",
+      "sourceNoteId": "1339252520786",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "八つ",
+      "answer": "eight (things)",
+      "choices": [
+        "eight (things)",
+        "where",
+        "still, in addition",
+        "together, at the same time"
+      ],
+      "reading": "八[やっ]つ",
+      "meaning": "eight (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-17",
+      "sourceNoteId": "1339252520787",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "なる",
+      "answer": "become",
+      "choices": [
+        "become",
+        "take, get",
+        "two (things)",
+        "good, skilled"
+      ],
+      "reading": "なる",
+      "meaning": "become",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-18",
+      "sourceNoteId": "1339252520788",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "九",
+      "answer": "nine",
+      "choices": [
+        "nine",
+        "table",
+        "good, skilled",
+        "two"
+      ],
+      "reading": "九[きゅう]",
+      "meaning": "nine",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-19",
+      "sourceNoteId": "1339252520789",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "九つ",
+      "answer": "nine (things)",
+      "choices": [
+        "nine (things)",
+        "other",
+        "television",
+        "over there"
+      ],
+      "reading": "九[ここの]つ",
+      "meaning": "nine (things)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-20",
+      "sourceNoteId": "1339252520790",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "十",
+      "answer": "ten",
+      "choices": [
+        "ten",
+        "up, above",
+        "this year",
+        "three"
+      ],
+      "reading": "十[じゅう]",
+      "meaning": "ten",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-21",
+      "sourceNoteId": "1339252520792",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "千",
+      "answer": "thousand",
+      "choices": [
+        "thousand",
+        "inside, middle",
+        "nine days, 9th of the month",
+        "enter"
+      ],
+      "reading": "千[せん]",
+      "meaning": "thousand",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-22",
+      "sourceNoteId": "1339252520793",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "万",
+      "answer": "ten thousand",
+      "choices": [
+        "ten thousand",
+        "thousand",
+        "eight (things)",
+        "take out"
+      ],
+      "reading": "万[まん]",
+      "meaning": "ten thousand",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-23",
+      "sourceNoteId": "1339252520794",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "円",
+      "answer": "circle",
+      "choices": [
+        "circle",
+        "this, this one",
+        "two persons",
+        "friend, companion"
+      ],
+      "reading": "円[えん]",
+      "meaning": "circle",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-24",
+      "sourceNoteId": "1339252520795",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "円",
+      "answer": "yen",
+      "choices": [
+        "yen",
+        "here",
+        "two (things)",
+        "three"
+      ],
+      "reading": "円[えん]",
+      "meaning": "yen",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-25",
+      "sourceNoteId": "1339252520797",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "する",
+      "answer": "do, make",
+      "choices": [
+        "do, make",
+        "this year",
+        "person",
+        "nine days, 9th of the month"
+      ],
+      "reading": "する",
+      "meaning": "do, make",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-26",
+      "sourceNoteId": "1339252520800",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "六日",
+      "answer": "six days, 6th of the month",
+      "choices": [
+        "six days, 6th of the month",
+        "be given",
+        "thousand",
+        "that, that one"
+      ],
+      "reading": "六日[むいか]",
+      "meaning": "six days, 6th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-27",
+      "sourceNoteId": "1339252520801",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "三日",
+      "answer": "three days, 3rd of the month",
+      "choices": [
+        "three days, 3rd of the month",
+        "way, like, kind",
+        "chat, talk",
+        "I (young male)"
+      ],
+      "reading": "三日[みっか]",
+      "meaning": "three days, 3rd of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-28",
+      "sourceNoteId": "1339252520802",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "五日",
+      "answer": "five days, 5th of the month",
+      "choices": [
+        "five days, 5th of the month",
+        "winter",
+        "always",
+        "enter"
+      ],
+      "reading": "五日[いつか]",
+      "meaning": "five days, 5th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-29",
+      "sourceNoteId": "1339252520803",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "八日",
+      "answer": "eight days, 8th of the month",
+      "choices": [
+        "eight days, 8th of the month",
+        "go up",
+        "cut",
+        "exit, exit ramp"
+      ],
+      "reading": "八日[ようか]",
+      "meaning": "eight days, 8th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-30",
+      "sourceNoteId": "1339252520804",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "二十日",
+      "answer": "20 days, 20th of the month",
+      "choices": [
+        "20 days, 20th of the month",
+        "1st of the month",
+        "side, vicinity",
+        "clearly"
+      ],
+      "reading": "二十日[はつか]",
+      "meaning": "20 days, 20th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-31",
+      "sourceNoteId": "1339252520805",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "二日",
+      "answer": "two days, 2nd of the month",
+      "choices": [
+        "two days, 2nd of the month",
+        "full, plentiful",
+        "personal computer",
+        "well"
+      ],
+      "reading": "二日[ふつか]",
+      "meaning": "two days, 2nd of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-32",
+      "sourceNoteId": "1339252520806",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "九日",
+      "answer": "nine days, 9th of the month",
+      "choices": [
+        "nine days, 9th of the month",
+        "last year",
+        "game",
+        "I (young male)"
+      ],
+      "reading": "九日[ここのか]",
+      "meaning": "nine days, 9th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-33",
+      "sourceNoteId": "1339252520807",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ところ",
+      "answer": "place",
+      "choices": [
+        "place",
+        "low, short",
+        "last year",
+        "more, further"
+      ],
+      "reading": "ところ",
+      "meaning": "place",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-34",
+      "sourceNoteId": "1339252520808",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一日",
+      "answer": "1st of the month",
+      "choices": [
+        "1st of the month",
+        "person",
+        "understand",
+        "afternoon, p.m."
+      ],
+      "reading": "一日[ついたち]",
+      "meaning": "1st of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-35",
+      "sourceNoteId": "1339252520809",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "十日",
+      "answer": "ten days, 10th of the month",
+      "choices": [
+        "ten days, 10th of the month",
+        "gentle, kind",
+        "table",
+        "last month"
+      ],
+      "reading": "十日[とおか]",
+      "meaning": "ten days, 10th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-36",
+      "sourceNoteId": "1339252520810",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "七日",
+      "answer": "seven days, 7th of the month",
+      "choices": [
+        "seven days, 7th of the month",
+        "exit, exit ramp",
+        "where",
+        "go down, come down"
+      ],
+      "reading": "七日[なのか]",
+      "meaning": "seven days, 7th of the month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-37",
+      "sourceNoteId": "1339252520817",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "やる",
+      "answer": "do",
+      "choices": [
+        "do",
+        "get nervous, get stage fright",
+        "there",
+        "today"
+      ],
+      "reading": "やる",
+      "meaning": "do",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-38",
+      "sourceNoteId": "1339252520826",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "分かる",
+      "answer": "understand",
+      "choices": [
+        "understand",
+        "get nervous, get stage fright",
+        "television",
+        "last week"
+      ],
+      "reading": "分[わ]かる",
+      "meaning": "understand",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-39",
+      "sourceNoteId": "1339252520827",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "そう",
+      "answer": "in such manner, that way",
+      "choices": [
+        "in such manner, that way",
+        "group",
+        "eight days, 8th of the month",
+        "today"
+      ],
+      "reading": "そう",
+      "meaning": "in such manner, that way",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-40",
+      "sourceNoteId": "1339252520828",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "何",
+      "answer": "what, which",
+      "choices": [
+        "what, which",
+        "seven",
+        "favor",
+        "amount, part, share"
+      ],
+      "reading": "何[なに]",
+      "meaning": "what, which",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-41",
+      "sourceNoteId": "1339252520829",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "先",
+      "answer": "ahead, first",
+      "choices": [
+        "ahead, first",
+        "seven (things)",
+        "eight (things)",
+        "circle"
+      ],
+      "reading": "先[さき]",
+      "meaning": "ahead, first",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-42",
+      "sourceNoteId": "1339252520830",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今年",
+      "answer": "this year",
+      "choices": [
+        "this year",
+        "go up",
+        "seven (things)",
+        "do, make"
+      ],
+      "reading": "今年[ことし]",
+      "meaning": "this year",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-43",
+      "sourceNoteId": "1339252520831",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今",
+      "answer": "now",
+      "choices": [
+        "now",
+        "until now, so far",
+        "be divided, disperse, branch off",
+        "live, reside"
+      ],
+      "reading": "今[いま]",
+      "meaning": "now",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-44",
+      "sourceNoteId": "1339252520832",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今日",
+      "answer": "today",
+      "choices": [
+        "today",
+        "other",
+        "cut",
+        "first"
+      ],
+      "reading": "今日[きょう]",
+      "meaning": "today",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-45",
+      "sourceNoteId": "1339252520833",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今月",
+      "answer": "this month",
+      "choices": [
+        "this month",
+        "free",
+        "chat, talk",
+        "why"
+      ],
+      "reading": "今月[こんげつ]",
+      "meaning": "this month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-46",
+      "sourceNoteId": "1339252520834",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今週",
+      "answer": "this week",
+      "choices": [
+        "this week",
+        "fairly, rather",
+        "holiday, day off",
+        "ten days, 10th of the month"
+      ],
+      "reading": "今週[こんしゅう]",
+      "meaning": "this week",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-47",
+      "sourceNoteId": "1339252520837",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "もう",
+      "answer": "already, yet",
+      "choices": [
+        "already, yet",
+        "front, before",
+        "ten thousand",
+        "the year before last"
+      ],
+      "reading": "もう",
+      "meaning": "already, yet",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-48",
+      "sourceNoteId": "1339252520846",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上げる",
+      "answer": "raise, improve",
+      "choices": [
+        "raise, improve",
+        "one",
+        "how, what",
+        "ride, take"
+      ],
+      "reading": "上[あ]げる",
+      "meaning": "raise, improve",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-49",
+      "sourceNoteId": "1339252520847",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "よく",
+      "answer": "often",
+      "choices": [
+        "often",
+        "this week",
+        "thousand",
+        "three (things)"
+      ],
+      "reading": "よく",
+      "meaning": "often",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-50",
+      "sourceNoteId": "1339252520848",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上る",
+      "answer": "go up",
+      "choices": [
+        "go up",
+        "that over there",
+        "two days, 2nd of the month",
+        "circle"
+      ],
+      "reading": "上[のぼ]る",
+      "meaning": "go up",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-51",
+      "sourceNoteId": "1339252520849",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上",
+      "answer": "up, above",
+      "choices": [
+        "up, above",
+        "most",
+        "ten days, 10th of the month",
+        "low, short"
+      ],
+      "reading": "上[うえ]",
+      "meaning": "up, above",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-52",
+      "sourceNoteId": "1339252520850",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "下",
+      "answer": "under, below",
+      "choices": [
+        "under, below",
+        "six days, 6th of the month",
+        "one",
+        "population"
+      ],
+      "reading": "下[した]",
+      "meaning": "under, below",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-53",
+      "sourceNoteId": "1339252520855",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "人",
+      "answer": "person",
+      "choices": [
+        "person",
+        "last year",
+        "program",
+        "strength, power"
+      ],
+      "reading": "人[ひと]",
+      "meaning": "person",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-54",
+      "sourceNoteId": "1339252520856",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一人",
+      "answer": "one, one person",
+      "choices": [
+        "one, one person",
+        "clearly",
+        "favor",
+        "do"
+      ],
+      "reading": "一人[ひとり]",
+      "meaning": "one, one person",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-55",
+      "sourceNoteId": "1339252520857",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "どう",
+      "answer": "how, what",
+      "choices": [
+        "how, what",
+        "older brother",
+        "teacher",
+        "over there"
+      ],
+      "reading": "どう",
+      "meaning": "how, what",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-56",
+      "sourceNoteId": "1339252520858",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "入れる",
+      "answer": "put in",
+      "choices": [
+        "put in",
+        "get nervous, get stage fright",
+        "way, like, kind",
+        "win"
+      ],
+      "reading": "入[い]れる",
+      "meaning": "put in",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-57",
+      "sourceNoteId": "1339252520859",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "入る",
+      "answer": "enter",
+      "choices": [
+        "enter",
+        "one way",
+        "all, wholly",
+        "three"
+      ],
+      "reading": "入[はい]る",
+      "meaning": "enter",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-58",
+      "sourceNoteId": "1339252520860",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "出る",
+      "answer": "go out, leave",
+      "choices": [
+        "go out, leave",
+        "exit, exit ramp",
+        "that, that one",
+        "like this, this kind of"
+      ],
+      "reading": "出[で]る",
+      "meaning": "go out, leave",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-59",
+      "sourceNoteId": "1339252520861",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "出来る",
+      "answer": "can do, be good at",
+      "choices": [
+        "can do, be good at",
+        "take, get",
+        "bad-tasting, bad",
+        "door"
+      ],
+      "reading": "出来[でき]る",
+      "meaning": "can do, be good at",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-60",
+      "sourceNoteId": "1339252520862",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "出す",
+      "answer": "take out",
+      "choices": [
+        "take out",
+        "inside, middle",
+        "enter",
+        "cut"
+      ],
+      "reading": "出[だ]す",
+      "meaning": "take out",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-61",
+      "sourceNoteId": "1339252520864",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "休む",
+      "answer": "take a day off, take a break",
+      "choices": [
+        "take a day off, take a break",
+        "take out",
+        "all, wholly",
+        "front, before"
+      ],
+      "reading": "休[やす]む",
+      "meaning": "take a day off, take a break",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-62",
+      "sourceNoteId": "1339252520865",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "体",
+      "answer": "body, health",
+      "choices": [
+        "body, health",
+        "as expected, also, still",
+        "two days, 2nd of the month",
+        "divide into parts, sort, share"
+      ],
+      "reading": "体[からだ]",
+      "meaning": "body, health",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-63",
+      "sourceNoteId": "1339252520867",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "どこ",
+      "answer": "where",
+      "choices": [
+        "where",
+        "last month",
+        "service, on the house",
+        "downhill, going down"
+      ],
+      "reading": "どこ",
+      "meaning": "where",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-64",
+      "sourceNoteId": "1339252520870",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上手",
+      "answer": "good, skilled",
+      "choices": [
+        "good, skilled",
+        "door",
+        "put in",
+        "how, what"
+      ],
+      "reading": "上手[じょうず]",
+      "meaning": "good, skilled",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-65",
+      "sourceNoteId": "1339252520877",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "あげる",
+      "answer": "give",
+      "choices": [
+        "give",
+        "five (things)",
+        "get nervous, get stage fright",
+        "low, short"
+      ],
+      "reading": "あげる",
+      "meaning": "give",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-66",
+      "sourceNoteId": "1339252520881",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "友達",
+      "answer": "friend, companion",
+      "choices": [
+        "friend, companion",
+        "toilet, bathroom",
+        "be divided, disperse, branch off",
+        "first"
+      ],
+      "reading": "友達[ともだち]",
+      "meaning": "friend, companion",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-67",
+      "sourceNoteId": "1339252520884",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "元気",
+      "answer": "healthy, energetic",
+      "choices": [
+        "healthy, energetic",
+        "lower, turn down",
+        "go down, go down or away from a central place",
+        "software, programme"
+      ],
+      "reading": "元気[げんき]",
+      "meaning": "healthy, energetic",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-68",
+      "sourceNoteId": "1339252520887",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "こう",
+      "answer": "like this, this kind of",
+      "choices": [
+        "like this, this kind of",
+        "under, below",
+        "where",
+        "two"
+      ],
+      "reading": "こう",
+      "meaning": "like this, this kind of",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-69",
+      "sourceNoteId": "1339252520897",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "くれる",
+      "answer": "be given",
+      "choices": [
+        "be given",
+        "come down, hang down, fall",
+        "father",
+        "chat, talk"
+      ],
+      "reading": "くれる",
+      "meaning": "be given",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-70",
+      "sourceNoteId": "1339252520899",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "低い",
+      "answer": "low, short",
+      "choices": [
+        "low, short",
+        "fairly, rather",
+        "this week",
+        "20 days, 20th of the month"
+      ],
+      "reading": "低[ひく]い",
+      "meaning": "low, short",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-71",
+      "sourceNoteId": "1339252520900",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "前",
+      "answer": "front, before",
+      "choices": [
+        "front, before",
+        "over there",
+        "eight (things)",
+        "can do, be good at"
+      ],
+      "reading": "前[まえ]",
+      "meaning": "front, before",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-72",
+      "sourceNoteId": "1339252520903",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "午後",
+      "answer": "afternoon, p.m.",
+      "choices": [
+        "afternoon, p.m.",
+        "morning, a.m.",
+        "almost, hardly",
+        "five days, 5th of the month"
+      ],
+      "reading": "午後[ごご]",
+      "meaning": "afternoon, p.m.",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-73",
+      "sourceNoteId": "1339252520904",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "午前",
+      "answer": "morning, a.m.",
+      "choices": [
+        "morning, a.m.",
+        "work",
+        "ten thousand",
+        "eight (things)"
+      ],
+      "reading": "午前[ごぜん]",
+      "meaning": "morning, a.m.",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-74",
+      "sourceNoteId": "1339252520907",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "かなり",
+      "answer": "fairly, rather",
+      "choices": [
+        "fairly, rather",
+        "stomach",
+        "two (things)",
+        "yen"
+      ],
+      "reading": "かなり",
+      "meaning": "fairly, rather",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-75",
+      "sourceNoteId": "1339252520909",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "今晩",
+      "answer": "this evening, tonight",
+      "choices": [
+        "this evening, tonight",
+        "move",
+        "go up",
+        "cut"
+      ],
+      "reading": "今晩[こんばん]",
+      "meaning": "this evening, tonight",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-76",
+      "sourceNoteId": "1339252520913",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ご飯",
+      "answer": "cooked rice, meal",
+      "choices": [
+        "cooked rice, meal",
+        "switch on",
+        "strength, power",
+        "table"
+      ],
+      "reading": "ご 飯[はん]",
+      "meaning": "cooked rice, meal",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-77",
+      "sourceNoteId": "1339252520917",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "もっと",
+      "answer": "more",
+      "choices": [
+        "more",
+        "low, short",
+        "cold (things, touch)",
+        "entrance"
+      ],
+      "reading": "もっと",
+      "meaning": "more",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-78",
+      "sourceNoteId": "1339252520927",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "そこ",
+      "answer": "there",
+      "choices": [
+        "there",
+        "almost, hardly",
+        "teacher",
+        "five (things)"
+      ],
+      "reading": "そこ",
+      "meaning": "there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-79",
+      "sourceNoteId": "1339252520928",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "会う",
+      "answer": "meet",
+      "choices": [
+        "meet",
+        "cut",
+        "until now, so far",
+        "full, plentiful"
+      ],
+      "reading": "会[あ]う",
+      "meaning": "meet",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-80",
+      "sourceNoteId": "1339252520929",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "仕事",
+      "answer": "work, job",
+      "choices": [
+        "work, job",
+        "toilet, bathroom",
+        "eight (things)",
+        "be divided, disperse, branch off"
+      ],
+      "reading": "仕事[しごと]",
+      "meaning": "work, job",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-81",
+      "sourceNoteId": "1339252520935",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "他",
+      "answer": "other",
+      "choices": [
+        "other",
+        "tasty",
+        "circle",
+        "now"
+      ],
+      "reading": "他[ほか]",
+      "meaning": "other",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-82",
+      "sourceNoteId": "1339252520937",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ここ",
+      "answer": "here",
+      "choices": [
+        "here",
+        "three (things)",
+        "go down, come down",
+        "nine (things)"
+      ],
+      "reading": "ここ",
+      "meaning": "here",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-83",
+      "sourceNoteId": "1339252520947",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "もらう",
+      "answer": "receive",
+      "choices": [
+        "receive",
+        "cold (things, touch)",
+        "inside, middle",
+        "television"
+      ],
+      "reading": "もらう",
+      "meaning": "receive",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-84",
+      "sourceNoteId": "1339252520948",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "全部",
+      "answer": "all, wholly",
+      "choices": [
+        "all, wholly",
+        "cooked rice, meal",
+        "rest, holiday, absence",
+        "full, plentiful"
+      ],
+      "reading": "全部[ぜんぶ]",
+      "meaning": "all, wholly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-85",
+      "sourceNoteId": "1339252520957",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "とても",
+      "answer": "very",
+      "choices": [
+        "very",
+        "cut",
+        "table",
+        "(not) much"
+      ],
+      "reading": "とても",
+      "meaning": "very",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-86",
+      "sourceNoteId": "1339252520958",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "作る",
+      "answer": "make, create",
+      "choices": [
+        "make, create",
+        "last week",
+        "teacher",
+        "why"
+      ],
+      "reading": "作[つく]る",
+      "meaning": "make, create",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-87",
+      "sourceNoteId": "1339252520959",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "使う",
+      "answer": "use",
+      "choices": [
+        "use",
+        "go up",
+        "toilet, bathroom",
+        "very"
+      ],
+      "reading": "使[つか]う",
+      "meaning": "use",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-88",
+      "sourceNoteId": "1339252520966",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "冬",
+      "answer": "winter",
+      "choices": [
+        "winter",
+        "seven (things)",
+        "popularity, temperament of the people, business conditions",
+        "six"
+      ],
+      "reading": "冬[ふゆ]",
+      "meaning": "winter",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-89",
+      "sourceNoteId": "1339252520967",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "みんな",
+      "answer": "all, everybody",
+      "choices": [
+        "all, everybody",
+        "win",
+        "often",
+        "go up"
+      ],
+      "reading": "みんな",
+      "meaning": "all, everybody",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-90",
+      "sourceNoteId": "1339252520977",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "いつも",
+      "answer": "always",
+      "choices": [
+        "always",
+        "put in",
+        "computer",
+        "entrance"
+      ],
+      "reading": "いつも",
+      "meaning": "always",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-91",
+      "sourceNoteId": "1339252520983",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一番",
+      "answer": "most",
+      "choices": [
+        "most",
+        "until now, so far",
+        "first",
+        "side, vicinity"
+      ],
+      "reading": "一番[いちばん]",
+      "meaning": "most",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-92",
+      "sourceNoteId": "1339252520984",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "住む",
+      "answer": "live, reside",
+      "choices": [
+        "live, reside",
+        "three (things)",
+        "well",
+        "first"
+      ],
+      "reading": "住[す]む",
+      "meaning": "live, reside",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-93",
+      "sourceNoteId": "1339252520987",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "いつ",
+      "answer": "when",
+      "choices": [
+        "when",
+        "still, in addition",
+        "well",
+        "more"
+      ],
+      "reading": "いつ",
+      "meaning": "when",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-94",
+      "sourceNoteId": "1339252520992",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "取る",
+      "answer": "take, get",
+      "choices": [
+        "take, get",
+        "most",
+        "two days, 2nd of the month",
+        "this week"
+      ],
+      "reading": "取[と]る",
+      "meaning": "take, get",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-95",
+      "sourceNoteId": "1339252520997",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "どちら",
+      "answer": "which",
+      "choices": [
+        "which",
+        "two persons",
+        "bring down, take down, pull down",
+        "group"
+      ],
+      "reading": "どちら",
+      "meaning": "which",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-96",
+      "sourceNoteId": "1339252520998",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "先生",
+      "answer": "teacher",
+      "choices": [
+        "teacher",
+        "two",
+        "put in",
+        "nine (things)"
+      ],
+      "reading": "先生[せんせい]",
+      "meaning": "teacher",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-97",
+      "sourceNoteId": "1339252521005",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "勉強",
+      "answer": "study",
+      "choices": [
+        "study",
+        "these",
+        "seven days, 7th of the month",
+        "one"
+      ],
+      "reading": "勉強[べんきょう]",
+      "meaning": "study",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-98",
+      "sourceNoteId": "1339252521007",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "どれ",
+      "answer": "what, which",
+      "choices": [
+        "what, which",
+        "give",
+        "1st of the month",
+        "people"
+      ],
+      "reading": "どれ",
+      "meaning": "what, which",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-99",
+      "sourceNoteId": "1339252521013",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "勝つ",
+      "answer": "win",
+      "choices": [
+        "win",
+        "do, make",
+        "morning, a.m.",
+        "going up, ascent"
+      ],
+      "reading": "勝[か]つ",
+      "meaning": "win",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-100",
+      "sourceNoteId": "1339252521017",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ドア",
+      "answer": "door",
+      "choices": [
+        "door",
+        "take, get",
+        "five (things)",
+        "there"
+      ],
+      "reading": "ドア",
+      "meaning": "door",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-101",
+      "sourceNoteId": "1339252521020",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "切る",
+      "answer": "cut",
+      "choices": [
+        "cut",
+        "nine",
+        "seven (things)",
+        "ahead, first"
+      ],
+      "reading": "切[き]る",
+      "meaning": "cut",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-102",
+      "sourceNoteId": "1339252521022",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "乗る",
+      "answer": "ride, take",
+      "choices": [
+        "ride, take",
+        "inside, middle",
+        "all, everybody",
+        "three (things)"
+      ],
+      "reading": "乗[の]る",
+      "meaning": "ride, take",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-103",
+      "sourceNoteId": "1339252521027",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "しゃべる",
+      "answer": "chat, talk",
+      "choices": [
+        "chat, talk",
+        "under, below",
+        "now",
+        "seven"
+      ],
+      "reading": "しゃべる",
+      "meaning": "chat, talk",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-104",
+      "sourceNoteId": "1339252521028",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "動く",
+      "answer": "move",
+      "choices": [
+        "move",
+        "favor",
+        "up, above",
+        "put in"
+      ],
+      "reading": "動[うご]く",
+      "meaning": "move",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-105",
+      "sourceNoteId": "1339252521029",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "働く",
+      "answer": "work",
+      "choices": [
+        "work",
+        "take, get",
+        "people",
+        "teacher"
+      ],
+      "reading": "働[はたら]く",
+      "meaning": "work",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-106",
+      "sourceNoteId": "1339252521037",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "テーブル",
+      "answer": "table",
+      "choices": [
+        "table",
+        "two",
+        "last week",
+        "move"
+      ],
+      "reading": "テーブル",
+      "meaning": "table",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-107",
+      "sourceNoteId": "1339252521038",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "去年",
+      "answer": "last year",
+      "choices": [
+        "last year",
+        "hundred million",
+        "make, create",
+        "live, reside"
+      ],
+      "reading": "去年[きょねん]",
+      "meaning": "last year",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-108",
+      "sourceNoteId": "1339252521047",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ゲーム",
+      "answer": "game",
+      "choices": [
+        "game",
+        "cut",
+        "last year",
+        "software, programme"
+      ],
+      "reading": "ゲーム",
+      "meaning": "game",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-109",
+      "sourceNoteId": "1339252521057",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "どうして",
+      "answer": "why",
+      "choices": [
+        "why",
+        "ten thousand",
+        "full, plentiful",
+        "table"
+      ],
+      "reading": "どうして",
+      "meaning": "why",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-110",
+      "sourceNoteId": "1339252521059",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お父さん",
+      "answer": "father",
+      "choices": [
+        "father",
+        "six days, 6th of the month",
+        "move",
+        "six (things)"
+      ],
+      "reading": "お 父[とう]さん",
+      "meaning": "father",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-111",
+      "sourceNoteId": "1339252521061",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お母さん",
+      "answer": "mother",
+      "choices": [
+        "mother",
+        "exit, exit ramp",
+        "chat, talk",
+        "here"
+      ],
+      "reading": "お 母[かあ]さん",
+      "meaning": "mother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-112",
+      "sourceNoteId": "1339252521065",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お姉さん",
+      "answer": "older sister",
+      "choices": [
+        "older sister",
+        "take a day off, take a break",
+        "put in",
+        "afternoon, p.m."
+      ],
+      "reading": "お 姉[ねえ]さん",
+      "meaning": "older sister",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-113",
+      "sourceNoteId": "1339252521067",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "おなか",
+      "answer": "stomach",
+      "choices": [
+        "stomach",
+        "thousand",
+        "six days, 6th of the month",
+        "what, which"
+      ],
+      "reading": "おなか",
+      "meaning": "stomach",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-114",
+      "sourceNoteId": "1339252521068",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "兄",
+      "answer": "older brother",
+      "choices": [
+        "older brother",
+        "inside, middle",
+        "older sister",
+        "bad-tasting, bad"
+      ],
+      "reading": "兄[あに]",
+      "meaning": "older brother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-115",
+      "sourceNoteId": "1339252521069",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お兄さん",
+      "answer": "older brother",
+      "choices": [
+        "older brother",
+        "cold (things, touch)",
+        "six days, 6th of the month",
+        "afternoon, p.m."
+      ],
+      "reading": "お 兄[にい]さん",
+      "meaning": "older brother",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-116",
+      "sourceNoteId": "1339252521077",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ミーティング",
+      "answer": "meeting",
+      "choices": [
+        "meeting",
+        "take, get",
+        "service, on the house",
+        "get nervous, get stage fright"
+      ],
+      "reading": "ミーティング",
+      "meaning": "meeting",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-117",
+      "sourceNoteId": "1339252521080",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ご主人",
+      "answer": "(your) husband",
+      "choices": [
+        "(your) husband",
+        "ten",
+        "now",
+        "where"
+      ],
+      "reading": "ご 主人[しゅじん]",
+      "meaning": "(your) husband",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-118",
+      "sourceNoteId": "1339252521082",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "別",
+      "answer": "another, different",
+      "choices": [
+        "another, different",
+        "go up, rise",
+        "entrance",
+        "tasty"
+      ],
+      "reading": "別[べつ]",
+      "meaning": "another, different",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-119",
+      "sourceNoteId": "1339252521087",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "つける",
+      "answer": "switch on",
+      "choices": [
+        "switch on",
+        "strength, power",
+        "until now, so far",
+        "there"
+      ],
+      "reading": "つける",
+      "meaning": "switch on",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-120",
+      "sourceNoteId": "1339252521088",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一杯",
+      "answer": "full",
+      "choices": [
+        "full",
+        "move",
+        "where",
+        "come down, hang down, fall"
+      ],
+      "reading": "一杯[いっぱい]",
+      "meaning": "full",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-121",
+      "sourceNoteId": "1339252521091",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お願い",
+      "answer": "favor",
+      "choices": [
+        "favor",
+        "stomach",
+        "entrance",
+        "two persons"
+      ],
+      "reading": "お 願[ねが]い",
+      "meaning": "favor",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-122",
+      "sourceNoteId": "1339252521097",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "あれ",
+      "answer": "that over there",
+      "choices": [
+        "that over there",
+        "five",
+        "cooperation, collaboration",
+        "stomach"
+      ],
+      "reading": "あれ",
+      "meaning": "that over there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-123",
+      "sourceNoteId": "1339252521101",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "お手洗い",
+      "answer": "toilet, bathroom",
+      "choices": [
+        "toilet, bathroom",
+        "how, what",
+        "three days, 3rd of the month",
+        "six"
+      ],
+      "reading": "お 手洗[てあら]い",
+      "meaning": "toilet, bathroom",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-124",
+      "sourceNoteId": "1339252521102",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "冷たい",
+      "answer": "cold (things, touch)",
+      "choices": [
+        "cold (things, touch)",
+        "free",
+        "first",
+        "ride, take"
+      ],
+      "reading": "冷[つめ]たい",
+      "meaning": "cold (things, touch)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-125",
+      "sourceNoteId": "1339252521107",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "まずい",
+      "answer": "bad-tasting, bad",
+      "choices": [
+        "bad-tasting, bad",
+        "take a day off, take a break",
+        "three",
+        "this evening, tonight"
+      ],
+      "reading": "まずい",
+      "meaning": "bad-tasting, bad",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-126",
+      "sourceNoteId": "1339252521112",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "一緒に",
+      "answer": "together, at the same time",
+      "choices": [
+        "together, at the same time",
+        "older sister",
+        "that, that one",
+        "friend, companion"
+      ],
+      "reading": "一緒[いっしょ]に",
+      "meaning": "together, at the same time",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-127",
+      "sourceNoteId": "1339252521117",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "そば",
+      "answer": "side, vicinity",
+      "choices": [
+        "side, vicinity",
+        "become",
+        "television",
+        "person"
+      ],
+      "reading": "そば",
+      "meaning": "side, vicinity",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-128",
+      "sourceNoteId": "1339252521127",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "こっち",
+      "answer": "here",
+      "choices": [
+        "here",
+        "nine (things)",
+        "more",
+        "one"
+      ],
+      "reading": "こっち",
+      "meaning": "here",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-129",
+      "sourceNoteId": "1339252521129",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "優しい",
+      "answer": "gentle, kind",
+      "choices": [
+        "gentle, kind",
+        "almost, hardly",
+        "nine",
+        "place"
+      ],
+      "reading": "優[やさ]しい",
+      "meaning": "gentle, kind",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-130",
+      "sourceNoteId": "1339252521137",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "よう",
+      "answer": "way, like, kind",
+      "choices": [
+        "way, like, kind",
+        "often",
+        "good, skilled",
+        "meeting"
+      ],
+      "reading": "よう",
+      "meaning": "way, like, kind",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-131",
+      "sourceNoteId": "1339252521147",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "あそこ",
+      "answer": "over there",
+      "choices": [
+        "over there",
+        "that over there",
+        "morning, a.m.",
+        "put in"
+      ],
+      "reading": "あそこ",
+      "meaning": "over there",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-132",
+      "sourceNoteId": "1339252521157",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "おいしい",
+      "answer": "tasty",
+      "choices": [
+        "tasty",
+        "until now, so far",
+        "more, further",
+        "full"
+      ],
+      "reading": "おいしい",
+      "meaning": "tasty",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-133",
+      "sourceNoteId": "1339252521160",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "僕",
+      "answer": "I (young male)",
+      "choices": [
+        "I (young male)",
+        "today",
+        "go up",
+        "come down, hang down, fall"
+      ],
+      "reading": "僕[ぼく]",
+      "meaning": "I (young male)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-134",
+      "sourceNoteId": "1339252521166",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "なる",
+      "answer": "become",
+      "choices": [
+        "become",
+        "table",
+        "meet",
+        "software, programme"
+      ],
+      "reading": "なる",
+      "meaning": "become",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-135",
+      "sourceNoteId": "1339252521167",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ため",
+      "answer": "sake, purpose",
+      "choices": [
+        "sake, purpose",
+        "father",
+        "other",
+        "three"
+      ],
+      "reading": "ため",
+      "meaning": "sake, purpose",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-136",
+      "sourceNoteId": "1339252521168",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "より",
+      "answer": "more, further",
+      "choices": [
+        "more, further",
+        "seven (things)",
+        "dollar",
+        "under, below"
+      ],
+      "reading": "より",
+      "meaning": "more, further",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-137",
+      "sourceNoteId": "1339252521169",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "七",
+      "answer": "seven",
+      "choices": [
+        "seven",
+        "do",
+        "already, yet",
+        "five days, 5th of the month"
+      ],
+      "reading": "七[しち]",
+      "meaning": "seven",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-138",
+      "sourceNoteId": "1339252521170",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "九",
+      "answer": "nine",
+      "choices": [
+        "nine",
+        "nine days, 9th of the month",
+        "cut",
+        "(your) husband"
+      ],
+      "reading": "九[く]",
+      "meaning": "nine",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-139",
+      "sourceNoteId": "1339252521171",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "億",
+      "answer": "hundred million",
+      "choices": [
+        "hundred million",
+        "people",
+        "healthy, energetic",
+        "this evening, tonight"
+      ],
+      "reading": "億[おく]",
+      "meaning": "hundred million",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-140",
+      "sourceNoteId": "1339252521173",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ドル",
+      "answer": "dollar",
+      "choices": [
+        "dollar",
+        "well",
+        "this evening, tonight",
+        "seven"
+      ],
+      "reading": "ドル",
+      "meaning": "dollar",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-141",
+      "sourceNoteId": "1339252521178",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "システム",
+      "answer": "system",
+      "choices": [
+        "system",
+        "almost, hardly",
+        "go up, rise",
+        "seven"
+      ],
+      "reading": "システム",
+      "meaning": "system",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-142",
+      "sourceNoteId": "1339252521179",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "十分",
+      "answer": "full, plentiful",
+      "choices": [
+        "full, plentiful",
+        "two days, 2nd of the month",
+        "one, one person",
+        "inside, middle"
+      ],
+      "reading": "十分[じゅうぶん]",
+      "meaning": "full, plentiful",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-143",
+      "sourceNoteId": "1339252521180",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "分",
+      "answer": "amount, part, share",
+      "choices": [
+        "amount, part, share",
+        "until now, so far",
+        "strength, power",
+        "five"
+      ],
+      "reading": "分[ぶん]",
+      "meaning": "amount, part, share",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-144",
+      "sourceNoteId": "1339252521181",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "分ける",
+      "answer": "divide into parts, sort, share",
+      "choices": [
+        "divide into parts, sort, share",
+        "gentle, kind",
+        "almost, hardly",
+        "ten"
+      ],
+      "reading": "分[わ]ける",
+      "meaning": "divide into parts, sort, share",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-145",
+      "sourceNoteId": "1339252521182",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "分かれる",
+      "answer": "be divided, disperse, branch off",
+      "choices": [
+        "be divided, disperse, branch off",
+        "under, below",
+        "this evening, tonight",
+        "seven"
+      ],
+      "reading": "分[わ]かれる",
+      "meaning": "be divided, disperse, branch off",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-146",
+      "sourceNoteId": "1339252521183",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "コンピューター",
+      "answer": "computer",
+      "choices": [
+        "computer",
+        "ten",
+        "under, below",
+        "two"
+      ],
+      "reading": "コンピューター",
+      "meaning": "computer",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-147",
+      "sourceNoteId": "1339252521184",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "何か",
+      "answer": "something, some",
+      "choices": [
+        "something, some",
+        "program",
+        "move",
+        "downhill, going down"
+      ],
+      "reading": "何[なに]か",
+      "meaning": "something, some",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-148",
+      "sourceNoteId": "1339252521185",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "何",
+      "answer": "what, which",
+      "choices": [
+        "what, which",
+        "three",
+        "stomach",
+        "two"
+      ],
+      "reading": "何[なん]",
+      "meaning": "what, which",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-149",
+      "sourceNoteId": "1339252521186",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "先ず",
+      "answer": "first",
+      "choices": [
+        "first",
+        "personal computer",
+        "by oneself",
+        "very"
+      ],
+      "reading": "先[ま]ず",
+      "meaning": "first",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-150",
+      "sourceNoteId": "1339252521187",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "先月",
+      "answer": "last month",
+      "choices": [
+        "last month",
+        "all, wholly",
+        "cut",
+        "low, short"
+      ],
+      "reading": "先月[せんげつ]",
+      "meaning": "last month",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-151",
+      "sourceNoteId": "1339252521188",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "やる",
+      "answer": "give (to an inferior)",
+      "choices": [
+        "give (to an inferior)",
+        "under, below",
+        "cut",
+        "cooperation, collaboration"
+      ],
+      "reading": "やる",
+      "meaning": "give (to an inferior)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-152",
+      "sourceNoteId": "1339252521189",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "先週",
+      "answer": "last week",
+      "choices": [
+        "last week",
+        "all, wholly",
+        "often",
+        "switch on"
+      ],
+      "reading": "先週[せんしゅう]",
+      "meaning": "last week",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-153",
+      "sourceNoteId": "1339252521190",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "今まで",
+      "answer": "until now, so far",
+      "choices": [
+        "until now, so far",
+        "gentle, kind",
+        "now",
+        "work"
+      ],
+      "reading": "今[いま]まで",
+      "meaning": "until now, so far",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-154",
+      "sourceNoteId": "1339252521193",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ロボット",
+      "answer": "robot",
+      "choices": [
+        "robot",
+        "here",
+        "free",
+        "computer"
+      ],
+      "reading": "ロボット",
+      "meaning": "robot",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-155",
+      "sourceNoteId": "1339252521198",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ほとんど",
+      "answer": "almost, hardly",
+      "choices": [
+        "almost, hardly",
+        "downhill, going down",
+        "people",
+        "(not) much"
+      ],
+      "reading": "ほとんど",
+      "meaning": "almost, hardly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-156",
+      "sourceNoteId": "1339252521201",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "中",
+      "answer": "inside, middle",
+      "choices": [
+        "inside, middle",
+        "yen",
+        "three (things)",
+        "five"
+      ],
+      "reading": "中[なか]",
+      "meaning": "inside, middle",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-157",
+      "sourceNoteId": "1339252521203",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "パソコン",
+      "answer": "personal computer",
+      "choices": [
+        "personal computer",
+        "downhill, going down",
+        "not good at",
+        "study"
+      ],
+      "reading": "パソコン",
+      "meaning": "personal computer",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-158",
+      "sourceNoteId": "1339252521207",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上がる",
+      "answer": "go up, rise",
+      "choices": [
+        "go up, rise",
+        "study",
+        "exit, exit ramp",
+        "five"
+      ],
+      "reading": "上[あ]がる",
+      "meaning": "go up, rise",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-159",
+      "sourceNoteId": "1339252521208",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "もう",
+      "answer": "another, again",
+      "choices": [
+        "another, again",
+        "computer",
+        "last week",
+        "way, like, kind"
+      ],
+      "reading": "もう",
+      "meaning": "another, again",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-160",
+      "sourceNoteId": "1339252521209",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "上がる",
+      "answer": "get nervous, get stage fright",
+      "choices": [
+        "get nervous, get stage fright",
+        "last week",
+        "go up",
+        "make, create"
+      ],
+      "reading": "上[あ]がる",
+      "meaning": "get nervous, get stage fright",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-161",
+      "sourceNoteId": "1339252521211",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "上り",
+      "answer": "going up, ascent",
+      "choices": [
+        "going up, ascent",
+        "work, job",
+        "take a day off, take a break",
+        "here"
+      ],
+      "reading": "上[のぼ]り",
+      "meaning": "going up, ascent",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-162",
+      "sourceNoteId": "1339252521212",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "下げる",
+      "answer": "lower, turn down",
+      "choices": [
+        "lower, turn down",
+        "get nervous, get stage fright",
+        "go up, rise",
+        "table"
+      ],
+      "reading": "下[さ]げる",
+      "meaning": "lower, turn down",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-163",
+      "sourceNoteId": "1339252521213",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "プログラム",
+      "answer": "program",
+      "choices": [
+        "program",
+        "rest, holiday, absence",
+        "can do, be good at",
+        "take a day off, take a break"
+      ],
+      "reading": "プログラム",
+      "meaning": "program",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-164",
+      "sourceNoteId": "1339252521214",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "下がる",
+      "answer": "come down, hang down, fall",
+      "choices": [
+        "come down, hang down, fall",
+        "give",
+        "day before yesterday",
+        "often"
+      ],
+      "reading": "下[さ]がる",
+      "meaning": "come down, hang down, fall",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-165",
+      "sourceNoteId": "1339252521215",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "下りる",
+      "answer": "go down, come down",
+      "choices": [
+        "go down, come down",
+        "downhill, going down",
+        "that, that one",
+        "people"
+      ],
+      "reading": "下[お]りる",
+      "meaning": "go down, come down",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-166",
+      "sourceNoteId": "1339252521216",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "下ろす",
+      "answer": "bring down, take down, pull down",
+      "choices": [
+        "bring down, take down, pull down",
+        "last week",
+        "table",
+        "healthy, energetic"
+      ],
+      "reading": "下[お]ろす",
+      "meaning": "bring down, take down, pull down",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-167",
+      "sourceNoteId": "1339252521217",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "下り",
+      "answer": "downhill, going down",
+      "choices": [
+        "downhill, going down",
+        "dollar",
+        "this, this one",
+        "put in"
+      ],
+      "reading": "下[くだ]り",
+      "meaning": "downhill, going down",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-168",
+      "sourceNoteId": "1339252521218",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "よく",
+      "answer": "well",
+      "choices": [
+        "well",
+        "one (thing)",
+        "another, again",
+        "work, job"
+      ],
+      "reading": "よく",
+      "meaning": "well",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-169",
+      "sourceNoteId": "1339252521220",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "下る",
+      "answer": "go down, go down or away from a central place",
+      "choices": [
+        "go down, go down or away from a central place",
+        "often",
+        "(your) husband",
+        "win"
+      ],
+      "reading": "下[くだ]る",
+      "meaning": "go down, go down or away from a central place",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-170",
+      "sourceNoteId": "1339252521221",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一方",
+      "answer": "one way",
+      "choices": [
+        "one way",
+        "give (to an inferior)",
+        "these",
+        "strength, power"
+      ],
+      "reading": "一方[いっぽう]",
+      "meaning": "one way",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-171",
+      "sourceNoteId": "1339252521223",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "まま",
+      "answer": "as is, still (in the current state)",
+      "choices": [
+        "as is, still (in the current state)",
+        "yen",
+        "fairly, rather",
+        "person"
+      ],
+      "reading": "まま",
+      "meaning": "as is, still (in the current state)",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-172",
+      "sourceNoteId": "1339252521224",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "二人",
+      "answer": "two persons",
+      "choices": [
+        "two persons",
+        "today",
+        "system",
+        "gentle, kind"
+      ],
+      "reading": "二人[ふたり]",
+      "meaning": "two persons",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-173",
+      "sourceNoteId": "1339252521226",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "人々",
+      "answer": "people",
+      "choices": [
+        "people",
+        "over there",
+        "this year",
+        "how, what"
+      ],
+      "reading": "人々[ひとびと]",
+      "meaning": "people",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-174",
+      "sourceNoteId": "1339252521227",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "一人で",
+      "answer": "by oneself",
+      "choices": [
+        "by oneself",
+        "door",
+        "one",
+        "morning, a.m."
+      ],
+      "reading": "一人[ひとり]で",
+      "meaning": "by oneself",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-175",
+      "sourceNoteId": "1339252521228",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "テレビ",
+      "answer": "television",
+      "choices": [
+        "television",
+        "software, programme",
+        "put in",
+        "one"
+      ],
+      "reading": "テレビ",
+      "meaning": "television",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-176",
+      "sourceNoteId": "1339252521231",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "休日",
+      "answer": "holiday, day off",
+      "choices": [
+        "holiday, day off",
+        "older brother",
+        "seven (things)",
+        "how, what"
+      ],
+      "reading": "休日[きゅうじつ]",
+      "meaning": "holiday, day off",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-177",
+      "sourceNoteId": "1339252521232",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "休み",
+      "answer": "rest, holiday, absence",
+      "choices": [
+        "rest, holiday, absence",
+        "eventually, sometime",
+        "become",
+        "work, job"
+      ],
+      "reading": "休[やす]み",
+      "meaning": "rest, holiday, absence",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-178",
+      "sourceNoteId": "1339252521233",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ソフト",
+      "answer": "software, programme",
+      "choices": [
+        "software, programme",
+        "when",
+        "that, that one",
+        "eight days, 8th of the month"
+      ],
+      "reading": "ソフト",
+      "meaning": "software, programme",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-179",
+      "sourceNoteId": "1339252521234",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "力",
+      "answer": "strength, power",
+      "choices": [
+        "strength, power",
+        "bad-tasting, bad",
+        "three (things)",
+        "healthy, energetic"
+      ],
+      "reading": "力[ちから]",
+      "meaning": "strength, power",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-180",
+      "sourceNoteId": "1339252521235",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "協力",
+      "answer": "cooperation, collaboration",
+      "choices": [
+        "cooperation, collaboration",
+        "holiday, day off",
+        "popularity, temperament of the people, business conditions",
+        "make, create"
+      ],
+      "reading": "協力[きょうりょく]",
+      "meaning": "cooperation, collaboration",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-181",
+      "sourceNoteId": "1339252521236",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "人口",
+      "answer": "population",
+      "choices": [
+        "population",
+        "cooked rice, meal",
+        "today",
+        "side, vicinity"
+      ],
+      "reading": "人口[じんこう]",
+      "meaning": "population",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-182",
+      "sourceNoteId": "1339252521237",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "出口",
+      "answer": "exit, exit ramp",
+      "choices": [
+        "exit, exit ramp",
+        "ahead, first",
+        "fairly, rather",
+        "enter"
+      ],
+      "reading": "出口[でぐち]",
+      "meaning": "exit, exit ramp",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-183",
+      "sourceNoteId": "1339252521238",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "ただ",
+      "answer": "free",
+      "choices": [
+        "free",
+        "put in",
+        "three",
+        "1st of the month"
+      ],
+      "reading": "ただ",
+      "meaning": "free",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-184",
+      "sourceNoteId": "1339252521239",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "入り口",
+      "answer": "entrance",
+      "choices": [
+        "entrance",
+        "as is, still (in the current state)",
+        "put in",
+        "eight (things)"
+      ],
+      "reading": "入[い]り 口[ぐち]",
+      "meaning": "entrance",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-185",
+      "sourceNoteId": "1339252521242",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "下手",
+      "answer": "not good at",
+      "choices": [
+        "not good at",
+        "work",
+        "this, this one",
+        "nine days, 9th of the month"
+      ],
+      "reading": "下手[へた]",
+      "meaning": "not good at",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-186",
+      "sourceNoteId": "1339252521243",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "これら",
+      "answer": "these",
+      "choices": [
+        "these",
+        "become",
+        "eight",
+        "already, yet"
+      ],
+      "reading": "これら",
+      "meaning": "these",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-187",
+      "sourceNoteId": "1339252521248",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "いずれ",
+      "answer": "eventually, sometime",
+      "choices": [
+        "eventually, sometime",
+        "robot",
+        "as expected, also, still",
+        "(your) husband"
+      ],
+      "reading": "いずれ",
+      "meaning": "eventually, sometime",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-188",
+      "sourceNoteId": "1339252521253",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "あまり",
+      "answer": "(not) much",
+      "choices": [
+        "(not) much",
+        "why",
+        "gather together, put in order",
+        "study"
+      ],
+      "reading": "あまり",
+      "meaning": "(not) much",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-189",
+      "sourceNoteId": "1339252521258",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "なお",
+      "answer": "still, in addition",
+      "choices": [
+        "still, in addition",
+        "last year",
+        "circle",
+        "until now, so far"
+      ],
+      "reading": "なお",
+      "meaning": "still, in addition",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-190",
+      "sourceNoteId": "1339252521263",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ほぼ",
+      "answer": "almost, nearly",
+      "choices": [
+        "almost, nearly",
+        "understand",
+        "live, reside",
+        "this month"
+      ],
+      "reading": "ほぼ",
+      "meaning": "almost, nearly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-191",
+      "sourceNoteId": "1339252521268",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "サービス",
+      "answer": "service, on the house",
+      "choices": [
+        "service, on the house",
+        "eight",
+        "bad-tasting, bad",
+        "first"
+      ],
+      "reading": "サービス",
+      "meaning": "service, on the house",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-192",
+      "sourceNoteId": "1339252521273",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "グループ",
+      "answer": "group",
+      "choices": [
+        "group",
+        "under, below",
+        "six days, 6th of the month",
+        "holiday, day off"
+      ],
+      "reading": "グループ",
+      "meaning": "group",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-193",
+      "sourceNoteId": "1339252521278",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "ホテル",
+      "answer": "hotel",
+      "choices": [
+        "hotel",
+        "tasty",
+        "study",
+        "father"
+      ],
+      "reading": "ホテル",
+      "meaning": "hotel",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-194",
+      "sourceNoteId": "1339252521280",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "人気",
+      "answer": "popularity, temperament of the people, business conditions",
+      "choices": [
+        "popularity, temperament of the people, business conditions",
+        "dollar",
+        "door",
+        "very"
+      ],
+      "reading": "人気[にんき]",
+      "meaning": "popularity, temperament of the people, business conditions",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-195",
+      "sourceNoteId": "1339252521283",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "まとめる",
+      "answer": "gather together, put in order",
+      "choices": [
+        "gather together, put in order",
+        "hundred million",
+        "20 days, 20th of the month",
+        "healthy, energetic"
+      ],
+      "reading": "まとめる",
+      "meaning": "gather together, put in order",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-196",
+      "sourceNoteId": "1339252521288",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "やはり",
+      "answer": "as expected, also, still",
+      "choices": [
+        "as expected, also, still",
+        "why",
+        "become",
+        "teacher"
+      ],
+      "reading": "やはり",
+      "meaning": "as expected, also, still",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-197",
+      "sourceNoteId": "1339252521293",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "はっきり",
+      "answer": "clearly",
+      "choices": [
+        "clearly",
+        "always",
+        "table",
+        "today"
+      ],
+      "reading": "はっきり",
+      "meaning": "clearly",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-198",
+      "sourceNoteId": "1339252521294",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一昨年",
+      "answer": "the year before last",
+      "choices": [
+        "the year before last",
+        "seven",
+        "more, further",
+        "seven (things)"
+      ],
+      "reading": "一昨年[おととし]",
+      "meaning": "the year before last",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-199",
+      "sourceNoteId": "1339252521295",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "vocab",
+      "prompt": "一昨日",
+      "answer": "day before yesterday",
+      "choices": [
+        "day before yesterday",
+        "two",
+        "two (things)",
+        "take out"
+      ],
+      "reading": "一昨日[おととい]",
+      "meaning": "day before yesterday",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    },
+    {
+      "id": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-200",
+      "sourceNoteId": "1339252521298",
+      "lessonId": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-1",
+      "type": "phrase",
+      "prompt": "つまり",
+      "answer": "in short, basically",
+      "choices": [
+        "in short, basically",
+        "entrance",
+        "when",
+        "game"
+      ],
+      "reading": "つまり",
+      "meaning": "in short, basically",
+      "tags": [
+        "imported",
+        "vocab-core"
+      ]
+    }
+  ]
+}

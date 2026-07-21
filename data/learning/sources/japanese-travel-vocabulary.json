@@ -1,0 +1,2112 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "japanese-travel-vocabulary",
+    "deckName": "Japanese Travel Vocabulary",
+    "author": "",
+    "url": "",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-travel-vocabulary-1",
+      "sourceNoteId": "1742575126212",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "初めまして",
+      "answer": "Hello. Nice to meet you.",
+      "choices": [
+        "Hello. Nice to meet you.",
+        "English",
+        "Good morning.",
+        "This."
+      ],
+      "reading": "はじめまして",
+      "meaning": "Hello. Nice to meet you.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-2",
+      "sourceNoteId": "1742575126213",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "おはようございます",
+      "answer": "Good morning.",
+      "choices": [
+        "Good morning.",
+        "I’m sorry, I can’t help.",
+        "Good evening.",
+        "This (noun)."
+      ],
+      "reading": "おはようございます",
+      "meaning": "Good morning.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-3",
+      "sourceNoteId": "1742575126214",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "おはよう",
+      "answer": "Good morning.",
+      "choices": [
+        "Good morning.",
+        "This (noun).",
+        "Thank you / Hello.",
+        "Where (polite)."
+      ],
+      "reading": "おはよう",
+      "meaning": "Good morning.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-4",
+      "sourceNoteId": "1742575126215",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "こんにちは",
+      "answer": "Hello / Good afternoon.",
+      "choices": [
+        "Hello / Good afternoon.",
+        "That (noun).",
+        "This (noun).",
+        "That’s fine."
+      ],
+      "reading": "こんにちは",
+      "meaning": "Hello / Good afternoon.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-5",
+      "sourceNoteId": "1742575126216",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "こんばんは",
+      "answer": "Good evening.",
+      "choices": [
+        "Good evening.",
+        "This.",
+        "Where (polite).",
+        "A little / A moment / A bit"
+      ],
+      "reading": "こんばんは",
+      "meaning": "Good evening.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-6",
+      "sourceNoteId": "1742575126217",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "またね",
+      "answer": "See you / Goodbye.",
+      "choices": [
+        "See you / Goodbye.",
+        "Good",
+        "It&#x27;s no good / It&#x27;s not allowed",
+        "A little / A moment / A bit"
+      ],
+      "reading": "またね",
+      "meaning": "See you / Goodbye.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-7",
+      "sourceNoteId": "1742575126218",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "バイバイ",
+      "answer": "Bye-bye.",
+      "choices": [
+        "Bye-bye.",
+        "Excuse me, are you Mr./Ms. ___?",
+        "To speak / To talk",
+        "Do you have (something)?"
+      ],
+      "reading": "ばいばい",
+      "meaning": "Bye-bye.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-8",
+      "sourceNoteId": "1742575126219",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "すみません",
+      "answer": "Excuse me / I’m sorry.",
+      "choices": [
+        "Excuse me / I’m sorry.",
+        "My name is ___.",
+        "That (over there).",
+        "Who."
+      ],
+      "reading": "すみません",
+      "meaning": "Excuse me / I’m sorry.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-9",
+      "sourceNoteId": "1742575126220",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ごめんなさい",
+      "answer": "I’m sorry.",
+      "choices": [
+        "I’m sorry.",
+        "Sorry.",
+        "How many.",
+        "Excuse me / I’m sorry for interrupting."
+      ],
+      "reading": "ごめんなさい",
+      "meaning": "I’m sorry.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-10",
+      "sourceNoteId": "1742575126221",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ごめん",
+      "answer": "Sorry.",
+      "choices": [
+        "Sorry.",
+        "No good / It&#x27;s no use",
+        "Um… / Excuse me.",
+        "Good morning."
+      ],
+      "reading": "ごめん",
+      "meaning": "Sorry.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-11",
+      "sourceNoteId": "1742575126222",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "失礼します",
+      "answer": "Excuse me / I’m sorry for interrupting.",
+      "choices": [
+        "Excuse me / I’m sorry for interrupting.",
+        "Hello. Nice to meet you.",
+        "That’s right.",
+        "Good morning."
+      ],
+      "reading": "しつれいします",
+      "meaning": "Excuse me / I’m sorry for interrupting.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-12",
+      "sourceNoteId": "1742575126223",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "大丈夫",
+      "answer": "It’s okay / I’m fine.",
+      "choices": [
+        "It’s okay / I’m fine.",
+        "Good evening.",
+        "I understand.",
+        "What."
+      ],
+      "reading": "だいじょうぶ",
+      "meaning": "It’s okay / I’m fine.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-13",
+      "sourceNoteId": "1742575126224",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "結構",
+      "answer": "Fine / Enough.",
+      "choices": [
+        "Fine / Enough.",
+        "Why.",
+        "Your Japanese is good",
+        "Good at / Skilled"
+      ],
+      "reading": "けっこう",
+      "meaning": "Fine / Enough.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-14",
+      "sourceNoteId": "1742575126225",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "結構です",
+      "answer": "That’s fine.",
+      "choices": [
+        "That’s fine.",
+        "Japanese",
+        "Mr. / Ms.",
+        "Thank you (polite)."
+      ],
+      "reading": "けっこうです",
+      "meaning": "That’s fine.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-15",
+      "sourceNoteId": "1742575126226",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "分かります",
+      "answer": "I understand.",
+      "choices": [
+        "I understand.",
+        "Good evening.",
+        "Please (request)",
+        "See you / Goodbye."
+      ],
+      "reading": "わかります",
+      "meaning": "I understand.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-16",
+      "sourceNoteId": "1742575126227",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "分かりません",
+      "answer": "I don’t understand.",
+      "choices": [
+        "I don’t understand.",
+        "What.",
+        "Please say it one more time",
+        "Excuse me / I’m sorry."
+      ],
+      "reading": "わかりません",
+      "meaning": "I don’t understand.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-17",
+      "sourceNoteId": "1742575126228",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "分かりました",
+      "answer": "I understand / Understood.",
+      "choices": [
+        "I understand / Understood.",
+        "Of course, I will help.",
+        "I can speak English",
+        "No, I don&#x27;t have it"
+      ],
+      "reading": "わかりました",
+      "meaning": "I understand / Understood.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-18",
+      "sourceNoteId": "1742575126229",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "はい",
+      "answer": "Yes.",
+      "choices": [
+        "Yes.",
+        "I don&#x27;t understand Japanese",
+        "I’m sorry, it’s not possible right now.",
+        "Hello. Nice to meet you."
+      ],
+      "reading": "はい",
+      "meaning": "Yes.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-19",
+      "sourceNoteId": "1742575126230",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いいえ",
+      "answer": "No.",
+      "choices": [
+        "No.",
+        "I understand / Understood.",
+        "A little / A few",
+        "Can you help me?"
+      ],
+      "reading": "いいえ",
+      "meaning": "No.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-20",
+      "sourceNoteId": "1742575126231",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ありがとうございます",
+      "answer": "Thank you (polite).",
+      "choices": [
+        "Thank you (polite).",
+        "I cannot speak Japanese",
+        "Good evening.",
+        "That’s fine."
+      ],
+      "reading": "ありがとうございます",
+      "meaning": "Thank you (polite).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-21",
+      "sourceNoteId": "1742575126232",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ありがとう",
+      "answer": "Thank you.",
+      "choices": [
+        "Thank you.",
+        "A little / A few",
+        "No, it&#x27;s okay",
+        "I’m sorry."
+      ],
+      "reading": "ありがとう",
+      "meaning": "Thank you.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-22",
+      "sourceNoteId": "1742575126233",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どうも",
+      "answer": "Thank you / Hello.",
+      "choices": [
+        "Thank you / Hello.",
+        "Please (request)",
+        "I am ___.",
+        "Bye-bye."
+      ],
+      "reading": "どうも",
+      "meaning": "Thank you / Hello.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-23",
+      "sourceNoteId": "1742575126234",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どうぞ",
+      "answer": "Please / Go ahead.",
+      "choices": [
+        "Please / Go ahead.",
+        "To speak / To talk",
+        "I’m sorry.",
+        "I don’t understand."
+      ],
+      "reading": "どうぞ",
+      "meaning": "Please / Go ahead.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-24",
+      "sourceNoteId": "1742575126235",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "お願いします",
+      "answer": "Please (request).",
+      "choices": [
+        "Please (request).",
+        "Slowly / Gently",
+        "What is that?",
+        "That."
+      ],
+      "reading": "おねがいします",
+      "meaning": "Please (request).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-25",
+      "sourceNoteId": "1742575126236",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "元気ですか",
+      "answer": "How are you?",
+      "choices": [
+        "How are you?",
+        "Please (request).",
+        "English",
+        "That (noun)."
+      ],
+      "reading": "げんきですか",
+      "meaning": "How are you?",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-26",
+      "sourceNoteId": "1742575126237",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "これ",
+      "answer": "This.",
+      "choices": [
+        "This.",
+        "This (noun).",
+        "Where.",
+        "What is your name?"
+      ],
+      "reading": "これ",
+      "meaning": "This.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-27",
+      "sourceNoteId": "1742575126238",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "それ",
+      "answer": "That.",
+      "choices": [
+        "That.",
+        "No good / It&#x27;s no use",
+        "Hello. Nice to meet you.",
+        "What is that?"
+      ],
+      "reading": "それ",
+      "meaning": "That.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-28",
+      "sourceNoteId": "1742575126239",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あれ",
+      "answer": "That (over there).",
+      "choices": [
+        "That (over there).",
+        "Thank you (polite).",
+        "Sorry.",
+        "English"
+      ],
+      "reading": "あれ",
+      "meaning": "That (over there).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-29",
+      "sourceNoteId": "1742575126240",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "これは何ですか",
+      "answer": "What is this?",
+      "choices": [
+        "What is this?",
+        "Thank you / Hello.",
+        "Is that so? / I see.",
+        "Um… / Excuse me."
+      ],
+      "reading": "これはなんですか",
+      "meaning": "What is this?",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-30",
+      "sourceNoteId": "1742575126241",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "何ですか",
+      "answer": "What is it?",
+      "choices": [
+        "What is it?",
+        "I understand / Understood.",
+        "It’s okay / I’m fine.",
+        "I am ___."
+      ],
+      "reading": "なにですか",
+      "meaning": "What is it?",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-31",
+      "sourceNoteId": "1742575126242",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "これ、何",
+      "answer": "What is this?",
+      "choices": [
+        "What is this?",
+        "How much / How long.",
+        "Slowly / Gently",
+        "Not very / Not much"
+      ],
+      "reading": "これ、なに",
+      "meaning": "What is this?",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-32",
+      "sourceNoteId": "1742575126243",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "それ、何",
+      "answer": "What is that?",
+      "choices": [
+        "What is that?",
+        "Please say it one more time",
+        "How are you?",
+        "Good evening."
+      ],
+      "reading": "それ、なに",
+      "meaning": "What is that?",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-33",
+      "sourceNoteId": "1742575126244",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "この",
+      "answer": "This (noun).",
+      "choices": [
+        "This (noun).",
+        "No, it&#x27;s okay",
+        "This.",
+        "What is your name?"
+      ],
+      "reading": "この",
+      "meaning": "This (noun).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-34",
+      "sourceNoteId": "1742575126245",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "その",
+      "answer": "That (noun).",
+      "choices": [
+        "That (noun).",
+        "What is your name?",
+        "Good evening.",
+        "This."
+      ],
+      "reading": "その",
+      "meaning": "That (noun).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-35",
+      "sourceNoteId": "1742575126246",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あの",
+      "answer": "That (noun).",
+      "choices": [
+        "That (noun).",
+        "Sorry.",
+        "I like (polite)",
+        "What is that?"
+      ],
+      "reading": "あの",
+      "meaning": "That (noun).",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-36",
+      "sourceNoteId": "1742575126247",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "そうですか",
+      "answer": "Is that so? / I see.",
+      "choices": [
+        "Is that so? / I see.",
+        "That (noun).",
+        "What is that?",
+        "I / Me."
+      ],
+      "reading": "そうですか",
+      "meaning": "Is that so? / I see.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-37",
+      "sourceNoteId": "1742575126248",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "そうだ",
+      "answer": "That’s right.",
+      "choices": [
+        "That’s right.",
+        "Good",
+        "How many.",
+        "No good / It&#x27;s no use"
+      ],
+      "reading": "そうだ",
+      "meaning": "That’s right.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-38",
+      "sourceNoteId": "1742575126249",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "えっと",
+      "answer": "Um…",
+      "choices": [
+        "Um…",
+        "No good / It&#x27;s no use",
+        "English",
+        "It&#x27;s no good / It&#x27;s not allowed"
+      ],
+      "reading": "えっと",
+      "meaning": "Um…",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-39",
+      "sourceNoteId": "1742575126250",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "あの",
+      "answer": "Um… / Excuse me.",
+      "choices": [
+        "Um… / Excuse me.",
+        "No, not yet",
+        "Why.",
+        "What happened? / What’s wrong?"
+      ],
+      "reading": "あの",
+      "meaning": "Um… / Excuse me.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-40",
+      "sourceNoteId": "1742575126251",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ええ",
+      "answer": "Yes.",
+      "choices": [
+        "Yes.",
+        "One more time / Again",
+        "Who.",
+        "Please (request)."
+      ],
+      "reading": "ええ",
+      "meaning": "Yes.",
+      "tags": [
+        "Basic",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-41",
+      "sourceNoteId": "1742575126252",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "私",
+      "answer": "I / Me.",
+      "choices": [
+        "I / Me.",
+        "No, it&#x27;s okay",
+        "Mr. / Ms.",
+        "See you / Goodbye."
+      ],
+      "reading": "わたし",
+      "meaning": "I / Me.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-42",
+      "sourceNoteId": "1742575126253",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "名前",
+      "answer": "Name.",
+      "choices": [
+        "Name.",
+        "I like (casual)",
+        "Where.",
+        "See you / Goodbye."
+      ],
+      "reading": "なまえ",
+      "meaning": "Name.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-43",
+      "sourceNoteId": "1742575126254",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "私の名前は＿です",
+      "answer": "My name is ___.",
+      "choices": [
+        "My name is ___.",
+        "To speak / To talk",
+        "Thank you (polite).",
+        "Hello. Nice to meet you."
+      ],
+      "reading": "わたしのなまえは＿です",
+      "meaning": "My name is ___.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-44",
+      "sourceNoteId": "1742575126255",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "＿です",
+      "answer": "I am ___.",
+      "choices": [
+        "I am ___.",
+        "Hello. Nice to meet you.",
+        "No.",
+        "I don&#x27;t like (casual)"
+      ],
+      "reading": "＿です",
+      "meaning": "I am ___.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-45",
+      "sourceNoteId": "1742575126256",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "_さん",
+      "answer": "Mr. / Ms.",
+      "choices": [
+        "Mr. / Ms.",
+        "Name.",
+        "Thank you.",
+        "Hello / Good afternoon."
+      ],
+      "reading": "さん",
+      "meaning": "Mr. / Ms.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-46",
+      "sourceNoteId": "1742575126257",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "こちらは＿さんです。",
+      "answer": "This is Mr./Ms. ___.",
+      "choices": [
+        "This is Mr./Ms. ___.",
+        "What is this?",
+        "What is that?",
+        "Where (polite)."
+      ],
+      "reading": "こちらは＿さんです。",
+      "meaning": "This is Mr./Ms. ___.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-47",
+      "sourceNoteId": "1742575126258",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "何",
+      "answer": "What.",
+      "choices": [
+        "What.",
+        "Good morning.",
+        "I understand a little Japanese",
+        "See you / Goodbye."
+      ],
+      "reading": "なに",
+      "meaning": "What.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-48",
+      "sourceNoteId": "1742575126259",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "お名前は何ですか",
+      "answer": "What is your name?",
+      "choices": [
+        "What is your name?",
+        "How much (price)?",
+        "Excuse me / I’m sorry for interrupting.",
+        "What is this?"
+      ],
+      "reading": "おなまえはなんですか",
+      "meaning": "What is your name?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-49",
+      "sourceNoteId": "1742575126260",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "失礼ですが、＿さんですか",
+      "answer": "Excuse me, are you Mr./Ms. ___?",
+      "choices": [
+        "Excuse me, are you Mr./Ms. ___?",
+        "What.",
+        "I like (polite)",
+        "Hello / Good afternoon."
+      ],
+      "reading": "しつれいですが、＿さんですか",
+      "meaning": "Excuse me, are you Mr./Ms. ___?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-50",
+      "sourceNoteId": "1742575126261",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いつ",
+      "answer": "When.",
+      "choices": [
+        "When.",
+        "I understand a little Japanese",
+        "I can speak a little Japanese",
+        "Hello / Good afternoon."
+      ],
+      "reading": "いつ",
+      "meaning": "When.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-51",
+      "sourceNoteId": "1742575126262",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どこ",
+      "answer": "Where.",
+      "choices": [
+        "Where.",
+        "Good evening.",
+        "Why.",
+        "I can speak a little Japanese"
+      ],
+      "reading": "どこ",
+      "meaning": "Where.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-52",
+      "sourceNoteId": "1742575126263",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "どちら",
+      "answer": "Where (polite).",
+      "choices": [
+        "Where (polite).",
+        "That (noun).",
+        "I cannot speak Japanese",
+        "To speak / To talk"
+      ],
+      "reading": "どちら",
+      "meaning": "Where (polite).",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-53",
+      "sourceNoteId": "1742575126264",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "誰",
+      "answer": "Who.",
+      "choices": [
+        "Who.",
+        "Why.",
+        "Hello / Good afternoon.",
+        "Good evening."
+      ],
+      "reading": "だれ",
+      "meaning": "Who.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-54",
+      "sourceNoteId": "1742575126265",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "何故",
+      "answer": "Why.",
+      "choices": [
+        "Why.",
+        "Good evening.",
+        "I don&#x27;t like (polite)",
+        "That (over there)."
+      ],
+      "reading": "なぜ",
+      "meaning": "Why.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-55",
+      "sourceNoteId": "1742575126266",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "どのくらい",
+      "answer": "How much / How long.",
+      "choices": [
+        "How much / How long.",
+        "Good at / Skilled",
+        "Where (polite).",
+        "Thank you (polite)."
+      ],
+      "reading": "どのくらい",
+      "meaning": "How much / How long.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-56",
+      "sourceNoteId": "1742575126267",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いくつ",
+      "answer": "How many.",
+      "choices": [
+        "How many.",
+        "A little / A few",
+        "I don&#x27;t like (polite)",
+        "Of course, I will help."
+      ],
+      "reading": "いくつ",
+      "meaning": "How many.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-57",
+      "sourceNoteId": "1742575126268",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いくら",
+      "answer": "How much (price)?",
+      "choices": [
+        "How much (price)?",
+        "Can you help me?",
+        "No, I don&#x27;t have it",
+        "I don&#x27;t understand Japanese"
+      ],
+      "reading": "いくら",
+      "meaning": "How much (price)?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-58",
+      "sourceNoteId": "1742575126269",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "いい",
+      "answer": "Good",
+      "choices": [
+        "Good",
+        "I don&#x27;t like (casual)",
+        "How about? / How is it?",
+        "No good / It&#x27;s no use"
+      ],
+      "reading": "いい",
+      "meaning": "Good",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-59",
+      "sourceNoteId": "1742575126270",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "いいです",
+      "answer": "It&#x27;s good / It&#x27;s fine",
+      "choices": [
+        "It&#x27;s good / It&#x27;s fine",
+        "I don&#x27;t like (polite)",
+        "Why.",
+        "One more time / Again"
+      ],
+      "reading": "いいです",
+      "meaning": "It&#x27;s good / It&#x27;s fine",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-60",
+      "sourceNoteId": "1742575126271",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ダメだ",
+      "answer": "No good / It&#x27;s no use",
+      "choices": [
+        "No good / It&#x27;s no use",
+        "Please say it one more time",
+        "Why.",
+        "How about? / How is it?"
+      ],
+      "reading": "だめだ",
+      "meaning": "No good / It&#x27;s no use",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-61",
+      "sourceNoteId": "1742575126272",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ダメです",
+      "answer": "It&#x27;s no good / It&#x27;s not allowed",
+      "choices": [
+        "It&#x27;s no good / It&#x27;s not allowed",
+        "Um… / Excuse me.",
+        "This (noun).",
+        "Good morning."
+      ],
+      "reading": "だめです",
+      "meaning": "It&#x27;s no good / It&#x27;s not allowed",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-62",
+      "sourceNoteId": "1742575126273",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "好きだ",
+      "answer": "I like (casual)",
+      "choices": [
+        "I like (casual)",
+        "Thank you / Hello.",
+        "I am ___.",
+        "What happened? / What’s wrong?"
+      ],
+      "reading": "すきだ",
+      "meaning": "I like (casual)",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-63",
+      "sourceNoteId": "1742575126274",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "好きです",
+      "answer": "I like (polite)",
+      "choices": [
+        "I like (polite)",
+        "Hello. Nice to meet you.",
+        "To speak / To talk",
+        "I am ___."
+      ],
+      "reading": "すきです",
+      "meaning": "I like (polite)",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-64",
+      "sourceNoteId": "1742575126275",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "好きじゃない",
+      "answer": "I don&#x27;t like (casual)",
+      "choices": [
+        "I don&#x27;t like (casual)",
+        "I understand / Understood.",
+        "Excuse me / I’m sorry for interrupting.",
+        "How are you?"
+      ],
+      "reading": "すきじゃない",
+      "meaning": "I don&#x27;t like (casual)",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-65",
+      "sourceNoteId": "1742575126276",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "好きじゃないです",
+      "answer": "I don&#x27;t like (polite)",
+      "choices": [
+        "I don&#x27;t like (polite)",
+        "Japanese",
+        "Thank you (polite).",
+        "I understand."
+      ],
+      "reading": "すきじゃないです",
+      "meaning": "I don&#x27;t like (polite)",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-66",
+      "sourceNoteId": "1742575126277",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "英語",
+      "answer": "English",
+      "choices": [
+        "English",
+        "Please (request)",
+        "Bye-bye.",
+        "This."
+      ],
+      "reading": "えいご",
+      "meaning": "English",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-67",
+      "sourceNoteId": "1742575126278",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "日本語",
+      "answer": "Japanese",
+      "choices": [
+        "Japanese",
+        "See you / Goodbye.",
+        "How much (price)?",
+        "Yes."
+      ],
+      "reading": "にほんご",
+      "meaning": "Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-68",
+      "sourceNoteId": "1742575126279",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "話す",
+      "answer": "To speak / To talk",
+      "choices": [
+        "To speak / To talk",
+        "Thank you.",
+        "I cannot speak Japanese",
+        "Yes."
+      ],
+      "reading": "はなす",
+      "meaning": "To speak / To talk",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-69",
+      "sourceNoteId": "1742575126280",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "英語が話せます",
+      "answer": "I can speak English",
+      "choices": [
+        "I can speak English",
+        "I can&#x27;t speak Japanese very well",
+        "This.",
+        "Excuse me / I’m sorry for interrupting."
+      ],
+      "reading": "えいごがはなせます",
+      "meaning": "I can speak English",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-70",
+      "sourceNoteId": "1742575126281",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "英語が話せますか",
+      "answer": "Can you speak English?",
+      "choices": [
+        "Can you speak English?",
+        "Slowly / Gently",
+        "A little / A moment / A bit",
+        "I’m sorry."
+      ],
+      "reading": "えいごがはなせますか",
+      "meaning": "Can you speak English?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-71",
+      "sourceNoteId": "1742575126282",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語が話せます",
+      "answer": "I can speak Japanese",
+      "choices": [
+        "I can speak Japanese",
+        "Who.",
+        "Why.",
+        "I’m sorry."
+      ],
+      "reading": "にほんごがはなせます",
+      "meaning": "I can speak Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-72",
+      "sourceNoteId": "1742575126283",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語が話せません",
+      "answer": "I cannot speak Japanese",
+      "choices": [
+        "I cannot speak Japanese",
+        "English",
+        "Yes.",
+        "This (noun)."
+      ],
+      "reading": "にほんごがはなせません",
+      "meaning": "I cannot speak Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-73",
+      "sourceNoteId": "1742575126284",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語がわかりません",
+      "answer": "I don&#x27;t understand Japanese",
+      "choices": [
+        "I don&#x27;t understand Japanese",
+        "I cannot speak Japanese",
+        "Can you speak English?",
+        "I understand a little Japanese"
+      ],
+      "reading": "にほんごがわかりません",
+      "meaning": "I don&#x27;t understand Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-74",
+      "sourceNoteId": "1742575126285",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語が少しわかります",
+      "answer": "I understand a little Japanese",
+      "choices": [
+        "I understand a little Japanese",
+        "Excuse me, are you Mr./Ms. ___?",
+        "It’s okay / I’m fine.",
+        "Bye-bye."
+      ],
+      "reading": "にほんごがすこしわかります",
+      "meaning": "I understand a little Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-75",
+      "sourceNoteId": "1742575126286",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "少し",
+      "answer": "A little / A few",
+      "choices": [
+        "A little / A few",
+        "It&#x27;s no good / It&#x27;s not allowed",
+        "Sorry, not right now…, Sorry, I can&#x27;t",
+        "How much / How long."
+      ],
+      "reading": "すこし",
+      "meaning": "A little / A few",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-76",
+      "sourceNoteId": "1742575126287",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ちょっと",
+      "answer": "A little / A moment / A bit",
+      "choices": [
+        "A little / A moment / A bit",
+        "I cannot speak Japanese",
+        "Name.",
+        "See you / Goodbye."
+      ],
+      "reading": "ちょっと",
+      "meaning": "A little / A moment / A bit",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-77",
+      "sourceNoteId": "1742575126288",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語が少しだけ話せます",
+      "answer": "I can speak a little Japanese",
+      "choices": [
+        "I can speak a little Japanese",
+        "Sorry.",
+        "Excuse me / I’m sorry.",
+        "Where."
+      ],
+      "reading": "にほんごがすこしだけはなせます",
+      "meaning": "I can speak a little Japanese",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-78",
+      "sourceNoteId": "1742575126289",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "あまり",
+      "answer": "Not very / Not much",
+      "choices": [
+        "Not very / Not much",
+        "Um…",
+        "This is Mr./Ms. ___.",
+        "Who."
+      ],
+      "reading": "あまり",
+      "meaning": "Not very / Not much",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-79",
+      "sourceNoteId": "1742575126290",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "あまり日本語が話せません",
+      "answer": "I can&#x27;t speak Japanese very well",
+      "choices": [
+        "I can&#x27;t speak Japanese very well",
+        "How much / How long.",
+        "Please speak slowly",
+        "I can speak a little Japanese"
+      ],
+      "reading": "あまりにほんごがはなせません",
+      "meaning": "I can&#x27;t speak Japanese very well",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-80",
+      "sourceNoteId": "1742575126291",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "もう一度",
+      "answer": "One more time / Again",
+      "choices": [
+        "One more time / Again",
+        "To speak / To talk",
+        "That’s fine.",
+        "Excuse me / I’m sorry."
+      ],
+      "reading": "もういちど",
+      "meaning": "One more time / Again",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-81",
+      "sourceNoteId": "1742575126292",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ください",
+      "answer": "Please (request)",
+      "choices": [
+        "Please (request)",
+        "What is this?",
+        "I like (polite)",
+        "It&#x27;s no good / It&#x27;s not allowed"
+      ],
+      "reading": "ください",
+      "meaning": "Please (request)",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-82",
+      "sourceNoteId": "1742575126293",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "もう一度言ってください",
+      "answer": "Please say it one more time",
+      "choices": [
+        "Please say it one more time",
+        "I understand a little Japanese",
+        "What is that?",
+        "That."
+      ],
+      "reading": "もういちどいってください",
+      "meaning": "Please say it one more time",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-83",
+      "sourceNoteId": "1742575126294",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "ゆっくり",
+      "answer": "Slowly / Gently",
+      "choices": [
+        "Slowly / Gently",
+        "That.",
+        "What is this?",
+        "How much (price)?"
+      ],
+      "reading": "ゆっくり",
+      "meaning": "Slowly / Gently",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-84",
+      "sourceNoteId": "1742575126295",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ゆっくり話してください",
+      "answer": "Please speak slowly",
+      "choices": [
+        "Please speak slowly",
+        "Who.",
+        "It&#x27;s good / It&#x27;s fine",
+        "I can speak Japanese"
+      ],
+      "reading": "ゆっくりはなしてください",
+      "meaning": "Please speak slowly",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-85",
+      "sourceNoteId": "1742575126296",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "上手",
+      "answer": "Good at / Skilled",
+      "choices": [
+        "Good at / Skilled",
+        "How much (price)?",
+        "I understand / Understood.",
+        "What is it?"
+      ],
+      "reading": "じょうず",
+      "meaning": "Good at / Skilled",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-86",
+      "sourceNoteId": "1742575126297",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "日本語が上手ですね",
+      "answer": "Your Japanese is good",
+      "choices": [
+        "Your Japanese is good",
+        "No, I don&#x27;t have it",
+        "Hello. Nice to meet you.",
+        "That (noun)."
+      ],
+      "reading": "にほんごがじょうずですね",
+      "meaning": "Your Japanese is good",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-87",
+      "sourceNoteId": "1742575126298",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "いいえ、まだです",
+      "answer": "No, not yet",
+      "choices": [
+        "No, not yet",
+        "To speak / To talk",
+        "Thank you / Hello.",
+        "I don’t understand."
+      ],
+      "reading": "いいえ、まだです",
+      "meaning": "No, not yet",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-88",
+      "sourceNoteId": "1742575126299",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "グーグル翻訳を使ってもいいですか？",
+      "answer": "Can I use Google Translate?",
+      "choices": [
+        "Can I use Google Translate?",
+        "What is it?",
+        "No good / It&#x27;s no use",
+        "Good"
+      ],
+      "reading": "グーグルほんやくをつかってもいいですか？",
+      "meaning": "Can I use Google Translate?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-89",
+      "sourceNoteId": "1742575126300",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "＿を持っていますか？",
+      "answer": "Do you have (something)?",
+      "choices": [
+        "Do you have (something)?",
+        "It&#x27;s good / It&#x27;s fine",
+        "Please say it one more time",
+        "I’m sorry, I can’t help."
+      ],
+      "reading": "＿をもっていますか？",
+      "meaning": "Do you have (something)?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-90",
+      "sourceNoteId": "1742575126301",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "いいえ、持っていません",
+      "answer": "No, I don&#x27;t have it",
+      "choices": [
+        "No, I don&#x27;t have it",
+        "That’s fine.",
+        "Please say it one more time",
+        "Fine / Enough."
+      ],
+      "reading": "いいえ、もっていません",
+      "meaning": "No, I don&#x27;t have it",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-91",
+      "sourceNoteId": "1742575126302",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "いかが",
+      "answer": "How about? / How is it?",
+      "choices": [
+        "How about? / How is it?",
+        "This.",
+        "I don’t understand.",
+        "I’m sorry, it’s not possible right now."
+      ],
+      "reading": "いかが",
+      "meaning": "How about? / How is it?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-92",
+      "sourceNoteId": "1742575126303",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ビールはいかがですか",
+      "answer": "How about some beer?",
+      "choices": [
+        "How about some beer?",
+        "I like (polite)",
+        "I’m sorry, it’s not possible right now.",
+        "I can speak Japanese"
+      ],
+      "reading": "びーるはいかがですか",
+      "meaning": "How about some beer?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-93",
+      "sourceNoteId": "1742575126304",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "いいえ、いいです",
+      "answer": "No, it&#x27;s okay",
+      "choices": [
+        "No, it&#x27;s okay",
+        "What is your name?",
+        "How much (price)?",
+        "I can speak English"
+      ],
+      "reading": "いいえ、いいです",
+      "meaning": "No, it&#x27;s okay",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-94",
+      "sourceNoteId": "1742575126305",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "vocab",
+      "prompt": "助ける",
+      "answer": "To help, to save",
+      "choices": [
+        "To help, to save",
+        "I don&#x27;t understand Japanese",
+        "Sorry.",
+        "No, not yet"
+      ],
+      "reading": "たすける",
+      "meaning": "To help, to save",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-95",
+      "sourceNoteId": "1742575126306",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "助けてもらえますか？",
+      "answer": "Can you help me?",
+      "choices": [
+        "Can you help me?",
+        "Who.",
+        "A little / A few",
+        "I don&#x27;t like (casual)"
+      ],
+      "reading": "たすけてもらえますか",
+      "meaning": "Can you help me?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-96",
+      "sourceNoteId": "1742575126307",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "もちろん、助けます。",
+      "answer": "Of course, I will help.",
+      "choices": [
+        "Of course, I will help.",
+        "No, not yet",
+        "I like (polite)",
+        "Who."
+      ],
+      "reading": "もちろん、たすけます",
+      "meaning": "Of course, I will help.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-97",
+      "sourceNoteId": "1742575126308",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "どうしましたか？",
+      "answer": "What happened? / What’s wrong?",
+      "choices": [
+        "What happened? / What’s wrong?",
+        "Good",
+        "What is that?",
+        "No."
+      ],
+      "reading": "どうしましたか",
+      "meaning": "What happened? / What’s wrong?",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-98",
+      "sourceNoteId": "1742575126309",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "ごめんなさい、今は無理です。",
+      "answer": "I’m sorry, it’s not possible right now.",
+      "choices": [
+        "I’m sorry, it’s not possible right now.",
+        "No, I don&#x27;t have it",
+        "Where (polite).",
+        "Um… / Excuse me."
+      ],
+      "reading": "ごめんなさい、いまはむりです",
+      "meaning": "I’m sorry, it’s not possible right now.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-99",
+      "sourceNoteId": "1742575126310",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "すみません、助けられません。",
+      "answer": "I’m sorry, I can’t help.",
+      "choices": [
+        "I’m sorry, I can’t help.",
+        "No, it&#x27;s okay",
+        "Hello. Nice to meet you.",
+        "That’s right."
+      ],
+      "reading": "すみません、たすけられません",
+      "meaning": "I’m sorry, I can’t help.",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "japanese-travel-vocabulary-100",
+      "sourceNoteId": "1742575126311",
+      "lessonId": "japanese-travel-vocabulary-1",
+      "type": "phrase",
+      "prompt": "すみません、今はちょっと。。。",
+      "answer": "Sorry, not right now…, Sorry, I can&#x27;t",
+      "choices": [
+        "Sorry, not right now…, Sorry, I can&#x27;t",
+        "My name is ___.",
+        "Good evening.",
+        "Please say it one more time"
+      ],
+      "reading": "すみません、いまはちょっと。。。",
+      "meaning": "Sorry, not right now…, Sorry, I can&#x27;t",
+      "tags": [
+        "Personal",
+        "imported",
+        "travel"
+      ]
+    }
+  ]
+}

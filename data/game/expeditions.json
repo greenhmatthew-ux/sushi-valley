@@ -1,0 +1,38 @@
+[
+  {
+    "id": "forest_lunchbox",
+    "displayName": "Lost Lunchbox Expedition",
+    "biomeId": "forest",
+    "entryMap": "WhisperingWoods",
+    "entrySpawn": "expedition_return",
+    "mapLevelId": "ForestLunchboxExpedition",
+    "requiredFlags": ["expedition_forest_unlocked"],
+    "requiredRaidIds": ["sushi_prep"],
+    "lessonFocus": "kana-sushi",
+    "pathTileFrames": [110, 111, 112, 113, 114],
+    "encounterIds": ["thornback"],
+    "bossEncounterId": "forest_wraith",
+    "objectiveId": "recover_lunchbox",
+    "rewardIds": ["recipe_stamp", "moonwood"],
+    "reward": {
+      "coins": 80,
+      "items": [
+        { "id": "recipe_stamp", "qty": 1 },
+        { "id": "moonwood", "qty": 3 }
+      ]
+    },
+    "unlockFlags": ["expedition_forest_done"],
+    "placements": {
+      "entryGate": { "x": 72, "y": 296 },
+      "entry": { "x": 64, "y": 224 },
+      "encounter": { "x": 240, "y": 224 },
+      "objective": { "x": 400, "y": 144 },
+      "boss": { "x": 624, "y": 224 }
+    },
+    "returnMap": "ValleyHub",
+    "returnSpawn": "woods_return",
+    "repeatable": true,
+    "estimatedMinutes": 8,
+    "status": "playable"
+  }
+]

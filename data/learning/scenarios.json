@@ -1,0 +1,24 @@
+[
+  {
+    "id": "konbini",
+    "title": "At the Konbini",
+    "npcName": "Mika",
+    "lines": [
+      { "who": "Clerk", "jp": "いらっしゃいませ。", "kana": "いらっしゃいませ。", "en": "Welcome." },
+      { "who": "you", "jp": "これをください。", "kana": "これをください。", "en": "This one, please." },
+      { "who": "Clerk", "jp": "袋は要りますか。", "kana": "ふくろはいりますか。", "en": "Do you need a bag?" },
+      { "who": "you", "jp": "お願いします。", "kana": "おねがいします。", "en": "Yes, please." },
+      { "who": "Clerk", "jp": "温めますか。", "kana": "あたためますか。", "en": "Shall I heat it up?" },
+      { "who": "you", "jp": "大丈夫です。", "kana": "だいじょうぶです。", "en": "No, thank you." },
+      { "who": "Clerk", "jp": "五百円です。", "kana": "ごひゃくえんです。", "en": "That is 500 yen." },
+      { "who": "you", "jp": "カードで払えますか。", "kana": "カードではらえますか。", "en": "Can I pay by card?" },
+      { "who": "Clerk", "jp": "はい、大丈夫です。", "kana": "はい、だいじょうぶです。", "en": "Yes, that is fine." }
+    ],
+    "quiz": [
+      { "q": "The clerk asks if you need a bag, and you want one. You say:", "a": "お願いします。", "d": ["大丈夫です。", "袋は要りますか。"] },
+      { "q": "You want to pay with a card. You ask:", "a": "カードで払えますか。", "d": ["温めますか。", "袋をください。"] }
+    ],
+    "reward": { "xp": 20, "coins": 15 },
+    "unlockLessonIds": ["travel-arrival"]
+  }
+]

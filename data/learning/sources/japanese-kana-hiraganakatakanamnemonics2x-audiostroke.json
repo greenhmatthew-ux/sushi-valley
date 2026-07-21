@@ -1,0 +1,2330 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "1133476087",
+    "deckName": "Japanese Kana HiraganaKatakanaMnemonics2x AudioStroke",
+    "author": "",
+    "url": "https://ankiweb.net/shared/info/1133476087",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "sourceNoteId": "1356971128946",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "1",
+      "choices": [
+        "1",
+        "80",
+        "118",
+        "103"
+      ],
+      "meaning": "1",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-2",
+      "sourceNoteId": "1356971128947",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "2",
+      "choices": [
+        "2",
+        "107",
+        "78",
+        "63"
+      ],
+      "meaning": "2",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-3",
+      "sourceNoteId": "1356971128948",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "3",
+      "choices": [
+        "3",
+        "51",
+        "63",
+        "26"
+      ],
+      "meaning": "3",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-4",
+      "sourceNoteId": "1356971128949",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "4",
+      "choices": [
+        "4",
+        "5",
+        "27",
+        "1"
+      ],
+      "meaning": "4",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-5",
+      "sourceNoteId": "1356971128950",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "5",
+      "choices": [
+        "5",
+        "115",
+        "6",
+        "54"
+      ],
+      "meaning": "5",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-6",
+      "sourceNoteId": "1356971128951",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "6",
+      "choices": [
+        "6",
+        "36",
+        "76",
+        "27"
+      ],
+      "meaning": "6",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-7",
+      "sourceNoteId": "1356971128952",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "7",
+      "choices": [
+        "7",
+        "112",
+        "1",
+        "33"
+      ],
+      "meaning": "7",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-8",
+      "sourceNoteId": "1356971128953",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "8",
+      "choices": [
+        "8",
+        "61",
+        "91",
+        "115"
+      ],
+      "meaning": "8",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-9",
+      "sourceNoteId": "1356971128954",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "9",
+      "choices": [
+        "9",
+        "107",
+        "30",
+        "21"
+      ],
+      "meaning": "9",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-10",
+      "sourceNoteId": "1356971128955",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "10",
+      "choices": [
+        "10",
+        "103",
+        "92",
+        "102"
+      ],
+      "meaning": "10",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-11",
+      "sourceNoteId": "1356971128956",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "11",
+      "choices": [
+        "11",
+        "65",
+        "37",
+        "18"
+      ],
+      "meaning": "11",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-12",
+      "sourceNoteId": "1356971128957",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "12",
+      "choices": [
+        "12",
+        "7",
+        "72",
+        "35"
+      ],
+      "meaning": "12",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-13",
+      "sourceNoteId": "1356971128958",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "13",
+      "choices": [
+        "13",
+        "9",
+        "60",
+        "6"
+      ],
+      "meaning": "13",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-14",
+      "sourceNoteId": "1356971128959",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "14",
+      "choices": [
+        "14",
+        "53",
+        "63",
+        "31"
+      ],
+      "meaning": "14",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-15",
+      "sourceNoteId": "1356971128960",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "15",
+      "choices": [
+        "15",
+        "104",
+        "49",
+        "38"
+      ],
+      "meaning": "15",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-16",
+      "sourceNoteId": "1356971128961",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "16",
+      "choices": [
+        "16",
+        "53",
+        "47",
+        "33"
+      ],
+      "meaning": "16",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-17",
+      "sourceNoteId": "1356971128962",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "17",
+      "choices": [
+        "17",
+        "15",
+        "1",
+        "41"
+      ],
+      "meaning": "17",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-18",
+      "sourceNoteId": "1356971128963",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "18",
+      "choices": [
+        "18",
+        "56",
+        "14",
+        "6"
+      ],
+      "meaning": "18",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-19",
+      "sourceNoteId": "1356971128964",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "19",
+      "choices": [
+        "19",
+        "75",
+        "15",
+        "22"
+      ],
+      "meaning": "19",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-20",
+      "sourceNoteId": "1356971128965",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "20",
+      "choices": [
+        "20",
+        "60",
+        "64",
+        "30"
+      ],
+      "meaning": "20",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-21",
+      "sourceNoteId": "1356971128966",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "21",
+      "choices": [
+        "21",
+        "114",
+        "11",
+        "7"
+      ],
+      "meaning": "21",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-22",
+      "sourceNoteId": "1356971128967",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "22",
+      "choices": [
+        "22",
+        "118",
+        "16",
+        "41"
+      ],
+      "meaning": "22",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-23",
+      "sourceNoteId": "1356971128968",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "23",
+      "choices": [
+        "23",
+        "25",
+        "14",
+        "61"
+      ],
+      "meaning": "23",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-24",
+      "sourceNoteId": "1356971128969",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "24",
+      "choices": [
+        "24",
+        "94",
+        "77",
+        "75"
+      ],
+      "meaning": "24",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-25",
+      "sourceNoteId": "1356971128970",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "25",
+      "choices": [
+        "25",
+        "92",
+        "108",
+        "64"
+      ],
+      "meaning": "25",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-26",
+      "sourceNoteId": "1356971128971",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "26",
+      "choices": [
+        "26",
+        "43",
+        "72",
+        "81"
+      ],
+      "meaning": "26",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-27",
+      "sourceNoteId": "1356971128972",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "27",
+      "choices": [
+        "27",
+        "66",
+        "98",
+        "92"
+      ],
+      "meaning": "27",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-28",
+      "sourceNoteId": "1356971128973",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "28",
+      "choices": [
+        "28",
+        "25",
+        "69",
+        "67"
+      ],
+      "meaning": "28",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-29",
+      "sourceNoteId": "1356971128974",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "29",
+      "choices": [
+        "29",
+        "68",
+        "37",
+        "7"
+      ],
+      "meaning": "29",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-30",
+      "sourceNoteId": "1356971128975",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "30",
+      "choices": [
+        "30",
+        "1",
+        "74",
+        "86"
+      ],
+      "meaning": "30",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-31",
+      "sourceNoteId": "1356971128976",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "31",
+      "choices": [
+        "31",
+        "82",
+        "87",
+        "80"
+      ],
+      "meaning": "31",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-32",
+      "sourceNoteId": "1356971128977",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "32",
+      "choices": [
+        "32",
+        "69",
+        "6",
+        "16"
+      ],
+      "meaning": "32",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-33",
+      "sourceNoteId": "1356971128978",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "33",
+      "choices": [
+        "33",
+        "59",
+        "18",
+        "60"
+      ],
+      "meaning": "33",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-34",
+      "sourceNoteId": "1356971128979",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "34",
+      "choices": [
+        "34",
+        "119",
+        "7",
+        "20"
+      ],
+      "meaning": "34",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-35",
+      "sourceNoteId": "1356971128980",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "35",
+      "choices": [
+        "35",
+        "69",
+        "61",
+        "21"
+      ],
+      "meaning": "35",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-36",
+      "sourceNoteId": "1356971128981",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "36",
+      "choices": [
+        "36",
+        "9",
+        "33",
+        "79"
+      ],
+      "meaning": "36",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-37",
+      "sourceNoteId": "1356971128982",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "37",
+      "choices": [
+        "37",
+        "23",
+        "16",
+        "39"
+      ],
+      "meaning": "37",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-38",
+      "sourceNoteId": "1356971128983",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "38",
+      "choices": [
+        "38",
+        "105",
+        "89",
+        "65"
+      ],
+      "meaning": "38",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-39",
+      "sourceNoteId": "1356971128984",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "39",
+      "choices": [
+        "39",
+        "44",
+        "121",
+        "69"
+      ],
+      "meaning": "39",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-40",
+      "sourceNoteId": "1356971128985",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "40",
+      "choices": [
+        "40",
+        "119",
+        "16",
+        "39"
+      ],
+      "meaning": "40",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-41",
+      "sourceNoteId": "1356971128986",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "41",
+      "choices": [
+        "41",
+        "30",
+        "87",
+        "66"
+      ],
+      "meaning": "41",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-42",
+      "sourceNoteId": "1356971128987",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "42",
+      "choices": [
+        "42",
+        "56",
+        "118",
+        "52"
+      ],
+      "meaning": "42",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-43",
+      "sourceNoteId": "1356971128988",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "43",
+      "choices": [
+        "43",
+        "16",
+        "123",
+        "63"
+      ],
+      "meaning": "43",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-44",
+      "sourceNoteId": "1356971128989",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "44",
+      "choices": [
+        "44",
+        "23",
+        "12",
+        "11"
+      ],
+      "meaning": "44",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-45",
+      "sourceNoteId": "1356971128990",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "45",
+      "choices": [
+        "45",
+        "67",
+        "104",
+        "87"
+      ],
+      "meaning": "45",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-46",
+      "sourceNoteId": "1356971128991",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "",
+      "answer": "46",
+      "choices": [
+        "46",
+        "118",
+        "104",
+        "82"
+      ],
+      "meaning": "46",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-47",
+      "sourceNoteId": "1356971128992",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "が",
+      "answer": "47",
+      "choices": [
+        "47",
+        "112",
+        "87",
+        "107"
+      ],
+      "meaning": "47",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-48",
+      "sourceNoteId": "1356971128993",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぎ",
+      "answer": "48",
+      "choices": [
+        "48",
+        "111",
+        "72",
+        "92"
+      ],
+      "meaning": "48",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-49",
+      "sourceNoteId": "1356971128994",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぐ",
+      "answer": "49",
+      "choices": [
+        "49",
+        "2",
+        "65",
+        "8"
+      ],
+      "meaning": "49",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-50",
+      "sourceNoteId": "1356971128995",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "げ",
+      "answer": "50",
+      "choices": [
+        "50",
+        "95",
+        "49",
+        "31"
+      ],
+      "meaning": "50",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-51",
+      "sourceNoteId": "1356971128996",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ご",
+      "answer": "51",
+      "choices": [
+        "51",
+        "63",
+        "61",
+        "31"
+      ],
+      "meaning": "51",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-52",
+      "sourceNoteId": "1356971128997",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ざ",
+      "answer": "52",
+      "choices": [
+        "52",
+        "100",
+        "103",
+        "76"
+      ],
+      "meaning": "52",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-53",
+      "sourceNoteId": "1356971128998",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "じ",
+      "answer": "53",
+      "choices": [
+        "53",
+        "91",
+        "30",
+        "51"
+      ],
+      "meaning": "53",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-54",
+      "sourceNoteId": "1356971128999",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ず",
+      "answer": "54",
+      "choices": [
+        "54",
+        "85",
+        "9",
+        "13"
+      ],
+      "meaning": "54",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-55",
+      "sourceNoteId": "1356971129000",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぜ",
+      "answer": "55",
+      "choices": [
+        "55",
+        "98",
+        "60",
+        "3"
+      ],
+      "meaning": "55",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-56",
+      "sourceNoteId": "1356971129001",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぞ",
+      "answer": "56",
+      "choices": [
+        "56",
+        "24",
+        "64",
+        "79"
+      ],
+      "meaning": "56",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-57",
+      "sourceNoteId": "1356971129002",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "だ",
+      "answer": "57",
+      "choices": [
+        "57",
+        "35",
+        "60",
+        "3"
+      ],
+      "meaning": "57",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-58",
+      "sourceNoteId": "1356971129003",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぢ",
+      "answer": "58",
+      "choices": [
+        "58",
+        "23",
+        "65",
+        "61"
+      ],
+      "meaning": "58",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-59",
+      "sourceNoteId": "1356971129004",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "づ",
+      "answer": "59",
+      "choices": [
+        "59",
+        "43",
+        "52",
+        "117"
+      ],
+      "meaning": "59",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-60",
+      "sourceNoteId": "1356971129005",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "で",
+      "answer": "60",
+      "choices": [
+        "60",
+        "63",
+        "89",
+        "112"
+      ],
+      "meaning": "60",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-61",
+      "sourceNoteId": "1356971129006",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ど",
+      "answer": "61",
+      "choices": [
+        "61",
+        "121",
+        "75",
+        "71"
+      ],
+      "meaning": "61",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-62",
+      "sourceNoteId": "1356971129007",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ば",
+      "answer": "62",
+      "choices": [
+        "62",
+        "120",
+        "102",
+        "71"
+      ],
+      "meaning": "62",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-63",
+      "sourceNoteId": "1356971129008",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "び",
+      "answer": "63",
+      "choices": [
+        "63",
+        "28",
+        "116",
+        "98"
+      ],
+      "meaning": "63",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-64",
+      "sourceNoteId": "1356971129009",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぶ",
+      "answer": "64",
+      "choices": [
+        "64",
+        "103",
+        "26",
+        "113"
+      ],
+      "meaning": "64",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-65",
+      "sourceNoteId": "1356971129010",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "べ",
+      "answer": "65",
+      "choices": [
+        "65",
+        "54",
+        "41",
+        "102"
+      ],
+      "meaning": "65",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-66",
+      "sourceNoteId": "1356971129011",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぼ",
+      "answer": "66",
+      "choices": [
+        "66",
+        "46",
+        "93",
+        "17"
+      ],
+      "meaning": "66",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-67",
+      "sourceNoteId": "1356971129012",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぱ",
+      "answer": "67",
+      "choices": [
+        "67",
+        "4",
+        "84",
+        "111"
+      ],
+      "meaning": "67",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-68",
+      "sourceNoteId": "1356971129013",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぴ",
+      "answer": "68",
+      "choices": [
+        "68",
+        "49",
+        "59",
+        "60"
+      ],
+      "meaning": "68",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-69",
+      "sourceNoteId": "1356971129014",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぷ",
+      "answer": "69",
+      "choices": [
+        "69",
+        "104",
+        "9",
+        "44"
+      ],
+      "meaning": "69",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-70",
+      "sourceNoteId": "1356971129015",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ペ",
+      "answer": "70",
+      "choices": [
+        "70",
+        "93",
+        "9",
+        "29"
+      ],
+      "meaning": "70",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-71",
+      "sourceNoteId": "1356971129016",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぽ",
+      "answer": "71",
+      "choices": [
+        "71",
+        "45",
+        "1",
+        "59"
+      ],
+      "meaning": "71",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-72",
+      "sourceNoteId": "1356971129017",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "きゃ",
+      "answer": "72",
+      "choices": [
+        "72",
+        "22",
+        "84",
+        "116"
+      ],
+      "meaning": "72",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-73",
+      "sourceNoteId": "1356971129018",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "きゅ",
+      "answer": "73",
+      "choices": [
+        "73",
+        "82",
+        "11",
+        "54"
+      ],
+      "meaning": "73",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-74",
+      "sourceNoteId": "1356971129019",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "きょ",
+      "answer": "74",
+      "choices": [
+        "74",
+        "66",
+        "70",
+        "91"
+      ],
+      "meaning": "74",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-75",
+      "sourceNoteId": "1356971129020",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぎゃ",
+      "answer": "75",
+      "choices": [
+        "75",
+        "55",
+        "65",
+        "17"
+      ],
+      "meaning": "75",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-76",
+      "sourceNoteId": "1356971129021",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぎゅ",
+      "answer": "76",
+      "choices": [
+        "76",
+        "51",
+        "45",
+        "29"
+      ],
+      "meaning": "76",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-77",
+      "sourceNoteId": "1356971129022",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぎょ",
+      "answer": "77",
+      "choices": [
+        "77",
+        "39",
+        "102",
+        "28"
+      ],
+      "meaning": "77",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-78",
+      "sourceNoteId": "1356971129023",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "しゃ",
+      "answer": "78",
+      "choices": [
+        "78",
+        "108",
+        "3",
+        "49"
+      ],
+      "meaning": "78",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-79",
+      "sourceNoteId": "1356971129024",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "しゅ",
+      "answer": "79",
+      "choices": [
+        "79",
+        "113",
+        "8",
+        "4"
+      ],
+      "meaning": "79",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-80",
+      "sourceNoteId": "1356971129025",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "しょ",
+      "answer": "80",
+      "choices": [
+        "80",
+        "17",
+        "76",
+        "86"
+      ],
+      "meaning": "80",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-81",
+      "sourceNoteId": "1356971129026",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "じゃ",
+      "answer": "81",
+      "choices": [
+        "81",
+        "1",
+        "77",
+        "7"
+      ],
+      "meaning": "81",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-82",
+      "sourceNoteId": "1356971129027",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "じゅ",
+      "answer": "82",
+      "choices": [
+        "82",
+        "60",
+        "78",
+        "37"
+      ],
+      "meaning": "82",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-83",
+      "sourceNoteId": "1356971129028",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "じょ",
+      "answer": "83",
+      "choices": [
+        "83",
+        "120",
+        "5",
+        "53"
+      ],
+      "meaning": "83",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-84",
+      "sourceNoteId": "1356971129029",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ちゃ",
+      "answer": "84",
+      "choices": [
+        "84",
+        "78",
+        "63",
+        "104"
+      ],
+      "meaning": "84",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-85",
+      "sourceNoteId": "1356971129030",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ちゅ",
+      "answer": "85",
+      "choices": [
+        "85",
+        "17",
+        "75",
+        "45"
+      ],
+      "meaning": "85",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-86",
+      "sourceNoteId": "1356971129031",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ちょ",
+      "answer": "86",
+      "choices": [
+        "86",
+        "26",
+        "88",
+        "68"
+      ],
+      "meaning": "86",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-87",
+      "sourceNoteId": "1356971129032",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "にゃ",
+      "answer": "87",
+      "choices": [
+        "87",
+        "104",
+        "46",
+        "57"
+      ],
+      "meaning": "87",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-88",
+      "sourceNoteId": "1356971129033",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "にゅ",
+      "answer": "88",
+      "choices": [
+        "88",
+        "9",
+        "28",
+        "59"
+      ],
+      "meaning": "88",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-89",
+      "sourceNoteId": "1356971129034",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "にょ",
+      "answer": "89",
+      "choices": [
+        "89",
+        "51",
+        "3",
+        "53"
+      ],
+      "meaning": "89",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-90",
+      "sourceNoteId": "1356971129035",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ひゃ",
+      "answer": "90",
+      "choices": [
+        "90",
+        "123",
+        "57",
+        "58"
+      ],
+      "meaning": "90",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-91",
+      "sourceNoteId": "1356971129036",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ひゅ",
+      "answer": "91",
+      "choices": [
+        "91",
+        "64",
+        "4",
+        "52"
+      ],
+      "meaning": "91",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-92",
+      "sourceNoteId": "1356971129037",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ひょ",
+      "answer": "92",
+      "choices": [
+        "92",
+        "26",
+        "56",
+        "99"
+      ],
+      "meaning": "92",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-93",
+      "sourceNoteId": "1356971129038",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "びゃ",
+      "answer": "93",
+      "choices": [
+        "93",
+        "69",
+        "56",
+        "14"
+      ],
+      "meaning": "93",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-94",
+      "sourceNoteId": "1356971129039",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "びゅ",
+      "answer": "94",
+      "choices": [
+        "94",
+        "30",
+        "114",
+        "45"
+      ],
+      "meaning": "94",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-95",
+      "sourceNoteId": "1356971129040",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "びょ",
+      "answer": "95",
+      "choices": [
+        "95",
+        "47",
+        "51",
+        "41"
+      ],
+      "meaning": "95",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-96",
+      "sourceNoteId": "1356971129041",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぴゃ",
+      "answer": "96",
+      "choices": [
+        "96",
+        "41",
+        "88",
+        "68"
+      ],
+      "meaning": "96",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-97",
+      "sourceNoteId": "1356971129042",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぴゅ",
+      "answer": "97",
+      "choices": [
+        "97",
+        "49",
+        "8",
+        "4"
+      ],
+      "meaning": "97",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-98",
+      "sourceNoteId": "1356971129043",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ぴょ",
+      "answer": "98",
+      "choices": [
+        "98",
+        "84",
+        "7",
+        "40"
+      ],
+      "meaning": "98",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-99",
+      "sourceNoteId": "1356971129044",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "みゃ",
+      "answer": "99",
+      "choices": [
+        "99",
+        "7",
+        "70",
+        "55"
+      ],
+      "meaning": "99",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-100",
+      "sourceNoteId": "1356971129045",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "みゅ",
+      "answer": "100",
+      "choices": [
+        "100",
+        "26",
+        "63",
+        "112"
+      ],
+      "meaning": "100",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-101",
+      "sourceNoteId": "1356971129046",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "みょ",
+      "answer": "101",
+      "choices": [
+        "101",
+        "12",
+        "7",
+        "32"
+      ],
+      "meaning": "101",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-102",
+      "sourceNoteId": "1356971129047",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "りゃ",
+      "answer": "102",
+      "choices": [
+        "102",
+        "95",
+        "49",
+        "6"
+      ],
+      "meaning": "102",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-103",
+      "sourceNoteId": "1356971129048",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "りゅ",
+      "answer": "103",
+      "choices": [
+        "103",
+        "7",
+        "76",
+        "2"
+      ],
+      "meaning": "103",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-104",
+      "sourceNoteId": "1356971129049",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "りょ",
+      "answer": "104",
+      "choices": [
+        "104",
+        "92",
+        "18",
+        "13"
+      ],
+      "meaning": "104",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-105",
+      "sourceNoteId": "1356971129050",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "うぃ",
+      "answer": "105",
+      "choices": [
+        "105",
+        "30",
+        "5",
+        "79"
+      ],
+      "meaning": "105",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-106",
+      "sourceNoteId": "1356971129051",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "うぇ",
+      "answer": "106",
+      "choices": [
+        "106",
+        "102",
+        "21",
+        "61"
+      ],
+      "meaning": "106",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-107",
+      "sourceNoteId": "1356971129052",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "うぉ",
+      "answer": "107",
+      "choices": [
+        "107",
+        "7",
+        "29",
+        "33"
+      ],
+      "meaning": "107",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-108",
+      "sourceNoteId": "1356971129053",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ゔぁ",
+      "answer": "108",
+      "choices": [
+        "108",
+        "54",
+        "11",
+        "28"
+      ],
+      "meaning": "108",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-109",
+      "sourceNoteId": "1356971129055",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ゔ",
+      "answer": "110",
+      "choices": [
+        "110",
+        "37",
+        "74",
+        "98"
+      ],
+      "meaning": "110",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-110",
+      "sourceNoteId": "1356971129056",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ゔぇ",
+      "answer": "111",
+      "choices": [
+        "111",
+        "34",
+        "68",
+        "76"
+      ],
+      "meaning": "111",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-111",
+      "sourceNoteId": "1356971129057",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ゔぉ",
+      "answer": "112",
+      "choices": [
+        "112",
+        "4",
+        "71",
+        "23"
+      ],
+      "meaning": "112",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-112",
+      "sourceNoteId": "1356971129058",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "しぇ",
+      "answer": "113",
+      "choices": [
+        "113",
+        "67",
+        "43",
+        "9"
+      ],
+      "meaning": "113",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-113",
+      "sourceNoteId": "1356971129059",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "じぇ",
+      "answer": "114",
+      "choices": [
+        "114",
+        "69",
+        "8",
+        "5"
+      ],
+      "meaning": "114",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-114",
+      "sourceNoteId": "1356971129060",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ふぁ",
+      "answer": "115",
+      "choices": [
+        "115",
+        "83",
+        "6",
+        "29"
+      ],
+      "meaning": "115",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-115",
+      "sourceNoteId": "1356971129061",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ふぃ",
+      "answer": "116",
+      "choices": [
+        "116",
+        "62",
+        "1",
+        "9"
+      ],
+      "meaning": "116",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-116",
+      "sourceNoteId": "1356971129062",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ふぇ",
+      "answer": "117",
+      "choices": [
+        "117",
+        "79",
+        "15",
+        "39"
+      ],
+      "meaning": "117",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-117",
+      "sourceNoteId": "1356971129063",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ふぉ",
+      "answer": "118",
+      "choices": [
+        "118",
+        "65",
+        "62",
+        "50"
+      ],
+      "meaning": "118",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-118",
+      "sourceNoteId": "1356971129064",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "てぃ",
+      "answer": "119",
+      "choices": [
+        "119",
+        "4",
+        "35",
+        "40"
+      ],
+      "meaning": "119",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-119",
+      "sourceNoteId": "1356971129065",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "でぃ",
+      "answer": "120",
+      "choices": [
+        "120",
+        "16",
+        "100",
+        "55"
+      ],
+      "meaning": "120",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-120",
+      "sourceNoteId": "1356971129066",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "とぅ",
+      "answer": "121",
+      "choices": [
+        "121",
+        "4",
+        "50",
+        "61"
+      ],
+      "meaning": "121",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-121",
+      "sourceNoteId": "1356971129067",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "どぅ",
+      "answer": "122",
+      "choices": [
+        "122",
+        "70",
+        "93",
+        "97"
+      ],
+      "meaning": "122",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-122",
+      "sourceNoteId": "1356971129068",
+      "lessonId": "japanese-kana-hiraganakatakanamnemonics2x-audiostroke-1",
+      "type": "kana",
+      "prompt": "ちぇ",
+      "answer": "123",
+      "choices": [
+        "123",
+        "64",
+        "86",
+        "67"
+      ],
+      "meaning": "123",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    }
+  ]
+}

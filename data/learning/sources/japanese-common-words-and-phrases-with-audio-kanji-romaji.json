@@ -1,0 +1,4014 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "japanese-common-words-and-phrases-with-audio-kanji-romaji",
+    "deckName": "Japanese Common Words and Phrases with AUDIO Kanji Romaji",
+    "author": "",
+    "url": "",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "sourceNoteId": "1710822396606",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "あなた",
+      "answer": "you (pronoun)",
+      "choices": [
+        "you (pronoun)",
+        "I get hungry (present form, casual)Literal: My stomach empties",
+        "kind, gentle",
+        "wall, partition"
+      ],
+      "reading": "anata",
+      "meaning": "you (pronoun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-2",
+      "sourceNoteId": "1710822396661",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "人",
+      "answer": "person (noun)",
+      "choices": [
+        "person (noun)",
+        "to receive, get (direct object)",
+        "thing, object (concrete) (noun)",
+        "to meet"
+      ],
+      "reading": "hito",
+      "meaning": "person (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-3",
+      "sourceNoteId": "1710822396772",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "新しい",
+      "answer": "new (adj)",
+      "choices": [
+        "new (adj)",
+        "short (adj, e.g. hair), brief (time)",
+        "cold (adj for weather or feeling cold)",
+        "slowly, leisurely (adverb)"
+      ],
+      "reading": "atarashii",
+      "meaning": "new (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-4",
+      "sourceNoteId": "1710822396814",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "冷たい",
+      "answer": "cold (adj to touch)",
+      "choices": [
+        "cold (adj to touch)",
+        "car (noun)",
+        "necessary, needed",
+        "to get tired, to become tired"
+      ],
+      "reading": "tsumetai",
+      "meaning": "cold (adj to touch)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-5",
+      "sourceNoteId": "1710822396856",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "必要",
+      "answer": "necessary, needed",
+      "choices": [
+        "necessary, needed",
+        "never (adverb)",
+        "hopeless, impossible (na adj)",
+        "to receive, get (direct object)"
+      ],
+      "reading": "hitsuyou",
+      "meaning": "necessary, needed",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-6",
+      "sourceNoteId": "1710822396916",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "貴様",
+      "answer": "you bastard (pronoun, extremely disrespectful)",
+      "choices": [
+        "you bastard (pronoun, extremely disrespectful)",
+        "to be mistaken, be wrong (no direct object)",
+        "to skip, jump",
+        "son"
+      ],
+      "reading": "kisama",
+      "meaning": "you bastard (pronoun, extremely disrespectful)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-7",
+      "sourceNoteId": "1710822396958",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "短い",
+      "answer": "short (adj, e.g. hair), brief (time)",
+      "choices": [
+        "short (adj, e.g. hair), brief (time)",
+        "to stare",
+        "to rest, take a day off",
+        "to end"
+      ],
+      "reading": "mijikai",
+      "meaning": "short (adj, e.g. hair), brief (time)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-8",
+      "sourceNoteId": "1710822397061",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "誰",
+      "answer": "who? (interrogative)",
+      "choices": [
+        "who? (interrogative)",
+        "to walk, go on foot (verb)",
+        "to read",
+        "to begin (direct object)"
+      ],
+      "reading": "dare",
+      "meaning": "who? (interrogative)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-9",
+      "sourceNoteId": "1710822397107",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "寒い",
+      "answer": "cold (adj for weather or feeling cold)",
+      "choices": [
+        "cold (adj for weather or feeling cold)",
+        "to choose (verb)",
+        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "true (adj), really"
+      ],
+      "reading": "samui",
+      "meaning": "cold (adj for weather or feeling cold)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-10",
+      "sourceNoteId": "1710822397151",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "探す",
+      "answer": "to search (for) (verb)",
+      "choices": [
+        "to search (for) (verb)",
+        "far, distant (adj)",
+        "cloud (noun)",
+        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)"
+      ],
+      "reading": "sagasu",
+      "meaning": "to search (for) (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-11",
+      "sourceNoteId": "1710822397199",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "無理",
+      "answer": "hopeless, impossible (na adj)",
+      "choices": [
+        "hopeless, impossible (na adj)",
+        "without fail, always(adverb)",
+        "such a thing as (particle)",
+        "to see, watch (verb)"
+      ],
+      "reading": "muri",
+      "meaning": "hopeless, impossible (na adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-12",
+      "sourceNoteId": "1710822397243",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "止める",
+      "answer": "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+      "choices": [
+        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "to study",
+        "to lend, loan",
+        "to pay"
+      ],
+      "reading": "tomeru",
+      "meaning": "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-13",
+      "sourceNoteId": "1710822397328",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "助ける",
+      "answer": "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+      "choices": [
+        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "to begin (direct object)",
+        "food, food item (noun)",
+        "blue (adj)"
+      ],
+      "reading": "tasukeru",
+      "meaning": "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-14",
+      "sourceNoteId": "1710822397374",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "向かう",
+      "answer": "to face, head for (verb)",
+      "choices": [
+        "to face, head for (verb)",
+        "to cook",
+        "to eat (verb)",
+        "to kill (verb)"
+      ],
+      "reading": "mukau",
+      "meaning": "to face, head for (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-15",
+      "sourceNoteId": "1710822397430",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "もの",
+      "answer": "thing, object (concrete) (noun)",
+      "choices": [
+        "thing, object (concrete) (noun)",
+        "to be mistaken, be wrong (no direct object)",
+        "red (adj)",
+        "man (noun)"
+      ],
+      "reading": "mono",
+      "meaning": "thing, object (concrete) (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-16",
+      "sourceNoteId": "1710822397477",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "お母さん",
+      "answer": "mother (polite noun)— use this one to refer to other people's moms",
+      "choices": [
+        "mother (polite noun)— use this one to refer to other people's moms",
+        "to begin (direct object)",
+        "to dance",
+        "to return home"
+      ],
+      "reading": "okaasan",
+      "meaning": "mother (polite noun)— use this one to refer to other people's moms",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-17",
+      "sourceNoteId": "1710822397565",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "みんな",
+      "answer": "everyone",
+      "choices": [
+        "everyone",
+        "easy",
+        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "cloud (noun)"
+      ],
+      "reading": "minna",
+      "meaning": "everyone",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-18",
+      "sourceNoteId": "1710822397616",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "答え",
+      "answer": "answer, solution, reply (noun)",
+      "choices": [
+        "answer, solution, reply (noun)",
+        "to take a walk (for leisure or exercise)",
+        "to walk, go on foot (verb)",
+        "monster (noun)"
+      ],
+      "reading": "kotae",
+      "meaning": "answer, solution, reply (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-19",
+      "sourceNoteId": "1710822397716",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "帽子",
+      "answer": "hat (noun)",
+      "choices": [
+        "hat (noun)",
+        "to test (verb)",
+        "to continue, follow (direct object) (verb)",
+        "wall, partition"
+      ],
+      "reading": "boushi",
+      "meaning": "hat (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-20",
+      "sourceNoteId": "1710822397761",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "押す",
+      "answer": "to push, press (verb)",
+      "choices": [
+        "to push, press (verb)",
+        "big",
+        "to go out, to leave",
+        "to return home"
+      ],
+      "reading": "osu",
+      "meaning": "to push, press (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-21",
+      "sourceNoteId": "1710822397805",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "彼",
+      "answer": "he (pronoun), boyfriend",
+      "choices": [
+        "he (pronoun), boyfriend",
+        "to gain weight / to be fat",
+        "to continue, follow (direct object) (verb)",
+        "when?"
+      ],
+      "reading": "kare",
+      "meaning": "he (pronoun), boyfriend",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-22",
+      "sourceNoteId": "1710822397889",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "選ぶ",
+      "answer": "to choose (verb)",
+      "choices": [
+        "to choose (verb)",
+        "to borrow, rent",
+        "to teach, tell",
+        "to do (physical action)"
+      ],
+      "reading": "erabu",
+      "meaning": "to choose (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-23",
+      "sourceNoteId": "1710822397937",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "お父さん",
+      "answer": "father (noun)",
+      "choices": [
+        "father (noun)",
+        "to rest, take a day off",
+        "to return home",
+        "to sell"
+      ],
+      "reading": "otousan",
+      "meaning": "father (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-24",
+      "sourceNoteId": "1710822397982",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "続ける",
+      "answer": "to continue, follow (direct object) (verb)",
+      "choices": [
+        "to continue, follow (direct object) (verb)",
+        "you (pronoun)",
+        "long (adj)",
+        "to see, watch (verb)"
+      ],
+      "reading": "tsuzukeru",
+      "meaning": "to continue, follow (direct object) (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-25",
+      "sourceNoteId": "1710822398023",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "ゆっくり",
+      "answer": "slowly, leisurely (adverb)",
+      "choices": [
+        "slowly, leisurely (adverb)",
+        "to know, to get to know someone",
+        "to test (verb)",
+        "computer (noun)"
+      ],
+      "reading": "yukkuri",
+      "meaning": "slowly, leisurely (adverb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-26",
+      "sourceNoteId": "1710822398113",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "てめえ",
+      "answer": "you (rude) (pronoun)",
+      "choices": [
+        "you (rude) (pronoun)",
+        "to ride, take, get on (verb)",
+        "car (noun)",
+        "book (noun)"
+      ],
+      "reading": "temee",
+      "meaning": "you (rude) (pronoun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-27",
+      "sourceNoteId": "1710822398160",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "口",
+      "answer": "mouth (noun)",
+      "choices": [
+        "mouth (noun)",
+        "to have, carry (verb)",
+        "to take a walk (for leisure or exercise)",
+        "heart (noun)"
+      ],
+      "reading": "kuchi",
+      "meaning": "mouth (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-28",
+      "sourceNoteId": "1710822398203",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "テレビ",
+      "answer": "TV (noun)",
+      "choices": [
+        "TV (noun)",
+        "to end",
+        "to fight (physical), to argue/quarrel (verbal)",
+        "daughter, girl"
+      ],
+      "reading": "terebi",
+      "meaning": "TV (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-29",
+      "sourceNoteId": "1710822398247",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "必ず",
+      "answer": "without fail, always(adverb)",
+      "choices": [
+        "without fail, always(adverb)",
+        "to stare",
+        "to go out, to leave",
+        "to return home"
+      ],
+      "reading": "kanarazu",
+      "meaning": "without fail, always(adverb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-30",
+      "sourceNoteId": "1710822398289",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "人間",
+      "answer": "human (noun)",
+      "choices": [
+        "human (noun)",
+        "to hit, tap (verb)",
+        "train (noun)",
+        "heart (noun)"
+      ],
+      "reading": "ningen",
+      "meaning": "human (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-31",
+      "sourceNoteId": "1710822398330",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "おばけ",
+      "answer": "ghost (noun)",
+      "choices": [
+        "ghost (noun)",
+        "cloud (noun)",
+        "to drink (verb)",
+        "to choose (verb)"
+      ],
+      "reading": "obake",
+      "meaning": "ghost (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-32",
+      "sourceNoteId": "1710822398372",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "ひどい",
+      "answer": "terrible, awful, cruel (adj)",
+      "choices": [
+        "terrible, awful, cruel (adj)",
+        "to put on glasses",
+        "to kill (verb)",
+        "heart (noun)"
+      ],
+      "reading": "hidoi",
+      "meaning": "terrible, awful, cruel (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-33",
+      "sourceNoteId": "1710822398418",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "殺す",
+      "answer": "to kill (verb)",
+      "choices": [
+        "to kill (verb)",
+        "to take, get (verb)",
+        "cat (noun)",
+        "person (noun)"
+      ],
+      "reading": "korosu",
+      "meaning": "to kill (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-34",
+      "sourceNoteId": "1710822398458",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "電車",
+      "answer": "train (noun)",
+      "choices": [
+        "train (noun)",
+        "when?",
+        "to pay",
+        "I get hungry (present form, casual)Literal: My stomach empties"
+      ],
+      "reading": "densha",
+      "meaning": "train (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-35",
+      "sourceNoteId": "1710822398500",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "いつも",
+      "answer": "always (adverb)",
+      "choices": [
+        "always (adverb)",
+        "to put on glasses",
+        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "to teach, tell"
+      ],
+      "reading": "itsumo",
+      "meaning": "always (adverb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-36",
+      "sourceNoteId": "1710822398545",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "化け物",
+      "answer": "monster (noun)",
+      "choices": [
+        "monster (noun)",
+        "to test (verb)",
+        "to take a walk (for leisure or exercise)",
+        "to drive"
+      ],
+      "reading": "bakemono",
+      "meaning": "monster (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-37",
+      "sourceNoteId": "1710822398637",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "持つ",
+      "answer": "to have, carry (verb)",
+      "choices": [
+        "to have, carry (verb)",
+        "food, food item (noun)",
+        "to skip (school / work)",
+        "to take a bath"
+      ],
+      "reading": "motsu",
+      "meaning": "to have, carry (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-38",
+      "sourceNoteId": "1710822398675",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "影",
+      "answer": "shadow (noun)",
+      "choices": [
+        "shadow (noun)",
+        "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+        "to search (for) (verb)",
+        "you (rude) (pronoun)"
+      ],
+      "reading": "kage",
+      "meaning": "shadow (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-39",
+      "sourceNoteId": "1710822398817",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "聞こえる",
+      "answer": "To hear, be heard (verb)",
+      "choices": [
+        "To hear, be heard (verb)",
+        "big",
+        "1. to cut2. to put on clothes (above the waist)",
+        "to end"
+      ],
+      "reading": "kikoeru",
+      "meaning": "To hear, be heard (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-40",
+      "sourceNoteId": "1710822398864",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "飲む",
+      "answer": "to drink (verb)",
+      "choices": [
+        "to drink (verb)",
+        "to practice",
+        "to meet",
+        "refrigerator"
+      ],
+      "reading": "nomu",
+      "meaning": "to drink (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-41",
+      "sourceNoteId": "1710822398904",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "犬",
+      "answer": "dog (noun)",
+      "choices": [
+        "dog (noun)",
+        "everyone",
+        "what? (interrogative)",
+        "to live, to reside, to inhabit"
+      ],
+      "reading": "inu",
+      "meaning": "dog (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-42",
+      "sourceNoteId": "1710822398948",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "どこ",
+      "answer": "where? (interrogative)",
+      "choices": [
+        "where? (interrogative)",
+        "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+        "TV (noun)",
+        "such a thing as (particle)"
+      ],
+      "reading": "doko",
+      "meaning": "where? (interrogative)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-43",
+      "sourceNoteId": "1710822399030",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "見る",
+      "answer": "to see, watch (verb)",
+      "choices": [
+        "to see, watch (verb)",
+        "car (noun)",
+        "hat (noun)",
+        "everyone"
+      ],
+      "reading": "miru",
+      "meaning": "to see, watch (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-44",
+      "sourceNoteId": "1710822399073",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "パソコン",
+      "answer": "computer (noun)",
+      "choices": [
+        "computer (noun)",
+        "to take a walk (for leisure or exercise)",
+        "to push, press (verb)",
+        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car"
+      ],
+      "reading": "pasokon",
+      "meaning": "computer (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-45",
+      "sourceNoteId": "1710822399124",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "女",
+      "answer": "woman (noun)",
+      "choices": [
+        "woman (noun)",
+        "you (pronoun)",
+        "who? (interrogative)",
+        "to drink (verb)"
+      ],
+      "reading": "onna",
+      "meaning": "woman (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-46",
+      "sourceNoteId": "1710822399163",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "本当",
+      "answer": "true (adj), really",
+      "choices": [
+        "true (adj), really",
+        "thanks (casual)",
+        "to kill (verb)",
+        "you (rude) (pronoun)"
+      ],
+      "reading": "hontou",
+      "meaning": "true (adj), really",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-47",
+      "sourceNoteId": "1710822399253",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "幾つ(2)",
+      "answer": "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+      "choices": [
+        "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+        "to kill (verb)",
+        "to face, head for (verb)",
+        "to sleep"
+      ],
+      "reading": "ikutsu",
+      "meaning": "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-48",
+      "sourceNoteId": "1710822399297",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "力",
+      "answer": "power, strength, might (noun)",
+      "choices": [
+        "power, strength, might (noun)",
+        "you (pronoun)",
+        "daughter, girl",
+        "to live, to reside, to inhabit"
+      ],
+      "reading": "chikara",
+      "meaning": "power, strength, might (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-49",
+      "sourceNoteId": "1710822399339",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "お前",
+      "answer": "you (pronoun)",
+      "choices": [
+        "you (pronoun)",
+        "self, oneself, myself (pronoun)",
+        "To hear, be heard (verb)",
+        "to exist / to be (people and beings)"
+      ],
+      "reading": "omae",
+      "meaning": "you (pronoun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-50",
+      "sourceNoteId": "1710822399394",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "聞く",
+      "answer": "to listen, ask, hear (verb)",
+      "choices": [
+        "to listen, ask, hear (verb)",
+        "food, food item (noun)",
+        "to face, head for (verb)",
+        "cold (adj to touch)"
+      ],
+      "reading": "kiku",
+      "meaning": "to listen, ask, hear (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-51",
+      "sourceNoteId": "1710822399433",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "ありがとう",
+      "answer": "thanks (casual)",
+      "choices": [
+        "thanks (casual)",
+        "snow",
+        "to wait",
+        "itchy"
+      ],
+      "reading": "arigatou",
+      "meaning": "thanks (casual)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-52",
+      "sourceNoteId": "1710822399484",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "近い",
+      "answer": "near (adj)",
+      "choices": [
+        "near (adj)",
+        "to take a walk (for leisure or exercise)",
+        "to speak, talk, tell",
+        "to hold back (verb)"
+      ],
+      "reading": "chikai",
+      "meaning": "near (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-53",
+      "sourceNoteId": "1710822399526",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "試す",
+      "answer": "to test (verb)",
+      "choices": [
+        "to test (verb)",
+        "snow",
+        "self, oneself, myself (pronoun)",
+        "to eat (verb)"
+      ],
+      "reading": "tamesu",
+      "meaning": "to test (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-54",
+      "sourceNoteId": "1710822399666",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "彼女",
+      "answer": "she (neutral) (pronoun), one’s girlfriend",
+      "choices": [
+        "she (neutral) (pronoun), one’s girlfriend",
+        "to laugh, smile",
+        "to meet",
+        "to practice"
+      ],
+      "reading": "kanojo",
+      "meaning": "she (neutral) (pronoun), one’s girlfriend",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-55",
+      "sourceNoteId": "1710822399707",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "古い",
+      "answer": "old (things, not people; adj)",
+      "choices": [
+        "old (things, not people; adj)",
+        "true (adj), really",
+        "without fail, always(adverb)",
+        "what? (interrogative)"
+      ],
+      "reading": "furui",
+      "meaning": "old (things, not people; adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-56",
+      "sourceNoteId": "1710822399758",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "雲",
+      "answer": "cloud (noun)",
+      "choices": [
+        "cloud (noun)",
+        "to do (physical action)",
+        "to put on clothes (below the waist)",
+        "to make a phone call"
+      ],
+      "reading": "kumo",
+      "meaning": "cloud (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-57",
+      "sourceNoteId": "1710822399797",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "心",
+      "answer": "heart (noun)",
+      "choices": [
+        "heart (noun)",
+        "to go out, to leave",
+        "car (noun)",
+        "to face, head for (verb)"
+      ],
+      "reading": "kokoro",
+      "meaning": "heart (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-58",
+      "sourceNoteId": "1710822399836",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "遠い",
+      "answer": "far, distant (adj)",
+      "choices": [
+        "far, distant (adj)",
+        "to practice",
+        "daughter, girl",
+        "slowly, leisurely (adverb)"
+      ],
+      "reading": "tooi",
+      "meaning": "far, distant (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-59",
+      "sourceNoteId": "1710822399925",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "決して",
+      "answer": "never (adverb)",
+      "choices": [
+        "never (adverb)",
+        "to take a bath",
+        "such a thing as (particle)",
+        "mother (polite noun)— use this one to refer to other people's moms"
+      ],
+      "reading": "kesshite",
+      "meaning": "never (adverb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-60",
+      "sourceNoteId": "1710822399966",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "車",
+      "answer": "car (noun)",
+      "choices": [
+        "car (noun)",
+        "TV (noun)",
+        "to ride, take, get on (verb)",
+        "energy, spirit (noun)"
+      ],
+      "reading": "kuruma",
+      "meaning": "car (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-61",
+      "sourceNoteId": "1710822400017",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "食べる",
+      "answer": "to eat (verb)",
+      "choices": [
+        "to eat (verb)",
+        "wall, partition",
+        "to go out, to leave",
+        "to return home"
+      ],
+      "reading": "taberu",
+      "meaning": "to eat (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-62",
+      "sourceNoteId": "1710822400060",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "大きい",
+      "answer": "big (adj)",
+      "choices": [
+        "big (adj)",
+        "to test (verb)",
+        "monster (noun)",
+        "terrible, awful, cruel (adj)"
+      ],
+      "reading": "ooki",
+      "meaning": "big (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-63",
+      "sourceNoteId": "1710822400101",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "店",
+      "answer": "store (noun)",
+      "choices": [
+        "store (noun)",
+        "to return home",
+        "rainbow",
+        "to do (physical action)"
+      ],
+      "reading": "mise",
+      "meaning": "store (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-64",
+      "sourceNoteId": "1710822400141",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "手加減する",
+      "answer": "to hold back (verb)",
+      "choices": [
+        "to hold back (verb)",
+        "to drive",
+        "to swim",
+        "to give, offer (from speaker to someone else)"
+      ],
+      "reading": "tekagen suru",
+      "meaning": "to hold back (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-65",
+      "sourceNoteId": "1710822400190",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "気",
+      "answer": "energy, spirit (noun)",
+      "choices": [
+        "energy, spirit (noun)",
+        "to forget, leave behind",
+        "to taste",
+        "answer, solution, reply (noun)"
+      ],
+      "reading": "ki",
+      "meaning": "energy, spirit (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-66",
+      "sourceNoteId": "1710822400234",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "見つける",
+      "answer": "to find (direct object を) (verb)",
+      "choices": [
+        "to find (direct object を) (verb)",
+        "to live, to reside, to inhabit",
+        "to hold back (verb)",
+        "to be drunk, get drunk, feel dizzy"
+      ],
+      "reading": "mitsukeru",
+      "meaning": "to find (direct object を) (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-67",
+      "sourceNoteId": "1710822400322",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "愛",
+      "answer": "love",
+      "choices": [
+        "love",
+        "to test (verb)",
+        "never (adverb)",
+        "what? (interrogative)"
+      ],
+      "reading": "ai",
+      "meaning": "love",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-68",
+      "sourceNoteId": "1710822400378",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "食べ物",
+      "answer": "food, food item (noun)",
+      "choices": [
+        "food, food item (noun)",
+        "to make a phone call",
+        "new (adj)",
+        "where? (interrogative)"
+      ],
+      "reading": "tabemono",
+      "meaning": "food, food item (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-69",
+      "sourceNoteId": "1710822400461",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "それ",
+      "answer": "that (independent) (close to listener) (demonstrative pronoun)",
+      "choices": [
+        "that (independent) (close to listener) (demonstrative pronoun)",
+        "when?",
+        "to drive",
+        "thing, object (concrete) (noun)"
+      ],
+      "reading": "sore",
+      "meaning": "that (independent) (close to listener) (demonstrative pronoun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-70",
+      "sourceNoteId": "1710822400509",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "赤い",
+      "answer": "red (adj)",
+      "choices": [
+        "red (adj)",
+        "to teach, tell",
+        "to cook",
+        "to sit"
+      ],
+      "reading": "akai",
+      "meaning": "red (adj)",
+      "tags": [
+        "duplicate",
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-71",
+      "sourceNoteId": "1710822400550",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "熱い",
+      "answer": "hot to the touch (adj)",
+      "choices": [
+        "hot to the touch (adj)",
+        "to hurry",
+        "blood (noun)",
+        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car"
+      ],
+      "reading": "atsui",
+      "meaning": "hot to the touch (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-72",
+      "sourceNoteId": "1710822400589",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "乗る",
+      "answer": "to ride, take, get on (verb)",
+      "choices": [
+        "to ride, take, get on (verb)",
+        "true (adj), really",
+        "to stand, rise",
+        "red (adj)"
+      ],
+      "reading": "noru",
+      "meaning": "to ride, take, get on (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-73",
+      "sourceNoteId": "1710822400630",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "遅い",
+      "answer": "slow, late (adj)",
+      "choices": [
+        "slow, late (adj)",
+        "white (adj)",
+        "fall/autumn",
+        "to get tired, to become tired"
+      ],
+      "reading": "osoi",
+      "meaning": "slow, late (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-74",
+      "sourceNoteId": "1710822400673",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "なんて",
+      "answer": "such a thing as (particle)",
+      "choices": [
+        "such a thing as (particle)",
+        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to take, get (verb)",
+        "heart (noun)"
+      ],
+      "reading": "nante",
+      "meaning": "such a thing as (particle)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-75",
+      "sourceNoteId": "1710822400717",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "黒い",
+      "answer": "black (adj)",
+      "choices": [
+        "black (adj)",
+        "book (noun)",
+        "she (neutral) (pronoun), one’s girlfriend",
+        "hot to the touch (adj)"
+      ],
+      "reading": "kuroi",
+      "meaning": "black (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-76",
+      "sourceNoteId": "1710822400761",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "血",
+      "answer": "blood (noun)",
+      "choices": [
+        "blood (noun)",
+        "to drink (verb)",
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+        "near (adj)"
+      ],
+      "reading": "chi",
+      "meaning": "blood (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-77",
+      "sourceNoteId": "1710822400806",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "猫",
+      "answer": "cat (noun)",
+      "choices": [
+        "cat (noun)",
+        "to end",
+        "to drive",
+        "to begin (direct object)"
+      ],
+      "reading": "neko",
+      "meaning": "cat (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-78",
+      "sourceNoteId": "1710822400846",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "本",
+      "answer": "book (noun)",
+      "choices": [
+        "book (noun)",
+        "short (adj, e.g. hair), brief (time)",
+        "to cook",
+        "ghost (noun)"
+      ],
+      "reading": "hon",
+      "meaning": "book (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-79",
+      "sourceNoteId": "1710822400936",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "何",
+      "answer": "what? (interrogative)",
+      "choices": [
+        "what? (interrogative)",
+        "to skip (school / work)",
+        "to get tired, to become tired",
+        "to lend, loan"
+      ],
+      "reading": "nani",
+      "meaning": "what? (interrogative)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-80",
+      "sourceNoteId": "1710822400993",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "自分",
+      "answer": "self, oneself, myself (pronoun)",
+      "choices": [
+        "self, oneself, myself (pronoun)",
+        "to taste",
+        "to receive, get (direct object)",
+        "to do (physical action)"
+      ],
+      "reading": "jibun",
+      "meaning": "self, oneself, myself (pronoun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-81",
+      "sourceNoteId": "1710822401037",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "叩く",
+      "answer": "to hit, tap (verb)",
+      "choices": [
+        "to hit, tap (verb)",
+        "mother (polite noun)— use this one to refer to other people's moms",
+        "to read",
+        "to do (physical action)"
+      ],
+      "reading": "tataku",
+      "meaning": "to hit, tap (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-82",
+      "sourceNoteId": "1710822401083",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "いつ",
+      "answer": "when?",
+      "choices": [
+        "when?",
+        "to test (verb)",
+        "to practice",
+        "to bring (a person or being)"
+      ],
+      "reading": "itsu",
+      "meaning": "when?",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-83",
+      "sourceNoteId": "1710822401166",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "白い",
+      "answer": "white (adj)",
+      "choices": [
+        "white (adj)",
+        "to go out, to leave",
+        "book (noun)",
+        "true (adj), really"
+      ],
+      "reading": "shiroi",
+      "meaning": "white (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-84",
+      "sourceNoteId": "1710822401211",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "男",
+      "answer": "man (noun)",
+      "choices": [
+        "man (noun)",
+        "to live, to reside, to inhabit",
+        "to get tired, to become tired",
+        "to skip (school / work)"
+      ],
+      "reading": "otoko",
+      "meaning": "man (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-85",
+      "sourceNoteId": "1710822401257",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "1. 付ける2. 点ける",
+      "answer": "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+      "choices": [
+        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "to watch / to see",
+        "black (adj)",
+        "she (neutral) (pronoun), one’s girlfriend"
+      ],
+      "reading": "tsukeru",
+      "meaning": "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-86",
+      "sourceNoteId": "1710822401300",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "歩く",
+      "answer": "to walk, go on foot (verb)",
+      "choices": [
+        "to walk, go on foot (verb)",
+        "heart (noun)",
+        "that (independent) (close to listener) (demonstrative pronoun)",
+        "to continue, follow (direct object) (verb)"
+      ],
+      "reading": "aruku",
+      "meaning": "to walk, go on foot (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-87",
+      "sourceNoteId": "1710822401343",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "取る",
+      "answer": "to take, get (verb)",
+      "choices": [
+        "to take, get (verb)",
+        "to put on glasses",
+        "to have, carry (verb)",
+        "you (pronoun)"
+      ],
+      "reading": "toru",
+      "meaning": "to take, get (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-88",
+      "sourceNoteId": "1710822401384",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "歌う",
+      "answer": "to sing (verb)",
+      "choices": [
+        "to sing (verb)",
+        "to do (physical action)",
+        "person (noun)",
+        "To hear, be heard (verb)"
+      ],
+      "reading": "utau",
+      "meaning": "to sing (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-89",
+      "sourceNoteId": "1710822401427",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "長い",
+      "answer": "long (adj)",
+      "choices": [
+        "long (adj)",
+        "to lose weight / to become thin/skinny",
+        "room",
+        "to think, believe— believe in the sense of personal opinion rather than a strong belief"
+      ],
+      "reading": "nagai",
+      "meaning": "long (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-90",
+      "sourceNoteId": "1710822401467",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "青い",
+      "answer": "blue (adj)",
+      "choices": [
+        "blue (adj)",
+        "short (adj, e.g. hair), brief (time)",
+        "to work",
+        "to search (for) (verb)"
+      ],
+      "reading": "aoi",
+      "meaning": "blue (adj)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-91",
+      "sourceNoteId": "1710822401512",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "頭",
+      "answer": "head (noun)",
+      "choices": [
+        "head (noun)",
+        "kind, gentle",
+        "black (adj)",
+        "short (adj, e.g. hair), brief (time)"
+      ],
+      "reading": "atama",
+      "meaning": "head (noun)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-92",
+      "sourceNoteId": "1710822401551",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "付き合う",
+      "answer": "to hang out with, date (verb)",
+      "choices": [
+        "to hang out with, date (verb)",
+        "she (neutral) (pronoun), one’s girlfriend",
+        "to swim",
+        "ghost (noun)"
+      ],
+      "reading": "tsukiau",
+      "meaning": "to hang out with, date (verb)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-93",
+      "sourceNoteId": "1710822587761",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "寝る",
+      "answer": "to sleep",
+      "choices": [
+        "to sleep",
+        "new (adj)",
+        "to be late/ to arrive late/ to come late",
+        "to listen, ask, hear (verb)"
+      ],
+      "reading": "Neru",
+      "meaning": "to sleep",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-94",
+      "sourceNoteId": "1710822587834",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "起きる(2-4)",
+      "answer": "1. to wake up, to get up2. to occur, happen (spontaneously)",
+      "choices": [
+        "1. to wake up, to get up2. to occur, happen (spontaneously)",
+        "to do, wear accessories like earrings",
+        "to descend / to go down / to get off bus or train, land",
+        "to be drunk, get drunk, feel dizzy"
+      ],
+      "reading": "Okiru",
+      "meaning": "1. to wake up, to get up2. to occur, happen (spontaneously)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-95",
+      "sourceNoteId": "1710822587881",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "見る",
+      "answer": "to watch / to see",
+      "choices": [
+        "to watch / to see",
+        "to choose (verb)",
+        "to push, press (verb)",
+        "to kill (verb)"
+      ],
+      "reading": "Miru",
+      "meaning": "to watch / to see",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-96",
+      "sourceNoteId": "1710822587980",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "嗅ぐ",
+      "answer": "to smell",
+      "choices": [
+        "to smell",
+        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "to smoke a cigarette",
+        "slowly, leisurely (adverb)"
+      ],
+      "reading": "Kagu",
+      "meaning": "to smell",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-97",
+      "sourceNoteId": "1710822588023",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "触る",
+      "answer": "to touch, feel",
+      "choices": [
+        "to touch, feel",
+        "to count (numbers, things, etc)",
+        "to borrow, rent",
+        "to think, believe— believe in the sense of personal opinion rather than a strong belief"
+      ],
+      "reading": "Sawaru",
+      "meaning": "to touch, feel",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-98",
+      "sourceNoteId": "1710822588070",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "味わう",
+      "answer": "to taste",
+      "choices": [
+        "to taste",
+        "to begin (direct object)",
+        "slow, late (adj)",
+        "terrible, awful, cruel (adj)"
+      ],
+      "reading": "Ajiwau",
+      "meaning": "to taste",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-99",
+      "sourceNoteId": "1710822588117",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "話す",
+      "answer": "to speak, talk, tell",
+      "choices": [
+        "to speak, talk, tell",
+        "mouth (noun)",
+        "computer (noun)",
+        "blood (noun)"
+      ],
+      "reading": "Hanasu",
+      "meaning": "to speak, talk, tell",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-100",
+      "sourceNoteId": "1710822588163",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "言う",
+      "answer": "to say, to tell",
+      "choices": [
+        "to say, to tell",
+        "winter",
+        "to climb / ascend / to go up",
+        "to lend, loan"
+      ],
+      "reading": "Iu",
+      "meaning": "to say, to tell",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-101",
+      "sourceNoteId": "1710822588220",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "来る",
+      "answer": "to come",
+      "choices": [
+        "to come",
+        "blue (adj)",
+        "you (rude) (pronoun)",
+        "hat (noun)"
+      ],
+      "reading": "Kuru",
+      "meaning": "to come",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-102",
+      "sourceNoteId": "1710822588262",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "行く",
+      "answer": "to go",
+      "choices": [
+        "to go",
+        "to clean (something)",
+        "to make a phone call",
+        "to practice"
+      ],
+      "reading": "Iku",
+      "meaning": "to go",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-103",
+      "sourceNoteId": "1710822588310",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "出かける",
+      "answer": "to go out, to leave",
+      "choices": [
+        "to go out, to leave",
+        "mother (polite noun)— use this one to refer to other people's moms",
+        "such a thing as (particle)",
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc"
+      ],
+      "reading": "Dekakeru",
+      "meaning": "to go out, to leave",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-104",
+      "sourceNoteId": "1710822588349",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "帰る",
+      "answer": "to return home",
+      "choices": [
+        "to return home",
+        "to read",
+        "to clean (something)",
+        "to learn"
+      ],
+      "reading": "Kaeru",
+      "meaning": "to return home",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-105",
+      "sourceNoteId": "1710822588393",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "する",
+      "answer": "to do, wear accessories like earrings",
+      "choices": [
+        "to do, wear accessories like earrings",
+        "to put on clothes (below the waist)",
+        "to sit",
+        "to make a phone call"
+      ],
+      "reading": "Suru",
+      "meaning": "to do, wear accessories like earrings",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-106",
+      "sourceNoteId": "1710822588439",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "やる",
+      "answer": "to do (physical action)",
+      "choices": [
+        "to do (physical action)",
+        "to do, wear accessories like earrings",
+        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to work"
+      ],
+      "reading": "Yaru",
+      "meaning": "to do (physical action)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-107",
+      "sourceNoteId": "1710822588481",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "分かる",
+      "answer": "to understand",
+      "choices": [
+        "to understand",
+        "who? (interrogative)",
+        "man (noun)",
+        "to be drunk, get drunk, feel dizzy"
+      ],
+      "reading": "Wakaru",
+      "meaning": "to understand",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-108",
+      "sourceNoteId": "1710822588524",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "いる",
+      "answer": "to exist / to be (people and beings)",
+      "choices": [
+        "to exist / to be (people and beings)",
+        "to dance",
+        "to put on clothes (below the waist)",
+        "he (pronoun), boyfriend"
+      ],
+      "reading": "Iru",
+      "meaning": "to exist / to be (people and beings)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-109",
+      "sourceNoteId": "1710822588568",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "ある",
+      "answer": "to exist/ to be (inanimate objects)",
+      "choices": [
+        "to exist/ to be (inanimate objects)",
+        "to lend, loan",
+        "to put on glasses",
+        "to sell"
+      ],
+      "reading": "Aru",
+      "meaning": "to exist/ to be (inanimate objects)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-110",
+      "sourceNoteId": "1710822588610",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "散歩する",
+      "answer": "to take a walk (for leisure or exercise)",
+      "choices": [
+        "to take a walk (for leisure or exercise)",
+        "to return home",
+        "woman (noun)",
+        "ghost (noun)"
+      ],
+      "reading": "Sanposuru",
+      "meaning": "to take a walk (for leisure or exercise)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-111",
+      "sourceNoteId": "1710822588661",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "走る",
+      "answer": "to run",
+      "choices": [
+        "to run",
+        "food, food item (noun)",
+        "who? (interrogative)",
+        "to listen, ask, hear (verb)"
+      ],
+      "reading": "Hashiru",
+      "meaning": "to run",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-112",
+      "sourceNoteId": "1710822588722",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "飛び上がる",
+      "answer": "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+      "choices": [
+        "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+        "always (adverb)",
+        "to face, head for (verb)",
+        "to live, to reside, to inhabit"
+      ],
+      "reading": "Tobiagaru",
+      "meaning": "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-113",
+      "sourceNoteId": "1710822588764",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "泳ぐ",
+      "answer": "to swim",
+      "choices": [
+        "to swim",
+        "heart (noun)",
+        "such a thing as (particle)",
+        "to take, get (verb)"
+      ],
+      "reading": "Oyogu",
+      "meaning": "to swim",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-114",
+      "sourceNoteId": "1710822588815",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "跳躍",
+      "answer": "to skip, jump",
+      "choices": [
+        "to skip, jump",
+        "room",
+        "to smell",
+        "cold (adj to touch)"
+      ],
+      "reading": "Chouyaku",
+      "meaning": "to skip, jump",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-115",
+      "sourceNoteId": "1710822588862",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "運動する",
+      "answer": "to exercise",
+      "choices": [
+        "to exercise",
+        "to skip, jump",
+        "you bastard (pronoun, extremely disrespectful)",
+        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)"
+      ],
+      "reading": "Undousuru",
+      "meaning": "to exercise",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-116",
+      "sourceNoteId": "1710822588904",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "太る",
+      "answer": "to gain weight / to be fat",
+      "choices": [
+        "to gain weight / to be fat",
+        "to take, get (verb)",
+        "itchy",
+        "to study"
+      ],
+      "reading": "Futoru",
+      "meaning": "to gain weight / to be fat",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-117",
+      "sourceNoteId": "1710822588953",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "痩せる",
+      "answer": "to lose weight / to become thin/skinny",
+      "choices": [
+        "to lose weight / to become thin/skinny",
+        "big",
+        "to pay",
+        "son"
+      ],
+      "reading": "Yaseru",
+      "meaning": "to lose weight / to become thin/skinny",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-118",
+      "sourceNoteId": "1710822588998",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "疲れる",
+      "answer": "to get tired, to become tired",
+      "choices": [
+        "to get tired, to become tired",
+        "to exercise",
+        "slowly, leisurely (adverb)",
+        "you (pronoun)"
+      ],
+      "reading": "Tsukareru",
+      "meaning": "to get tired, to become tired",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-119",
+      "sourceNoteId": "1710822589041",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "お腹がすく",
+      "answer": "I get hungry (present form, casual)Literal: My stomach empties",
+      "choices": [
+        "I get hungry (present form, casual)Literal: My stomach empties",
+        "to exist/ to be (inanimate objects)",
+        "far, distant (adj)",
+        "cloud (noun)"
+      ],
+      "reading": "Onaka ga suku",
+      "meaning": "I get hungry (present form, casual)Literal: My stomach empties",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-120",
+      "sourceNoteId": "1710822589112",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "喉が乾く",
+      "answer": "I get thirsty (present tense, casual)Literal: my throat gets dry",
+      "choices": [
+        "I get thirsty (present tense, casual)Literal: my throat gets dry",
+        "to return (an item), repay",
+        "human (noun)",
+        "white (adj)"
+      ],
+      "reading": "Nodo ga kawaku",
+      "meaning": "I get thirsty (present tense, casual)Literal: my throat gets dry",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-121",
+      "sourceNoteId": "1710822589158",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "お風呂に入る",
+      "answer": "to take a bath",
+      "choices": [
+        "to take a bath",
+        "to return (an item), repay",
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+        "to decide"
+      ],
+      "reading": "Ofuronihairu",
+      "meaning": "to take a bath",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-122",
+      "sourceNoteId": "1710822589199",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "掃除する",
+      "answer": "to clean (something)",
+      "choices": [
+        "to clean (something)",
+        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "far, distant (adj)",
+        "to descend / to go down / to get off bus or train, land"
+      ],
+      "reading": "Souji suru",
+      "meaning": "to clean (something)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-123",
+      "sourceNoteId": "1710822589242",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "洗う",
+      "answer": "to wash (no direct object)",
+      "choices": [
+        "to wash (no direct object)",
+        "hat (noun)",
+        "to put on glasses",
+        "room"
+      ],
+      "reading": "Arau",
+      "meaning": "to wash (no direct object)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-124",
+      "sourceNoteId": "1710822589282",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "洗濯する",
+      "answer": "to do laundry",
+      "choices": [
+        "to do laundry",
+        "to turn off, switch off, erase",
+        "slowly, leisurely (adverb)",
+        "cloud (noun)"
+      ],
+      "reading": "Sentakusuru",
+      "meaning": "to do laundry",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-125",
+      "sourceNoteId": "1710822589323",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "1. 切る2. 着る",
+      "answer": "1. to cut2. to put on clothes (above the waist)",
+      "choices": [
+        "1. to cut2. to put on clothes (above the waist)",
+        "to take (an inanimate object away from speaker)",
+        "to drive",
+        "to forget, leave behind"
+      ],
+      "reading": "Kiru",
+      "meaning": "1. to cut2. to put on clothes (above the waist)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-126",
+      "sourceNoteId": "1710822589364",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "履く",
+      "answer": "to put on clothes (below the waist)",
+      "choices": [
+        "to put on clothes (below the waist)",
+        "human (noun)",
+        "to make, create",
+        "cloud (noun)"
+      ],
+      "reading": "Haku",
+      "meaning": "to put on clothes (below the waist)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-127",
+      "sourceNoteId": "1710822589404",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "眼鏡をかける",
+      "answer": "to put on glasses",
+      "choices": [
+        "to put on glasses",
+        "to count (numbers, things, etc)",
+        "far, distant (adj)",
+        "blood (noun)"
+      ],
+      "reading": "Megane wo Kakeru",
+      "meaning": "to put on glasses",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-128",
+      "sourceNoteId": "1710822589489",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "消す",
+      "answer": "to turn off, switch off, erase",
+      "choices": [
+        "to turn off, switch off, erase",
+        "to teach, tell",
+        "to hang out with, date (verb)",
+        "to eat (verb)"
+      ],
+      "reading": "Kesu",
+      "meaning": "to turn off, switch off, erase",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-129",
+      "sourceNoteId": "1710822589536",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "教える",
+      "answer": "to teach, tell",
+      "choices": [
+        "to teach, tell",
+        "to descend / to go down / to get off bus or train, land",
+        "new (adj)",
+        "red (adj)"
+      ],
+      "reading": "Oshieru",
+      "meaning": "to teach, tell",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-130",
+      "sourceNoteId": "1710822589577",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "習う",
+      "answer": "to learn",
+      "choices": [
+        "to learn",
+        "computer (noun)",
+        "to listen, ask, hear (verb)",
+        "white (adj)"
+      ],
+      "reading": "Narau",
+      "meaning": "to learn",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-131",
+      "sourceNoteId": "1710822589624",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "思う",
+      "answer": "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+      "choices": [
+        "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+        "to continue, follow (direct object) (verb)",
+        "to go",
+        "to receive, get (direct object)"
+      ],
+      "reading": "Omou",
+      "meaning": "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-132",
+      "sourceNoteId": "1710822589668",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "始める",
+      "answer": "to begin (direct object)",
+      "choices": [
+        "to begin (direct object)",
+        "to understand",
+        "to push, press (verb)",
+        "mouth (noun)"
+      ],
+      "reading": "Hajimeru",
+      "meaning": "to begin (direct object)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-133",
+      "sourceNoteId": "1710822589710",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "終る",
+      "answer": "to end",
+      "choices": [
+        "to end",
+        "thing, object (concrete) (noun)",
+        "heart (noun)",
+        "store (noun)"
+      ],
+      "reading": "Owaru",
+      "meaning": "to end",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-134",
+      "sourceNoteId": "1710822589749",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "早くなる",
+      "answer": "to be early, to arrive early, to come early",
+      "choices": [
+        "to be early, to arrive early, to come early",
+        "terrible, awful, cruel (adj)",
+        "daughter, girl",
+        "energy, spirit (noun)"
+      ],
+      "reading": "Hayakunaru",
+      "meaning": "to be early, to arrive early, to come early",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-135",
+      "sourceNoteId": "1710822589793",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "遅くなる",
+      "answer": "to be late/ to arrive late/ to come late",
+      "choices": [
+        "to be late/ to arrive late/ to come late",
+        "summer",
+        "to sell",
+        "to rest, take a day off"
+      ],
+      "reading": "Osokunaru",
+      "meaning": "to be late/ to arrive late/ to come late",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-136",
+      "sourceNoteId": "1710822589843",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "読む",
+      "answer": "to read",
+      "choices": [
+        "to read",
+        "to do laundry",
+        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "To hear, be heard (verb)"
+      ],
+      "reading": "Yomu",
+      "meaning": "to read",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-137",
+      "sourceNoteId": "1710822589888",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "書く",
+      "answer": "to write",
+      "choices": [
+        "to write",
+        "to cook",
+        "cloud (noun)",
+        "terrible, awful, cruel (adj)"
+      ],
+      "reading": "Kaku",
+      "meaning": "to write",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-138",
+      "sourceNoteId": "1710822589936",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "知る",
+      "answer": "to know, to get to know someone",
+      "choices": [
+        "to know, to get to know someone",
+        "person (noun)",
+        "cold (adj for weather or feeling cold)",
+        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)"
+      ],
+      "reading": "Shiru",
+      "meaning": "to know, to get to know someone",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-139",
+      "sourceNoteId": "1710822590023",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "忘れる",
+      "answer": "to forget, leave behind",
+      "choices": [
+        "to forget, leave behind",
+        "when?",
+        "to study",
+        "mother (polite noun)— use this one to refer to other people's moms"
+      ],
+      "reading": "Wasureru",
+      "meaning": "to forget, leave behind",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-140",
+      "sourceNoteId": "1710822590067",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "数える",
+      "answer": "to count (numbers, things, etc)",
+      "choices": [
+        "to count (numbers, things, etc)",
+        "what? (interrogative)",
+        "father (noun)",
+        "terrible, awful, cruel (adj)"
+      ],
+      "reading": "Kazoeru",
+      "meaning": "to count (numbers, things, etc)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-141",
+      "sourceNoteId": "1710822590108",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "勉強する",
+      "answer": "to study",
+      "choices": [
+        "to study",
+        "to wait",
+        "that (independent) (close to listener) (demonstrative pronoun)",
+        "white (adj)"
+      ],
+      "reading": "Benkyou suru",
+      "meaning": "to study",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-142",
+      "sourceNoteId": "1710822590153",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "休む",
+      "answer": "to rest, take a day off",
+      "choices": [
+        "to rest, take a day off",
+        "mother (polite noun)— use this one to refer to other people's moms",
+        "to be drunk, get drunk, feel dizzy",
+        "always (adverb)"
+      ],
+      "reading": "Yasumu",
+      "meaning": "to rest, take a day off",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-143",
+      "sourceNoteId": "1710822590192",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "さぼる",
+      "answer": "to skip (school / work)",
+      "choices": [
+        "to skip (school / work)",
+        "to do (physical action)",
+        "to work (for someone or something)",
+        "to be early, to arrive early, to come early"
+      ],
+      "reading": "Saboru",
+      "meaning": "to skip (school / work)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-144",
+      "sourceNoteId": "1710822590238",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "あげる",
+      "answer": "to give, offer (from speaker to someone else)",
+      "choices": [
+        "to give, offer (from speaker to someone else)",
+        "woman (noun)",
+        "she (neutral) (pronoun), one’s girlfriend",
+        "to have, carry (verb)"
+      ],
+      "reading": "Ageru",
+      "meaning": "to give, offer (from speaker to someone else)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-145",
+      "sourceNoteId": "1710822590278",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "貰う",
+      "answer": "to receive, get (direct object)",
+      "choices": [
+        "to receive, get (direct object)",
+        "TV (noun)",
+        "to see, watch (verb)",
+        "to speak, talk, tell"
+      ],
+      "reading": "Morau",
+      "meaning": "to receive, get (direct object)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-146",
+      "sourceNoteId": "1710822590319",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "持って行く",
+      "answer": "to take (an inanimate object away from speaker)",
+      "choices": [
+        "to take (an inanimate object away from speaker)",
+        "to understand",
+        "heart (noun)",
+        "train (noun)"
+      ],
+      "reading": "Motteiku",
+      "meaning": "to take (an inanimate object away from speaker)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-147",
+      "sourceNoteId": "1710822590366",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "連れてくる",
+      "answer": "to bring (a person or being)",
+      "choices": [
+        "to bring (a person or being)",
+        "to watch / to see",
+        "kind, gentle",
+        "to test (verb)"
+      ],
+      "reading": "Tsuretekuru",
+      "meaning": "to bring (a person or being)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-148",
+      "sourceNoteId": "1710822590410",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "買う",
+      "answer": "to buy",
+      "choices": [
+        "to buy",
+        "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+        "he (pronoun), boyfriend",
+        "to push, press (verb)"
+      ],
+      "reading": "Kau",
+      "meaning": "to buy",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-149",
+      "sourceNoteId": "1710822590632",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "売る",
+      "answer": "to sell",
+      "choices": [
+        "to sell",
+        "red (adj)",
+        "blood (noun)",
+        "never (adverb)"
+      ],
+      "reading": "Uru",
+      "meaning": "to sell",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-150",
+      "sourceNoteId": "1710822590671",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "働く",
+      "answer": "to work",
+      "choices": [
+        "to work",
+        "to do (physical action)",
+        "to laugh, smile",
+        "to return home"
+      ],
+      "reading": "Hataraku",
+      "meaning": "to work",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-151",
+      "sourceNoteId": "1710822590714",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "勤める",
+      "answer": "to work (for someone or something)",
+      "choices": [
+        "to work (for someone or something)",
+        "to hurry",
+        "who? (interrogative)",
+        "energy, spirit (noun)"
+      ],
+      "reading": "Tsutomeru",
+      "meaning": "to work (for someone or something)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-152",
+      "sourceNoteId": "1710822590755",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "借りる",
+      "answer": "to borrow, rent",
+      "choices": [
+        "to borrow, rent",
+        "to speak, talk, tell",
+        "he (pronoun), boyfriend",
+        "TV (noun)"
+      ],
+      "reading": "Kariru",
+      "meaning": "to borrow, rent",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-153",
+      "sourceNoteId": "1710822590800",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "貸す",
+      "answer": "to lend, loan",
+      "choices": [
+        "to lend, loan",
+        "always (adverb)",
+        "to work",
+        "you (pronoun)"
+      ],
+      "reading": "Kasu",
+      "meaning": "to lend, loan",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-154",
+      "sourceNoteId": "1710822590845",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "返す",
+      "answer": "to return (an item), repay",
+      "choices": [
+        "to return (an item), repay",
+        "to meet",
+        "everyone",
+        "you (pronoun)"
+      ],
+      "reading": "Kaesu",
+      "meaning": "to return (an item), repay",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-155",
+      "sourceNoteId": "1710822590894",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "住む",
+      "answer": "to live, to reside, to inhabit",
+      "choices": [
+        "to live, to reside, to inhabit",
+        "to skip, jump",
+        "to introduce, present",
+        "to exercise"
+      ],
+      "reading": "Sumu",
+      "meaning": "to live, to reside, to inhabit",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-156",
+      "sourceNoteId": "1710822590935",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "開ける",
+      "answer": "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+      "choices": [
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+        "to run",
+        "slowly, leisurely (adverb)",
+        "computer (noun)"
+      ],
+      "reading": "Akeru",
+      "meaning": "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-157",
+      "sourceNoteId": "1710822590985",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "閉める",
+      "answer": "to shut, close (requires a direct object ex. doors, windows, etc.)",
+      "choices": [
+        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "head (noun)",
+        "never (adverb)",
+        "heart (noun)"
+      ],
+      "reading": "Shimeru",
+      "meaning": "to shut, close (requires a direct object ex. doors, windows, etc.)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-158",
+      "sourceNoteId": "1710822591029",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "タバコを吸う",
+      "answer": "to smoke a cigarette",
+      "choices": [
+        "to smoke a cigarette",
+        "to write",
+        "to drive",
+        "to end"
+      ],
+      "reading": "Tabako wo suu",
+      "meaning": "to smoke a cigarette",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-159",
+      "sourceNoteId": "1710822591072",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "酔う",
+      "answer": "to be drunk, get drunk, feel dizzy",
+      "choices": [
+        "to be drunk, get drunk, feel dizzy",
+        "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+        "to borrow, rent",
+        "to write"
+      ],
+      "reading": "You",
+      "meaning": "to be drunk, get drunk, feel dizzy",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-160",
+      "sourceNoteId": "1710822591128",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "運転する",
+      "answer": "to drive",
+      "choices": [
+        "to drive",
+        "to lend, loan",
+        "father (noun)",
+        "you (pronoun)"
+      ],
+      "reading": "Untensuru",
+      "meaning": "to drive",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-161",
+      "sourceNoteId": "1710822591180",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "かかる",
+      "answer": "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+      "choices": [
+        "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+        "red (adj)",
+        "to give, offer (from speaker to someone else)",
+        "human (noun)"
+      ],
+      "reading": "Kakaru",
+      "meaning": "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-162",
+      "sourceNoteId": "1710822591226",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "紹介する",
+      "answer": "to introduce, present",
+      "choices": [
+        "to introduce, present",
+        "to exercise",
+        "to forget, leave behind",
+        "to know, to get to know someone"
+      ],
+      "reading": "Shoukaisuru",
+      "meaning": "to introduce, present",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-163",
+      "sourceNoteId": "1710822591273",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "待つ",
+      "answer": "to wait",
+      "choices": [
+        "to wait",
+        "to kill (verb)",
+        "to come",
+        "you bastard (pronoun, extremely disrespectful)"
+      ],
+      "reading": "Matsu",
+      "meaning": "to wait",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-164",
+      "sourceNoteId": "1710822591316",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "急ぐ",
+      "answer": "to hurry",
+      "choices": [
+        "to hurry",
+        "that (independent) (close to listener) (demonstrative pronoun)",
+        "you bastard (pronoun, extremely disrespectful)",
+        "hopeless, impossible (na adj)"
+      ],
+      "reading": "Isogu",
+      "meaning": "to hurry",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-165",
+      "sourceNoteId": "1710822591363",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "会う",
+      "answer": "to meet",
+      "choices": [
+        "to meet",
+        "1. to cut2. to put on clothes (above the waist)",
+        "to pay",
+        "to get tired, to become tired"
+      ],
+      "reading": "Au",
+      "meaning": "to meet",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-166",
+      "sourceNoteId": "1710822591459",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "払う",
+      "answer": "to pay",
+      "choices": [
+        "to pay",
+        "mouth (noun)",
+        "rainbow",
+        "I get thirsty (present tense, casual)Literal: my throat gets dry"
+      ],
+      "reading": "Harau",
+      "meaning": "to pay",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-167",
+      "sourceNoteId": "1710822591509",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "座る",
+      "answer": "to sit",
+      "choices": [
+        "to sit",
+        "slow, late (adj)",
+        "to clean (something)",
+        "cloud (noun)"
+      ],
+      "reading": "Suwaru",
+      "meaning": "to sit",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-168",
+      "sourceNoteId": "1710822591549",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "立つ",
+      "answer": "to stand, rise",
+      "choices": [
+        "to stand, rise",
+        "to begin (direct object)",
+        "heart (noun)",
+        "near (adj)"
+      ],
+      "reading": "Tatsu",
+      "meaning": "to stand, rise",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-169",
+      "sourceNoteId": "1710822591591",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "喧嘩する",
+      "answer": "to fight (physical), to argue/quarrel (verbal)",
+      "choices": [
+        "to fight (physical), to argue/quarrel (verbal)",
+        "to gain weight / to be fat",
+        "to know, to get to know someone",
+        "to teach, tell"
+      ],
+      "reading": "Kenkasuru",
+      "meaning": "to fight (physical), to argue/quarrel (verbal)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-170",
+      "sourceNoteId": "1710822591640",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "手伝う",
+      "answer": "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+      "choices": [
+        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+        "to search (for) (verb)",
+        "spring",
+        "TV (noun)"
+      ],
+      "reading": "Tetsudau",
+      "meaning": "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-171",
+      "sourceNoteId": "1710822591693",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "決める",
+      "answer": "to decide",
+      "choices": [
+        "to decide",
+        "to live, to reside, to inhabit",
+        "to search (for) (verb)",
+        "food, food item (noun)"
+      ],
+      "reading": "Kimeru",
+      "meaning": "to decide",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-172",
+      "sourceNoteId": "1710822591748",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "間違う",
+      "answer": "to be mistaken, be wrong (no direct object)",
+      "choices": [
+        "to be mistaken, be wrong (no direct object)",
+        "snow",
+        "to decide",
+        "to dance"
+      ],
+      "reading": "Machigau",
+      "meaning": "to be mistaken, be wrong (no direct object)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-173",
+      "sourceNoteId": "1710822591797",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "電話をかける",
+      "answer": "to make a phone call",
+      "choices": [
+        "to make a phone call",
+        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "person (noun)",
+        "woman (noun)"
+      ],
+      "reading": "Denwa wo kakeru",
+      "meaning": "to make a phone call",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-174",
+      "sourceNoteId": "1710822591841",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "作る",
+      "answer": "to make, create",
+      "choices": [
+        "to make, create",
+        "to speak, talk, tell",
+        "to cook",
+        "to do (physical action)"
+      ],
+      "reading": "Tsukuru",
+      "meaning": "to make, create",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-175",
+      "sourceNoteId": "1710822591881",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "使う",
+      "answer": "to use",
+      "choices": [
+        "to use",
+        "to return home",
+        "to borrow, rent",
+        "to lose weight / to become thin/skinny"
+      ],
+      "reading": "Tsukau",
+      "meaning": "to use",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-176",
+      "sourceNoteId": "1710822591923",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "笑う",
+      "answer": "to laugh, smile",
+      "choices": [
+        "to laugh, smile",
+        "to drive",
+        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "slowly, leisurely (adverb)"
+      ],
+      "reading": "Warau",
+      "meaning": "to laugh, smile",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-177",
+      "sourceNoteId": "1710822591962",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "泣く",
+      "answer": "to cry",
+      "choices": [
+        "to cry",
+        "big",
+        "to hold back (verb)",
+        "to say, to tell"
+      ],
+      "reading": "Naku",
+      "meaning": "to cry",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-178",
+      "sourceNoteId": "1710822592047",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "落とす",
+      "answer": "to drop",
+      "choices": [
+        "to drop",
+        "to fight (physical), to argue/quarrel (verbal)",
+        "blue (adj)",
+        "she (neutral) (pronoun), one’s girlfriend"
+      ],
+      "reading": "Otosu",
+      "meaning": "to drop",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-179",
+      "sourceNoteId": "1710822592084",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "じろじろ見る",
+      "answer": "to stare",
+      "choices": [
+        "to stare",
+        "blue (adj)",
+        "slow, late (adj)",
+        "to study"
+      ],
+      "reading": "Jirojiromiru",
+      "meaning": "to stare",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-180",
+      "sourceNoteId": "1710822592132",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "踊る",
+      "answer": "to dance",
+      "choices": [
+        "to dance",
+        "near (adj)",
+        "winter",
+        "to test (verb)"
+      ],
+      "reading": "Odoru",
+      "meaning": "to dance",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-181",
+      "sourceNoteId": "1710822592215",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "練習する",
+      "answer": "to practice",
+      "choices": [
+        "to practice",
+        "to exercise",
+        "near (adj)",
+        "book (noun)"
+      ],
+      "reading": "Renshuusuru",
+      "meaning": "to practice",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-182",
+      "sourceNoteId": "1710822592259",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "登る",
+      "answer": "to climb / ascend / to go up",
+      "choices": [
+        "to climb / ascend / to go up",
+        "to hold back (verb)",
+        "to smoke a cigarette",
+        "energy, spirit (noun)"
+      ],
+      "reading": "Noboru",
+      "meaning": "to climb / ascend / to go up",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-183",
+      "sourceNoteId": "1710822592298",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "降りる",
+      "answer": "to descend / to go down / to get off bus or train, land",
+      "choices": [
+        "to descend / to go down / to get off bus or train, land",
+        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+        "car (noun)",
+        "food, food item (noun)"
+      ],
+      "reading": "Oriru",
+      "meaning": "to descend / to go down / to get off bus or train, land",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-184",
+      "sourceNoteId": "1710822592341",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "料理する",
+      "answer": "to cook",
+      "choices": [
+        "to cook",
+        "mouth (noun)",
+        "old (things, not people; adj)",
+        "terrible, awful, cruel (adj)"
+      ],
+      "reading": "Ryourisuru",
+      "meaning": "to cook",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-185",
+      "sourceNoteId": "1710822896867",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "壁",
+      "answer": "wall, partition",
+      "choices": [
+        "wall, partition",
+        "to return home",
+        "to give, offer (from speaker to someone else)",
+        "1. to cut2. to put on clothes (above the waist)"
+      ],
+      "reading": "kabe",
+      "meaning": "wall, partition",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-186",
+      "sourceNoteId": "1710822896947",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "夏",
+      "answer": "summer",
+      "choices": [
+        "summer",
+        "terrible, awful, cruel (adj)",
+        "fall/autumn",
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc"
+      ],
+      "reading": "natsu",
+      "meaning": "summer",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-187",
+      "sourceNoteId": "1710822897027",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "冬",
+      "answer": "winter",
+      "choices": [
+        "winter",
+        "you bastard (pronoun, extremely disrespectful)",
+        "to make, create",
+        "hot to the touch (adj)"
+      ],
+      "reading": "fuyu",
+      "meaning": "winter",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-188",
+      "sourceNoteId": "1710822897107",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "虹",
+      "answer": "rainbow",
+      "choices": [
+        "rainbow",
+        "to hurry",
+        "1. to cut2. to put on clothes (above the waist)",
+        "to be drunk, get drunk, feel dizzy"
+      ],
+      "reading": "niji",
+      "meaning": "rainbow",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-189",
+      "sourceNoteId": "1710822897312",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "娘",
+      "answer": "daughter, girl",
+      "choices": [
+        "daughter, girl",
+        "to be late/ to arrive late/ to come late",
+        "to be drunk, get drunk, feel dizzy",
+        "to live, to reside, to inhabit"
+      ],
+      "reading": "musume",
+      "meaning": "daughter, girl",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-190",
+      "sourceNoteId": "1710822897688",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "息子",
+      "answer": "son",
+      "choices": [
+        "son",
+        "to write",
+        "to touch, feel",
+        "store (noun)"
+      ],
+      "reading": "musuko",
+      "meaning": "son",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-191",
+      "sourceNoteId": "1710822897878",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "春",
+      "answer": "spring",
+      "choices": [
+        "spring",
+        "to practice",
+        "to lose weight / to become thin/skinny",
+        "to do laundry"
+      ],
+      "reading": "haru",
+      "meaning": "spring",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-192",
+      "sourceNoteId": "1710822898334",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "秋",
+      "answer": "fall/autumn",
+      "choices": [
+        "fall/autumn",
+        "you (pronoun)",
+        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to kill (verb)"
+      ],
+      "reading": "aki",
+      "meaning": "fall/autumn",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-193",
+      "sourceNoteId": "1710822899227",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "雪",
+      "answer": "snow",
+      "choices": [
+        "snow",
+        "black (adj)",
+        "thing, object (concrete) (noun)",
+        "human (noun)"
+      ],
+      "reading": "yuki",
+      "meaning": "snow",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-194",
+      "sourceNoteId": "1710822899415",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "冷蔵庫",
+      "answer": "refrigerator",
+      "choices": [
+        "refrigerator",
+        "to sit",
+        "to do (physical action)",
+        "to give, offer (from speaker to someone else)"
+      ],
+      "reading": "reizouko",
+      "meaning": "refrigerator",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-195",
+      "sourceNoteId": "1710822899497",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "簡単",
+      "answer": "easy",
+      "choices": [
+        "easy",
+        "he (pronoun), boyfriend",
+        "big (adj)",
+        "to make, create"
+      ],
+      "reading": "kantan",
+      "meaning": "easy",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-196",
+      "sourceNoteId": "1710822899876",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "部屋",
+      "answer": "room",
+      "choices": [
+        "room",
+        "to open (direct object を)Ex. Mouths, eyes, doors, etc",
+        "to sit",
+        "to use"
+      ],
+      "reading": "heya",
+      "meaning": "room",
+      "tags": [
+        "duplicate",
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-197",
+      "sourceNoteId": "1710822900159",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "優しい",
+      "answer": "kind, gentle",
+      "choices": [
+        "kind, gentle",
+        "room",
+        "far, distant (adj)",
+        "slow, late (adj)"
+      ],
+      "reading": "yasashii",
+      "meaning": "kind, gentle",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-198",
+      "sourceNoteId": "1710822901019",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "phrase",
+      "prompt": "きれい",
+      "answer": "Clean / beautiful (describes a person, place, or object)",
+      "choices": [
+        "Clean / beautiful (describes a person, place, or object)",
+        "to see, watch (verb)",
+        "everyone",
+        "dog (noun)"
+      ],
+      "reading": "kirei",
+      "meaning": "Clean / beautiful (describes a person, place, or object)",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-199",
+      "sourceNoteId": "1710822902023",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "かゆい",
+      "answer": "itchy",
+      "choices": [
+        "itchy",
+        "thanks (casual)",
+        "terrible, awful, cruel (adj)",
+        "to hit, tap (verb)"
+      ],
+      "reading": "kayui",
+      "meaning": "itchy",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    },
+    {
+      "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-200",
+      "sourceNoteId": "1710822902106",
+      "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
+      "type": "vocab",
+      "prompt": "大きい",
+      "answer": "big",
+      "choices": [
+        "big",
+        "to meet",
+        "cold (adj for weather or feeling cold)",
+        "to watch / to see"
+      ],
+      "reading": "ookii",
+      "meaning": "big",
+      "tags": [
+        "imported",
+        "phrases"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+[
+  {
+    "id": "refine_iron_ingot",
+    "name": "Iron Ingot",
+    "station": "forge",
+    "levelReq": 1,
+    "inputs": [{ "item": "raw_iron_ore", "qty": 3 }],
+    "output": { "item": "iron_ingot", "qty": 1 },
+    "xp": 8,
+    "discovery": "starter",
+    "desc": "Smelt raw mountain ore into workable metal."
+  },
+  {
+    "id": "craft_wooden_katana",
+    "name": "Wooden Katana",
+    "station": "forge",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 3 },
+      { "item": "slime_gel", "qty": 2 }
+    ],
+    "output": { "item": "wooden_katana", "qty": 1 },
+    "desc": "A practice blade from bamboo and slime resin."
+  },
+  {
+    "id": "craft_bamboo_spear",
+    "name": "Bamboo Spear",
+    "station": "forge",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 4 },
+      { "item": "snake_fang", "qty": 2 }
+    ],
+    "output": { "item": "bamboo_spear", "qty": 1 },
+    "desc": "A longer-reaching weapon tipped with snake fang."
+  },
+  {
+    "id": "craft_straw_hat",
+    "name": "Straw Hat",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 2 },
+      { "item": "spider_silk", "qty": 1 }
+    ],
+    "output": { "item": "straw_hat", "qty": 1 },
+    "desc": "A woven kasa, keeps the sun off."
+  },
+  {
+    "id": "craft_cloth_gi",
+    "name": "Cloth Gi",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "spider_silk", "qty": 3 },
+      { "item": "slime_gel", "qty": 1 }
+    ],
+    "output": { "item": "cloth_gi", "qty": 1 },
+    "desc": "A simple training gi woven from spider silk."
+  },
+  {
+    "id": "craft_leather_guards",
+    "name": "Leather Guards",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "lizard_hide", "qty": 2 },
+      { "item": "slime_gel", "qty": 1 }
+    ],
+    "output": { "item": "leather_guards", "qty": 1 },
+    "desc": "Worn but sturdy bracers from lizard hide."
+  },
+  {
+    "id": "craft_straw_sandals",
+    "name": "Straw Sandals",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 2 },
+      { "item": "raccoon_tail", "qty": 1 }
+    ],
+    "output": { "item": "straw_sandals", "qty": 1 },
+    "desc": "Zori sandals, quick and quiet."
+  },
+  {
+    "id": "craft_rice_ball",
+    "name": "Rice Ball",
+    "station": "kitchen",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "rice", "qty": 2 }
+    ],
+    "output": { "item": "rice_ball", "qty": 3 },
+    "desc": "Onigiri made from your own rice. Restores HP."
+  },
+  {
+    "id": "craft_cucumber_roll",
+    "name": "Cucumber Roll",
+    "station": "kitchen",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "rice", "qty": 1 },
+      { "item": "cucumber", "qty": 1 }
+    ],
+    "output": { "item": "cucumber_roll", "qty": 2 },
+    "desc": "Fresh cucumber sushi from the garden."
+  },
+  {
+    "id": "craft_mushroom_soup",
+    "name": "Mushroom Soup",
+    "station": "kitchen",
+    "levelReq": 2,
+    "inputs": [
+      { "item": "mushroom", "qty": 2 },
+      { "item": "wild_herb", "qty": 1 }
+    ],
+    "output": { "item": "mushroom_soup", "qty": 1 },
+    "desc": "A warming soup of foraged mushrooms and herbs."
+  },
+  {
+    "id": "craft_herb_tea",
+    "name": "Herb Tea",
+    "station": "kitchen",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "wild_herb", "qty": 2 },
+      { "item": "honey", "qty": 1 }
+    ],
+    "output": { "item": "herb_tea", "qty": 2 },
+    "desc": "A soothing tea brewed from garden herbs."
+  },
+  {
+    "id": "craft_sushi_platter",
+    "name": "Sushi Platter",
+    "station": "kitchen",
+    "levelReq": 3,
+    "inputs": [
+      { "item": "rice", "qty": 2 },
+      { "item": "river_fish", "qty": 1 }
+    ],
+    "output": { "item": "sushi_platter", "qty": 1 },
+    "desc": "Rice and fresh fish arranged for the road."
+  },
+  {
+    "id": "craft_matcha_latte",
+    "name": "Matcha Latte",
+    "station": "kitchen",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "honey", "qty": 1 },
+      { "item": "slime_gel", "qty": 2 }
+    ],
+    "output": { "item": "matcha_latte", "qty": 2 },
+    "desc": "A warm cup of matcha. Soothing and restorative."
+  },
+  {
+    "id": "craft_forest_tonic",
+    "name": "Forest Tonic",
+    "station": "kitchen",
+    "levelReq": 2,
+    "inputs": [{ "item": "wild_herb", "qty": 2 }, { "item": "honey", "qty": 1 }],
+    "output": { "item": "trail_elixir", "qty": 1 },
+    "xp": 12,
+    "discovery": "starter",
+    "desc": "Steep gathered herbs and honey into a restorative trail tonic."
+  },
+  {
+    "id": "craft_river_stew",
+    "name": "River Stew",
+    "station": "kitchen",
+    "levelReq": 3,
+    "inputs": [{ "item": "river_fish", "qty": 1 }, { "item": "wild_herb", "qty": 1 }],
+    "output": { "item": "moonbroth", "qty": 1 },
+    "xp": 16,
+    "discovery": "starter",
+    "desc": "A hearty regional broth made from fresh river catch and herbs."
+  },
+  {
+    "id": "craft_yakitori",
+    "name": "Yakitori Skewer",
+    "station": "kitchen",
+    "levelReq": 2,
+    "inputs": [
+      { "item": "bat_wing", "qty": 2 },
+      { "item": "bamboo_shoot", "qty": 1 }
+    ],
+    "output": { "item": "yakitori", "qty": 2 },
+    "desc": "Grilled skewers. A tasty trail snack."
+  },
+  {
+    "id": "craft_noodle_bowl",
+    "name": "Noodle Bowl",
+    "station": "kitchen",
+    "levelReq": 3,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 2 },
+      { "item": "octopus_ink", "qty": 1 },
+      { "item": "honey", "qty": 1 }
+    ],
+    "output": { "item": "noodle_bowl", "qty": 2 },
+    "desc": "A steaming bowl of noodles. Very filling."
+  },
+  {
+    "id": "craft_life_potion",
+    "name": "Life Potion",
+    "station": "kitchen",
+    "levelReq": 5,
+    "inputs": [
+      { "item": "spirit_essence", "qty": 2 },
+      { "item": "flame_ember", "qty": 1 },
+      { "item": "honey", "qty": 2 }
+    ],
+    "output": { "item": "life_potion", "qty": 1 },
+    "desc": "A red potion that restores a significant amount of HP."
+  },
+  {
+    "id": "craft_kappa_scale_guard",
+    "name": "Kappa Scale Guard",
+    "station": "forge",
+    "levelReq": 3,
+    "inputs": [
+      { "item": "kappa_scale", "qty": 3 },
+      { "item": "bone_shard", "qty": 2 }
+    ],
+    "output": { "item": "kappa_scale_guard", "qty": 1 },
+    "desc": "Bracers plated with river-kappa scale."
+  },
+  {
+    "id": "craft_iron_geta",
+    "name": "Iron Geta",
+    "station": "forge",
+    "levelReq": 5,
+    "inputs": [
+      { "item": "iron_ingot", "qty": 2 },
+      { "item": "bone_shard", "qty": 3 }
+    ],
+    "output": { "item": "iron_geta", "qty": 1 },
+    "xp": 28,
+    "discovery": "scroll",
+    "discoverySource": "chest:MountainPass:summit_chest",
+    "desc": "Iron-shod sandals. Heavy, but they hold the trail."
+  },
+  {
+    "id": "craft_lizard_guards",
+    "name": "Lizard Hide Guards",
+    "station": "workshop",
+    "levelReq": 3,
+    "inputs": [
+      { "item": "lizard_hide", "qty": 4 },
+      { "item": "spider_silk", "qty": 2 }
+    ],
+    "output": { "item": "lizard_guards", "qty": 1 },
+    "desc": "Bracers crafted from lizard hide. Flexible and tough."
+  },
+  {
+    "id": "craft_bear_greaves",
+    "name": "Bear Pelt Greaves",
+    "station": "workshop",
+    "levelReq": 5,
+    "inputs": [
+      { "item": "bear_pelt", "qty": 2 },
+      { "item": "lizard_hide", "qty": 2 }
+    ],
+    "output": { "item": "bear_greaves", "qty": 1 },
+    "desc": "Greaves lined with warm bear pelt."
+  },
+  {
+    "id": "craft_samurai_helmet",
+    "name": "Samurai Helmet",
+    "station": "forge",
+    "levelReq": 8,
+    "inputs": [
+      { "item": "iron_claw", "qty": 3 },
+      { "item": "bone_shard", "qty": 4 },
+      { "item": "dragon_scale", "qty": 1 }
+    ],
+    "output": { "item": "samurai_helmet", "qty": 1 },
+    "desc": "A lacquered samurai helmet. Sturdy and imposing."
+  },
+  {
+    "id": "craft_spider_silk_gi",
+    "name": "Spider Silk Gi",
+    "station": "workshop",
+    "levelReq": 6,
+    "inputs": [
+      { "item": "spider_silk", "qty": 8 },
+      { "item": "owl_feather", "qty": 3 }
+    ],
+    "output": { "item": "spider_silk_gi", "qty": 1 },
+    "desc": "A gi woven from spider silk. Light as air, strong as iron."
+  },
+  {
+    "id": "craft_owl_feather_cape",
+    "name": "Owl Feather Cape",
+    "station": "workshop",
+    "levelReq": 5,
+    "inputs": [
+      { "item": "owl_feather", "qty": 6 },
+      { "item": "spider_silk", "qty": 3 }
+    ],
+    "output": { "item": "owl_feather_cape", "qty": 1 },
+    "desc": "A cape of silent owl feathers. Move like a shadow."
+  },
+  {
+    "id": "craft_spirit_amulet",
+    "name": "Spirit Amulet",
+    "station": "forge",
+    "levelReq": 6,
+    "inputs": [
+      { "item": "spirit_essence", "qty": 3 },
+      { "item": "eye_lens", "qty": 2 }
+    ],
+    "output": { "item": "spirit_amulet", "qty": 1 },
+    "desc": "An amulet glowing with spirit essence."
+  },
+  {
+    "id": "craft_flame_staff",
+    "name": "Flame Staff",
+    "station": "forge",
+    "levelReq": 7,
+    "inputs": [
+      { "item": "flame_ember", "qty": 3 },
+      { "item": "bamboo_shoot", "qty": 3 },
+      { "item": "spirit_essence", "qty": 1 }
+    ],
+    "output": { "item": "flame_staff", "qty": 1 },
+    "xp": 42,
+    "discovery": "boss",
+    "discoverySource": "boss:forest_wraith",
+    "desc": "A staff topped with a burning ember."
+  },
+  {
+    "id": "craft_oni_blade",
+    "name": "Oni Blade",
+    "station": "forge",
+    "levelReq": 10,
+    "inputs": [
+      { "item": "oni_horn", "qty": 1 },
+      { "item": "iron_ingot", "qty": 4 },
+      { "item": "dragon_scale", "qty": 2 }
+    ],
+    "output": { "item": "oni_blade", "qty": 1 },
+    "xp": 70,
+    "discovery": "boss",
+    "discoverySource": "boss:mountain_king",
+    "desc": "A blade forged from an Oni Horn. Hungers for battle."
+  },
+  {
+    "id": "cook_forest_lunchbox",
+    "name": "Forest Lunchbox",
+    "station": "kitchen",
+    "levelReq": 6,
+    "inputs": [
+      { "item": "rice", "qty": 2 },
+      { "item": "mushroom", "qty": 2 },
+      { "item": "wild_herb", "qty": 1 }
+    ],
+    "output": { "item": "forest_lunchbox", "qty": 2 },
+    "xp": 36,
+    "discovery": "expedition",
+    "discoverySource": "expedition:forest_lunchbox",
+    "desc": "Recreate the recovered woodland bento with farm rice and forest forage."
+  },
+  {
+    "id": "craft_starfall_charm",
+    "name": "Starfall Charm",
+    "station": "workshop",
+    "levelReq": 12,
+    "inputs": [
+      { "item": "starfall_shard", "qty": 2 },
+      { "item": "iron_ingot", "qty": 2 }
+    ],
+    "output": { "item": "starfall_charm", "qty": 1 },
+    "xp": 70,
+    "discovery": "world-event",
+    "discoverySource": "world-event:mountain_starfall",
+    "desc": "Bind two recurring starfall shards into a charm that scales beyond its level floor."
+  },
+  {
+    "id": "craft_dragon_armor",
+    "name": "Dragon Scale Armor",
+    "station": "forge",
+    "levelReq": 48,
+    "inputs": [
+      { "item": "dragon_scale", "qty": 5 },
+      { "item": "gold_dragon_scale", "qty": 1 },
+      { "item": "starsteel", "qty": 3 }
+    ],
+    "output": { "item": "dragon_armor", "qty": 1 },
+    "xp": 340,
+    "discovery": "starter",
+    "desc": "Apex craftable vitality-aligned armor."
+  },
+  {
+    "id": "craft_foragers_poultice",
+    "name": "Forager's Poultice",
+    "station": "kitchen",
+    "levelReq": 2,
+    "inputs": [
+      { "item": "wild_herb", "qty": 2 },
+      { "item": "compost", "qty": 1 }
+    ],
+    "output": { "item": "foragers_poultice", "qty": 2 },
+    "xp": 14,
+    "discovery": "world-event",
+    "discoverySource": "world-event:valley_forager",
+    "desc": "Bind fresh herbs into a practical field dressing using rich garden compost."
+  },
+  {
+    "id": "craft_jade_ring",
+    "name": "Jade Ring",
+    "station": "workshop",
+    "levelReq": 4,
+    "inputs": [
+      { "item": "eye_lens", "qty": 2 },
+      { "item": "spider_silk", "qty": 2 }
+    ],
+    "output": { "item": "jade_ring", "qty": 1 },
+    "desc": "A carved jade band, faintly warm."
+  },
+  {
+    "id": "craft_omamori_charm",
+    "name": "Omamori Charm",
+    "station": "workshop",
+    "levelReq": 4,
+    "inputs": [
+      { "item": "spirit_essence", "qty": 2 },
+      { "item": "owl_feather", "qty": 2 }
+    ],
+    "output": { "item": "omamori_charm", "qty": 1 },
+    "desc": "A protective shrine charm."
+  },
+  { "id": "refine_tempered_iron", "name": "Tempered Iron", "station": "forge", "levelReq": 10, "inputs": [{ "item": "iron_ingot", "qty": 2 }, { "item": "iron_claw", "qty": 1 }], "output": { "item": "tempered_iron", "qty": 1 }, "xp": 50, "discovery": "starter", "desc": "Fold iron into the first veteran crafting material." },
+  { "id": "refine_moonwood", "name": "Moonwood", "station": "workshop", "levelReq": 20, "inputs": [{ "item": "bamboo_shoot", "qty": 5 }, { "item": "spirit_essence", "qty": 2 }], "output": { "item": "moonwood", "qty": 1 }, "xp": 90, "discovery": "starter", "desc": "Stabilize pale heartwood with spirit essence." },
+  { "id": "refine_stormglass", "name": "Stormglass", "station": "forge", "levelReq": 30, "inputs": [{ "item": "eye_lens", "qty": 3 }, { "item": "flame_ember", "qty": 2 }, { "item": "spirit_essence", "qty": 2 }], "output": { "item": "stormglass", "qty": 1 }, "xp": 140, "discovery": "starter", "desc": "Fuse clear crystal under controlled heat." },
+  { "id": "refine_starsteel", "name": "Starsteel", "station": "forge", "levelReq": 40, "inputs": [{ "item": "tempered_iron", "qty": 2 }, { "item": "stormglass", "qty": 1 }, { "item": "dragon_scale", "qty": 2 }], "output": { "item": "starsteel", "qty": 1 }, "xp": 210, "discovery": "starter", "desc": "Alloy veteran metals into high-peak starsteel." },
+  { "id": "refine_elder_core", "name": "Elder Core", "station": "workshop", "levelReq": 50, "inputs": [{ "item": "moonwood", "qty": 2 }, { "item": "spirit_essence", "qty": 5 }, { "item": "gold_pelt", "qty": 1 }], "output": { "item": "elder_core", "qty": 1 }, "xp": 300, "discovery": "starter", "desc": "Bind ancient woodland energy into a stable core." },
+  { "id": "refine_crown_shard", "name": "Crown Shard", "station": "forge", "levelReq": 60, "inputs": [{ "item": "starsteel", "qty": 2 }, { "item": "elder_core", "qty": 1 }, { "item": "oni_horn", "qty": 2 }], "output": { "item": "crown_shard", "qty": 1 }, "xp": 450, "discovery": "starter", "desc": "Refine the level-cap component for sovereign equipment." },
+
+  { "id": "brew_trail_elixir", "name": "Trail Elixir", "station": "kitchen", "levelReq": 10, "inputs": [{ "item": "wild_herb", "qty": 3 }, { "item": "honey", "qty": 2 }], "output": { "item": "trail_elixir", "qty": 2 }, "xp": 45, "discovery": "starter", "desc": "A reliable restorative for veteran routes." },
+  { "id": "cook_moonbroth", "name": "Moonwood Broth", "station": "kitchen", "levelReq": 20, "inputs": [{ "item": "moonwood", "qty": 1 }, { "item": "river_fish", "qty": 2 }, { "item": "wild_herb", "qty": 2 }], "output": { "item": "moonbroth", "qty": 2 }, "xp": 85, "discovery": "starter", "desc": "A luminous meal for deeper woodland travel." },
+  { "id": "brew_storm_tonic", "name": "Storm Tonic", "station": "kitchen", "levelReq": 30, "inputs": [{ "item": "stormglass", "qty": 1 }, { "item": "life_potion", "qty": 2 }], "output": { "item": "storm_tonic", "qty": 2 }, "xp": 130, "discovery": "starter", "desc": "A charged tonic for exposed mountain shelves." },
+  { "id": "cook_starfruit_feast", "name": "Starfruit Feast", "station": "kitchen", "levelReq": 40, "inputs": [{ "item": "starsteel", "qty": 1 }, { "item": "noodle_bowl", "qty": 3 }, { "item": "honey", "qty": 3 }], "output": { "item": "starfruit_feast", "qty": 2 }, "xp": 190, "discovery": "starter", "desc": "A high-peak meal served on heat-holding starsteel." },
+  { "id": "brew_elder_draught", "name": "Elder Draught", "station": "kitchen", "levelReq": 50, "inputs": [{ "item": "elder_core", "qty": 1 }, { "item": "wild_herb", "qty": 8 }, { "item": "life_potion", "qty": 2 }], "output": { "item": "elder_draught", "qty": 2 }, "xp": 280, "discovery": "starter", "desc": "Ancient sap turned into an apex recovery drink." },
+  { "id": "brew_sovereign_elixir", "name": "Sovereign Elixir", "station": "kitchen", "levelReq": 60, "inputs": [{ "item": "crown_shard", "qty": 1 }, { "item": "elder_draught", "qty": 2 }, { "item": "gold_pelt", "qty": 1 }], "output": { "item": "sovereign_elixir", "qty": 2 }, "xp": 420, "discovery": "starter", "desc": "The strongest level-cap restorative currently known." },
+
+  { "id": "craft_ironwood_saber", "name": "Ironwood Saber", "station": "forge", "levelReq": 12, "inputs": [{ "item": "tempered_iron", "qty": 2 }, { "item": "bamboo_shoot", "qty": 3 }], "output": { "item": "ironwood_saber", "qty": 1 }, "xp": 65, "discovery": "starter", "desc": "Level-12 blade weapon." },
+  { "id": "craft_hunter_longbow", "name": "Hunter Longbow", "station": "workshop", "levelReq": 12, "inputs": [{ "item": "tempered_iron", "qty": 1 }, { "item": "bamboo_shoot", "qty": 5 }, { "item": "spider_silk", "qty": 3 }], "output": { "item": "hunter_longbow", "qty": 1 }, "xp": 65, "discovery": "starter", "desc": "Level-12 ranged weapon." },
+  { "id": "craft_rune_quill", "name": "Rune Quill", "station": "workshop", "levelReq": 12, "inputs": [{ "item": "tempered_iron", "qty": 1 }, { "item": "eye_lens", "qty": 2 }, { "item": "spirit_essence", "qty": 2 }], "output": { "item": "rune_quill", "qty": 1 }, "xp": 65, "discovery": "starter", "desc": "Level-12 kana weapon." },
+  { "id": "craft_iron_maul", "name": "Iron Maul", "station": "forge", "levelReq": 12, "inputs": [{ "item": "tempered_iron", "qty": 3 }, { "item": "bear_pelt", "qty": 1 }], "output": { "item": "iron_maul", "qty": 1 }, "xp": 65, "discovery": "starter", "desc": "Level-12 heavy weapon." },
+
+  { "id": "craft_moonsteel_blade", "name": "Moonsteel Blade", "station": "forge", "levelReq": 24, "inputs": [{ "item": "tempered_iron", "qty": 3 }, { "item": "moonwood", "qty": 2 }], "output": { "item": "moonsteel_blade", "qty": 1 }, "xp": 120, "discovery": "starter", "desc": "Level-24 blade weapon." },
+  { "id": "craft_gale_recurve", "name": "Gale Recurve", "station": "workshop", "levelReq": 24, "inputs": [{ "item": "moonwood", "qty": 3 }, { "item": "owl_feather", "qty": 5 }, { "item": "spider_silk", "qty": 4 }], "output": { "item": "gale_recurve", "qty": 1 }, "xp": 120, "discovery": "starter", "desc": "Level-24 ranged weapon." },
+  { "id": "craft_moon_script", "name": "Moon Script", "station": "workshop", "levelReq": 24, "inputs": [{ "item": "moonwood", "qty": 2 }, { "item": "spirit_essence", "qty": 4 }, { "item": "octopus_ink", "qty": 3 }], "output": { "item": "moon_script", "qty": 1 }, "xp": 120, "discovery": "starter", "desc": "Level-24 kana weapon." },
+  { "id": "craft_pass_breaker", "name": "Pass Breaker", "station": "forge", "levelReq": 24, "inputs": [{ "item": "tempered_iron", "qty": 4 }, { "item": "moonwood", "qty": 1 }, { "item": "iron_claw", "qty": 3 }], "output": { "item": "pass_breaker", "qty": 1 }, "xp": 120, "discovery": "starter", "desc": "Level-24 heavy weapon." },
+
+  { "id": "craft_stormglass_edge", "name": "Stormglass Edge", "station": "forge", "levelReq": 36, "inputs": [{ "item": "stormglass", "qty": 3 }, { "item": "tempered_iron", "qty": 2 }], "output": { "item": "stormglass_edge", "qty": 1 }, "xp": 190, "discovery": "starter", "desc": "Level-36 blade weapon." },
+  { "id": "craft_thunderbow", "name": "Thunderbow", "station": "workshop", "levelReq": 36, "inputs": [{ "item": "stormglass", "qty": 2 }, { "item": "moonwood", "qty": 3 }, { "item": "tengu_fan", "qty": 2 }], "output": { "item": "thunderbow", "qty": 1 }, "xp": 190, "discovery": "starter", "desc": "Level-36 ranged weapon." },
+  { "id": "craft_tempest_grimoire", "name": "Tempest Grimoire", "station": "workshop", "levelReq": 36, "inputs": [{ "item": "stormglass", "qty": 2 }, { "item": "octopus_ink", "qty": 5 }, { "item": "spirit_essence", "qty": 5 }], "output": { "item": "tempest_grimoire", "qty": 1 }, "xp": 190, "discovery": "starter", "desc": "Level-36 kana weapon." },
+  { "id": "craft_storm_ram", "name": "Storm Ram", "station": "forge", "levelReq": 36, "inputs": [{ "item": "stormglass", "qty": 3 }, { "item": "tempered_iron", "qty": 3 }, { "item": "dragon_scale", "qty": 2 }], "output": { "item": "storm_ram", "qty": 1 }, "xp": 190, "discovery": "starter", "desc": "Level-36 heavy weapon." },
+
+  { "id": "craft_starsteel_sabre", "name": "Red Dragon Sabre", "station": "forge", "levelReq": 48, "inputs": [{ "item": "starsteel", "qty": 3 }, { "item": "red_dragon_scale", "qty": 4 }], "output": { "item": "starsteel_sabre", "qty": 1 }, "xp": 340, "discovery": "starter", "desc": "Apex craftable power-aligned blade." },
+  { "id": "craft_horizon_bow", "name": "Silver Dragon Bow", "station": "workshop", "levelReq": 48, "inputs": [{ "item": "starsteel", "qty": 2 }, { "item": "silver_dragon_scale", "qty": 4 }, { "item": "owl_feather", "qty": 8 }], "output": { "item": "horizon_bow", "qty": 1 }, "xp": 340, "discovery": "starter", "desc": "Apex craftable defense-aligned bow." },
+  { "id": "craft_astral_codex", "name": "Blue Dragon Codex", "station": "workshop", "levelReq": 48, "inputs": [{ "item": "starsteel", "qty": 2 }, { "item": "blue_dragon_scale", "qty": 4 }, { "item": "octopus_ink", "qty": 8 }], "output": { "item": "astral_codex", "qty": 1 }, "xp": 340, "discovery": "starter", "desc": "Apex craftable focus-aligned weapon." },
+  { "id": "craft_red_dragon_maul", "name": "Red Dragon Maul", "station": "forge", "levelReq": 48, "inputs": [{ "item": "starsteel", "qty": 4 }, { "item": "red_dragon_scale", "qty": 5 }, { "item": "oni_horn", "qty": 1 }], "output": { "item": "red_dragon_maul", "qty": 1 }, "xp": 340, "discovery": "starter", "desc": "Apex craftable power-aligned heavy weapon." },
+
+  { "id": "craft_boreal_pelt_bracers", "name": "Boreal Pelt Bracers", "station": "workshop", "levelReq": 22, "inputs": [{ "item": "boreal_pelt", "qty": 2 }, { "item": "spider_silk", "qty": 2 }], "output": { "item": "boreal_pelt_bracers", "qty": 1 }, "xp": 55, "discovery": "starter", "desc": "Line leather bracers with thick boreal pelt." },
+  { "id": "craft_ice_claw_boots", "name": "Ice-Claw Boots", "station": "workshop", "levelReq": 24, "inputs": [{ "item": "frost_essence", "qty": 2 }, { "item": "raw_iron_ore", "qty": 2 }, { "item": "boreal_pelt", "qty": 1 }], "output": { "item": "ice_claw_boots", "qty": 1 }, "xp": 65, "discovery": "starter", "desc": "Treat iron boot-soles with frost essence for grip on ice." },
+  { "id": "craft_boreal_charm", "name": "Boreal Charm", "station": "workshop", "levelReq": 25, "inputs": [{ "item": "frost_core", "qty": 1 }, { "item": "boreal_pelt", "qty": 2 }, { "item": "frost_essence", "qty": 2 }], "output": { "item": "boreal_charm", "qty": 1 }, "xp": 90, "discovery": "starter", "desc": "Carve a protective charm from frost-touched bone." },
+  { "id": "cook_frost_broth", "name": "Frost Broth", "station": "kitchen", "levelReq": 20, "inputs": [{ "item": "frost_essence", "qty": 1 }, { "item": "wild_herb", "qty": 2 }, { "item": "river_fish", "qty": 1 }], "output": { "item": "frost_broth", "qty": 2 }, "xp": 40, "discovery": "starter", "desc": "Brew a warming broth from boreal herbs and river fish." },
+  { "id": "craft_frost_edge", "name": "Frost Edge", "station": "forge", "levelReq": 36, "inputs": [{ "item": "frost_core", "qty": 1 }, { "item": "starsteel", "qty": 3 }, { "item": "tempered_iron", "qty": 2 }], "output": { "item": "frost_edge", "qty": 1 }, "xp": 200, "discovery": "boss", "discoverySource": "boss:frost_titan", "desc": "A frost-touched blade forged from the Frost Titan's core." },
+
+  { "id": "craft_shrine_charm", "name": "Shrine Charm", "station": "workshop", "levelReq": 30, "inputs": [{ "item": "elder_core", "qty": 1 }, { "item": "spirit_essence", "qty": 2 }, { "item": "moonwood", "qty": 3 }], "output": { "item": "shrine_charm", "qty": 1 }, "xp": 120, "discovery": "starter", "desc": "Carve a protective charm from the Eastern Reach shrine stone." },
+  { "id": "craft_wraith_signet", "name": "Wraith Signet", "station": "workshop", "levelReq": 45, "inputs": [{ "item": "elder_core", "qty": 1 }, { "item": "spirit_essence", "qty": 5 }, { "item": "eye_lens", "qty": 3 }], "output": { "item": "wraith_signet", "qty": 1 }, "xp": 260, "discovery": "boss", "discoverySource": "boss:elder_wraith", "desc": "A ring bearing the sigil of the Elder Wraith." },
+  { "id": "cook_hanas_raid_platter", "name": "Hana's Raid Platter", "station": "kitchen", "levelReq": 8, "inputs": [{ "item": "rice", "qty": 2 }, { "item": "river_fish", "qty": 1 }, { "item": "wild_herb", "qty": 1 }], "output": { "item": "sushi_platter", "qty": 1 }, "xp": 55, "discovery": "raid", "discoverySource": "raid:sushi_prep", "desc": "A sustaining platter learned by completing the Sushi Prep Raid." },
+  { "id": "refine_bronze_ingot", "name": "Bronze Ingot", "station": "forge", "levelReq": 3, "inputs": [{ "item": "copper_ore", "qty": 2 }, { "item": "raw_iron_ore", "qty": 1 }], "output": { "item": "bronze_ingot", "qty": 1 }, "xp": 12, "discovery": "starter", "desc": "Smelt copper and iron ore into bronze." },
+  { "id": "craft_canyon_crusher", "name": "Canyon Crusher", "station": "forge", "levelReq": 12, "inputs": [{ "item": "bronze_ingot", "qty": 4 }, { "item": "tempered_iron", "qty": 2 }], "output": { "item": "canyon_crusher", "qty": 1 }, "xp": 75, "discovery": "starter", "desc": "A heavy sandstone mallet. Slow but devastating." },
+  { "id": "brew_kitsune_dango", "name": "Kitsune Dango", "station": "kitchen", "levelReq": 8, "inputs": [{ "item": "kitsune_tail", "qty": 1 }, { "item": "honey", "qty": 2 }], "output": { "item": "kitsune_dango", "qty": 2 }, "xp": 35, "discovery": "starter", "desc": "A sweet skewered treat made from local honey and kitsune tails." },
+  { "id": "craft_fire_ward", "name": "Fire Ward Amulet", "station": "workshop", "levelReq": 10, "inputs": [{ "item": "flame_ember", "qty": 2 }, { "item": "bronze_ingot", "qty": 2 }, { "item": "jade_ring", "qty": 1 }], "output": { "item": "fire_ward_amulet", "qty": 1 }, "xp": 60, "discovery": "starter", "desc": "A protective basalt stone amulet." },
+  { "id": "cook_spicy_curry", "name": "Spicy Curry", "station": "kitchen", "levelReq": 4, "inputs": [{ "item": "canyon_carp", "qty": 1 }, { "item": "wild_herb", "qty": 2 }], "output": { "item": "spicy_curry", "qty": 1 }, "xp": 30, "discovery": "starter", "desc": "A burning curry that increases combat ATK." },
+  { "id": "cook_salmon_sushi", "name": "Salmon Sushi", "station": "kitchen", "levelReq": 10, "inputs": [{ "item": "boreal_salmon", "qty": 1 }, { "item": "rice", "qty": 2 }], "output": { "item": "salmon_sushi", "qty": 1 }, "xp": 70, "discovery": "starter", "desc": "Premium salmon sushi that heals and shields." },
+  { "id": "cook_stone_soup", "name": "Stone Soup", "station": "kitchen", "levelReq": 6, "inputs": [{ "item": "copper_ore", "qty": 1 }, { "item": "mushroom", "qty": 2 }], "output": { "item": "stone_soup", "qty": 1 }, "xp": 45, "discovery": "starter", "desc": "A mineral-rich soup that increases combat DEF." },
+  { "id": "cook_fire_oil", "name": "Fire Oil Flask", "station": "kitchen", "levelReq": 5, "inputs": [{ "item": "lantern_oil", "qty": 1 }, { "item": "flame_ember", "qty": 1 }], "output": { "item": "fire_oil", "qty": 1 }, "xp": 35, "discovery": "starter", "desc": "A combustible oil flask thrown for instant combat damage." }
+]

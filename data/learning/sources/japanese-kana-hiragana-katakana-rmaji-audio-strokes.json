@@ -1,0 +1,2452 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "576084877",
+    "deckName": "Japanese Kana Hiragana Katakana Rmaji audio strokes",
+    "author": "",
+    "url": "https://ankiweb.net/shared/info/576084877",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "sourceNoteId": "1356971128946",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "あ",
+      "answer": "1",
+      "choices": [
+        "1",
+        "51",
+        "97",
+        "21"
+      ],
+      "reading": "あ",
+      "meaning": "1",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-2",
+      "sourceNoteId": "1356971128947",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "い",
+      "answer": "2",
+      "choices": [
+        "2",
+        "104",
+        "63",
+        "13"
+      ],
+      "reading": "い",
+      "meaning": "2",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-3",
+      "sourceNoteId": "1356971128948",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "う",
+      "answer": "3",
+      "choices": [
+        "3",
+        "4",
+        "69",
+        "46"
+      ],
+      "reading": "う",
+      "meaning": "3",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-4",
+      "sourceNoteId": "1356971128949",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "え",
+      "answer": "4",
+      "choices": [
+        "4",
+        "31",
+        "123",
+        "36"
+      ],
+      "reading": "え",
+      "meaning": "4",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-5",
+      "sourceNoteId": "1356971128950",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "お",
+      "answer": "5",
+      "choices": [
+        "5",
+        "4",
+        "67",
+        "42"
+      ],
+      "reading": "お",
+      "meaning": "5",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-6",
+      "sourceNoteId": "1356971128951",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "か",
+      "answer": "6",
+      "choices": [
+        "6",
+        "19",
+        "102",
+        "86"
+      ],
+      "reading": "か",
+      "meaning": "6",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-7",
+      "sourceNoteId": "1356971128952",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "き",
+      "answer": "7",
+      "choices": [
+        "7",
+        "19",
+        "14",
+        "49"
+      ],
+      "reading": "き",
+      "meaning": "7",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-8",
+      "sourceNoteId": "1356971128953",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "く",
+      "answer": "8",
+      "choices": [
+        "8",
+        "25",
+        "71",
+        "39"
+      ],
+      "reading": "く",
+      "meaning": "8",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-9",
+      "sourceNoteId": "1356971128954",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "け",
+      "answer": "9",
+      "choices": [
+        "9",
+        "93",
+        "104",
+        "108"
+      ],
+      "reading": "け",
+      "meaning": "9",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-10",
+      "sourceNoteId": "1356971128955",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "こ",
+      "answer": "10",
+      "choices": [
+        "10",
+        "98",
+        "45",
+        "30"
+      ],
+      "reading": "こ",
+      "meaning": "10",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-11",
+      "sourceNoteId": "1356971128956",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "さ",
+      "answer": "11",
+      "choices": [
+        "11",
+        "54",
+        "69",
+        "86"
+      ],
+      "reading": "さ",
+      "meaning": "11",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-12",
+      "sourceNoteId": "1356971128957",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "し",
+      "answer": "12",
+      "choices": [
+        "12",
+        "16",
+        "74",
+        "63"
+      ],
+      "reading": "し",
+      "meaning": "12",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-13",
+      "sourceNoteId": "1356971128958",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "す",
+      "answer": "13",
+      "choices": [
+        "13",
+        "9",
+        "89",
+        "88"
+      ],
+      "reading": "す",
+      "meaning": "13",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-14",
+      "sourceNoteId": "1356971128959",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "せ",
+      "answer": "14",
+      "choices": [
+        "14",
+        "69",
+        "27",
+        "31"
+      ],
+      "reading": "せ",
+      "meaning": "14",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-15",
+      "sourceNoteId": "1356971128960",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "そ",
+      "answer": "15",
+      "choices": [
+        "15",
+        "13",
+        "85",
+        "106"
+      ],
+      "reading": "そ",
+      "meaning": "15",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-16",
+      "sourceNoteId": "1356971128961",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "た",
+      "answer": "16",
+      "choices": [
+        "16",
+        "76",
+        "17",
+        "28"
+      ],
+      "reading": "た",
+      "meaning": "16",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-17",
+      "sourceNoteId": "1356971128962",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ち",
+      "answer": "17",
+      "choices": [
+        "17",
+        "90",
+        "14",
+        "6"
+      ],
+      "reading": "ち",
+      "meaning": "17",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-18",
+      "sourceNoteId": "1356971128963",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "つ",
+      "answer": "18",
+      "choices": [
+        "18",
+        "9",
+        "46",
+        "12"
+      ],
+      "reading": "つ",
+      "meaning": "18",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-19",
+      "sourceNoteId": "1356971128964",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "て",
+      "answer": "19",
+      "choices": [
+        "19",
+        "105",
+        "101",
+        "88"
+      ],
+      "reading": "て",
+      "meaning": "19",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-20",
+      "sourceNoteId": "1356971128965",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "と",
+      "answer": "20",
+      "choices": [
+        "20",
+        "22",
+        "67",
+        "44"
+      ],
+      "reading": "と",
+      "meaning": "20",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-21",
+      "sourceNoteId": "1356971128966",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "な",
+      "answer": "21",
+      "choices": [
+        "21",
+        "28",
+        "100",
+        "60"
+      ],
+      "reading": "な",
+      "meaning": "21",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-22",
+      "sourceNoteId": "1356971128967",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "に",
+      "answer": "22",
+      "choices": [
+        "22",
+        "46",
+        "60",
+        "30"
+      ],
+      "reading": "に",
+      "meaning": "22",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-23",
+      "sourceNoteId": "1356971128968",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぬ",
+      "answer": "23",
+      "choices": [
+        "23",
+        "54",
+        "79",
+        "29"
+      ],
+      "reading": "ぬ",
+      "meaning": "23",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-24",
+      "sourceNoteId": "1356971128969",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ね",
+      "answer": "24",
+      "choices": [
+        "24",
+        "118",
+        "59",
+        "1"
+      ],
+      "reading": "ね",
+      "meaning": "24",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-25",
+      "sourceNoteId": "1356971128970",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "の",
+      "answer": "25",
+      "choices": [
+        "25",
+        "73",
+        "17",
+        "3"
+      ],
+      "reading": "の",
+      "meaning": "25",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-26",
+      "sourceNoteId": "1356971128971",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "は",
+      "answer": "26",
+      "choices": [
+        "26",
+        "86",
+        "62",
+        "6"
+      ],
+      "reading": "は",
+      "meaning": "26",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-27",
+      "sourceNoteId": "1356971128972",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ひ",
+      "answer": "27",
+      "choices": [
+        "27",
+        "82",
+        "35",
+        "20"
+      ],
+      "reading": "ひ",
+      "meaning": "27",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-28",
+      "sourceNoteId": "1356971128973",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ふ",
+      "answer": "28",
+      "choices": [
+        "28",
+        "48",
+        "121",
+        "89"
+      ],
+      "reading": "ふ",
+      "meaning": "28",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-29",
+      "sourceNoteId": "1356971128974",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "へ",
+      "answer": "29",
+      "choices": [
+        "29",
+        "50",
+        "25",
+        "45"
+      ],
+      "reading": "へ",
+      "meaning": "29",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-30",
+      "sourceNoteId": "1356971128975",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ほ",
+      "answer": "30",
+      "choices": [
+        "30",
+        "111",
+        "51",
+        "48"
+      ],
+      "reading": "ほ",
+      "meaning": "30",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-31",
+      "sourceNoteId": "1356971128976",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ま",
+      "answer": "31",
+      "choices": [
+        "31",
+        "113",
+        "32",
+        "1"
+      ],
+      "reading": "ま",
+      "meaning": "31",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-32",
+      "sourceNoteId": "1356971128977",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "み",
+      "answer": "32",
+      "choices": [
+        "32",
+        "39",
+        "66",
+        "122"
+      ],
+      "reading": "み",
+      "meaning": "32",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-33",
+      "sourceNoteId": "1356971128978",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "む",
+      "answer": "33",
+      "choices": [
+        "33",
+        "55",
+        "71",
+        "48"
+      ],
+      "reading": "む",
+      "meaning": "33",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-34",
+      "sourceNoteId": "1356971128979",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "め",
+      "answer": "34",
+      "choices": [
+        "34",
+        "93",
+        "48",
+        "25"
+      ],
+      "reading": "め",
+      "meaning": "34",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-35",
+      "sourceNoteId": "1356971128980",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "も",
+      "answer": "35",
+      "choices": [
+        "35",
+        "54",
+        "1",
+        "15"
+      ],
+      "reading": "も",
+      "meaning": "35",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-36",
+      "sourceNoteId": "1356971128981",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "や",
+      "answer": "36",
+      "choices": [
+        "36",
+        "22",
+        "66",
+        "2"
+      ],
+      "reading": "や",
+      "meaning": "36",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-37",
+      "sourceNoteId": "1356971128982",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ゆ",
+      "answer": "37",
+      "choices": [
+        "37",
+        "93",
+        "12",
+        "6"
+      ],
+      "reading": "ゆ",
+      "meaning": "37",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-38",
+      "sourceNoteId": "1356971128983",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "よ",
+      "answer": "38",
+      "choices": [
+        "38",
+        "90",
+        "23",
+        "54"
+      ],
+      "reading": "よ",
+      "meaning": "38",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-39",
+      "sourceNoteId": "1356971128984",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ら",
+      "answer": "39",
+      "choices": [
+        "39",
+        "63",
+        "25",
+        "48"
+      ],
+      "reading": "ら",
+      "meaning": "39",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-40",
+      "sourceNoteId": "1356971128985",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "り",
+      "answer": "40",
+      "choices": [
+        "40",
+        "50",
+        "23",
+        "111"
+      ],
+      "reading": "り",
+      "meaning": "40",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-41",
+      "sourceNoteId": "1356971128986",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "る",
+      "answer": "41",
+      "choices": [
+        "41",
+        "93",
+        "51",
+        "16"
+      ],
+      "reading": "る",
+      "meaning": "41",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-42",
+      "sourceNoteId": "1356971128987",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "れ",
+      "answer": "42",
+      "choices": [
+        "42",
+        "55",
+        "68",
+        "44"
+      ],
+      "reading": "れ",
+      "meaning": "42",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-43",
+      "sourceNoteId": "1356971128988",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ろ",
+      "answer": "43",
+      "choices": [
+        "43",
+        "47",
+        "20",
+        "13"
+      ],
+      "reading": "ろ",
+      "meaning": "43",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-44",
+      "sourceNoteId": "1356971128989",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "わ",
+      "answer": "44",
+      "choices": [
+        "44",
+        "94",
+        "17",
+        "54"
+      ],
+      "reading": "わ",
+      "meaning": "44",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-45",
+      "sourceNoteId": "1356971128990",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "を",
+      "answer": "45",
+      "choices": [
+        "45",
+        "4",
+        "56",
+        "77"
+      ],
+      "reading": "を",
+      "meaning": "45",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-46",
+      "sourceNoteId": "1356971128991",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ん",
+      "answer": "46",
+      "choices": [
+        "46",
+        "5",
+        "14",
+        "61"
+      ],
+      "reading": "ん",
+      "meaning": "46",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-47",
+      "sourceNoteId": "1356971128992",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "が",
+      "answer": "47",
+      "choices": [
+        "47",
+        "86",
+        "70",
+        "77"
+      ],
+      "reading": "が",
+      "meaning": "47",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-48",
+      "sourceNoteId": "1356971128993",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぎ",
+      "answer": "48",
+      "choices": [
+        "48",
+        "34",
+        "114",
+        "94"
+      ],
+      "reading": "ぎ",
+      "meaning": "48",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-49",
+      "sourceNoteId": "1356971128994",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぐ",
+      "answer": "49",
+      "choices": [
+        "49",
+        "33",
+        "57",
+        "2"
+      ],
+      "reading": "ぐ",
+      "meaning": "49",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-50",
+      "sourceNoteId": "1356971128995",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "げ",
+      "answer": "50",
+      "choices": [
+        "50",
+        "63",
+        "103",
+        "92"
+      ],
+      "reading": "げ",
+      "meaning": "50",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-51",
+      "sourceNoteId": "1356971128996",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ご",
+      "answer": "51",
+      "choices": [
+        "51",
+        "81",
+        "20",
+        "31"
+      ],
+      "reading": "ご",
+      "meaning": "51",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-52",
+      "sourceNoteId": "1356971128997",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ざ",
+      "answer": "52",
+      "choices": [
+        "52",
+        "79",
+        "44",
+        "3"
+      ],
+      "reading": "ざ",
+      "meaning": "52",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-53",
+      "sourceNoteId": "1356971128998",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "じ",
+      "answer": "53",
+      "choices": [
+        "53",
+        "46",
+        "73",
+        "26"
+      ],
+      "reading": "じ",
+      "meaning": "53",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-54",
+      "sourceNoteId": "1356971128999",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ず",
+      "answer": "54",
+      "choices": [
+        "54",
+        "10",
+        "1",
+        "23"
+      ],
+      "reading": "ず",
+      "meaning": "54",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-55",
+      "sourceNoteId": "1356971129000",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぜ",
+      "answer": "55",
+      "choices": [
+        "55",
+        "93",
+        "7",
+        "4"
+      ],
+      "reading": "ぜ",
+      "meaning": "55",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-56",
+      "sourceNoteId": "1356971129001",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぞ",
+      "answer": "56",
+      "choices": [
+        "56",
+        "110",
+        "35",
+        "16"
+      ],
+      "reading": "ぞ",
+      "meaning": "56",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-57",
+      "sourceNoteId": "1356971129002",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "だ",
+      "answer": "57",
+      "choices": [
+        "57",
+        "95",
+        "66",
+        "105"
+      ],
+      "reading": "だ",
+      "meaning": "57",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-58",
+      "sourceNoteId": "1356971129003",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぢ",
+      "answer": "58",
+      "choices": [
+        "58",
+        "27",
+        "66",
+        "7"
+      ],
+      "reading": "ぢ",
+      "meaning": "58",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-59",
+      "sourceNoteId": "1356971129004",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "づ",
+      "answer": "59",
+      "choices": [
+        "59",
+        "26",
+        "63",
+        "52"
+      ],
+      "reading": "づ",
+      "meaning": "59",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-60",
+      "sourceNoteId": "1356971129005",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "で",
+      "answer": "60",
+      "choices": [
+        "60",
+        "6",
+        "70",
+        "17"
+      ],
+      "reading": "で",
+      "meaning": "60",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-61",
+      "sourceNoteId": "1356971129006",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ど",
+      "answer": "61",
+      "choices": [
+        "61",
+        "89",
+        "99",
+        "94"
+      ],
+      "reading": "ど",
+      "meaning": "61",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-62",
+      "sourceNoteId": "1356971129007",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ば",
+      "answer": "62",
+      "choices": [
+        "62",
+        "72",
+        "106",
+        "108"
+      ],
+      "reading": "ば",
+      "meaning": "62",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-63",
+      "sourceNoteId": "1356971129008",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "び",
+      "answer": "63",
+      "choices": [
+        "63",
+        "67",
+        "72",
+        "65"
+      ],
+      "reading": "び",
+      "meaning": "63",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-64",
+      "sourceNoteId": "1356971129009",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぶ",
+      "answer": "64",
+      "choices": [
+        "64",
+        "122",
+        "72",
+        "86"
+      ],
+      "reading": "ぶ",
+      "meaning": "64",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-65",
+      "sourceNoteId": "1356971129010",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "べ",
+      "answer": "65",
+      "choices": [
+        "65",
+        "4",
+        "62",
+        "35"
+      ],
+      "reading": "べ",
+      "meaning": "65",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-66",
+      "sourceNoteId": "1356971129011",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぼ",
+      "answer": "66",
+      "choices": [
+        "66",
+        "46",
+        "67",
+        "79"
+      ],
+      "reading": "ぼ",
+      "meaning": "66",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-67",
+      "sourceNoteId": "1356971129012",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぱ",
+      "answer": "67",
+      "choices": [
+        "67",
+        "60",
+        "31",
+        "64"
+      ],
+      "reading": "ぱ",
+      "meaning": "67",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-68",
+      "sourceNoteId": "1356971129013",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぴ",
+      "answer": "68",
+      "choices": [
+        "68",
+        "11",
+        "38",
+        "87"
+      ],
+      "reading": "ぴ",
+      "meaning": "68",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-69",
+      "sourceNoteId": "1356971129014",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぷ",
+      "answer": "69",
+      "choices": [
+        "69",
+        "75",
+        "74",
+        "59"
+      ],
+      "reading": "ぷ",
+      "meaning": "69",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-70",
+      "sourceNoteId": "1356971129015",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ペ",
+      "answer": "70",
+      "choices": [
+        "70",
+        "63",
+        "105",
+        "66"
+      ],
+      "reading": "ペ",
+      "meaning": "70",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-71",
+      "sourceNoteId": "1356971129016",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぽ",
+      "answer": "71",
+      "choices": [
+        "71",
+        "94",
+        "45",
+        "15"
+      ],
+      "reading": "ぽ",
+      "meaning": "71",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-72",
+      "sourceNoteId": "1356971129017",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "きゃ",
+      "answer": "72",
+      "choices": [
+        "72",
+        "15",
+        "81",
+        "69"
+      ],
+      "reading": "きゃ",
+      "meaning": "72",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-73",
+      "sourceNoteId": "1356971129018",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "きゅ",
+      "answer": "73",
+      "choices": [
+        "73",
+        "16",
+        "68",
+        "33"
+      ],
+      "reading": "きゅ",
+      "meaning": "73",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-74",
+      "sourceNoteId": "1356971129019",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "きょ",
+      "answer": "74",
+      "choices": [
+        "74",
+        "52",
+        "4",
+        "15"
+      ],
+      "reading": "きょ",
+      "meaning": "74",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-75",
+      "sourceNoteId": "1356971129020",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぎゃ",
+      "answer": "75",
+      "choices": [
+        "75",
+        "91",
+        "71",
+        "80"
+      ],
+      "reading": "ぎゃ",
+      "meaning": "75",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-76",
+      "sourceNoteId": "1356971129021",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぎゅ",
+      "answer": "76",
+      "choices": [
+        "76",
+        "115",
+        "120",
+        "96"
+      ],
+      "reading": "ぎゅ",
+      "meaning": "76",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-77",
+      "sourceNoteId": "1356971129022",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぎょ",
+      "answer": "77",
+      "choices": [
+        "77",
+        "64",
+        "122",
+        "118"
+      ],
+      "reading": "ぎょ",
+      "meaning": "77",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-78",
+      "sourceNoteId": "1356971129023",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "しゃ",
+      "answer": "78",
+      "choices": [
+        "78",
+        "68",
+        "1",
+        "15"
+      ],
+      "reading": "しゃ",
+      "meaning": "78",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-79",
+      "sourceNoteId": "1356971129024",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "しゅ",
+      "answer": "79",
+      "choices": [
+        "79",
+        "68",
+        "72",
+        "29"
+      ],
+      "reading": "しゅ",
+      "meaning": "79",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-80",
+      "sourceNoteId": "1356971129025",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "しょ",
+      "answer": "80",
+      "choices": [
+        "80",
+        "22",
+        "68",
+        "82"
+      ],
+      "reading": "しょ",
+      "meaning": "80",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-81",
+      "sourceNoteId": "1356971129026",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "じゃ",
+      "answer": "81",
+      "choices": [
+        "81",
+        "115",
+        "16",
+        "53"
+      ],
+      "reading": "じゃ",
+      "meaning": "81",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-82",
+      "sourceNoteId": "1356971129027",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "じゅ",
+      "answer": "82",
+      "choices": [
+        "82",
+        "16",
+        "66",
+        "89"
+      ],
+      "reading": "じゅ",
+      "meaning": "82",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-83",
+      "sourceNoteId": "1356971129028",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "じょ",
+      "answer": "83",
+      "choices": [
+        "83",
+        "86",
+        "103",
+        "67"
+      ],
+      "reading": "じょ",
+      "meaning": "83",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-84",
+      "sourceNoteId": "1356971129029",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ちゃ",
+      "answer": "84",
+      "choices": [
+        "84",
+        "76",
+        "63",
+        "97"
+      ],
+      "reading": "ちゃ",
+      "meaning": "84",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-85",
+      "sourceNoteId": "1356971129030",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ちゅ",
+      "answer": "85",
+      "choices": [
+        "85",
+        "110",
+        "121",
+        "95"
+      ],
+      "reading": "ちゅ",
+      "meaning": "85",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-86",
+      "sourceNoteId": "1356971129031",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ちょ",
+      "answer": "86",
+      "choices": [
+        "86",
+        "21",
+        "68",
+        "121"
+      ],
+      "reading": "ちょ",
+      "meaning": "86",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-87",
+      "sourceNoteId": "1356971129032",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "にゃ",
+      "answer": "87",
+      "choices": [
+        "87",
+        "71",
+        "79",
+        "72"
+      ],
+      "reading": "にゃ",
+      "meaning": "87",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-88",
+      "sourceNoteId": "1356971129033",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "にゅ",
+      "answer": "88",
+      "choices": [
+        "88",
+        "117",
+        "26",
+        "80"
+      ],
+      "reading": "にゅ",
+      "meaning": "88",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-89",
+      "sourceNoteId": "1356971129034",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "にょ",
+      "answer": "89",
+      "choices": [
+        "89",
+        "73",
+        "68",
+        "117"
+      ],
+      "reading": "にょ",
+      "meaning": "89",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-90",
+      "sourceNoteId": "1356971129035",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ひゃ",
+      "answer": "90",
+      "choices": [
+        "90",
+        "62",
+        "96",
+        "103"
+      ],
+      "reading": "ひゃ",
+      "meaning": "90",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-91",
+      "sourceNoteId": "1356971129036",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ひゅ",
+      "answer": "91",
+      "choices": [
+        "91",
+        "110",
+        "105",
+        "118"
+      ],
+      "reading": "ひゅ",
+      "meaning": "91",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-92",
+      "sourceNoteId": "1356971129037",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ひょ",
+      "answer": "92",
+      "choices": [
+        "92",
+        "41",
+        "26",
+        "14"
+      ],
+      "reading": "ひょ",
+      "meaning": "92",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-93",
+      "sourceNoteId": "1356971129038",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "びゃ",
+      "answer": "93",
+      "choices": [
+        "93",
+        "77",
+        "3",
+        "12"
+      ],
+      "reading": "びゃ",
+      "meaning": "93",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-94",
+      "sourceNoteId": "1356971129039",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "びゅ",
+      "answer": "94",
+      "choices": [
+        "94",
+        "120",
+        "45",
+        "2"
+      ],
+      "reading": "びゅ",
+      "meaning": "94",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-95",
+      "sourceNoteId": "1356971129040",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "びょ",
+      "answer": "95",
+      "choices": [
+        "95",
+        "19",
+        "61",
+        "12"
+      ],
+      "reading": "びょ",
+      "meaning": "95",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-96",
+      "sourceNoteId": "1356971129041",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぴゃ",
+      "answer": "96",
+      "choices": [
+        "96",
+        "100",
+        "82",
+        "71"
+      ],
+      "reading": "ぴゃ",
+      "meaning": "96",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-97",
+      "sourceNoteId": "1356971129042",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぴゅ",
+      "answer": "97",
+      "choices": [
+        "97",
+        "61",
+        "72",
+        "69"
+      ],
+      "reading": "ぴゅ",
+      "meaning": "97",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-98",
+      "sourceNoteId": "1356971129043",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ぴょ",
+      "answer": "98",
+      "choices": [
+        "98",
+        "70",
+        "26",
+        "59"
+      ],
+      "reading": "ぴょ",
+      "meaning": "98",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-99",
+      "sourceNoteId": "1356971129044",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "みゃ",
+      "answer": "99",
+      "choices": [
+        "99",
+        "100",
+        "35",
+        "12"
+      ],
+      "reading": "みゃ",
+      "meaning": "99",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-100",
+      "sourceNoteId": "1356971129045",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "みゅ",
+      "answer": "100",
+      "choices": [
+        "100",
+        "76",
+        "23",
+        "108"
+      ],
+      "reading": "みゅ",
+      "meaning": "100",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-101",
+      "sourceNoteId": "1356971129046",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "みょ",
+      "answer": "101",
+      "choices": [
+        "101",
+        "123",
+        "24",
+        "10"
+      ],
+      "reading": "みょ",
+      "meaning": "101",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-102",
+      "sourceNoteId": "1356971129047",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "りゃ",
+      "answer": "102",
+      "choices": [
+        "102",
+        "78",
+        "39",
+        "56"
+      ],
+      "reading": "りゃ",
+      "meaning": "102",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-103",
+      "sourceNoteId": "1356971129048",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "りゅ",
+      "answer": "103",
+      "choices": [
+        "103",
+        "60",
+        "70",
+        "40"
+      ],
+      "reading": "りゅ",
+      "meaning": "103",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-104",
+      "sourceNoteId": "1356971129049",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "りょ",
+      "answer": "104",
+      "choices": [
+        "104",
+        "102",
+        "25",
+        "52"
+      ],
+      "reading": "りょ",
+      "meaning": "104",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-105",
+      "sourceNoteId": "1356971129050",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "うぃ",
+      "answer": "105",
+      "choices": [
+        "105",
+        "70",
+        "18",
+        "4"
+      ],
+      "reading": "うぃ",
+      "meaning": "105",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-106",
+      "sourceNoteId": "1356971129051",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "うぇ",
+      "answer": "106",
+      "choices": [
+        "106",
+        "64",
+        "58",
+        "86"
+      ],
+      "reading": "うぇ",
+      "meaning": "106",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-107",
+      "sourceNoteId": "1356971129052",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "うぉ",
+      "answer": "107",
+      "choices": [
+        "107",
+        "102",
+        "20",
+        "7"
+      ],
+      "reading": "うぉ",
+      "meaning": "107",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-108",
+      "sourceNoteId": "1356971129053",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ゔぁ",
+      "answer": "108",
+      "choices": [
+        "108",
+        "44",
+        "8",
+        "10"
+      ],
+      "reading": "ゔぁ",
+      "meaning": "108",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-109",
+      "sourceNoteId": "1356971129055",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ゔ",
+      "answer": "110",
+      "choices": [
+        "110",
+        "94",
+        "4",
+        "38"
+      ],
+      "reading": "ゔ",
+      "meaning": "110",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-110",
+      "sourceNoteId": "1356971129056",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ゔぇ",
+      "answer": "111",
+      "choices": [
+        "111",
+        "59",
+        "62",
+        "54"
+      ],
+      "reading": "ゔぇ",
+      "meaning": "111",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-111",
+      "sourceNoteId": "1356971129057",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ゔぉ",
+      "answer": "112",
+      "choices": [
+        "112",
+        "6",
+        "75",
+        "77"
+      ],
+      "reading": "ゔぉ",
+      "meaning": "112",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-112",
+      "sourceNoteId": "1356971129058",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "しぇ",
+      "answer": "113",
+      "choices": [
+        "113",
+        "69",
+        "66",
+        "73"
+      ],
+      "reading": "しぇ",
+      "meaning": "113",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-113",
+      "sourceNoteId": "1356971129059",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "じぇ",
+      "answer": "114",
+      "choices": [
+        "114",
+        "11",
+        "3",
+        "38"
+      ],
+      "reading": "じぇ",
+      "meaning": "114",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-114",
+      "sourceNoteId": "1356971129060",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ふぁ",
+      "answer": "115",
+      "choices": [
+        "115",
+        "67",
+        "76",
+        "44"
+      ],
+      "reading": "ふぁ",
+      "meaning": "115",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-115",
+      "sourceNoteId": "1356971129061",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ふぃ",
+      "answer": "116",
+      "choices": [
+        "116",
+        "62",
+        "93",
+        "38"
+      ],
+      "reading": "ふぃ",
+      "meaning": "116",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-116",
+      "sourceNoteId": "1356971129062",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ふぇ",
+      "answer": "117",
+      "choices": [
+        "117",
+        "76",
+        "79",
+        "110"
+      ],
+      "reading": "ふぇ",
+      "meaning": "117",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-117",
+      "sourceNoteId": "1356971129063",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ふぉ",
+      "answer": "118",
+      "choices": [
+        "118",
+        "30",
+        "64",
+        "53"
+      ],
+      "reading": "ふぉ",
+      "meaning": "118",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-118",
+      "sourceNoteId": "1356971129064",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "てぃ",
+      "answer": "119",
+      "choices": [
+        "119",
+        "1",
+        "24",
+        "54"
+      ],
+      "reading": "てぃ",
+      "meaning": "119",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-119",
+      "sourceNoteId": "1356971129065",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "でぃ",
+      "answer": "120",
+      "choices": [
+        "120",
+        "17",
+        "1",
+        "36"
+      ],
+      "reading": "でぃ",
+      "meaning": "120",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-120",
+      "sourceNoteId": "1356971129066",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "とぅ",
+      "answer": "121",
+      "choices": [
+        "121",
+        "59",
+        "48",
+        "22"
+      ],
+      "reading": "とぅ",
+      "meaning": "121",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-121",
+      "sourceNoteId": "1356971129067",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "どぅ",
+      "answer": "122",
+      "choices": [
+        "122",
+        "67",
+        "70",
+        "71"
+      ],
+      "reading": "どぅ",
+      "meaning": "122",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    },
+    {
+      "id": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-122",
+      "sourceNoteId": "1356971129068",
+      "lessonId": "japanese-kana-hiragana-katakana-rmaji-audio-strokes-1",
+      "type": "kana",
+      "prompt": "ちぇ",
+      "answer": "123",
+      "choices": [
+        "123",
+        "122",
+        "100",
+        "65"
+      ],
+      "reading": "ちぇ",
+      "meaning": "123",
+      "tags": [
+        "imported",
+        "kana"
+      ]
+    }
+  ]
+}

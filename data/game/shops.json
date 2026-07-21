@@ -1,0 +1,202 @@
+{
+  "mako_stall": {
+    "title": "Mako's Stall",
+    "region": "Valley Crossroads",
+    "specialty": "consumable",
+    "buybackMultiplier": 1.15,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "matcha_latte", "price": 10 }],
+      "builders_muster": [{ "item": "raw_iron_ore", "price": 11 }],
+      "champions_week": [{ "item": "cloth_gi", "price": 40 }]
+    },
+    "stock": [
+      { "item": "rice_ball", "price": 8 },
+      { "item": "fortune_cookie", "price": 6 },
+      { "item": "honey", "price": 12 },
+      { "item": "leather_guards", "price": 30 },
+      { "item": "straw_hat", "price": 35 },
+      { "item": "wooden_katana", "price": 55 },
+      { "item": "bamboo_spear", "price": 60 },
+      { "item": "wrist_bow", "price": 65 },
+      { "item": "calligraphy_brush", "price": 70 },
+      { "item": "omamori_charm", "price": 70 },
+      { "item": "yakitori", "price": 14 }
+    ]
+  },
+  "mountain_shop": {
+    "title": "Summit Outfitter",
+    "region": "Mountain Pass",
+    "specialty": "material",
+    "buybackMultiplier": 1.25,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "life_potion", "price": 42 }],
+      "builders_muster": [{ "item": "iron_ingot", "price": 35 }, { "item": "raw_iron_ore", "price": 10 }],
+      "champions_week": [{ "item": "samurai_helmet", "price": 150 }]
+    },
+    "stock": [
+      { "item": "rice_ball", "price": 12 },
+      { "item": "yakitori", "price": 18 },
+      { "item": "noodle_bowl", "price": 22 },
+      { "item": "cloth_gi", "price": 40 },
+      { "item": "hakama", "price": 45 },
+      { "item": "straw_sandals", "price": 25 },
+      { "item": "iron_geta", "price": 120 },
+      { "item": "kappa_scale_guard", "price": 90 },
+      { "item": "lizard_guards", "price": 80 },
+      { "item": "bear_greaves", "price": 100 },
+      { "item": "samurai_helmet", "price": 150 },
+      { "item": "life_potion", "price": 40 }
+    ]
+  },
+  "restaurant_izakaya": {
+    "title": "Izakaya Hana",
+    "region": "Valley Crossroads",
+    "specialty": "consumable",
+    "buybackMultiplier": 1.2,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "life_potion", "price": 40 }],
+      "builders_muster": [{ "item": "honey", "price": 13 }],
+      "champions_week": [{ "item": "tempura_set", "price": 16 }]
+    },
+    "stock": [
+      { "item": "rice_ball", "price": 8 },
+      { "item": "matcha_latte", "price": 10 },
+      { "item": "tempura_set", "price": 15 },
+      { "item": "fortune_cookie", "price": 5 },
+      { "item": "honey", "price": 12 },
+      { "item": "yakitori", "price": 14 },
+      { "item": "noodle_bowl", "price": 18 },
+      { "item": "omamori_charm", "price": 70 }
+    ]
+  },
+  "forest_trader": {
+    "title": "Forest Trader",
+    "region": "Whispering Woods",
+    "specialty": "material",
+    "buybackMultiplier": 1.3,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "honey", "price": 13 }],
+      "builders_muster": [{ "item": "spider_silk", "price": 13 }],
+      "champions_week": [{ "item": "owl_feather_cape", "price": 140 }]
+    },
+    "stock": [
+      { "item": "rice_ball", "price": 10 },
+      { "item": "matcha_latte", "price": 12 },
+      { "item": "honey", "price": 15 },
+      { "item": "spider_silk_gi", "price": 180 },
+      { "item": "owl_feather_cape", "price": 140 },
+      { "item": "spirit_amulet", "price": 160 },
+      { "item": "flame_staff", "price": 200 },
+      { "item": "life_potion", "price": 45 }
+    ]
+  },
+  "frontier_supply": {
+    "title": "Nexus Frontier Supply",
+    "region": "Frontier Nexus",
+    "specialty": "material",
+    "buybackMultiplier": 1.35,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "moonwood", "price": 120 }, { "item": "trail_elixir", "price": 72 }],
+      "builders_muster": [{ "item": "tempered_iron", "price": 62 }, { "item": "stormglass", "price": 205 }],
+      "champions_week": [{ "item": "starsteel", "price": 330 }, { "item": "starfruit_feast", "price": 340 }]
+    },
+    "stock": [
+      { "item": "raw_iron_ore", "price": 12 },
+      { "item": "iron_ingot", "price": 38 },
+      { "item": "wild_herb", "price": 10 },
+      { "item": "river_fish", "price": 18 },
+      { "item": "tempered_iron", "price": 68 },
+      { "item": "moonwood", "price": 125 },
+      { "item": "trail_elixir", "price": 75 },
+      { "item": "life_potion", "price": 48 }
+    ]
+  },
+  "peak_armory": {
+    "title": "Peak Armory",
+    "region": "High Peaks",
+    "specialty": "gear",
+    "buybackMultiplier": 1.25,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "life_potion", "price": 48 }],
+      "builders_muster": [{ "item": "iron_ingot", "price": 38 }],
+      "champions_week": [{ "item": "flame_staff", "price": 200 }]
+    },
+    "stock": [
+      { "item": "noodle_bowl", "price": 20 },
+      { "item": "life_potion", "price": 50 },
+      { "item": "samurai_helmet", "price": 150 },
+      { "item": "dragon_armor", "price": 1200 },
+      { "item": "oni_blade", "price": 250 },
+      { "item": "iron_geta", "price": 120 },
+      { "item": "bear_greaves", "price": 100 }
+    ]
+  },
+  "eastern_reach_trader": {
+    "title": "Yuki's Ruin Trade",
+    "region": "Eastern Reach",
+    "specialty": "material",
+    "buybackMultiplier": 1.4,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "moonwood", "price": 110 }, { "item": "trail_elixir", "price": 60 }],
+      "builders_muster": [{ "item": "stormglass", "price": 180 }, { "item": "spirit_essence", "price": 22 }],
+      "champions_week": [{ "item": "elder_core", "price": 280 }, { "item": "starsteel", "price": 300 }]
+    },
+    "stock": [
+      { "item": "wild_herb", "price": 12 },
+      { "item": "river_fish", "price": 20 },
+      { "item": "spirit_essence", "price": 28 },
+      { "item": "moonwood", "price": 130 },
+      { "item": "stormglass", "price": 210 },
+      { "item": "trail_elixir", "price": 70 },
+      { "item": "moonbroth", "price": 120 },
+      { "item": "life_potion", "price": 50 }
+    ]
+  },
+  "northern_reach_trader": {
+    "title": "Sven's Boreal Outpost",
+    "region": "Northern Reach",
+    "specialty": "material",
+    "buybackMultiplier": 1.35,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "moonwood", "price": 115 }, { "item": "frost_broth", "price": 85 }],
+      "builders_muster": [{ "item": "boreal_pelt", "price": 55 }, { "item": "stormglass", "price": 190 }],
+      "champions_week": [{ "item": "frost_core", "price": 320 }, { "item": "starsteel", "price": 310 }]
+    },
+    "stock": [
+      { "item": "wild_herb", "price": 12 },
+      { "item": "river_fish", "price": 20 },
+      { "item": "frost_essence", "price": 32 },
+      { "item": "boreal_pelt", "price": 70 },
+      { "item": "raw_iron_ore", "price": 45 },
+      { "item": "moonwood", "price": 130 },
+      { "item": "frost_broth", "price": 105 },
+      { "item": "storm_tonic", "price": 190 },
+      { "item": "life_potion", "price": 50 },
+      { "item": "boreal_pelt_bracers", "price": 210 },
+      { "item": "ice_claw_boots", "price": 240 }
+    ]
+  },
+  "southern_reach_trader": {
+    "title": "Karim's Desert Caravan",
+    "region": "Southern Reach",
+    "specialty": "material",
+    "buybackMultiplier": 1.35,
+    "seasonalStock": {
+      "bloomtide": [{ "item": "wild_herb", "price": 14 }, { "item": "spicy_curry", "price": 55 }],
+      "builders_muster": [{ "item": "raw_iron_ore", "price": 50 }, { "item": "iron_ingot", "price": 38 }],
+      "champions_week": [{ "item": "starsteel", "price": 340 }, { "item": "fire_ward_amulet", "price": 280 }]
+    },
+    "stock": [
+      { "item": "wild_herb", "price": 12 },
+      { "item": "canyon_carp", "price": 18 },
+      { "item": "raw_iron_ore", "price": 45 },
+      { "item": "iron_ingot", "price": 32 },
+      { "item": "kitsune_tail", "price": 40 },
+      { "item": "spicy_curry", "price": 50 },
+      { "item": "fire_ward_amulet", "price": 180 },
+      { "item": "canyon_crusher", "price": 140 },
+      { "item": "trail_elixir", "price": 85 },
+      { "item": "life_potion", "price": 50 }
+    ]
+  }
+}

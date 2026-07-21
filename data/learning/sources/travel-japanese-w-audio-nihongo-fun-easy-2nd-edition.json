@@ -1,0 +1,1912 @@
+{
+  "source": {
+    "provider": "AnkiWeb",
+    "deckId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition",
+    "deckName": "Travel Japanese w Audio Nihongo Fun Easy 2nd Edition",
+    "author": "",
+    "url": "",
+    "mediaPolicy": "excluded"
+  },
+  "cards": [
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "sourceNoteId": "1687361185784",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "すみませんSumimasen",
+      "answer": "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone.",
+      "choices": [
+        "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone.",
+        "bus stop",
+        "home",
+        "engineer"
+      ],
+      "meaning": "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-2",
+      "sourceNoteId": "1687361206417",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "はいhai",
+      "answer": "yes",
+      "choices": [
+        "yes",
+        "I understand.",
+        "company",
+        "That's wrong. / No."
+      ],
+      "meaning": "yes",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-3",
+      "sourceNoteId": "1687361213601",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "いいえiie",
+      "answer": "no",
+      "choices": [
+        "no",
+        "Please. / Okay. / Go ahead.",
+        "I like music.",
+        "Japan"
+      ],
+      "meaning": "no",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-4",
+      "sourceNoteId": "1687361218134",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "そうです。Soo desu.",
+      "answer": "That's right.",
+      "choices": [
+        "That's right.",
+        "engineer",
+        "student",
+        "I live in Chiba, too."
+      ],
+      "meaning": "That's right.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-5",
+      "sourceNoteId": "1687361223601",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "ちがいます。Chigaimasu.",
+      "answer": "That's wrong. / No.",
+      "choices": [
+        "That's wrong. / No.",
+        "I'm from India.",
+        "Do you speak English?",
+        "country"
+      ],
+      "meaning": "That's wrong. / No.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-6",
+      "sourceNoteId": "1687361233184",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "英語は話せますか。Eigo wa hanasemasu ka.",
+      "answer": "Do you speak English?",
+      "choices": [
+        "Do you speak English?",
+        "someone's older brother (respectful form of address)",
+        "Japan",
+        "I understand."
+      ],
+      "meaning": "Do you speak English?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-7",
+      "sourceNoteId": "1687361238718",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "英語が話せる人はいますか。Eigo ga hanaseru hito wa imasu ka.",
+      "answer": "Is there anyone (here) who speaks English?",
+      "choices": [
+        "Is there anyone (here) who speaks English?",
+        "Please. / Okay. / Go ahead.",
+        "company worker / office worker",
+        "American (person)"
+      ],
+      "meaning": "Is there anyone (here) who speaks English?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-8",
+      "sourceNoteId": "1687361252068",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わかりますか。Wakarimasu ka.",
+      "answer": "Do you understand?",
+      "choices": [
+        "Do you understand?",
+        "It's nice to meet you.",
+        "home",
+        "karaoke"
+      ],
+      "meaning": "Do you understand?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-9",
+      "sourceNoteId": "1687361255251",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わかります。Wakarimasu.",
+      "answer": "I understand.",
+      "choices": [
+        "I understand.",
+        "convenience store",
+        "I",
+        "someone's daughter (respectful form of address)"
+      ],
+      "meaning": "I understand.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-10",
+      "sourceNoteId": "1687361260194",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わかりません。Wakarimasen.",
+      "answer": "I don't understand. / I don't know.",
+      "choices": [
+        "I don't understand. / I don't know.",
+        "my daughter",
+        "someone's mother (respectful form of address)",
+        "Yes, I have two children.(kodomo refers to one's own children)"
+      ],
+      "meaning": "I don't understand. / I don't know.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-11",
+      "sourceNoteId": "1687361267851",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わかりましたか。Wakarimashita ka.",
+      "answer": "Did you get that? / Did that make sense?",
+      "choices": [
+        "Did you get that? / Did that make sense?",
+        "karaoke",
+        "U.K.",
+        "I don't understand. / I don't know."
+      ],
+      "meaning": "Did you get that? / Did that make sense?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-12",
+      "sourceNoteId": "1687361278385",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わかりました。Wakarimashita.",
+      "answer": "I got it.",
+      "choices": [
+        "I got it.",
+        "someone's older brother (respectful form of address)",
+        "birthplace/hometown",
+        "the outdoors"
+      ],
+      "meaning": "I got it.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-13",
+      "sourceNoteId": "1687361288102",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "日本語はわかりません。Nihongo wa wakarimasen.",
+      "answer": "I don't speak Japanese.",
+      "choices": [
+        "I don't speak Japanese.",
+        "my father",
+        "my younger sister",
+        "bus stop"
+      ],
+      "meaning": "I don't speak Japanese.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-14",
+      "sourceNoteId": "1687361293820",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "大丈夫ですか。Daijoobu desu ka.",
+      "answer": "Are you alright?",
+      "choices": [
+        "Are you alright?",
+        "someone's older brother (respectful form of address)",
+        "Yes, I have an older sister and a younger brother.",
+        "Do you like Japanese food?"
+      ],
+      "meaning": "Are you alright?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-15",
+      "sourceNoteId": "1687361298738",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "大丈夫です。Daijoobu desu.",
+      "answer": "I'm alright.",
+      "choices": [
+        "I'm alright.",
+        "Do you speak English?",
+        "place of residence",
+        "Did you get that? / Did that make sense?"
+      ],
+      "meaning": "I'm alright.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-16",
+      "sourceNoteId": "1687361317677",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "いいですか。Ii desu ka.",
+      "answer": "May I...? / Is it okay?",
+      "choices": [
+        "May I...? / Is it okay?",
+        "engineer",
+        "teacher (another person)",
+        "Do you understand?"
+      ],
+      "meaning": "May I...? / Is it okay?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-17",
+      "sourceNoteId": "1687361322337",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "どうぞ。Doozo.",
+      "answer": "Please. / Okay. / Go ahead.",
+      "choices": [
+        "Please. / Okay. / Go ahead.",
+        "my husband",
+        "housewife",
+        "place of residence"
+      ],
+      "meaning": "Please. / Okay. / Go ahead.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-18",
+      "sourceNoteId": "1687361327428",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "すみません、ちょっと...Sumimasen, chotto...",
+      "answer": "Sorry, but...",
+      "choices": [
+        "Sorry, but...",
+        "U.K.",
+        "My mother is a teacher.",
+        "company worker / office worker"
+      ],
+      "meaning": "Sorry, but...",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-19",
+      "sourceNoteId": "1687361335767",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "もう一度いいですか。Moo ichido ii desu ka.",
+      "answer": "Would you say that one more time?",
+      "choices": [
+        "Would you say that one more time?",
+        "convenience store",
+        "How do you do?",
+        "teacher (another person)"
+      ],
+      "meaning": "Would you say that one more time?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-20",
+      "sourceNoteId": "1687364417358",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "私はジョンです。Watashi wa Jon desu.",
+      "answer": "I am John.",
+      "choices": [
+        "I am John.",
+        "I like music.",
+        "Do you understand?",
+        "movie"
+      ],
+      "meaning": "I am John.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-21",
+      "sourceNoteId": "1687364438825",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "アメリカ人amerika-jin",
+      "answer": "American (person)",
+      "choices": [
+        "American (person)",
+        "no",
+        "beer",
+        "That's right."
+      ],
+      "meaning": "American (person)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-22",
+      "sourceNoteId": "1687364445908",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "エンジニアenjinia",
+      "answer": "engineer",
+      "choices": [
+        "engineer",
+        "teacher (yourself)",
+        "I got it.",
+        "company"
+      ],
+      "meaning": "engineer",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-23",
+      "sourceNoteId": "1687364450192",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "がくせいgakusei",
+      "answer": "student",
+      "choices": [
+        "student",
+        "movie",
+        "home",
+        "That's wrong. / No."
+      ],
+      "meaning": "student",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-24",
+      "sourceNoteId": "1687364460963",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "せんせいsensei",
+      "answer": "teacher (another person)",
+      "choices": [
+        "teacher (another person)",
+        "travel",
+        "That's wrong. / No.",
+        "student"
+      ],
+      "meaning": "teacher (another person)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-25",
+      "sourceNoteId": "1687364466958",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "きょうしkyoushi",
+      "answer": "teacher (yourself)",
+      "choices": [
+        "teacher (yourself)",
+        "Please. / Okay. / Go ahead.",
+        "I'm also...",
+        "May I...? / Is it okay?"
+      ],
+      "meaning": "teacher (yourself)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-26",
+      "sourceNoteId": "1687364474192",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "かいしゃいんkaishain",
+      "answer": "company worker / office worker",
+      "choices": [
+        "company worker / office worker",
+        "engineer",
+        "but",
+        "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone."
+      ],
+      "meaning": "company worker / office worker",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-27",
+      "sourceNoteId": "1687364479647",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "しゅふshufu",
+      "answer": "housewife",
+      "choices": [
+        "housewife",
+        "May I...? / Is it okay?",
+        "U.K.",
+        "someone's wife (respectful form of address)"
+      ],
+      "meaning": "housewife",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-28",
+      "sourceNoteId": "1687364484800",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "にほんNihon",
+      "answer": "Japan",
+      "choices": [
+        "Japan",
+        "someone's mother (respectful form of address)",
+        "someone's younger brother (respectful form of address)",
+        "beer"
+      ],
+      "meaning": "Japan",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-29",
+      "sourceNoteId": "1687364489126",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "インドIndo",
+      "answer": "India",
+      "choices": [
+        "India",
+        "my mother",
+        "Do you speak English?",
+        "my husband"
+      ],
+      "meaning": "India",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-30",
+      "sourceNoteId": "1687364493893",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "イギリスIgirisu",
+      "answer": "U.K.",
+      "choices": [
+        "U.K.",
+        "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone.",
+        "my son",
+        "The pleasure is mine. // Same here."
+      ],
+      "meaning": "U.K.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-31",
+      "sourceNoteId": "1687364500776",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "オーストラリアOosutoraria",
+      "answer": "Australia",
+      "choices": [
+        "Australia",
+        "country",
+        "I don't understand. / I don't know.",
+        "beer"
+      ],
+      "meaning": "Australia",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-32",
+      "sourceNoteId": "1687364505826",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "はじめまして。Hajimemashite.",
+      "answer": "How do you do?",
+      "choices": [
+        "How do you do?",
+        "I live in Chiba, too.",
+        "(Where do) you live?",
+        "Did you get that? / Did that make sense?"
+      ],
+      "meaning": "How do you do?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-33",
+      "sourceNoteId": "1687364509918",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "どうぞよろしく。Doozo yoroshiku.",
+      "answer": "It's nice to meet you.",
+      "choices": [
+        "It's nice to meet you.",
+        "Do you understand?",
+        "my older brother",
+        "teacher (another person)"
+      ],
+      "meaning": "It's nice to meet you.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-34",
+      "sourceNoteId": "1687364527486",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "インドからきました。Indo kara kimashita.",
+      "answer": "I'm from India.",
+      "choices": [
+        "I'm from India.",
+        "Do you speak English?",
+        "That's right.",
+        "Are you alright?"
+      ],
+      "meaning": "I'm from India.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-35",
+      "sourceNoteId": "1687364533749",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "こちらこそkochira koso",
+      "answer": "The pleasure is mine. // Same here.",
+      "choices": [
+        "The pleasure is mine. // Same here.",
+        "May I...? / Is it okay?",
+        "My mother is a teacher.",
+        "my father"
+      ],
+      "meaning": "The pleasure is mine. // Same here.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-36",
+      "sourceNoteId": "1687364538535",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（Aは ）Bじゃありません。A wa B ja arimasen.",
+      "answer": "A is not B.",
+      "choices": [
+        "A is not B.",
+        "I don't understand. / I don't know.",
+        "someone's son (respectful form of address)",
+        "I got it."
+      ],
+      "meaning": "A is not B.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-37",
+      "sourceNoteId": "1687364543510",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "いいえ、がくせいじゃありません。Iie, gakusei ja arimasen.",
+      "answer": "No, I'm not a student.",
+      "choices": [
+        "No, I'm not a student.",
+        "(Where do) you live?",
+        "subway station",
+        "Would you say that one more time?"
+      ],
+      "meaning": "No, I'm not a student.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-38",
+      "sourceNoteId": "1687364553027",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おしごとは？O-shigoto wa?",
+      "answer": "(What is) your job?",
+      "choices": [
+        "(What is) your job?",
+        "my younger sister",
+        "home",
+        "I don't really like it."
+      ],
+      "meaning": "(What is) your job?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-39",
+      "sourceNoteId": "1687364563080",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おすまいは？O-sumai wa?",
+      "answer": "(Where do) you live?",
+      "choices": [
+        "(Where do) you live?",
+        "Japan",
+        "beer",
+        "someone's father (respectful form of address)"
+      ],
+      "meaning": "(Where do) you live?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-40",
+      "sourceNoteId": "1687364573060",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（お）くに(o)kuni",
+      "answer": "country",
+      "choices": [
+        "country",
+        "the outdoors",
+        "I like it, too.",
+        "Is there anyone (here) who speaks English?"
+      ],
+      "meaning": "country",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-41",
+      "sourceNoteId": "1687364580477",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（ご）しゅっしん(go)shusshin",
+      "answer": "birthplace/hometown",
+      "choices": [
+        "birthplace/hometown",
+        "Japan",
+        "someone's son (respectful form of address)",
+        "Australia"
+      ],
+      "meaning": "birthplace/hometown",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-42",
+      "sourceNoteId": "1687364586444",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（お）なまえ(o)namae",
+      "answer": "name",
+      "choices": [
+        "name",
+        "Do you like Japanese food?",
+        "Are you alright?",
+        "company"
+      ],
+      "meaning": "name",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-43",
+      "sourceNoteId": "1687364593660",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（お）すまい(o)sumai",
+      "answer": "place of residence",
+      "choices": [
+        "place of residence",
+        "Do you speak English?",
+        "May I...? / Is it okay?",
+        "Please. / Okay. / Go ahead."
+      ],
+      "meaning": "place of residence",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-44",
+      "sourceNoteId": "1687364598877",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "うちuchi",
+      "answer": "home",
+      "choices": [
+        "home",
+        "Do you understand?",
+        "May I...? / Is it okay?",
+        "not very much/not really"
+      ],
+      "meaning": "home",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-45",
+      "sourceNoteId": "1687364603652",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（お）つとめ / かいしゃ(o)tsutome / kaisha",
+      "answer": "company",
+      "choices": [
+        "company",
+        "I don't really like it.",
+        "American (person)",
+        "company worker / office worker"
+      ],
+      "meaning": "company",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-46",
+      "sourceNoteId": "1687364608702",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わたしも...ですWatashi mo...desu.",
+      "answer": "I'm also...",
+      "choices": [
+        "I'm also...",
+        "That's wrong. / No.",
+        "company",
+        "Please. / Okay. / Go ahead."
+      ],
+      "meaning": "I'm also...",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-47",
+      "sourceNoteId": "1687364614002",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わたしもちばです。Watashi mo Chiba desu.",
+      "answer": "I live in Chiba, too.",
+      "choices": [
+        "I live in Chiba, too.",
+        "company worker / office worker",
+        "but",
+        "someone's older brother (respectful form of address)"
+      ],
+      "meaning": "I live in Chiba, too.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-48",
+      "sourceNoteId": "1687364618878",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おんがくがすきです。Ongaku ga suki desu.",
+      "answer": "I like music.",
+      "choices": [
+        "I like music.",
+        "That's wrong. / No.",
+        "beer",
+        "one person"
+      ],
+      "meaning": "I like music.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-49",
+      "sourceNoteId": "1687364624978",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "えいがeiga",
+      "answer": "movie",
+      "choices": [
+        "movie",
+        "travel",
+        "police box",
+        "Yes, over there."
+      ],
+      "meaning": "movie",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-50",
+      "sourceNoteId": "1687364629033",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "カラオケkaraoke",
+      "answer": "karaoke",
+      "choices": [
+        "karaoke",
+        "convenience store",
+        "India",
+        "I am John."
+      ],
+      "meaning": "karaoke",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-51",
+      "sourceNoteId": "1687364634332",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "アウトドアautodoa",
+      "answer": "the outdoors",
+      "choices": [
+        "the outdoors",
+        "travel",
+        "Please. / Okay. / Go ahead.",
+        "How do you do?"
+      ],
+      "meaning": "the outdoors",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-52",
+      "sourceNoteId": "1687364639234",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "りょこうryokoo",
+      "answer": "travel",
+      "choices": [
+        "travel",
+        "housewife",
+        "U.K.",
+        "I don't speak Japanese."
+      ],
+      "meaning": "travel",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-53",
+      "sourceNoteId": "1687364643113",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "サッカーsakkaa",
+      "answer": "soccer",
+      "choices": [
+        "soccer",
+        "no",
+        "No, I'm not a student.",
+        "someone's husband (respectful form of address)"
+      ],
+      "meaning": "soccer",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-54",
+      "sourceNoteId": "1687364648178",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "（お）すし(o)sushi",
+      "answer": "sushi",
+      "choices": [
+        "sushi",
+        "That's wrong. / No.",
+        "yes",
+        "teacher (another person)"
+      ],
+      "meaning": "sushi",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-55",
+      "sourceNoteId": "1687364653180",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "ビールbiiru",
+      "answer": "beer",
+      "choices": [
+        "beer",
+        "I see.",
+        "police box",
+        "someone's wife (respectful form of address)"
+      ],
+      "meaning": "beer",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-56",
+      "sourceNoteId": "1687364658262",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "イタリアりょうりitaria ryoori",
+      "answer": "Italian food",
+      "choices": [
+        "Italian food",
+        "May I...? / Is it okay?",
+        "I see.",
+        "I'm from India."
+      ],
+      "meaning": "Italian food",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-57",
+      "sourceNoteId": "1687364666062",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "あまりamari",
+      "answer": "not very much/not really",
+      "choices": [
+        "not very much/not really",
+        "my wife",
+        "but",
+        "beer"
+      ],
+      "meaning": "not very much/not really",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-58",
+      "sourceNoteId": "1687364669895",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "でもdemo",
+      "answer": "but",
+      "choices": [
+        "but",
+        "country",
+        "karaoke",
+        "not very much/not really"
+      ],
+      "meaning": "but",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-59",
+      "sourceNoteId": "1687364674987",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "そうですか。Soo desu ka.",
+      "answer": "I see.",
+      "choices": [
+        "I see.",
+        "convenience store",
+        "someone's daughter (respectful form of address)",
+        "Excuse me. Is there an ATM around here?"
+      ],
+      "meaning": "I see.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-60",
+      "sourceNoteId": "1687364680163",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "私も好きです。Watashi mo suki desu.",
+      "answer": "I like it, too.",
+      "choices": [
+        "I like it, too.",
+        "someone's daughter (respectful form of address)",
+        "India",
+        "I got it."
+      ],
+      "meaning": "I like it, too.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-61",
+      "sourceNoteId": "1687364686246",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "私はあまり好きじゃありません。Watashi wa amari suki ja arimasen.",
+      "answer": "I don't really like it.",
+      "choices": [
+        "I don't really like it.",
+        "Are you alright?",
+        "May I...? / Is it okay?",
+        "American (person)"
+      ],
+      "meaning": "I don't really like it.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-62",
+      "sourceNoteId": "1687364691413",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "日本料理は好きですか。Nihon ryoori wa suki desu ka.",
+      "answer": "Do you like Japanese food?",
+      "choices": [
+        "Do you like Japanese food?",
+        "Are you alright?",
+        "my older brother",
+        "company"
+      ],
+      "meaning": "Do you like Japanese food?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-63",
+      "sourceNoteId": "1687379504472",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "ちちchichi",
+      "answer": "my father",
+      "choices": [
+        "my father",
+        "I see.",
+        "convenience store",
+        "Italian food"
+      ],
+      "meaning": "my father",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-64",
+      "sourceNoteId": "1687379510088",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おとうさんotoosan",
+      "answer": "someone's father (respectful form of address)",
+      "choices": [
+        "someone's father (respectful form of address)",
+        "sushi",
+        "country",
+        "That's right."
+      ],
+      "meaning": "someone's father (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-65",
+      "sourceNoteId": "1687379515821",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "ははhaha",
+      "answer": "my mother",
+      "choices": [
+        "my mother",
+        "Please. / Okay. / Go ahead.",
+        "U.K.",
+        "I'm alright."
+      ],
+      "meaning": "my mother",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-66",
+      "sourceNoteId": "1687379520388",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おかあさんokaasan",
+      "answer": "someone's mother (respectful form of address)",
+      "choices": [
+        "someone's mother (respectful form of address)",
+        "birthplace/hometown",
+        "someone's older sister (respectful form of address)",
+        "parking lot"
+      ],
+      "meaning": "someone's mother (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-67",
+      "sourceNoteId": "1687379525205",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "あにani",
+      "answer": "my older brother",
+      "choices": [
+        "my older brother",
+        "someone's younger sister (respectful form of address)",
+        "my younger brother",
+        "someone's older brother (respectful form of address)"
+      ],
+      "meaning": "my older brother",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-68",
+      "sourceNoteId": "1687379531557",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おにいさんoniisan",
+      "answer": "someone's older brother (respectful form of address)",
+      "choices": [
+        "someone's older brother (respectful form of address)",
+        "Yes, over there.",
+        "Australia",
+        "No, I'm not a student."
+      ],
+      "meaning": "someone's older brother (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-69",
+      "sourceNoteId": "1687379537489",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "あねane",
+      "answer": "my older sister",
+      "choices": [
+        "my older sister",
+        "company worker / office worker",
+        "Excuse me. Is there an ATM around here?",
+        "someone's father (respectful form of address)"
+      ],
+      "meaning": "my older sister",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-70",
+      "sourceNoteId": "1687379542488",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おねえさんoneesan",
+      "answer": "someone's older sister (respectful form of address)",
+      "choices": [
+        "someone's older sister (respectful form of address)",
+        "Do you understand?",
+        "I got it.",
+        "(What is) your job?"
+      ],
+      "meaning": "someone's older sister (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-71",
+      "sourceNoteId": "1687379576639",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "わたしwatashi",
+      "answer": "I",
+      "choices": [
+        "I",
+        "someone's wife (respectful form of address)",
+        "birthplace/hometown",
+        "I'm alright."
+      ],
+      "meaning": "I",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-72",
+      "sourceNoteId": "1687379581540",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おとうとotooto",
+      "answer": "my younger brother",
+      "choices": [
+        "my younger brother",
+        "my husband",
+        "Do you understand?",
+        "May I...? / Is it okay?"
+      ],
+      "meaning": "my younger brother",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-73",
+      "sourceNoteId": "1687379586774",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おとうとさんotootosan",
+      "answer": "someone's younger brother (respectful form of address)",
+      "choices": [
+        "someone's younger brother (respectful form of address)",
+        "Sorry. / Excuse me. / Thank you.*An all-purpose phrase that can be used when calling out to a person, apologizing, or thanking someone.",
+        "I don't speak Japanese.",
+        "company"
+      ],
+      "meaning": "someone's younger brother (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-74",
+      "sourceNoteId": "1687379595923",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "いもうとimooto",
+      "answer": "my younger sister",
+      "choices": [
+        "my younger sister",
+        "the outdoors",
+        "Is there anyone (here) who speaks English?",
+        "(Where do) you live?"
+      ],
+      "meaning": "my younger sister",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-75",
+      "sourceNoteId": "1687379600342",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "いもうとさんimootosan",
+      "answer": "someone's younger sister (respectful form of address)",
+      "choices": [
+        "someone's younger sister (respectful form of address)",
+        "the outdoors",
+        "sushi",
+        "my son"
+      ],
+      "meaning": "someone's younger sister (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-76",
+      "sourceNoteId": "1687379605439",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "おっとotto",
+      "answer": "my husband",
+      "choices": [
+        "my husband",
+        "someone's husband (respectful form of address)",
+        "Would you say that one more time?",
+        "student"
+      ],
+      "meaning": "my husband",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-77",
+      "sourceNoteId": "1687379609673",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "ごしゅじんgoshujin",
+      "answer": "someone's husband (respectful form of address)",
+      "choices": [
+        "someone's husband (respectful form of address)",
+        "How do you do?",
+        "police box",
+        "someone's son (respectful form of address)"
+      ],
+      "meaning": "someone's husband (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-78",
+      "sourceNoteId": "1687379614406",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "つまtsuma",
+      "answer": "my wife",
+      "choices": [
+        "my wife",
+        "someone's wife (respectful form of address)",
+        "not very much/not really",
+        "Do you speak English?"
+      ],
+      "meaning": "my wife",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-79",
+      "sourceNoteId": "1687379618573",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "おくさんokusan",
+      "answer": "someone's wife (respectful form of address)",
+      "choices": [
+        "someone's wife (respectful form of address)",
+        "not very much/not really",
+        "Did you get that? / Did that make sense?",
+        "I live in Chiba, too."
+      ],
+      "meaning": "someone's wife (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-80",
+      "sourceNoteId": "1687379623377",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "むすめmusume",
+      "answer": "my daughter",
+      "choices": [
+        "my daughter",
+        "soccer",
+        "That's wrong. / No.",
+        "I'm alright."
+      ],
+      "meaning": "my daughter",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-81",
+      "sourceNoteId": "1687379627406",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "むすめさんmusumesan",
+      "answer": "someone's daughter (respectful form of address)",
+      "choices": [
+        "someone's daughter (respectful form of address)",
+        "Would you say that one more time?",
+        "A is not B.",
+        "student"
+      ],
+      "meaning": "someone's daughter (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-82",
+      "sourceNoteId": "1687379632374",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "むすこmusuko",
+      "answer": "my son",
+      "choices": [
+        "my son",
+        "That's wrong. / No.",
+        "Are you alright?",
+        "The pleasure is mine. // Same here."
+      ],
+      "meaning": "my son",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-83",
+      "sourceNoteId": "1687379642524",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "むすこさんmusukosan",
+      "answer": "someone's son (respectful form of address)",
+      "choices": [
+        "someone's son (respectful form of address)",
+        "four people",
+        "police box",
+        "my younger brother"
+      ],
+      "meaning": "someone's son (respectful form of address)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-84",
+      "sourceNoteId": "1687379660607",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "私の母は教師です。Watashi no haha wa kyooshi desu.",
+      "answer": "My mother is a teacher.",
+      "choices": [
+        "My mother is a teacher.",
+        "company worker / office worker",
+        "two people",
+        "not very much/not really"
+      ],
+      "meaning": "My mother is a teacher.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-85",
+      "sourceNoteId": "1687379683824",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "私の息子はオーストラリアに住んでいます。Watashi no musuko wa Oosutoraria ni sunde imasu.",
+      "answer": "My son lives in Australia.",
+      "choices": [
+        "My son lives in Australia.",
+        "housewife",
+        "Are you alright?",
+        "U.K."
+      ],
+      "meaning": "My son lives in Australia.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-86",
+      "sourceNoteId": "1687379691957",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "一人hitori",
+      "answer": "one person",
+      "choices": [
+        "one person",
+        "but",
+        "place of residence",
+        "yes"
+      ],
+      "meaning": "one person",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-87",
+      "sourceNoteId": "1687379699658",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "二人futari",
+      "answer": "two people",
+      "choices": [
+        "two people",
+        "country",
+        "someone's daughter (respectful form of address)",
+        "someone's husband (respectful form of address)"
+      ],
+      "meaning": "two people",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-88",
+      "sourceNoteId": "1687379707926",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "三人san-nin",
+      "answer": "three people",
+      "choices": [
+        "three people",
+        "How do you do?",
+        "Do you speak English?",
+        "country"
+      ],
+      "meaning": "three people",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-89",
+      "sourceNoteId": "1687379716065",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "四人yo-nin",
+      "answer": "four people",
+      "choices": [
+        "four people",
+        "I",
+        "three people",
+        "police box"
+      ],
+      "meaning": "four people",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-90",
+      "sourceNoteId": "1687379814510",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "ご兄弟 / お子さんがいますか。Go-kyoodai / okosan ga imasu ka?(... ga imasu ka = Do you have...? | for animate objects)",
+      "answer": "Do you have siblings / children?",
+      "choices": [
+        "Do you have siblings / children?",
+        "someone's father (respectful form of address)",
+        "four people",
+        "Yes, I have an older sister and a younger brother."
+      ],
+      "meaning": "Do you have siblings / children?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-91",
+      "sourceNoteId": "1687379828543",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "いいえ、いません。Iie, imasen.",
+      "answer": "No, I don't. (have children or siblings)",
+      "choices": [
+        "No, I don't. (have children or siblings)",
+        "engineer",
+        "I",
+        "home"
+      ],
+      "meaning": "No, I don't. (have children or siblings)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-92",
+      "sourceNoteId": "1687379848852",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "はい、子供が二人います。Hai, kodomo ga futari imasu.",
+      "answer": "Yes, I have two children.(kodomo refers to one's own children)",
+      "choices": [
+        "Yes, I have two children.(kodomo refers to one's own children)",
+        "Is there anyone (here) who speaks English?",
+        "birthplace/hometown",
+        "U.K."
+      ],
+      "meaning": "Yes, I have two children.(kodomo refers to one's own children)",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-93",
+      "sourceNoteId": "1687379863373",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "はい、姉と弟がいます。Hai, ane to otooto ga imasu.",
+      "answer": "Yes, I have an older sister and a younger brother.",
+      "choices": [
+        "Yes, I have an older sister and a younger brother.",
+        "my younger brother",
+        "(What is) your job?",
+        "That's right."
+      ],
+      "meaning": "Yes, I have an older sister and a younger brother.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-94",
+      "sourceNoteId": "1687380534821",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "すみません。このへんに、ATMありますか。Sumimasen. Kono hen ni, ATM arimasu ka.",
+      "answer": "Excuse me. Is there an ATM around here?",
+      "choices": [
+        "Excuse me. Is there an ATM around here?",
+        "The pleasure is mine. // Same here.",
+        "someone's wife (respectful form of address)",
+        "the outdoors"
+      ],
+      "meaning": "Excuse me. Is there an ATM around here?",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-95",
+      "sourceNoteId": "1687380564321",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "ええ、あそこにありますよ。Ee, asoko ni arimasu yo.(The particle \"yo\" is sued to emphasize new information to a person.)",
+      "answer": "Yes, over there.",
+      "choices": [
+        "Yes, over there.",
+        "India",
+        "my older sister",
+        "company worker / office worker"
+      ],
+      "meaning": "Yes, over there.",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-96",
+      "sourceNoteId": "1687380594773",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "地下鉄の駅chikatetsu no eki",
+      "answer": "subway station",
+      "choices": [
+        "subway station",
+        "but",
+        "police box",
+        "someone's younger sister (respectful form of address)"
+      ],
+      "meaning": "subway station",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-97",
+      "sourceNoteId": "1687380599172",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "バス停basu-tei",
+      "answer": "bus stop",
+      "choices": [
+        "bus stop",
+        "country",
+        "I live in Chiba, too.",
+        "name"
+      ],
+      "meaning": "bus stop",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-98",
+      "sourceNoteId": "1687380603789",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "vocab",
+      "prompt": "交番kooban",
+      "answer": "police box",
+      "choices": [
+        "police box",
+        "one person",
+        "I got it.",
+        "company"
+      ],
+      "meaning": "police box",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-99",
+      "sourceNoteId": "1687380611027",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "駐車場chuushajo",
+      "answer": "parking lot",
+      "choices": [
+        "parking lot",
+        "How do you do?",
+        "It's nice to meet you.",
+        "someone's wife (respectful form of address)"
+      ],
+      "meaning": "parking lot",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    },
+    {
+      "id": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-100",
+      "sourceNoteId": "1687380618042",
+      "lessonId": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-1",
+      "type": "phrase",
+      "prompt": "コンビニkombini",
+      "answer": "convenience store",
+      "choices": [
+        "convenience store",
+        "someone's father (respectful form of address)",
+        "soccer",
+        "my daughter"
+      ],
+      "meaning": "convenience store",
+      "tags": [
+        "imported",
+        "travel"
+      ]
+    }
+  ]
+}
