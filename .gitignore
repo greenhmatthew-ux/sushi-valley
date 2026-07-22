@@ -15,3 +15,6 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# Accidental copy of the external asset pool (real pool lives at D:\Asset Library)
+/Asset Library/
