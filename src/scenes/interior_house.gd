@@ -11,8 +11,9 @@ const W := 13   # room width in tiles
 const H := 9    # room height in tiles
 
 # Atlas coords into home_interiors_timber_roof.png (16px grid).
-const FLOOR := Vector2i(2, 7)
-const WALL := Vector2i(23, 11)
+const FLOOR := Vector2i(2, 10)     # warm timber floor
+const WALL := Vector2i(18, 13)     # wood-plank wall face
+const WALL_TOP := Vector2i(7, 2)   # dark cap along the very top edge
 
 @onready var floor_layer: TileMapLayer = $Floor
 @onready var entities: Node2D = $Entities
@@ -26,33 +27,45 @@ func _ready() -> void:
 
 
 func _build_room() -> void:
+	# Row 0 is a dark cap; row 1 and the outer columns are the wood-plank wall; the rest
+	# is floor. The bottom stays open — that edge is the doorway you walk out through.
 	for x in W:
 		for y in H:
-			floor_layer.set_cell(Vector2i(x, y), 0, WALL if y == 0 else FLOOR)
+			var tile: Vector2i
+			if y == 0:
+				tile = WALL_TOP
+			elif y == 1 or x == 0 or x == W - 1:
+				tile = WALL
+			else:
+				tile = FLOOR
+			floor_layer.set_cell(Vector2i(x, y), 0, tile)
 
 
-## A simple StaticBody border so the player can't leave the room except by the door.
+## A StaticBody border confining the player to the interior floor (inside the walls);
+## the open bottom is left to the door, which auto-triggers before they reach the edge.
 func _build_walls() -> void:
 	var body := StaticBody2D.new()
 	body.name = "Walls"
 	body.collision_layer = 1
 	body.collision_mask = 0
 	add_child(body)
-	var w := float(W * TILE)
-	var h := float(H * TILE)
-	# [center, size]: the top rect seals the back-wall row; the rest close the edges.
+	var l := float(TILE)               # inner left (right of the col-0 wall)
+	var r := float((W - 1) * TILE)     # inner right (left of the last-col wall)
+	var t := float(2 * TILE)           # inner top (below the back wall)
+	var b := float(H * TILE)           # inner bottom (the open doorway edge)
+	# [center, size]: seal top/left/right; the bottom rect stops a walk-off past the door.
 	var rects := [
-		[Vector2(w * 0.5, TILE - 2.0), Vector2(w, 8.0)],
-		[Vector2(w * 0.5, h + 2.0), Vector2(w, 8.0)],
-		[Vector2(2.0, h * 0.5), Vector2(8.0, h)],
-		[Vector2(w - 2.0, h * 0.5), Vector2(8.0, h)],
+		[Vector2((l + r) * 0.5, t - 4.0), Vector2(r - l, 8.0)],
+		[Vector2((l + r) * 0.5, b + 4.0), Vector2(r - l, 8.0)],
+		[Vector2(l - 4.0, (t + b) * 0.5), Vector2(8.0, b - t)],
+		[Vector2(r + 4.0, (t + b) * 0.5), Vector2(8.0, b - t)],
 	]
-	for r in rects:
+	for rect_def in rects:
 		var cs := CollisionShape2D.new()
 		var shape := RectangleShape2D.new()
-		shape.size = r[1]
+		shape.size = rect_def[1]
 		cs.shape = shape
-		cs.position = r[0]
+		cs.position = rect_def[0]
 		body.add_child(cs)
 
 

@@ -9,17 +9,16 @@ extends Area2D
 ## without holding a reference to this node.
 ##
 ## Non-blocking on purpose: there is no StaticBody, so villagers add life to the village
-## without ever walling the player in. Placeholder art — a small coloured body plus a name
-## label, built in code so the .tscn stays tiny and no character atlas region is guessed.
-## Swap the body for an AnimatedSprite2D once villager art is licensed.
+## without ever walling the player in. Art is a standing character frame (column 0, row 0
+## of a project npc sheet) plus a name label, built in code so the .tscn stays tiny.
 
 @export var npc_id: String = "villager"
 @export var speaker: String = "Villager"
 ## The dialogue, one entry per advanceable line. PackedStringArray keeps the .tscn override
 ## clean (`lines = PackedStringArray("a", "b")`) and is converted to Array[String] on emit.
 @export var lines: PackedStringArray = PackedStringArray(["Hello."])
-
-const BODY_COLOR := Color(0.42, 0.55, 0.78)
+## Character sheet for the standing sprite. Swap per-instance so each villager differs.
+@export var sprite_sheet: Texture2D = preload("res://assets/sprites/npc_villager2.png")
 
 var _talking := false
 
@@ -55,13 +54,12 @@ func _facing_from(dir: Vector2) -> String:
 
 
 func _build_visual() -> void:
-	var body := ColorRect.new()
-	body.color = BODY_COLOR
-	# A ~10x14 body standing on the feet (origin = bottom-center, like the player).
-	body.offset_left = -5.0
-	body.offset_top = -15.0
-	body.offset_right = 5.0
-	body.offset_bottom = -1.0
+	var body := Sprite2D.new()
+	body.texture = sprite_sheet
+	body.region_enabled = true
+	body.region_rect = Rect2(0, 0, 16, 16)   # column 0, row 0 — standing, facing down
+	body.offset = Vector2(0, -8)              # feet on the node origin
+	body.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(body)
 
 	var label := Label.new()
