@@ -3758,7 +3758,7 @@ shape = SubResource("RectangleShape2D_axmu7")
 
 [node name="UILayer" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]
 
-[node name="Sprite2D" type="TileMapLayer" parent="." unique_id=130664770]
+[node name="DetailLayer" type="TileMapLayer" parent="." unique_id=130664770]
 
 [node name="House1Door" parent="Props" instance=ExtResource("10_door")]
 position = Vector2(176, 272)
