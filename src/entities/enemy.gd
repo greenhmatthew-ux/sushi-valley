@@ -10,8 +10,8 @@ extends CharacterBody2D
 ## the Hurtbox Area2D (layer 9), whose solid footprint — not the full art bounds — is what
 ## the player's attack must overlap.
 ##
-## Placeholder art: a flat ColorRect stands in until a fitting enemy sprite is licensed and
-## imported from the asset library. Swap the ColorRect for an AnimatedSprite2D later.
+## Art: an AnimatedSprite2D driven by the shared SpriteSheets helper (the same 4x4 layout as
+## the player). It bounces in place via walk_down; swap `sprite_sheet` for a different foe.
 
 ## Authored per-instance in the editor. Stats mirror the EnemyDef fields the TS build feeds
 ## into the combat math (see CombatTypes.ts / CombatSystem.ts). No scaling is applied here
@@ -20,15 +20,20 @@ extends CharacterBody2D
 @export var max_hp: int = 30
 @export var enemy_def: int = 4   ## DEF: halved and subtracted in CombatLogic.ability_damage.
 @export var enemy_atk: int = 6   ## ATK: reserved for when the enemy strikes back.
+## Character walk sheet (4 dirs x N frames, 16x16). Swap per-instance for a different foe —
+## enemy_mushroom.png, enemy_boar.png, … — they all share the project sheet layout.
+@export var sprite_sheet: Texture2D = preload("res://assets/sprites/enemy_slime.png")
 
 var hp: int
 
-@onready var _flash: ColorRect = $Sprite
+@onready var _sprite: AnimatedSprite2D = $Sprite
 
 
 func _ready() -> void:
 	hp = max_hp
 	add_to_group("enemy")
+	_sprite.sprite_frames = SpriteSheets.walk_frames(sprite_sheet, SpriteSheets.row_count(sprite_sheet))
+	_sprite.play("walk_down")   # bounce in place; the first-pass enemy is a stationary target
 
 
 ## Take an already-resolved amount of damage (the player computes it via CombatLogic so it
@@ -46,10 +51,10 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 
-## Brief white flash so a hit reads without art. Cheap placeholder feedback.
+## Brief bright flash on hit so the strike reads.
 func _flash_hit() -> void:
-	if _flash == null:
+	if _sprite == null:
 		return
-	_flash.color = Color(1, 1, 1)
+	_sprite.modulate = Color(2.5, 2.5, 2.5)
 	var tween := create_tween()
-	tween.tween_property(_flash, "color", Color(0.78, 0.22, 0.27), 0.18)
+	tween.tween_property(_sprite, "modulate", Color.WHITE, 0.18)
