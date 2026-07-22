@@ -78,7 +78,7 @@ texture = ExtResource("6_doortex")
 [node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
 position = Vector2(104, 132)
 target_scene = "res://src/scenes/world.tscn"
-target_spawn = "house_door"
+uses_return_spawn = true
 auto_enter = true
 
 [node name="EntryMarker" type="Marker2D" parent="Entities"]

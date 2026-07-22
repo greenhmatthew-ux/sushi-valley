@@ -11,6 +11,12 @@ extends Area2D
 @export_file("*.tscn") var target_scene: String = ""
 ## Must match a spawn marker's `spawn_id` in the destination scene ("" = its default).
 @export var target_spawn: String = ""
+## Set on a village door: the spawn in THIS scene to send the player back to, so the
+## shared interior's exit can return them to the correct doorstep.
+@export var return_spawn: String = ""
+## Interior exit doors set this — travel to the recorded return spawn (which house the
+## player entered from) instead of a fixed target_spawn.
+@export var uses_return_spawn: bool = false
 ## When true, stepping onto the door travels immediately (no interact press needed).
 @export var auto_enter: bool = false
 
@@ -40,4 +46,5 @@ func _travel() -> void:
 		push_warning("[Door] no target_scene set on %s" % name)
 		return
 	_used = true
-	Transitions.travel(target_scene, target_spawn)
+	var spawn := Transitions.peek_return_spawn() if uses_return_spawn else target_spawn
+	Transitions.travel(target_scene, spawn, return_spawn)

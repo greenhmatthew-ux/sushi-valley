@@ -26,6 +26,9 @@ func _initialize() -> void:
 	t.set_pending_spawn("shop_door")
 	check_eq("latest spawn wins", t.take_pending_spawn(), "shop_door")
 
+	# The return spawn defaults empty (set only when entering a sub-location).
+	check_eq("fresh return spawn is empty", t.peek_return_spawn(), "")
+
 	t.free()
 	_finish()
 
