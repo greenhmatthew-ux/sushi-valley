@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 [ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="10_door"]
 [ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="11_spawn"]
+[ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="12_enemy"]
+[ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="13_pickup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -3766,3 +3768,17 @@ target_spawn = "interior_entry"
 position = Vector2(176, 292)
 script = ExtResource("11_spawn")
 spawn_id = "house_door"
+
+[node name="Slime1" parent="Props" instance=ExtResource("12_enemy")]
+position = Vector2(248, 168)
+
+[node name="Slime2" parent="Props" instance=ExtResource("12_enemy")]
+position = Vector2(288, 196)
+
+[node name="Slime3" parent="Props" instance=ExtResource("12_enemy")]
+position = Vector2(232, 212)
+
+[node name="FieldLoot" parent="Props" instance=ExtResource("13_pickup")]
+position = Vector2(304, 180)
+item_id = "rice_ball"
+qty = 1

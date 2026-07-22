@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/home_interiors_timber_roof.png" id="2_tex"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
 [ext_resource type="Texture2D" path="res://assets/objects/door.png" id="6_doortex"]
 [ext_resource type="Texture2D" path="res://assets/objects/sprout-basic-furniture.png" id="7_furn"]
+[ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="8_pickup"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_int"]
 texture = ExtResource("2_tex")
@@ -58,3 +59,8 @@ auto_enter = true
 position = Vector2(104, 104)
 script = ExtResource("5_spawn")
 spawn_id = "interior_entry"
+
+[node name="Loot" parent="Entities" instance=ExtResource("8_pickup")]
+position = Vector2(168, 56)
+item_id = "rice_ball"
+qty = 2
