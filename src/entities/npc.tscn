@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/entities/npc.gd" id="1_npc"]
+
+[sub_resource type="CircleShape2D" id="reach"]
+radius = 20.0
+
+[node name="Npc" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+script = ExtResource("1_npc")
+
+[node name="Reach" type="CollisionShape2D" parent="."]
+shape = SubResource("reach")

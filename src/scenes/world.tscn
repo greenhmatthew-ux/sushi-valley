@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="6_qxddc"]
 [ext_resource type="Script" path="res://src/entities/player.gd" id="7_tyaea"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="8_qrxgn"]
+[ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -2314,5 +2315,23 @@ y_sort_enabled = true
 position = Vector2(304, 384)
 motion_mode = 1
 script = ExtResource("7_tyaea")
+
+[node name="Villager" type="Area2D" parent="Props" unique_id=610488021 instance=ExtResource("9_npc")]
+y_sort_enabled = true
+position = Vector2(240, 392)
+npc_id = "villager_greeter"
+speaker = "Aiko"
+lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Press the menu key any time to check your bag.")
+
+[node name="EastGate" type="Area2D" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
+y_sort_enabled = true
+position = Vector2(512, 208)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_7lpf8")
+gate_id = "east_torii"
+required_lesson = "kana-k-row"
+fail_message = "The east gate knows the K-row. Recall it to pass."
 
 [node name="UILayer" type="Node" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]

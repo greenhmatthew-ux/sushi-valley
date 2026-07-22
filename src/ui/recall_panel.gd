@@ -114,15 +114,25 @@ func _render(prompt: Dictionary) -> void:
 
 	for child in _choices_box.get_children():
 		child.queue_free()
+	var first_choice: Button = null
 	for choice in prompt["choices"]:
-		_choices_box.add_child(_make_choice_button(String(choice)))
+		var choice_btn := _make_choice_button(String(choice))
+		_choices_box.add_child(choice_btn)
+		if first_choice == null:
+			first_choice = choice_btn
+	# Keyboard/controller: focus the first answer once the panel is shown, so arrows /
+	# d-pad can move between choices right away. Deferred so it runs after _root.show().
+	if first_choice != null:
+		first_choice.grab_focus.call_deferred()
 
 
 func _make_choice_button(choice: String) -> Button:
 	var btn := Button.new()
 	btn.text = choice
 	btn.custom_minimum_size = Vector2(200, 46)
-	btn.focus_mode = Control.FOCUS_NONE
+	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
+	# is no longer mouse-only (the project requires keyboard AND controller to work).
+	btn.focus_mode = Control.FOCUS_ALL
 	btn.add_theme_stylebox_override("normal", _button_style(COL_BTN, COL_BTN_BORDER))
 	btn.add_theme_stylebox_override("hover", _button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	btn.add_theme_stylebox_override("pressed", _button_style(COL_BTN, COL_BORDER))
@@ -207,12 +217,23 @@ func _close(cancelled: bool) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if _active and event.is_action_pressed("ui_cancel"):
+	if not _active:
+		return
+	if event.is_action_pressed("ui_cancel"):
 		# ESC cancels; a settled prompt (already answered) shouldn't be abandoned
 		# mid-feedback, so require an unanswered prompt — matching LearnPrompt.
 		if not _answered:
 			_root.hide()
 			_close(true)
+			get_viewport().set_input_as_handled()
+		return
+	# Number-key quick-answer (1..N), mirroring the on-screen choice order — a fast path
+	# alongside focus navigation. Guard on echo so a held key fires once.
+	if not _answered and event is InputEventKey and event.pressed and not (event as InputEventKey).echo:
+		var n := (event as InputEventKey).keycode - KEY_1
+		if n >= 0 and n < _choices_box.get_child_count():
+			var choice_btn := _choices_box.get_child(n) as Button
+			_on_choice(choice_btn.text, choice_btn)
 			get_viewport().set_input_as_handled()
 
 
