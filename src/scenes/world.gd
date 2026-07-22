@@ -18,6 +18,10 @@ func _ready() -> void:
 ## review schedule in its own _ready() (SaveGame.load_profile feeds it), so here we
 ## only place the Player where they left off. Read-only: nothing is written on load.
 func _load_game() -> void:
+	# Arriving back through a door beats the saved position — spawn at that doorway.
+	var arrival := Transitions.take_pending_spawn()
+	if not arrival.is_empty() and _place_at_spawn(arrival):
+		return
 	if not SaveGame.has_save():
 		return
 	var placement := SaveGame.apply_snapshot(SaveGame.load_snapshot())
@@ -28,6 +32,19 @@ func _load_game() -> void:
 		return
 	player.global_position = placement["position"]
 	player.face(String(placement["facing"]))
+
+
+## Move the player to the spawn_point marker whose spawn_id matches; returns success.
+func _place_at_spawn(spawn_id: String) -> bool:
+	var player := get_node_or_null("Props/Player")
+	if player == null:
+		return false
+	for m in get_tree().get_nodes_in_group("spawn_point"):
+		if m.get("spawn_id") == spawn_id:
+			player.global_position = m.global_position
+			player.face("down")
+			return true
+	return false
 
 
 ## Autosave when the player closes the window. WM_CLOSE_REQUEST (not EXIT_TREE) is

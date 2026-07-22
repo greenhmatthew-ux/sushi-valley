@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/home_interiors_timber_roof.png" id="2_tex"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="Texture2D" path="res://assets/objects/door.png" id="6_doortex"]
+[ext_resource type="Texture2D" path="res://assets/objects/sprout-basic-furniture.png" id="7_furn"]
+
+[sub_resource type="TileSetAtlasSource" id="atlas_int"]
+texture = ExtResource("2_tex")
+texture_region_size = Vector2i(16, 16)
+2:7/0 = 0
+23:11/0 = 0
+
+[sub_resource type="TileSet" id="ts_int"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("atlas_int")
+
+[node name="InteriorHouse" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_int")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("ts_int")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Furniture" type="Sprite2D" parent="Entities"]
+texture_filter = 1
+position = Vector2(40, 40)
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+texture = ExtResource("7_furn")
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(104, 104)
+
+[node name="DoorSprite" type="Sprite2D" parent="Entities"]
+texture_filter = 1
+position = Vector2(104, 128)
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+texture = ExtResource("6_doortex")
+
+[node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(104, 128)
+target_scene = "res://src/scenes/world.tscn"
+target_spawn = "house_door"
+auto_enter = true
+
+[node name="EntryMarker" type="Marker2D" parent="Entities"]
+position = Vector2(104, 104)
+script = ExtResource("5_spawn")
+spawn_id = "interior_entry"
