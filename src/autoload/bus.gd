@@ -30,7 +30,21 @@ signal flag_set(flag: String, value: bool)
 signal item_added(item_id: String, qty: int)
 signal item_removed(item_id: String, qty: int)
 signal coins_changed(coins: int)
+## Fired after any inventory mutation so panels can refresh without polling.
+signal inventory_changed()
 
 # --- combat ---
 signal combat_started(enemy_id: String)
 signal combat_ended(victory: bool)
+## Per-hit resolution: a single strike landed on an enemy.
+signal enemy_damaged(enemy_id: String, amount: int, remaining_hp: int)
+signal enemy_died(enemy_id: String)
+## The player swung; `facing` is the attack direction ("down"/"up"/"left"/"right").
+signal player_attacked(facing: String)
+
+# --- persistence ---
+signal game_saved()
+signal game_loaded()
+
+# --- world / NPCs ---
+signal npc_talked(npc_id: String)
