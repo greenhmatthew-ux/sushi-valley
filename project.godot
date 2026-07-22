@@ -23,6 +23,7 @@ DB="*res://src/autoload/db.gd"
 SaveGame="*res://src/autoload/save_game.gd"
 Learning="*res://src/autoload/learning.gd"
 Inv="*res://src/autoload/inv.gd"
+Transitions="*res://src/autoload/transitions.gd"
 
 [display]
 
