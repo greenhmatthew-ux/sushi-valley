@@ -23,7 +23,7 @@ func _load_game() -> void:
 	var placement := SaveGame.apply_snapshot(SaveGame.load_snapshot())
 	if not placement.get("has_player", false):
 		return
-	var player := get_node_or_null("Player")
+	var player := get_node_or_null("Props/Player")
 	if player == null:
 		return
 	player.global_position = placement["position"]
@@ -44,7 +44,7 @@ func _save_game() -> void:
 		learning_data = Learning.profile.to_save_dict()
 	var pos := Vector2.ZERO
 	var facing := "down"
-	var player := get_node_or_null("Player")
+	var player := get_node_or_null("Props/Player")
 	if player != null:
 		pos = player.global_position
 		facing = String(player.facing)
@@ -52,7 +52,7 @@ func _save_game() -> void:
 
 
 func _clamp_camera_to_map() -> void:
-	var player := get_node_or_null("Player")
+	var player := get_node_or_null("Props/Player")
 	if player == null:
 		return
 	var camera: Camera2D = player.get_node_or_null("Camera")

@@ -27,7 +27,7 @@ func _run() -> void:
 	await process_frame
 
 	# --- structure ---
-	var player: CharacterBody2D = world.get_node_or_null("Player")
+	var player: CharacterBody2D = world.get_node_or_null("Props/Player")
 	var ground: TileMapLayer = world.get_node_or_null("Ground")
 	var gate: Node = world.get_node_or_null("Props/LessonGate")
 	check_true("harness has a Player", player != null)

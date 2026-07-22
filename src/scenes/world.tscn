@@ -1,12 +1,10 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://c0t8ldle83oet"]
 
-[ext_resource type="Script" path="res://src/scenes/world.gd" id="1_pjcp1"]
-[ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_qxjwa"]
-[ext_resource type="Script" path="res://src/scenes/harness_bootstrap.gd" id="3_ccq23"]
+[ext_resource type="Script" uid="uid://o47ilbthy572" path="res://src/scenes/world.gd" id="1_pjcp1"]
+[ext_resource type="Texture2D" uid="uid://dv1es14t8kxts" path="res://assets/tilesets/serene_village.png" id="2_qxjwa"]
+[ext_resource type="Script" uid="uid://shmdwwhqy42b" path="res://src/scenes/harness_bootstrap.gd" id="3_ccq23"]
 [ext_resource type="PackedScene" path="res://src/entities/lesson_gate.tscn" id="4_0ls5i"]
-[ext_resource type="Script" path="res://src/entities/lesson_gate.gd" id="5_7lpf8"]
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="6_qxddc"]
-[ext_resource type="Script" path="res://src/entities/player.gd" id="7_tyaea"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="8_qrxgn"]
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 
@@ -863,10 +861,14 @@ shape = SubResource("RectangleShape2D_25l4m")
 y_sort_enabled = true
 position = Vector2(528, 272)
 
-[node name="@Sprite2D@5" type="Sprite2D" parent="Props/@StaticBody2D@7" unique_id=1419284544]
+[node name="_Sprite2D_5" type="Sprite2D" parent="Props/@StaticBody2D@7" unique_id=1419284544]
 texture_filter = 1
+position = Vector2(4, 7)
+scale = Vector2(1.0375, 1)
 texture = SubResource("AtlasTexture_vqtul")
 offset = Vector2(0, -32)
+region_enabled = true
+region_rect = Rect2(16.338755, 0.26379395, 77.950775, 64)
 
 [node name="@CollisionShape2D@6" type="CollisionShape2D" parent="Props/@StaticBody2D@7" unique_id=1695240894]
 position = Vector2(0, -11)
@@ -2281,16 +2283,23 @@ offset = Vector2(0, -16)
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_7n4gw")
 
-[node name="LessonGate" type="Area2D" parent="Props" unique_id=1815016312 instance=ExtResource("4_0ls5i")]
-y_sort_enabled = true
+[node name="LessonGate" parent="Props" unique_id=1815016312 instance=ExtResource("4_0ls5i")]
 position = Vector2(320, 112)
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("5_7lpf8")
 gate_id = "north_torii"
 required_lesson = "kana-vowels"
 fail_message = "The gate hums. Recall your kana to pass."
+
+[node name="Villager" parent="Props" unique_id=610488021 instance=ExtResource("9_npc")]
+position = Vector2(272, 384)
+npc_id = "villager_greeter"
+speaker = "Aiko"
+lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Press the menu key any time to check your bag.")
+
+[node name="PathGate" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
+position = Vector2(304, 272)
+gate_id = "lower_torii"
+required_lesson = "kana-k-row"
+fail_message = "This torii remembers the K-row. Recall it to pass."
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 
@@ -2310,28 +2319,7 @@ shape = SubResource("RectangleShape2D_h76i2")
 position = Vector2(708, 240)
 shape = SubResource("RectangleShape2D_axmu7")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=497052358 instance=ExtResource("6_qxddc")]
-y_sort_enabled = true
+[node name="Player" parent="Props" unique_id=497052358 instance=ExtResource("6_qxddc")]
 position = Vector2(304, 384)
-motion_mode = 1
-script = ExtResource("7_tyaea")
 
-[node name="Villager" type="Area2D" parent="Props" unique_id=610488021 instance=ExtResource("9_npc")]
-y_sort_enabled = true
-position = Vector2(240, 392)
-npc_id = "villager_greeter"
-speaker = "Aiko"
-lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Press the menu key any time to check your bag.")
-
-[node name="EastGate" type="Area2D" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
-y_sort_enabled = true
-position = Vector2(512, 208)
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("5_7lpf8")
-gate_id = "east_torii"
-required_lesson = "kana-k-row"
-fail_message = "The east gate knows the K-row. Recall it to pass."
-
-[node name="UILayer" type="Node" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]
+[node name="UILayer" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]

@@ -22,12 +22,12 @@ func _run() -> void:
 
 	# Optional 4th/5th args: place the player at cell (cx,cy) to frame a spot.
 	if args.size() > 4:
-		var player := scene.get_node_or_null("Player")
+		var player := scene.get_node_or_null("Props/Player")
 		if player != null:
 			player.position = Vector2(float(args[3]) * 16.0, float(args[4]) * 16.0)
 
 	if zoom > 0.0:
-		var camera: Camera2D = scene.get_node_or_null("Player/Camera")
+		var camera: Camera2D = scene.get_node_or_null("Props/Player/Camera")
 		if camera != null:
 			camera.zoom = Vector2(zoom, zoom)
 			# Limits would clamp a pulled-back camera back into the map.
