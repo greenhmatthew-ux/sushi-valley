@@ -13,7 +13,8 @@ $godot = "C:\Users\curby\Godot\Godot_v4.7.1-stable_win64_console.exe"
 $project = Split-Path -Parent $PSScriptRoot
 $suites = @(
 	"smoke_db", "smoke_world", "test_srs", "test_learning",
-	"test_lesson_gate", "test_recall_loop", "test_inventory", "test_combat", "smoke_autoloads"
+	"test_lesson_gate", "test_recall_loop", "test_inventory", "test_combat",
+	"test_save", "smoke_autoloads"
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
 
