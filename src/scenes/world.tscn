@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="11_spawn"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="12_enemy"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="13_pickup"]
+[ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="14_quest"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -3782,3 +3783,6 @@ position = Vector2(232, 212)
 position = Vector2(304, 180)
 item_id = "rice_ball"
 qty = 1
+
+[node name="QuestGiver" parent="Props" instance=ExtResource("14_quest")]
+position = Vector2(344, 224)
