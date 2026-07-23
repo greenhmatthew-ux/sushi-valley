@@ -2514,6 +2514,18 @@ position = Vector2(528, 292)
 script = ExtResource("11_spawn")
 spawn_id = "house2_door"
 
+[node name="WildsPath" parent="Props" instance=ExtResource("10_door")]
+position = Vector2(304, 456)
+target_scene = "res://src/scenes/wilds.tscn"
+target_spawn = "wilds_entry"
+return_spawn = "village_south"
+auto_enter = true
+
+[node name="VillageSouthSpawn" type="Marker2D" parent="Props"]
+position = Vector2(304, 408)
+script = ExtResource("11_spawn")
+spawn_id = "village_south"
+
 [node name="Slime1" parent="Props" instance=ExtResource("12_enemy")]
 position = Vector2(248, 168)
 behavior = 1

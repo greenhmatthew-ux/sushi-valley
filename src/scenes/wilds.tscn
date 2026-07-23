@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/wilds.gd" id="1_wilds"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="6_prop"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_green.png" id="7_tg"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_leafy.png" id="8_tl"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="9_ts"]
+[ext_resource type="Texture2D" path="res://assets/props/rock.png" id="10_rk"]
+[ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
+
+[sub_resource type="TileSetAtlasSource" id="atlas_g"]
+texture = ExtResource("2_sv")
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="ts_g"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("atlas_g")
+
+[node name="Wilds" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wilds")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("ts_g")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(336, 336)
+
+[node name="WildsEntry" type="Marker2D" parent="Entities"]
+position = Vector2(336, 336)
+script = ExtResource("5_spawn")
+spawn_id = "wilds_entry"
+
+[node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(336, 440)
+target_scene = "res://src/scenes/world.tscn"
+uses_return_spawn = true
+auto_enter = true
+
+[node name="Tree0" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(48, 96)
+texture = ExtResource("7_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree1" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(176, 56)
+texture = ExtResource("8_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(360, 56)
+texture = ExtResource("9_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(560, 72)
+texture = ExtResource("7_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree4" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(616, 208)
+texture = ExtResource("8_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree5" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(592, 376)
+texture = ExtResource("9_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree6" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(392, 416)
+texture = ExtResource("7_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree7" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(184, 416)
+texture = ExtResource("8_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree8" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(56, 376)
+texture = ExtResource("9_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree9" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(40, 240)
+texture = ExtResource("7_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Rock0" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(120, 176)
+texture = ExtResource("10_rk")
+foot_size = Vector2(20, 8)
+foot_offset = Vector2(0, -3)
+
+[node name="Rock1" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(536, 280)
+texture = ExtResource("10_rk")
+foot_size = Vector2(20, 8)
+foot_offset = Vector2(0, -3)
+
+[node name="Slime0" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(240, 176)
+behavior = 2
+enemy_atk = 4
+
+[node name="Slime1" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(448, 208)
+behavior = 2
+enemy_atk = 4
+
+[node name="Slime2" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(336, 288)
+behavior = 2
+enemy_atk = 4

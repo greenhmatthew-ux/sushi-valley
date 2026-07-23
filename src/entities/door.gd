@@ -35,8 +35,11 @@ func interact(_player: Node = null) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body is CharacterBody2D:
-		_travel()
+	# Only the player triggers a door — not enemies (which are CharacterBody2D too and
+	# could otherwise wander in and yank the scene out from under a fight). Deferred so the
+	# scene swap doesn't run inside this physics callback (freeing bodies mid-callback errors).
+	if body.is_in_group("player"):
+		_travel.call_deferred()
 
 
 func _travel() -> void:
