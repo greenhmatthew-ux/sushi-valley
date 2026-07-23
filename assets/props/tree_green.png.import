@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8brm7dd4h02"
-path="res://.godot/imported/nano-paper-lantern.png-fb3783507f9716fac656b4e9658212dc.ctex"
+uid="uid://j2hd5d0kkdnu"
+path="res://.godot/imported/tree_green.png-02149ea59e1c43b610a0e7b65fe82bf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/nano-paper-lantern.png"
-dest_files=["res://.godot/imported/nano-paper-lantern.png-fb3783507f9716fac656b4e9658212dc.ctex"]
+source_file="res://assets/props/tree_green.png"
+dest_files=["res://.godot/imported/tree_green.png-02149ea59e1c43b610a0e7b65fe82bf1.ctex"]
 
 [params]
 

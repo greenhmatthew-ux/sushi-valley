@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyt40w0rr2fqg"
-path="res://.godot/imported/nano-torii.png-52046a9cd3dcd24cff336aad0d6719c7.ctex"
+uid="uid://b71ls73jqvq0u"
+path="res://.godot/imported/berry_bush.png-5b3d1b9caedd939e822bb48e7db88951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/nano-torii.png"
-dest_files=["res://.godot/imported/nano-torii.png-52046a9cd3dcd24cff336aad0d6719c7.ctex"]
+source_file="res://assets/props/berry_bush.png"
+dest_files=["res://.godot/imported/berry_bush.png-5b3d1b9caedd939e822bb48e7db88951.ctex"]
 
 [params]
 

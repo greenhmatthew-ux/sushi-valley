@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bffodeevmwo8c"
-path="res://.godot/imported/nano-stone-lantern.png-8889ef5d119f3c9a2c4d92dbb00f5e0e.ctex"
+uid="uid://cxfmwsvrj53d6"
+path="res://.godot/imported/tree_sakura.png-aabc5813fa772b32ade7a3bf1a2dbd37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/nano-stone-lantern.png"
-dest_files=["res://.godot/imported/nano-stone-lantern.png-8889ef5d119f3c9a2c4d92dbb00f5e0e.ctex"]
+source_file="res://assets/props/tree_sakura.png"
+dest_files=["res://.godot/imported/tree_sakura.png-aabc5813fa772b32ade7a3bf1a2dbd37.ctex"]
 
 [params]
 

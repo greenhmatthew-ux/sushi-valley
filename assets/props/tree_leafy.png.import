@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbwuxp723tk7k"
-path="res://.godot/imported/nano-offering-box.png-6b6818e3de579870582ad045a9b4a40f.ctex"
+uid="uid://cwlfvex3yqkga"
+path="res://.godot/imported/tree_leafy.png-2e9016fd94130460068b2e9542678443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/nano-offering-box.png"
-dest_files=["res://.godot/imported/nano-offering-box.png-6b6818e3de579870582ad045a9b4a40f.ctex"]
+source_file="res://assets/props/tree_leafy.png"
+dest_files=["res://.godot/imported/tree_leafy.png-2e9016fd94130460068b2e9542678443.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmat25gb84n2y"
-path="res://.godot/imported/nano-bamboo.png-3503d7f38470e5a7061cbb80a9c6f23d.ctex"
+uid="uid://x43kmlv3bsrg"
+path="res://.godot/imported/rock.png-3d2c07b7648a528c92d9a2057a372dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/nano-bamboo.png"
-dest_files=["res://.godot/imported/nano-bamboo.png-3503d7f38470e5a7061cbb80a9c6f23d.ctex"]
+source_file="res://assets/props/rock.png"
+dest_files=["res://.godot/imported/rock.png-3d2c07b7648a528c92d9a2057a372dd5.ctex"]
 
 [params]
 
