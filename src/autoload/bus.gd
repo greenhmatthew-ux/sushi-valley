@@ -42,6 +42,10 @@ signal enemy_died(enemy_id: String)
 ## The player swung; `facing` is the attack direction ("down"/"up"/"left"/"right").
 signal player_attacked(facing: String)
 
+# --- player vitals ---
+signal player_hp_changed(hp: int, max_hp: int)
+signal player_died()
+
 # --- persistence ---
 signal game_saved()
 signal game_loaded()

@@ -17,11 +17,18 @@ extends CharacterBody2D
 
 const SPEED := 80.0   ## world px/sec. 16px tiles; camera zoom handles apparent speed.
 
+const MAX_HP := 12              ## 3 hearts of 4 HP each (see hud_layer's heart display)
+const INVULN_AFTER_HIT := 0.8   ## brief mercy window so one contact can't drain everything
+
 ## Facing is stored as a String to match the card/data vocabulary used by save
 ## files and the TS build ("down"/"up"/"left"/"right"), not an enum that would
 ## serialize as a meaningless integer.
 var facing: String = "down"
 var control_enabled: bool = true
+
+var hp: int = MAX_HP
+var _invuln: float = 0.0
+var _spawn_pos: Vector2 = Vector2.ZERO   ## where a defeat sends you back to
 
 var _current_anim: String = ""
 
@@ -30,12 +37,46 @@ var _current_anim: String = ""
 
 
 func _ready() -> void:
+	add_to_group("player")   # aggro enemies find the player by this group
+	_spawn_pos = global_position
 	var texture: Texture2D = preload("res://assets/sprites/player_walk.png")
 	_sprite.sprite_frames = SpriteSheets.walk_frames(texture, SpriteSheets.row_count(texture))
 	_show_idle()
+	Bus.player_hp_changed.emit(hp, MAX_HP)
 
 
-func _physics_process(_delta: float) -> void:
+## Take a hit from an aggressive foe. Ignored during the post-hit mercy window; a defeat
+## patches you up and returns you to where you entered this level.
+func take_damage(amount: int) -> void:
+	if _invuln > 0.0 or hp <= 0:
+		return
+	hp = maxi(0, hp - amount)
+	Bus.player_hp_changed.emit(hp, MAX_HP)
+	_flash_hurt()
+	_invuln = INVULN_AFTER_HIT
+	if hp <= 0:
+		_die()
+
+
+func _die() -> void:
+	Bus.player_died.emit()
+	Bus.toast.emit("You were defeated — patched up back home.")
+	hp = MAX_HP
+	global_position = _spawn_pos
+	_invuln = 1.5
+	Bus.player_hp_changed.emit(hp, MAX_HP)
+
+
+func _flash_hurt() -> void:
+	if _sprite == null:
+		return
+	_sprite.modulate = Color(1.0, 0.35, 0.35)
+	create_tween().tween_property(_sprite, "modulate", Color.WHITE, 0.3)
+
+
+func _physics_process(delta: float) -> void:
+	if _invuln > 0.0:
+		_invuln -= delta
 	if not control_enabled:
 		velocity = Vector2.ZERO
 		_show_idle()
