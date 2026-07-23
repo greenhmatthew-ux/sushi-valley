@@ -24,7 +24,18 @@ extends CharacterBody2D
 ## enemy_mushroom.png, enemy_boar.png, … — they all share the project sheet layout.
 @export var sprite_sheet: Texture2D = preload("res://assets/sprites/enemy_slime.png")
 
+## How this foe engages the player:
+##   PASSIVE  — a stationary target; always fightable, dies when beaten.
+##   SPARRING — a friendly practice partner for the safe starting area: it never aggros
+##              and cannot be hit until the player CHOOSES to engage it (walk up + interact);
+##              on defeat it yields (a small reward) rather than being "killed" hostilely.
+##   AGGRO    — (expanded areas) chases and attacks on sight. Chase AI + player HP land with
+##              the world expansion; the mode is defined here so foes can be authored now.
+enum Behavior { PASSIVE, SPARRING, AGGRO }
+@export var behavior: Behavior = Behavior.PASSIVE
+
 var hp: int
+var _engaged: bool = false   ## a sparring bout is underway (PASSIVE/AGGRO are always "on")
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 
@@ -43,12 +54,26 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	if hp <= 0:
 		return
+	# A sparring partner shrugs off hits until the player has chosen to engage it.
+	if behavior == Behavior.SPARRING and not _engaged:
+		return
 	hp = CombatLogic.apply_damage(hp, amount)
 	Bus.enemy_damaged.emit(enemy_id, amount, hp)
 	_flash_hit()
 	if CombatLogic.is_dead(hp):
 		Bus.enemy_died.emit(enemy_id)
+		if behavior == Behavior.SPARRING:
+			Bus.toast.emit("You won the spar with the %s!" % enemy_id)
 		queue_free()
+
+
+## Begin a practice bout — called through the player's interact probe (see SparZone) when
+## they walk up to a sparring foe and press interact. Non-aggro: nothing happens otherwise.
+func begin_spar(_player: Node = null) -> void:
+	if behavior != Behavior.SPARRING or _engaged:
+		return
+	_engaged = true
+	Bus.toast.emit("You square up to spar with the %s." % enemy_id)
 
 
 ## Brief bright flash on hit so the strike reads.

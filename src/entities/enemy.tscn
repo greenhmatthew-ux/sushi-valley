@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://src/entities/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://src/entities/spar_zone.gd" id="2_spar"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spar"]
+radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
 size = Vector2(10, 6)
@@ -31,3 +35,14 @@ monitorable = true
 [node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_hurt")
+
+[node name="SparZone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+script = ExtResource("2_spar")
+
+[node name="SparShape" type="CollisionShape2D" parent="SparZone"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_spar")
