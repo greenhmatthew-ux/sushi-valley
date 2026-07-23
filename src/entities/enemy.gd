@@ -34,8 +34,18 @@ extends CharacterBody2D
 enum Behavior { PASSIVE, SPARRING, AGGRO }
 @export var behavior: Behavior = Behavior.PASSIVE
 
+## AGGRO tuning (PASSIVE/SPARRING ignore these): how close before it notices the player,
+## how fast it chases, and the seconds between its contact hits.
+@export var detect_radius: float = 96.0
+@export var move_speed: float = 42.0
+@export var attack_cooldown: float = 1.0
+
+const ATTACK_RANGE := 15.0
+
 var hp: int
 var _engaged: bool = false   ## a sparring bout is underway (PASSIVE/AGGRO are always "on")
+var _attack_timer: float = 0.0
+var _cur_anim: String = ""
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 
@@ -44,7 +54,45 @@ func _ready() -> void:
 	hp = max_hp
 	add_to_group("enemy")
 	_sprite.sprite_frames = SpriteSheets.walk_frames(sprite_sheet, SpriteSheets.row_count(sprite_sheet))
-	_sprite.play("walk_down")   # bounce in place; the first-pass enemy is a stationary target
+	_set_anim("walk_down")   # idle bounce; AGGRO overrides this while chasing
+
+
+## AGGRO chase + contact-attack. PASSIVE and SPARRING foes return early and never move, so
+## only hostile enemies pursue the player and strike them on contact.
+func _physics_process(delta: float) -> void:
+	if behavior != Behavior.AGGRO or hp <= 0:
+		return
+	_attack_timer = maxf(0.0, _attack_timer - delta)
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var to_player: Vector2 = player.global_position - global_position
+	var dist := to_player.length()
+	if dist > detect_radius:
+		velocity = Vector2.ZERO
+		_set_anim("idle_down")
+	elif dist > ATTACK_RANGE:
+		velocity = to_player.normalized() * move_speed
+		_set_anim("walk_" + _dir_name(to_player))
+	else:
+		velocity = Vector2.ZERO
+		if _attack_timer <= 0.0 and player.has_method("take_damage"):
+			player.take_damage(CombatLogic.enemy_damage(enemy_atk, 0))
+			_attack_timer = attack_cooldown
+	move_and_slide()
+
+
+func _dir_name(v: Vector2) -> String:
+	if absf(v.x) > absf(v.y):
+		return "left" if v.x < 0.0 else "right"
+	return "up" if v.y < 0.0 else "down"
+
+
+func _set_anim(anim: String) -> void:
+	if _cur_anim == anim:
+		return
+	_cur_anim = anim
+	_sprite.play(anim)
 
 
 ## Take an already-resolved amount of damage (the player computes it via CombatLogic so it
