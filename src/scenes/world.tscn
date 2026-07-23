@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="12_enemy"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="13_pickup"]
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="14_quest"]
+[ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="20_prop"]
+[ext_resource type="Texture2D" path="res://assets/objects/nano-oak-tree.png" id="21_oak"]
+[ext_resource type="Texture2D" path="res://assets/objects/nano-maple-tree.png" id="22_maple"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tree.png" id="23_tree"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -2308,1280 +2312,6 @@ position = Vector2(528, 272)
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_qi7wn")
 
-[node name="@StaticBody2D@10" type="StaticBody2D" parent="Props" unique_id=1135145135]
-y_sort_enabled = true
-position = Vector2(24, 32)
-
-[node name="@Sprite2D@8" type="Sprite2D" parent="Props/@StaticBody2D@10" unique_id=2016882529]
-texture_filter = 1
-texture = SubResource("AtlasTexture_k5joq")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@9" type="CollisionShape2D" parent="Props/@StaticBody2D@10" unique_id=2125882399]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_vvusi")
-
-[node name="@StaticBody2D@13" type="StaticBody2D" parent="Props" unique_id=1197670551]
-y_sort_enabled = true
-position = Vector2(72, 32)
-
-[node name="@Sprite2D@11" type="Sprite2D" parent="Props/@StaticBody2D@13" unique_id=1756130472]
-texture_filter = 1
-texture = SubResource("AtlasTexture_k37mw")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@12" type="CollisionShape2D" parent="Props/@StaticBody2D@13" unique_id=971122448]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_urb0p")
-
-[node name="@StaticBody2D@16" type="StaticBody2D" parent="Props" unique_id=1156117235]
-y_sort_enabled = true
-position = Vector2(104, 32)
-
-[node name="@Sprite2D@14" type="Sprite2D" parent="Props/@StaticBody2D@16" unique_id=579932203]
-texture_filter = 1
-texture = SubResource("AtlasTexture_1fyld")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@15" type="CollisionShape2D" parent="Props/@StaticBody2D@16" unique_id=19468127]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_mxnng")
-
-[node name="@StaticBody2D@19" type="StaticBody2D" parent="Props" unique_id=530642630]
-y_sort_enabled = true
-position = Vector2(136, 32)
-
-[node name="@Sprite2D@17" type="Sprite2D" parent="Props/@StaticBody2D@19" unique_id=1302641757]
-texture_filter = 1
-texture = SubResource("AtlasTexture_8l7mp")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@18" type="CollisionShape2D" parent="Props/@StaticBody2D@19" unique_id=1687134289]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_s6jqn")
-
-[node name="@StaticBody2D@22" type="StaticBody2D" parent="Props" unique_id=316752799]
-y_sort_enabled = true
-position = Vector2(216, 32)
-
-[node name="@Sprite2D@20" type="Sprite2D" parent="Props/@StaticBody2D@22" unique_id=332467916]
-texture_filter = 1
-texture = SubResource("AtlasTexture_trq4x")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@21" type="CollisionShape2D" parent="Props/@StaticBody2D@22" unique_id=1666758945]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lan02")
-
-[node name="@StaticBody2D@25" type="StaticBody2D" parent="Props" unique_id=679319635]
-y_sort_enabled = true
-position = Vector2(248, 32)
-
-[node name="@Sprite2D@23" type="Sprite2D" parent="Props/@StaticBody2D@25" unique_id=1709896347]
-texture_filter = 1
-texture = SubResource("AtlasTexture_eu8y7")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@24" type="CollisionShape2D" parent="Props/@StaticBody2D@25" unique_id=2094324755]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_l280w")
-
-[node name="@StaticBody2D@28" type="StaticBody2D" parent="Props" unique_id=328152653]
-y_sort_enabled = true
-position = Vector2(280, 32)
-
-[node name="@Sprite2D@26" type="Sprite2D" parent="Props/@StaticBody2D@28" unique_id=2004842888]
-texture_filter = 1
-texture = SubResource("AtlasTexture_cirtn")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@27" type="CollisionShape2D" parent="Props/@StaticBody2D@28" unique_id=1844514400]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ip3fp")
-
-[node name="@StaticBody2D@31" type="StaticBody2D" parent="Props" unique_id=234287497]
-y_sort_enabled = true
-position = Vector2(312, 32)
-
-[node name="@Sprite2D@29" type="Sprite2D" parent="Props/@StaticBody2D@31" unique_id=2025005264]
-texture_filter = 1
-texture = SubResource("AtlasTexture_d2ylq")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@30" type="CollisionShape2D" parent="Props/@StaticBody2D@31" unique_id=1766275676]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_0q3pv")
-
-[node name="@StaticBody2D@34" type="StaticBody2D" parent="Props" unique_id=1491240052]
-y_sort_enabled = true
-position = Vector2(360, 32)
-
-[node name="@Sprite2D@32" type="Sprite2D" parent="Props/@StaticBody2D@34" unique_id=1581833719]
-texture_filter = 1
-texture = SubResource("AtlasTexture_0rk15")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@33" type="CollisionShape2D" parent="Props/@StaticBody2D@34" unique_id=480080269]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_fdvr3")
-
-[node name="@StaticBody2D@37" type="StaticBody2D" parent="Props" unique_id=1556384829]
-y_sort_enabled = true
-position = Vector2(392, 32)
-
-[node name="@Sprite2D@35" type="Sprite2D" parent="Props/@StaticBody2D@37" unique_id=1840474218]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ga528")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@36" type="CollisionShape2D" parent="Props/@StaticBody2D@37" unique_id=148150240]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_2w1ou")
-
-[node name="@StaticBody2D@40" type="StaticBody2D" parent="Props" unique_id=214843700]
-y_sort_enabled = true
-position = Vector2(440, 32)
-
-[node name="@Sprite2D@38" type="Sprite2D" parent="Props/@StaticBody2D@40" unique_id=1474486560]
-texture_filter = 1
-texture = SubResource("AtlasTexture_n4nj0")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@39" type="CollisionShape2D" parent="Props/@StaticBody2D@40" unique_id=443768207]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_qpnb2")
-
-[node name="@StaticBody2D@43" type="StaticBody2D" parent="Props" unique_id=1180858236]
-y_sort_enabled = true
-position = Vector2(488, 32)
-
-[node name="@Sprite2D@41" type="Sprite2D" parent="Props/@StaticBody2D@43" unique_id=2100698607]
-texture_filter = 1
-texture = SubResource("AtlasTexture_pgxhu")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@42" type="CollisionShape2D" parent="Props/@StaticBody2D@43" unique_id=1282258770]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ntkrj")
-
-[node name="@StaticBody2D@46" type="StaticBody2D" parent="Props" unique_id=1217957989]
-y_sort_enabled = true
-position = Vector2(568, 32)
-
-[node name="@Sprite2D@44" type="Sprite2D" parent="Props/@StaticBody2D@46" unique_id=1855570421]
-texture_filter = 1
-texture = SubResource("AtlasTexture_fwuda")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@45" type="CollisionShape2D" parent="Props/@StaticBody2D@46" unique_id=54408725]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ogsvw")
-
-[node name="@StaticBody2D@49" type="StaticBody2D" parent="Props" unique_id=798097704]
-y_sort_enabled = true
-position = Vector2(664, 32)
-
-[node name="@Sprite2D@47" type="Sprite2D" parent="Props/@StaticBody2D@49" unique_id=1237243715]
-texture_filter = 1
-texture = SubResource("AtlasTexture_dgvpq")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@48" type="CollisionShape2D" parent="Props/@StaticBody2D@49" unique_id=1904107770]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_i1lgv")
-
-[node name="@StaticBody2D@52" type="StaticBody2D" parent="Props" unique_id=360145259]
-y_sort_enabled = true
-position = Vector2(40, 48)
-
-[node name="@Sprite2D@50" type="Sprite2D" parent="Props/@StaticBody2D@52" unique_id=1414564544]
-texture_filter = 1
-texture = SubResource("AtlasTexture_hua4p")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@51" type="CollisionShape2D" parent="Props/@StaticBody2D@52" unique_id=1334162826]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_s0qb0")
-
-[node name="@StaticBody2D@55" type="StaticBody2D" parent="Props" unique_id=224938417]
-y_sort_enabled = true
-position = Vector2(120, 48)
-
-[node name="@Sprite2D@53" type="Sprite2D" parent="Props/@StaticBody2D@55" unique_id=1307595843]
-texture_filter = 1
-texture = SubResource("AtlasTexture_vnoke")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@54" type="CollisionShape2D" parent="Props/@StaticBody2D@55" unique_id=1843379343]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_s5gw1")
-
-[node name="@StaticBody2D@58" type="StaticBody2D" parent="Props" unique_id=243283105]
-y_sort_enabled = true
-position = Vector2(184, 48)
-
-[node name="@Sprite2D@56" type="Sprite2D" parent="Props/@StaticBody2D@58" unique_id=620771269]
-texture_filter = 1
-texture = SubResource("AtlasTexture_mn2i6")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@57" type="CollisionShape2D" parent="Props/@StaticBody2D@58" unique_id=680018033]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_v8imb")
-
-[node name="@StaticBody2D@61" type="StaticBody2D" parent="Props" unique_id=1818128849]
-y_sort_enabled = true
-position = Vector2(344, 48)
-
-[node name="@Sprite2D@59" type="Sprite2D" parent="Props/@StaticBody2D@61" unique_id=241649840]
-texture_filter = 1
-texture = SubResource("AtlasTexture_gobyi")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@60" type="CollisionShape2D" parent="Props/@StaticBody2D@61" unique_id=510044020]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_kmle6")
-
-[node name="@StaticBody2D@64" type="StaticBody2D" parent="Props" unique_id=52060554]
-y_sort_enabled = true
-position = Vector2(408, 48)
-
-[node name="@Sprite2D@62" type="Sprite2D" parent="Props/@StaticBody2D@64" unique_id=1259953268]
-texture_filter = 1
-texture = SubResource("AtlasTexture_f3ebj")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@63" type="CollisionShape2D" parent="Props/@StaticBody2D@64" unique_id=2043811955]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_7k4pe")
-
-[node name="@StaticBody2D@67" type="StaticBody2D" parent="Props" unique_id=726049631]
-y_sort_enabled = true
-position = Vector2(472, 48)
-
-[node name="@Sprite2D@65" type="Sprite2D" parent="Props/@StaticBody2D@67" unique_id=753024399]
-texture_filter = 1
-texture = SubResource("AtlasTexture_dmov6")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@66" type="CollisionShape2D" parent="Props/@StaticBody2D@67" unique_id=367557772]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_rjtf1")
-
-[node name="@StaticBody2D@70" type="StaticBody2D" parent="Props" unique_id=59979240]
-y_sort_enabled = true
-position = Vector2(520, 48)
-
-[node name="@Sprite2D@68" type="Sprite2D" parent="Props/@StaticBody2D@70" unique_id=792631913]
-texture_filter = 1
-texture = SubResource("AtlasTexture_i0c8o")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@69" type="CollisionShape2D" parent="Props/@StaticBody2D@70" unique_id=1445190054]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_5kh6f")
-
-[node name="@StaticBody2D@73" type="StaticBody2D" parent="Props" unique_id=366076368]
-y_sort_enabled = true
-position = Vector2(584, 48)
-
-[node name="@Sprite2D@71" type="Sprite2D" parent="Props/@StaticBody2D@73" unique_id=1090854623]
-texture_filter = 1
-texture = SubResource("AtlasTexture_5nrvb")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@72" type="CollisionShape2D" parent="Props/@StaticBody2D@73" unique_id=1552342966]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_pbdae")
-
-[node name="@StaticBody2D@76" type="StaticBody2D" parent="Props" unique_id=1084153303]
-y_sort_enabled = true
-position = Vector2(680, 48)
-
-[node name="@Sprite2D@74" type="Sprite2D" parent="Props/@StaticBody2D@76" unique_id=1653668231]
-texture_filter = 1
-texture = SubResource("AtlasTexture_p0gk1")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@75" type="CollisionShape2D" parent="Props/@StaticBody2D@76" unique_id=53089562]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_jpflf")
-
-[node name="@StaticBody2D@79" type="StaticBody2D" parent="Props" unique_id=1709466759]
-y_sort_enabled = true
-position = Vector2(56, 64)
-
-[node name="@Sprite2D@77" type="Sprite2D" parent="Props/@StaticBody2D@79" unique_id=941654187]
-texture_filter = 1
-texture = SubResource("AtlasTexture_70cr0")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@78" type="CollisionShape2D" parent="Props/@StaticBody2D@79" unique_id=510517596]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_30qdn")
-
-[node name="@StaticBody2D@82" type="StaticBody2D" parent="Props" unique_id=803281543]
-y_sort_enabled = true
-position = Vector2(88, 64)
-
-[node name="@Sprite2D@80" type="Sprite2D" parent="Props/@StaticBody2D@82" unique_id=1914630355]
-texture_filter = 1
-texture = SubResource("AtlasTexture_82a8w")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@81" type="CollisionShape2D" parent="Props/@StaticBody2D@82" unique_id=2089036821]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_d3lrd")
-
-[node name="@StaticBody2D@85" type="StaticBody2D" parent="Props" unique_id=1516614225]
-y_sort_enabled = true
-position = Vector2(360, 64)
-
-[node name="@Sprite2D@83" type="Sprite2D" parent="Props/@StaticBody2D@85" unique_id=193459277]
-texture_filter = 1
-texture = SubResource("AtlasTexture_n2jaj")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@84" type="CollisionShape2D" parent="Props/@StaticBody2D@85" unique_id=354369633]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_hi2e8")
-
-[node name="@StaticBody2D@88" type="StaticBody2D" parent="Props" unique_id=1034771470]
-y_sort_enabled = true
-position = Vector2(440, 64)
-
-[node name="@Sprite2D@86" type="Sprite2D" parent="Props/@StaticBody2D@88" unique_id=674109065]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ecjq1")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@87" type="CollisionShape2D" parent="Props/@StaticBody2D@88" unique_id=1911231139]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_hv6gd")
-
-[node name="@StaticBody2D@91" type="StaticBody2D" parent="Props" unique_id=1904719408]
-y_sort_enabled = true
-position = Vector2(488, 64)
-
-[node name="@Sprite2D@89" type="Sprite2D" parent="Props/@StaticBody2D@91" unique_id=1970334141]
-texture_filter = 1
-texture = SubResource("AtlasTexture_fbwxm")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@90" type="CollisionShape2D" parent="Props/@StaticBody2D@91" unique_id=1831079080]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_hw3wi")
-
-[node name="@StaticBody2D@94" type="StaticBody2D" parent="Props" unique_id=887436521]
-y_sort_enabled = true
-position = Vector2(616, 64)
-
-[node name="@Sprite2D@92" type="Sprite2D" parent="Props/@StaticBody2D@94" unique_id=1251450595]
-texture_filter = 1
-texture = SubResource("AtlasTexture_p3hp5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@93" type="CollisionShape2D" parent="Props/@StaticBody2D@94" unique_id=1509656645]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_2gl4a")
-
-[node name="@StaticBody2D@97" type="StaticBody2D" parent="Props" unique_id=234284523]
-y_sort_enabled = true
-position = Vector2(648, 64)
-
-[node name="@Sprite2D@95" type="Sprite2D" parent="Props/@StaticBody2D@97" unique_id=429558481]
-texture_filter = 1
-texture = SubResource("AtlasTexture_e7cqc")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@96" type="CollisionShape2D" parent="Props/@StaticBody2D@97" unique_id=106332628]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_tq8pd")
-
-[node name="@StaticBody2D@100" type="StaticBody2D" parent="Props" unique_id=1223715833]
-y_sort_enabled = true
-position = Vector2(24, 80)
-
-[node name="@Sprite2D@98" type="Sprite2D" parent="Props/@StaticBody2D@100" unique_id=749250395]
-texture_filter = 1
-texture = SubResource("AtlasTexture_554l8")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@99" type="CollisionShape2D" parent="Props/@StaticBody2D@100" unique_id=1276477647]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_7fnfw")
-
-[node name="@StaticBody2D@103" type="StaticBody2D" parent="Props" unique_id=834439419]
-y_sort_enabled = true
-position = Vector2(680, 80)
-
-[node name="@Sprite2D@101" type="Sprite2D" parent="Props/@StaticBody2D@103" unique_id=1786415273]
-texture_filter = 1
-texture = SubResource("AtlasTexture_cuoy5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@102" type="CollisionShape2D" parent="Props/@StaticBody2D@103" unique_id=419170055]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_x0ayd")
-
-[node name="@StaticBody2D@106" type="StaticBody2D" parent="Props" unique_id=760868694]
-y_sort_enabled = true
-position = Vector2(40, 96)
-
-[node name="@Sprite2D@104" type="Sprite2D" parent="Props/@StaticBody2D@106" unique_id=503650295]
-texture_filter = 1
-texture = SubResource("AtlasTexture_0rsk7")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@105" type="CollisionShape2D" parent="Props/@StaticBody2D@106" unique_id=1256253070]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_5478d")
-
-[node name="@StaticBody2D@109" type="StaticBody2D" parent="Props" unique_id=638976847]
-y_sort_enabled = true
-position = Vector2(664, 112)
-
-[node name="@Sprite2D@107" type="Sprite2D" parent="Props/@StaticBody2D@109" unique_id=1142502691]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ghj4q")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@108" type="CollisionShape2D" parent="Props/@StaticBody2D@109" unique_id=1611732726]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_iqygm")
-
-[node name="@StaticBody2D@112" type="StaticBody2D" parent="Props" unique_id=1945402461]
-y_sort_enabled = true
-position = Vector2(24, 128)
-
-[node name="@Sprite2D@110" type="Sprite2D" parent="Props/@StaticBody2D@112" unique_id=339761245]
-texture_filter = 1
-texture = SubResource("AtlasTexture_yepfa")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@111" type="CollisionShape2D" parent="Props/@StaticBody2D@112" unique_id=488970188]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_8rt7d")
-
-[node name="@StaticBody2D@115" type="StaticBody2D" parent="Props" unique_id=762392640]
-y_sort_enabled = true
-position = Vector2(680, 128)
-
-[node name="@Sprite2D@113" type="Sprite2D" parent="Props/@StaticBody2D@115" unique_id=173976090]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ntaoc")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@114" type="CollisionShape2D" parent="Props/@StaticBody2D@115" unique_id=1470623707]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_1erim")
-
-[node name="@StaticBody2D@118" type="StaticBody2D" parent="Props" unique_id=2079881145]
-y_sort_enabled = true
-position = Vector2(40, 144)
-
-[node name="@Sprite2D@116" type="Sprite2D" parent="Props/@StaticBody2D@118" unique_id=1232218418]
-texture_filter = 1
-texture = SubResource("AtlasTexture_pdnnj")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@117" type="CollisionShape2D" parent="Props/@StaticBody2D@118" unique_id=848365949]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_fhfmo")
-
-[node name="@StaticBody2D@121" type="StaticBody2D" parent="Props" unique_id=1269721330]
-y_sort_enabled = true
-position = Vector2(72, 144)
-
-[node name="@Sprite2D@119" type="Sprite2D" parent="Props/@StaticBody2D@121" unique_id=668894488]
-texture_filter = 1
-texture = SubResource("AtlasTexture_cwmr7")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@120" type="CollisionShape2D" parent="Props/@StaticBody2D@121" unique_id=965686784]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_551h7")
-
-[node name="@StaticBody2D@124" type="StaticBody2D" parent="Props" unique_id=331806801]
-y_sort_enabled = true
-position = Vector2(24, 160)
-
-[node name="@Sprite2D@122" type="Sprite2D" parent="Props/@StaticBody2D@124" unique_id=418521979]
-texture_filter = 1
-texture = SubResource("AtlasTexture_2fxue")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@123" type="CollisionShape2D" parent="Props/@StaticBody2D@124" unique_id=390418690]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_fmqmq")
-
-[node name="@StaticBody2D@127" type="StaticBody2D" parent="Props" unique_id=1332165164]
-y_sort_enabled = true
-position = Vector2(680, 176)
-
-[node name="@Sprite2D@125" type="Sprite2D" parent="Props/@StaticBody2D@127" unique_id=435968017]
-texture_filter = 1
-texture = SubResource("AtlasTexture_xaoof")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@126" type="CollisionShape2D" parent="Props/@StaticBody2D@127" unique_id=1028758351]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_624f1")
-
-[node name="@StaticBody2D@130" type="StaticBody2D" parent="Props" unique_id=83597523]
-y_sort_enabled = true
-position = Vector2(24, 192)
-
-[node name="@Sprite2D@128" type="Sprite2D" parent="Props/@StaticBody2D@130" unique_id=5360345]
-texture_filter = 1
-texture = SubResource("AtlasTexture_luauf")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@129" type="CollisionShape2D" parent="Props/@StaticBody2D@130" unique_id=1137128919]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_he8tp")
-
-[node name="@StaticBody2D@133" type="StaticBody2D" parent="Props" unique_id=818037973]
-y_sort_enabled = true
-position = Vector2(664, 192)
-
-[node name="@Sprite2D@131" type="Sprite2D" parent="Props/@StaticBody2D@133" unique_id=490659986]
-texture_filter = 1
-texture = SubResource("AtlasTexture_rgi2k")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@132" type="CollisionShape2D" parent="Props/@StaticBody2D@133" unique_id=1423946012]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ccbrx")
-
-[node name="@StaticBody2D@136" type="StaticBody2D" parent="Props" unique_id=1408507221]
-y_sort_enabled = true
-position = Vector2(56, 208)
-
-[node name="@Sprite2D@134" type="Sprite2D" parent="Props/@StaticBody2D@136" unique_id=1254551355]
-texture_filter = 1
-texture = SubResource("AtlasTexture_4dukg")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@135" type="CollisionShape2D" parent="Props/@StaticBody2D@136" unique_id=650335004]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_yixat")
-
-[node name="@StaticBody2D@139" type="StaticBody2D" parent="Props" unique_id=1803605348]
-y_sort_enabled = true
-position = Vector2(680, 208)
-
-[node name="@Sprite2D@137" type="Sprite2D" parent="Props/@StaticBody2D@139" unique_id=363441006]
-texture_filter = 1
-texture = SubResource("AtlasTexture_wh54f")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@138" type="CollisionShape2D" parent="Props/@StaticBody2D@139" unique_id=683411779]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_jh6xp")
-
-[node name="@StaticBody2D@142" type="StaticBody2D" parent="Props" unique_id=1262441604]
-y_sort_enabled = true
-position = Vector2(40, 224)
-
-[node name="@Sprite2D@140" type="Sprite2D" parent="Props/@StaticBody2D@142" unique_id=828601438]
-texture_filter = 1
-texture = SubResource("AtlasTexture_jq2dv")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@141" type="CollisionShape2D" parent="Props/@StaticBody2D@142" unique_id=581088112]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_xgtxo")
-
-[node name="@StaticBody2D@145" type="StaticBody2D" parent="Props" unique_id=940237854]
-y_sort_enabled = true
-position = Vector2(24, 256)
-
-[node name="@Sprite2D@143" type="Sprite2D" parent="Props/@StaticBody2D@145" unique_id=482570299]
-texture_filter = 1
-texture = SubResource("AtlasTexture_3nogf")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@144" type="CollisionShape2D" parent="Props/@StaticBody2D@145" unique_id=1331436912]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_1geij")
-
-[node name="@StaticBody2D@148" type="StaticBody2D" parent="Props" unique_id=1979897453]
-y_sort_enabled = true
-position = Vector2(664, 256)
-
-[node name="@Sprite2D@146" type="Sprite2D" parent="Props/@StaticBody2D@148" unique_id=1028857655]
-texture_filter = 1
-texture = SubResource("AtlasTexture_tpaio")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@147" type="CollisionShape2D" parent="Props/@StaticBody2D@148" unique_id=1419258691]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_q3cgl")
-
-[node name="@StaticBody2D@151" type="StaticBody2D" parent="Props" unique_id=1270665082]
-y_sort_enabled = true
-position = Vector2(40, 272)
-
-[node name="@Sprite2D@149" type="Sprite2D" parent="Props/@StaticBody2D@151" unique_id=560205112]
-texture_filter = 1
-texture = SubResource("AtlasTexture_c5toh")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@150" type="CollisionShape2D" parent="Props/@StaticBody2D@151" unique_id=933869679]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_2ql21")
-
-[node name="@StaticBody2D@154" type="StaticBody2D" parent="Props" unique_id=512636972]
-y_sort_enabled = true
-position = Vector2(24, 288)
-
-[node name="@Sprite2D@152" type="Sprite2D" parent="Props/@StaticBody2D@154" unique_id=525908133]
-texture_filter = 1
-texture = SubResource("AtlasTexture_x1hh3")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@153" type="CollisionShape2D" parent="Props/@StaticBody2D@154" unique_id=1754775260]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_82bdy")
-
-[node name="@StaticBody2D@157" type="StaticBody2D" parent="Props" unique_id=2034262738]
-y_sort_enabled = true
-position = Vector2(56, 288)
-
-[node name="@Sprite2D@155" type="Sprite2D" parent="Props/@StaticBody2D@157" unique_id=1812323947]
-texture_filter = 1
-texture = SubResource("AtlasTexture_k8rud")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@156" type="CollisionShape2D" parent="Props/@StaticBody2D@157" unique_id=264576098]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_cwsfx")
-
-[node name="@StaticBody2D@160" type="StaticBody2D" parent="Props" unique_id=788942211]
-y_sort_enabled = true
-position = Vector2(664, 288)
-
-[node name="@Sprite2D@158" type="Sprite2D" parent="Props/@StaticBody2D@160" unique_id=1452397368]
-texture_filter = 1
-texture = SubResource("AtlasTexture_xhwmt")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@159" type="CollisionShape2D" parent="Props/@StaticBody2D@160" unique_id=2124483299]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_a5w7p")
-
-[node name="@StaticBody2D@163" type="StaticBody2D" parent="Props" unique_id=2134809757]
-y_sort_enabled = true
-position = Vector2(24, 320)
-
-[node name="@Sprite2D@161" type="Sprite2D" parent="Props/@StaticBody2D@163" unique_id=1696834234]
-texture_filter = 1
-texture = SubResource("AtlasTexture_70226")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@162" type="CollisionShape2D" parent="Props/@StaticBody2D@163" unique_id=1503789507]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_cn8kk")
-
-[node name="@StaticBody2D@166" type="StaticBody2D" parent="Props" unique_id=1104590961]
-y_sort_enabled = true
-position = Vector2(680, 352)
-
-[node name="@Sprite2D@164" type="Sprite2D" parent="Props/@StaticBody2D@166" unique_id=453317027]
-texture_filter = 1
-texture = SubResource("AtlasTexture_c65x5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@165" type="CollisionShape2D" parent="Props/@StaticBody2D@166" unique_id=796412055]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_xlgys")
-
-[node name="@StaticBody2D@169" type="StaticBody2D" parent="Props" unique_id=1234395252]
-y_sort_enabled = true
-position = Vector2(24, 368)
-
-[node name="@Sprite2D@167" type="Sprite2D" parent="Props/@StaticBody2D@169" unique_id=1574254638]
-texture_filter = 1
-texture = SubResource("AtlasTexture_d650c")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@168" type="CollisionShape2D" parent="Props/@StaticBody2D@169" unique_id=483005571]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_16bmy")
-
-[node name="@StaticBody2D@172" type="StaticBody2D" parent="Props" unique_id=1665025034]
-y_sort_enabled = true
-position = Vector2(664, 384)
-
-[node name="@Sprite2D@170" type="Sprite2D" parent="Props/@StaticBody2D@172" unique_id=328827814]
-texture_filter = 1
-texture = SubResource("AtlasTexture_26xtn")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@171" type="CollisionShape2D" parent="Props/@StaticBody2D@172" unique_id=1617660962]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_7bnvx")
-
-[node name="@StaticBody2D@175" type="StaticBody2D" parent="Props" unique_id=601062429]
-y_sort_enabled = true
-position = Vector2(648, 400)
-
-[node name="@Sprite2D@173" type="Sprite2D" parent="Props/@StaticBody2D@175" unique_id=859559578]
-texture_filter = 1
-texture = SubResource("AtlasTexture_x3ag5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@174" type="CollisionShape2D" parent="Props/@StaticBody2D@175" unique_id=1036763805]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_3224y")
-
-[node name="@StaticBody2D@178" type="StaticBody2D" parent="Props" unique_id=650534215]
-y_sort_enabled = true
-position = Vector2(136, 416)
-
-[node name="@Sprite2D@176" type="Sprite2D" parent="Props/@StaticBody2D@178" unique_id=1760758195]
-texture_filter = 1
-texture = SubResource("AtlasTexture_bld04")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@177" type="CollisionShape2D" parent="Props/@StaticBody2D@178" unique_id=1800120692]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_p58s8")
-
-[node name="@StaticBody2D@181" type="StaticBody2D" parent="Props" unique_id=1730238277]
-y_sort_enabled = true
-position = Vector2(184, 416)
-
-[node name="@Sprite2D@179" type="Sprite2D" parent="Props/@StaticBody2D@181" unique_id=960683496]
-texture_filter = 1
-texture = SubResource("AtlasTexture_xlljg")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@180" type="CollisionShape2D" parent="Props/@StaticBody2D@181" unique_id=1429797219]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_6ytua")
-
-[node name="@StaticBody2D@184" type="StaticBody2D" parent="Props" unique_id=535606272]
-y_sort_enabled = true
-position = Vector2(536, 416)
-
-[node name="@Sprite2D@182" type="Sprite2D" parent="Props/@StaticBody2D@184" unique_id=1435906882]
-texture_filter = 1
-texture = SubResource("AtlasTexture_0jnsp")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@183" type="CollisionShape2D" parent="Props/@StaticBody2D@184" unique_id=627620753]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_fqph8")
-
-[node name="@StaticBody2D@187" type="StaticBody2D" parent="Props" unique_id=114754066]
-y_sort_enabled = true
-position = Vector2(600, 416)
-
-[node name="@Sprite2D@185" type="Sprite2D" parent="Props/@StaticBody2D@187" unique_id=760859017]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ax50v")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@186" type="CollisionShape2D" parent="Props/@StaticBody2D@187" unique_id=654205394]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_a51sm")
-
-[node name="@StaticBody2D@190" type="StaticBody2D" parent="Props" unique_id=138054016]
-y_sort_enabled = true
-position = Vector2(664, 416)
-
-[node name="@Sprite2D@188" type="Sprite2D" parent="Props/@StaticBody2D@190" unique_id=1566170845]
-texture_filter = 1
-texture = SubResource("AtlasTexture_07ld0")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@189" type="CollisionShape2D" parent="Props/@StaticBody2D@190" unique_id=1127829123]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_6vput")
-
-[node name="@StaticBody2D@193" type="StaticBody2D" parent="Props" unique_id=2097635706]
-y_sort_enabled = true
-position = Vector2(56, 432)
-
-[node name="@Sprite2D@191" type="Sprite2D" parent="Props/@StaticBody2D@193" unique_id=112190304]
-texture_filter = 1
-texture = SubResource("AtlasTexture_feg34")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@192" type="CollisionShape2D" parent="Props/@StaticBody2D@193" unique_id=1500485619]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_dtyvh")
-
-[node name="@StaticBody2D@196" type="StaticBody2D" parent="Props" unique_id=1989081959]
-y_sort_enabled = true
-position = Vector2(232, 432)
-
-[node name="@Sprite2D@194" type="Sprite2D" parent="Props/@StaticBody2D@196" unique_id=865525827]
-texture_filter = 1
-texture = SubResource("AtlasTexture_0lk0d")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@195" type="CollisionShape2D" parent="Props/@StaticBody2D@196" unique_id=1104035538]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_kbe1l")
-
-[node name="@StaticBody2D@199" type="StaticBody2D" parent="Props" unique_id=949022923]
-y_sort_enabled = true
-position = Vector2(520, 432)
-
-[node name="@Sprite2D@197" type="Sprite2D" parent="Props/@StaticBody2D@199" unique_id=107288139]
-texture_filter = 1
-texture = SubResource("AtlasTexture_855u5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@198" type="CollisionShape2D" parent="Props/@StaticBody2D@199" unique_id=147910058]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_upmbh")
-
-[node name="@StaticBody2D@202" type="StaticBody2D" parent="Props" unique_id=1977370320]
-y_sort_enabled = true
-position = Vector2(552, 432)
-
-[node name="@Sprite2D@200" type="Sprite2D" parent="Props/@StaticBody2D@202" unique_id=322244678]
-texture_filter = 1
-texture = SubResource("AtlasTexture_6jioo")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@201" type="CollisionShape2D" parent="Props/@StaticBody2D@202" unique_id=847717396]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_3vuuk")
-
-[node name="@StaticBody2D@205" type="StaticBody2D" parent="Props" unique_id=877980887]
-y_sort_enabled = true
-position = Vector2(120, 448)
-
-[node name="@Sprite2D@203" type="Sprite2D" parent="Props/@StaticBody2D@205" unique_id=1000287504]
-texture_filter = 1
-texture = SubResource("AtlasTexture_kbv67")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@204" type="CollisionShape2D" parent="Props/@StaticBody2D@205" unique_id=1269554161]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_c0jq4")
-
-[node name="@StaticBody2D@208" type="StaticBody2D" parent="Props" unique_id=1153038395]
-y_sort_enabled = true
-position = Vector2(216, 448)
-
-[node name="@Sprite2D@206" type="Sprite2D" parent="Props/@StaticBody2D@208" unique_id=585032935]
-texture_filter = 1
-texture = SubResource("AtlasTexture_66v6a")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@207" type="CollisionShape2D" parent="Props/@StaticBody2D@208" unique_id=151960146]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_wr4e3")
-
-[node name="@StaticBody2D@211" type="StaticBody2D" parent="Props" unique_id=944337629]
-y_sort_enabled = true
-position = Vector2(248, 448)
-
-[node name="@Sprite2D@209" type="Sprite2D" parent="Props/@StaticBody2D@211" unique_id=394922401]
-texture_filter = 1
-texture = SubResource("AtlasTexture_x5wi7")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@210" type="CollisionShape2D" parent="Props/@StaticBody2D@211" unique_id=810258689]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_xd6q0")
-
-[node name="@StaticBody2D@214" type="StaticBody2D" parent="Props" unique_id=2023195196]
-y_sort_enabled = true
-position = Vector2(280, 448)
-
-[node name="@Sprite2D@212" type="Sprite2D" parent="Props/@StaticBody2D@214" unique_id=1507405838]
-texture_filter = 1
-texture = SubResource("AtlasTexture_drpji")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@213" type="CollisionShape2D" parent="Props/@StaticBody2D@214" unique_id=1753471958]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_8qqw5")
-
-[node name="@StaticBody2D@217" type="StaticBody2D" parent="Props" unique_id=748819123]
-y_sort_enabled = true
-position = Vector2(344, 448)
-
-[node name="@Sprite2D@215" type="Sprite2D" parent="Props/@StaticBody2D@217" unique_id=1640494718]
-texture_filter = 1
-texture = SubResource("AtlasTexture_gg4ke")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@216" type="CollisionShape2D" parent="Props/@StaticBody2D@217" unique_id=1199664906]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_sd6qw")
-
-[node name="@StaticBody2D@220" type="StaticBody2D" parent="Props" unique_id=101486891]
-y_sort_enabled = true
-position = Vector2(376, 448)
-
-[node name="@Sprite2D@218" type="Sprite2D" parent="Props/@StaticBody2D@220" unique_id=1562543479]
-texture_filter = 1
-texture = SubResource("AtlasTexture_h0qf6")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@219" type="CollisionShape2D" parent="Props/@StaticBody2D@220" unique_id=1968574803]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_kwvtc")
-
-[node name="@StaticBody2D@223" type="StaticBody2D" parent="Props" unique_id=80401358]
-y_sort_enabled = true
-position = Vector2(424, 448)
-
-[node name="@Sprite2D@221" type="Sprite2D" parent="Props/@StaticBody2D@223" unique_id=207198531]
-texture_filter = 1
-texture = SubResource("AtlasTexture_yx021")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@222" type="CollisionShape2D" parent="Props/@StaticBody2D@223" unique_id=1220419275]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_dtnna")
-
-[node name="@StaticBody2D@226" type="StaticBody2D" parent="Props" unique_id=2065956413]
-y_sort_enabled = true
-position = Vector2(488, 448)
-
-[node name="@Sprite2D@224" type="Sprite2D" parent="Props/@StaticBody2D@226" unique_id=67074592]
-texture_filter = 1
-texture = SubResource("AtlasTexture_e13cy")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@225" type="CollisionShape2D" parent="Props/@StaticBody2D@226" unique_id=1752466187]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_wq8kx")
-
-[node name="@StaticBody2D@229" type="StaticBody2D" parent="Props" unique_id=1210017230]
-y_sort_enabled = true
-position = Vector2(568, 448)
-
-[node name="@Sprite2D@227" type="Sprite2D" parent="Props/@StaticBody2D@229" unique_id=215445963]
-texture_filter = 1
-texture = SubResource("AtlasTexture_604ty")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@228" type="CollisionShape2D" parent="Props/@StaticBody2D@229" unique_id=1695160185]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_u5ke8")
-
-[node name="@StaticBody2D@232" type="StaticBody2D" parent="Props" unique_id=1104417574]
-y_sort_enabled = true
-position = Vector2(600, 448)
-
-[node name="@Sprite2D@230" type="Sprite2D" parent="Props/@StaticBody2D@232" unique_id=743128272]
-texture_filter = 1
-texture = SubResource("AtlasTexture_4fd7b")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@231" type="CollisionShape2D" parent="Props/@StaticBody2D@232" unique_id=159475672]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_dh6ki")
-
-[node name="@StaticBody2D@235" type="StaticBody2D" parent="Props" unique_id=1915653923]
-y_sort_enabled = true
-position = Vector2(680, 448)
-
-[node name="@Sprite2D@233" type="Sprite2D" parent="Props/@StaticBody2D@235" unique_id=1686517949]
-texture_filter = 1
-texture = SubResource("AtlasTexture_ttgjw")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@234" type="CollisionShape2D" parent="Props/@StaticBody2D@235" unique_id=1929897746]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_5hya3")
-
-[node name="@StaticBody2D@238" type="StaticBody2D" parent="Props" unique_id=124614965]
-y_sort_enabled = true
-position = Vector2(24, 464)
-
-[node name="@Sprite2D@236" type="Sprite2D" parent="Props/@StaticBody2D@238" unique_id=239206777]
-texture_filter = 1
-texture = SubResource("AtlasTexture_2x1ru")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@237" type="CollisionShape2D" parent="Props/@StaticBody2D@238" unique_id=619095443]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gowuk")
-
-[node name="@StaticBody2D@241" type="StaticBody2D" parent="Props" unique_id=1576911469]
-y_sort_enabled = true
-position = Vector2(72, 464)
-
-[node name="@Sprite2D@239" type="Sprite2D" parent="Props/@StaticBody2D@241" unique_id=689920357]
-texture_filter = 1
-texture = SubResource("AtlasTexture_byvy4")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@240" type="CollisionShape2D" parent="Props/@StaticBody2D@241" unique_id=826238279]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_dab1s")
-
-[node name="@StaticBody2D@244" type="StaticBody2D" parent="Props" unique_id=1061515099]
-y_sort_enabled = true
-position = Vector2(104, 464)
-
-[node name="@Sprite2D@242" type="Sprite2D" parent="Props/@StaticBody2D@244" unique_id=1210221218]
-texture_filter = 1
-texture = SubResource("AtlasTexture_i1qin")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@243" type="CollisionShape2D" parent="Props/@StaticBody2D@244" unique_id=713103638]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_0arh6")
-
-[node name="@StaticBody2D@247" type="StaticBody2D" parent="Props" unique_id=2379319]
-y_sort_enabled = true
-position = Vector2(136, 464)
-
-[node name="@Sprite2D@245" type="Sprite2D" parent="Props/@StaticBody2D@247" unique_id=180192050]
-texture_filter = 1
-texture = SubResource("AtlasTexture_v0xl5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@246" type="CollisionShape2D" parent="Props/@StaticBody2D@247" unique_id=724758593]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ohxkx")
-
-[node name="@StaticBody2D@250" type="StaticBody2D" parent="Props" unique_id=2098054267]
-y_sort_enabled = true
-position = Vector2(168, 464)
-
-[node name="@Sprite2D@248" type="Sprite2D" parent="Props/@StaticBody2D@250" unique_id=1872886116]
-texture_filter = 1
-texture = SubResource("AtlasTexture_m8xul")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@249" type="CollisionShape2D" parent="Props/@StaticBody2D@250" unique_id=1754193439]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_1k7k7")
-
-[node name="@StaticBody2D@253" type="StaticBody2D" parent="Props" unique_id=1290178797]
-y_sort_enabled = true
-position = Vector2(200, 464)
-
-[node name="@Sprite2D@251" type="Sprite2D" parent="Props/@StaticBody2D@253" unique_id=809398189]
-texture_filter = 1
-texture = SubResource("AtlasTexture_atvjt")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@252" type="CollisionShape2D" parent="Props/@StaticBody2D@253" unique_id=1683086931]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_5sr6r")
-
-[node name="@StaticBody2D@256" type="StaticBody2D" parent="Props" unique_id=423093156]
-y_sort_enabled = true
-position = Vector2(296, 464)
-
-[node name="@Sprite2D@254" type="Sprite2D" parent="Props/@StaticBody2D@256" unique_id=1231253243]
-texture_filter = 1
-texture = SubResource("AtlasTexture_lsrli")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@255" type="CollisionShape2D" parent="Props/@StaticBody2D@256" unique_id=623626993]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_1237l")
-
-[node name="@StaticBody2D@259" type="StaticBody2D" parent="Props" unique_id=575127557]
-y_sort_enabled = true
-position = Vector2(328, 464)
-
-[node name="@Sprite2D@257" type="Sprite2D" parent="Props/@StaticBody2D@259" unique_id=2048070575]
-texture_filter = 1
-texture = SubResource("AtlasTexture_b3wvp")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@258" type="CollisionShape2D" parent="Props/@StaticBody2D@259" unique_id=2037308462]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gfo2i")
-
-[node name="@StaticBody2D@262" type="StaticBody2D" parent="Props" unique_id=1301383239]
-y_sort_enabled = true
-position = Vector2(360, 464)
-
-[node name="@Sprite2D@260" type="Sprite2D" parent="Props/@StaticBody2D@262" unique_id=680194394]
-texture_filter = 1
-texture = SubResource("AtlasTexture_t6kro")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@261" type="CollisionShape2D" parent="Props/@StaticBody2D@262" unique_id=1871348805]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_fynh4")
-
-[node name="@StaticBody2D@265" type="StaticBody2D" parent="Props" unique_id=1527964159]
-y_sort_enabled = true
-position = Vector2(408, 464)
-
-[node name="@Sprite2D@263" type="Sprite2D" parent="Props/@StaticBody2D@265" unique_id=1554300379]
-texture_filter = 1
-texture = SubResource("AtlasTexture_e1yds")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@264" type="CollisionShape2D" parent="Props/@StaticBody2D@265" unique_id=727861137]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_yfyxm")
-
-[node name="@StaticBody2D@268" type="StaticBody2D" parent="Props" unique_id=1325963639]
-y_sort_enabled = true
-position = Vector2(472, 464)
-
-[node name="@Sprite2D@266" type="Sprite2D" parent="Props/@StaticBody2D@268" unique_id=170763653]
-texture_filter = 1
-texture = SubResource("AtlasTexture_x4mgr")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@267" type="CollisionShape2D" parent="Props/@StaticBody2D@268" unique_id=62678284]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_jgpt0")
-
-[node name="@StaticBody2D@271" type="StaticBody2D" parent="Props" unique_id=2141517068]
-y_sort_enabled = true
-position = Vector2(520, 464)
-
-[node name="@Sprite2D@269" type="Sprite2D" parent="Props/@StaticBody2D@271" unique_id=1939373403]
-texture_filter = 1
-texture = SubResource("AtlasTexture_v83n5")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@270" type="CollisionShape2D" parent="Props/@StaticBody2D@271" unique_id=2346502]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ri5rv")
-
-[node name="@StaticBody2D@274" type="StaticBody2D" parent="Props" unique_id=426526554]
-y_sort_enabled = true
-position = Vector2(552, 464)
-
-[node name="@Sprite2D@272" type="Sprite2D" parent="Props/@StaticBody2D@274" unique_id=225540236]
-texture_filter = 1
-texture = SubResource("AtlasTexture_01dc4")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@273" type="CollisionShape2D" parent="Props/@StaticBody2D@274" unique_id=543624688]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_msanm")
-
-[node name="@StaticBody2D@277" type="StaticBody2D" parent="Props" unique_id=1452217987]
-y_sort_enabled = true
-position = Vector2(632, 464)
-
-[node name="@Sprite2D@275" type="Sprite2D" parent="Props/@StaticBody2D@277" unique_id=740261110]
-texture_filter = 1
-texture = SubResource("AtlasTexture_na4d4")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@276" type="CollisionShape2D" parent="Props/@StaticBody2D@277" unique_id=276641869]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_qqxo2")
-
-[node name="@StaticBody2D@280" type="StaticBody2D" parent="Props" unique_id=1902737907]
-y_sort_enabled = true
-position = Vector2(120, 176)
-
-[node name="@Sprite2D@278" type="Sprite2D" parent="Props/@StaticBody2D@280" unique_id=1065030664]
-texture_filter = 1
-texture = SubResource("AtlasTexture_83nq8")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@279" type="CollisionShape2D" parent="Props/@StaticBody2D@280" unique_id=1380658223]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ff5qb")
-
-[node name="@StaticBody2D@283" type="StaticBody2D" parent="Props" unique_id=1394752525]
-y_sort_enabled = true
-position = Vector2(168, 176)
-
-[node name="@Sprite2D@281" type="Sprite2D" parent="Props/@StaticBody2D@283" unique_id=1118013142]
-texture_filter = 1
-texture = SubResource("AtlasTexture_fhapm")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@282" type="CollisionShape2D" parent="Props/@StaticBody2D@283" unique_id=1110761768]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_xbeff")
-
-[node name="@StaticBody2D@286" type="StaticBody2D" parent="Props" unique_id=1557042351]
-y_sort_enabled = true
-position = Vector2(168, 208)
-
-[node name="@Sprite2D@284" type="Sprite2D" parent="Props/@StaticBody2D@286" unique_id=233447033]
-texture_filter = 1
-texture = SubResource("AtlasTexture_eu5gq")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@285" type="CollisionShape2D" parent="Props/@StaticBody2D@286" unique_id=1614034991]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_s1kkh")
-
-[node name="@StaticBody2D@289" type="StaticBody2D" parent="Props" unique_id=1662224663]
-y_sort_enabled = true
-position = Vector2(408, 208)
-
-[node name="@Sprite2D@287" type="Sprite2D" parent="Props/@StaticBody2D@289" unique_id=466665889]
-texture_filter = 1
-texture = SubResource("AtlasTexture_qibr0")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@288" type="CollisionShape2D" parent="Props/@StaticBody2D@289" unique_id=1475357371]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_nss3h")
-
-[node name="@StaticBody2D@292" type="StaticBody2D" parent="Props" unique_id=1659497164]
-y_sort_enabled = true
-position = Vector2(424, 224)
-
-[node name="@Sprite2D@290" type="Sprite2D" parent="Props/@StaticBody2D@292" unique_id=396989067]
-texture_filter = 1
-texture = SubResource("AtlasTexture_drr85")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@291" type="CollisionShape2D" parent="Props/@StaticBody2D@292" unique_id=1471472400]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lmbf8")
-
-[node name="@StaticBody2D@295" type="StaticBody2D" parent="Props" unique_id=576944400]
-y_sort_enabled = true
-position = Vector2(456, 224)
-
-[node name="@Sprite2D@293" type="Sprite2D" parent="Props/@StaticBody2D@295" unique_id=469171430]
-texture_filter = 1
-texture = SubResource("AtlasTexture_xo5in")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@294" type="CollisionShape2D" parent="Props/@StaticBody2D@295" unique_id=1583018990]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gx6qy")
-
-[node name="@StaticBody2D@298" type="StaticBody2D" parent="Props" unique_id=1889474489]
-y_sort_enabled = true
-position = Vector2(408, 240)
-
-[node name="@Sprite2D@296" type="Sprite2D" parent="Props/@StaticBody2D@298" unique_id=1307560102]
-texture_filter = 1
-texture = SubResource("AtlasTexture_08u7x")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@297" type="CollisionShape2D" parent="Props/@StaticBody2D@298" unique_id=241377243]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_luj7s")
-
-[node name="@StaticBody2D@301" type="StaticBody2D" parent="Props" unique_id=1689793344]
-y_sort_enabled = true
-position = Vector2(248, 416)
-
-[node name="@Sprite2D@299" type="Sprite2D" parent="Props/@StaticBody2D@301" unique_id=665486532]
-texture_filter = 1
-texture = SubResource("AtlasTexture_241is")
-offset = Vector2(0, -16)
-
-[node name="@CollisionShape2D@300" type="CollisionShape2D" parent="Props/@StaticBody2D@301" unique_id=1625307433]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gxswy")
-
 [node name="@Sprite2D@302" type="Sprite2D" parent="Props" unique_id=942573478]
 y_sort_enabled = true
 texture_filter = 1
@@ -3798,3 +2528,591 @@ qty = 1
 
 [node name="QuestGiver" parent="Props" instance=ExtResource("14_quest")]
 position = Vector2(344, 224)
+
+[node name="Tree0" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 32)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree1" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(72, 32)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree2" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(104, 32)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree3" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(136, 32)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree4" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(216, 32)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree5" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(248, 32)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree6" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(280, 32)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree7" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(312, 32)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree8" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(360, 32)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree9" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(392, 32)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree10" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(440, 32)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree11" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(488, 32)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree12" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(568, 32)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree13" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 32)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree14" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(40, 48)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree15" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(120, 48)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree16" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(184, 48)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree17" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(344, 48)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree18" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(408, 48)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree19" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(472, 48)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree20" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(520, 48)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree21" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(584, 48)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree22" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 48)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree23" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(56, 64)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree24" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(88, 64)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree25" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(360, 64)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree26" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(440, 64)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree27" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(488, 64)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree28" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(616, 64)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree29" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(648, 64)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree30" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 80)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree31" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 80)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree32" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(40, 96)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree33" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 112)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree34" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 128)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree35" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 128)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree36" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(40, 144)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree37" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(72, 144)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree38" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 160)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree39" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 176)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree40" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 192)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree41" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 192)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree42" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(56, 208)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree43" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 208)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree44" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(40, 224)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree45" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 256)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree46" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 256)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree47" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(40, 272)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree48" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 288)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree49" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(56, 288)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree50" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 288)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree51" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 320)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree52" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 352)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree53" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 368)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree54" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 384)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree55" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(648, 400)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree56" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(136, 416)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree57" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(184, 416)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree58" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(536, 416)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree59" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(600, 416)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree60" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(664, 416)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree61" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(56, 432)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree62" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(232, 432)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree63" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(520, 432)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree64" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(552, 432)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree65" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(120, 448)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree66" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(216, 448)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree67" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(248, 448)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree68" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(280, 448)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree69" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(344, 448)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree70" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(376, 448)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree71" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(424, 448)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree72" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(488, 448)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree73" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(568, 448)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree74" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(600, 448)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree75" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(680, 448)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree76" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(24, 464)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree77" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(72, 464)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree78" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(104, 464)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree79" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(136, 464)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree80" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(168, 464)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree81" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(200, 464)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree82" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(296, 464)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree83" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(328, 464)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree84" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(360, 464)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree85" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(408, 464)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree86" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(472, 464)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree87" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(520, 464)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree88" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(552, 464)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree89" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(632, 464)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree90" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(120, 176)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree91" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(168, 176)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree92" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(168, 208)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree93" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(408, 208)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree94" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(424, 224)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree95" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(456, 224)
+texture = ExtResource("23_tree")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree96" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(408, 240)
+texture = ExtResource("21_oak")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Tree97" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(248, 416)
+texture = ExtResource("22_maple")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
