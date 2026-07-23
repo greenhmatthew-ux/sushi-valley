@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" path="res://assets/objects/nano-oak-tree.png" id="21_oak"]
 [ext_resource type="Texture2D" path="res://assets/objects/nano-maple-tree.png" id="22_maple"]
 [ext_resource type="Texture2D" path="res://assets/sprites/tree.png" id="23_tree"]
+[ext_resource type="Texture2D" path="res://assets/objects/nano-stone-lantern.png" id="24_lantern"]
+[ext_resource type="Texture2D" path="res://assets/objects/nano-bush.png" id="25_bush"]
+[ext_resource type="Texture2D" path="res://assets/objects/nano-offering-box.png" id="26_offering"]
+[ext_resource type="Texture2D" path="res://assets/buildings/town-shop.png" id="27_shop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -3116,3 +3120,50 @@ position = Vector2(248, 416)
 texture = ExtResource("22_maple")
 foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
+
+[node name="LanternN_L" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(290, 116)
+texture = ExtResource("24_lantern")
+foot_size = Vector2(8, 4)
+foot_offset = Vector2(0, -2)
+
+[node name="LanternN_R" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(350, 116)
+texture = ExtResource("24_lantern")
+foot_size = Vector2(8, 4)
+foot_offset = Vector2(0, -2)
+
+[node name="LanternP_L" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(274, 276)
+texture = ExtResource("24_lantern")
+foot_size = Vector2(8, 4)
+foot_offset = Vector2(0, -2)
+
+[node name="LanternP_R" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(334, 276)
+texture = ExtResource("24_lantern")
+foot_size = Vector2(8, 4)
+foot_offset = Vector2(0, -2)
+
+[node name="OfferingBox" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(216, 150)
+texture = ExtResource("26_offering")
+foot_size = Vector2(40, 10)
+foot_offset = Vector2(0, -5)
+
+[node name="Bush1" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(144, 168)
+texture = ExtResource("25_bush")
+solid = false
+
+[node name="Bush2" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(608, 170)
+texture = ExtResource("25_bush")
+solid = false
+
+[node name="Bush3" parent="Props" instance=ExtResource("20_prop")]
+position = Vector2(232, 432)
+texture = ExtResource("25_bush")
+solid = false
+
+
