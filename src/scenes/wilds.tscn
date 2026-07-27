@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="9_ts"]
 [ext_resource type="Texture2D" path="res://assets/props/rock.png" id="10_rk"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
+[ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="12_bld"]
+[ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="13_bar"]
+[ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -131,3 +134,22 @@ enemy_atk = 4
 position = Vector2(336, 288)
 behavior = 2
 enemy_atk = 4
+
+[node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(160, 300)
+texture = ExtResource("12_bld")
+foot_size = Vector2(72, 14)
+foot_offset = Vector2(0, -6)
+
+[node name="Barrel" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(206, 314)
+texture = ExtResource("13_bar")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Crate" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(120, 312)
+texture = ExtResource("14_crate")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
