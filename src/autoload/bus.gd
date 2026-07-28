@@ -33,6 +33,13 @@ signal coins_changed(coins: int)
 ## Fired after any inventory mutation so panels can refresh without polling.
 signal inventory_changed()
 
+# --- shop ---
+## A vendor was interacted with — the ShopPanel opens on this, keyed by shop_id (a
+## key into DB.shops). Kept a Bus signal so vendors never hold a UI reference.
+signal shop_open(shop_id: String)
+## A purchase went through: the item and the coins it cost. For quests / SFX later.
+signal item_purchased(item_id: String, price: int)
+
 # --- combat ---
 signal combat_started(enemy_id: String)
 signal combat_ended(victory: bool)

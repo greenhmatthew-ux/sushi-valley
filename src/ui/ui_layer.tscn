@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
 [ext_resource type="Script" path="res://src/ui/toast_layer.gd" id="3_toast"]
 [ext_resource type="Script" path="res://src/ui/hud_layer.gd" id="4_hud"]
+[ext_resource type="Script" path="res://src/ui/shop_panel.gd" id="5_shop"]
 
 [node name="UILayer" type="Node"]
 
@@ -15,6 +16,9 @@ script = ExtResource("2_dialogue")
 
 [node name="RecallPanel" type="CanvasLayer" parent="."]
 script = ExtResource("1_recall")
+
+[node name="ShopPanel" type="CanvasLayer" parent="."]
+script = ExtResource("5_shop")
 
 [node name="ToastLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_toast")

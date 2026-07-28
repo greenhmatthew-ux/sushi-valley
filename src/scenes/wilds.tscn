@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="12_bld"]
 [ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="13_bar"]
 [ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
+[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="18_ui"]
+[ext_resource type="PackedScene" path="res://src/entities/vendor.tscn" id="19_vendor"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -167,4 +169,11 @@ position = Vector2(126, 326)
 texture = ExtResource("14_crate")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
+
+[node name="ForestTrader" parent="Entities" instance=ExtResource("19_vendor")]
+position = Vector2(160, 320)
+shop_id = "forest_trader"
+vendor_name = "Forest Trader"
+
+[node name="UILayer" parent="." instance=ExtResource("18_ui")]
 
