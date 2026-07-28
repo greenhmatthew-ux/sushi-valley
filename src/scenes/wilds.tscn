@@ -52,79 +52,79 @@ uses_return_spawn = true
 auto_enter = true
 
 [node name="Tree0" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(48, 96)
+position = Vector2(56, 72)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree1" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(176, 56)
+position = Vector2(104, 60)
 texture = ExtResource("8_tl")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree2" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(360, 56)
+position = Vector2(72, 120)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree3" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(560, 72)
+position = Vector2(600, 80)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree4" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(616, 208)
+position = Vector2(624, 128)
 texture = ExtResource("8_tl")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree5" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(592, 376)
+position = Vector2(600, 352)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree6" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(392, 416)
+position = Vector2(560, 400)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree7" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(184, 416)
+position = Vector2(64, 368)
 texture = ExtResource("8_tl")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree8" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(56, 376)
+position = Vector2(40, 296)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree9" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(40, 240)
+position = Vector2(108, 256)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Rock0" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(120, 176)
+position = Vector2(212, 272)
 texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
 
 [node name="Rock1" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(536, 280)
+position = Vector2(576, 152)
 texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
 
 [node name="Mushroom" parent="Entities" instance=ExtResource("11_enemy")]
-position = Vector2(240, 176)
+position = Vector2(300, 180)
 behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("15_mush")
@@ -133,7 +133,7 @@ coin_reward = 5
 coin_variance = 2
 
 [node name="Kappa" parent="Entities" instance=ExtResource("11_enemy")]
-position = Vector2(448, 208)
+position = Vector2(432, 244)
 behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("16_kappa")
@@ -142,7 +142,7 @@ coin_reward = 7
 coin_variance = 2
 
 [node name="Lantern" parent="Entities" instance=ExtResource("11_enemy")]
-position = Vector2(336, 288)
+position = Vector2(340, 320)
 behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("17_lantern")
@@ -153,17 +153,17 @@ coin_variance = 3
 [node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(160, 300)
 texture = ExtResource("12_bld")
-foot_size = Vector2(72, 14)
-foot_offset = Vector2(0, -6)
+foot_size = Vector2(56, 12)
+foot_offset = Vector2(0, -4)
 
 [node name="Barrel" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(206, 314)
+position = Vector2(198, 326)
 texture = ExtResource("13_bar")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Crate" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(120, 312)
+position = Vector2(126, 326)
 texture = ExtResource("14_crate")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
