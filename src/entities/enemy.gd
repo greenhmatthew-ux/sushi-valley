@@ -40,6 +40,12 @@ enum Behavior { PASSIVE, SPARRING, AGGRO }
 @export var move_speed: float = 42.0
 @export var attack_cooldown: float = 1.0
 
+## Loot on a hostile kill (PASSIVE/AGGRO). Coins drop into the shared purse; the actual
+## award is `coin_reward` jittered by ±`coin_variance` so a kill feels like loot, not a
+## fixed payout. Sparring foes never drop coins — a bout yields the spar-won message instead.
+@export var coin_reward: int = 0
+@export var coin_variance: int = 0
+
 const ATTACK_RANGE := 15.0
 
 var hp: int
@@ -112,7 +118,19 @@ func take_damage(amount: int) -> void:
 		Bus.enemy_died.emit(enemy_id)
 		if behavior == Behavior.SPARRING:
 			Bus.toast.emit("You won the spar with the %s!" % enemy_id)
+		else:
+			_drop_loot()
 		queue_free()
+
+
+## Reward a hostile kill: coins into the shared purse plus a toast so the drop reads. Called
+## only on PASSIVE/AGGRO deaths — sparring bouts route to the spar-won message instead.
+func _drop_loot() -> void:
+	if coin_reward <= 0:
+		return
+	var amt := maxi(1, coin_reward + randi_range(-coin_variance, coin_variance))
+	Inv.add_coins(amt)
+	Bus.toast.emit("The %s dropped %d coins." % [enemy_id, amt])
 
 
 ## Begin a practice bout — called through the player's interact probe (see SparZone) when
