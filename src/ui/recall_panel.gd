@@ -102,6 +102,10 @@ func _render(prompt: Dictionary) -> void:
 	_hint.text = ""
 	_feedback.text = ""
 	_continue_btn.hide()
+	# Hear the question once as it appears — the card's own Japanese text, so what's
+	# spoken always matches what's on screen (see Speech.gd for the TS-build bug this
+	# fixes: falling back to a mismatched voice instead of staying silent).
+	Speech.speak(_question.text)
 
 	# Adaptive scaffolding: struggling players get more context up front.
 	var scaffold := _scaffold_level()
@@ -177,6 +181,10 @@ func _on_choice(choice: String, btn: Button) -> void:
 		_feedback.add_theme_color_override("font_color", COL_HINT_STRONG)
 		_feedback.text = "%s = %s%s" % [card.get("prompt", ""), answer_txt,
 			("   (%s)" % meaning) if meaning != "" else ""]
+
+	# Speak the reading (or answer, if no reading) so the player hears the correct
+	# pronunciation right after committing to a choice — win or miss.
+	Speech.speak(answer_txt)
 
 	_continue_btn.show()
 	_continue_btn.grab_focus()
