@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="9_ts"]
 [ext_resource type="Texture2D" path="res://assets/props/rock.png" id="10_rk"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_lanternred.png" id="17_lantern"]
 [ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="12_bld"]
 [ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="13_bar"]
 [ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
@@ -120,20 +123,26 @@ texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
 
-[node name="Slime0" parent="Entities" instance=ExtResource("11_enemy")]
+[node name="Mushroom" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(240, 176)
 behavior = 2
 enemy_atk = 4
+sprite_sheet = ExtResource("15_mush")
+enemy_id = "mushroom"
 
-[node name="Slime1" parent="Entities" instance=ExtResource("11_enemy")]
+[node name="Kappa" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(448, 208)
 behavior = 2
 enemy_atk = 4
+sprite_sheet = ExtResource("16_kappa")
+enemy_id = "kappa"
 
-[node name="Slime2" parent="Entities" instance=ExtResource("11_enemy")]
+[node name="Lantern" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(336, 288)
 behavior = 2
 enemy_atk = 4
+sprite_sheet = ExtResource("17_lantern")
+enemy_id = "lantern"
 
 [node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(160, 300)
