@@ -1,65 +1,62 @@
 # Credits and Asset Licenses
 
-Sushi Valley uses curated third-party art and audio from the owner's local source library. This
-page is the human-facing credit summary; these documents point to runtime authorities and summarize
-known provenance/import records:
-[`docs/ASSET_MANIFEST.md`](docs/ASSET_MANIFEST.md),
-[`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md), and
-[`assets/licenses/THIRD_PARTY_ASSETS.md`](assets/licenses/THIRD_PARTY_ASSETS.md).
+Sushi Valley (the Godot build) uses curated third-party art from the owner's local
+`D:\Asset Library`. This page lists every source pack actually rendered in the current game,
+verified against the running scenes — not an aspirational or inherited list.
 
-## Current game art and audio
+## Art in use
 
-- **Ninja Adventure - Asset Pack** by Pixel-boy & AAA - CC0. Characters, NPCs, enemies,
-  bosses, terrain, water, buildings, objects, items, UI/VFX, music, and ambient/UI sounds.
-- **Kenney** - CC0. Selected town/dungeon art, characters, UI, interface sounds, props,
-  and travel/resource art currently ship; other Kenney processed imports are registry-only.
-- **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise - CC BY 4.0. Item, gear, and material
-  icons. https://creativecommons.org/licenses/by/4.0/ and https://kyrise.itch.io/
-- **Serene Village Revamped** by LimeZu - owner-confirmed commercial use. Building and
-  animated village art; retained entitlement required.
-- **sushi_pixel_set** by Kyukei_dot - commercial game use. Sushi and tea art; optional credit,
-  no redistribution/resale, NFT use, or AI training.
-- **Sprout Lands Basic** - owner-confirmed commercial use. Furniture, biome, crop, and
-  resource-sheet cuts.
-- **PunyMonsters** - owner-confirmed commercial use. Selected 32x32 regional enemies.
-- **EPIC RPG World Pack - Ancient Ruins demo** - selected Eastern Reach ruins art. Explicit
-  release terms must be archived before commercial release.
-- **Helton Yan's Pixel Combat SFX** - owner-confirmed commercial use. Combat sound effects.
-- **Farm RPG FREE 16x16 - Tiny Asset Pack** - development-only crop art currently tracked
-  for commercial purchase or replacement in `docs/ASSET_PURCHASE_BACKLOG.md`.
+- **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
+  (mushroom/kappa/lantern-ghost/slime), NPCs (villager, quest-giver, merchant), and the
+  hearts HUD icon. No restrictions of any kind; safe for any use including AI-assisted
+  development.
+- **Serene Village Revamped** by LimeZu — commercial-use entitlement previously confirmed by
+  the owner; no license file ships in the pack folder itself, so that confirmation is the
+  only record. Village/wilds terrain, all props (trees, rocks, barrels, crates, berry bush),
+  and the building exteriors. **Re-confirm entitlement before any commercial release.**
+- **Sprout Lands - Sprites - Basic pack** by Cup Nooble — the pack's own `read_me.txt`
+  states **non-commercial projects only**, credit required ("Assets - From: Sprout Lands -
+  By: Cup Nooble"), no AI-training use, no redistribution of the raw pack. Used for the
+  meadow ground-detail decals (grass tufts, wildflowers, mushrooms) in both the village and
+  the wilds, plus interior furniture and the door sprite. **This conflicts with an earlier
+  version of this file that claimed "commercial use" — that claim could not be verified
+  against the actual license text and should not be relied on. Confirm a separate/commercial
+  license before any commercial release; non-commercial/dev use is fine as-is.**
+- **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
+  ("Icons by Kyrise, https://kyrise.itch.io/"). Item icons in `assets/icons/items/`.
 
-## Registered processed imports not confirmed in current runtime
+## Not currently verified
 
-- **CraftPix free packs** - CraftPix Free License. Registered trees, forest objects, farm plants,
-  minerals, crystals, and RPG UI remain in the processed pool. Raw-pack redistribution and use for
-  AI/ML training, testing, validation, or improvement are prohibited.
-- **Kenney Animal Pack Remastered, Fish Pack, Foliage Sprites, and Interface Sounds** - CC0
-  registered imports; verify a real public runtime reference before calling a specific file in use.
+- `assets/icons/abilities/` (33 files, id-matched to `data/game/abilities.json` but not yet
+  wired into any UI) — provenance not traced this pass. Verify before building the
+  combat-skills panel that would put these on screen.
 
-The full `D:\Asset Library` is a candidate pool, not a list of shipped or approved sources.
-Development imports must be inspected and rights-tracked; commercial release builds may contain
-only license-cleared, repo-local assets with every required credit and restriction honored.
+## Removed for licensing (2026-07)
+
+- **Mana Seed RPG Starter Pack** (`home_interiors_timber_roof.png`) was used for one
+  interior room's floor/wall tiles. Its license explicitly states the art **must not be used
+  alongside any generative AI content** — including AI-assisted code — and asks that the
+  assets be deleted from any project that doesn't comply. Since this project is built with
+  Claude Code, the file was removed and the room rebuilt from an already-used Serene Village
+  tile (same texture, floor at full brightness / walls darker via modulate). Do not
+  reintroduce any Mana Seed asset into this project.
 
 ## Speech and learning audio
 
-Japanese pronunciation currently uses the browser/OS Web Speech API. No third-party Japanese
-voice corpus is bundled unless it is separately credited and added to the license registry.
+Japanese pronunciation uses the OS's native text-to-speech (`DisplayServer.tts_speak`,
+`src/autoload/speech.gd`) against whatever Japanese voice is installed locally. No bundled
+audio, no third-party voice corpus, nothing to license here.
 
-## Original and legacy assets
+## Code
 
-Original SVG art created for the earlier Kana Sprint app remains CC0 1.0. Legacy files are kept
-as reference material and are not the current Phaser runtime authority.
+Project code license: see `LICENSE`.
 
-## Reference projects
+---
 
-Engine and game repositories under `D:\RPG Game Engine References` are read-only study sources.
-No source code, story, characters, maps, music, or sprites are copied from them. See
-[`docs/ENGINE_REFERENCE_DEEP_DIVE.md`](docs/ENGINE_REFERENCE_DEEP_DIVE.md).
-
-## Code and libraries
-
-- Project code is MIT-licensed; see `LICENSE`.
-- Phaser is used under its MIT license.
-
-When a new asset enters runtime, update its machine-readable registry record and every legally
-required human-facing credit in the same working slice.
+This file replaces an earlier version that described the frozen TypeScript/Phaser build's
+asset inventory (Kenney, CraftPix, PunyMonsters, sushi_pixel_set, Helton Yan SFX, an
+`npm run reboot:audit-assets` tracking script, JSON registries under `assets/licenses/`,
+etc.) — none of which exist in or apply to this Godot project. If any of those packs get
+imported into the Godot game later, add them here at that time, verified the same way as
+the packs above: confirm the actual file is rendered in a real scene, then read that pack's
+real license file in `D:\Asset Library`.

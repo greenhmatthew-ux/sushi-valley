@@ -1,44 +1,65 @@
 extends Node2D
-## A building interior — a small timber room entered from a village door.
+## A building interior — a small room entered from a village door.
 ##
-## Built in code (this workflow has no interactive editor): a wood floor with a back
-## wall, a collision border that seals the room, an exit Door back to the village, and
-## the player placed at the arrival marker. Player-carried state (Inv, Learning) rides
-## the autoloads across the scene swap, so only the arrival point is passed in.
+## Built in code (this workflow has no interactive editor): a floor with a back wall, a
+## collision border that seals the room, an exit Door back to the village, and the player
+## placed at the arrival marker. Player-carried state (Inv, Learning) rides the autoloads
+## across the scene swap, so only the arrival point is passed in.
+##
+## Floor and walls share one tile — a clean, low-variance dirt swatch already used
+## everywhere else in the game (assets/tilesets/serene_village.png) — rather than a new
+## texture. The wall reads as distinct only via a darker modulate on its own TileMapLayer,
+## same material in shadow, not a different asset.
 
 const TILE := 16
 const W := 13   # room width in tiles
 const H := 9    # room height in tiles
 
-# Atlas coords into home_interiors_timber_roof.png (16px grid).
-const FLOOR := Vector2i(2, 10)     # warm timber floor
-const WALL := Vector2i(18, 13)     # wood-plank wall face
-const WALL_TOP := Vector2i(7, 2)   # dark cap along the very top edge
+const FLOOR_TEX := preload("res://assets/tilesets/serene_village.png")
+const FLOOR_TILE := Vector2i(10, 2)   # confirmed clean/uniform — no neighboring-biome bleed
+const WALL_TINT := Color(0.62, 0.5, 0.4)   # same tile, shaded darker to read as a wall
 
 @onready var floor_layer: TileMapLayer = $Floor
 @onready var entities: Node2D = $Entities
+var wall_layer: TileMapLayer
 
 
 func _ready() -> void:
+	_build_tileset()
 	_build_room()
 	_build_walls()
 	_place_player()
 	_clamp_camera()
 
 
+func _build_tileset() -> void:
+	var src := TileSetAtlasSource.new()
+	src.texture = FLOOR_TEX
+	src.texture_region_size = Vector2i(TILE, TILE)
+	src.create_tile(FLOOR_TILE)
+	var ts := TileSet.new()
+	ts.tile_size = Vector2i(TILE, TILE)
+	ts.add_source(src, 0)
+
+	floor_layer.tile_set = ts
+
+	wall_layer = TileMapLayer.new()
+	wall_layer.name = "Walls"
+	wall_layer.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	wall_layer.tile_set = ts
+	wall_layer.modulate = WALL_TINT
+	add_child(wall_layer)
+	move_child(wall_layer, floor_layer.get_index() + 1)
+
+
 func _build_room() -> void:
-	# Row 0 is a dark cap; row 1 and the outer columns are the wood-plank wall; the rest
-	# is floor. The bottom stays open — that edge is the doorway you walk out through.
+	# Row 0-1 and the outer columns are wall (darker layer); the rest is floor. The bottom
+	# stays open — that edge is the doorway you walk out through.
 	for x in W:
 		for y in H:
-			var tile: Vector2i
-			if y == 0:
-				tile = WALL_TOP
-			elif y == 1 or x == 0 or x == W - 1:
-				tile = WALL
-			else:
-				tile = FLOOR
-			floor_layer.set_cell(Vector2i(x, y), 0, tile)
+			var is_wall := y == 0 or y == 1 or x == 0 or x == W - 1
+			var layer := wall_layer if is_wall else floor_layer
+			layer.set_cell(Vector2i(x, y), 0, FLOOR_TILE)
 
 
 ## A StaticBody border confining the player to the interior floor (inside the walls);

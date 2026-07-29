@@ -37,24 +37,20 @@ Do not use `available`, `approved`, `imported`, and `in use` as synonyms.
 
 ## Sources of truth
 
-The project has several intentionally different inventories. None should be presented as a
-complete replacement for the others.
+This is the Godot build. There is no npm tooling, no Phaser preload manifest, no World
+Builder, and no LDtk here — the Godot editor's scenes ARE the level tool (see the project's
+`CLAUDE.md`: never reintroduce LDtk or a world-builder app).
 
 | Question | Authority |
 | --- | --- |
 | What may be searched? | Both external roots listed above |
-| What does Phaser preload by key? | `src/game/assets/assetManifest.ts` plus scene/system-specific loaders |
-| What can the World Builder palette show? | `public/assets/data/asset-catalog.json` |
-| What art is actually placed in the world? | LDtk, scene code, and data tables |
-| What processed imports are registered? | `assets/licenses/asset-manifest.json` |
-| What licenses/attribution are known? | `docs/LICENSE_AUDIT.md`, `assets/licenses/THIRD_PARTY_ASSETS.md`, and `CREDITS.md` |
-| What needs purchase or replacement? | `docs/ASSET_PURCHASE_BACKLOG.md` |
-| What browser-loadable files ship? | `public/assets/` and the production build |
+| What art is actually rendered in the game? | `grep -roh "res://assets/[^\"]*\.png" --include=*.tscn --include=*.gd .` from the repo root — this is ground truth, not a registry |
+| What's the current in-game art canon? | [`ART_STANDARD.md`](ART_STANDARD.md) |
+| What licenses/attribution are known? | [`LICENSE_AUDIT.md`](LICENSE_AUDIT.md) and `CREDITS.md` |
 
-`public/assets/data/asset-catalog.json` is a curated World Builder palette, not the full
-runtime manifest or the full external library. Likewise, the current `reboot:audit-assets`
-cache scans only `D:\Asset Library\Assets` by default; its generated score/shortlist is a
-search aid and omits `Assets 2`. Never use that cache to declare the full library exhausted.
+There is no separate manifest/catalog/registry to keep in sync — the scenes themselves are
+the only authority on what's in use. When you import something, the credit/license docs are
+the only bookkeeping required.
 
 ## Inclusive coverage map
 
@@ -62,14 +58,17 @@ The examples below are navigation hints, not a whitelist.
 
 | Need | Representative source families to inspect |
 | --- | --- |
-| Terrain, paths, water, buildings, interiors | Ninja Adventure, Serene Village, GuttyKreum Japanese City, Sunnyside World, Super Retro World, EPIC Ancient Ruins, Seasonal Tilesets, Mana Seed, GB Modular Houses, Kenney town/dungeon packs |
+| Terrain, paths, water, buildings, interiors | Ninja Adventure, Serene Village, GuttyKreum Japanese City, Sunnyside World, Super Retro World, EPIC Ancient Ruins, Seasonal Tilesets, GB Modular Houses, Kenney town/dungeon packs — **not Mana Seed, see below** |
 | Trees, rocks, crops, resources, props | Ninja Adventure, Sprout Lands, Serene Village, Sunnyside, Kenney foliage/farm packs, CraftPix nature/mineral/crystal packs, Quaternius nature/crops, crafting-material collections |
 | Players, NPCs, enemies, bosses, critters | Ninja Adventure, Puny characters/monsters, Forest Monsters, predator plants, Kenney character/animal packs, Tiny Swords, Kings and Pigs, Quaternius characters/animals |
 | Items, loot, gear, food, sushi | Kyrise, Ninja Adventure, sushi_pixel_set, Ghostpixxells food, Free Pixel Food, RPG/item/icon collections, potion/key/mineral packs, Shikashi, Raven Fantasy HD |
 | UI, inventory, prompts, icons | Ninja Adventure UI, Kenney UI/input packs, Complete UI Essential, Free Basic Pixel Art UI, Retro Inventory, one-bit icons, Dusk Icons, RPG icon collections |
 | VFX, particles, magic, weather | Ninja Adventure FX, Foozle Pixel Magic Effects, Kenney effects, animated keys/potions, seasonal and weather-capable sheets |
 | Music, ambience, UI and combat sound | Ninja Adventure audio, Kenney audio, Helton Yan combat/Shonen packs, the library Audio folder, and other licensed audio collections |
-| 3D render/reference sources | Sushi Restaurant Kit, Kenney 3D kits, Quaternius packs, modular buildings/dungeons/nature; 3D availability does not change the current 2D Phaser direction |
+| 3D render/reference sources | Sushi Restaurant Kit, Kenney 3D kits, Quaternius packs, modular buildings/dungeons/nature; 3D availability does not change the current 2D Godot direction |
+
+**Never use Mana Seed for anything.** Its license explicitly forbids use alongside
+generative AI content, including AI-assisted code — see `LICENSE_AUDIT.md`.
 
 ## Selection workflow
 
@@ -82,23 +81,22 @@ The examples below are navigation hints, not a whitelist.
 5. Verify commercial rights and attribution. Presence in the library is not license approval.
 6. Copy only the selected file or crop into a repo-relative processed/runtime path. External
    absolute paths are never runtime paths.
-7. Record source pack, source path, selected frame/crop, native dimensions, runtime key/path,
+7. Record source pack, source path, selected frame/crop, native dimensions, runtime path,
    license evidence, required credit, intended use, scale, anchor, and solid footprint.
-8. Update the relevant runtime manifest/catalog, license registry, credits, and purchase backlog.
-9. Test the asset in context at desktop and touch sizes. Collision uses the visible ground-contact
-   footprint, never the full transparent texture rectangle.
+8. Update `CREDITS.md` and `docs/LICENSE_AUDIT.md` in the same slice.
+9. Test the asset in context in the running scene. Collision uses the visible ground-contact
+   footprint, never the full transparent texture rectangle (see `ART_STANDARD.md`).
 
 ## Per-import completion checklist
 
 - Source sheet was visually inspected.
-- Perspective, scale, frame layout, and surrounding art match intentionally.
-- License status and attribution are recorded.
+- Perspective, scale, frame layout, and surrounding art match intentionally (16px native,
+  see `ART_STANDARD.md`).
+- License status and attribution are recorded in `CREDITS.md` / `docs/LICENSE_AUDIT.md`.
 - Only selected files/crops were copied; raw packs remain external.
-- Runtime paths are repo-relative and load without fallback or console errors.
-- `assetManifest.ts`, the World Builder catalog, LDtk/data references, and license records were
-  updated only where the asset actually participates.
+- Runtime paths are `res://assets/...` and load without missing-texture errors.
 - Ground-contact collision, anchor, depth, and animation were checked in the real scene.
-- Relevant typecheck, asset/content test, build, and visual smoke checks pass.
+- The relevant headless test suite (`tests/run_all.ps1`) still passes.
 
 The goal is broad choice with disciplined import—not a narrow shortlist and not an unreviewed
 bulk dump.

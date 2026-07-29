@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
-[ext_resource type="Texture2D" path="res://assets/tilesets/home_interiors_timber_roof.png" id="2_tex"]
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
 [ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
 [ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
@@ -9,24 +8,12 @@
 [ext_resource type="Texture2D" path="res://assets/objects/sprout-basic-furniture.png" id="7_furn"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="8_pickup"]
 
-[sub_resource type="TileSetAtlasSource" id="atlas_int"]
-texture = ExtResource("2_tex")
-texture_region_size = Vector2i(16, 16)
-2:10/0 = 0
-7:2/0 = 0
-18:13/0 = 0
-
-[sub_resource type="TileSet" id="ts_int"]
-tile_size = Vector2i(16, 16)
-sources/0 = SubResource("atlas_int")
-
 [node name="InteriorHouse" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_int")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 texture_filter = 1
-tile_set = SubResource("ts_int")
 
 [node name="FloorDecor" type="Node2D" parent="."]
 
