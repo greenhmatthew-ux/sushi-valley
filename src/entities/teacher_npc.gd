@@ -23,11 +23,12 @@ extends Area2D
 @export var speaker: String = "Teacher"
 ## Lesson id from data/learning/lessons.json that this teacher owns.
 @export var teaches_lesson: String = ""
-## Said on the very first meeting, before the lesson unlocks.
+## Said on the very first meeting, before the lesson unlocks. ENGLISH ONLY — a teacher's
+## framing is narration, not curriculum. Every word of Japanese they utter comes from their
+## lesson's sourced cards (see _greeting_line), because LEARNING_PROGRESSION.md forbids
+## hardcoding lesson text into scenes and an earlier version of this file leaked invented
+## Japanese into world.tscn through a free-text export.
 @export var intro_lines: PackedStringArray = PackedStringArray(["Let me teach you a little Japanese."])
-## Japanese the teacher greets you with. Spoken aloud when a Japanese voice is installed.
-@export var greeting_ja: String = ""
-@export var greeting_meaning: String = ""
 ## Micro-review size. Kept small by design — 1/3/5 only, never a review wall.
 @export var session_size: int = 3
 @export var sprite_sheet: Texture2D = preload("res://assets/sprites/npc_villager3.png")
@@ -53,7 +54,7 @@ func interact(player: Node = null) -> void:
 
 func _run_interaction() -> void:
 	if teaches_lesson.is_empty():
-		Bus.dialogue_open.emit(speaker, ["ごめんなさい。|Sorry, I have nothing to teach yet."])
+		Bus.dialogue_open.emit(speaker, ["Sorry, I have nothing to teach yet."])
 		await Bus.dialogue_closed
 		return
 
@@ -71,9 +72,10 @@ func _first_meeting() -> void:
 	var lines: Array[String] = []
 	for l in intro_lines:
 		lines.append(String(l))
-	# The word itself, with its meaning as the reveal-able translation.
-	if not greeting_ja.is_empty():
-		lines.append("%s|%s" % [greeting_ja, greeting_meaning])
+	# A real word from this teacher's own lesson, with its meaning as the reveal.
+	var greeting := _greeting_line()
+	if not greeting.is_empty():
+		lines.append(greeting)
 	Bus.dialogue_open.emit(speaker, lines)
 	await Bus.dialogue_closed
 
@@ -90,18 +92,21 @@ func _first_meeting() -> void:
 ## Nothing due is a good outcome, not a dead end — say so and let the player go.
 func _return_visit() -> void:
 	if _due_in_lesson() == 0:
-		Bus.dialogue_open.emit(speaker, [
-			"%s|%s" % [greeting_ja, greeting_meaning],
-			"きょうは だいじょうぶです。|You're all caught up today.",
-			"またきてください。|Please come again.",
-		])
+		var lines_done: Array[String] = []
+		var g := _greeting_line()
+		if not g.is_empty():
+			lines_done.append(g)
+		lines_done.append("You're all caught up. Come back when these need review.")
+		Bus.dialogue_open.emit(speaker, lines_done)
 		await Bus.dialogue_closed
 		return
 
-	Bus.dialogue_open.emit(speaker, [
-		"%s|%s" % [greeting_ja, greeting_meaning],
-		"すこし ふくしゅう しましょう。|Let's review a little.",
-	])
+	var lines_review: Array[String] = []
+	var g2 := _greeting_line()
+	if not g2.is_empty():
+		lines_review.append(g2)
+	lines_review.append("Let's review a little.")
+	Bus.dialogue_open.emit(speaker, lines_review)
 	await Bus.dialogue_closed
 	await _run_session()
 
@@ -115,6 +120,30 @@ func _run_session() -> void:
 	var correct: int = res[1]
 	if attempted > 0 and not bool(res[2]):
 		Bus.toast.emit("%s: %d/%d" % [speaker, correct, attempted])
+
+
+## A greeting drawn from this teacher's OWN lesson, as "japanese|meaning". Prefers a
+## phrase card (a real thing a person says) over a bare vocab word, and returns "" when the
+## lesson has neither — never a fabricated line.
+func _greeting_line() -> String:
+	var lesson: Dictionary = DB.lesson(teaches_lesson)
+	var fallback := ""
+	for id in lesson.get("cardIds", []):
+		var c: Dictionary = Learning.profile.card(id)
+		if c.is_empty():
+			continue
+		var ja := String(c.get("prompt", ""))
+		var meaning := String(c.get("meaning", ""))
+		if meaning.is_empty():
+			meaning = String(c.get("answer", ""))
+		if ja.is_empty():
+			continue
+		var line := "%s|%s" % [ja, meaning]
+		if String(c.get("type", "")) == "phrase":
+			return line
+		if fallback.is_empty():
+			fallback = line
+	return fallback
 
 
 ## Cards from this lesson that the shared SRS says are due right now.

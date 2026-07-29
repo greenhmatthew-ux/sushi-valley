@@ -1,28 +1,30 @@
 extends Area2D
-## A signpost you can actually read. Japanese text standing in the world, voiced aloud, with
-## the English available on demand like every other line in the valley.
+## A signpost you can read. Japanese standing in the world, voiced aloud, English on demand.
 ##
 ## Same interactable contract as Npc / TeacherNpc / LessonGate: an Area2D in group
-## "interactable" on layer 8 exposing interact(player). Non-blocking — the visual post is a
-## separate prop, so the sign itself never walls the player in.
+## "interactable" on layer 8 exposing interact(player).
 ##
-## LEARNING_PROGRESSION.md lists "unlocked sign reading" as a reward and maps Routes/Gates to
-## "directions, places, signs". Reading a sign is low-pressure by design: no quiz, no fail
-## state. When `teaches_card` names a card, the first read UNLOCKS it into the shared SRS —
-## so the world itself is what introduces vocabulary, and the schedule picks it up from
-## there. Re-reading never re-grades; that would let a player farm a sign for easy XP and
-## corrupt the spacing.
+## SOURCING — the reason this takes a card id and NOT a Japanese string:
+## LEARNING_PROGRESSION.md forbids inventing an uncited parallel deck or hardcoding lesson
+## text in scenes, and SITE_WIDE_LEARNING_ARCHITECTURE.md requires curated content only, no
+## auto-generated Japanese. An earlier version of this file had a free-text `japanese`
+## export, and unsourced Japanese promptly ended up authored into world.tscn. There is now
+## no field to type Japanese into: a sign displays the prompt/reading/meaning of a real card
+## from data/learning/cards.json, which carries its deck attribution. Framing text is
+## English only.
+##
+## Reading is low-pressure by design — no quiz, no fail state. The first read UNLOCKS the
+## card into the shared SRS, so the world introduces vocabulary and the schedule takes over.
+## Re-reading never re-grades; that would let a player farm a sign and corrupt their spacing.
 
 ## Authored per-instance.
 @export var sign_id: String = "sign"
-## What the sign says, in Japanese. Shown and spoken.
-@export var japanese: String = ""
-## Plain-English translation, revealed with TAB or the settings toggle.
-@export var english: String = ""
-## Optional card id (data/learning/cards.json) this sign introduces. First read unlocks it.
-@export var teaches_card: String = ""
-## Draw the wooden post. Off for signs mounted on an existing prop (the village board),
-## on for standalone ones — an invisible interactable gives the player nothing to walk up to.
+## Card id from data/learning/cards.json. The sign shows THIS card's Japanese — the only
+## Japanese it can ever show.
+@export var shows_card: String = ""
+## English-only framing, e.g. "A weathered board beside the road." Never Japanese.
+@export var caption: String = ""
+## Draw the wooden post. Off for signs mounted on an existing prop.
 @export var draw_post: bool = true
 
 const POST_REGION := Rect2(112, 208, 16, 32)   # signpost in serene_village.png
@@ -36,17 +38,6 @@ func _ready() -> void:
 		_build_visual()
 
 
-## Wooden post, drawn feet-on-origin so Y-sort treats it like every other prop.
-func _build_visual() -> void:
-	var post := Sprite2D.new()
-	post.texture = preload("res://assets/tilesets/serene_village.png")
-	post.region_enabled = true
-	post.region_rect = POST_REGION
-	post.offset = Vector2(0, -16)
-	post.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	add_child(post)
-
-
 func interact(player: Node = null) -> void:
 	if _busy:
 		return
@@ -58,36 +49,49 @@ func interact(player: Node = null) -> void:
 
 
 func _read() -> void:
-	if japanese.is_empty():
+	var card: Dictionary = Learning.profile.card(shows_card)
+	if card.is_empty():
+		push_warning("[Sign %s] unknown card '%s'" % [sign_id, shows_card])
 		return
 
-	var lines: Array[String] = ["%s|%s" % [japanese, english]]
-	var newly_learned := _unlock_card()
-	if not newly_learned.is_empty():
-		lines.append("%s|New word: %s" % [newly_learned, _meaning_of(teaches_card)])
+	var japanese := String(card.get("prompt", ""))
+	var meaning := String(card.get("meaning", ""))
+	if meaning.is_empty():
+		meaning = String(card.get("answer", ""))
+	# reading is the kana gloss for kanji cards; skip it when it just repeats the prompt
+	var reading := String(card.get("reading", ""))
+	var english := meaning if reading.is_empty() or reading == japanese \
+		else "%s — %s" % [reading, meaning]
 
-	Bus.dialogue_open.emit("", lines)   # no speaker name — a sign isn't talking to you
+	var lines: Array[String] = []
+	if not caption.is_empty():
+		lines.append(caption)          # English framing, no translation half
+	lines.append("%s|%s" % [japanese, english])
+
+	var newly_learned := _unlock_card(card)
+	Bus.dialogue_open.emit("", lines)   # no speaker — a sign isn't talking to you
 	await Bus.dialogue_closed
 
-	if not newly_learned.is_empty():
-		Bus.toast.emit("Learned from a sign: %s" % newly_learned)
+	if newly_learned:
+		Bus.toast.emit("Learned from a sign: %s" % japanese)
 		Bus.hud_refresh.emit()
 
 
-## Unlock this sign's card the first time it's read. Returns the card's prompt when it was
-## genuinely new, "" otherwise (already known, not configured, or unknown id).
-func _unlock_card() -> String:
-	if teaches_card.is_empty():
-		return ""
-	var card: Dictionary = Learning.profile.card(teaches_card)
-	if card.is_empty() or card.get("unlocked", false):
-		return ""
+## Unlock on the first read only. Returns whether this read was the one that did it.
+func _unlock_card(card: Dictionary) -> bool:
+	if card.get("unlocked", false):
+		return false
 	card["unlocked"] = true
 	Learning.profile.save()
-	return String(card.get("prompt", ""))
+	return true
 
 
-func _meaning_of(card_id: String) -> String:
-	var card: Dictionary = Learning.profile.card(card_id)
-	var meaning := String(card.get("meaning", ""))
-	return meaning if not meaning.is_empty() else String(card.get("answer", ""))
+## Wooden post, drawn feet-on-origin so Y-sort treats it like every other prop.
+func _build_visual() -> void:
+	var post := Sprite2D.new()
+	post.texture = preload("res://assets/tilesets/serene_village.png")
+	post.region_enabled = true
+	post.region_rect = POST_REGION
+	post.offset = Vector2(0, -16)
+	post.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(post)

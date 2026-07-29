@@ -39,7 +39,6 @@ func _initialize() -> void:
 	teacher.npc_id = "test_hana"
 	teacher.speaker = "Hana"
 	teacher.teaches_lesson = "greetings"
-	teacher.greeting_ja = "こんにちは"
 	teacher.session_size = 3
 	root.add_child(teacher)
 	await process_frame

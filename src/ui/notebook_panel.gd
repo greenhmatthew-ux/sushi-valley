@@ -174,7 +174,7 @@ func _build() -> void:
 	margin.add_child(vbox)
 
 	var title := _label(20, COL_BORDER)
-	title.text = "Notebook  ·  ノート"
+	title.text = "Notebook"
 	vbox.add_child(title)
 
 	_summary = _label(13, COL_HEADING)

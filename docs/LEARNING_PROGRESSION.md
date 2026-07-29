@@ -65,3 +65,22 @@ Recipe Stamp + XP + card unlock + sushi item.)
 - Do not flashcard-dump a broad deck without a playable route and repetition plan.
 - Do not use romaji-first progression or unsourced travel phrases.
 - Keep grammar and kanji subordinate to immediate travel usefulness for this one-month push.
+
+## Sourcing is enforced, not trusted (2026-07)
+
+Every Japanese character shown to the player must be a `prompt`/`reading` from
+`data/learning/cards.json`, which carries deck attribution from
+`data/learning/sources/*.json`. This is checked by `tests/test_japanese_sourcing.gd`,
+which scans every scene and script and fails on unsourced kana/kanji.
+
+The rule above was previously broken in practice: 19 invented Japanese strings were
+hardcoded into `world.tscn` and the NPC scripts, including an incorrect use of
+いただきます as a greeting and a literal calque of an English idiom. Teaching wrong
+Japanese is worse than teaching none, so the entities no longer accept Japanese text at
+all — they take card ids:
+
+- `sign_post.gd` -> `shows_card` (a card id) + English-only `caption`
+- `teacher_npc.gd` -> `intro_lines` are English; the Japanese greeting is derived from the
+  taught lesson's own cards
+
+NPC narration is English. Japanese is curriculum, and curriculum comes from the decks.

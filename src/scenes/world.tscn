@@ -1076,7 +1076,7 @@ fail_message = "The gate hums. Recall your kana to pass."
 position = Vector2(272, 384)
 npc_id = "villager_greeter"
 speaker = "Aiko"
-lines = PackedStringArray("ようこそ、たびびとさん！|Welcome, traveler!", "きたのとりいは、かなをおぼえるまでひらきません。|The torii to the north will not open until you know your kana.", "わからないときは、TABをおしてください。|When you don't understand, hold TAB.")
+lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Hold TAB any time to see the English for what you are reading.")
 
 [node name="PathGate" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
 position = Vector2(304, 272)
@@ -1410,9 +1410,7 @@ position = Vector2(208, 344)
 npc_id = "hana"
 speaker = "Hana"
 teaches_lesson = "greetings"
-intro_lines = PackedStringArray("あら、たびびとさん。|Oh, a traveler.", "あいさつは、すべてのとびらをひらきます。|Greetings open every door.")
-greeting_ja = "こんにちは"
-greeting_meaning = "hello"
+intro_lines = PackedStringArray("Oh! A traveler. Welcome.", "Greetings will open every door here. Let me teach you a few.")
 sprite_sheet = ExtResource("34_woman")
 
 [node name="TeacherYuki" parent="Props" instance=ExtResource("33_teacher")]
@@ -1420,29 +1418,24 @@ position = Vector2(472, 328)
 npc_id = "yuki"
 speaker = "Yuki"
 teaches_lesson = "food-words"
-intro_lines = PackedStringArray("おなかがすきましたか。|Are you hungry?", "たべものの ことばを おぼえましょう。|Let's learn the words for food.")
-greeting_ja = "いただきます"
-greeting_meaning = "let's eat (said before a meal)"
+intro_lines = PackedStringArray("You look hungry, traveler.", "Learn the words for what you eat and you will never go hungry here.")
 sprite_sheet = ExtResource("35_vil3")
 
 [node name="SignVillage" parent="Props" instance=ExtResource("36_sign")]
 position = Vector2(280, 268)
 sign_id = "village_board"
 draw_post = false
-japanese = "ようこそ　むらへ"
-english = "Welcome to the village"
-teaches_card = "kana-mu"
+shows_card = "greet-konnichiwa"
+caption = "A notice board stands at the crossroads."
 
 [node name="SignNorthGate" parent="Props" instance=ExtResource("36_sign")]
 position = Vector2(320, 128)
 sign_id = "north_gate"
-japanese = "きた　の　とりい"
-english = "North torii gate"
-teaches_card = "kana-ki"
+shows_card = "kana-ki"
+caption = "A marker post beside the torii."
 
 [node name="SignSouthPath" parent="Props" instance=ExtResource("36_sign")]
 position = Vector2(304, 440)
 sign_id = "south_path"
-japanese = "みなみ　の　もり"
-english = "South forest"
-teaches_card = "kana-mi"
+shows_card = "kana-mi"
+caption = "A worn post where the path leaves the village."

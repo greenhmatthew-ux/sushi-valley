@@ -28,9 +28,8 @@ func _initialize() -> void:
 
 	sign_post = load("res://src/entities/sign_post.tscn").instantiate()
 	sign_post.sign_id = "test_sign"
-	sign_post.japanese = "きた　の　とりい"
-	sign_post.english = "North torii gate"
-	sign_post.teaches_card = "kana-ki"
+	sign_post.shows_card = "kana-ki"
+	sign_post.caption = "A marker post beside the torii."
 	root.add_child(sign_post)
 	await process_frame
 
@@ -63,16 +62,14 @@ func _reread_does_not_regrade() -> void:
 	check_eq("re-read adds no incorrect count", after.get("incorrectCount"), before.get("incorrectCount"))
 
 
-## A decorative sign with no card attached should still be readable, not error.
+## A sign with no card configured must warn and bail, not crash.
 func _sign_without_a_card_still_reads() -> void:
 	var plain: Node = load("res://src/entities/sign_post.tscn").instantiate()
-	plain.japanese = "むら"
-	plain.english = "village"
-	plain.teaches_card = ""
+	plain.shows_card = ""
 	root.add_child(plain)
 	await process_frame
 	await plain.interact(null)
-	check_true("a card-less sign reads without error", true)
+	check_true("a card-less sign bails without crashing", true)
 	plain.queue_free()
 
 
