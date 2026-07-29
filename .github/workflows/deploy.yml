@@ -1,0 +1,86 @@
+name: Deploy to GitHub Pages
+
+# Exports the Godot project to Web and publishes it to GitHub Pages on every push
+# to master. The web build is NOT committed (build/ is gitignored) — CI rebuilds it
+# from source each time, so the live site can never drift from the repo.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a newer push cancel an in-flight deploy, but never interrupt a running one
+# half-way through publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  GODOT_VERSION: 4.7.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Godot + export templates
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot-bin
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-web
+
+      - name: Install Godot and web export templates
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          BASE="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+
+          mkdir -p ~/godot-bin
+          curl -fsSL -o godot.zip "$BASE/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" ~/godot-bin/godot
+          chmod +x ~/godot-bin/godot
+
+          # Only the web templates are needed; the full .tpz is ~1.3GB so we extract
+          # just what the Web preset uses.
+          curl -fsSL -o templates.tpz "$BASE/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$TEMPLATE_DIR"
+          unzip -q -j templates.tpz 'templates/web*' 'templates/version.txt' -d "$TEMPLATE_DIR"
+
+      - name: Import resources
+        # First run generates .godot/ (gitignored) so the export has imported assets.
+        # Godot exits non-zero on import warnings, which are not fatal here.
+        run: ~/godot-bin/godot --headless --path . --import || true
+
+      - name: Export Web build
+        run: |
+          set -euo pipefail
+          mkdir -p build/web
+          ~/godot-bin/godot --headless --path . --export-release "Web" build/web/index.html
+          # Pages serves via Jekyll by default, which strips files starting with "_".
+          touch build/web/.nojekyll
+          ls -la build/web
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
