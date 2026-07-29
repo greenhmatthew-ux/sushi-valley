@@ -53,7 +53,7 @@ func interact(player: Node = null) -> void:
 
 func _run_interaction() -> void:
 	if teaches_lesson.is_empty():
-		Bus.dialogue_open.emit(speaker, ["I have nothing to teach yet."])
+		Bus.dialogue_open.emit(speaker, ["ごめんなさい。|Sorry, I have nothing to teach yet."])
 		await Bus.dialogue_closed
 		return
 
@@ -68,12 +68,12 @@ func _run_interaction() -> void:
 ## First meeting: greet in Japanese, unlock the lesson, then one micro-review so the words
 ## are used immediately rather than dumped and forgotten.
 func _first_meeting() -> void:
-	_speak_greeting()
 	var lines: Array[String] = []
 	for l in intro_lines:
 		lines.append(String(l))
+	# The word itself, with its meaning as the reveal-able translation.
 	if not greeting_ja.is_empty():
-		lines.append("%s — %s" % [greeting_ja, greeting_meaning])
+		lines.append("%s|%s" % [greeting_ja, greeting_meaning])
 	Bus.dialogue_open.emit(speaker, lines)
 	await Bus.dialogue_closed
 
@@ -89,17 +89,19 @@ func _first_meeting() -> void:
 ## Return visit: review only what the SRS says is actually due for this teacher's lesson.
 ## Nothing due is a good outcome, not a dead end — say so and let the player go.
 func _return_visit() -> void:
-	_speak_greeting()
 	if _due_in_lesson() == 0:
-		var title := String(DB.lesson(teaches_lesson).get("title", teaches_lesson))
 		Bus.dialogue_open.emit(speaker, [
-			"%s Your %s is resting well." % [greeting_ja, title.to_lower()],
-			"Come back when it needs review.",
+			"%s|%s" % [greeting_ja, greeting_meaning],
+			"きょうは だいじょうぶです。|You're all caught up today.",
+			"またきてください。|Please come again.",
 		])
 		await Bus.dialogue_closed
 		return
 
-	Bus.dialogue_open.emit(speaker, ["%s Ready for a quick review?" % greeting_ja])
+	Bus.dialogue_open.emit(speaker, [
+		"%s|%s" % [greeting_ja, greeting_meaning],
+		"すこし ふくしゅう しましょう。|Let's review a little.",
+	])
 	await Bus.dialogue_closed
 	await _run_session()
 
@@ -124,11 +126,6 @@ func _due_in_lesson() -> int:
 		if not c.is_empty() and c.get("unlocked", false):
 			pool.append(c)
 	return Srs.due(pool).size()
-
-
-func _speak_greeting() -> void:
-	if not greeting_ja.is_empty():
-		Speech.speak(greeting_ja)
 
 
 func _met_flag() -> String:

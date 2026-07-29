@@ -1075,7 +1075,7 @@ fail_message = "The gate hums. Recall your kana to pass."
 position = Vector2(272, 384)
 npc_id = "villager_greeter"
 speaker = "Aiko"
-lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Press the menu key any time to check your bag.")
+lines = PackedStringArray("ようこそ、たびびとさん！|Welcome, traveler!", "きたのとりいは、かなをおぼえるまでひらきません。|The torii to the north will not open until you know your kana.", "わからないときは、TABをおしてください。|When you don't understand, hold TAB.")
 
 [node name="PathGate" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
 position = Vector2(304, 272)
@@ -1409,7 +1409,7 @@ position = Vector2(208, 344)
 npc_id = "hana"
 speaker = "Hana"
 teaches_lesson = "greetings"
-intro_lines = PackedStringArray("Oh! A traveler. Welcome.", "Greetings open every door here — let me teach you a few.")
+intro_lines = PackedStringArray("あら、たびびとさん。|Oh, a traveler.", "あいさつは、すべてのとびらをひらきます。|Greetings open every door.")
 greeting_ja = "こんにちは"
 greeting_meaning = "hello"
 sprite_sheet = ExtResource("34_woman")
@@ -1419,7 +1419,7 @@ position = Vector2(472, 328)
 npc_id = "yuki"
 speaker = "Yuki"
 teaches_lesson = "food-words"
-intro_lines = PackedStringArray("You look hungry, traveler.", "Learn the words for what you eat and you will never go hungry in Japan.")
+intro_lines = PackedStringArray("おなかがすきましたか。|Are you hungry?", "たべものの ことばを おぼえましょう。|Let's learn the words for food.")
 greeting_ja = "いただきます"
 greeting_meaning = "let's eat (said before a meal)"
 sprite_sheet = ExtResource("35_vil3")

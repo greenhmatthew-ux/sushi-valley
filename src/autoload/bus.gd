@@ -33,6 +33,14 @@ signal coins_changed(coins: int)
 ## Fired after any inventory mutation so panels can refresh without polling.
 signal inventory_changed()
 
+# --- settings ---
+## Camera zoom preference changed. The live player camera listens and retunes itself,
+## so no scene needs to hold a reference back to the Settings autoload.
+signal zoom_changed(zoom: float)
+## English visibility changed — either pinned in settings or peeked with the hold key.
+## Bilingual surfaces (dialogue, signs) listen and re-render in place.
+signal language_changed(english_visible: bool)
+
 # --- shop ---
 ## A vendor was interacted with — the ShopPanel opens on this, keyed by shop_id (a
 ## key into DB.shops). Kept a Bus signal so vendors never hold a UI reference.

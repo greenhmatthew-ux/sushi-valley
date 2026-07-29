@@ -43,6 +43,16 @@ func _ready() -> void:
 	_sprite.sprite_frames = SpriteSheets.walk_frames(texture, SpriteSheets.row_count(texture))
 	_show_idle()
 	Bus.player_hp_changed.emit(hp, MAX_HP)
+	# Camera framing is a saved preference, not a scene constant — apply it on spawn and
+	# keep following it, so changing zoom in settings updates the live view immediately.
+	_apply_zoom(Settings.zoom)
+	Bus.zoom_changed.connect(_apply_zoom)
+
+
+func _apply_zoom(zoom: float) -> void:
+	var cam: Camera2D = get_node_or_null("Camera")
+	if cam != null:
+		cam.zoom = Vector2(zoom, zoom)
 
 
 ## Take a hit from an aggressive foe. Ignored during the post-hit mercy window; a defeat

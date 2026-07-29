@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
 [ext_resource type="Script" path="res://src/ui/toast_layer.gd" id="3_toast"]
+[ext_resource type="Script" path="res://src/ui/settings_panel.gd" id="6_settings"]
 [ext_resource type="Script" path="res://src/ui/hud_layer.gd" id="4_hud"]
 [ext_resource type="Script" path="res://src/ui/shop_panel.gd" id="5_shop"]
 
@@ -22,3 +23,6 @@ script = ExtResource("5_shop")
 
 [node name="ToastLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_toast")
+
+[node name="SettingsPanel" type="CanvasLayer" parent="."]
+script = ExtResource("6_settings")

@@ -4,10 +4,23 @@ extends CanvasLayer
 ## a click, closing with `dialogue_closed` so callers (the gate) can await it.
 ##
 ## Bus-driven: listens for `dialogue_open`, replies with `dialogue_closed`.
+##
+## BILINGUAL. The valley speaks Japanese; English is a translation you can reveal. A line
+## carries both, separated by `|`:
+##     "こんにちは。|Hello."
+## The Japanese is what's displayed and what the NPC's voice speaks. The English sits
+## underneath, shown only while Settings says so (pinned in settings, or held via TAB) —
+## and it re-renders live when that changes, so peeking mid-line works.
+##
+## A line with no `|` is shown as-is. That keeps system messages ("The way is already
+## open.") and any not-yet-translated content working unchanged.
+
+const LANG_SEP := "|"
 
 const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
 const COL_BORDER := Color(1.0, 0.824, 0.49)
 const COL_NAME := Color(1.0, 0.824, 0.49)
+const COL_EN := Color(0.624, 0.839, 1.0)
 
 var _active := false
 var _lines: Array = []
@@ -16,6 +29,7 @@ var _line_index := 0
 var _root: Control
 var _name_label: Label
 var _line_label: Label
+var _en_label: Label
 var _hint_label: Label
 
 
@@ -25,6 +39,8 @@ func _ready() -> void:
 	_build_scaffold()
 	_root.hide()
 	Bus.dialogue_open.connect(_on_dialogue_open)
+	# Re-render in place when English is pinned/unpinned or peeked mid-sentence.
+	Bus.language_changed.connect(func(_visible): if _active: _refresh_english())
 
 
 func _on_dialogue_open(speaker: String, lines: Array) -> void:
@@ -44,8 +60,33 @@ func _on_dialogue_open(speaker: String, lines: Array) -> void:
 
 
 func _show_line() -> void:
-	_line_label.text = String(_lines[_line_index])
+	_line_label.text = _japanese_of(_line_index)
+	_refresh_english()
 	_hint_label.text = "▸" if _line_index < _lines.size() - 1 else "▸ close"
+	# The NPC's voice: speak the Japanese, never the English gloss. A silent no-op when
+	# the OS has no Japanese voice installed (see Speech).
+	Speech.speak(_line_label.text)
+
+
+## Japanese half of the current line (or the whole line when it carries no translation).
+func _japanese_of(index: int) -> String:
+	var raw := String(_lines[index])
+	return raw.split(LANG_SEP)[0].strip_edges() if raw.contains(LANG_SEP) else raw
+
+
+## English half, or "" when this line has no translation attached.
+func _english_of(index: int) -> String:
+	var raw := String(_lines[index])
+	if not raw.contains(LANG_SEP):
+		return ""
+	var parts := raw.split(LANG_SEP)
+	return parts[1].strip_edges() if parts.size() > 1 else ""
+
+
+func _refresh_english() -> void:
+	var en := _english_of(_line_index)
+	_en_label.text = en
+	_en_label.visible = not en.is_empty() and Settings.english_visible()
 
 
 func _advance() -> void:
@@ -80,9 +121,13 @@ func _build_scaffold() -> void:
 
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	# Bottom strip, inset from the screen edges.
+	# Pinned to the bottom and grown UPWARD to fit its contents, so revealing the English
+	# translation makes the box taller instead of pushing text off the screen edge.
 	panel.anchor_left = 0.08; panel.anchor_right = 0.92
-	panel.anchor_top = 0.72; panel.anchor_bottom = 0.94
+	panel.anchor_top = 1.0; panel.anchor_bottom = 1.0
+	panel.offset_top = -190.0
+	panel.offset_bottom = -24.0
+	panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()
@@ -105,6 +150,15 @@ func _build_scaffold() -> void:
 	_line_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_line_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(_line_label)
+
+	# Translation, tucked under the Japanese and tinted so it reads as a hint rather than
+	# the primary text. Hidden unless the player asks for it.
+	_en_label = Label.new()
+	_en_label.add_theme_font_size_override("font_size", 13)
+	_en_label.add_theme_color_override("font_color", COL_EN)
+	_en_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_en_label.hide()
+	vbox.add_child(_en_label)
 
 	_hint_label = Label.new()
 	_hint_label.add_theme_font_size_override("font_size", 12)
