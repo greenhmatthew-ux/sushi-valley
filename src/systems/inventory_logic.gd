@@ -1,7 +1,7 @@
 class_name InventoryLogic
 extends RefCounted
-## Pure bag + coin logic. Port of the bag/coin half of
-## `d:\Downloads\Japanese\src\game\systems\Inventory.ts`.
+## Pure bag + coin logic. Port of the bag/coin half of `src/game/systems/Inventory.ts`
+## in the archived Vite/Phaser build (github.com/greenhmatthew-ux/Kana).
 ##
 ## Node-free and DB-free on purpose, so it stays headless-testable and the real
 ## stacking / capacity rules can be asserted against the TS behavior. The Inv

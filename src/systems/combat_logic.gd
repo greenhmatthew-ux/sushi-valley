@@ -3,8 +3,8 @@ extends RefCounted
 ## Pure combat math for the first-pass combat loop. Node-free and headless-testable:
 ## nothing here touches the scene tree, so tests instantiate the numbers directly.
 ##
-## Ported from d:\Downloads\Japanese\src\game\systems\CombatSystem.ts (the frozen
-## Vite/Phaser reference). The formulas below are carried over EXACTLY — the tuned
+## Ported from src/game/systems/CombatSystem.ts in the archived Vite/Phaser build
+## (github.com/greenhmatthew-ux/Kana). The formulas below are carried over EXACTLY — the tuned
 ## balance lives in the constants and the shapes of these expressions, and changing
 ## them silently would change how combat feels. Explanatory comments come across too.
 ##

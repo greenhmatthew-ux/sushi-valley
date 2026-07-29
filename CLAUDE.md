@@ -6,9 +6,11 @@ and Terraria, with educational recall-gating: the player learns Japanese by play
 Godot 4.7, GDScript, desktop-first (Windows). The priority is to ship useful, stable,
 understandable features quickly.
 
-This is a port of an earlier Vite + TypeScript + Phaser build that lives at
-`d:\Downloads\Japanese`. That repo is **frozen reference** — read from it freely, never
-write to it. See `docs/PORT_NOTES.md` for what carried over and what was rebuilt.
+This is a port of an earlier Vite + TypeScript + Phaser build. That local copy was
+**deleted 2026-07** — this Godot project is now the one and only Sushi Valley. If you ever
+need the old source for reference, it is archived at
+https://github.com/greenhmatthew-ux/Kana.git (clone it somewhere temporary; do not
+reintroduce it into this repo). See `docs/PORT_NOTES.md` for what carried over.
 
 ## Builder Style
 - Build in small vertical slices. Each slice ends playable and committed.
@@ -19,10 +21,13 @@ write to it. See `docs/PORT_NOTES.md` for what carried over and what was rebuilt
   `Â`, or `�` output by reading files as UTF-8 before replacing real Japanese or punctuation.
 
 ## Porting Rules
+The bulk port is done and the TS source is no longer on disk. These still apply to any
+remaining port work (clone the archive repo above if you need the original):
 - **Port the math exactly, then tune.** The TS systems carry real, playtested balance.
   A silently-changed SRS interval or damage formula is the fastest way to lose the game's
   feel. Carry the explanatory comments across too — they record *why* a number is what it is.
-- When porting a file, read the TS original first and note its path in a header comment.
+- Already-ported files note their TS origin in a header comment. Treat that as historical
+  provenance, not a live path.
 - Verify ports with a headless test that asserts against the TS behavior, not by eyeballing.
 
 ## Before Making Changes

@@ -44,7 +44,8 @@ hand-authored kana. 167 items, 76 enemies, 68 abilities, 78 recipes, 18 quests.
 
 ## History
 
-Ported from a Vite + TypeScript + Phaser build (frozen at `d:\Downloads\Japanese`). See
+Ported from a Vite + TypeScript + Phaser build, archived at
+[greenhmatthew-ux/Kana](https://github.com/greenhmatthew-ux/Kana). See
 [docs/PORT_NOTES.md](docs/PORT_NOTES.md) for what carried over, what was rebuilt, and why.
 
 ## Credits

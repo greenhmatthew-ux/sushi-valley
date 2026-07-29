@@ -1,8 +1,13 @@
 # Port Notes — Phaser/TypeScript → Godot 4.7
 
-The previous build lives at `d:\Downloads\Japanese` (Vite + TypeScript + Phaser, ~39k LOC
-under `src/`). It is **frozen reference**: read from it, never write to it. This file
-records what came across and what did not, so nobody has to re-derive it.
+The previous build was Vite + TypeScript + Phaser, ~39k LOC under `src/`. Its local copy at
+`d:\Downloads\Japanese` was **deleted 2026-07** once the port was far enough along that it
+was only causing confusion (screenshots of the old browser build being mistaken for the
+Godot game). It is archived at https://github.com/greenhmatthew-ux/Kana.git — clone it
+somewhere temporary if you need to consult the original.
+
+The "Old path" column below refers to paths inside that archive repo. This file records
+what came across and what did not, so nobody has to re-derive it.
 
 ## Carried over verbatim
 
