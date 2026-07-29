@@ -7,20 +7,23 @@
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="6_qxddc"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="8_qrxgn"]
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
+[ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="33_teacher"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="34_woman"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="35_vil3"]
 [ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="10_door"]
-[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="11_spawn"]
+[ext_resource type="Script" uid="uid://kwbcehuao774" path="res://src/entities/spawn_point.gd" id="11_spawn"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="12_enemy"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="13_pickup"]
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="14_quest"]
 [ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="20_prop"]
-[ext_resource type="Texture2D" path="res://assets/props/tree_green.png" id="21_tg"]
-[ext_resource type="Texture2D" path="res://assets/props/tree_leafy.png" id="22_tl"]
-[ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="23_ts"]
-[ext_resource type="Texture2D" path="res://assets/props/rock.png" id="24_rk"]
-[ext_resource type="Texture2D" path="res://assets/props/berry_bush.png" id="25_bb"]
-[ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="30_bar"]
-[ext_resource type="Texture2D" path="res://assets/props/pot.png" id="31_pot"]
-[ext_resource type="Texture2D" path="res://assets/props/crate.png" id="32_crate"]
+[ext_resource type="Texture2D" uid="uid://j2hd5d0kkdnu" path="res://assets/props/tree_green.png" id="21_tg"]
+[ext_resource type="Texture2D" uid="uid://cwlfvex3yqkga" path="res://assets/props/tree_leafy.png" id="22_tl"]
+[ext_resource type="Texture2D" uid="uid://cxfmwsvrj53d6" path="res://assets/props/tree_sakura.png" id="23_ts"]
+[ext_resource type="Texture2D" uid="uid://x43kmlv3bsrg" path="res://assets/props/rock.png" id="24_rk"]
+[ext_resource type="Texture2D" uid="uid://b71ls73jqvq0u" path="res://assets/props/berry_bush.png" id="25_bb"]
+[ext_resource type="Texture2D" uid="uid://j84c0nrk1241" path="res://assets/props/barrel.png" id="30_bar"]
+[ext_resource type="Texture2D" uid="uid://bgwii8qjekjdq" path="res://assets/props/pot.png" id="31_pot"]
+[ext_resource type="Texture2D" uid="uid://d0lkhqnvw5vo1" path="res://assets/props/crate.png" id="32_crate"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -75,9 +78,6 @@ texture = ExtResource("2_qxjwa")
 [sub_resource type="TileSet" id="TileSet_251w0"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7325u")
-
-
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pa1cl"]
 texture = ExtResource("2_qxjwa")
@@ -818,701 +818,11 @@ texture = ExtResource("2_qxjwa")
 [sub_resource type="TileSet" id="TileSet_xf3pw"]
 sources/3 = SubResource("TileSetAtlasSource_pa1cl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pa1cl"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 336, 80, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25l4m"]
 size = Vector2(64, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi7wn"]
 size = Vector2(64, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k5joq"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvusi"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k37mw"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_urb0p"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1fyld"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxnng"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8l7mp"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6jqn"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trq4x"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lan02"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eu8y7"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l280w"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cirtn"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ip3fp"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2ylq"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q3pv"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rk15"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdvr3"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ga528"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w1ou"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4nj0"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpnb2"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgxhu"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntkrj"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwuda"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogsvw"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dgvpq"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1lgv"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hua4p"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0qb0"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vnoke"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5gw1"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mn2i6"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8imb"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gobyi"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmle6"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3ebj"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k4pe"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dmov6"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjtf1"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0c8o"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kh6f"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5nrvb"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbdae"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0gk1"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpflf"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_70cr0"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_30qdn"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82a8w"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3lrd"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2jaj"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi2e8"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ecjq1"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv6gd"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbwxm"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw3wi"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3hp5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gl4a"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e7cqc"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq8pd"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_554l8"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fnfw"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuoy5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ayd"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rsk7"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5478d"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghj4q"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqygm"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yepfa"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rt7d"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntaoc"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1erim"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pdnnj"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhfmo"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwmr7"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_551h7"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2fxue"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmqmq"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xaoof"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_624f1"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_luauf"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_he8tp"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgi2k"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccbrx"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dukg"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yixat"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wh54f"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh6xp"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jq2dv"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgtxo"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3nogf"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1geij"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpaio"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3cgl"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5toh"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ql21"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1hh3"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_82bdy"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8rud"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwsfx"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhwmt"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5w7p"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_70226"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn8kk"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c65x5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgys"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d650c"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16bmy"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26xtn"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bnvx"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3ag5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3224y"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bld04"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p58s8"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlljg"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ytua"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jnsp"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqph8"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ax50v"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a51sm"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_07ld0"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vput"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_feg34"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtyvh"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lk0d"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbe1l"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_855u5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_upmbh"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jioo"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vuuk"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbv67"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0jq4"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_66v6a"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr4e3"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5wi7"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd6q0"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_drpji"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qqw5"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gg4ke"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd6qw"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h0qf6"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwvtc"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yx021"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtnna"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e13cy"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8kx"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_604ty"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ke8"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fd7b"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh6ki"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttgjw"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hya3"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2x1ru"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gowuk"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byvy4"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dab1s"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1qin"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0arh6"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0xl5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohxkx"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8xul"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k7k7"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_atvjt"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sr6r"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsrli"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1237l"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3wvp"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfo2i"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t6kro"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fynh4"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1yds"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfyxm"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4mgr"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgpt0"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v83n5"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri5rv"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_01dc4"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_msanm"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_na4d4"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqxo2"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_83nq8"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff5qb"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhapm"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbeff"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eu5gq"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1kkh"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qibr0"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nss3h"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_drr85"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmbf8"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xo5in"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx6qy"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_08u7x"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(208, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_luj7s"]
-size = Vector2(8, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_241is"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(144, 208, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxswy"]
-size = Vector2(8, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mor4u"]
 atlas = ExtResource("2_qxjwa")
@@ -1561,10 +871,6 @@ region = Rect2(112, 208, 16, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ujsl"]
 size = Vector2(10, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xny7f"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(48, 224, 16, 32)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj02m"]
 size = Vector2(12, 6)
 
@@ -1581,10 +887,6 @@ region = Rect2(32, 240, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_islty"]
 size = Vector2(11, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iisry"]
-atlas = ExtResource("2_qxjwa")
-region = Rect2(48, 224, 16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4gw"]
 size = Vector2(12, 6)
@@ -1625,11 +927,6 @@ y_sort_enabled = true
 [node name="@StaticBody2D@4" type="StaticBody2D" parent="Props" unique_id=518219029]
 y_sort_enabled = true
 position = Vector2(176, 272)
-
-[node name="@Sprite2D@2" type="Sprite2D" parent="Props/@StaticBody2D@4" unique_id=1050169813]
-texture_filter = 1
-texture = SubResource("AtlasTexture_pa1cl")
-offset = Vector2(0, -32)
 
 [node name="@CollisionShape2D@3" type="CollisionShape2D" parent="Props/@StaticBody2D@4" unique_id=1561497390]
 position = Vector2(0, -11)
@@ -1730,11 +1027,6 @@ shape = SubResource("RectangleShape2D_4ujsl")
 y_sort_enabled = true
 position = Vector2(104, 272)
 
-[node name="@Sprite2D@315" type="Sprite2D" parent="Props/@StaticBody2D@317" unique_id=435396230]
-texture_filter = 1
-texture = SubResource("AtlasTexture_xny7f")
-offset = Vector2(0, -16)
-
 [node name="@CollisionShape2D@316" type="CollisionShape2D" parent="Props/@StaticBody2D@317" unique_id=2082387787]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_cj02m")
@@ -1769,11 +1061,6 @@ shape = SubResource("RectangleShape2D_islty")
 y_sort_enabled = true
 position = Vector2(600, 208)
 
-[node name="@Sprite2D@324" type="Sprite2D" parent="Props/@StaticBody2D@326" unique_id=1288275276]
-texture_filter = 1
-texture = SubResource("AtlasTexture_iisry")
-offset = Vector2(0, -16)
-
 [node name="@CollisionShape2D@325" type="CollisionShape2D" parent="Props/@StaticBody2D@326" unique_id=1551009041]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_7n4gw")
@@ -1799,6 +1086,302 @@ fail_message = "This torii remembers the K-row. Recall it to pass."
 [node name="Player" parent="Props" unique_id=497052358 instance=ExtResource("6_qxddc")]
 position = Vector2(304, 384)
 
+[node name="House1Door" parent="Props" unique_id=1436664021 instance=ExtResource("10_door")]
+position = Vector2(176, 272)
+target_scene = "res://src/scenes/interior_house.tscn"
+target_spawn = "interior_entry"
+return_spawn = "house1_door"
+
+[node name="House1Spawn" type="Marker2D" parent="Props" unique_id=660754842]
+position = Vector2(176, 292)
+script = ExtResource("11_spawn")
+spawn_id = "house1_door"
+
+[node name="House2Door" parent="Props" unique_id=1108494604 instance=ExtResource("10_door")]
+position = Vector2(528, 272)
+target_scene = "res://src/scenes/interior_house.tscn"
+target_spawn = "interior_entry"
+return_spawn = "house2_door"
+
+[node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
+position = Vector2(528, 292)
+script = ExtResource("11_spawn")
+spawn_id = "house2_door"
+
+[node name="WildsPath" parent="Props" unique_id=1471958585 instance=ExtResource("10_door")]
+position = Vector2(304, 456)
+target_scene = "res://src/scenes/wilds.tscn"
+target_spawn = "wilds_entry"
+return_spawn = "village_south"
+auto_enter = true
+
+[node name="VillageSouthSpawn" type="Marker2D" parent="Props" unique_id=1735813699]
+position = Vector2(304, 408)
+script = ExtResource("11_spawn")
+spawn_id = "village_south"
+
+[node name="Slime1" parent="Props" unique_id=315471525 instance=ExtResource("12_enemy")]
+position = Vector2(248, 168)
+behavior = 1
+
+[node name="Slime2" parent="Props" unique_id=57470150 instance=ExtResource("12_enemy")]
+position = Vector2(288, 196)
+behavior = 1
+
+[node name="Slime3" parent="Props" unique_id=858110252 instance=ExtResource("12_enemy")]
+position = Vector2(232, 212)
+behavior = 1
+
+[node name="FieldLoot" parent="Props" unique_id=1702539819 instance=ExtResource("13_pickup")]
+position = Vector2(304, 180)
+
+[node name="QuestGiver" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
+position = Vector2(344, 224)
+
+[node name="Tree0" parent="Props" unique_id=1439562200 instance=ExtResource("20_prop")]
+position = Vector2(24, 32)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree1" parent="Props" unique_id=1030651444 instance=ExtResource("20_prop")]
+position = Vector2(24, 128)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree2" parent="Props" unique_id=537564946 instance=ExtResource("20_prop")]
+position = Vector2(24, 192)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree3" parent="Props" unique_id=421601236 instance=ExtResource("20_prop")]
+position = Vector2(24, 256)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree4" parent="Props" unique_id=1010463567 instance=ExtResource("20_prop")]
+position = Vector2(24, 320)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree5" parent="Props" unique_id=1754085315 instance=ExtResource("20_prop")]
+position = Vector2(24, 464)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree6" parent="Props" unique_id=1778732479 instance=ExtResource("20_prop")]
+position = Vector2(88, 64)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree7" parent="Props" unique_id=551252523 instance=ExtResource("20_prop")]
+position = Vector2(104, 464)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree8" parent="Props" unique_id=853149424 instance=ExtResource("20_prop")]
+position = Vector2(120, 176)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree9" parent="Props" unique_id=1632598915 instance=ExtResource("20_prop")]
+position = Vector2(136, 32)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree10" parent="Props" unique_id=907041929 instance=ExtResource("20_prop")]
+position = Vector2(136, 416)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree11" parent="Props" unique_id=1408995664 instance=ExtResource("20_prop")]
+position = Vector2(168, 208)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree12" parent="Props" unique_id=1863568090 instance=ExtResource("20_prop")]
+position = Vector2(168, 464)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree13" parent="Props" unique_id=2034759990 instance=ExtResource("20_prop")]
+position = Vector2(216, 32)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree14" parent="Props" unique_id=975402852 instance=ExtResource("20_prop")]
+position = Vector2(232, 432)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree15" parent="Props" unique_id=1652348327 instance=ExtResource("20_prop")]
+position = Vector2(280, 32)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree16" parent="Props" unique_id=1117674040 instance=ExtResource("20_prop")]
+position = Vector2(296, 464)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree17" parent="Props" unique_id=1378093310 instance=ExtResource("20_prop")]
+position = Vector2(344, 48)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree18" parent="Props" unique_id=2003757647 instance=ExtResource("20_prop")]
+position = Vector2(360, 464)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree19" parent="Props" unique_id=1920536811 instance=ExtResource("20_prop")]
+position = Vector2(408, 48)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree20" parent="Props" unique_id=217217219 instance=ExtResource("20_prop")]
+position = Vector2(408, 208)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree21" parent="Props" unique_id=1564709472 instance=ExtResource("20_prop")]
+position = Vector2(424, 448)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree22" parent="Props" unique_id=1139008406 instance=ExtResource("20_prop")]
+position = Vector2(472, 48)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree23" parent="Props" unique_id=1827579498 instance=ExtResource("20_prop")]
+position = Vector2(488, 448)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree24" parent="Props" unique_id=1222377840 instance=ExtResource("20_prop")]
+position = Vector2(536, 416)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree25" parent="Props" unique_id=822257177 instance=ExtResource("20_prop")]
+position = Vector2(568, 32)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree26" parent="Props" unique_id=24674605 instance=ExtResource("20_prop")]
+position = Vector2(600, 416)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree27" parent="Props" unique_id=748785525 instance=ExtResource("20_prop")]
+position = Vector2(616, 64)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree28" parent="Props" unique_id=1064298695 instance=ExtResource("20_prop")]
+position = Vector2(632, 464)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree29" parent="Props" unique_id=1505341738 instance=ExtResource("20_prop")]
+position = Vector2(664, 32)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree30" parent="Props" unique_id=483214108 instance=ExtResource("20_prop")]
+position = Vector2(664, 112)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree31" parent="Props" unique_id=201464047 instance=ExtResource("20_prop")]
+position = Vector2(664, 192)
+texture = ExtResource("22_tl")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree32" parent="Props" unique_id=93658413 instance=ExtResource("20_prop")]
+position = Vector2(664, 256)
+texture = ExtResource("23_ts")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Tree33" parent="Props" unique_id=1105573072 instance=ExtResource("20_prop")]
+position = Vector2(664, 384)
+texture = ExtResource("21_tg")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Rock1" parent="Props" unique_id=735096805 instance=ExtResource("20_prop")]
+position = Vector2(150, 205)
+texture = ExtResource("24_rk")
+foot_size = Vector2(20, 8)
+foot_offset = Vector2(0, -3)
+
+[node name="Rock2" parent="Props" unique_id=838438066 instance=ExtResource("20_prop")]
+position = Vector2(560, 430)
+texture = ExtResource("24_rk")
+foot_size = Vector2(20, 8)
+foot_offset = Vector2(0, -3)
+
+[node name="Berry1" parent="Props" unique_id=1838548248 instance=ExtResource("20_prop")]
+position = Vector2(120, 420)
+texture = ExtResource("25_bb")
+solid = false
+
+[node name="Berry2" parent="Props" unique_id=730197266 instance=ExtResource("20_prop")]
+position = Vector2(600, 175)
+texture = ExtResource("25_bb")
+solid = false
+
+[node name="Barrel" parent="Props" unique_id=1022755490 instance=ExtResource("20_prop")]
+position = Vector2(120, 300)
+texture = ExtResource("30_bar")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Pot" parent="Props" unique_id=1753053792 instance=ExtResource("20_prop")]
+position = Vector2(232, 300)
+texture = ExtResource("31_pot")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Crate" parent="Props" unique_id=1963998016 instance=ExtResource("20_prop")]
+position = Vector2(596, 300)
+texture = ExtResource("32_crate")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 
 [node name="@CollisionShape2D@327" type="CollisionShape2D" parent="Bounds" unique_id=952650325]
@@ -1821,302 +1404,22 @@ shape = SubResource("RectangleShape2D_axmu7")
 
 [node name="DetailLayer" type="TileMapLayer" parent="." unique_id=130664770]
 
-[node name="House1Door" parent="Props" instance=ExtResource("10_door")]
-position = Vector2(176, 272)
-target_scene = "res://src/scenes/interior_house.tscn"
-target_spawn = "interior_entry"
-return_spawn = "house1_door"
+[node name="TeacherHana" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(208, 344)
+npc_id = "hana"
+speaker = "Hana"
+teaches_lesson = "greetings"
+intro_lines = PackedStringArray("Oh! A traveler. Welcome.", "Greetings open every door here — let me teach you a few.")
+greeting_ja = "こんにちは"
+greeting_meaning = "hello"
+sprite_sheet = ExtResource("34_woman")
 
-[node name="House1Spawn" type="Marker2D" parent="Props"]
-position = Vector2(176, 292)
-script = ExtResource("11_spawn")
-spawn_id = "house1_door"
-
-[node name="House2Door" parent="Props" instance=ExtResource("10_door")]
-position = Vector2(528, 272)
-target_scene = "res://src/scenes/interior_house.tscn"
-target_spawn = "interior_entry"
-return_spawn = "house2_door"
-
-[node name="House2Spawn" type="Marker2D" parent="Props"]
-position = Vector2(528, 292)
-script = ExtResource("11_spawn")
-spawn_id = "house2_door"
-
-[node name="WildsPath" parent="Props" instance=ExtResource("10_door")]
-position = Vector2(304, 456)
-target_scene = "res://src/scenes/wilds.tscn"
-target_spawn = "wilds_entry"
-return_spawn = "village_south"
-auto_enter = true
-
-[node name="VillageSouthSpawn" type="Marker2D" parent="Props"]
-position = Vector2(304, 408)
-script = ExtResource("11_spawn")
-spawn_id = "village_south"
-
-[node name="Slime1" parent="Props" instance=ExtResource("12_enemy")]
-position = Vector2(248, 168)
-behavior = 1
-
-[node name="Slime2" parent="Props" instance=ExtResource("12_enemy")]
-position = Vector2(288, 196)
-behavior = 1
-
-[node name="Slime3" parent="Props" instance=ExtResource("12_enemy")]
-position = Vector2(232, 212)
-behavior = 1
-
-[node name="FieldLoot" parent="Props" instance=ExtResource("13_pickup")]
-position = Vector2(304, 180)
-item_id = "rice_ball"
-qty = 1
-
-[node name="QuestGiver" parent="Props" instance=ExtResource("14_quest")]
-position = Vector2(344, 224)
-
-
-[node name="Tree0" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 32)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree1" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 128)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree2" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 192)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree3" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 256)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree4" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 320)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree5" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(24, 464)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree6" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(88, 64)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree7" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(104, 464)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree8" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(120, 176)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree9" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(136, 32)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree10" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(136, 416)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree11" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(168, 208)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree12" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(168, 464)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree13" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(216, 32)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree14" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(232, 432)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree15" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(280, 32)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree16" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(296, 464)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree17" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(344, 48)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree18" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(360, 464)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree19" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(408, 48)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree20" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(408, 208)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree21" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(424, 448)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree22" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(472, 48)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree23" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(488, 448)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree24" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(536, 416)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree25" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(568, 32)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree26" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(600, 416)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree27" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(616, 64)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree28" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(632, 464)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree29" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(664, 32)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree30" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(664, 112)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree31" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(664, 192)
-texture = ExtResource("22_tl")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree32" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(664, 256)
-texture = ExtResource("23_ts")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Tree33" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(664, 384)
-texture = ExtResource("21_tg")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Rock1" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(150, 205)
-texture = ExtResource("24_rk")
-foot_size = Vector2(20, 8)
-foot_offset = Vector2(0, -3)
-
-[node name="Rock2" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(560, 430)
-texture = ExtResource("24_rk")
-foot_size = Vector2(20, 8)
-foot_offset = Vector2(0, -3)
-
-[node name="Berry1" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(120, 420)
-texture = ExtResource("25_bb")
-solid = false
-
-[node name="Berry2" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(600, 175)
-texture = ExtResource("25_bb")
-solid = false
-
-[node name="Barrel" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(120, 300)
-texture = ExtResource("30_bar")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Pot" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(232, 300)
-texture = ExtResource("31_pot")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
-[node name="Crate" parent="Props" instance=ExtResource("20_prop")]
-position = Vector2(596, 300)
-texture = ExtResource("32_crate")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
-
+[node name="TeacherYuki" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(472, 328)
+npc_id = "yuki"
+speaker = "Yuki"
+teaches_lesson = "food-words"
+intro_lines = PackedStringArray("You look hungry, traveler.", "Learn the words for what you eat and you will never go hungry in Japan.")
+greeting_ja = "いただきます"
+greeting_meaning = "let's eat (said before a meal)"
+sprite_sheet = ExtResource("35_vil3")
