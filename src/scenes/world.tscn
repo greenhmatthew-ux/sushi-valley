@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="8_qrxgn"]
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="33_teacher"]
+[ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="34_woman"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="35_vil3"]
 [ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="10_door"]
@@ -1423,3 +1424,24 @@ intro_lines = PackedStringArray("おなかがすきましたか。|Are you hungr
 greeting_ja = "いただきます"
 greeting_meaning = "let's eat (said before a meal)"
 sprite_sheet = ExtResource("35_vil3")
+
+[node name="SignVillage" parent="Props" instance=ExtResource("36_sign")]
+position = Vector2(280, 268)
+sign_id = "village_board"
+japanese = "ようこそ　むらへ"
+english = "Welcome to the village"
+teaches_card = "kana-mu"
+
+[node name="SignNorthGate" parent="Props" instance=ExtResource("36_sign")]
+position = Vector2(320, 128)
+sign_id = "north_gate"
+japanese = "きた　の　とりい"
+english = "North torii gate"
+teaches_card = "kana-ki"
+
+[node name="SignSouthPath" parent="Props" instance=ExtResource("36_sign")]
+position = Vector2(304, 440)
+sign_id = "south_path"
+japanese = "みなみ　の　もり"
+english = "South forest"
+teaches_card = "kana-mi"

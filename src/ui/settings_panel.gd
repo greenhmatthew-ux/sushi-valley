@@ -85,22 +85,22 @@ func _build() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.add_child(dim)
 
+	# Inset from the screen edges so the panel can never grow past the viewport on a short
+	# window (a content-sized panel clipped its title and Close button at 720p).
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.custom_minimum_size = Vector2(460, 0)
-	panel.anchor_left = 0.5; panel.anchor_top = 0.5
-	panel.anchor_right = 0.5; panel.anchor_bottom = 0.5
-	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	panel.anchor_left = 0.20; panel.anchor_right = 0.80
+	panel.anchor_top = 0.5; panel.anchor_bottom = 0.5
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
+		margin.add_theme_constant_override("margin_" + side, 18)
 	panel.add_child(margin)
 
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 14)
+	vbox.add_theme_constant_override("separation", 8)
 	margin.add_child(vbox)
 
 	vbox.add_child(_heading("Settings"))
@@ -119,7 +119,6 @@ func _build() -> void:
 	vbox.add_child(_zoom_slider)
 
 	vbox.add_child(_hint("Lower = see more of the map."))
-	vbox.add_child(_spacer(6))
 
 	# --- language ---
 	vbox.add_child(_heading("Language"))
@@ -131,7 +130,6 @@ func _build() -> void:
 	vbox.add_child(_english_check)
 
 	vbox.add_child(_hint("The valley speaks Japanese. Hold TAB anywhere to peek at the English."))
-	vbox.add_child(_spacer(6))
 
 	var close := Button.new()
 	close.text = "Close"
