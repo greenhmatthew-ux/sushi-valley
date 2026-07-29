@@ -6,6 +6,11 @@ next to the game.
 
 Godot 4.7 · GDScript · desktop-first (Windows).
 
+**▶ Play in your browser: https://greenhmatthew-ux.github.io/sushi-valley/**
+
+Every push to `master` re-exports the game and redeploys the site
+(`.github/workflows/deploy.yml`), so the live build always matches the repo.
+
 ## Running
 
 Requires Godot 4.7.1. This repo assumes it at `C:\Users\curby\Godot\Godot_v4.7.1-stable_win64.exe`.
