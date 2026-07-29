@@ -1,6 +1,5 @@
 extends Node
-## Player preferences that outlive a save file — currently camera zoom, with room for
-## audio/speech toggles later.
+## Player preferences that outlive a save file: camera zoom and whether English is pinned.
 ##
 ## Deliberately NOT part of the save profile: settings are about how you like to play, not
 ## progress, so `SaveGame.clear()` (new game, tests) must never reset them. They live in

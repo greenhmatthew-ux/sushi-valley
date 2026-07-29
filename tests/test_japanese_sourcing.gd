@@ -21,11 +21,10 @@ extends SceneTree
 
 var failures: int = 0
 
-## Japanese that is legitimately NOT curriculum. Keep this list tiny and justified.
-const ALLOWED := {
-	# Matched against OS voice names to find a Japanese TTS voice — see speech_logic.gd.
-	"日本語": "TTS voice-name matching, never displayed",
-}
+## Japanese that is legitimately NOT curriculum. Empty, and it should stay that way: the
+## only entry it ever held was for TTS voice-name matching, and synthesised speech has since
+## been removed from the project entirely.
+const ALLOWED := {}
 
 
 func _initialize() -> void:

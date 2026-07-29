@@ -6,11 +6,13 @@ extends CanvasLayer
 ## Bus-driven: listens for `dialogue_open`, replies with `dialogue_closed`.
 ##
 ## BILINGUAL. The valley speaks Japanese; English is a translation you can reveal. A line
-## carries both, separated by `|`:
-##     "こんにちは。|Hello."
-## The Japanese is what's displayed and what the NPC's voice speaks. The English sits
-## underneath, shown only while Settings says so (pinned in settings, or held via TAB) —
-## and it re-renders live when that changes, so peeking mid-line works.
+## carries both halves separated by `|`. The Japanese is what's displayed; the English sits
+## underneath, shown only while Settings says so (pinned in settings, or held via TAB) — and
+## it re-renders live when that changes, so peeking mid-line works.
+##
+## No audio. NPCs are silent by design: the project has no recorded Japanese (every source
+## deck is mediaPolicy=excluded) and synthesised speech is not an acceptable stand-in for a
+## real voice in a language-teaching game, so there is nothing honest to play.
 ##
 ## A line with no `|` is shown as-is. That keeps system messages ("The way is already
 ## open.") and any not-yet-translated content working unchanged.
@@ -63,9 +65,6 @@ func _show_line() -> void:
 	_line_label.text = _japanese_of(_line_index)
 	_refresh_english()
 	_hint_label.text = "▸" if _line_index < _lines.size() - 1 else "▸ close"
-	# The NPC's voice: speak the Japanese, never the English gloss. A silent no-op when
-	# the OS has no Japanese voice installed (see Speech).
-	Speech.speak(_line_label.text)
 
 
 ## Japanese half of the current line (or the whole line when it carries no translation).

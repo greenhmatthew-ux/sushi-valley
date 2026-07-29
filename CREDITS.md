@@ -41,11 +41,17 @@ verified against the running scenes — not an aspirational or inherited list.
   tile (same texture, floor at full brightness / walls darker via modulate). Do not
   reintroduce any Mana Seed asset into this project.
 
-## Speech and learning audio
+## Audio and voices
 
-Japanese pronunciation uses the OS's native text-to-speech (`DisplayServer.tts_speak`,
-`src/autoload/speech.gd`) against whatever Japanese voice is installed locally. No bundled
-audio, no third-party voice corpus, nothing to license here.
+**There is no Japanese audio in this game, and NPCs have no voices.** Every imported deck
+is `mediaPolicy: excluded`, so no recorded pronunciation was ever brought into the project.
+
+An earlier build synthesised pronunciation with the OS text-to-speech engine. That was
+removed: a synthesised voice is not a real voice, and in a game whose purpose is teaching a
+language, an approximation of native pronunciation is a liability rather than a feature.
+Japanese is presented as text only until genuine recorded audio with clear rights exists.
+
+Do not reintroduce text-to-speech or any generated voice.
 
 ## Code
 
