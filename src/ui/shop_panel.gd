@@ -31,14 +31,22 @@ const KIND_COLORS := {
 const ICON_DIR := "res://assets/icons/items/"
 const MAX_STACK := 99   # mirrors InventoryLogic.MAX_STACK — a maxed stack can't be bought
 
+## Ordering politely in Japanese takes this much off the price.
+const HAGGLE_DISCOUNT := 0.25
+## Prefer real shopping/payment language for the prompt — travel-stay-payment carries the
+## sourced "how much is it" / "can I use a card" phrases. Falls back to any unlocked card.
+const HAGGLE_CATEGORY := "travel-stay-payment"
+
 var _open := false
 var _shop_id := ""
 var _root: Control
 var _title_label: Label
 var _region_label: Label
 var _coins_label: Label
+var _hint_label: Label
 var _grid: GridContainer
 var _empty_label: Label
+var _haggling := false
 
 
 func _ready() -> void:
@@ -78,6 +86,8 @@ func _refresh() -> void:
 	_title_label.text = String(shop.get("title", "Shop"))
 	_region_label.text = String(shop.get("region", ""))
 	_coins_label.text = "%d coins" % Inv.coins
+	if _hint_label != null:
+		_hint_label.text = "Order in Japanese for %d%% off — a wrong answer just pays full price." % int(HAGGLE_DISCOUNT * 100)
 
 	for child in _grid.get_children():
 		child.queue_free()
@@ -152,15 +162,60 @@ func _make_card(id: String, price: int) -> Control:
 	return card
 
 
+## Buying is where learned Japanese gets SPENT. Asking politely in Japanese earns a discount;
+## getting it wrong (or having nothing learned yet) simply pays full price.
+##
+## The shape of this follows UI_UX_GUIDE principle 7 exactly — "Japanese mastery adds
+## understanding, efficiency, optional routes, relationships, and rewards; it never removes
+## basic accessibility or the main route." So recall is a DISCOUNT, never a gate: a player who
+## knows no Japanese can still buy everything, they just pay list price.
+##
+## The prompt is drawn from the shared scheduler like every other surface, so haggling is real
+## review and not a side deck.
 func _on_buy(id: String, price: int) -> void:
 	if Inv.coins < price or Inv.count(id) >= MAX_STACK:
 		return   # stale button state (e.g. a duplicate signal) — do nothing rather than overspend
-	if not Inv.spend_coins(price):
+	if _haggling:
+		return
+	_haggling = true
+	var final_price := await _haggle(price)
+	_haggling = false
+
+	# Re-check affordability: the discount can only ever lower the price, but the player may
+	# have been at exactly `price` and the panel state could be stale.
+	if Inv.coins < final_price or not Inv.spend_coins(final_price):
+		Bus.toast.emit("Not enough coins.")
+		_refresh()
 		return
 	Inv.add(id, 1)
-	Bus.item_purchased.emit(id, price)
-	Bus.toast.emit("Bought %s for %d coins." % [String(DB.item(id).get("name", id)), price])
+	Bus.item_purchased.emit(id, final_price)
+	var name := String(DB.item(id).get("name", id))
+	if final_price < price:
+		Bus.toast.emit("Bought %s for %d coins (saved %d)." % [name, final_price, price - final_price])
+	else:
+		Bus.toast.emit("Bought %s for %d coins." % [name, final_price])
 	_refresh()
+
+
+## Run one recall for a discount. Returns the price to actually charge.
+## Silently returns the full price when the player has nothing unlocked yet — a beginner
+## should not be shown a prompt they cannot possibly answer.
+func _haggle(price: int) -> int:
+	var prompt: Dictionary = Learning.build_prompt({}, true, "", HAGGLE_CATEGORY)
+	if prompt.is_empty():
+		prompt = Learning.build_prompt({}, true)   # any unlocked card
+	if prompt.is_empty():
+		return price
+
+	Bus.learn_open.emit("", 1, true)
+	var res: Array = await Bus.learn_closed   # [attempted, correct, cancelled]
+	var attempted: int = res[0]
+	var correct: int = res[1]
+	if bool(res[2]) or attempted == 0:
+		return price   # cancelled or nothing to ask — no penalty, no discount
+	if correct > 0:
+		return maxi(1, int(round(price * (1.0 - HAGGLE_DISCOUNT))))
+	return price
 
 
 func _icon_node(id: String) -> Control:
@@ -241,6 +296,10 @@ func _build_scaffold() -> void:
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(scroll)
+
+	_hint_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.LEARNING_VIOLET)
+	_hint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	vbox.add_child(_hint_label)
 
 	_grid = GridContainer.new()
 	_grid.columns = 4
