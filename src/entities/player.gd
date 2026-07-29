@@ -55,6 +55,16 @@ func _apply_zoom(zoom: float) -> void:
 		cam.zoom = Vector2(zoom, zoom)
 
 
+## Write HP back after a turn-based fight resolved it outside the player's own loop
+## (see CombatPanel). Bypasses the mercy window on purpose — the encounter already
+## arbitrated every hit, so re-applying invulnerability here would discard its result.
+func set_hp(value: int) -> void:
+	hp = clampi(value, 0, MAX_HP)
+	Bus.player_hp_changed.emit(hp, MAX_HP)
+	if hp <= 0:
+		_die()
+
+
 ## Take a hit from an aggressive foe. Ignored during the post-hit mercy window; a defeat
 ## patches you up and returns you to where you entered this level.
 func take_damage(amount: int) -> void:

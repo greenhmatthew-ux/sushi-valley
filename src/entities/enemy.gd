@@ -52,6 +52,7 @@ var hp: int
 var _engaged: bool = false   ## a sparring bout is underway (PASSIVE/AGGRO are always "on")
 var _attack_timer: float = 0.0
 var _cur_anim: String = ""
+var _in_combat: bool = false   ## guards against re-entering a fight already in progress
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 
@@ -82,10 +83,28 @@ func _physics_process(delta: float) -> void:
 		_set_anim("walk_" + _dir_name(to_player))
 	else:
 		velocity = Vector2.ZERO
-		if _attack_timer <= 0.0 and player.has_method("take_damage"):
-			player.take_damage(CombatLogic.enemy_damage(enemy_atk, 0))
+		if _attack_timer <= 0.0:
+			_engage()
 			_attack_timer = attack_cooldown
 	move_and_slide()
+
+
+## Catching the player starts a turn-based recall fight rather than chipping HP in real
+## time — combat is where the Japanese gets used, so it needs a UI turn to happen in.
+## Deferred because this runs inside a physics callback.
+func _engage() -> void:
+	if _in_combat:
+		return
+	_in_combat = true
+	Bus.combat_started.emit.call_deferred(enemy_id)
+	var victory: bool = await Bus.combat_ended
+	_in_combat = false
+	if victory:
+		_drop_loot()
+		queue_free()
+	else:
+		# Survived or fled: back off so the player isn't instantly re-engaged.
+		_attack_timer = maxf(attack_cooldown, 1.5)
 
 
 func _dir_name(v: Vector2) -> String:
