@@ -16,17 +16,17 @@ extends CanvasLayer
 const PERFECT_BONUS := 15   # extra XP for clearing a whole session with no misses
 
 # Palette carried over from the TS build so the feel is consistent.
-const COL_DIM := Color(0.02, 0.03, 0.047, 0.6)
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_HEADING := Color(0.624, 0.69, 0.765)
-const COL_HINT := Color(0.624, 0.839, 1.0)
-const COL_HINT_STRONG := Color(1.0, 0.824, 0.49)
-const COL_GOOD := Color(0.608, 0.906, 0.639)
-const COL_BTN := Color(0.133, 0.188, 0.251)
-const COL_BTN_BORDER := Color(0.235, 0.318, 0.408)
-const COL_CORRECT := Color(0.18, 0.49, 0.31)
-const COL_WRONG := Color(0.62, 0.231, 0.231)
+const COL_DIM := UiTheme.SURFACE_BACKDROP
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_HEADING := UiTheme.TEXT_MUTED
+const COL_HINT := UiTheme.STATE_INFO
+const COL_HINT_STRONG := UiTheme.ACCENT_GOLD
+const COL_GOOD := UiTheme.STATE_SUCCESS
+const COL_BTN := UiTheme.SURFACE_RAISED
+const COL_BTN_BORDER := UiTheme.BORDER_STRONG
+const COL_CORRECT := UiTheme.FILL_CORRECT
+const COL_WRONG := UiTheme.FILL_WRONG
 
 # --- session state (mirrors LearnPrompt fields) ---
 var _active := false

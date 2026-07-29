@@ -9,16 +9,16 @@ extends CanvasLayer
 ## answer goes back through Learning.answer(), so fighting IS reviewing — combat owns no
 ## deck and no schedule of its own (SITE_WIDE_LEARNING_ARCHITECTURE.md).
 
-const COL_DIM := Color(0.02, 0.03, 0.047, 0.85)
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_TEXT := Color(0.93, 0.95, 0.96)
-const COL_HEADING := Color(0.624, 0.69, 0.765)
-const COL_EN := Color(0.624, 0.839, 1.0)
-const COL_GOOD := Color(0.608, 0.906, 0.639)
-const COL_BAD := Color(0.85, 0.45, 0.4)
-const COL_BTN := Color(0.133, 0.188, 0.251)
-const COL_BTN_BORDER := Color(0.235, 0.318, 0.408)
+const COL_DIM := UiTheme.SURFACE_BACKDROP
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_TEXT := UiTheme.TEXT_PRIMARY
+const COL_HEADING := UiTheme.TEXT_MUTED
+const COL_EN := UiTheme.STATE_INFO
+const COL_GOOD := UiTheme.STATE_SUCCESS
+const COL_BAD := UiTheme.STATE_DANGER
+const COL_BTN := UiTheme.SURFACE_RAISED
+const COL_BTN_BORDER := UiTheme.BORDER_STRONG
 
 var _active := false
 var _encounter: CombatEncounter
@@ -125,11 +125,11 @@ func _on_rune(rune: String, btn: Button) -> void:
 	Learning.answer(_current_card, String(_current_card.get("answer", "")) if result.correct else "__wrong__")
 
 	btn.add_theme_stylebox_override("normal", _button_style(
-		Color(0.18, 0.49, 0.31) if result.correct else Color(0.62, 0.231, 0.231), COL_BORDER))
+		UiTheme.FILL_CORRECT if result.correct else UiTheme.FILL_WRONG, COL_BORDER))
 	if not result.correct:
 		for other in _choices_box.get_children():
 			if other is Button and (other as Button).text == String(_challenge["answer"]):
-				other.add_theme_stylebox_override("normal", _button_style(Color(0.18, 0.49, 0.31), COL_BORDER))
+				other.add_theme_stylebox_override("normal", _button_style(UiTheme.FILL_CORRECT, COL_BORDER))
 
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD if result.correct else COL_BAD)

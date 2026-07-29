@@ -10,22 +10,22 @@ extends CanvasLayer
 ## dialogue box's conversation flow.
 
 # Palette shared with inventory_panel / recall_panel for a consistent feel.
-const COL_DIM := Color(0.02, 0.03, 0.047, 0.6)
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_HEADING := Color(0.624, 0.69, 0.765)
-const COL_CARD := Color(0.133, 0.188, 0.251)
-const COL_CARD_BORDER := Color(0.235, 0.318, 0.408)
-const COL_COIN := Color(1.0, 0.843, 0.4)
-const COL_TEXT := Color(0.93, 0.95, 0.96)
-const COL_GOOD := Color(0.608, 0.906, 0.639)
-const COL_DISABLED := Color(0.4, 0.42, 0.45)
+const COL_DIM := UiTheme.SURFACE_BACKDROP
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_HEADING := UiTheme.TEXT_MUTED
+const COL_CARD := UiTheme.SURFACE_RAISED
+const COL_CARD_BORDER := UiTheme.BORDER_STRONG
+const COL_COIN := UiTheme.ACCENT_GOLD
+const COL_TEXT := UiTheme.TEXT_PRIMARY
+const COL_GOOD := UiTheme.STATE_SUCCESS
+const COL_DISABLED := UiTheme.TEXT_DISABLED
 
 const KIND_COLORS := {
 	"gear": Color(0.78, 0.808, 0.847),
-	"consumable": Color(0.608, 0.906, 0.639),
+	"consumable": UiTheme.STATE_SUCCESS,
 	"material": Color(0.788, 0.639, 0.42),
-	"seed": Color(0.608, 0.906, 0.639),
+	"seed": UiTheme.STATE_SUCCESS,
 }
 
 const ICON_DIR := "res://assets/icons/items/"

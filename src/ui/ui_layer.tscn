@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/ui/settings_panel.gd" id="6_settings"]
 [ext_resource type="Script" path="res://src/ui/notebook_panel.gd" id="7_notebook"]
 [ext_resource type="Script" path="res://src/ui/combat_panel.gd" id="8_combat"]
+[ext_resource type="Script" path="res://src/ui/context_prompt.gd" id="9_prompt"]
 [ext_resource type="Script" path="res://src/ui/hud_layer.gd" id="4_hud"]
 [ext_resource type="Script" path="res://src/ui/shop_panel.gd" id="5_shop"]
 
@@ -34,3 +35,6 @@ script = ExtResource("7_notebook")
 
 [node name="CombatPanel" type="CanvasLayer" parent="."]
 script = ExtResource("8_combat")
+
+[node name="ContextPrompt" type="CanvasLayer" parent="."]
+script = ExtResource("9_prompt")

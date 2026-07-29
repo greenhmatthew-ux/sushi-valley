@@ -8,12 +8,12 @@ extends CanvasLayer
 ## Writes straight to the Settings autoload, which persists to its own user://settings.cfg
 ## and announces changes on the Bus — this panel never pokes the camera or dialogue itself.
 
-const COL_DIM := Color(0.02, 0.03, 0.047, 0.6)
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_HEADING := Color(0.624, 0.69, 0.765)
-const COL_TEXT := Color(0.93, 0.95, 0.96)
-const COL_HINT := Color(0.624, 0.839, 1.0)
+const COL_DIM := UiTheme.SURFACE_BACKDROP
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_HEADING := UiTheme.TEXT_MUTED
+const COL_TEXT := UiTheme.TEXT_PRIMARY
+const COL_HINT := UiTheme.STATE_INFO
 
 var _open := false
 var _root: Control

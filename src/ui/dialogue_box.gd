@@ -19,10 +19,10 @@ extends CanvasLayer
 
 const LANG_SEP := "|"
 
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_NAME := Color(1.0, 0.824, 0.49)
-const COL_EN := Color(0.624, 0.839, 1.0)
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_NAME := UiTheme.ACCENT_GOLD
+const COL_EN := UiTheme.STATE_INFO
 
 var _active := false
 var _lines: Array = []

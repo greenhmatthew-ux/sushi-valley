@@ -9,16 +9,16 @@ extends CanvasLayer
 ## Opened with `open_notebook`. Built in code like the other panels because the lesson and
 ## card counts are entirely data-driven.
 
-const COL_DIM := Color(0.02, 0.03, 0.047, 0.6)
-const COL_PANEL := Color(0.078, 0.106, 0.141, 0.98)
-const COL_BORDER := Color(1.0, 0.824, 0.49)
-const COL_HEADING := Color(0.624, 0.69, 0.765)
-const COL_TEXT := Color(0.93, 0.95, 0.96)
+const COL_DIM := UiTheme.SURFACE_BACKDROP
+const COL_PANEL := UiTheme.SURFACE_BASE
+const COL_BORDER := UiTheme.ACCENT_GOLD
+const COL_HEADING := UiTheme.TEXT_MUTED
+const COL_TEXT := UiTheme.TEXT_PRIMARY
 const COL_JA := Color(1.0, 1.0, 1.0)
-const COL_EN := Color(0.624, 0.839, 1.0)
-const COL_DUE := Color(1.0, 0.824, 0.49)
-const COL_GOOD := Color(0.608, 0.906, 0.639)
-const COL_LOCKED := Color(0.42, 0.47, 0.55)
+const COL_EN := UiTheme.STATE_INFO
+const COL_DUE := UiTheme.ACCENT_GOLD
+const COL_GOOD := UiTheme.STATE_SUCCESS
+const COL_LOCKED := UiTheme.TEXT_DISABLED
 
 var _open := false
 var _root: Control
