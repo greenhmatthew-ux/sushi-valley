@@ -51,20 +51,55 @@ func _initialize() -> void:
 	await _return_visit_finishes_the_remaining_cards()
 	await _return_visit_with_nothing_due_does_not_review()
 	await _return_visit_reviews_when_due_again()
+	await _category_teacher_walks_the_ladder()
 
 	save_game.clear()
 	_finish()
 
 
+## A category teacher carries a whole ladder: it works on the first unfinished lesson in its
+## category and advances once that rung is done, so one NPC covers ten lessons.
+func _category_teacher_walks_the_ladder() -> void:
+	save_game.clear()
+	learning.reload()
+
+	var sensei: Node = load("res://src/entities/teacher_npc.tscn").instantiate()
+	sensei.npc_id = "test_sensei"
+	sensei.speaker = "Sensei"
+	sensei.teaches_category = "kana-hiragana"
+	sensei.session_size = 5
+	root.add_child(sensei)
+	await process_frame
+
+	var first: String = sensei.current_lesson()
+	check_true("category teacher starts on a real lesson", not first.is_empty())
+	check_eq("and it is the first rung of the ladder", first, "kana-vowels")
+
+	# Finish that rung the way play would: talk until every card is answered once.
+	for i in 6:
+		if sensei.current_lesson() != first:
+			break
+		await sensei.interact(null)
+
+	check_true("teacher advances off a finished rung", sensei.current_lesson() != first)
+	check_true("and the next rung is still in the same category",
+		String(db.lesson(sensei.current_lesson()).get("category", "")) == "kana-hiragana")
+	# The met-flag is per-lesson, so the new rung gets its own introduction.
+	check_true("the finished rung is the one marked taught", learning.get_flag(sensei.taught_flag(first)))
+	check_true("the new rung is NOT pre-marked, so it gets its own introduction",
+		not learning.get_flag(sensei.taught_flag(sensei.current_lesson())))
+	sensei.queue_free()
+
+
 func _first_meeting_unlocks_and_reviews() -> void:
 	check_true("greetings starts locked", not _lesson_unlocked("greetings"))
-	check_true("met flag starts clear", not learning.get_flag("met_teacher_test_hana"))
+	check_true("taught flag starts clear", not learning.get_flag(teacher.taught_flag("greetings")))
 
 	learn_opens.clear()
 	await teacher.interact(null)
 
 	check_true("first meeting unlocks the lesson", _lesson_unlocked("greetings"))
-	check_true("first meeting sets the met flag", learning.get_flag("met_teacher_test_hana"))
+	check_true("first meeting sets the taught flag for THAT lesson", learning.get_flag(teacher.taught_flag("greetings")))
 	check_eq("first meeting runs exactly one session", learn_opens.size(), 1)
 	if learn_opens.size() == 1:
 		check_eq("session targets this teacher's lesson", learn_opens[0][0], "greetings")

@@ -1439,3 +1439,31 @@ position = Vector2(304, 440)
 sign_id = "south_path"
 shows_card = "kana-mi"
 caption = "A worn post where the path leaves the village."
+
+[node name="TeacherKana" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(500, 166)
+npc_id = "kana_master"
+speaker = "Sensei"
+teaches_category = "kana-hiragana"
+intro_lines = PackedStringArray("Every sign in this valley is written in kana.", "Learn them a row at a time and the whole world opens up. Come back to me for the next row.")
+sprite_sheet = ExtResource("35_vil3")
+
+[node name="TeacherPhrases" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(600, 352)
+npc_id = "phrase_keeper"
+speaker = "Ren"
+teaches_lesson = "common-phrases"
+intro_lines = PackedStringArray("Travellers always need the same handful of words.", "Yes, no, where, what, how much. Learn these and you can ask for anything.")
+sprite_sheet = ExtResource("34_woman")
+
+[node name="SignPond" parent="Props" instance=ExtResource("36_sign")]
+position = Vector2(600, 176)
+sign_id = "pond"
+shows_card = "food-sakana"
+caption = "A tally board by the water."
+
+[node name="SignWell" parent="Props" instance=ExtResource("36_sign")]
+position = Vector2(408, 344)
+sign_id = "well"
+shows_card = "food-mizu"
+caption = "Scratched into the well's post."

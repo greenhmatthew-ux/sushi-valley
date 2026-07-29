@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="9_ts"]
 [ext_resource type="Texture2D" path="res://assets/props/rock.png" id="10_rk"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
+[ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="20_teacher"]
+[ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="21_sign"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_merchant_walk.png" id="22_merch"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_lanternred.png" id="17_lantern"]
@@ -177,3 +180,16 @@ vendor_name = "Forest Trader"
 
 [node name="UILayer" parent="." instance=ExtResource("18_ui")]
 
+[node name="TeacherTransit" parent="Entities" instance=ExtResource("20_teacher")]
+position = Vector2(200, 296)
+npc_id = "outpost_keeper"
+speaker = "Keeper"
+teaches_lesson = "travel-transit"
+intro_lines = PackedStringArray("Heading further out? You'll need to ask the way.", "These are the phrases that get you onto the right train and off at the right stop.")
+sprite_sheet = ExtResource("22_merch")
+
+[node name="SignTrail" parent="Entities" instance=ExtResource("21_sign")]
+position = Vector2(336, 400)
+sign_id = "wilds_trail"
+shows_card = "kana-mo"
+caption = "A trail marker, half-swallowed by grass."
