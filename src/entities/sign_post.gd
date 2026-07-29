@@ -21,12 +21,30 @@ extends Area2D
 @export var english: String = ""
 ## Optional card id (data/learning/cards.json) this sign introduces. First read unlocks it.
 @export var teaches_card: String = ""
+## Draw the wooden post. Off for signs mounted on an existing prop (the village board),
+## on for standalone ones — an invisible interactable gives the player nothing to walk up to.
+@export var draw_post: bool = true
+
+const POST_REGION := Rect2(112, 208, 16, 32)   # signpost in serene_village.png
 
 var _busy := false
 
 
 func _ready() -> void:
 	add_to_group("interactable")
+	if draw_post:
+		_build_visual()
+
+
+## Wooden post, drawn feet-on-origin so Y-sort treats it like every other prop.
+func _build_visual() -> void:
+	var post := Sprite2D.new()
+	post.texture = preload("res://assets/tilesets/serene_village.png")
+	post.region_enabled = true
+	post.region_rect = POST_REGION
+	post.offset = Vector2(0, -16)
+	post.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(post)
 
 
 func interact(player: Node = null) -> void:

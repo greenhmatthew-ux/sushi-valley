@@ -72,6 +72,56 @@ func _build_meadow() -> void:
 			if ground.get_cell_atlas_coords(c) == GRASS_ATLAS and not blocked.has(c):
 				detail.set_cell(c, 0, species)
 
+	_soften_path_edges(detail, blocked, rng)
+	_build_house_yards(detail, blocked, rng)
+
+
+## The authored path is a hard-edged stamp. Rather than re-cutting the tile data (risky
+## surgery on a hand-made map), scatter growth along the grass side of every path border so
+## the boundary reads as worn-in rather than stencilled.
+func _soften_path_edges(detail: TileMapLayer, blocked: Dictionary, rng: RandomNumberGenerator) -> void:
+	const NEIGHBOURS := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
+	for cell in ground.get_used_cells():
+		if ground.get_cell_atlas_coords(cell) != GRASS_ATLAS or blocked.has(cell):
+			continue
+		# Grass touching something that isn't grass (path, water) = a border tile.
+		var on_edge := false
+		for n in NEIGHBOURS:
+			var probe: Vector2i = cell + n
+			if ground.get_cell_source_id(probe) != -1 \
+					and ground.get_cell_atlas_coords(probe) != GRASS_ATLAS:
+				on_edge = true
+				break
+		if on_edge and rng.randf() < 0.55:
+			detail.set_cell(cell, 0, TUFTS[rng.randi() % TUFTS.size()])
+
+
+## Each house gets a small tended yard — flower beds flanking the door — so the buildings
+## read as someone's home rather than sprites dropped on grass. Anchored to the door
+## markers so this stays correct if a house is ever moved.
+func _build_house_yards(detail: TileMapLayer, blocked: Dictionary, rng: RandomNumberGenerator) -> void:
+	var tile: Vector2i = ground.tile_set.tile_size
+	for door_name in ["House1Door", "House2Door"]:
+		var door := get_node_or_null("Props/" + door_name)
+		if door == null:
+			continue
+		var base := Vector2i((door as Node2D).position / Vector2(tile))
+		# Fixed offsets don't survive contact with a hand-authored map — the tiles beside a
+		# door may be path, another prop's pad, or the house footprint itself. Search
+		# outward instead and plant in the nearest usable grass on each side of the door,
+		# so a yard appears wherever the house actually stands.
+		for side in [-1, 1]:
+			var planted := 0
+			for dx in range(2, 6):
+				for dy in range(-1, 4):
+					if planted >= 3:
+						break
+					var c: Vector2i = base + Vector2i(side * dx, dy)
+					if ground.get_cell_atlas_coords(c) == GRASS_ATLAS and not blocked.has(c) \
+							and detail.get_cell_source_id(c) == -1:
+						detail.set_cell(c, 0, FLOWERS[rng.randi() % FLOWERS.size()])
+						planted += 1
+
 
 ## Tiles sitting under a prop/building, kept clear of scattered detail. Buildings, doors and
 ## gates get a wider pad than small props so nothing pokes through a wall.

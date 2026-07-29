@@ -1428,6 +1428,7 @@ sprite_sheet = ExtResource("35_vil3")
 [node name="SignVillage" parent="Props" instance=ExtResource("36_sign")]
 position = Vector2(280, 268)
 sign_id = "village_board"
+draw_post = false
 japanese = "ようこそ　むらへ"
 english = "Welcome to the village"
 teaches_card = "kana-mu"
