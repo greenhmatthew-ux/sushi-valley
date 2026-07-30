@@ -35,9 +35,9 @@ const KIND_COLORS := {
 
 const ICON_DIR := "res://assets/icons/items/"
 const ABILITY_ICON_DIR := "res://assets/icons/abilities/"
-## These four files were replaced with traced Ninja Adventure CC0 originals in the
+## These files were replaced with traced Ninja Adventure CC0 originals in the
 ## Talent-art slice. Do not render the remaining legacy ability icons until audited.
-const VERIFIED_ABILITY_ICONS := ["sweep", "kunai", "kana_bolt", "brace"]
+const VERIFIED_ABILITY_ICONS := ["sweep", "kunai", "kana_bolt", "brace", "ki_focus"]
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"

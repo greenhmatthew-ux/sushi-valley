@@ -26,6 +26,10 @@ The Bamboo Breeze Tonic icon is the unmodified 16x16 source
 `icons/16x16/potion_01h.png` from the licensed Kyrise pack, copied to
 `assets/icons/items/bamboo_tonic.png` for the repo-local runtime path.
 
+The Ki Focus Talent icon is the unmodified Ninja Adventure source
+`Ui/Skill Icon/Spell/AttackUpgrade.png`, copied to
+`assets/icons/abilities/ki_focus.png`. The pack's local `LICENSE.txt` is CC0 1.0.
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

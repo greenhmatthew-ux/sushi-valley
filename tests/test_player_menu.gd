@@ -106,6 +106,10 @@ func _initialize() -> void:
 		ward_detail != null and ward_detail.text.contains("Def +4")
 		and ward_detail.text.contains("2E") and ward_detail.text.contains("3 rounds"))
 	ward_preview.free()
+	var ki_preview: Control = panel.call("_make_talent_card", db.ability("ki_focus"))
+	check_true("audited Ki Focus art renders on its Talent card",
+		ki_preview.find_child("AbilityIcon_ki_focus", true, false) != null)
+	ki_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

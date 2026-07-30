@@ -511,7 +511,7 @@
         "requiredLevel":  6,
         "role":  "samurai",
         "requiredWeaponType":  "blade",
-        "icon":  false,
+        "icon":  true,
         "desc":  "Channel your fighting spirit into sharper strikes."
     },
     {
