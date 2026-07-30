@@ -207,6 +207,8 @@ func can_use_item() -> bool:
 func can_use_combat_item(item: Dictionary) -> bool:
 	if not can_use_item() or not ConsumableLogic.is_supported_combat_item(item):
 		return false
+	if ConsumableLogic.is_supported_attack(item):
+		return true
 	if ConsumableLogic.combat_restored_hp(item, player_hp, player_max_hp) > 0:
 		return true
 	if ConsumableLogic.restored_energy(item, energy, MAX_ENERGY) > 0:
@@ -493,14 +495,19 @@ func use_energy_item(item_id: String, amount: int, enemy_responds: bool = true) 
 	return r
 
 
-## Resolve every structured non-damage consumable through the same status model as abilities.
-## Hybrid food succeeds when any one of its effects helps and never overwrites a stronger buff.
+## Resolve structured consumables through one path. Direct damage reports only HP actually
+## removed; hybrid food succeeds when any effect helps and never overwrites a stronger buff.
 func use_combat_item(item: Dictionary, enemy_responds: bool = true) -> RoundResult:
 	var r := RoundResult.new()
 	if not can_use_combat_item(item):
 		return r
 	r.action_id = String(item.get("id", "item"))
 	r.action_type = "item"
+
+	if ConsumableLogic.is_supported_attack(item):
+		var enemy_hp_before := enemy_hp
+		enemy_hp = CombatLogic.apply_damage(enemy_hp, int(item.get("attackDmg", 0)))
+		r.player_damage_dealt = enemy_hp_before - enemy_hp
 
 	var hp_before := player_hp
 	player_hp = mini(player_max_hp, player_hp + maxi(0, int(item.get("heal", 0))))
@@ -532,7 +539,8 @@ func use_combat_item(item: Dictionary, enemy_responds: bool = true) -> RoundResu
 			r.buff_value = int((timed_buffs[buff_type] as Dictionary)["value"])
 			r.buff_rounds = int((timed_buffs[buff_type] as Dictionary)["rounds"])
 
-	r.action_resolved = r.player_healed > 0 or r.energy_restored > 0 \
+	r.action_resolved = r.player_damage_dealt > 0 or r.player_healed > 0 \
+		or r.energy_restored > 0 \
 		or r.shield_gained > 0 or not r.buff_type.is_empty()
 	item_used_this_turn = r.action_resolved
 	r.flow_after = flow

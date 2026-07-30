@@ -14,16 +14,19 @@ func _initialize() -> void:
 	_combat_item_action()
 	_energy_item_action()
 	_structured_meal_actions()
+	_direct_damage_actions()
 	_finish()
 
 
 func _pure_rules() -> void:
+	var db: Node = root.get_node("DB")
 	var rice := {"id": "rice_ball", "kind": "consumable", "heal": 12}
 	var hybrid := {"id": "stone_soup", "kind": "consumable", "heal": 15,
 		"buffType": "def", "buffValue": 4, "buffDuration": 4}
 	var meal := {"id": "forest_lunchbox", "kind": "consumable", "heal": 48}
 	var energy := {"id": "bamboo_tonic", "kind": "consumable",
 		"buffType": "energy", "buffValue": 3}
+	var fire_oil := {"id": "fire_oil", "kind": "consumable", "attackDmg": 25}
 	check_true("pure healing consumable is supported", ConsumableRules.is_supported_healing(rice))
 	check_true("hybrid meal stays combat-only",
 		not ConsumableRules.is_supported_healing(hybrid)
@@ -32,11 +35,18 @@ func _pure_rules() -> void:
 		not ConsumableRules.is_supported_healing(meal))
 	check_true("a pure Energy tonic is supported",
 		ConsumableRules.is_supported_energy(energy))
+	check_true("authored direct-damage consumable is supported",
+		ConsumableRules.is_supported_attack(fire_oil))
+	for item_id in ["fire_oil", "scroll_fire", "scroll_ice"]:
+		check_true("real %s data is a usable damage item" % item_id,
+			ConsumableRules.is_supported_attack(db.item(item_id)))
 	check_eq("healing clamps to missing HP", ConsumableRules.restored_hp(rice, 7, 12), 5)
 	check_eq("full HP wastes nothing", ConsumableRules.restored_hp(rice, 12, 12), 0)
 	check_eq("Energy recovery clamps to the five-point budget",
 		ConsumableRules.restored_energy(energy, 4, 5), 1)
 	check_eq("full Energy wastes nothing", ConsumableRules.restored_energy(energy, 5, 5), 0)
+	check_eq("attack item preview names fixed damage",
+		ConsumableRules.effect_summary(fire_oil), "Deals 25 damage")
 	check_eq("hybrid preview names both effects",
 		ConsumableRules.effect_summary(hybrid), "Restores 15 HP · +4 DEF for 4 rounds")
 
@@ -111,6 +121,30 @@ func _structured_meal_actions() -> void:
 	check_eq("soup applies authored DEF and duration",
 		Vector2i(soup_result.buff_value, soup_result.buff_rounds), Vector2i(4, 4))
 	check_eq("soup changes defense math", fortified.effective_def(), 6)
+
+
+func _direct_damage_actions() -> void:
+	var enemy := {"id": "mushroom", "name": "Mushroom", "maxHp": 18,
+		"atk": 99, "def": 99, "speed": 3}
+	var fire_oil := {"id": "fire_oil", "kind": "consumable", "attackDmg": 25}
+	var finisher := CombatEncounter.new(enemy, 12, 12, 6, 2, 5)
+	finisher.begin_player_round()
+	var result := finisher.use_combat_item(fire_oil)
+	check_eq("direct damage reports only enemy HP actually removed",
+		result.player_damage_dealt, 18)
+	check_true("damage item can finish the encounter", result.enemy_defeated and finisher.player_won())
+	check_true("defeated enemy cannot answer a damage item", not result.enemy_acted)
+	check_eq("damage item bypasses DEF exactly as authored", finisher.enemy_hp, 0)
+	check_true("combat-over state rejects another item", not finisher.can_use_combat_item(fire_oil))
+
+	var durable_enemy := enemy.duplicate(true)
+	durable_enemy["maxHp"] = 100
+	var one_per_turn := CombatEncounter.new(durable_enemy, 12, 12, 6, 2, 5)
+	one_per_turn.begin_player_round()
+	check_true("first damage item resolves",
+		one_per_turn.use_combat_item(fire_oil, false).action_resolved)
+	check_true("one-item limit rejects a second damage item",
+		not one_per_turn.use_combat_item(fire_oil, false).action_resolved)
 
 
 func _finish() -> void:

@@ -159,6 +159,31 @@ func _initialize() -> void:
 		"[!] Attack 0-1 HP")
 
 	panel.call("_finish", false, "")
+	inv.add("fire_oil", 1)
+	bus.combat_started.emit(String(db.enemy_order[0]))
+	await process_frame
+	var item_encounter: CombatEncounter = panel.get("_encounter")
+	item_encounter.enemy_hp = 20
+	panel.call("_render_bars")
+	panel.call("_build_actions")
+	var attack_menu := _find_button(actions, "Items (1)") as MenuButton
+	var attack_popup := attack_menu.get_popup()
+	var oil_id := _popup_item_id(attack_popup, "Fire Oil Flask x1")
+	var oil_index := attack_popup.get_item_index(oil_id)
+	check_true("damage item is exposed with its honest effect",
+		attack_menu != null and oil_id >= 0
+		and attack_popup.get_item_tooltip(oil_index).contains("Deals 25 damage"))
+	attack_popup.id_pressed.emit(oil_id)
+	await process_frame
+	check_eq("damage item consumes exactly one", inv.count("fire_oil"), 0)
+	check_eq("damage item can reduce enemy HP to zero", item_encounter.enemy_hp, 0)
+	check_true("damage item feedback reports actual damage",
+		(panel.get("_feedback") as Label).text.contains("dealt 20 damage"))
+	check_true("killing item exposes the normal continue path",
+		continue_btn.visible and continue_btn.text == "Continue")
+	continue_btn.pressed.emit()
+	await process_frame
+	check_true("continuing a damage-item victory closes combat", not bool(panel.get("_active")))
 	inv.reset()
 	panel.queue_free()
 	await process_frame

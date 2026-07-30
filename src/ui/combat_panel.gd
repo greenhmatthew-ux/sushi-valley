@@ -410,6 +410,8 @@ func _on_combat_item(item_id: String) -> void:
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD)
 	var effects: Array[String] = []
+	if result.player_damage_dealt > 0:
+		effects.append("dealt %d damage" % result.player_damage_dealt)
 	if result.player_healed > 0:
 		effects.append("restored %d HP" % result.player_healed)
 	if result.energy_restored > 0:

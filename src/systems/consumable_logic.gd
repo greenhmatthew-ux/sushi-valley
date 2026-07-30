@@ -1,7 +1,7 @@
 class_name ConsumableLogic
 extends RefCounted
 ## Honest consumable rules. Exploration supports the explicit instant-heal family; combat
-## additionally supports Energy, Shield, and authored timed ATK/DEF meals.
+## additionally supports direct damage, Energy, Shield, and authored timed ATK/DEF meals.
 
 ## Explicit, reviewable MVP families. Meals/broths/feasts are deliberately absent: they
 ## belong to the later preparation-buff loop, not the legacy pile of larger instant heals.
@@ -47,6 +47,11 @@ static func is_supported_shield(item: Dictionary) -> bool:
 		and int(item.get("buffValue", 0)) > 0
 
 
+static func is_supported_attack(item: Dictionary) -> bool:
+	return String(item.get("kind", "")) == "consumable" \
+		and int(item.get("attackDmg", 0)) > 0
+
+
 static func is_supported_timed_buff(item: Dictionary) -> bool:
 	return String(item.get("kind", "")) == "consumable" \
 		and String(item.get("buffType", "")) in ["atk", "def"] \
@@ -62,6 +67,9 @@ static func combat_restored_hp(item: Dictionary, current_hp: int, max_hp: int) -
 
 static func effect_summary(item: Dictionary) -> String:
 	var effects: Array[String] = []
+	var attack_damage := int(item.get("attackDmg", 0))
+	if attack_damage > 0:
+		effects.append("Deals %d damage" % attack_damage)
 	var healing := int(item.get("heal", 0))
 	if healing > 0:
 		effects.append("Restores %d HP" % healing)
@@ -78,5 +86,5 @@ static func effect_summary(item: Dictionary) -> String:
 
 
 static func is_supported_combat_item(item: Dictionary) -> bool:
-	return is_supported_healing(item) or is_supported_energy(item) \
+	return is_supported_attack(item) or is_supported_healing(item) or is_supported_energy(item) \
 		or is_supported_shield(item) or is_supported_timed_buff(item)
