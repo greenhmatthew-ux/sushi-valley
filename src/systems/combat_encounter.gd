@@ -104,6 +104,14 @@ func can_use_item() -> bool:
 	return not is_over() and not item_used_this_turn
 
 
+## Honest enemy intent for the UI. Runtime damage varies by +/-15%, so preview the full
+## reachable HP-loss range instead of showing a false exact number. Current Guard is included.
+func enemy_damage_range() -> Vector2i:
+	var low := CombatLogic.enemy_damage(enemy_atk, player_def, 0.0)
+	var high := CombatLogic.enemy_damage(enemy_atk, player_def, 1.0)
+	return Vector2i(maxi(0, low - shield), maxi(0, high - shield))
+
+
 func begin_player_round() -> void:
 	turns_left = player_turn_count(player_speed, enemy_speed)
 	bonus_turn = false

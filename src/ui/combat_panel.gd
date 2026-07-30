@@ -33,6 +33,7 @@ var _weapon_name := "Unarmed"
 var _root: Control
 var _enemy_label: Label
 var _enemy_hp_bar: ProgressBar
+var _intent_label: Label
 var _player_hp_bar: ProgressBar
 var _flow_label: Label
 var _energy_label: Label
@@ -157,11 +158,26 @@ func _render_bars() -> void:
 	_enemy_hp_bar.value = _encounter.enemy_hp
 	_player_hp_bar.max_value = _encounter.player_max_hp
 	_player_hp_bar.value = _encounter.player_hp
+	_render_enemy_intent()
 	_flow_label.text = ("Flow x%d" % _encounter.flow) if _encounter.flow > 0 else ""
 	var speed_note := " · Extra turn" if _encounter.bonus_turn else ""
 	_energy_label.text = "Energy %d/%d · SPD %d · %s%s" % [
 		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.player_speed,
 		_weapon_name, speed_note]
+
+
+func _render_enemy_intent() -> void:
+	if _encounter.is_over():
+		_intent_label.text = ""
+		_intent_label.tooltip_text = ""
+		return
+	var damage := _encounter.enemy_damage_range()
+	_intent_label.text = "[!] Attack %d-%d HP" % [damage.x, damage.y]
+	var timing := "after %d End Turns" % _encounter.turns_left if _encounter.turns_left > 1 \
+		else "after End Turn"
+	var guard_note := " Current Guard is included." if _encounter.shield > 0 else ""
+	_intent_label.tooltip_text = "%s will use a basic attack %s. Damage varies by 15%%.%s" % [
+		_encounter.enemy_name, timing, guard_note]
 
 
 func _on_rune(rune: String, btn: Button) -> void:
@@ -426,9 +442,15 @@ func _build() -> void:
 	var enemy_row := HBoxContainer.new()
 	enemy_row.add_theme_constant_override("separation", 10)
 	_enemy_label = _label(17, COL_BORDER)
+	_enemy_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_enemy_label.clip_text = true
 	enemy_row.add_child(_enemy_label)
 	_flow_label = _label(13, COL_GOOD)
 	enemy_row.add_child(_flow_label)
+	_intent_label = _label(12, COL_BAD)
+	_intent_label.name = "EnemyIntent"
+	_intent_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	enemy_row.add_child(_intent_label)
 	vbox.add_child(enemy_row)
 
 	_enemy_hp_bar = _bar(Color(0.72, 0.28, 0.28))

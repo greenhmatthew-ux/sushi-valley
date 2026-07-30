@@ -25,6 +25,7 @@ func _initialize() -> void:
 	var shell: Control = panel.find_child("CombatShell", true, false)
 	var actions: Control = panel.find_child("CombatActions", true, false)
 	var energy: Label = panel.find_child("CombatEnergy", true, false)
+	var intent: Label = panel.find_child("EnemyIntent", true, false)
 	var end_turn: Button = panel.find_child("EndTurn", true, false)
 	var flee: Button = panel.find_child("Flee", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
@@ -37,6 +38,10 @@ func _initialize() -> void:
 		(actions.get_child(0) as Button).text, "Basic · 1E")
 	check_true("combat HUD shows Energy and Speed",
 		energy.text.contains("Energy 5/5") and energy.text.contains("SPD"))
+	check_eq("combat HUD exposes a bounded enemy attack intent", intent.text,
+		"[!] Attack 4-6 HP")
+	check_true("enemy intent explains when the hit will land",
+		intent.tooltip_text.contains("after End Turn"))
 	check_true("combat HUD names the selected weapon", energy.text.contains("Unarmed"))
 	check_true("the player can explicitly end a full turn", end_turn.visible)
 	check_true("the player can leave without pretending to win", flee.visible)
@@ -83,6 +88,10 @@ func _initialize() -> void:
 	check_eq("Energy tonic consumes exactly one", inv.count("bamboo_tonic"), 0)
 	check_true("Energy tonic feedback names its distinct effect",
 		(panel.get("_feedback") as Label).text.contains("Energy"))
+	second_encounter.shield = 5
+	panel.call("_render_bars")
+	check_eq("enemy intent updates for Guard instead of lying", intent.text,
+		"[!] Attack 0-1 HP")
 
 	panel.call("_finish", false, "")
 	inv.reset()

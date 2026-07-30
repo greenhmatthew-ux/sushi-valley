@@ -20,6 +20,7 @@ func _initialize() -> void:
 	_energy_delays_the_enemy_response()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
+	_enemy_intent_is_truthful()
 	_items_are_limited_per_turn()
 	_challenge_is_japanese_and_solvable()
 	_finish()
@@ -163,6 +164,18 @@ func _speed_decides_the_opening_action() -> void:
 	check_true("the opening enemy turn deals damage", opening.enemy_acted
 		and opening.enemy_damage_dealt > 0)
 	check_eq("surviving the opening prepares five Energy", e.energy, 5)
+
+
+func _enemy_intent_is_truthful() -> void:
+	var e := _fresh()
+	check_eq("enemy intent previews the full variance range", e.enemy_damage_range(),
+		Vector2i(4, 6))
+	e.shield = 5
+	check_eq("enemy intent includes the current Guard shield", e.enemy_damage_range(),
+		Vector2i(0, 1))
+	# Intent inspection must not resolve or mutate the encounter.
+	check_eq("enemy intent preview preserves player HP", e.player_hp, 12)
+	check_eq("enemy intent preview preserves Guard", e.shield, 5)
 
 
 func _items_are_limited_per_turn() -> void:
