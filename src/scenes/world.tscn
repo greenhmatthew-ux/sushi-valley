@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="33_teacher"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
+[ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="37_study"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="34_woman"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="35_vil3"]
 [ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="10_door"]
@@ -1472,3 +1473,17 @@ caption = "Scratched into the well's post."
 [node name="QuestGiverRiver" parent="Props" instance=ExtResource("14_quest")]
 position = Vector2(248, 424)
 quest_id = "river_guard"
+
+[node name="TeacherArrival" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(392, 464)
+npc_id = "gatekeeper"
+speaker = "Toma"
+teaches_lesson = "travel-arrival"
+intro_lines = PackedStringArray("New here? Then start with the words that get you unstuck.", "Excuse me, thank you, say that again, and where is the bathroom. In that order, usually.")
+sprite_sheet = ExtResource("34_woman")
+
+[node name="StudyBench" parent="Props" instance=ExtResource("37_study")]
+position = Vector2(456, 232)
+spot_id = "village_bench"
+caption = "You sit on the bench by the water and run through your notes."
+session_size = 5

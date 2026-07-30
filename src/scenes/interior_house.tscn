@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" path="res://assets/objects/door.png" id="6_doortex"]
 [ext_resource type="Texture2D" path="res://assets/objects/sprout-basic-furniture.png" id="7_furn"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="8_pickup"]
+[ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="9_teacher"]
+[ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="10_study"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="11_woman"]
 
 [node name="InteriorHouse" type="Node2D"]
 y_sort_enabled = true
@@ -93,3 +96,18 @@ spawn_id = "interior_entry"
 position = Vector2(168, 60)
 item_id = "rice_ball"
 qty = 2
+
+[node name="TeacherDining" parent="Entities" instance=ExtResource("9_teacher")]
+position = Vector2(56, 104)
+npc_id = "host"
+speaker = "Host"
+teaches_lesson = "travel-dining"
+intro_lines = PackedStringArray("Sit, sit. You cannot travel on an empty stomach.", "Learn how to order and a whole country opens its kitchens to you.")
+session_size = 3
+sprite_sheet = ExtResource("11_woman")
+
+[node name="StudyDesk" parent="Entities" instance=ExtResource("10_study")]
+position = Vector2(160, 100)
+spot_id = "house_desk"
+caption = "You spread your notes across the dresser and go over them."
+session_size = 5

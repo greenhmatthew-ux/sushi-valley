@@ -14,7 +14,7 @@ $project = Split-Path -Parent $PSScriptRoot
 $suites = @(
 	"smoke_db", "smoke_world", "test_srs", "test_learning",
 	"test_lesson_gate", "test_recall_loop", "test_inventory", "test_combat",
-	"test_save", "test_transitions", "test_quest", "test_quest_giver", "test_teacher_npc", "test_sign_post", "test_combat_encounter", "test_shop_haggle", "test_japanese_sourcing",
+	"test_save", "test_transitions", "test_quest", "test_quest_giver", "test_teacher_npc", "test_sign_post", "test_study_spot", "test_combat_encounter", "test_shop_haggle", "test_japanese_sourcing",
 	"smoke_autoloads"
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"

@@ -7,7 +7,7 @@ extends SceneTree
 ## Runs the real node against fake UI: stand-ins answer the dialogue/recall Bus
 ## round-trips the way DialogueBox and RecallPanel would, so the whole async
 ## interaction is exercised without a viewport. Autoloads are live here (the node
-## calls Learning/DB/Speech directly), so this doubles as a wiring check.
+## calls Learning and DB directly), so this doubles as a wiring check.
 ##
 ## Autoloads are fetched via root.get_node() rather than their global names: this
 ## entry script is parsed before the autoloads register, so naming them directly
