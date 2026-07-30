@@ -28,6 +28,7 @@ var _current_card: Dictionary = {}
 var _challenge: Dictionary = {}
 var _answered := false
 var _rng := RandomNumberGenerator.new()
+var _weapon_name := "Unarmed"
 
 var _root: Control
 var _enemy_label: Label
@@ -44,6 +45,7 @@ var _selected_ability: Dictionary = {}
 var _choices_box: GridContainer
 var _continue_btn: Button
 var _end_turn_btn: Button
+var _flee_btn: Button
 
 
 func _ready() -> void:
@@ -74,12 +76,15 @@ func _on_combat_started(enemy_id: String) -> void:
 	var p_atk: int = player.atk if player != null else PlayerStats.BASE_ATK
 	var p_def: int = player.defense if player != null else PlayerStats.BASE_DEF
 	var p_speed: int = player.speed if player != null else PlayerStats.BASE_SPEED
+	var weapon: Dictionary = Inv.equipped_def("weapon")
+	_weapon_name = String(weapon.get("name", "Unarmed"))
 
 	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def, p_speed)
 	_selected_ability = {}
 	_active = true
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name
+	_flee_btn.show()
 	_root.show()
 	if CombatEncounter.player_acts_first(_encounter.player_speed, _encounter.enemy_speed):
 		_encounter.begin_player_round()
@@ -154,8 +159,9 @@ func _render_bars() -> void:
 	_player_hp_bar.value = _encounter.player_hp
 	_flow_label.text = ("Flow x%d" % _encounter.flow) if _encounter.flow > 0 else ""
 	var speed_note := " · Extra turn" if _encounter.bonus_turn else ""
-	_energy_label.text = "Energy %d/%d · SPD %d%s" % [
-		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.player_speed, speed_note]
+	_energy_label.text = "Energy %d/%d · SPD %d · %s%s" % [
+		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.player_speed,
+		_weapon_name, speed_note]
 
 
 func _on_rune(rune: String, btn: Button) -> void:
@@ -194,6 +200,7 @@ func _on_rune(rune: String, btn: Button) -> void:
 	if result.correct and result.flow_after > 1:
 		_feedback.text += "   Flow x%d" % result.flow_after
 	if _encounter.is_over():
+		_flee_btn.hide()
 		_end_turn_btn.hide()
 		_continue_btn.text = "Continue"
 	elif _encounter.energy <= 0:
@@ -216,6 +223,12 @@ func _on_end_turn() -> void:
 			or not _end_turn_btn.visible:
 		return
 	_resolve_end_turn()
+
+
+func _on_flee() -> void:
+	if not _active or _encounter == null or _encounter.is_over():
+		return
+	_finish(false, "You fled the fight.")
 
 
 func _resolve_end_turn() -> void:
@@ -460,6 +473,14 @@ func _build() -> void:
 	turn_controls.name = "TurnControls"
 	turn_controls.add_theme_constant_override("separation", 8)
 	vbox.add_child(turn_controls)
+	_flee_btn = Button.new()
+	_flee_btn.name = "Flee"
+	_flee_btn.text = "Flee"
+	_flee_btn.custom_minimum_size = Vector2(74, 30)
+	_flee_btn.focus_mode = Control.FOCUS_ALL
+	_flee_btn.tooltip_text = "Leave without victory rewards; current HP is kept."
+	_flee_btn.pressed.connect(_on_flee)
+	turn_controls.add_child(_flee_btn)
 	_end_turn_btn = Button.new()
 	_end_turn_btn.name = "EndTurn"
 	_end_turn_btn.text = "End Turn"

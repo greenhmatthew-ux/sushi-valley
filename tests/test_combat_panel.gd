@@ -25,6 +25,7 @@ func _initialize() -> void:
 	var actions: Control = panel.find_child("CombatActions", true, false)
 	var energy: Label = panel.find_child("CombatEnergy", true, false)
 	var end_turn: Button = panel.find_child("EndTurn", true, false)
+	var flee: Button = panel.find_child("Flee", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	var shell_rect := shell.get_global_rect()
@@ -35,7 +36,9 @@ func _initialize() -> void:
 		(actions.get_child(0) as Button).text, "Basic · 1E")
 	check_true("combat HUD shows Energy and Speed",
 		energy.text.contains("Energy 5/5") and energy.text.contains("SPD"))
+	check_true("combat HUD names the selected weapon", energy.text.contains("Unarmed"))
 	check_true("the player can explicitly end a full turn", end_turn.visible)
+	check_true("the player can leave without pretending to win", flee.visible)
 	check_true("weapon-gated Strike is not a fake action",
 		_find_button(actions, "Strike") == null)
 	var encounter: CombatEncounter = panel.get("_encounter")
@@ -53,6 +56,20 @@ func _initialize() -> void:
 	end_turn.pressed.emit()
 	await process_frame
 	check_true("enemy responds only after End Turn", encounter.player_hp < after_item)
+	var outcomes: Array[bool] = []
+	bus.combat_ended.connect(func(victory: bool): outcomes.append(victory), CONNECT_ONE_SHOT)
+	flee.pressed.emit()
+	await process_frame
+	check_true("Flee closes combat and resumes the world",
+		not bool(panel.get("_active")) and not paused)
+	check_eq("Flee reports no victory rewards", outcomes, [false])
+	inv.add("wooden_katana", 1)
+	check_true("test weapon equips", inv.equip("wooden_katana"))
+	bus.combat_started.emit(String(db.enemy_order[0]))
+	await process_frame
+	check_true("combat HUD uses the actual equipped weapon",
+		energy.text.contains("Wooden Katana"))
+	check_true("Flee returns on the next encounter", flee.visible)
 
 	panel.call("_finish", false, "")
 	inv.reset()
