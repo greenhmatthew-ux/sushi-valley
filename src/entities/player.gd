@@ -34,6 +34,7 @@ var _spawn_pos: Vector2 = Vector2.ZERO   ## where a defeat sends you back to
 ## Combat stats, refreshed from learning level by _sync_stats.
 var atk: int = PlayerStats.BASE_ATK
 var defense: int = PlayerStats.BASE_DEF
+var speed: int = PlayerStats.BASE_SPEED
 
 var _current_anim: String = ""
 
@@ -72,11 +73,14 @@ func _sync_stats(heal: bool) -> void:
 	var new_max: int = stats["max_hp"]
 	var new_atk: int = stats["atk"]
 	var new_def: int = stats["def"]
-	if new_max == MAX_HP and new_atk == atk and new_def == defense and not heal:
+	var new_speed: int = stats["speed"]
+	if new_max == MAX_HP and new_atk == atk and new_def == defense \
+			and new_speed == speed and not heal:
 		return
 	MAX_HP = new_max
 	atk = new_atk
 	defense = new_def
+	speed = new_speed
 	hp = MAX_HP if heal else mini(hp, MAX_HP)
 	Bus.player_hp_changed.emit(hp, MAX_HP)
 

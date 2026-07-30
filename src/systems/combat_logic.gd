@@ -8,8 +8,8 @@ extends RefCounted
 ## balance lives in the constants and the shapes of these expressions, and changing
 ## them silently would change how combat feels. Explanatory comments come across too.
 ##
-## Only the renderer-independent per-hit math is ported here; the turn/energy/ability
-## orchestration (CombatScene.ts) is out of scope for this slice.
+## This file stays renderer-independent and owns per-hit math. CombatEncounter owns the
+## equally headless turn, Energy, and Speed orchestration ported from CombatScene.ts.
 
 ## Always-available light attack. Intentionally repeatable in the TS build: energy is
 ## the action budget there. `power` is the card's base magnitude — see BASIC_ATTACK in

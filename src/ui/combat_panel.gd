@@ -34,6 +34,7 @@ var _enemy_label: Label
 var _enemy_hp_bar: ProgressBar
 var _player_hp_bar: ProgressBar
 var _flow_label: Label
+var _energy_label: Label
 var _guard_label: Label
 var _guard_hint: Label
 var _feedback: Label
@@ -42,6 +43,7 @@ var _action_buttons: Dictionary = {}
 var _selected_ability: Dictionary = {}
 var _choices_box: GridContainer
 var _continue_btn: Button
+var _end_turn_btn: Button
 
 
 func _ready() -> void:
@@ -71,20 +73,44 @@ func _on_combat_started(enemy_id: String) -> void:
 	var max_hp: int = player.MAX_HP if player != null else PlayerStats.BASE_MAX_HP
 	var p_atk: int = player.atk if player != null else PlayerStats.BASE_ATK
 	var p_def: int = player.defense if player != null else PlayerStats.BASE_DEF
+	var p_speed: int = player.speed if player != null else PlayerStats.BASE_SPEED
 
-	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def)
+	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def, p_speed)
 	_selected_ability = {}
 	_active = true
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name
 	_root.show()
-	_next_round()
+	if CombatEncounter.player_acts_first(_encounter.player_speed, _encounter.enemy_speed):
+		_encounter.begin_player_round()
+		_next_round()
+	else:
+		_show_enemy_opening()
+
+
+func _show_enemy_opening() -> void:
+	_answered = true
+	_challenge = {}
+	_build_actions()
+	var result := _encounter.enemy_opening_turn()
+	_guard_label.text = "%s strikes first" % _encounter.enemy_name
+	_guard_hint.text = "Enemy SPD %d beats your SPD %d." % [
+		_encounter.enemy_speed, _encounter.player_speed]
+	_feedback.add_theme_color_override("font_color", COL_BAD)
+	_feedback.text = "%s opens for %d damage." % [
+		_encounter.enemy_name, result.enemy_damage_dealt]
+	_render_bars()
+	_end_turn_btn.hide()
+	_continue_btn.text = "Continue" if _encounter.is_over() else "Your turn"
+	_continue_btn.show()
+	_continue_btn.grab_focus()
 
 
 ## Draw the next card from the shared scheduler and turn it into a rune challenge.
 func _next_round() -> void:
 	_answered = false
 	_continue_btn.hide()
+	_end_turn_btn.show()
 	_feedback.text = ""
 	_challenge = {}
 	_build_actions()
@@ -127,6 +153,9 @@ func _render_bars() -> void:
 	_player_hp_bar.max_value = _encounter.player_max_hp
 	_player_hp_bar.value = _encounter.player_hp
 	_flow_label.text = ("Flow x%d" % _encounter.flow) if _encounter.flow > 0 else ""
+	var speed_note := " · Extra turn" if _encounter.bonus_turn else ""
+	_energy_label.text = "Energy %d/%d · SPD %d%s" % [
+		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.player_speed, speed_note]
 
 
 func _on_rune(rune: String, btn: Button) -> void:
@@ -134,8 +163,12 @@ func _on_rune(rune: String, btn: Button) -> void:
 		return
 	_answered = true
 
-	var result: CombatEncounter.RoundResult = _encounter.resolve(
+	var result: CombatEncounter.RoundResult = _encounter.spend_and_resolve(
 		rune, _challenge["answer"], _selected_ability)
+	if not result.action_resolved:
+		_answered = false
+		Bus.toast.emit("That action needs more Energy.")
+		return
 	# Feed the shared SRS — this is what makes fighting count as review.
 	Learning.answer(_current_card, String(_current_card.get("answer", "")) if result.correct else "__wrong__")
 
@@ -160,19 +193,15 @@ func _on_rune(rune: String, btn: Button) -> void:
 		else "%s was the rune. Weakened %s" % [result.answer, outcome]
 	if result.correct and result.flow_after > 1:
 		_feedback.text += "   Flow x%d" % result.flow_after
-	if result.shield_absorbed > 0:
-		_feedback.text += "   Blocked %d." % result.shield_absorbed
-	if result.enemy_damage_dealt > 0:
-		_feedback.text += "   %s hits back for %d." % [_encounter.enemy_name, result.enemy_damage_dealt]
-
 	if _encounter.is_over():
+		_end_turn_btn.hide()
 		_continue_btn.text = "Continue"
-		_continue_btn.show()
-		_continue_btn.grab_focus()
+	elif _encounter.energy <= 0:
+		_resolve_end_turn()
 	else:
-		_continue_btn.text = "Next"
-		_continue_btn.show()
-		_continue_btn.grab_focus()
+		_continue_btn.text = "Act again"
+	_continue_btn.show()
+	_continue_btn.grab_focus()
 
 
 func _on_continue() -> void:
@@ -182,12 +211,44 @@ func _on_continue() -> void:
 		_next_round()
 
 
+func _on_end_turn() -> void:
+	if not _active or _encounter == null or _encounter.is_over() \
+			or not _end_turn_btn.visible:
+		return
+	_resolve_end_turn()
+
+
+func _resolve_end_turn() -> void:
+	_answered = true
+	_end_turn_btn.hide()
+	for choice in _choices_box.get_children():
+		if choice is Button:
+			(choice as Button).disabled = true
+	if _feedback.text.is_empty():
+		_feedback.text = "Turn ended."
+	var result := _encounter.end_player_turn()
+	if result.bonus_turn_granted:
+		_feedback.add_theme_color_override("font_color", COL_EN)
+		_feedback.text += "   Speed grants another full turn."
+	elif result.enemy_acted:
+		if result.shield_absorbed > 0:
+			_feedback.text += "   Blocked %d." % result.shield_absorbed
+		if result.enemy_damage_dealt > 0:
+			_feedback.text += "   %s hits for %d." % [
+				_encounter.enemy_name, result.enemy_damage_dealt]
+	_render_bars()
+	_continue_btn.text = "Continue" if _encounter.is_over() \
+		else ("Bonus turn" if result.bonus_turn_granted else "Next turn")
+	_continue_btn.show()
+	_continue_btn.grab_focus()
+
+
 func _build_actions() -> void:
 	for child in _action_box.get_children():
 		_action_box.remove_child(child)
 		child.queue_free()
 	_action_buttons.clear()
-	_add_action_button({}, "Basic", "Always available; a reliable light attack.")
+	_add_action_button({}, "Basic", "Reliable light attack; repeat while Energy remains.")
 	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
 	for ability in Learning.usable_ability_defs(weapon_type):
 		_add_action_button(ability, String(ability.get("name", ability.get("id", "Skill"))),
@@ -196,17 +257,23 @@ func _build_actions() -> void:
 		var item: Dictionary = DB.item(String(entry.get("id", "")))
 		if ConsumableRules.is_supported_healing(item):
 			_add_item_button(item, int(entry.get("qty", 0)))
-	_select_action(String(_selected_ability.get("id", "basic_attack")))
+	var selected_id := String(_selected_ability.get("id", "basic_attack"))
+	if not _action_buttons.has(selected_id) \
+			or (_action_buttons[selected_id] as Button).disabled:
+		selected_id = "basic_attack"
+	_select_action(selected_id)
 
 
 func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> void:
 	var button := Button.new()
 	var id := String(ability.get("id", "basic_attack"))
-	button.text = label
-	button.tooltip_text = tooltip
+	var cost := CombatEncounter.action_cost(ability)
+	button.text = "%s · %dE" % [label, cost]
+	button.tooltip_text = "%s\nCosts %d Energy." % [tooltip, cost]
 	button.custom_minimum_size = Vector2(72, 28)
 	button.focus_mode = Control.FOCUS_ALL
 	button.toggle_mode = true
+	button.disabled = not _encounter.can_afford(ability)
 	button.pressed.connect(_select_action.bind(id))
 	button.set_meta("ability", ability)
 	_action_box.add_child(button)
@@ -217,11 +284,12 @@ func _add_item_button(item: Dictionary, qty: int) -> void:
 	var button := Button.new()
 	var item_id := String(item.get("id", ""))
 	button.text = "%s x%d" % [item.get("name", item_id), qty]
-	button.tooltip_text = "%s\nRestores %d HP and ends this combat action." % [
+	button.tooltip_text = "%s\nRestores %d HP; one item per turn, no Energy cost." % [
 		item.get("desc", ""), int(item.get("heal", 0))]
 	button.custom_minimum_size = Vector2(90, 28)
 	button.focus_mode = Control.FOCUS_ALL
-	button.disabled = _encounter.player_hp >= _encounter.player_max_hp
+	button.disabled = _encounter.player_hp >= _encounter.player_max_hp \
+		or not _encounter.can_use_item()
 	button.pressed.connect(_on_combat_item.bind(item_id))
 	_action_box.add_child(button)
 
@@ -238,7 +306,7 @@ func _select_action(ability_id: String) -> void:
 
 
 func _on_combat_item(item_id: String) -> void:
-	if _answered:
+	if _answered or not _encounter.can_use_item():
 		return
 	var item: Dictionary = DB.item(item_id)
 	var healing := ConsumableRules.restored_hp(item, _encounter.player_hp, _encounter.player_max_hp)
@@ -246,16 +314,14 @@ func _on_combat_item(item_id: String) -> void:
 		Bus.toast.emit("That item cannot be used right now.")
 		return
 	_answered = true
-	var result := _encounter.use_healing_item(item_id, int(item.get("heal", 0)))
+	var result := _encounter.use_healing_item(item_id, int(item.get("heal", 0)), false)
 	for choice in _choices_box.get_children():
 		if choice is Button:
 			(choice as Button).disabled = true
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD)
 	_feedback.text = "%s restored %d HP." % [item.get("name", item_id), result.player_healed]
-	if result.enemy_damage_dealt > 0:
-		_feedback.text += "   %s hits back for %d." % [_encounter.enemy_name, result.enemy_damage_dealt]
-	_continue_btn.text = "Continue" if _encounter.is_over() else "Next"
+	_continue_btn.text = "Continue" if _encounter.is_over() else "Act again"
 	_continue_btn.show()
 	_continue_btn.grab_focus()
 
@@ -382,15 +448,32 @@ func _build() -> void:
 	vbox.add_child(_feedback)
 
 	# player
+	_energy_label = _label(12, COL_EN)
+	_energy_label.name = "CombatEnergy"
+	_energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vbox.add_child(_energy_label)
+
 	_player_hp_bar = _bar(Color(0.38, 0.66, 0.42))
 	vbox.add_child(_player_hp_bar)
 
+	var turn_controls := HBoxContainer.new()
+	turn_controls.name = "TurnControls"
+	turn_controls.add_theme_constant_override("separation", 8)
+	vbox.add_child(turn_controls)
+	_end_turn_btn = Button.new()
+	_end_turn_btn.name = "EndTurn"
+	_end_turn_btn.text = "End Turn"
+	_end_turn_btn.custom_minimum_size = Vector2(110, 30)
+	_end_turn_btn.focus_mode = Control.FOCUS_ALL
+	_end_turn_btn.pressed.connect(_on_end_turn)
+	turn_controls.add_child(_end_turn_btn)
 	_continue_btn = Button.new()
 	_continue_btn.text = "Next"
 	_continue_btn.custom_minimum_size = Vector2(0, 30)
+	_continue_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_continue_btn.focus_mode = Control.FOCUS_ALL
 	_continue_btn.pressed.connect(_on_continue)
-	vbox.add_child(_continue_btn)
+	turn_controls.add_child(_continue_btn)
 
 
 func _bar(tint: Color) -> ProgressBar:

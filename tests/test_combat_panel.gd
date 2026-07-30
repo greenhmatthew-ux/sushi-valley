@@ -23,13 +23,19 @@ func _initialize() -> void:
 
 	var shell: Control = panel.find_child("CombatShell", true, false)
 	var actions: Control = panel.find_child("CombatActions", true, false)
+	var energy: Label = panel.find_child("CombatEnergy", true, false)
+	var end_turn: Button = panel.find_child("EndTurn", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
 	check_eq("unarmed combat also shows a held healing item", actions.get_child_count(), 4)
-	check_eq("Basic Attack is the safe default", (actions.get_child(0) as Button).text, "Basic")
+	check_eq("Basic Attack exposes its real Energy cost",
+		(actions.get_child(0) as Button).text, "Basic · 1E")
+	check_true("combat HUD shows Energy and Speed",
+		energy.text.contains("Energy 5/5") and energy.text.contains("SPD"))
+	check_true("the player can explicitly end a full turn", end_turn.visible)
 	check_true("weapon-gated Strike is not a fake action",
 		_find_button(actions, "Strike") == null)
 	var encounter: CombatEncounter = panel.get("_encounter")
@@ -40,8 +46,13 @@ func _initialize() -> void:
 	item_button.pressed.emit()
 	await process_frame
 	check_eq("combat item consumes exactly one", inv.count("rice_ball"), 0)
-	check_true("combat item ends the current action", bool(panel.get("_answered")))
-	check_true("combat item improves HP even after the counterattack", encounter.player_hp > 5)
+	check_true("combat item pauses for readable feedback", bool(panel.get("_answered")))
+	check_true("combat item improves HP without an enemy interrupt", encounter.player_hp > 5)
+	check_eq("combat item spends no Energy", encounter.energy, 5)
+	var after_item := encounter.player_hp
+	end_turn.pressed.emit()
+	await process_frame
+	check_true("enemy responds only after End Turn", encounter.player_hp < after_item)
 
 	panel.call("_finish", false, "")
 	inv.reset()

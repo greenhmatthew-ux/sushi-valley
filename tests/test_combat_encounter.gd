@@ -7,7 +7,8 @@ extends SceneTree
 ## unvaried midpoint) so damage assertions are deterministic.
 
 var failures: int = 0
-var enemy_def := {"id": "mushroom", "name": "Spore Mushroom", "maxHp": 30, "atk": 6, "def": 1}
+var enemy_def := {"id": "mushroom", "name": "Spore Mushroom", "maxHp": 30,
+	"atk": 6, "def": 1, "speed": 3}
 
 
 func _initialize() -> void:
@@ -16,6 +17,10 @@ func _initialize() -> void:
 	_enemy_does_not_counter_when_defeated()
 	_defeat_ends_the_fight()
 	_equipped_actions_have_distinct_results()
+	_energy_delays_the_enemy_response()
+	_speed_grants_one_extra_full_turn()
+	_speed_decides_the_opening_action()
+	_items_are_limited_per_turn()
 	_challenge_is_japanese_and_solvable()
 	_finish()
 
@@ -98,6 +103,79 @@ func _equipped_actions_have_distinct_results() -> void:
 		{"id": "focus", "type": "heal", "power": 9})
 	check_true("Focus restores missing HP", focus_result.player_healed > 0)
 	check_eq("Focus does not damage the enemy", focus_result.player_damage_dealt, 0)
+
+
+func _energy_delays_the_enemy_response() -> void:
+	var e := _fresh()
+	# This test spends multiple actions before End Turn; keep the target alive so it can
+	# exercise the delayed response instead of the separate no-parting-shot victory rule.
+	e.enemy_max_hp = 200
+	e.enemy_hp = 200
+	e.begin_player_round()
+	check_eq("a full player turn starts with five Energy", e.energy, 5)
+	var hp_before := e.player_hp
+	var basic := e.spend_and_resolve("mi", "mi")
+	check_true("an affordable Basic Attack resolves", basic.action_resolved)
+	check_eq("Basic Attack costs one Energy", e.energy, 4)
+	check_eq("the enemy does not interrupt an Energy turn", e.player_hp, hp_before)
+	var skill := e.spend_and_resolve("mi", "mi",
+		{"id": "sweep", "type": "attack", "power": 14, "cost": 3})
+	check_true("an affordable skill resolves", skill.action_resolved)
+	check_eq("the authored skill cost is spent", e.energy, 1)
+	var rejected := e.spend_and_resolve("mi", "mi",
+		{"id": "focus", "type": "heal", "power": 9, "cost": 2})
+	check_true("an unaffordable action is rejected", not rejected.action_resolved)
+	check_eq("a rejected action spends nothing", e.energy, 1)
+	var ended := e.end_player_turn()
+	check_true("ending the full turn lets the enemy act once", ended.enemy_acted)
+	check_true("the enemy response changes player HP", e.player_hp < hp_before)
+	check_eq("the next full turn refreshes Energy", e.energy, 5)
+
+
+func _speed_grants_one_extra_full_turn() -> void:
+	var fast_enemy := enemy_def.duplicate(true)
+	fast_enemy["speed"] = 2
+	var e := CombatEncounter.new(fast_enemy, 20, 20, 6, 2, 6)
+	e.roll = 0.5
+	e.begin_player_round()
+	check_eq("a four-Speed lead schedules two full turns", e.turns_left, 2)
+	e.spend_and_resolve("mi", "mi")
+	var hp_before := e.player_hp
+	var bonus := e.end_player_turn()
+	check_true("the first end grants the Speed turn", bonus.bonus_turn_granted)
+	check_true("the bonus turn does not let the enemy act", not bonus.enemy_acted)
+	check_eq("bonus turn refreshes all Energy", e.energy, 5)
+	check_eq("bonus turn preserves player HP", e.player_hp, hp_before)
+	var response := e.end_player_turn()
+	check_true("the enemy responds after the bonus turn", response.enemy_acted)
+	check_eq("Speed bonus remains capped at one turn", e.turns_left,
+		CombatEncounter.player_turn_count(e.player_speed, e.enemy_speed))
+
+
+func _speed_decides_the_opening_action() -> void:
+	check_true("ties favour the player", CombatEncounter.player_acts_first(5, 5))
+	check_true("a faster enemy acts first", not CombatEncounter.player_acts_first(5, 6))
+	var quick_enemy := enemy_def.duplicate(true)
+	quick_enemy["speed"] = 6
+	var e := CombatEncounter.new(quick_enemy, 12, 12, 6, 2, 5)
+	e.roll = 0.5
+	var opening := e.enemy_opening_turn()
+	check_true("the opening enemy turn deals damage", opening.enemy_acted
+		and opening.enemy_damage_dealt > 0)
+	check_eq("surviving the opening prepares five Energy", e.energy, 5)
+
+
+func _items_are_limited_per_turn() -> void:
+	var e := _fresh()
+	e.player_hp = 8
+	e.begin_player_round()
+	var first := e.use_healing_item("rice_ball", 1, false)
+	var second := e.use_healing_item("rice_ball", 1, false)
+	check_true("the first healing item resolves", first.action_resolved)
+	check_true("a second item in one turn is rejected", not second.action_resolved)
+	check_eq("items do not spend Energy", e.energy, 5)
+	e.end_player_turn()
+	check_true("the next full turn restores item access", e.can_use_item())
 
 
 ## The menu must be Japanese, contain the answer exactly once, and never repeat a rune.

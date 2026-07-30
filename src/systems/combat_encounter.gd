@@ -13,6 +13,7 @@ extends RefCounted
 
 ## Result of resolving one player choice.
 class RoundResult extends RefCounted:
+	var action_resolved: bool
 	var correct: bool
 	var action_id: String
 	var action_type: String
@@ -24,12 +25,19 @@ class RoundResult extends RefCounted:
 	var flow_after: int
 	var enemy_defeated: bool
 	var player_defeated: bool
+	var enemy_acted: bool
+	var bonus_turn_granted: bool
 	var answer: String        ## the right Japanese, for revealing on a miss
+
+const MAX_ENERGY := 5
+const BASIC_ATTACK_COST := 1
+const SPEED_EXTRA_TURN_GAP := 4
 
 var player_hp: int
 var player_max_hp: int
 var player_atk: int
 var player_def: int
+var player_speed: int
 
 var enemy_id: String
 var enemy_name: String
@@ -37,6 +45,14 @@ var enemy_hp: int
 var enemy_max_hp: int
 var enemy_atk: int
 var enemy_def: int
+var enemy_speed: int
+
+## Energy budgets repeatable actions inside one full turn. A large enough Speed lead gives
+## one second full turn (and therefore a fresh Energy budget) before the enemy responds.
+var energy: int = 0
+var turns_left: int = 0
+var bonus_turn: bool = false
+var item_used_this_turn: bool = false
 
 ## Consecutive correct recalls. Drives CombatLogic.flow_multiplier — accurate recall
 ## literally hits harder, and a miss resets it.
@@ -48,24 +64,83 @@ var shield: int = 0
 var roll: float = -1.0
 
 
-func _init(enemy_def_dict: Dictionary, hp: int, max_hp: int, atk: int = 6, def_stat: int = 2) -> void:
+func _init(enemy_def_dict: Dictionary, hp: int, max_hp: int, atk: int = 6,
+		def_stat: int = 2, speed_stat: int = 5) -> void:
 	enemy_id = String(enemy_def_dict.get("id", "enemy"))
 	enemy_name = String(enemy_def_dict.get("name", enemy_id))
 	enemy_max_hp = int(enemy_def_dict.get("maxHp", 30))
 	enemy_hp = enemy_max_hp
 	enemy_atk = int(enemy_def_dict.get("atk", 6))
 	enemy_def = int(enemy_def_dict.get("def", 1))
+	enemy_speed = maxi(1, int(enemy_def_dict.get("speed", 1)))
 	player_hp = hp
 	player_max_hp = max_hp
 	player_atk = atk
 	player_def = def_stat
+	player_speed = maxi(1, speed_stat)
 
 
-## Resolve one round: Basic Attack or one authored starter action, then the enemy's hit if
-## it survived. Unsupported future effect types fail safely to Basic Attack until their
-## distinct behavior exists; this keeps authored data from creating fake menu choices.
-func resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundResult:
+## Kana's authored Speed mode: ties favour the player, and a lead of four or more grants
+## exactly one extra full turn. The cap is deliberate so extreme gear cannot lock enemies out.
+static func player_acts_first(player_spd: int, enemy_spd: int) -> bool:
+	return player_spd >= enemy_spd
+
+
+static func player_turn_count(player_spd: int, enemy_spd: int) -> int:
+	return 2 if player_spd - enemy_spd >= SPEED_EXTRA_TURN_GAP else 1
+
+
+static func action_cost(ability: Dictionary) -> int:
+	return BASIC_ATTACK_COST if ability.is_empty() \
+		else maxi(0, int(ability.get("cost", BASIC_ATTACK_COST)))
+
+
+func can_afford(ability: Dictionary) -> bool:
+	return not is_over() and energy >= action_cost(ability)
+
+
+func can_use_item() -> bool:
+	return not is_over() and not item_used_this_turn
+
+
+func begin_player_round() -> void:
+	turns_left = player_turn_count(player_speed, enemy_speed)
+	bonus_turn = false
+	_begin_player_turn()
+
+
+func _begin_player_turn() -> void:
+	energy = MAX_ENERGY
+	item_used_this_turn = false
+
+
+## Fast enemies take the opening action once; surviving always hands control to a fresh
+## player round. Later enemy responses are handled by end_player_turn().
+func enemy_opening_turn() -> RoundResult:
 	var r := RoundResult.new()
+	_enemy_response(r)
+	if not r.player_defeated:
+		begin_player_round()
+	return r
+
+
+## Spend Energy and resolve only the player's action. The enemy never interrupts inside an
+## Energy turn; the UI (or another caller) explicitly ends the full turn afterward.
+func spend_and_resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundResult:
+	if not can_afford(ability):
+		return RoundResult.new()
+	energy -= action_cost(ability)
+	return resolve(chosen, answer, ability, false)
+
+
+## Resolve one Basic Attack or authored starter action. The default enemy response preserves
+## the original one-call simulation API; the live Energy loop passes false and ends the full
+## turn explicitly. Unsupported future effects fail safely to Basic Attack until their distinct
+## behavior exists, so authored data cannot create fake menu choices.
+func resolve(chosen: String, answer: String, ability: Dictionary = {},
+		enemy_responds: bool = true) -> RoundResult:
+	var r := RoundResult.new()
+	r.action_resolved = true
 	r.answer = answer
 	r.correct = _normalize(chosen) == _normalize(answer)
 	r.action_id = String(ability.get("id", "basic_attack"))
@@ -97,37 +172,62 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundR
 		r.player_healed = player_hp - before
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
 
-	# A defeated enemy does not get a parting shot.
-	if not r.enemy_defeated:
-		var incoming := CombatLogic.enemy_damage(enemy_atk, player_def, roll)
-		r.shield_absorbed = mini(shield, incoming)
-		r.enemy_damage_dealt = incoming - r.shield_absorbed
-		shield = 0
-		player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
-		r.player_defeated = CombatLogic.is_dead(player_hp)
+	if enemy_responds:
+		_enemy_response(r)
 
 	return r
 
 
 ## Healing items are a direct combat action, not a Japanese prompt. The caller owns
 ## inventory removal and passes the authored healing value only after validating stock.
-func use_healing_item(item_id: String, healing: int) -> RoundResult:
+func use_healing_item(item_id: String, healing: int, enemy_responds: bool = true) -> RoundResult:
 	var r := RoundResult.new()
+	if not can_use_item():
+		return r
 	r.action_id = item_id
 	r.action_type = "item"
 	var before := player_hp
 	player_hp = mini(player_max_hp, player_hp + maxi(0, healing))
 	r.player_healed = player_hp - before
+	r.action_resolved = r.player_healed > 0
+	item_used_this_turn = r.action_resolved
 	r.flow_after = flow
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
-	if r.player_healed > 0 and not r.enemy_defeated:
-		var incoming := CombatLogic.enemy_damage(enemy_atk, player_def, roll)
-		r.shield_absorbed = mini(shield, incoming)
-		r.enemy_damage_dealt = incoming - r.shield_absorbed
-		shield = 0
-		player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
-		r.player_defeated = CombatLogic.is_dead(player_hp)
+	if r.action_resolved and enemy_responds:
+		_enemy_response(r)
 	return r
+
+
+## Finish one full player turn. A Speed bonus refreshes Energy without an enemy action;
+## otherwise the enemy responds once and the next surviving round is prepared immediately.
+func end_player_turn() -> RoundResult:
+	var r := RoundResult.new()
+	if is_over():
+		return r
+	turns_left = maxi(0, turns_left - 1)
+	if turns_left > 0:
+		bonus_turn = true
+		r.bonus_turn_granted = true
+		_begin_player_turn()
+		return r
+	bonus_turn = false
+	_enemy_response(r)
+	if not r.player_defeated and not r.enemy_defeated:
+		begin_player_round()
+	return r
+
+
+func _enemy_response(r: RoundResult) -> void:
+	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	if r.enemy_defeated:
+		return
+	r.enemy_acted = true
+	var incoming := CombatLogic.enemy_damage(enemy_atk, player_def, roll)
+	r.shield_absorbed = mini(shield, incoming)
+	r.enemy_damage_dealt = incoming - r.shield_absorbed
+	shield = 0
+	player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
+	r.player_defeated = CombatLogic.is_dead(player_hp)
 
 
 ## Build one round's challenge from a card plus a pool to draw wrong runes from.

@@ -50,10 +50,21 @@ func _initialize() -> void:
 	var agility_plus: Button = panel.find_child("AgilityPlus", true, false)
 	check_true("Character shows the honest Attribute Point budget", points != null)
 	check_true("fresh level-1 profile cannot spend an unearned point", vitality_plus.disabled)
-	check_true("Agility stays disabled while Speed is inactive", agility_plus.disabled)
+	check_true("fresh Agility is disabled only because no point is earned", agility_plus.disabled)
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	check_true("levelling earns a spendable Attribute Point", not vitality_plus.disabled)
+	check_true("levelling also enables the real Agility choice", not agility_plus.disabled)
+	agility_plus.pressed.emit()
+	check_eq("Character control raises saved Agility",
+		learning.profile.build()["allocations"]["agility"], 1)
+	check_true("Agility immediately appears in the effective Speed summary",
+		stats.text.contains("SPD  6"))
+	var agility_saved: Dictionary = root.get_node("SaveGame").load_profile()
+	check_eq("Agility allocation is written to disk",
+		agility_saved["build"]["allocations"]["agility"], 1)
+	var agility_minus: Button = panel.find_child("AgilityMinus", true, false)
+	agility_minus.pressed.emit()
 	vitality_plus.pressed.emit()
 	check_eq("Character control raises saved Vitality",
 		learning.profile.build()["allocations"]["vitality"], 1)

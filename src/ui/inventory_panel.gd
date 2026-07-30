@@ -142,13 +142,13 @@ func _refresh() -> void:
 	var current_hp := int(player.hp) if player != null else int(stats["max_hp"])
 	_stats_label.text = (
 		"Level %d\nLearning XP  %d / %d\n\n"
-		+ "HP   %d / %d\nATK  %d\nDEF  %d\n\n"
-		+ "Gear bonus  %+d HP   %+d ATK   %+d DEF\n"
+		+ "HP   %d / %d\nATK  %d   DEF  %d   SPD  %d\n\n"
+		+ "Gear bonus  %+d HP   %+d ATK   %+d DEF   %+d SPD\n"
 		+ "Japanese study raises your base stats; equipped gear is included above."
 	) % [
 		stats["level"], stats["xp_into_level"], stats["xp_per_level"],
-		current_hp, stats["max_hp"], stats["atk"], stats["def"],
-		gear["hp"], gear["atk"], gear["def"],
+		current_hp, stats["max_hp"], stats["atk"], stats["def"], stats["speed"],
+		gear["hp"], gear["atk"], gear["def"], gear["spd"],
 	]
 	_attribute_points_label.text = "Attribute Points  %d" % Learning.unspent_attribute_points()
 	for key in PlayerStats.ALLOCATION_KEYS:
@@ -660,7 +660,7 @@ func _build_scaffold() -> void:
 	var allocation_rows := [
 		["vitality", "Vitality", "+6 max HP"],
 		["power", "Power", "+1 ATK"],
-		["agility", "Agility", "Speed is not active yet"],
+		["agility", "Agility", "+1 SPD · 4 SPD lead grants +1 turn"],
 	]
 	for row_data in allocation_rows:
 		var key := String(row_data[0])
@@ -700,8 +700,7 @@ func _build_scaffold() -> void:
 		plus.text = "+"
 		plus.custom_minimum_size = Vector2(32, 26)
 		plus.focus_mode = Control.FOCUS_ALL
-		plus.tooltip_text = "Speed has no combat effect yet." if key == "agility" \
-			else "Spend one Attribute Point."
+		plus.tooltip_text = "Spend one Attribute Point."
 		plus.pressed.connect(_on_attribute_change.bind(key, 1))
 		row.add_child(plus)
 		_attribute_plus_buttons[key] = plus

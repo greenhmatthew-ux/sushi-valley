@@ -19,6 +19,7 @@ const XP_PER_LEVEL := 100
 const BASE_MAX_HP := 12
 const BASE_ATK := 6
 const BASE_DEF := 2
+const BASE_SPEED := 5
 
 ## Per level gained. HP grows fastest because incoming damage is what ends a fight, and the
 ## enemy roster's atk climbs steeply (5 -> 10 across the four foes that exist).
@@ -30,7 +31,7 @@ const LEVELS_PER_DEF := 2
 ## Kana's useful allocation values are retained. Attribute Points are intentionally separate
 ## from future Talent unlocks so an early HP choice cannot quietly block a later ability.
 const ALLOCATION_KEYS := ["vitality", "power", "agility"]
-const ACTIVE_ALLOCATION_KEYS := ["vitality", "power"]
+const ACTIVE_ALLOCATION_KEYS := ["vitality", "power", "agility"]
 const VITALITY_HP := 6
 const POWER_ATK := 1
 const AGILITY_SPEED := 1
@@ -77,8 +78,7 @@ static func unspent_attribute_points(xp: int, raw: Dictionary) -> int:
 
 
 ## Mutate one allocation step. Decreases are always allowed for free respec; increases must
-## be active and affordable. Agility remains stored for save compatibility, but cannot grow
-## until the combat loop actually uses Speed.
+## be active and affordable.
 static func adjust_allocation(raw: Dictionary, key: String, delta: int, xp: int) -> bool:
 	if key not in ALLOCATION_KEYS or delta not in [-1, 1]:
 		return false
@@ -104,6 +104,11 @@ static func atk(level: int) -> int:
 
 static func def(level: int) -> int:
 	return BASE_DEF + (maxi(1, level) - 1) / LEVELS_PER_DEF
+
+
+## Preserve Kana's gentle base curve: +1 SPD about every three learning levels.
+static func speed(level: int) -> int:
+	return BASE_SPEED + int(floor((maxi(1, level) - 1) * 0.3))
 
 
 ## Rarity inference and positive-stat scaling preserve Kana's authored gear rules:
@@ -165,7 +170,8 @@ static func from_xp(xp: int, gear_defs: Array[Dictionary] = [],
 		"atk": maxi(1, atk(lv) + int(gear["atk"])
 			+ int(allocations["power"]) * POWER_ATK),
 		"def": maxi(0, def(lv) + int(gear["def"])),
-		"speed": int(gear["spd"]) + int(allocations["agility"]) * AGILITY_SPEED,
+		"speed": maxi(1, speed(lv) + int(gear["spd"])
+			+ int(allocations["agility"]) * AGILITY_SPEED),
 		"xp_into_level": xp_into_level(xp),
 		"xp_per_level": XP_PER_LEVEL,
 	}

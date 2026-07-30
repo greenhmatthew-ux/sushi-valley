@@ -48,7 +48,8 @@ func _level_curve_is_monotonic() -> void:
 	for lv in range(1, 20):
 		if PlayerStats.max_hp(lv + 1) < PlayerStats.max_hp(lv) \
 				or PlayerStats.atk(lv + 1) < PlayerStats.atk(lv) \
-				or PlayerStats.def(lv + 1) < PlayerStats.def(lv):
+				or PlayerStats.def(lv + 1) < PlayerStats.def(lv) \
+				or PlayerStats.speed(lv + 1) < PlayerStats.speed(lv):
 			ok = false
 	check_true("stats never decrease with level", ok)
 	check_eq("level 1 keeps the authored baseline", PlayerStats.max_hp(1), PlayerStats.BASE_MAX_HP)
@@ -72,10 +73,17 @@ func _attribute_allocations() -> void:
 		PlayerStats.atk(3) + PlayerStats.POWER_ATK)
 	check_true("spent points cannot be overspent",
 		not PlayerStats.adjust_allocation(allocations, "power", 1, xp))
-	check_true("Agility cannot buy an inactive Speed effect",
+	check_true("earned points cannot be overspent on Agility",
 		not PlayerStats.adjust_allocation(allocations, "agility", 1, xp))
 	check_true("allocations are freely refundable",
 		PlayerStats.adjust_allocation(allocations, "vitality", -1, xp))
+	check_true("a refunded point can raise active Agility",
+		PlayerStats.adjust_allocation(allocations, "agility", 1, xp))
+	allocated = PlayerStats.from_xp(xp, [], allocations)
+	check_eq("Agility keeps Kana's +1 SPD step", allocated["speed"],
+		PlayerStats.speed(3) + PlayerStats.AGILITY_SPEED)
+	check_true("Agility is freely refundable",
+		PlayerStats.adjust_allocation(allocations, "agility", -1, xp))
 	check_eq("a refund restores the point",
 		PlayerStats.unspent_attribute_points(xp, allocations), 1)
 
@@ -88,7 +96,8 @@ func _gear_bonuses_and_scaling() -> void:
 	check_eq("gear adds max HP", equipped["max_hp"], PlayerStats.BASE_MAX_HP + 6)
 	check_eq("gear adds attack", equipped["atk"], PlayerStats.BASE_ATK + 2)
 	check_eq("gear adds defense", equipped["def"], PlayerStats.BASE_DEF + 1)
-	check_eq("negative speed penalties do not scale", equipped["speed"], -1)
+	check_eq("negative speed penalties reduce the real base stat", equipped["speed"],
+		PlayerStats.BASE_SPEED - 1)
 
 	var rare_gear := {
 		"kind": "gear", "requiredLevel": 12, "rarity": "rare",
