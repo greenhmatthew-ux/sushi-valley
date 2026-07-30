@@ -52,12 +52,18 @@ func _build_tileset() -> void:
 	move_child(wall_layer, floor_layer.get_index() + 1)
 
 
+## The tile the front door occupies in the bottom wall.
+const DOORWAY_X := 6
+
+
 func _build_room() -> void:
-	# Row 0-1 and the outer columns are wall (darker layer); the rest is floor. The bottom
-	# stays open — that edge is the doorway you walk out through.
+	# Rows 0-1, the outer columns, and the bottom row are wall (darker layer); the rest is
+	# floor. The bottom wall has a one-tile gap at DOORWAY_X — that is the doorway, and the
+	# door sprite sits IN it, attached to the wall, rather than floating on open floor.
 	for x in W:
 		for y in H:
-			var is_wall := y == 0 or y == 1 or x == 0 or x == W - 1
+			var is_wall := y == 0 or y == 1 or x == 0 or x == W - 1 \
+				or (y == H - 1 and x != DOORWAY_X)
 			var layer := wall_layer if is_wall else floor_layer
 			layer.set_cell(Vector2i(x, y), 0, FLOOR_TILE)
 

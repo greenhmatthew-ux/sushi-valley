@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://j84c0nrk1241" path="res://assets/props/barrel.png" id="30_bar"]
 [ext_resource type="Texture2D" uid="uid://bgwii8qjekjdq" path="res://assets/props/pot.png" id="31_pot"]
 [ext_resource type="Texture2D" uid="uid://d0lkhqnvw5vo1" path="res://assets/props/crate.png" id="32_crate"]
+[ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="38_house"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -826,6 +827,9 @@ size = Vector2(64, 22)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi7wn"]
 size = Vector2(64, 22)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_big_house"]
+size = Vector2(80, 60)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mor4u"]
 atlas = ExtResource("2_qxjwa")
 region = Rect2(32, 192, 16, 16)
@@ -926,21 +930,17 @@ script = ExtResource("3_ccq23")
 [node name="Props" type="Node2D" parent="." unique_id=476191926]
 y_sort_enabled = true
 
-[node name="@StaticBody2D@4" type="StaticBody2D" parent="Props" unique_id=518219029]
-y_sort_enabled = true
+[node name="House1" parent="Props" instance=ExtResource("20_prop")]
 position = Vector2(176, 272)
+texture = ExtResource("38_house")
+foot_size = Vector2(64, 22)
+foot_offset = Vector2(0, -11)
 
-[node name="@CollisionShape2D@3" type="CollisionShape2D" parent="Props/@StaticBody2D@4" unique_id=1561497390]
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_25l4m")
+[node name="House2Collision" type="StaticBody2D" parent="Props"]
+position = Vector2(529, 243)
 
-[node name="@StaticBody2D@7" type="StaticBody2D" parent="Props" unique_id=1301878616]
-y_sort_enabled = true
-position = Vector2(528, 272)
-
-[node name="@CollisionShape2D@6" type="CollisionShape2D" parent="Props/@StaticBody2D@7" unique_id=1695240894]
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_qi7wn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/House2Collision"]
+shape = SubResource("RectangleShape2D_big_house")
 
 [node name="@Sprite2D@302" type="Sprite2D" parent="Props" unique_id=942573478]
 y_sort_enabled = true
@@ -1101,13 +1101,13 @@ script = ExtResource("11_spawn")
 spawn_id = "house1_door"
 
 [node name="House2Door" parent="Props" unique_id=1108494604 instance=ExtResource("10_door")]
-position = Vector2(528, 272)
+position = Vector2(529, 273)
 target_scene = "res://src/scenes/interior_house.tscn"
 target_spawn = "interior_entry"
 return_spawn = "house2_door"
 
 [node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
-position = Vector2(528, 292)
+position = Vector2(529, 295)
 script = ExtResource("11_spawn")
 spawn_id = "house2_door"
 

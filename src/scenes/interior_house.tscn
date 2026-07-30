@@ -27,6 +27,13 @@ region_enabled = true
 region_rect = Rect2(48, 80, 32, 16)
 texture = ExtResource("7_furn")
 
+[node name="DoorSprite" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(104, 136)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+texture = ExtResource("6_doortex")
+
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -73,16 +80,8 @@ texture = ExtResource("7_furn")
 [node name="Player" parent="Entities" instance=ExtResource("3_player")]
 position = Vector2(104, 108)
 
-[node name="DoorSprite" type="Sprite2D" parent="Entities"]
-texture_filter = 1
-position = Vector2(104, 132)
-offset = Vector2(0, -8)
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
-texture = ExtResource("6_doortex")
-
 [node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
-position = Vector2(104, 132)
+position = Vector2(104, 136)
 target_scene = "res://src/scenes/world.tscn"
 uses_return_spawn = true
 auto_enter = true
