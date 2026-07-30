@@ -127,6 +127,48 @@ func _run() -> void:
 			wilds_source.texture.resource_path ==
 			"res://assets/tilesets/serene_village.png")
 	wilds.queue_free()
+	await process_frame
+
+	var interior: Node2D = load("res://src/scenes/interior_house.tscn").instantiate()
+	root.add_child(interior)
+	await process_frame
+	var interior_floor: TileMapLayer = interior.get_node_or_null("Floor")
+	var interior_bed: Node = interior.get_node_or_null("Entities/Bed")
+	var door_sprite: Sprite2D = interior.get_node_or_null("FloorDecor/DoorSprite")
+	check_true("house interior has a real floor layer", interior_floor != null)
+	check_true("house interior has an authored bed", interior_bed != null)
+	check_true("house interior has an authored exit door", door_sprite != null)
+	if interior_floor != null:
+		var floor_source: TileSetAtlasSource = interior_floor.tile_set.get_source(0)
+		check_true("house floor uses the CC0 Ninja interior sheet",
+			floor_source.texture.resource_path ==
+			"res://assets/tilesets/ninja_interior_floor.png")
+	if interior_bed != null:
+		var bed_texture: AtlasTexture = interior_bed.get("texture")
+		check_true("house bed uses the CC0 Ninja bed sheet",
+			bed_texture != null and bed_texture.atlas.resource_path ==
+			"res://assets/objects/ninja_beds.png")
+	if door_sprite != null:
+		var door_texture: AtlasTexture = door_sprite.texture
+		check_true("house door uses the CC0 Ninja elements sheet",
+			door_texture != null and door_texture.atlas.resource_path ==
+			"res://assets/objects/ninja_interior_elements.png")
+	var interior_player: CharacterBody2D = interior.get_node_or_null("Entities/Player")
+	if interior_player != null:
+		interior_player.position = Vector2(104, 108)
+		var room_start := interior_player.position
+		Input.action_press("move_left")
+		await _physics_frames(20)
+		Input.action_release("move_left")
+		check_true("house entry lane still reaches the Host side",
+			interior_player.position.x < room_start.x - 10.0)
+		interior_player.position = Vector2(44, 100)
+		Input.action_press("move_up")
+		await _physics_frames(30)
+		Input.action_release("move_up")
+		check_true("bed blocks only at its visible base (y=%.1f)" % interior_player.position.y,
+			interior_player.position.y > 82.0)
+	interior.queue_free()
 
 	_finish()
 

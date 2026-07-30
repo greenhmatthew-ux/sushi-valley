@@ -6,17 +6,15 @@ extends Node2D
 ## placed at the arrival marker. Player-carried state (Inv, Learning) rides the autoloads
 ## across the scene swap, so only the arrival point is passed in.
 ##
-## Floor and walls share one tile — a clean, low-variance dirt swatch already used
-## everywhere else in the game (assets/tilesets/serene_village.png) — rather than a new
-## texture. The wall reads as distinct only via a darker modulate on its own TileMapLayer,
-## same material in shadow, not a different asset.
+## Floor and walls share one warm Ninja Adventure interior tile. The wall reads as distinct
+## via a darker modulate on its own TileMapLayer: the same material in shadow, not a collage.
 
 const TILE := 16
 const W := 13   # room width in tiles
 const H := 9    # room height in tiles
 
-const FLOOR_TEX := preload("res://assets/tilesets/serene_village.png")
-const FLOOR_TILE := Vector2i(10, 2)   # confirmed clean/uniform — no neighboring-biome bleed
+const FLOOR_TEX := preload("res://assets/tilesets/ninja_interior_floor.png")
+const FLOOR_TILE := Vector2i(4, 2)   # complete warm brick centre tile; repeats without seams
 const WALL_TINT := Color(0.62, 0.5, 0.4)   # same tile, shaded darker to read as a wall
 
 @onready var floor_layer: TileMapLayer = $Floor

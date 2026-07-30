@@ -8,9 +8,10 @@ verified against the running scenes — not an aspirational or inherited list.
 
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
-  merchant), hearts HUD icon, Forge anvil, Workshop hammer, and the eight rendered Talent
-  icons (Blade Sweep, Kunai Toss, Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte,
-  Blood Blade). Ki Focus, Rune Ward, Riposte, and Blood Blade are the unmodified
+  merchant), hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
+  furniture and exit door, and the eight rendered Talent icons (Blade Sweep, Kunai Toss,
+  Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade). Ki Focus, Rune Ward,
+  Riposte, and Blood Blade are the unmodified
   `Ui/Skill Icon/Spell/AttackUpgrade.png`, `Ui/Skill Icon/Spell/DefenseUpgrade.png`,
   `Ui/Skill Icon/Spell/Counter.png`, and `Ui/Skill Icon/Spell/Cut.png` sources.
   No restrictions of any kind;
@@ -20,13 +21,6 @@ verified against the running scenes — not an aspirational or inherited list.
   only record. Village/wilds terrain, all props (trees, rocks, barrels, crates, berry bush),
   building exteriors, and village meadow/edge flower details. **Re-confirm entitlement before
   any commercial release.**
-- **Sprout Lands - Sprites - Basic pack** by Cup Nooble — the pack's own `read_me.txt`
-  states **non-commercial projects only**, credit required ("Assets - From: Sprout Lands -
-  By: Cup Nooble"), no AI-training use, no redistribution of the raw pack. Used for interior
-  furniture and the door sprite. **This conflicts with an earlier
-  version of this file that claimed "commercial use" — that claim could not be verified
-  against the actual license text and should not be relied on. Confirm a separate/commercial
-  license before any commercial release; non-commercial/dev use is fine as-is.**
 - **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
   ("Icons by Kyrise, https://kyrise.itch.io/"). Item icons in `assets/icons/items/`, including
   the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.
@@ -39,6 +33,10 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Removed for licensing (2026-07)
 
+- **Sprout Lands - Sprites - Basic pack** was removed from runtime use after its bundled
+  `read_me.txt` proved to be non-commercial-only. Serene Village now supplies outdoor meadow
+  details, while Ninja Adventure supplies the house interior and door. No Sprout texture is
+  referenced by a current `.tscn` or `.gd` file.
 - **Mana Seed RPG Starter Pack** (`home_interiors_timber_roof.png`) was used for one
   interior room's floor/wall tiles. Its license explicitly states the art **must not be used
   alongside any generative AI content** — including AI-assisted code — and asks that the

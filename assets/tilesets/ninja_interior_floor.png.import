@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c824hklem6st3"
-path="res://.godot/imported/sprout-basic-furniture.png-5d3a1a90bd127529b32b14d2e0435cff.ctex"
+uid="uid://kdyhqy4qeuon"
+path="res://.godot/imported/ninja_interior_floor.png-b2e4c355441c61d8fb22c5381d6ef074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/sprout-basic-furniture.png"
-dest_files=["res://.godot/imported/sprout-basic-furniture.png-5d3a1a90bd127529b32b14d2e0435cff.ctex"]
+source_file="res://assets/tilesets/ninja_interior_floor.png"
+dest_files=["res://.godot/imported/ninja_interior_floor.png-b2e4c355441c61d8fb22c5381d6ef074.ctex"]
 
 [params]
 

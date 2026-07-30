@@ -17,7 +17,7 @@ doing that.
 | --- | --- | --- |
 | Ninja Adventure - Asset Pack | CC0 1.0 | In use for art and six verified music tracks. No restrictions. |
 | Serene Village Revamped (LimeZu) | Owner-confirmed commercial, no license file in the pack | In use. Re-confirm before commercial release. |
-| Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | In use for dev. **Blocks commercial release** until a commercial license is separately obtained. |
+| Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | **Removed 2026-07.** No current runtime references remain. |
 | Kyrise's 16x16 RPG Icon Pack V1.3 | CC BY 4.0 | In use (item icons). Attribution required. |
 | Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
 | Mana Seed RPG Starter Pack | Free, but explicitly **forbids any use alongside generative AI** (including AI-assisted code) | **Removed 2026-07** — incompatible with an AI-assisted dev workflow. Do not reimport. |
@@ -75,11 +75,7 @@ This music audit does not cover or make a provenance claim for
 
 1. Re-confirm the Serene Village Revamped entitlement (no license file ships with the pack;
    the only record is the owner's prior confirmation).
-2. Resolve Sprout Lands' non-commercial restriction — either obtain a commercial license from
-   Cup Nooble or replace the remaining Sprout Lands-sourced files
-   (`sprout-basic-furniture.png` and `door.png`). Both outdoor meadow layers now use Serene
-   Village frames instead.
-3. Scan for any newly-imported pack the same way: confirm it's actually rendered (grep for
+2. Scan for any newly-imported pack the same way: confirm it's actually rendered (grep for
    its `res://assets/...` path), then read that pack's real license file in
    `D:\Asset Library` — don't trust an inherited credits list.
 
