@@ -404,19 +404,35 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	text.add_child(title)
 	var detail := Label.new()
 	var required := String(ability.get("requiredWeaponType", ""))
-	detail.text = "%s weapon  ·  %s" % [required.capitalize(), ability.get("desc", "")]
+	detail.name = "TalentDetail_" + String(ability.get("id", ""))
+	var hits := maxi(1, int(ability.get("hits", 1)))
+	var effect := "%s %d" % [String(ability.get("type", "action")).capitalize(),
+		int(ability.get("power", 0))]
+	if hits > 1:
+		effect += " x%d hits" % hits
+	detail.text = "%s weapon  ·  %s  ·  %s" % [
+		required.capitalize(), effect, ability.get("desc", "")]
 	detail.add_theme_font_size_override("font_size", 10)
 	detail.add_theme_color_override("font_color", COL_HEADING)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.add_child(detail)
 	var button := Button.new()
 	button.name = "TalentUnlock_" + String(ability.get("id", ""))
-	button.text = "Unlock"
 	button.custom_minimum_size = Vector2(76, 32)
 	button.focus_mode = Control.FOCUS_ALL
-	button.disabled = Learning.unspent_talent_points() < cost
-	button.tooltip_text = "Earn Talent Points by gaining levels." if button.disabled \
-		else "Permanently learn this action."
+	var required_level := int(ability.get("requiredLevel", 1))
+	var current_level := _player_level()
+	var can_unlock := Learning.can_unlock_talent(String(ability.get("id", "")))
+	button.disabled = not can_unlock
+	if current_level < required_level:
+		button.text = "Lv %d" % required_level
+		button.tooltip_text = "Reach level %d to unlock this Talent." % required_level
+	elif Learning.unspent_talent_points() < cost:
+		button.text = "Need %d TP" % cost
+		button.tooltip_text = "Earn Talent Points by gaining levels."
+	else:
+		button.text = "Unlock"
+		button.tooltip_text = "Permanently learn this action."
 	button.pressed.connect(_on_talent_unlock.bind(String(ability.get("id", ""))))
 	row.add_child(button)
 	return card

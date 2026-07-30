@@ -14,6 +14,8 @@ var abilities := {
 		"requiredWeaponType": "blade"},
 	"kunai": {"id": "kunai", "type": "attack", "spCost": 1, "role": "ranger",
 		"requiredWeaponType": "ranged"},
+	"iaido": {"id": "iaido", "type": "attack", "spCost": 2, "role": "samurai",
+		"requiredLevel": 4, "requiredWeaponType": "blade", "hits": 2},
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
 		"spCost": 1, "requiredWeaponType": "kana"},
 }
@@ -87,6 +89,14 @@ func _talent_unlocks() -> void:
 		["sweep", "kunai", "rune_ward"])
 	check_eq("next choices expose one honest action per role",
 		choices.map(func(a): return a["id"]), ["sweep", "kunai"])
+	var follow_up := AbilityRules.next_talent_defs(
+		2, {"skills": [], "unlockedAbilities": ["sweep"]}, abilities,
+		["sweep", "iaido", "kunai", "rune_ward"])
+	check_true("the next Samurai Talent stays visible before its level",
+		follow_up.map(func(a): return a["id"]).has("iaido"))
+	check_true("visible level-locked Talent still cannot be purchased",
+		not AbilityRules.can_unlock_talent(abilities["iaido"], 3,
+			{"skills": [], "unlockedAbilities": ["sweep"]}, abilities))
 
 
 func _finish() -> void:

@@ -86,6 +86,13 @@ func _initialize() -> void:
 	sweep_unlock.pressed.emit()
 	check_true("Talent control permanently learns the action",
 		"sweep" in learning.profile.build()["unlockedAbilities"])
+	var iaido_unlock: Button = panel.find_child("TalentUnlock_iaido", true, false)
+	var iaido_detail: Label = panel.find_child("TalentDetail_iaido", true, false)
+	check_true("the next Samurai Talent remains visible", iaido_unlock != null)
+	check_true("the unaffordable follow-up states its TP cost",
+		iaido_unlock != null and iaido_unlock.disabled and iaido_unlock.text == "Need 2 TP")
+	check_true("multi-hit Talent strength is visible before purchase",
+		iaido_detail != null and iaido_detail.text.contains("Attack 11 x2 hits"))
 	check_true("audited Talent art remains visible after learning the action",
 		panel.find_child("AbilityIcon_sweep", true, false) != null)
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()

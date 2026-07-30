@@ -106,7 +106,7 @@ static func unlock_talent(ability_id: String, level: int, build: Dictionary,
 
 
 ## Keep the choice readable: show the earliest honest unknown action for each authored role.
-static func next_talent_defs(level: int, build: Dictionary, abilities: Dictionary,
+static func next_talent_defs(_level: int, build: Dictionary, abilities: Dictionary,
 		authored_order: Array = []) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	var roles_seen := {}
@@ -115,8 +115,6 @@ static func next_talent_defs(level: int, build: Dictionary, abilities: Dictionar
 		var ability: Dictionary = abilities.get(String(raw_id), {})
 		var role := String(ability.get("role", "adventurer"))
 		if roles_seen.has(role) or is_known(ability, build) or not is_honest_talent(ability):
-			continue
-		if level < int(ability.get("requiredLevel", 1)):
 			continue
 		roles_seen[role] = true
 		out.append(ability)

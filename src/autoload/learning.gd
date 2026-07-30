@@ -97,6 +97,13 @@ func next_talent_defs() -> Array[Dictionary]:
 		level, profile.build(), DB.abilities, DB.ability_order)
 
 
+func can_unlock_talent(ability_id: String) -> bool:
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	var level := PlayerStats.level_from_xp(xp)
+	return AbilityRules.can_unlock_talent(
+		DB.ability(ability_id), level, profile.build(), DB.abilities)
+
+
 func unlock_talent(ability_id: String) -> bool:
 	var build := profile.build()
 	var xp := int(profile.data.get("stats", {}).get("xp", 0))
