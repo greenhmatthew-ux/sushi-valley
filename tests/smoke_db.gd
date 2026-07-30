@@ -35,6 +35,10 @@ func _initialize() -> void:
 	# a pack that silently failed to load OR one that started shadowing ids.
 	check("cards", db.cards.size(), 1392)
 	check_true("card_order matches cards", db.card_order.size() == db.cards.size())
+	check("pronunciation clips", db.pronunciation_clips.size(), 366)
+	check("pronunciation card mappings", db.pronunciation_cards.size(), 459)
+	check_str("pronunciation provider",
+		db.pronunciation_source.get("provider", ""), "Kanji alive")
 
 	# Spot-check real content, not just counts — a loader that returns empty
 	# dictionaries would pass size checks on an empty table otherwise.
@@ -42,6 +46,13 @@ func _initialize() -> void:
 	check_str("enemy mushroom", db.enemy("mushroom").get("name", ""), "Spore Mushroom")
 	check_str("ability strike", db.ability("strike").get("name", ""), "Strike")
 	check_str("card kana-a prompt", db.card("kana-a").get("prompt", ""), "あ")
+	var pronunciation: Dictionary = db.pronunciation_for_card(
+		"core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2")
+	check_true("pronunciation lookup resolves a known card", not pronunciation.is_empty())
+	check_true("pronunciation lookup has a shipped OGG",
+		String(pronunciation.get("path", "")).ends_with(".ogg"))
+	check_true("pronunciation lookup leaves kana silent",
+		db.pronunciation_for_card("kana-a").is_empty())
 	check_true("lesson kana-vowels exists", db.lessons.has("kana-vowels"))
 	check_true("lesson kana-vowels has cards",
 		(db.lesson("kana-vowels").get("cardIds", []) as Array).size() > 0)

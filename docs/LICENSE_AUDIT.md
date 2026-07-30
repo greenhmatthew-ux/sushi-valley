@@ -1,9 +1,10 @@
 # Asset License Audit
 
-The external source pool is the full `D:\Asset Library` tree: both `Assets` and `Assets 2`.
+The art source pool is the full `D:\Asset Library` tree: both `Assets` and `Assets 2`.
 Presence in that library means **available for inspection**, not automatically cleared for
-use. See [`ASSET_LIBRARY_GUIDE.md`](ASSET_LIBRARY_GUIDE.md) for selection rules and
-[`ART_STANDARD.md`](ART_STANDARD.md) for the current in-game art canon.
+use. Learning media may also come from an independently audited official source, as Kanji
+alive does below. See [`ASSET_LIBRARY_GUIDE.md`](ASSET_LIBRARY_GUIDE.md) for art-selection
+rules and [`ART_STANDARD.md`](ART_STANDARD.md) for the current in-game art canon.
 
 There is no build tooling, JSON registry, or audit script in this project (no `npm`, no
 `package.json`). The only reliable way to know what's actually in use is to grep the running
@@ -18,6 +19,7 @@ doing that.
 | Serene Village Revamped (LimeZu) | Owner-confirmed commercial, no license file in the pack | In use. Re-confirm before commercial release. |
 | Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | In use for dev. **Blocks commercial release** until a commercial license is separately obtained. |
 | Kyrise's 16x16 RPG Icon Pack V1.3 | CC BY 4.0 | In use (item icons). Attribution required. |
+| Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
 | Mana Seed RPG Starter Pack | Free, but explicitly **forbids any use alongside generative AI** (including AI-assisted code) | **Removed 2026-07** — incompatible with an AI-assisted dev workflow. Do not reimport. |
 
 ## Blocked
@@ -27,6 +29,8 @@ doing that.
   pipeline. It is.
 - Never ship ripped or fan assets, excluded commercial IP, CC BY-NC/BY-ND, personal-use-only,
   or license-ambiguous content without written clearance.
+- Imported Anki deck media remains excluded. A deck file containing audio does not grant
+  redistribution rights; approved pronunciation is sourced and attributed independently.
 
 ## Before a commercial release
 

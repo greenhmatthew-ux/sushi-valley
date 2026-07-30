@@ -20,6 +20,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 Bus="*res://src/autoload/bus.gd"
 DB="*res://src/autoload/db.gd"
+Audio="*res://src/autoload/audio.gd"
 SaveGame="*res://src/autoload/save_game.gd"
 Learning="*res://src/autoload/learning.gd"
 Inv="*res://src/autoload/inv.gd"

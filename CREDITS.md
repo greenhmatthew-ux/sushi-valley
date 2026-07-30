@@ -43,13 +43,29 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Audio and voices
 
-**There is no Japanese audio in this game, and NPCs have no voices.** Every imported deck
-is `mediaPolicy: excluded`, so no recorded pronunciation was ever brought into the project.
+### Japanese pronunciation
+
+- **Kanji alive** — human recordings by male and female native Japanese speakers,
+  **CC BY 4.0**. Sushi Valley bundles 366 unmodified Ogg recordings and maps them by
+  explicit card id to 459 current vocabulary cards whose written form and reading both
+  match the source catalog.
+  - Attribution: **Audio from Kanji alive (kanjialive.com), licensed CC BY 4.0.**
+  - Source: <https://github.com/kanjialive/kanji-data-media>
+  - Pinned source revision: `2d2a4931eec6e0cb532d5102766273c2323f96db`
+  - License: <https://creativecommons.org/licenses/by/4.0/>
+  - Import details and per-file checksums:
+    `assets/audio/japanese/kanji_alive/NOTICE.md` and
+    `data/learning/pronunciation-audio.json`
+
+Every imported Anki deck remains `mediaPolicy: excluded`. Its audio was not copied into
+this project: availability inside an `.apkg` is not evidence of redistribution rights.
+Kanji alive is an independently licensed pronunciation source joined to approved cards
+only after written-form and reading validation. A card stays silent when that validation
+is ambiguous or fails.
 
 An earlier build synthesised pronunciation with the OS text-to-speech engine. That was
 removed: a synthesised voice is not a real voice, and in a game whose purpose is teaching a
 language, an approximation of native pronunciation is a liability rather than a feature.
-Japanese is presented as text only until genuine recorded audio with clear rights exists.
 
 Do not reintroduce text-to-speech or any generated voice.
 

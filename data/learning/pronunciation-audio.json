@@ -1,0 +1,3050 @@
+{
+  "version": 1,
+  "source": {
+    "provider": "Kanji alive",
+    "url": "https://kanjialive.com/",
+    "repository": "https://github.com/kanjialive/kanji-data-media",
+    "revision": "2d2a4931eec6e0cb532d5102766273c2323f96db",
+    "archive": "https://media.kanjialive.com/examples_audio/audio-ogg.zip",
+    "archiveSha256": "138ccec5e7701a378642cb3f35727de964cc666351bb9f00765706583f89fe9d",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Audio from Kanji alive (kanjialive.com), licensed CC BY 4.0.",
+    "noTranscoding": true
+  },
+  "stats": {
+    "cardsScanned": 1392,
+    "cardsMapped": 459,
+    "uniqueClips": 366,
+    "cardsWithoutMatch": 933,
+    "catalogRows": 1235,
+    "catalogExamples": 10156,
+    "excludedCatalogRows": 10,
+    "surfaceReadingMismatches": 4
+  },
+  "clips": {
+    "ka-023046a0fe7dc1cfee66": {
+      "path": "res://assets/audio/japanese/kanji_alive/seki-aka_06_f.ogg",
+      "prompt": "赤い",
+      "reading": "あかい",
+      "sourceFile": "audio-ogg/seki-aka_06_f.ogg",
+      "sha256": "f90241468c15019b1a34b99de1929e0b00ec340a90c2c740288280676e32c41f"
+    },
+    "ka-02e83f3614546f84c3a6": {
+      "path": "res://assets/audio/japanese/kanji_alive/(gobu)za(ki)_06_a.ogg",
+      "prompt": "咲く",
+      "reading": "さく",
+      "sourceFile": "audio-ogg/(gobu)za(ki)_06_a.ogg",
+      "sha256": "f06d20cbd5ce9dc410164bbabecba7e0854296674c9897892409dbe175fc086f"
+    },
+    "ka-0395b08556ee9fa9e299": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-saki_06_h.ogg",
+      "prompt": "先ず",
+      "reading": "まず",
+      "sourceFile": "audio-ogg/sen-saki_06_h.ogg",
+      "sha256": "8f75874f7a8332e2e6c5cb3a9f8efa85ef8310dd19647a7c941b45e030839957"
+    },
+    "ka-046507f61365ca078f6f": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_c.ogg",
+      "prompt": "下",
+      "reading": "した",
+      "sourceFile": "audio-ogg/ge-shita_06_c.ogg",
+      "sha256": "837b0427216231b4bb195b63e4fa3c9f78cb57acb8c9d1623355c467e1655337"
+    },
+    "ka-0500a93104e9105b15d1": {
+      "path": "res://assets/audio/japanese/kanji_alive/haji(maru)_06_f.ogg",
+      "prompt": "始める",
+      "reading": "はじめる",
+      "sourceFile": "audio-ogg/haji(maru)_06_f.ogg",
+      "sha256": "d696ff4df6c4caaacbcbcf573084d698ceeac97b59297f8288cf9cb913e50dd2"
+    },
+    "ka-0521aa31557b2de74793": {
+      "path": "res://assets/audio/japanese/kanji_alive/oshi(eru)_06_j.ogg",
+      "prompt": "教える",
+      "reading": "おしえる",
+      "sourceFile": "audio-ogg/oshi(eru)_06_j.ogg",
+      "sha256": "f6a001ba8495ab12bce84831bed526ec0c84c19cd7b0a3f1d87b22fe6198c42c"
+    },
+    "ka-074a2c2311dbdbd97d94": {
+      "path": "res://assets/audio/japanese/kanji_alive/ani_06_d.ogg",
+      "prompt": "お兄さん",
+      "reading": "おにいさん",
+      "sourceFile": "audio-ogg/ani_06_d.ogg",
+      "sha256": "faf0f668d78719925f96e889a035894a55398d66ceadbfbfa9765c8b4bca0c15"
+    },
+    "ka-078e1a20fbdffe8d4461": {
+      "path": "res://assets/audio/japanese/kanji_alive/aru(ku)_06_f.ogg",
+      "prompt": "散歩する",
+      "reading": "さんぽする",
+      "sourceFile": "audio-ogg/aru(ku)_06_f.ogg",
+      "sha256": "16b327bf48a38c5a1155644ac02e33bf439d5b92954ed775d36b064afd9f9047"
+    },
+    "ka-07b09577adaef95e6cb0": {
+      "path": "res://assets/audio/japanese/kanji_alive/futo(i)_06_f.ogg",
+      "prompt": "太る",
+      "reading": "ふとる",
+      "sourceFile": "audio-ogg/futo(i)_06_f.ogg",
+      "sha256": "2fbc254790df36b43e2f1faf60bc9c11977a2ef910f8fa028291ef710ed5a337"
+    },
+    "ka-086008fd4222811ad047": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuro_06_c.ogg",
+      "prompt": "黒い",
+      "reading": "くろい",
+      "sourceFile": "audio-ogg/kuro_06_c.ogg",
+      "sha256": "2e0cde4afb2852d842e79fa6a4ee7f242ac0349af3a72972029f618786fb9211"
+    },
+    "ka-08f3a221170633aeaf9d": {
+      "path": "res://assets/audio/japanese/kanji_alive/nani_06_e.ogg",
+      "prompt": "何か",
+      "reading": "なにか",
+      "sourceFile": "audio-ogg/nani_06_e.ogg",
+      "sha256": "fa298b8044ff59f79e8ff6127fb8a34348282d26db70e405adc669c19c75bd03"
+    },
+    "ka-09b6f67b4e0522ee026f": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-no(ru)_06_h.ogg",
+      "prompt": "乗る",
+      "reading": "のる",
+      "sourceFile": "audio-ogg/jou-no(ru)_06_h.ogg",
+      "sha256": "fe3feed82b83a36deb23f604bf5fd4ccbecd38cf8430160bffd1e48933be2058"
+    },
+    "ka-0a5a995c7158eccdbeaa": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_e.ogg",
+      "prompt": "二日",
+      "reading": "ふつか",
+      "sourceFile": "audio-ogg/nichi-hi_06_e.ogg",
+      "sha256": "38259f1d513ce8018eeb45d6c1f57d48a1c3fe70f4581c9375059f29608cdfca"
+    },
+    "ka-0baab769c20c26538203": {
+      "path": "res://assets/audio/japanese/kanji_alive/muzuka(shii)_06_j.ogg",
+      "prompt": "難しい",
+      "reading": "むずかしい",
+      "sourceFile": "audio-ogg/muzuka(shii)_06_j.ogg",
+      "sha256": "39aa526ee361c1824c163677abf836ce0689d781f9c2c214340f200a19cd3cb5"
+    },
+    "ka-0ca434541f5cfce77960": {
+      "path": "res://assets/audio/japanese/kanji_alive/(beree)bou_06_a.ogg",
+      "prompt": "帽子",
+      "reading": "ぼうし",
+      "sourceFile": "audio-ogg/(beree)bou_06_a.ogg",
+      "sha256": "14c09e1dc179e6e5be8e1e5ee8e3cdab95f2a93454909f271ec6cb0c487ec8b8"
+    },
+    "ka-0d3e8a4ad7c1d6abeeaf": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ya)chin_06_c.ogg",
+      "prompt": "家賃",
+      "reading": "やちん",
+      "sourceFile": "audio-ogg/(ya)chin_06_c.ogg",
+      "sha256": "8ec1a6ffc325a187bd287364b5a0c4710741052dadc70da65337296a72b7f93c"
+    },
+    "ka-0d9160bf9d8923028722": {
+      "path": "res://assets/audio/japanese/kanji_alive/ki(eru)_06_j.ogg",
+      "prompt": "消す",
+      "reading": "けす",
+      "sourceFile": "audio-ogg/ki(eru)_06_j.ogg",
+      "sha256": "af21d7b574c3d9396cb14cc47dc10f132bee8438518d3833d405eded5380e964"
+    },
+    "ka-0ea41d0dcaf87d39495e": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuchi_06_e.ogg",
+      "prompt": "口",
+      "reading": "くち",
+      "sourceFile": "audio-ogg/kuchi_06_e.ogg",
+      "sha256": "d42fd8df9b1e29d1c85c7425f312e2ec97ae8954e38a62422d38b9996250bea3"
+    },
+    "ka-0eb6ca8ec299ce26383e": {
+      "path": "res://assets/audio/japanese/kanji_alive/mae_06_f.ogg",
+      "prompt": "名前",
+      "reading": "なまえ",
+      "sourceFile": "audio-ogg/mae_06_f.ogg",
+      "sha256": "7b542a163bfe2e4437da5910b2363473a25e4998d6dd2e4d8d4f9716fa229b43"
+    },
+    "ka-0fd86aee0adc865dd551": {
+      "path": "res://assets/audio/japanese/kanji_alive/etsu-ko(su)_06_f.ogg",
+      "prompt": "引っ越す",
+      "reading": "ひっこす",
+      "sourceFile": "audio-ogg/etsu-ko(su)_06_f.ogg",
+      "sha256": "ff0713514b899e8fc8661789e0235d8395daa2b88773211b6dc7665dbcae5bd6"
+    },
+    "ka-10511cdc0f0f764c12d3": {
+      "path": "res://assets/audio/japanese/kanji_alive/9_06_g.ogg",
+      "prompt": "九日",
+      "reading": "ここのか",
+      "sourceFile": "audio-ogg/9_06_g.ogg",
+      "sha256": "fae73cf86c307da644236eaece4f5a4d5db519a4c34e36210277fed8ea3feedf"
+    },
+    "ka-118aaa857fc0902832e5": {
+      "path": "res://assets/audio/japanese/kanji_alive/wa(ru)_06_c.ogg",
+      "prompt": "割る",
+      "reading": "わる",
+      "sourceFile": "audio-ogg/wa(ru)_06_c.ogg",
+      "sha256": "8ef94fcda62342736f43fee5a5f8b445e61895ac9e3f05aa3ab82b6f84522ab8"
+    },
+    "ka-12548442417e97ab36ac": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-tsuka(u)_06_h.ogg",
+      "prompt": "使う",
+      "reading": "つかう",
+      "sourceFile": "audio-ogg/shi-tsuka(u)_06_h.ogg",
+      "sha256": "cb5c87e03ca94b56e2a3a330c59e362a3fc31e89c129dc8a0e43c5487ffcb585"
+    },
+    "ka-1307adda123e7e476a42": {
+      "path": "res://assets/audio/japanese/kanji_alive/ima_06_j.ogg",
+      "prompt": "今年",
+      "reading": "ことし",
+      "sourceFile": "audio-ogg/ima_06_j.ogg",
+      "sha256": "04227808aa5ed2c869f0c20450e6d33b369e7485b50ca262ad129af4b4b3f19c"
+    },
+    "ka-141f0c3628983071924a": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-ue_06_f.ogg",
+      "prompt": "上",
+      "reading": "うえ",
+      "sourceFile": "audio-ogg/jou-ue_06_f.ogg",
+      "sha256": "42d73a3f6561b4a1ef00ac46419115eec03e9f1f11ebabfd425bbb88c49dbb48"
+    },
+    "ka-150e7df697d39a8b4d88": {
+      "path": "res://assets/audio/japanese/kanji_alive/ken-ta(teru)_06_e.ogg",
+      "prompt": "建つ",
+      "reading": "たつ",
+      "sourceFile": "audio-ogg/ken-ta(teru)_06_e.ogg",
+      "sha256": "a9780e564d529a4563bc003150bc731415fc66e7aac5af5e2560f733626b61c6"
+    },
+    "ka-1511393332742ea2f0e9": {
+      "path": "res://assets/audio/japanese/kanji_alive/shou-masa(ru)_06_i.ogg",
+      "prompt": "勝つ",
+      "reading": "かつ",
+      "sourceFile": "audio-ogg/shou-masa(ru)_06_i.ogg",
+      "sha256": "ea1c7c59a7eb11da2574abf170e02e2bee699ac105856c770d336ecf9cb04d1a"
+    },
+    "ka-15b8db0daa9efc98f5f0": {
+      "path": "res://assets/audio/japanese/kanji_alive/a(taru)_06_c.ogg",
+      "prompt": "本当",
+      "reading": "ほんとう",
+      "sourceFile": "audio-ogg/a(taru)_06_c.ogg",
+      "sha256": "a71e8d551e81787e2b86e50aa385fdfc27b1da1d7e757e2a33f9bd089b968725"
+    },
+    "ka-16cbb79fa7ebd15847af": {
+      "path": "res://assets/audio/japanese/kanji_alive/tou-na(geru)_06_j.ogg",
+      "prompt": "投げる",
+      "reading": "なげる",
+      "sourceFile": "audio-ogg/tou-na(geru)_06_j.ogg",
+      "sha256": "229fb7313297dedebd63e8ad8f5f0c654d25a1812ce7e26ee4ee2d7d9fa9a752"
+    },
+    "ka-17e163ca0fc730ff9210": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-ue_06_k.ogg",
+      "prompt": "上げる",
+      "reading": "あげる",
+      "sourceFile": "audio-ogg/jou-ue_06_k.ogg",
+      "sha256": "48749ef3422cd5dcb6e5a9b3931042d28a9269e6bc834825d8873b181920e4f4"
+    },
+    "ka-18632842aa6425161be8": {
+      "path": "res://assets/audio/japanese/kanji_alive/otto_06_f.ogg",
+      "prompt": "大丈夫",
+      "reading": "だいじょうぶ",
+      "sourceFile": "audio-ogg/otto_06_f.ogg",
+      "sha256": "11c8c080ab0448d4dcb9fdbd66653b64a3d5e1e07315629fc990c7ce33ee675a"
+    },
+    "ka-18b6ac74f0858c1dbc99": {
+      "path": "res://assets/audio/japanese/kanji_alive/ou-o(saeru)_06_d.ogg",
+      "prompt": "押す",
+      "reading": "おす",
+      "sourceFile": "audio-ogg/ou-o(saeru)_06_d.ogg",
+      "sha256": "6337322fa9029410dd376f71141d519f2e334ad7d820b9fca0d9139d083bd8cd"
+    },
+    "ka-18c82854c61d32221321": {
+      "path": "res://assets/audio/japanese/kanji_alive/(sen)taku(ki)_06_c.ogg",
+      "prompt": "洗濯する",
+      "reading": "せんたくする",
+      "sourceFile": "audio-ogg/(sen)taku(ki)_06_c.ogg",
+      "sha256": "60c2ebb577ccc018bda030b6cf0bcd25e21f74b4593332acbac2e970d6972fb9"
+    },
+    "ka-18d5aa332fef0959f50d": {
+      "path": "res://assets/audio/japanese/kanji_alive/soku-ashi_06_g.ogg",
+      "prompt": "足りる",
+      "reading": "たりる",
+      "sourceFile": "audio-ogg/soku-ashi_06_g.ogg",
+      "sha256": "c0ef77eb0f66b26e1ede085128fa3f7c0a106b856664dc68e4d261644d9543dc"
+    },
+    "ka-190e1dec2283160bdc7b": {
+      "path": "res://assets/audio/japanese/kanji_alive/hikari_06_i.ogg",
+      "prompt": "光る",
+      "reading": "ひかる",
+      "sourceFile": "audio-ogg/hikari_06_i.ogg",
+      "sha256": "1f859507be170bf4255e3a9b8a730aeba35d76a61156e1e1df4164a7e5fd3e8c"
+    },
+    "ka-1931706e6881d5828c17": {
+      "path": "res://assets/audio/japanese/kanji_alive/ushi(ro)_06_a.ogg",
+      "prompt": "午後",
+      "reading": "ごご",
+      "sourceFile": "audio-ogg/ushi(ro)_06_a.ogg",
+      "sha256": "11d08d1122fefd9e6244533b914d099f1a29e5afc2df31db9c19245c2e3c5c1b"
+    },
+    "ka-194771a440707a9ba6be": {
+      "path": "res://assets/audio/japanese/kanji_alive/yuu-yasa(shii)_06_k.ogg",
+      "prompt": "優しい",
+      "reading": "やさしい",
+      "sourceFile": "audio-ogg/yuu-yasa(shii)_06_k.ogg",
+      "sha256": "356b41cdde1b3fba6152c5cf5b9bd924f5fbe1b23a3f43fc0a3d56fd6c2dfbf0"
+    },
+    "ka-196b40cabec361d836aa": {
+      "path": "res://assets/audio/japanese/kanji_alive/seki-aka_06_g.ogg",
+      "prompt": "赤ちゃん",
+      "reading": "あかちゃん",
+      "sourceFile": "audio-ogg/seki-aka_06_g.ogg",
+      "sha256": "7a67013f90040c221494438f4ebb4c68ede30c81cf7cf6cd3b971bd0d83247d6"
+    },
+    "ka-1a2e1de4eef0b3c27b55": {
+      "path": "res://assets/audio/japanese/kanji_alive/shuu-nara(u)_06_a.ogg",
+      "prompt": "練習する",
+      "reading": "れんしゅうする",
+      "sourceFile": "audio-ogg/shuu-nara(u)_06_a.ogg",
+      "sha256": "f7e22a57225be40c96332ad76d0f3f2393cecdcc91af4bfe0e02b1409524e24b"
+    },
+    "ka-1a6ed23c5b0dea1d731b": {
+      "path": "res://assets/audio/japanese/kanji_alive/kin-tsuto(meru)_06_i.ogg",
+      "prompt": "勤める",
+      "reading": "つとめる",
+      "sourceFile": "audio-ogg/kin-tsuto(meru)_06_i.ogg",
+      "sha256": "a249cb9f3bb3ddfd2cac98a2074b5676d9b50dadad0d8f0e6cc7c438649e6ebd"
+    },
+    "ka-1b9b63e69fd720e75c9a": {
+      "path": "res://assets/audio/japanese/kanji_alive/chou-machi_06_d.ogg",
+      "prompt": "町",
+      "reading": "まち",
+      "sourceFile": "audio-ogg/chou-machi_06_d.ogg",
+      "sha256": "6b5a4aad97cb08c8762632bca1c0004601940f925a891e161a5d93a704305379"
+    },
+    "ka-1ba7bafb6d6b7760301c": {
+      "path": "res://assets/audio/japanese/kanji_alive/onna_06_g.ogg",
+      "prompt": "女",
+      "reading": "おんな",
+      "sourceFile": "audio-ogg/onna_06_g.ogg",
+      "sha256": "6b71d0d0efe426560c10f28db6e90280f45a16d69c117d24a3097a951436f80d"
+    },
+    "ka-1cb4e528ae7b2691edfe": {
+      "path": "res://assets/audio/japanese/kanji_alive/(gak)kou_06_a.ogg",
+      "prompt": "学校",
+      "reading": "がっこう",
+      "sourceFile": "audio-ogg/(gak)kou_06_a.ogg",
+      "sha256": "f8e058cab224e6fdb54a5b8f47336d80d3c3f5f14925e90cea459b70c1b5bbf5"
+    },
+    "ka-1d0105ac7e2f4395fd71": {
+      "path": "res://assets/audio/japanese/kanji_alive/de(ru)_06_h.ogg",
+      "prompt": "出る",
+      "reading": "でる",
+      "sourceFile": "audio-ogg/de(ru)_06_h.ogg",
+      "sha256": "4ca3e64dcfca4ff67f2963921a87d84aa1bb61f4fa7e0cd48120a2c5a2ed89dc"
+    },
+    "ka-1ec1a5f9b3cc1d617399": {
+      "path": "res://assets/audio/japanese/kanji_alive/mizu_06_f.ogg",
+      "prompt": "水",
+      "reading": "みず",
+      "sourceFile": "audio-ogg/mizu_06_f.ogg",
+      "sha256": "c83b09e2c81c4ab3303daac1130aeac1b3f38650f9bcbffdc6c00ac56538adb8"
+    },
+    "ka-1f8c21ec2c0dfd1840d2": {
+      "path": "res://assets/audio/japanese/kanji_alive/(su)bako_06_a.ogg",
+      "prompt": "箱",
+      "reading": "はこ",
+      "sourceFile": "audio-ogg/(su)bako_06_a.ogg",
+      "sha256": "4ecf7b2afa310ebf3d25670bfc608597528af0a631c526c6827011111e34fa4e"
+    },
+    "ka-200cbea9cc2770f1f67b": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_g.ogg",
+      "prompt": "今日",
+      "reading": "きょう",
+      "sourceFile": "audio-ogg/nichi-hi_06_g.ogg",
+      "sha256": "4b39322b81852072f215ab10aa419c1b48310cf42f8ecd1f123818b14d1bd5c8"
+    },
+    "ka-20fd2f67c599229ff450": {
+      "path": "res://assets/audio/japanese/kanji_alive/haha_06_e.ogg",
+      "prompt": "母",
+      "reading": "はは",
+      "sourceFile": "audio-ogg/haha_06_e.ogg",
+      "sha256": "493766fb4cc53e0d2700325babb9e9a050c7b4eb108d07cf31f93b4aee307d66"
+    },
+    "ka-210b548e9714d0f6ead6": {
+      "path": "res://assets/audio/japanese/kanji_alive/ka-uta_06_h.ogg",
+      "prompt": "歌う",
+      "reading": "うたう",
+      "sourceFile": "audio-ogg/ka-uta_06_h.ogg",
+      "sha256": "7f00d48bc20a3e7293c14eeb353d3962e1ff0e01432d73768b22640a11c88073"
+    },
+    "ka-211e47678e36bace1496": {
+      "path": "res://assets/audio/japanese/kanji_alive/chuu-naka_06_g.ogg",
+      "prompt": "中",
+      "reading": "なか",
+      "sourceFile": "audio-ogg/chuu-naka_06_g.ogg",
+      "sha256": "ed54755a676477d42ac25aa61a53da16323f6fbd4f8bfbb1f9e069f62d11c07e"
+    },
+    "ka-2238ffe7604b2f04bf96": {
+      "path": "res://assets/audio/japanese/kanji_alive/(han)tai_06_g.ogg",
+      "prompt": "絶対",
+      "reading": "ぜったい",
+      "sourceFile": "audio-ogg/(han)tai_06_g.ogg",
+      "sha256": "9788f286fc2217d27d0e6f11c5836115d1093d0efb356efdfb7c5a61488ccb99"
+    },
+    "ka-22eda8e7895841b42b9d": {
+      "path": "res://assets/audio/japanese/kanji_alive/ritsu-ta(tsu)_06_j.ogg",
+      "prompt": "立つ",
+      "reading": "たつ",
+      "sourceFile": "audio-ogg/ritsu-ta(tsu)_06_j.ogg",
+      "sha256": "a77dcee6cc5ef5ff9f9146ff2ed2fa9a2e63225c41125c5550b73a0632cea5e9"
+    },
+    "ka-244e421090d9032ffc69": {
+      "path": "res://assets/audio/japanese/kanji_alive/tamago_06_g.ogg",
+      "prompt": "卵",
+      "reading": "たまご",
+      "sourceFile": "audio-ogg/tamago_06_g.ogg",
+      "sha256": "a574801f4b0d195ac2c74a8f33b1ce2c84121678dd887ea97bb27920fef76096"
+    },
+    "ka-246362470d132b8400c3": {
+      "path": "res://assets/audio/japanese/kanji_alive/te_06_i.ogg",
+      "prompt": "お手洗い",
+      "reading": "おてあらい",
+      "sourceFile": "audio-ogg/te_06_i.ogg",
+      "sha256": "8bb0892ac426d7e8e29876bafb6ea1e4538dfcdd4a09c2e8b82ae01cab4fc386"
+    },
+    "ka-247d9677d25616d15d6d": {
+      "path": "res://assets/audio/japanese/kanji_alive/i(gaku)_06_a.ogg",
+      "prompt": "医者",
+      "reading": "いしゃ",
+      "sourceFile": "audio-ogg/i(gaku)_06_a.ogg",
+      "sha256": "faf654d25508e9bc4941736ed3dfae8463fe9078af4256f0b2c90d88c21c06a9"
+    },
+    "ka-24913ada4a3d1aec48d6": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_l.ogg",
+      "prompt": "日本語",
+      "reading": "にほんご",
+      "sourceFile": "audio-ogg/nichi-hi_06_l.ogg",
+      "sha256": "dbef7140e4a50bda766ddab6dd73415f98f027538e569b144314b55b1830cce5"
+    },
+    "ka-250518ce0c2a69a1efbe": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ya)chin_06_d.ogg",
+      "prompt": "運賃",
+      "reading": "うんちん",
+      "sourceFile": "audio-ogg/(ya)chin_06_d.ogg",
+      "sha256": "a24c747e61a264605b71088f18249dfe058c134fed68bb9145cdbef9c157f72b"
+    },
+    "ka-254c334e298c360c33a3": {
+      "path": "res://assets/audio/japanese/kanji_alive/kotowa(ru)_06_l.ogg",
+      "prompt": "断る",
+      "reading": "ことわる",
+      "sourceFile": "audio-ogg/kotowa(ru)_06_l.ogg",
+      "sha256": "f5511320dbeb3cadb44b554324359cf11407d9c6d89fdb784115e75961126453"
+    },
+    "ka-256bfc41fe7cbbb8811c": {
+      "path": "res://assets/audio/japanese/kanji_alive/tan-saga(su)_06_d.ogg",
+      "prompt": "探す",
+      "reading": "さがす",
+      "sourceFile": "audio-ogg/tan-saga(su)_06_d.ogg",
+      "sha256": "b521ad70ebd0c848c81c765bc77e99429273dcb434f94bfd72729f3e6f82f36d"
+    },
+    "ka-25ddd35aea26cf45e359": {
+      "path": "res://assets/audio/japanese/kanji_alive/oo(kii)_06_i.ogg",
+      "prompt": "大きい",
+      "reading": "おおきい",
+      "sourceFile": "audio-ogg/oo(kii)_06_i.ogg",
+      "sha256": "fe4783f9ab611c4652e3d5861d6ab65483479b28375e74840e321c221b3352ce"
+    },
+    "ka-269bef6454607385d6cb": {
+      "path": "res://assets/audio/japanese/kanji_alive/netsu_06_j.ogg",
+      "prompt": "熱い",
+      "reading": "あつい",
+      "sourceFile": "audio-ogg/netsu_06_j.ogg",
+      "sha256": "4bdc5b434e9556e5728257be988746c2d8b0489a118b4505e711fe632a627b90"
+    },
+    "ka-26b131de7c3a4f04675d": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-ya(meru)_06_i.ogg",
+      "prompt": "辞める",
+      "reading": "やめる",
+      "sourceFile": "audio-ogg/ji-ya(meru)_06_i.ogg",
+      "sha256": "53be769309300f8c211b5bdd7e2ee353dd735d6ca5907f509d9c7235a14af9e5"
+    },
+    "ka-2935a47820835125d086": {
+      "path": "res://assets/audio/japanese/kanji_alive/kai-a(u)_06_k.ogg",
+      "prompt": "会う",
+      "reading": "あう",
+      "sourceFile": "audio-ogg/kai-a(u)_06_k.ogg",
+      "sha256": "4cc86a26a7c8e74dacff626eb6c32c9b1928bd5319d387d2b7a3a8086b78c4f8"
+    },
+    "ka-29fcc7b6783ca669a48e": {
+      "path": "res://assets/audio/japanese/kanji_alive/2_06_d.ogg",
+      "prompt": "二つ",
+      "reading": "ふたつ",
+      "sourceFile": "audio-ogg/2_06_d.ogg",
+      "sha256": "c27785097f7a2557e237bb7664948f1e2638cbaa2c8dfcef31237c42843c94f6"
+    },
+    "ka-2a374481c845ed7af848": {
+      "path": "res://assets/audio/japanese/kanji_alive/mo(yasu)_06_h.ogg",
+      "prompt": "燃える",
+      "reading": "もえる",
+      "sourceFile": "audio-ogg/mo(yasu)_06_h.ogg",
+      "sha256": "e9aa5c1cbc18097a6317f7b957575c91c89671c5a503a9834fef992de42c2191"
+    },
+    "ka-2d31d8280725eb441ce0": {
+      "path": "res://assets/audio/japanese/kanji_alive/dare_06_b.ogg",
+      "prompt": "誰",
+      "reading": "だれ",
+      "sourceFile": "audio-ogg/dare_06_b.ogg",
+      "sha256": "d9caebbf85073f2de1f3b010b07ef8bcb91cfd420f65a33c6ea334f4460da2c3"
+    },
+    "ka-2dfa005ce68638211191": {
+      "path": "res://assets/audio/japanese/kanji_alive/suko(shi)_06_j.ogg",
+      "prompt": "少し",
+      "reading": "すこし",
+      "sourceFile": "audio-ogg/suko(shi)_06_j.ogg",
+      "sha256": "1326406b0976e452d35f116bfc71a8a64ac66af471aca1683139f75a47d2e978"
+    },
+    "ka-2f0d24ef8f676d8dde2f": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-toki_06_a.ogg",
+      "prompt": "時間",
+      "reading": "じかん",
+      "sourceFile": "audio-ogg/ji-toki_06_a.ogg",
+      "sha256": "445013fef65cdea8e728012c61b996e3f6cf071bbd73bbe857bd7e04d0e0c7ae"
+    },
+    "ka-2f9c71937a12562d0551": {
+      "path": "res://assets/audio/japanese/kanji_alive/atara(shii)_06_d.ogg",
+      "prompt": "新幹線",
+      "reading": "しんかんせん",
+      "sourceFile": "audio-ogg/atara(shii)_06_d.ogg",
+      "sha256": "16fab283131e3d8c97a756375d51cace9384560c2406c0419bc3ae74a6dba3df"
+    },
+    "ka-2ff1ff38815a503db69d": {
+      "path": "res://assets/audio/japanese/kanji_alive/nusu(mu)_06_e.ogg",
+      "prompt": "盗む",
+      "reading": "ぬすむ",
+      "sourceFile": "audio-ogg/nusu(mu)_06_e.ogg",
+      "sha256": "e70a81e633c33d3c69b4e28eb7baed53cdf928586fbdae385117325765450739"
+    },
+    "ka-30d8bfd52841513a0398": {
+      "path": "res://assets/audio/japanese/kanji_alive/ishi_06_h.ogg",
+      "prompt": "石",
+      "reading": "いし",
+      "sourceFile": "audio-ogg/ishi_06_h.ogg",
+      "sha256": "d61e8c7973b8598bb5cba88bc101893b3c7f0be3658c39761dfa90092440258f"
+    },
+    "ka-314eb56c56814f796166": {
+      "path": "res://assets/audio/japanese/kanji_alive/hen-ka(waru)_06_h.ogg",
+      "prompt": "変える",
+      "reading": "かえる",
+      "sourceFile": "audio-ogg/hen-ka(waru)_06_h.ogg",
+      "sha256": "048d0fecefcf2872447c5061e699345d8f56b4b32b132ea455bdf18cc82e8ad4"
+    },
+    "ka-3280e7bf7fc275ecab9a": {
+      "path": "res://assets/audio/japanese/kanji_alive/ta(beru)_06_j.ogg",
+      "prompt": "食べる",
+      "reading": "たべる",
+      "sourceFile": "audio-ogg/ta(beru)_06_j.ogg",
+      "sha256": "b63af86d75b2e14c47b1f0b8b62fa2701235cc16c46a808775360307e4a76d43"
+    },
+    "ka-329a45cc59a199d6b925": {
+      "path": "res://assets/audio/japanese/kanji_alive/yo(bu)_06_c.ogg",
+      "prompt": "呼ぶ",
+      "reading": "よぶ",
+      "sourceFile": "audio-ogg/yo(bu)_06_c.ogg",
+      "sha256": "16c5ebcd5afde0a9f4c0d1c2030455c799c7db48c471c686b1b6a48c184c0250"
+    },
+    "ka-3316a6b44425e8ee03c4": {
+      "path": "res://assets/audio/japanese/kanji_alive/hen-kae(su)_06_f.ogg",
+      "prompt": "返す",
+      "reading": "かえす",
+      "sourceFile": "audio-ogg/hen-kae(su)_06_f.ogg",
+      "sha256": "98698405c9c39aef31ef94b8d2e7db6be185d7a6a43954694d66b04539690d48"
+    },
+    "ka-3335c1e94c9ef05c0cb2": {
+      "path": "res://assets/audio/japanese/kanji_alive/he(ya)_06_b.ogg",
+      "prompt": "部分",
+      "reading": "ぶぶん",
+      "sourceFile": "audio-ogg/he(ya)_06_b.ogg",
+      "sha256": "d59af6153aa12f1c22f62c573275a662a36a03e0cf0fc9ee0ad9c27ced5cd19a"
+    },
+    "ka-336f8dcc88d15816b085": {
+      "path": "res://assets/audio/japanese/kanji_alive/men-omote_06_h.ogg",
+      "prompt": "面白い",
+      "reading": "おもしろい",
+      "sourceFile": "audio-ogg/men-omote_06_h.ogg",
+      "sha256": "52be2301b048b0ddc5d118289dadebfe5dc5222e0a2fd6a0eaec21f21405033e"
+    },
+    "ka-339b335adf4b93b3b3d2": {
+      "path": "res://assets/audio/japanese/kanji_alive/sou-hashi(ru)_06_f.ogg",
+      "prompt": "走る",
+      "reading": "はしる",
+      "sourceFile": "audio-ogg/sou-hashi(ru)_06_f.ogg",
+      "sha256": "6ebbadc4c67898165cc1400edf5d1524f0bedf5b0e3c113e2a7b47d3c292b18e"
+    },
+    "ka-34a9def6def3222241e3": {
+      "path": "res://assets/audio/japanese/kanji_alive/hon-moto_06_g.ogg",
+      "prompt": "日本",
+      "reading": "にほん",
+      "sourceFile": "audio-ogg/hon-moto_06_g.ogg",
+      "sha256": "bd67c668bf807dffc0af7cb6140d45135396536d287fba67487d76426fbab562"
+    },
+    "ka-3505da412dd3b2de3b60": {
+      "path": "res://assets/audio/japanese/kanji_alive/you-odo(ru)_06_b.ogg",
+      "prompt": "踊る",
+      "reading": "おどる",
+      "sourceFile": "audio-ogg/you-odo(ru)_06_b.ogg",
+      "sha256": "3c406ed1e4950ee5d2addf61a90f6999f527adddc1abc2d9e0e97a172e604b21"
+    },
+    "ka-36e370b3a30d00940a8c": {
+      "path": "res://assets/audio/japanese/kanji_alive/atama_06_g.ogg",
+      "prompt": "頭",
+      "reading": "あたま",
+      "sourceFile": "audio-ogg/atama_06_g.ogg",
+      "sha256": "aa7b562021e73839b865d6158cbc3387dee4f9a6feab8804279a81ae3ef55076"
+    },
+    "ka-36f22c86d8a096d63888": {
+      "path": "res://assets/audio/japanese/kanji_alive/3_06_e.ogg",
+      "prompt": "三日",
+      "reading": "みっか",
+      "sourceFile": "audio-ogg/3_06_e.ogg",
+      "sha256": "8aca31886ec291fc8ba460257f80de0f17a2034ae26a89821b94f9739b324125"
+    },
+    "ka-3704f402b718f64267f7": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_k.ogg",
+      "prompt": "下手",
+      "reading": "へた",
+      "sourceFile": "audio-ogg/ge-shita_06_k.ogg",
+      "sha256": "27caf7a044f08568f90b7d4d95800015960f77618a13d3d7fa7553d24284cbc6"
+    },
+    "ka-38291b921a436cc27522": {
+      "path": "res://assets/audio/japanese/kanji_alive/kare_06_b.ogg",
+      "prompt": "彼",
+      "reading": "かれ",
+      "sourceFile": "audio-ogg/kare_06_b.ogg",
+      "sha256": "624a23e98944879fe7a19097df44cbd51c59a5b97aa7825252e7034e628d40dd"
+    },
+    "ka-38de87c06ffcb6103efa": {
+      "path": "res://assets/audio/japanese/kanji_alive/he(ya)_06_k.ogg",
+      "prompt": "部屋",
+      "reading": "へや",
+      "sourceFile": "audio-ogg/he(ya)_06_k.ogg",
+      "sha256": "48a356976613c6d06cfa7c2a13eb9fdad3e410aa92ecc1b44c3aa5ae16167486"
+    },
+    "ka-3911e2674eea591fe408": {
+      "path": "res://assets/audio/japanese/kanji_alive/taku-sawa_06_a.ogg",
+      "prompt": "沢山",
+      "reading": "たくさん",
+      "sourceFile": "audio-ogg/taku-sawa_06_a.ogg",
+      "sha256": "a85eac2b6bb0469b2e78de232e7eba40bef66183bb610a9f033718979b2f5c79"
+    },
+    "ka-391f92a285b419f67bf9": {
+      "path": "res://assets/audio/japanese/kanji_alive/asa(i)_06_d.ogg",
+      "prompt": "浅い",
+      "reading": "あさい",
+      "sourceFile": "audio-ogg/asa(i)_06_d.ogg",
+      "sha256": "22354b21cee5807bf13c5efbc8f6a098db626089b5413cc1023b9eab3701a272"
+    },
+    "ka-3a140cfa1520904b0fb5": {
+      "path": "res://assets/audio/japanese/kanji_alive/(shi)hara(u)_06_b.ogg",
+      "prompt": "払う",
+      "reading": "はらう",
+      "sourceFile": "audio-ogg/(shi)hara(u)_06_b.ogg",
+      "sha256": "59c783cb6445e9bc4fb121ed01c334798b86838f1ca620251386608e5df295da"
+    },
+    "ka-3a7da6acc5f4beba303b": {
+      "path": "res://assets/audio/japanese/kanji_alive/fun-wa(keru)_06_k.ogg",
+      "prompt": "分かる",
+      "reading": "わかる",
+      "sourceFile": "audio-ogg/fun-wa(keru)_06_k.ogg",
+      "sha256": "3b3b41a66f611f2172219aa6be7dd8cef5cfb599ea7d02740bdba1088dba683b"
+    },
+    "ka-3b9b40ef1d0fbd6a69c0": {
+      "path": "res://assets/audio/japanese/kanji_alive/mi(rai)_06_a.ogg",
+      "prompt": "未来",
+      "reading": "みらい",
+      "sourceFile": "audio-ogg/mi(rai)_06_a.ogg",
+      "sha256": "f7218da5964a7559ca6feeda8c259b320feb48185337fef9e873004106a1e84e"
+    },
+    "ka-3c24717ee7406a1d7f03": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuruma_06_f.ogg",
+      "prompt": "車",
+      "reading": "くるま",
+      "sourceFile": "audio-ogg/kuruma_06_f.ogg",
+      "sha256": "2d662f8422ba9139f8ec1aed8c903622519e2f7eb5183ae37791d0a69a4aa557"
+    },
+    "ka-3c50b8d7529c40da2949": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_a.ogg",
+      "prompt": "地下鉄",
+      "reading": "ちかてつ",
+      "sourceFile": "audio-ogg/ge-shita_06_a.ogg",
+      "sha256": "682dd5388560441f787a3c8c89bf53ce6845ff0c2d5bb13026098a5336e230db"
+    },
+    "ka-3e1d538957e3a6b170a0": {
+      "path": "res://assets/audio/japanese/kanji_alive/raku-o(chiru)_06_k.ogg",
+      "prompt": "落とす",
+      "reading": "おとす",
+      "sourceFile": "audio-ogg/raku-o(chiru)_06_k.ogg",
+      "sha256": "1eba20ec11daf078255fe1a02730260a12bd7a24d787473250b1e61c6308fe56"
+    },
+    "ka-3e929a43ab1bf37f7587": {
+      "path": "res://assets/audio/japanese/kanji_alive/hisa(shii)_06_h.ogg",
+      "prompt": "久しぶり",
+      "reading": "ひさしぶり",
+      "sourceFile": "audio-ogg/hisa(shii)_06_h.ogg",
+      "sha256": "811b50e41afad56ec0008a4fc88f4885b299f2febc1be1fab36ecb71a7500601"
+    },
+    "ka-3f05542d5515eedd2af4": {
+      "path": "res://assets/audio/japanese/kanji_alive/nou-ko(i)_06_h.ogg",
+      "prompt": "濃い",
+      "reading": "こい",
+      "sourceFile": "audio-ogg/nou-ko(i)_06_h.ogg",
+      "sha256": "a82c400f89dffbc9a9a1edac47121a1926073eed4e1fb7de24eef858c1c649c9"
+    },
+    "ka-3f2b66793cddc63a1e92": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-saki_06_f.ogg",
+      "prompt": "先",
+      "reading": "さき",
+      "sourceFile": "audio-ogg/sen-saki_06_f.ogg",
+      "sha256": "5ba6b15f9ff77a91b9c8796176fc4e156af49e06a67f91b1a14ed7f641db2380"
+    },
+    "ka-3f897992599ea0732347": {
+      "path": "res://assets/audio/japanese/kanji_alive/10_06_l.ogg",
+      "prompt": "二十日",
+      "reading": "はつか",
+      "sourceFile": "audio-ogg/10_06_l.ogg",
+      "sha256": "f392c0d93019dce86f2254f521b55af5ef8290deb4b8a7802d05a06399c979a4"
+    },
+    "ka-3fb187e085933349221c": {
+      "path": "res://assets/audio/japanese/kanji_alive/juu-omo(ri)_06_i.ogg",
+      "prompt": "重さ",
+      "reading": "おもさ",
+      "sourceFile": "audio-ogg/juu-omo(ri)_06_i.ogg",
+      "sha256": "6489eda8d3bc785000dca9e1b55d7318d82e3155c7bc7b7fdec5dfa71d2d3ad9"
+    },
+    "ka-4480901b4f5152637f47": {
+      "path": "res://assets/audio/japanese/kanji_alive/yasu(mi)_06_f.ogg",
+      "prompt": "休む",
+      "reading": "やすむ",
+      "sourceFile": "audio-ogg/yasu(mi)_06_f.ogg",
+      "sha256": "bba7e484cc6d7430687aad25bea64943d65967079a003d275e85fd1793a67aec"
+    },
+    "ka-44c89f243c0632965ea1": {
+      "path": "res://assets/audio/japanese/kanji_alive/on(sen)_06_e.ogg",
+      "prompt": "気温",
+      "reading": "きおん",
+      "sourceFile": "audio-ogg/on(sen)_06_e.ogg",
+      "sha256": "60089dcb192e1b211ad14b6854f6b4d87dcff39838895953022bf1a595e57eca"
+    },
+    "ka-450c094d19f00312b09c": {
+      "path": "res://assets/audio/japanese/kanji_alive/shita(shii)_06_i.ogg",
+      "prompt": "親しい",
+      "reading": "したしい",
+      "sourceFile": "audio-ogg/shita(shii)_06_i.ogg",
+      "sha256": "82d37b6c2d6ce2a1dc267d99d40b0fff79f149b8aec7abca8a275dddc9ef52e9"
+    },
+    "ka-469bd0f7ac7f5b4cbe9d": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-saki_06_c.ogg",
+      "prompt": "先月",
+      "reading": "せんげつ",
+      "sourceFile": "audio-ogg/sen-saki_06_c.ogg",
+      "sha256": "2fa7b41e24d4b8624c2f9a5567c883f55bd67c86b1bb24fcb4657b1f40fbfad0"
+    },
+    "ka-473bfae6f99a005b7b6e": {
+      "path": "res://assets/audio/japanese/kanji_alive/fu-tsu(ku)_06_h.ogg",
+      "prompt": "付ける",
+      "reading": "つける",
+      "sourceFile": "audio-ogg/fu-tsu(ku)_06_h.ogg",
+      "sha256": "1c58886157c93707700a829080770a47cf95d09249bd45a45d7d569ada48aba8"
+    },
+    "ka-4768ed6ebb2d5e013c5b": {
+      "path": "res://assets/audio/japanese/kanji_alive/(yama)oku_06_b.ogg",
+      "prompt": "奥",
+      "reading": "おく",
+      "sourceFile": "audio-ogg/(yama)oku_06_b.ogg",
+      "sha256": "81d9410031c1802cc5c95abdc36054578af72b49844762a8df053eaecc6b109e"
+    },
+    "ka-478dc067066bf076d1e2": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-ue_06_l.ogg",
+      "prompt": "上る",
+      "reading": "のぼる",
+      "sourceFile": "audio-ogg/jou-ue_06_l.ogg",
+      "sha256": "009188a93b46ce8c56b3e08bfe9fab59bb5eb08e5a316abd2d73ed5d9e14b8fd"
+    },
+    "ka-4a23ab445da4ff49305d": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-omo(u)_06_g.ogg",
+      "prompt": "思い出",
+      "reading": "おもいで",
+      "sourceFile": "audio-ogg/shi-omo(u)_06_g.ogg",
+      "sha256": "e55ee55e19274aedadcfde3048eb07f4722e6a04a02fc45c3aadb6033b5251dc"
+    },
+    "ka-4a59c7ca89a3cd5c6b17": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi(ru)_06_h.ogg",
+      "prompt": "知る",
+      "reading": "しる",
+      "sourceFile": "audio-ogg/shi(ru)_06_h.ogg",
+      "sha256": "9ced5e4d945a27795be0d85f20ed42dcc296b80460a05ee8b04e2e505463d62e"
+    },
+    "ka-4a71dc1cf7402b6a5d5b": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-mo(tsu)_06_h.ogg",
+      "prompt": "気持ち",
+      "reading": "きもち",
+      "sourceFile": "audio-ogg/ji-mo(tsu)_06_h.ogg",
+      "sha256": "ca460407f2160595d55bbd28d2d80bf161099e6143b1007aea8596c51a26bef6"
+    },
+    "ka-4ba954374a6bc39d4570": {
+      "path": "res://assets/audio/japanese/kanji_alive/yasu(mi)_06_a.ogg",
+      "prompt": "休日",
+      "reading": "きゅうじつ",
+      "sourceFile": "audio-ogg/yasu(mi)_06_a.ogg",
+      "sha256": "0c73b953c50ab1a9a7c0ad1952602adc191778cd50af56051f1e39eff45691a2"
+    },
+    "ka-4cccbf073e2a942460f8": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-saki_06_a.ogg",
+      "prompt": "先生",
+      "reading": "せんせい",
+      "sourceFile": "audio-ogg/sen-saki_06_a.ogg",
+      "sha256": "1daf3e5c926b443aebd29a8c69aac5ffca60c90cc63141b12443e2d180308427"
+    },
+    "ka-4cf8490f2062f0f0b3b1": {
+      "path": "res://assets/audio/japanese/kanji_alive/gen-i(u)_06_g.ogg",
+      "prompt": "言う",
+      "reading": "いう",
+      "sourceFile": "audio-ogg/gen-i(u)_06_g.ogg",
+      "sha256": "f07d498c2be1056ca18d9be3d4d526f94a6874bedadf24b4aac34a85c6dd2dd4"
+    },
+    "ka-4d58269ec260bc7f0456": {
+      "path": "res://assets/audio/japanese/kanji_alive/tsuta(waru)_06_h.ogg",
+      "prompt": "伝える",
+      "reading": "つたえる",
+      "sourceFile": "audio-ogg/tsuta(waru)_06_h.ogg",
+      "sha256": "10889177643e5f46e3322c990b4abdb2e1d3bc819431bedab009166ac3a56159"
+    },
+    "ka-4db3c59fb273d428df8f": {
+      "path": "res://assets/audio/japanese/kanji_alive/nin-hito_06_h.ogg",
+      "prompt": "人",
+      "reading": "ひと",
+      "sourceFile": "audio-ogg/nin-hito_06_h.ogg",
+      "sha256": "7c7db2fbdaf84519040004f979e7fb6bf07dc43dc07f7c497a988ec92907eec2"
+    },
+    "ka-4f2655928a5ce5960118": {
+      "path": "res://assets/audio/japanese/kanji_alive/sho-ka(ku)_06_j.ogg",
+      "prompt": "書く",
+      "reading": "かく",
+      "sourceFile": "audio-ogg/sho-ka(ku)_06_j.ogg",
+      "sha256": "e1931b4f2e981c05e056346f6fde14dfc0e0c122649cf92b1629541a59d31d5c"
+    },
+    "ka-4f6bd3d39b9b1c448985": {
+      "path": "res://assets/audio/japanese/kanji_alive/goto_06_b.ogg",
+      "prompt": "毎日",
+      "reading": "まいにち",
+      "sourceFile": "audio-ogg/goto_06_b.ogg",
+      "sha256": "43559dd98e860cf1acf4a6f50f1f3dbef8481cdea356fe6f3849efa4d3a749a2"
+    },
+    "ka-4fd0b1a809d710a704fc": {
+      "path": "res://assets/audio/japanese/kanji_alive/haha_06_g.ogg",
+      "prompt": "お母さん",
+      "reading": "おかあさん",
+      "sourceFile": "audio-ogg/haha_06_g.ogg",
+      "sha256": "24c1bab796ed08f8b004dbc3e7b1ffb5650b7e4d0dc26082cf7feead2fffad34"
+    },
+    "ka-50af1cef82283b5de85e": {
+      "path": "res://assets/audio/japanese/kanji_alive/de(ru)_06_j.ogg",
+      "prompt": "出す",
+      "reading": "だす",
+      "sourceFile": "audio-ogg/de(ru)_06_j.ogg",
+      "sha256": "4d6894b6cc6d91ad8553ef26e8f8982d8de0245ccb4dac5ca54388e2e21c1e9e"
+    },
+    "ka-5148791100b5748ffed6": {
+      "path": "res://assets/audio/japanese/kanji_alive/hon-moto_06_a.ogg",
+      "prompt": "本",
+      "reading": "ほん",
+      "sourceFile": "audio-ogg/hon-moto_06_a.ogg",
+      "sha256": "34084ab607504beeb527a762c6608116488559cda1a055d29c93ce202ccd319d"
+    },
+    "ka-51585910e83fccc52101": {
+      "path": "res://assets/audio/japanese/kanji_alive/neko_06_b.ogg",
+      "prompt": "猫",
+      "reading": "ねこ",
+      "sourceFile": "audio-ogg/neko_06_b.ogg",
+      "sha256": "533a88bd6f19593cabd040daedf3f403161706b6eea04ad89220efb5fba72164"
+    },
+    "ka-517fa53550139d6a988c": {
+      "path": "res://assets/audio/japanese/kanji_alive/boku(ra)_06_a.ogg",
+      "prompt": "僕",
+      "reading": "ぼく",
+      "sourceFile": "audio-ogg/boku(ra)_06_a.ogg",
+      "sha256": "1cbc5cd4cba8105cceda31c1a683ca2886b5d43d80d4d074e37f7f2d5f6b8bc7"
+    },
+    "ka-51814487f41844ac9500": {
+      "path": "res://assets/audio/japanese/kanji_alive/kou-su(ki)_06_e.ogg",
+      "prompt": "好き",
+      "reading": "すき",
+      "sourceFile": "audio-ogg/kou-su(ki)_06_e.ogg",
+      "sha256": "38566c2ee65e0ac1fd0250e832e7d97960501e6ddb2caf16bdf93d7714da36f8"
+    },
+    "ka-53ea91f943324517e65c": {
+      "path": "res://assets/audio/japanese/kanji_alive/kai-hira(ku)_06_j.ogg",
+      "prompt": "開ける",
+      "reading": "あける",
+      "sourceFile": "audio-ogg/kai-hira(ku)_06_j.ogg",
+      "sha256": "debf6751a0984483d6fc8a9c6cacc35d1138ca062d9801e0dde790459d97ba74"
+    },
+    "ka-548bebb19a05a1ec4050": {
+      "path": "res://assets/audio/japanese/kanji_alive/3_06_f.ogg",
+      "prompt": "三つ",
+      "reading": "みっつ",
+      "sourceFile": "audio-ogg/3_06_f.ogg",
+      "sha256": "d22ac72e704f2cb1ec56d98e49f7cb3f124b37588859cd399328e63899717c39"
+    },
+    "ka-54bba9dd965aa423a719": {
+      "path": "res://assets/audio/japanese/kanji_alive/soku-iki_06_i.ogg",
+      "prompt": "息子",
+      "reading": "むすこ",
+      "sourceFile": "audio-ogg/soku-iki_06_i.ogg",
+      "sha256": "6933831924800539390df76406657b36f690d788f060428b6d3d23323a5df780"
+    },
+    "ka-54ded498d712b12144c2": {
+      "path": "res://assets/audio/japanese/kanji_alive/niku_06_i.ogg",
+      "prompt": "豚肉",
+      "reading": "ぶたにく",
+      "sourceFile": "audio-ogg/niku_06_i.ogg",
+      "sha256": "71f0e2cdeb4ac9431485032d2a340e6419e54b0b6e1fa5e7248b8b0ba3251b3a"
+    },
+    "ka-55038c508269e224b6c0": {
+      "path": "res://assets/audio/japanese/kanji_alive/butsu-mono_06_h.ogg",
+      "prompt": "食べ物",
+      "reading": "たべもの",
+      "sourceFile": "audio-ogg/butsu-mono_06_h.ogg",
+      "sha256": "633514d3705972b9e9d07a252cdd35acea385ef4781682dfd5e60cb725660528"
+    },
+    "ka-56acecaac0ae3056f012": {
+      "path": "res://assets/audio/japanese/kanji_alive/sa(saru)_06_g.ogg",
+      "prompt": "刺す",
+      "reading": "さす",
+      "sourceFile": "audio-ogg/sa(saru)_06_g.ogg",
+      "sha256": "1b0fa52b08c8c88a5b0059ad0c346055615b14e964a2c39d84ae7d61905752ec"
+    },
+    "ka-571013d24d4992d7c9be": {
+      "path": "res://assets/audio/japanese/kanji_alive/inu_06_c.ogg",
+      "prompt": "犬",
+      "reading": "いぬ",
+      "sourceFile": "audio-ogg/inu_06_c.ogg",
+      "sha256": "4d9f2ff6055e9708ee27d6d9d22bba8f8bfe02b79f62e623276e8b99b9a4e9a2"
+    },
+    "ka-57393776f96b2b95aeaf": {
+      "path": "res://assets/audio/japanese/kanji_alive/yogo(su)_06_k.ogg",
+      "prompt": "汚れる",
+      "reading": "よごれる",
+      "sourceFile": "audio-ogg/yogo(su)_06_k.ogg",
+      "sha256": "ff7ca3640fb6ef7b8e3636cfccccb22775c5ef22a4d4859d71d85ad49ad5b918"
+    },
+    "ka-57df1f55646dc68c0fad": {
+      "path": "res://assets/audio/japanese/kanji_alive/sama_06_b.ogg",
+      "prompt": "様子",
+      "reading": "ようす",
+      "sourceFile": "audio-ogg/sama_06_b.ogg",
+      "sha256": "637bf3a49f969f43390a09d591dd36c0d283c7295a785ec6ee0f05037f418594"
+    },
+    "ka-58116abc50e2573c8972": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_k.ogg",
+      "prompt": "一昨日",
+      "reading": "おととい",
+      "sourceFile": "audio-ogg/nichi-hi_06_k.ogg",
+      "sha256": "136f3d467730d6e54581a9257d69cebb1223b6d28fc7f18f3f4dbdfe7f8b1a33"
+    },
+    "ka-586bda9ec2a0e4893bd9": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-chi_06_a.ogg",
+      "prompt": "千",
+      "reading": "せん",
+      "sourceFile": "audio-ogg/sen-chi_06_a.ogg",
+      "sha256": "3d200a237a235c0e7014f53848b3ac5645aa66340d5d6d9245c1d593939c181b"
+    },
+    "ka-589c4846a0aba90e71a4": {
+      "path": "res://assets/audio/japanese/kanji_alive/setsu-ki(ru)_06_f.ogg",
+      "prompt": "切る",
+      "reading": "きる",
+      "sourceFile": "audio-ogg/setsu-ki(ru)_06_f.ogg",
+      "sha256": "50b6f0ad2fdb8797a634a72ec89691a575f1c7dd10c8013322fa6fa3c1666a4e"
+    },
+    "ka-59533c099aa7b8d0709b": {
+      "path": "res://assets/audio/japanese/kanji_alive/kimi_06_f.ogg",
+      "prompt": "君",
+      "reading": "きみ",
+      "sourceFile": "audio-ogg/kimi_06_f.ogg",
+      "sha256": "7089e178ee718a5967f843e405b71edd37ddee53773143b64aedbd6712de5e91"
+    },
+    "ka-59594b38b0c86154930c": {
+      "path": "res://assets/audio/japanese/kanji_alive/hako(bu)_06_b.ogg",
+      "prompt": "運転する",
+      "reading": "うんてんする",
+      "sourceFile": "audio-ogg/hako(bu)_06_b.ogg",
+      "sha256": "73ddd580d52300ad074fa0624cf5c1b51a058694f26288ff70d64b8061c83a3c"
+    },
+    "ka-5a4c62365fe610b02097": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ba)sho_06_j.ogg",
+      "prompt": "台所",
+      "reading": "だいどころ",
+      "sourceFile": "audio-ogg/(ba)sho_06_j.ogg",
+      "sha256": "e69db6174bae44de80ac858ea75985ddf3f4e819d138d869341992ca287d86d5"
+    },
+    "ka-5aebfd9cf2a8d69b567e": {
+      "path": "res://assets/audio/japanese/kanji_alive/aida_06_k.ogg",
+      "prompt": "間に合う",
+      "reading": "まにあう",
+      "sourceFile": "audio-ogg/aida_06_k.ogg",
+      "sha256": "cc611e3451a25b7dd9fc4f902b6cc9d5873ccd19cb2abbb2758863582923376a"
+    },
+    "ka-5b4f06d399a047f85c08": {
+      "path": "res://assets/audio/japanese/kanji_alive/1_06_h.ogg",
+      "prompt": "一つ",
+      "reading": "ひとつ",
+      "sourceFile": "audio-ogg/1_06_h.ogg",
+      "sha256": "11711dec08f40c291c0a11de3d63eee0bc73450f3cc05a14aeaf4fdbd098a187"
+    },
+    "ka-5b563da8e47e09777845": {
+      "path": "res://assets/audio/japanese/kanji_alive/fun-wa(keru)_06_j.ogg",
+      "prompt": "分ける",
+      "reading": "わける",
+      "sourceFile": "audio-ogg/fun-wa(keru)_06_j.ogg",
+      "sha256": "c12b836458b9e800b5606e4d8676211bc25cdc05a2db1f5315ede31237b5b851"
+    },
+    "ka-5b96ea1bf99d5bdf9f0e": {
+      "path": "res://assets/audio/japanese/kanji_alive/azu(keru)_06_c.ogg",
+      "prompt": "預ける",
+      "reading": "あずける",
+      "sourceFile": "audio-ogg/azu(keru)_06_c.ogg",
+      "sha256": "961ef6c8a7dc41c0a2d2198bb3384ca76bc48be62a86e4c09f6f75c47ac6643c"
+    },
+    "ka-5bcbeb24344a470e87e3": {
+      "path": "res://assets/audio/japanese/kanji_alive/1_06_b.ogg",
+      "prompt": "一番",
+      "reading": "いちばん",
+      "sourceFile": "audio-ogg/1_06_b.ogg",
+      "sha256": "f3dbd67a883ccfd00dd02706986f4ab3df2b8ac8f63c38f850e5f3b3c71b769c"
+    },
+    "ka-5c72c473831fcedda65a": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-ue_06_j.ogg",
+      "prompt": "上がる",
+      "reading": "あがる",
+      "sourceFile": "audio-ogg/jou-ue_06_j.ogg",
+      "sha256": "d26d7d506a41dcf1e0e248d79aa9e749df1b39f30e3195c2b829e8f58e859ae9"
+    },
+    "ka-5ce30b768c0f61898941": {
+      "path": "res://assets/audio/japanese/kanji_alive/gyuu-ushi_06_d.ogg",
+      "prompt": "牛",
+      "reading": "うし",
+      "sourceFile": "audio-ogg/gyuu-ushi_06_d.ogg",
+      "sha256": "2ff3339daac0f3fc106d698a82d8defad7e4d8236390e67f8992d940af38412e"
+    },
+    "ka-5eab034e410e969efe28": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ba)sho_06_a.ogg",
+      "prompt": "場所",
+      "reading": "ばしょ",
+      "sourceFile": "audio-ogg/(ba)sho_06_a.ogg",
+      "sha256": "eac64060ebc3958d46737c37abf20f4cbb8a469519c1101e48991010142838d1"
+    },
+    "ka-5eade397f12efebd44dd": {
+      "path": "res://assets/audio/japanese/kanji_alive/nin-hito_06_c.ogg",
+      "prompt": "人口",
+      "reading": "じんこう",
+      "sourceFile": "audio-ogg/nin-hito_06_c.ogg",
+      "sha256": "924d27ed8f9f8bc53e555b2a2574a6450c1934d191fdaf9b1df9a23baa34cfb3"
+    },
+    "ka-5f4c863a3916619ad506": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-mo(tsu)_06_g.ogg",
+      "prompt": "金持ち",
+      "reading": "かねもち",
+      "sourceFile": "audio-ogg/ji-mo(tsu)_06_g.ogg",
+      "sha256": "ac5f2dcdec601d3bea145a9e0a83bf115428bb2a8e9ab1a8a6a6c4f22255b38a"
+    },
+    "ka-5f653f7a7eac3f46b374": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_f.ogg",
+      "prompt": "下がる",
+      "reading": "さがる",
+      "sourceFile": "audio-ogg/ge-shita_06_f.ogg",
+      "sha256": "c07662433a5169badb5ff316865c3b0f24f9c80622a5302fe7ad9eb3247a8718"
+    },
+    "ka-60c8decc99e506a22665": {
+      "path": "res://assets/audio/japanese/kanji_alive/iso(gu)_06_h.ogg",
+      "prompt": "急ぐ",
+      "reading": "いそぐ",
+      "sourceFile": "audio-ogg/iso(gu)_06_h.ogg",
+      "sha256": "5b98bbe1fe1f88dc01010c0402f860cac7734b4f1ab63fdacdcb57a71f05271a"
+    },
+    "ka-60df4e8e78f62a05dfa9": {
+      "path": "res://assets/audio/japanese/kanji_alive/5_06_e.ogg",
+      "prompt": "五つ",
+      "reading": "いつつ",
+      "sourceFile": "audio-ogg/5_06_e.ogg",
+      "sha256": "a53e755b08f3e1db35b47bd65c5d24e46de1266074fab8a9f2eff8825e3cd048"
+    },
+    "ka-61aabe6eaeedbeca7158": {
+      "path": "res://assets/audio/japanese/kanji_alive/shina_06_k.ogg",
+      "prompt": "品物",
+      "reading": "しなもの",
+      "sourceFile": "audio-ogg/shina_06_k.ogg",
+      "sha256": "340db502f7c11c15f6d9cb312e5a63a66af53aad42f2b9e0f35d009d0521b838"
+    },
+    "ka-625dab96fc60f4feef75": {
+      "path": "res://assets/audio/japanese/kanji_alive/gen-i(u)_06_h.ogg",
+      "prompt": "言葉",
+      "reading": "ことば",
+      "sourceFile": "audio-ogg/gen-i(u)_06_h.ogg",
+      "sha256": "f3ea87d77d973628ecbd986907f326ca4e145bc8f541fd6c17e54817d1bbde95"
+    },
+    "ka-633e35b2fd9b43da7153": {
+      "path": "res://assets/audio/japanese/kanji_alive/musume_06_a.ogg",
+      "prompt": "娘",
+      "reading": "むすめ",
+      "sourceFile": "audio-ogg/musume_06_a.ogg",
+      "sha256": "19529437768aa3f6b65113f76c308ace1c5d14c87e1bddb6866d1a061d39decd"
+    },
+    "ka-6362818cd7c5f551b7b1": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_h.ogg",
+      "prompt": "明日",
+      "reading": "あした",
+      "sourceFile": "audio-ogg/nichi-hi_06_h.ogg",
+      "sha256": "5d403dadd13be9c82c43147cd4c3d0d12848dfde47641b111d926f8a58e53d99"
+    },
+    "ka-6379a75e5e8bbce76218": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-era(bu)_06_h.ogg",
+      "prompt": "選ぶ",
+      "reading": "えらぶ",
+      "sourceFile": "audio-ogg/sen-era(bu)_06_h.ogg",
+      "sha256": "9c1734f909796e4a9716ec76b571ed7385987f7642bf76af6831a43328851fc6"
+    },
+    "ka-6396cfd9f78abef09213": {
+      "path": "res://assets/audio/japanese/kanji_alive/hei-toji(ru)_06_g.ogg",
+      "prompt": "閉める",
+      "reading": "しめる",
+      "sourceFile": "audio-ogg/hei-toji(ru)_06_g.ogg",
+      "sha256": "17d6ed8d0ea59e1378ec08c636dded01d6fc7a4acd44709c2a9f71a7dbda81cb"
+    },
+    "ka-63f4660ac4086216b7ea": {
+      "path": "res://assets/audio/japanese/kanji_alive/su(u)_06_h.ogg",
+      "prompt": "吸う",
+      "reading": "すう",
+      "sourceFile": "audio-ogg/su(u)_06_h.ogg",
+      "sha256": "8048da0971ac419c085fe81f480168ea3ccb45aca9f457b20ddfced623e4c201"
+    },
+    "ka-64101daf11736dd3be86": {
+      "path": "res://assets/audio/japanese/kanji_alive/sakura(nbou)_06_b.ogg",
+      "prompt": "桜",
+      "reading": "さくら",
+      "sourceFile": "audio-ogg/sakura(nbou)_06_b.ogg",
+      "sha256": "7696f606706a0350a67fa6e5037117030fde37a9491ee4062bb363f8ac1b76b0"
+    },
+    "ka-656ffebb495064a3ed95": {
+      "path": "res://assets/audio/japanese/kanji_alive/10_06_i.ogg",
+      "prompt": "十日",
+      "reading": "とおか",
+      "sourceFile": "audio-ogg/10_06_i.ogg",
+      "sha256": "4602793f09f9e29b587731ceb7cea31c9ca7cac6eefc7120c47de4819d10f316"
+    },
+    "ka-6604c0ded1ec6d83ad40": {
+      "path": "res://assets/audio/japanese/kanji_alive/chou-ha(ru)_06_f.ogg",
+      "prompt": "頑張る",
+      "reading": "がんばる",
+      "sourceFile": "audio-ogg/chou-ha(ru)_06_f.ogg",
+      "sha256": "4370b8d9b0b84b66ea2197da34cbe7b1464268b9ec4c5c5d78a82bb4345c85e8"
+    },
+    "ka-6745fd63304ee82028a0": {
+      "path": "res://assets/audio/japanese/kanji_alive/butsu-mono_06_e.ogg",
+      "prompt": "荷物",
+      "reading": "にもつ",
+      "sourceFile": "audio-ogg/butsu-mono_06_e.ogg",
+      "sha256": "61ea810c5ff78a556b88f9da3d8e2acd2ec2bbb799e8b5f599675797d6a1a6c7"
+    },
+    "ka-675f51357830f4e3a46e": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-ha_06_f.ogg",
+      "prompt": "歯医者",
+      "reading": "はいしゃ",
+      "sourceFile": "audio-ogg/shi-ha_06_f.ogg",
+      "sha256": "27b1093d5adebc19e66209cc5d43c6876354bfae3b0b7280bc21ae0627b9a636"
+    },
+    "ka-68e46c10e50af9d74c10": {
+      "path": "res://assets/audio/japanese/kanji_alive/fu(dangi)_06_b.ogg",
+      "prompt": "普段",
+      "reading": "ふだん",
+      "sourceFile": "audio-ogg/fu(dangi)_06_b.ogg",
+      "sha256": "1ee0775a2076062c47f70163c9df158eb6863864c575883d7771f04191fb1593"
+    },
+    "ka-69302623899ed73d2f0f": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_j.ogg",
+      "prompt": "下りる",
+      "reading": "おりる",
+      "sourceFile": "audio-ogg/ge-shita_06_j.ogg",
+      "sha256": "9e751de275e77442672a378d3840111c8158a228679bd3527b9487a7023f8081"
+    },
+    "ka-6958412761ce4d50af08": {
+      "path": "res://assets/audio/japanese/kanji_alive/otoko_06_d.ogg",
+      "prompt": "男",
+      "reading": "おとこ",
+      "sourceFile": "audio-ogg/otoko_06_d.ogg",
+      "sha256": "87bae5d7ca868b8dfe4c647547445ed048d74afe7ba1250955f5fdc45523dbf0"
+    },
+    "ka-69738691d1861a47fd54": {
+      "path": "res://assets/audio/japanese/kanji_alive/kai(ga)_06_b.ogg",
+      "prompt": "絵",
+      "reading": "え",
+      "sourceFile": "audio-ogg/kai(ga)_06_b.ogg",
+      "sha256": "b074a3ddeb30c8ea1380dfa0439b230de97ad76a6cff43378fdf25816b3a5953"
+    },
+    "ka-6ad5ceddcd51ed1d4a24": {
+      "path": "res://assets/audio/japanese/kanji_alive/1_06_d.ogg",
+      "prompt": "一杯",
+      "reading": "いっぱい",
+      "sourceFile": "audio-ogg/1_06_d.ogg",
+      "sha256": "c1902d39a1e75b9f369c90ceff1caf5693695bec922d9a1a391e28991bcca564"
+    },
+    "ka-6b586ff5f24e5c5bdffe": {
+      "path": "res://assets/audio/japanese/kanji_alive/yuu-tomo_06_d.ogg",
+      "prompt": "友達",
+      "reading": "ともだち",
+      "sourceFile": "audio-ogg/yuu-tomo_06_d.ogg",
+      "sha256": "5e4b23eaa2b76dfa73f0bc231d49301f4cb3bf3ec545fa3549f39fac3d49bbbc"
+    },
+    "ka-6b65be466b83ac9500b9": {
+      "path": "res://assets/audio/japanese/kanji_alive/te_06_g.ogg",
+      "prompt": "手伝う",
+      "reading": "てつだう",
+      "sourceFile": "audio-ogg/te_06_g.ogg",
+      "sha256": "1667633d214cc5dacd8ecfe975baa20eefc800c53e46269a2df230ac7873b4c8"
+    },
+    "ka-6c1b08af008a27628c23": {
+      "path": "res://assets/audio/japanese/kanji_alive/ken-mi(ru)_06_h.ogg",
+      "prompt": "見つける",
+      "reading": "みつける",
+      "sourceFile": "audio-ogg/ken-mi(ru)_06_h.ogg",
+      "sha256": "aa6570dc61cec43cf594a078ddfdefdbe6be088367d1c13ef9d146e06304e07d"
+    },
+    "ka-6c26f44ef43633cdf131": {
+      "path": "res://assets/audio/japanese/kanji_alive/mane(ku)_06_c.ogg",
+      "prompt": "招く",
+      "reading": "まねく",
+      "sourceFile": "audio-ogg/mane(ku)_06_c.ogg",
+      "sha256": "c7a19267d9be147ef3142e5eb9d77accad5a8fa151384d2e39df357fc6a3e787"
+    },
+    "ka-6c9de77227c32fc0a418": {
+      "path": "res://assets/audio/japanese/kanji_alive/fuyu_06_f.ogg",
+      "prompt": "冬",
+      "reading": "ふゆ",
+      "sourceFile": "audio-ogg/fuyu_06_f.ogg",
+      "sha256": "20aef012511ff10001e59ac76db17f72a7f694f641e07217e7ef6650cfa56439"
+    },
+    "ka-6d86131948b1e0558f79": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-omo(u)_06_e.ogg",
+      "prompt": "思う",
+      "reading": "おもう",
+      "sourceFile": "audio-ogg/shi-omo(u)_06_e.ogg",
+      "sha256": "88cf8e00dbc7770bb40b295f0f411de757e0c4afbd37d37df924672bef567a93"
+    },
+    "ka-6db3d8ebbe17fd0bc9e7": {
+      "path": "res://assets/audio/japanese/kanji_alive/chii(sai)_06_e.ogg",
+      "prompt": "小さい",
+      "reading": "ちいさい",
+      "sourceFile": "audio-ogg/chii(sai)_06_e.ogg",
+      "sha256": "353531b70f44f9a01244a9a49d2ac70c86f57d9d44166b47e7b2e0023d947a47"
+    },
+    "ka-6e98275283cfe7603562": {
+      "path": "res://assets/audio/japanese/kanji_alive/matsuri_06_f.ogg",
+      "prompt": "祭り",
+      "reading": "まつり",
+      "sourceFile": "audio-ogg/matsuri_06_f.ogg",
+      "sha256": "9ebbecb92396973a5e31840ec6eabfe21552666652dc2bb5fa6c576c915e72ae"
+    },
+    "ka-6f0f298bff4f1bc45dcb": {
+      "path": "res://assets/audio/japanese/kanji_alive/yoru_06_j.ogg",
+      "prompt": "夜",
+      "reading": "よる",
+      "sourceFile": "audio-ogg/yoru_06_j.ogg",
+      "sha256": "ff1ab248da4a8aa43d52ef34a31b223a53d1655ef67d68621d5ea518e25a40a1"
+    },
+    "ka-6f5e7c7a8bdb4dc03ce1": {
+      "path": "res://assets/audio/japanese/kanji_alive/ima_06_c.ogg",
+      "prompt": "今晩",
+      "reading": "こんばん",
+      "sourceFile": "audio-ogg/ima_06_c.ogg",
+      "sha256": "20557db1cc2c9bdc6922415a5271b708b3ca6aa9c08a6dc6b96509ae6056863b"
+    },
+    "ka-6fa33d169198e75a3cce": {
+      "path": "res://assets/audio/japanese/kanji_alive/wa-hana(su)_06_g.ogg",
+      "prompt": "話",
+      "reading": "はなし",
+      "sourceFile": "audio-ogg/wa-hana(su)_06_g.ogg",
+      "sha256": "40796ba17d20ededc9069e9296e6af21874b30535384887340f6fc5738d1448f"
+    },
+    "ka-6fb68dedcfd141542640": {
+      "path": "res://assets/audio/japanese/kanji_alive/shou-ya(ku)_06_d.ogg",
+      "prompt": "焼く",
+      "reading": "やく",
+      "sourceFile": "audio-ogg/shou-ya(ku)_06_d.ogg",
+      "sha256": "c6a5f6999008fef5dafe795d8cc45fba94e390887cbe5c8149c74f43ecaecfc7"
+    },
+    "ka-6fbf2269dfed2a535d51": {
+      "path": "res://assets/audio/japanese/kanji_alive/shoku-sawa(ru)_06_j.ogg",
+      "prompt": "触る",
+      "reading": "さわる",
+      "sourceFile": "audio-ogg/shoku-sawa(ru)_06_j.ogg",
+      "sha256": "95201d074bbc0f2d49e3c65ce330a613dc57208412d0791a89b3d36e35a9cc50"
+    },
+    "ka-70d0978b29789da905e3": {
+      "path": "res://assets/audio/japanese/kanji_alive/(yama)oku_06_c.ogg",
+      "prompt": "奥さん",
+      "reading": "おくさん",
+      "sourceFile": "audio-ogg/(yama)oku_06_c.ogg",
+      "sha256": "a934be9f757ef78cb336ed2abe5e2ac63a073640bf7c4a80a27f7a9552a683f9"
+    },
+    "ka-70d4a9e533f138649f14": {
+      "path": "res://assets/audio/japanese/kanji_alive/tsugi_06_h.ogg",
+      "prompt": "次",
+      "reading": "つぎ",
+      "sourceFile": "audio-ogg/tsugi_06_h.ogg",
+      "sha256": "8eceb46dafec34e832424260728d29d237a6b1dede4693b6f2f9efced011d7f0"
+    },
+    "ka-71f8211cfa85e5a83bc0": {
+      "path": "res://assets/audio/japanese/kanji_alive/tai-ka(su)_06_c.ogg",
+      "prompt": "貸す",
+      "reading": "かす",
+      "sourceFile": "audio-ogg/tai-ka(su)_06_c.ogg",
+      "sha256": "7790e6138a3cea8d9ccb44353fea6f93cb46914af1142bdadda1bc67f871d71f"
+    },
+    "ka-73020fc61558b257f429": {
+      "path": "res://assets/audio/japanese/kanji_alive/to-wata(ru)_06_d.ogg",
+      "prompt": "渡る",
+      "reading": "わたる",
+      "sourceFile": "audio-ogg/to-wata(ru)_06_d.ogg",
+      "sha256": "a20bd4bf9e8649408064295595f238959d6dfb6b96116bf6f4dae7f9c629a78a"
+    },
+    "ka-73029103e2890a256a7e": {
+      "path": "res://assets/audio/japanese/kanji_alive/kan-tate(mono)_06_h.ogg",
+      "prompt": "旅館",
+      "reading": "りょかん",
+      "sourceFile": "audio-ogg/kan-tate(mono)_06_h.ogg",
+      "sha256": "d1b0c2525b5ff30699363eb72644010eca7cf09960ec60a01ddea1c15d3045d0"
+    },
+    "ka-738fb5f653b843bec131": {
+      "path": "res://assets/audio/japanese/kanji_alive/isoga(shii)_06_c.ogg",
+      "prompt": "忙しい",
+      "reading": "いそがしい",
+      "sourceFile": "audio-ogg/isoga(shii)_06_c.ogg",
+      "sha256": "afe66de798cf95f4d6c0b963f126e62f20c290617485d6e7211f02be4ed8ebc2"
+    },
+    "ka-74dbbf6085fd61cf4514": {
+      "path": "res://assets/audio/japanese/kanji_alive/do-tabi_06_b.ogg",
+      "prompt": "今度",
+      "reading": "こんど",
+      "sourceFile": "audio-ogg/do-tabi_06_b.ogg",
+      "sha256": "4ea01ea4c1829bd33aa6a822a936416fdb4a6b4a83f018b213d32167a965fcb8"
+    },
+    "ka-76710501b76f87ceba74": {
+      "path": "res://assets/audio/japanese/kanji_alive/ri(yuu)_06_a.ogg",
+      "prompt": "料理する",
+      "reading": "りょうりする",
+      "sourceFile": "audio-ogg/ri(yuu)_06_a.ogg",
+      "sha256": "6c152919f9ae4b6ef1e33a3010779df0763219e3d7732dd385b1b8453030af51"
+    },
+    "ka-77001244e702d6af5b70": {
+      "path": "res://assets/audio/japanese/kanji_alive/hatara(ku)_06_c.ogg",
+      "prompt": "働く",
+      "reading": "はたらく",
+      "sourceFile": "audio-ogg/hatara(ku)_06_c.ogg",
+      "sha256": "131184190a62ec37f136ed6bc9f6bc5e865062b32b588f88e203d2efecf0b9e8"
+    },
+    "ka-77860becac69b1cc1cf8": {
+      "path": "res://assets/audio/japanese/kanji_alive/shuu-hiro(u)_06_d.ogg",
+      "prompt": "拾う",
+      "reading": "ひろう",
+      "sourceFile": "audio-ogg/shuu-hiro(u)_06_d.ogg",
+      "sha256": "cd2a70f01980c4283be4065a0b49198c5e22460d62c4f40d3fa83956792b3d57"
+    },
+    "ka-79f9dbf6b0314e075ddc": {
+      "path": "res://assets/audio/japanese/kanji_alive/mae_06_d.ogg",
+      "prompt": "前",
+      "reading": "まえ",
+      "sourceFile": "audio-ogg/mae_06_d.ogg",
+      "sha256": "35736ef00183f18dd170099519c6fb18fda356c7fead008d82b646aa991f9338"
+    },
+    "ka-7a023c194371a9aabaf9": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-koto_06_j.ogg",
+      "prompt": "事",
+      "reading": "こと",
+      "sourceFile": "audio-ogg/ji-koto_06_j.ogg",
+      "sha256": "63e7b2cfda52f05d2588e48f2df71b26114cbb5f79e239978b7969a09c80f3fd"
+    },
+    "ka-7a905540cfcc5fd51dbc": {
+      "path": "res://assets/audio/japanese/kanji_alive/aru(ku)_06_j.ogg",
+      "prompt": "歩く",
+      "reading": "あるく",
+      "sourceFile": "audio-ogg/aru(ku)_06_j.ogg",
+      "sha256": "53e8eca8a437365bbb1dfc7baa0753a94705aff72293581bd62819713487e49d"
+    },
+    "ka-7e9db281f57fc2e46faf": {
+      "path": "res://assets/audio/japanese/kanji_alive/oku-ya_06_e.ogg",
+      "prompt": "屋根",
+      "reading": "やね",
+      "sourceFile": "audio-ogg/oku-ya_06_e.ogg",
+      "sha256": "89b87ddd9075648ff0893f01463c10bbe3698238cc9a2b5947c07c9d236660cb"
+    },
+    "ka-7ec6004136ed7bc2b720": {
+      "path": "res://assets/audio/japanese/kanji_alive/ima_06_h.ogg",
+      "prompt": "今",
+      "reading": "いま",
+      "sourceFile": "audio-ogg/ima_06_h.ogg",
+      "sha256": "7797ee3f09697ab2d9533291d8a4595b5f1832f7edcc4bbb1d09b10118e833f1"
+    },
+    "ka-7ee1670439966a82ac0d": {
+      "path": "res://assets/audio/japanese/kanji_alive/shizu(mu)_06_h.ogg",
+      "prompt": "沈む",
+      "reading": "しずむ",
+      "sourceFile": "audio-ogg/shizu(mu)_06_h.ogg",
+      "sha256": "2c4a83c1da8132fe0c591faa2c464b7d9bf110b0027c52b46ca2ee9ebf6299c0"
+    },
+    "ka-7f4de5fdeb408912f8b2": {
+      "path": "res://assets/audio/japanese/kanji_alive/watashi_06_b.ogg",
+      "prompt": "私",
+      "reading": "わたし/わたくし",
+      "sourceFile": "audio-ogg/watashi_06_b.ogg",
+      "sha256": "70125e27784594c3240b263e19b9c58a0373736b6b0ea5aa04bdda7f903bab74"
+    },
+    "ka-819020b99d76d72d91fb": {
+      "path": "res://assets/audio/japanese/kanji_alive/fu-chichi_06_c.ogg",
+      "prompt": "父",
+      "reading": "ちち",
+      "sourceFile": "audio-ogg/fu-chichi_06_c.ogg",
+      "sha256": "b46f06c0561f715b9276f56a6cd23da38fc936d52b0827fa46bbba3f28454476"
+    },
+    "ka-820e3dfe4557b478f8e3": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_g.ogg",
+      "prompt": "下げる",
+      "reading": "さげる",
+      "sourceFile": "audio-ogg/ge-shita_06_g.ogg",
+      "sha256": "446dee619058025ca0df943517f78fbb144a967c6040c9329a4314ac008980d2"
+    },
+    "ka-821f2b8ecd63ec0a3c5f": {
+      "path": "res://assets/audio/japanese/kanji_alive/waru(i)_06_g.ogg",
+      "prompt": "悪い",
+      "reading": "わるい",
+      "sourceFile": "audio-ogg/waru(i)_06_g.ogg",
+      "sha256": "0da4cf5a275c2903dde54888bde5ce5831b18fd746bc769aaf03b53be8c21179"
+    },
+    "ka-835ba8a23c1eff8d8367": {
+      "path": "res://assets/audio/japanese/kanji_alive/ken-mi(ru)_06_f.ogg",
+      "prompt": "見る",
+      "reading": "みる",
+      "sourceFile": "audio-ogg/ken-mi(ru)_06_f.ogg",
+      "sha256": "38f6469be9efc7d85b201bf0d813290ce6639871ed03e1faa9d3a9b4587239bc"
+    },
+    "ka-83873f19c4c1f9c69e4c": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-to(maru)_06_h.ogg",
+      "prompt": "止める",
+      "reading": "やめる",
+      "sourceFile": "audio-ogg/shi-to(maru)_06_h.ogg",
+      "sha256": "89e1c006c8f333217eae3dcebc8c8fd58d1fdbda944d78243bf964c2fc26690b"
+    },
+    "ka-84b9efb7f7b908ca37e5": {
+      "path": "res://assets/audio/japanese/kanji_alive/shou(kaisuru)_06_c.ogg",
+      "prompt": "紹介する",
+      "reading": "しょうかいする",
+      "sourceFile": "audio-ogg/shou(kaisuru)_06_c.ogg",
+      "sha256": "f80f666631b9bc432b2449f19e04aef0169494e3fece121fa8dd207932dc22d7"
+    },
+    "ka-851e1ad51c587cdfb91a": {
+      "path": "res://assets/audio/japanese/kanji_alive/ito(shii)_06_c.ogg",
+      "prompt": "愛",
+      "reading": "あい",
+      "sourceFile": "audio-ogg/ito(shii)_06_c.ogg",
+      "sha256": "8da98ad5aa7296274af7e5b22aeae2368432d705bab6985841a261175950cfa2"
+    },
+    "ka-85fde6a5258975752dfe": {
+      "path": "res://assets/audio/japanese/kanji_alive/aji(wau)_06_c.ogg",
+      "prompt": "趣味",
+      "reading": "しゅみ",
+      "sourceFile": "audio-ogg/aji(wau)_06_c.ogg",
+      "sha256": "0a7145fb988c3668278582048a837805dd180ddab539cae63faf7f1b451b5262"
+    },
+    "ka-878bd4503ca4a183f478": {
+      "path": "res://assets/audio/japanese/kanji_alive/natsu_06_d.ogg",
+      "prompt": "夏",
+      "reading": "なつ",
+      "sourceFile": "audio-ogg/natsu_06_d.ogg",
+      "sha256": "7af70d4540e2b42c1f618cba87271a8e77cf4aca5a35fec74d8c82971bd7526b"
+    },
+    "ka-88e43260a02955aa3bf9": {
+      "path": "res://assets/audio/japanese/kanji_alive/ma(tsu)_06_d.ogg",
+      "prompt": "待つ",
+      "reading": "まつ",
+      "sourceFile": "audio-ogg/ma(tsu)_06_d.ogg",
+      "sha256": "aa27b00ea4db9be91d259e3f0ae5b1d0d96018820d241181632a919c14151cb6"
+    },
+    "ka-895dff31c93d96c6009d": {
+      "path": "res://assets/audio/japanese/kanji_alive/butsu-mono_06_f.ogg",
+      "prompt": "物",
+      "reading": "もの",
+      "sourceFile": "audio-ogg/butsu-mono_06_f.ogg",
+      "sha256": "1c21b2ba7c1743929aef722ceffaed250d3f631a4702ed7c525632f792b97fb2"
+    },
+    "ka-8a182545b7ecd8d27937": {
+      "path": "res://assets/audio/japanese/kanji_alive/hi-tsuka(reru)_06_b.ogg",
+      "prompt": "疲れる",
+      "reading": "つかれる",
+      "sourceFile": "audio-ogg/hi-tsuka(reru)_06_b.ogg",
+      "sha256": "7eb9b12c7a7f7b99a39bfef1b0fdd24646cc8b1c94a4219b8f583629f77fb621"
+    },
+    "ka-8a24f3210c0912fc4f1f": {
+      "path": "res://assets/audio/japanese/kanji_alive/hyou-koori_06_h.ogg",
+      "prompt": "氷",
+      "reading": "こおり",
+      "sourceFile": "audio-ogg/hyou-koori_06_h.ogg",
+      "sha256": "fa5421b45a034e9d9cec563ea27dcba0e33d433af4e685bb936f61e3bbb23174"
+    },
+    "ka-8b9b4edb5d3a4b3ed00c": {
+      "path": "res://assets/audio/japanese/kanji_alive/haku(shiki)_06_d.ogg",
+      "prompt": "博物館",
+      "reading": "はくぶつかん",
+      "sourceFile": "audio-ogg/haku(shiki)_06_d.ogg",
+      "sha256": "d3fc55d6497e6b6ac7b0786190553b3cd891e4bfbdf20f85ed63273b08d54026"
+    },
+    "ka-8c8593a876b389e09799": {
+      "path": "res://assets/audio/japanese/kanji_alive/tsume(tai)_06_f.ogg",
+      "prompt": "冷たい",
+      "reading": "つめたい",
+      "sourceFile": "audio-ogg/tsume(tai)_06_f.ogg",
+      "sha256": "e3846c55498abfca6cd3d786fe695f58155b23995ecfa34e4d52ba5ceab66c3a"
+    },
+    "ka-8d16db93453d5efd136b": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ne)dan_06_d.ogg",
+      "prompt": "階段",
+      "reading": "かいだん",
+      "sourceFile": "audio-ogg/(ne)dan_06_d.ogg",
+      "sha256": "091a4a0c79cc8e625d4eaf69e75cc35b647aa018e11e8139fa9b1b3e358efff5"
+    },
+    "ka-8d18ffdd85acd8b325b8": {
+      "path": "res://assets/audio/japanese/kanji_alive/ka(riru)_06_d.ogg",
+      "prompt": "借りる",
+      "reading": "かりる",
+      "sourceFile": "audio-ogg/ka(riru)_06_d.ogg",
+      "sha256": "84197d612e10b24a14e09fb8f9ee6524ffa0e0375b6b2818a874a97e681c65c8"
+    },
+    "ka-8d7c3cc5389aadff34a0": {
+      "path": "res://assets/audio/japanese/kanji_alive/9_06_h.ogg",
+      "prompt": "九つ",
+      "reading": "ここのつ",
+      "sourceFile": "audio-ogg/9_06_h.ogg",
+      "sha256": "2dbe0a110d4e0050985f54275faa4ae75809e1e0e941ce111c723bb08e7f3b49"
+    },
+    "ka-8e5c72a5262cc3d8cedb": {
+      "path": "res://assets/audio/japanese/kanji_alive/wasu(reru)_06_c.ogg",
+      "prompt": "忘れる",
+      "reading": "わすれる",
+      "sourceFile": "audio-ogg/wasu(reru)_06_c.ogg",
+      "sha256": "907af952daed04ed47784915735ad9b9945292b51c75a7127e4f0d03c106a426"
+    },
+    "ka-8eab530223817e5621ce": {
+      "path": "res://assets/audio/japanese/kanji_alive/too(i)_06_e.ogg",
+      "prompt": "遠い",
+      "reading": "とおい",
+      "sourceFile": "audio-ogg/too(i)_06_e.ogg",
+      "sha256": "89dd5e289ff5d672b0e59578fb621e2369f31888c9435ffce6f5ded49392557c"
+    },
+    "ka-8f1fc9fcfb03ed8242fa": {
+      "path": "res://assets/audio/japanese/kanji_alive/ketsu-ki(meru)_06_g.ogg",
+      "prompt": "決して",
+      "reading": "けっして",
+      "sourceFile": "audio-ogg/ketsu-ki(meru)_06_g.ogg",
+      "sha256": "7aa31c112afb7ef110cea30379c785e9d1d1567566fde4601177752c3d0b0d38"
+    },
+    "ka-8f46cb2b6abe909ad1a5": {
+      "path": "res://assets/audio/japanese/kanji_alive/ikio(i)_06_h.ogg",
+      "prompt": "大勢",
+      "reading": "おおぜい",
+      "sourceFile": "audio-ogg/ikio(i)_06_h.ogg",
+      "sha256": "3c359240faf5f67c9b5627f0a602c3d34c4aebc0faa4366ab446259bbb7e351a"
+    },
+    "ka-905087208eb56e33c97e": {
+      "path": "res://assets/audio/japanese/kanji_alive/susu(mu)_06_j.ogg",
+      "prompt": "進む",
+      "reading": "すすむ",
+      "sourceFile": "audio-ogg/susu(mu)_06_j.ogg",
+      "sha256": "9d2e43a624f44bedfc23574cdce8649f93d8dbca2e75647ec390408b69bd286b"
+    },
+    "ka-910a32a681558a8eb8eb": {
+      "path": "res://assets/audio/japanese/kanji_alive/bai-ka(u)_06_d.ogg",
+      "prompt": "買う",
+      "reading": "かう",
+      "sourceFile": "audio-ogg/bai-ka(u)_06_d.ogg",
+      "sha256": "66e5934f615420b7d06e64e489a1742c94a584f26c44c875af4a9e10a62a7730"
+    },
+    "ka-91972ea5ea5fc0f8e6a3": {
+      "path": "res://assets/audio/japanese/kanji_alive/kutsu_06_c.ogg",
+      "prompt": "靴",
+      "reading": "くつ",
+      "sourceFile": "audio-ogg/kutsu_06_c.ogg",
+      "sha256": "bea4fef84233280f23b7acea34e0ae1b943bf26d692b7a54b05bea2f92c05c8b"
+    },
+    "ka-91a1f33917a4d42d08d4": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_h.ogg",
+      "prompt": "下る",
+      "reading": "くだる",
+      "sourceFile": "audio-ogg/ge-shita_06_h.ogg",
+      "sha256": "04d0627d738c60c35009f26c00d898b6ec9571cddc97e8ba669a0cf516326a98"
+    },
+    "ka-91b33f71b31574539be1": {
+      "path": "res://assets/audio/japanese/kanji_alive/bun-ki(ku)_06_d.ogg",
+      "prompt": "聞こえる",
+      "reading": "きこえる",
+      "sourceFile": "audio-ogg/bun-ki(ku)_06_d.ogg",
+      "sha256": "89bb93e3305ee45d42793fc101e04ce9a27d0acc7da9a70195bba73c6b52c3b4"
+    },
+    "ka-94b267ef61bb9333b995": {
+      "path": "res://assets/audio/japanese/kanji_alive/hi-to(bu)_06_g.ogg",
+      "prompt": "飛び上がる",
+      "reading": "とびあがる",
+      "sourceFile": "audio-ogg/hi-to(bu)_06_g.ogg",
+      "sha256": "a2786d422c7fbe4ccf3d3eb1c4dd015f34857d5c3483c1d4001accfa71968abc"
+    },
+    "ka-95318536ccef8945fa0c": {
+      "path": "res://assets/audio/japanese/kanji_alive/shuu-nara(u)_06_g.ogg",
+      "prompt": "習う",
+      "reading": "ならう",
+      "sourceFile": "audio-ogg/shuu-nara(u)_06_g.ogg",
+      "sha256": "8907314ed79f25b7de2a06b69dfa644b95a26dab0c595fa7e35a78530eff713a"
+    },
+    "ka-962dea21b71a02467f54": {
+      "path": "res://assets/audio/japanese/kanji_alive/tou-nobo(ru)_06_f.ogg",
+      "prompt": "登る",
+      "reading": "のぼる",
+      "sourceFile": "audio-ogg/tou-nobo(ru)_06_f.ogg",
+      "sha256": "ebcb446a211b99cc80fe31f7916aa2260a66e38f0ebed0002e3302861bab06f0"
+    },
+    "ka-9695a2ef3aecc17b263b": {
+      "path": "res://assets/audio/japanese/kanji_alive/mae_06_a.ogg",
+      "prompt": "午前",
+      "reading": "ごぜん",
+      "sourceFile": "audio-ogg/mae_06_a.ogg",
+      "sha256": "e2a3666e9e27d71e37d4151e1832606a1f27e6399c135ce4b233bbc0d06118db"
+    },
+    "ka-96d697124482bad33605": {
+      "path": "res://assets/audio/japanese/kanji_alive/mise_06_i.ogg",
+      "prompt": "店",
+      "reading": "みせ",
+      "sourceFile": "audio-ogg/mise_06_i.ogg",
+      "sha256": "e6c69c6e679160f31940c606e7609fdbb31e2ffcae6100ff364040d81d810322"
+    },
+    "ka-9821879cdb9b217a3d06": {
+      "path": "res://assets/audio/japanese/kanji_alive/todo(ku)_06_b.ogg",
+      "prompt": "届ける",
+      "reading": "とどける",
+      "sourceFile": "audio-ogg/todo(ku)_06_b.ogg",
+      "sha256": "89b174f8c24032a8ca088226207926085d3919f13240462bbd5d9416d89e8651"
+    },
+    "ka-98573406c8c8e68e0e54": {
+      "path": "res://assets/audio/japanese/kanji_alive/ao_06_d.ogg",
+      "prompt": "青い",
+      "reading": "あおい",
+      "sourceFile": "audio-ogg/ao_06_d.ogg",
+      "sha256": "bb57603d64e1911c829d2a23642dd676d87962eb455a8f918f1c91872fb05895"
+    },
+    "ka-995c819b8e8955d5d824": {
+      "path": "res://assets/audio/japanese/kanji_alive/atara(shii)_06_i.ogg",
+      "prompt": "新しい",
+      "reading": "あたらしい",
+      "sourceFile": "audio-ogg/atara(shii)_06_i.ogg",
+      "sha256": "c43373f02c97d321e9ed18fa9e0df95fbc554661a55ff5baa9cec5133e720fa4"
+    },
+    "ka-9a0d09c9e2ae9831687d": {
+      "path": "res://assets/audio/japanese/kanji_alive/kanara(zu)_06_f.ogg",
+      "prompt": "必ず",
+      "reading": "かならず",
+      "sourceFile": "audio-ogg/kanara(zu)_06_f.ogg",
+      "sha256": "56ca0c402f004c1ba83b746b84fffeaadbeffe0351426bfcda39969a44443939"
+    },
+    "ka-9ae331c053ea9abbb660": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-mo(tsu)_06_e.ogg",
+      "prompt": "持って行く",
+      "reading": "もっていく",
+      "sourceFile": "audio-ogg/ji-mo(tsu)_06_e.ogg",
+      "sha256": "97fb044f5e7a95eef0a8c5a60c4171eb2582379c847ecad701e7c6e9ddea2c71"
+    },
+    "ka-9d2680c32a05dbfa128c": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_i.ogg",
+      "prompt": "昨日",
+      "reading": "きのう",
+      "sourceFile": "audio-ogg/nichi-hi_06_i.ogg",
+      "sha256": "96ddd61b5aec59a4aab8b24c4da892d2c4c314d44be71cad194b06d2341055e7"
+    },
+    "ka-9e7c1129435b9ca3c4f2": {
+      "path": "res://assets/audio/japanese/kanji_alive/ona(ji)_06_j.ogg",
+      "prompt": "同じ",
+      "reading": "おなじ",
+      "sourceFile": "audio-ogg/ona(ji)_06_j.ogg",
+      "sha256": "8d3a83aa156679cd79d2719630453b9e485f2098467b4c8980b22d2f7b9db761"
+    },
+    "ka-9f25237e93804a8b3a1d": {
+      "path": "res://assets/audio/japanese/kanji_alive/saku-tsuku(ru)_06_i.ogg",
+      "prompt": "作る",
+      "reading": "つくる",
+      "sourceFile": "audio-ogg/saku-tsuku(ru)_06_i.ogg",
+      "sha256": "e4cb7412cc3084d37c793e5bd01782e75f6ec13b30089248baf43d5bf190927a"
+    },
+    "ka-9f26b604e96de18d2beb": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-ara(u)_06_g.ogg",
+      "prompt": "洗う",
+      "reading": "あらう",
+      "sourceFile": "audio-ogg/sen-ara(u)_06_g.ogg",
+      "sha256": "5b2306659999639d5b7a5f82d6579e1b65fb30f724245191f5dcb8e8b071edb9"
+    },
+    "ka-9fa97ff5b4f4b882ef18": {
+      "path": "res://assets/audio/japanese/kanji_alive/ha(kaisuru)_06_k.ogg",
+      "prompt": "破る",
+      "reading": "やぶる",
+      "sourceFile": "audio-ogg/ha(kaisuru)_06_k.ogg",
+      "sha256": "40de201eac2077740229ecb588393c553e6bf3ce5e90d2ccddf1a395f73206c8"
+    },
+    "ka-a29e124fd9b2fab05360": {
+      "path": "res://assets/audio/japanese/kanji_alive/bai-u(ru)_06_e.ogg",
+      "prompt": "売る",
+      "reading": "うる",
+      "sourceFile": "audio-ogg/bai-u(ru)_06_e.ogg",
+      "sha256": "674873c81ad29132f68b47b198f9a8c2a07bc955eface0c63e8fe35e2ad36579"
+    },
+    "ka-a32e94cfb34e74901f73": {
+      "path": "res://assets/audio/japanese/kanji_alive/chika(ku)_06_g.ogg",
+      "prompt": "近い",
+      "reading": "ちかい",
+      "sourceFile": "audio-ogg/chika(ku)_06_g.ogg",
+      "sha256": "e846999feda320796dced07531de5d1654db1b3932183de2c8660e831a49f5e0"
+    },
+    "ka-a32fb21cd1a6db9cd25f": {
+      "path": "res://assets/audio/japanese/kanji_alive/i(ku)-gyou_06_i.ogg",
+      "prompt": "行く",
+      "reading": "いく/ゆく",
+      "sourceFile": "audio-ogg/i(ku)-gyou_06_i.ogg",
+      "sha256": "0c5b5ad1309d8e81019f84bd11169cccca55e7c79c0d506b1d9e508105313657"
+    },
+    "ka-a3ce999318f380a29694": {
+      "path": "res://assets/audio/japanese/kanji_alive/ge-shita_06_i.ogg",
+      "prompt": "下ろす",
+      "reading": "おろす",
+      "sourceFile": "audio-ogg/ge-shita_06_i.ogg",
+      "sha256": "d3b00f946073c6a53858abfc49bb91672fde0f40f269cf34198dbd01962cd591"
+    },
+    "ka-a474b29b98b4e30bcb0b": {
+      "path": "res://assets/audio/japanese/kanji_alive/ie_06_a.ogg",
+      "prompt": "家族",
+      "reading": "かぞく",
+      "sourceFile": "audio-ogg/ie_06_a.ogg",
+      "sha256": "278fff442e1c31294c24e70837a586afeece62783a437be4a23124a37a2a8a00"
+    },
+    "ka-a62484760248ac6dfeca": {
+      "path": "res://assets/audio/japanese/kanji_alive/8_06_j.ogg",
+      "prompt": "八日",
+      "reading": "ようか",
+      "sourceFile": "audio-ogg/8_06_j.ogg",
+      "sha256": "b79fafe4f9b2938ab2b90ba09c09cc40f28e2ec7e44a6cc8b7d68dae216e9ab2"
+    },
+    "ka-a62c8fb5df5d7fefa8e3": {
+      "path": "res://assets/audio/japanese/kanji_alive/hiku(i)_06_e.ogg",
+      "prompt": "低い",
+      "reading": "ひくい",
+      "sourceFile": "audio-ogg/hiku(i)_06_e.ogg",
+      "sha256": "6a98a5cc347019e4af8a124e0a63e1997146805b557cdc18c5dd4aa350285ef6"
+    },
+    "ka-a6c2a3c946ed1072e216": {
+      "path": "res://assets/audio/japanese/kanji_alive/mana(bu)_06_d.ogg",
+      "prompt": "大学院",
+      "reading": "だいがくいん",
+      "sourceFile": "audio-ogg/mana(bu)_06_d.ogg",
+      "sha256": "5e0f13739b63c7dd9189818cac5f8d09515dc59894655f123aeebb8032139d3d"
+    },
+    "ka-a73982a4c93ba9818cf1": {
+      "path": "res://assets/audio/japanese/kanji_alive/nin-hito_06_f.ogg",
+      "prompt": "人間",
+      "reading": "にんげん",
+      "sourceFile": "audio-ogg/nin-hito_06_f.ogg",
+      "sha256": "df36b39e26a7a72e50815130e4c49f8f634b4d9f84930a0e2dd61c2f46171abd"
+    },
+    "ka-a767b3a98f55c7037acc": {
+      "path": "res://assets/audio/japanese/kanji_alive/oyo(gu)_06_d.ogg",
+      "prompt": "泳ぐ",
+      "reading": "およぐ",
+      "sourceFile": "audio-ogg/oyo(gu)_06_d.ogg",
+      "sha256": "fce435af7fa65a407fdd3cde0755d760b3d8a9c2c7ad694bb3761d9ff7d30448"
+    },
+    "ka-a9352dd568d54862dd34": {
+      "path": "res://assets/audio/japanese/kanji_alive/ryuu-to(meru)_06_d.ogg",
+      "prompt": "留学生",
+      "reading": "りゅうがくせい",
+      "sourceFile": "audio-ogg/ryuu-to(meru)_06_d.ogg",
+      "sha256": "eda8787b273af7461486d137f392fa6169998d985a2481307443878ccd023f92"
+    },
+    "ka-a9548c415fd1b83e64c6": {
+      "path": "res://assets/audio/japanese/kanji_alive/ima_06_e.ogg",
+      "prompt": "今回",
+      "reading": "こんかい",
+      "sourceFile": "audio-ogg/ima_06_e.ogg",
+      "sha256": "b64801a627251882725cf8221d4a41d8dc22c26c79e830d8fd4532b75ed2e495"
+    },
+    "ka-a968e8f7196c90451c17": {
+      "path": "res://assets/audio/japanese/kanji_alive/mizuka(ra)_06_e.ogg",
+      "prompt": "自分",
+      "reading": "じぶん",
+      "sourceFile": "audio-ogg/mizuka(ra)_06_e.ogg",
+      "sha256": "3001bab78be027603b8467815fd272fb0d9b331a46b788359e64c86a7a0b0376"
+    },
+    "ka-aa3ae60e50dd556caf74": {
+      "path": "res://assets/audio/japanese/kanji_alive/taka(i)_06_f.ogg",
+      "prompt": "高い",
+      "reading": "たかい",
+      "sourceFile": "audio-ogg/taka(i)_06_f.ogg",
+      "sha256": "6b5522cecb51af511234e8d75503d1841fe74272feaf3699fd300ab8198ac086"
+    },
+    "ka-aa81be21c1595eee8975": {
+      "path": "res://assets/audio/japanese/kanji_alive/karada_06_h.ogg",
+      "prompt": "体",
+      "reading": "からだ",
+      "sourceFile": "audio-ogg/karada_06_h.ogg",
+      "sha256": "3d3650b4b4bf175fde1ba7650c6bf238a4a298ecc827a84b8686b5f374a4414d"
+    },
+    "ka-aabd62bc298c352c8870": {
+      "path": "res://assets/audio/japanese/kanji_alive/ima_06_b.ogg",
+      "prompt": "今週",
+      "reading": "こんしゅう",
+      "sourceFile": "audio-ogg/ima_06_b.ogg",
+      "sha256": "8a8ddb35676fc1c8f3f22231afed994366368ed51663d1caa7fcfd2d0b8cf7aa"
+    },
+    "ka-ab7e5c8b7396bb73ad0b": {
+      "path": "res://assets/audio/japanese/kanji_alive/nu(ru)_06_c.ogg",
+      "prompt": "塗る",
+      "reading": "ぬる",
+      "sourceFile": "audio-ogg/nu(ru)_06_c.ogg",
+      "sha256": "85ef00cc324c02b303065f459c1399aeff260b95e583abf2bf23c2c0b0cecd7e"
+    },
+    "ka-ac8faadc8bc1799fc21c": {
+      "path": "res://assets/audio/japanese/kanji_alive/furu(i)_06_c.ogg",
+      "prompt": "古い",
+      "reading": "ふるい",
+      "sourceFile": "audio-ogg/furu(i)_06_c.ogg",
+      "sha256": "6c1b421339bc0aec789ba6d492ce81550b2df066b3b8e85ecfc491201f224c5c"
+    },
+    "ka-ad1e2d694cdf91343ee3": {
+      "path": "res://assets/audio/japanese/kanji_alive/koro(su)_06_k.ogg",
+      "prompt": "殺す",
+      "reading": "ころす",
+      "sourceFile": "audio-ogg/koro(su)_06_k.ogg",
+      "sha256": "440ea64b95373bdc84bc089265dfd7d3f6224af0e83a1671c654a92c2da251b9"
+    },
+    "ka-ad50c4178a31bdafc460": {
+      "path": "res://assets/audio/japanese/kanji_alive/goto_06_e.ogg",
+      "prompt": "毎週",
+      "reading": "まいしゅう",
+      "sourceFile": "audio-ogg/goto_06_e.ogg",
+      "sha256": "3d6dadd4f81408ada81e67b268f4e05f3784b52864aa4f51834c136f2c4381d0"
+    },
+    "ka-af2f8db7b0a7a2925411": {
+      "path": "res://assets/audio/japanese/kanji_alive/1_06_i.ogg",
+      "prompt": "一人",
+      "reading": "ひとり",
+      "sourceFile": "audio-ogg/1_06_i.ogg",
+      "sha256": "a68d2f84a3d9a71d5a3e448b01cc239a02c9a39c2c5c03a9c4dc46397095069a"
+    },
+    "ka-b02cd5b788877c9f567b": {
+      "path": "res://assets/audio/japanese/kanji_alive/setsu-yuki_06_d.ogg",
+      "prompt": "雪",
+      "reading": "ゆき",
+      "sourceFile": "audio-ogg/setsu-yuki_06_d.ogg",
+      "sha256": "9418754c36fda003eb2060f9f1510de78348a233b441c116eaa0f68b4d01069f"
+    },
+    "ka-b0b4da75e9e58a14f278": {
+      "path": "res://assets/audio/japanese/kanji_alive/5_06_f.ogg",
+      "prompt": "五日",
+      "reading": "いつか",
+      "sourceFile": "audio-ogg/5_06_f.ogg",
+      "sha256": "412d90a75a50abf11b9508ee58f5632bbf5d7740c6734bc1051094b480c06609"
+    },
+    "ka-b27cebbdce54df119bde": {
+      "path": "res://assets/audio/japanese/kanji_alive/kou-mu(ki)_06_i.ogg",
+      "prompt": "向かう",
+      "reading": "むかう",
+      "sourceFile": "audio-ogg/kou-mu(ki)_06_i.ogg",
+      "sha256": "7f9f253db25c0ff861e3c62133439977918be8825d0dba9fd5aa91340962d902"
+    },
+    "ka-b4123647227b3680222e": {
+      "path": "res://assets/audio/japanese/kanji_alive/jou-ue_06_c.ogg",
+      "prompt": "上手",
+      "reading": "じょうず",
+      "sourceFile": "audio-ogg/jou-ue_06_c.ogg",
+      "sha256": "edfe84961eac924ada4252b67610c0197c73943c06a9cce2e078b18285939394"
+    },
+    "ka-b449fff89eb26c5d3726": {
+      "path": "res://assets/audio/japanese/kanji_alive/kokoro_06_k.ogg",
+      "prompt": "心",
+      "reading": "こころ",
+      "sourceFile": "audio-ogg/kokoro_06_k.ogg",
+      "sha256": "311dde6d5f7fe024ef0cc0aca90df15a41101d21880ceb870d9e34870681cee1"
+    },
+    "ka-b4d48eb75e6aa7da1b63": {
+      "path": "res://assets/audio/japanese/kanji_alive/samu(i)_06_c.ogg",
+      "prompt": "寒い",
+      "reading": "さむい",
+      "sourceFile": "audio-ogg/samu(i)_06_c.ogg",
+      "sha256": "c85a8c1f4abef2bd94447dbaf181718bd1a624dd87e7281b3277017fb77501fd"
+    },
+    "ka-b6d84826b6b1b9f5103f": {
+      "path": "res://assets/audio/japanese/kanji_alive/oso(roshii)_06_i.ogg",
+      "prompt": "恐ろしい",
+      "reading": "おそろしい",
+      "sourceFile": "audio-ogg/oso(roshii)_06_i.ogg",
+      "sha256": "1be709aec9e0a3e850449669cf45a0f5c8f6b12c3ee2a5c82f1f6f3b9c59f4b9"
+    },
+    "ka-b6fab17a0f466ecb91d0": {
+      "path": "res://assets/audio/japanese/kanji_alive/nen-toshi_06_b.ogg",
+      "prompt": "去年",
+      "reading": "きょねん",
+      "sourceFile": "audio-ogg/nen-toshi_06_b.ogg",
+      "sha256": "590624cd671e5ccf611df151a228303fff38d5a0b04e51552e32bfe6042df478"
+    },
+    "ka-b80db56d8409c0975fda": {
+      "path": "res://assets/audio/japanese/kanji_alive/nichi-hi_06_f.ogg",
+      "prompt": "一日",
+      "reading": "ついたち",
+      "sourceFile": "audio-ogg/nichi-hi_06_f.ogg",
+      "sha256": "aa142e35d4e8648dd90ec4d223d1cef65d12a94bc3955a78a8e8f62516e110bd"
+    },
+    "ka-b8825515b5b2debf1a2d": {
+      "path": "res://assets/audio/japanese/kanji_alive/tsume(tai)_06_a.ogg",
+      "prompt": "冷蔵庫",
+      "reading": "れいぞうこ",
+      "sourceFile": "audio-ogg/tsume(tai)_06_a.ogg",
+      "sha256": "e0c2d1d11c6df08b5d1cda368b5e2f4b8ca363e977679ab23eee1019577208bb"
+    },
+    "ka-b8fe2d78a4cf8d08ea93": {
+      "path": "res://assets/audio/japanese/kanji_alive/ki(mochi)_06_d.ogg",
+      "prompt": "人気",
+      "reading": "にんき",
+      "sourceFile": "audio-ogg/ki(mochi)_06_d.ogg",
+      "sha256": "b77fe582d649d7c8a4f79660a04a066c7c92d9e360af2ab0fa8470c768e674a7"
+    },
+    "ka-b9a2b58be6bae059f73d": {
+      "path": "res://assets/audio/japanese/kanji_alive/sen-saki_06_b.ogg",
+      "prompt": "先週",
+      "reading": "せんしゅう",
+      "sourceFile": "audio-ogg/sen-saki_06_b.ogg",
+      "sha256": "6124e8e1db4c38e7a5556e003bfc1a5c269bc0ea3269946b1809e894122454d3"
+    },
+    "ka-b9b2593d047815377902": {
+      "path": "res://assets/audio/japanese/kanji_alive/hako(bu)_06_a.ogg",
+      "prompt": "運動する",
+      "reading": "うんどうする",
+      "sourceFile": "audio-ogg/hako(bu)_06_a.ogg",
+      "sha256": "ff8729151bf8c97273976b8ec8914d8d73b856e3785cee5f6588626c6b8096e8"
+    },
+    "ka-b9b51c6aadfe03769ed5": {
+      "path": "res://assets/audio/japanese/kanji_alive/(yama)yama_06_b.ogg",
+      "prompt": "人々",
+      "reading": "ひとびと",
+      "sourceFile": "audio-ogg/(yama)yama_06_b.ogg",
+      "sha256": "d84fdbedf553799d926d7ebc6fbb543cfd21080c534fe503f54a218d5f348198"
+    },
+    "ka-babad5a4e5b04e0471e9": {
+      "path": "res://assets/audio/japanese/kanji_alive/ka-hima_06_c.ogg",
+      "prompt": "暇",
+      "reading": "ひま",
+      "sourceFile": "audio-ogg/ka-hima_06_c.ogg",
+      "sha256": "1d3a581d9db184d9d460da201bce712d8bcfa6317359001b81fae8c37f4ec71e"
+    },
+    "ka-bb65043792668b901847": {
+      "path": "res://assets/audio/japanese/kanji_alive/ei-kage_06_e.ogg",
+      "prompt": "影",
+      "reading": "かげ",
+      "sourceFile": "audio-ogg/ei-kage_06_e.ogg",
+      "sha256": "dbccd060ff0fa096df53dfa59aa4ddfb2c491de510720beb1f798403aa28e11e"
+    },
+    "ka-bb98b1b0afb6bfce23be": {
+      "path": "res://assets/audio/japanese/kanji_alive/ugo(ku)_06_k.ogg",
+      "prompt": "動く",
+      "reading": "うごく",
+      "sourceFile": "audio-ogg/ugo(ku)_06_k.ogg",
+      "sha256": "aff32f70a5150f8a5b5d3e3947d504b109b3c31242db1619c8805567580ff445"
+    },
+    "ka-bded6a18d44bff62949d": {
+      "path": "res://assets/audio/japanese/kanji_alive/tame(su)_06_h.ogg",
+      "prompt": "試す",
+      "reading": "ためす",
+      "sourceFile": "audio-ogg/tame(su)_06_h.ogg",
+      "sha256": "e3b5a6c1a0a1b42fcdd290815325ab6a7c4a8110ea33831e24f5a27340282b97"
+    },
+    "ka-be0e50e04a4f0b8c3995": {
+      "path": "res://assets/audio/japanese/kanji_alive/nega(u)_06_g.ogg",
+      "prompt": "お願い",
+      "reading": "おねがい",
+      "sourceFile": "audio-ogg/nega(u)_06_g.ogg",
+      "sha256": "24442c9ed118d3939c6ade73885f1d6e41622bc562f64f24bdd84855831359c6"
+    },
+    "ka-be446eecfc6a7dd46202": {
+      "path": "res://assets/audio/japanese/kanji_alive/tano(shii)_06_g.ogg",
+      "prompt": "楽しい",
+      "reading": "たのしい",
+      "sourceFile": "audio-ogg/tano(shii)_06_g.ogg",
+      "sha256": "cafcd2ad7c435de63030cc5d958ded3057bf2a559c7b1a5c0f54bc02bce30316"
+    },
+    "ka-be51b1e0b16513087751": {
+      "path": "res://assets/audio/japanese/kanji_alive/ryou(ri)_06_c.ogg",
+      "prompt": "材料",
+      "reading": "ざいりょう",
+      "sourceFile": "audio-ogg/ryou(ri)_06_c.ogg",
+      "sha256": "863ef1e8f941af828acd1d1158470b03c435af7d5aa88691715dacfddb8d9b3e"
+    },
+    "ka-bf0419ae435fad881102": {
+      "path": "res://assets/audio/japanese/kanji_alive/ketsu-ki(meru)_06_h.ogg",
+      "prompt": "決める",
+      "reading": "きめる",
+      "sourceFile": "audio-ogg/ketsu-ki(meru)_06_h.ogg",
+      "sha256": "fda0f74536edc25dbcc0a7ac681dd6aec65cc583671c57e607b0f7904d38aa00"
+    },
+    "ka-bfbe070af1e1e58bd97e": {
+      "path": "res://assets/audio/japanese/kanji_alive/kai-mawa(ru)_06_i.ogg",
+      "prompt": "回す",
+      "reading": "まわす",
+      "sourceFile": "audio-ogg/kai-mawa(ru)_06_i.ogg",
+      "sha256": "3ba3d1bc7d11c9cc385b2829472c866df386005a27bef1f08ec449ed1c8c06f4"
+    },
+    "ka-c046dc3e1ef27fc7ae08": {
+      "path": "res://assets/audio/japanese/kanji_alive/chuu-naka_06_e.ogg",
+      "prompt": "途中",
+      "reading": "とちゅう",
+      "sourceFile": "audio-ogg/chuu-naka_06_e.ogg",
+      "sha256": "3959b12794db3898f765d9b587bbaa162faccd5e279b4785b28fc4fb7c67ec26"
+    },
+    "ka-c077cf15021231c47eff": {
+      "path": "res://assets/audio/japanese/kanji_alive/wara(u)_06_e.ogg",
+      "prompt": "笑う",
+      "reading": "わらう",
+      "sourceFile": "audio-ogg/wara(u)_06_e.ogg",
+      "sha256": "45f57fcd745309d03249d9853b007c6a01aa0d12fd0c45bef36c89389c75b8e3"
+    },
+    "ka-c1373c595bafa2768419": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuba(ru)_06_h.ogg",
+      "prompt": "配る",
+      "reading": "くばる",
+      "sourceFile": "audio-ogg/kuba(ru)_06_h.ogg",
+      "sha256": "7c03f85349b5072385e5ee3ca5e69416836f8432c5d7c686b892ba5d2a559a45"
+    },
+    "ka-c191dff9d86c975fd4f5": {
+      "path": "res://assets/audio/japanese/kanji_alive/matta(ku)_06_b.ogg",
+      "prompt": "全部",
+      "reading": "ぜんぶ",
+      "sourceFile": "audio-ogg/matta(ku)_06_b.ogg",
+      "sha256": "651b7322d063c4ec6f9694fd7fc3430dcc719e07a1aa502f315af7421cd9b8d2"
+    },
+    "ka-c3ebe323f61bcbbdc73e": {
+      "path": "res://assets/audio/japanese/kanji_alive/matta(ku)_06_a.ogg",
+      "prompt": "全然",
+      "reading": "ぜんぜん",
+      "sourceFile": "audio-ogg/matta(ku)_06_a.ogg",
+      "sha256": "25652983a485bc1ab0fcd0bb5f7601af55534aafc09438ad8a8417d80dab256e"
+    },
+    "ka-c5a56c2a733367dff873": {
+      "path": "res://assets/audio/japanese/kanji_alive/sou-ha(ku)_06_c.ogg",
+      "prompt": "掃除する",
+      "reading": "そうじする",
+      "sourceFile": "audio-ogg/sou-ha(ku)_06_c.ogg",
+      "sha256": "dca7b05fdf31e7ad70517421159e957e8b824bb6b7919b56aea96e051cbfc45f"
+    },
+    "ka-c687be528fce728e7f85": {
+      "path": "res://assets/audio/japanese/kanji_alive/sai(getsu)_06_j.ogg",
+      "prompt": "二十歳",
+      "reading": "はたち",
+      "sourceFile": "audio-ogg/sai(getsu)_06_j.ogg",
+      "sha256": "c2864352c5d0a2d54921545e17a5e860d0d11ea2ab8e233ea4240cb9fad7d805"
+    },
+    "ka-c6b460fe7f3119e8f3fb": {
+      "path": "res://assets/audio/japanese/kanji_alive/hou-kata_06_f.ogg",
+      "prompt": "仕方",
+      "reading": "しかた",
+      "sourceFile": "audio-ogg/hou-kata_06_f.ogg",
+      "sha256": "88e43e58bd5431b07f6e359b3dc013989f49e24c4f1fc89b78f1a387649ff424"
+    },
+    "ka-c6f99bc0f6fd472bc6a7": {
+      "path": "res://assets/audio/japanese/kanji_alive/koe_06_g.ogg",
+      "prompt": "声",
+      "reading": "こえ",
+      "sourceFile": "audio-ogg/koe_06_g.ogg",
+      "sha256": "590fec09036e9be79a0a057d4e78def29dbbdb61f67a6617a5cd25f45e308222"
+    },
+    "ka-c7f55b849b77f75bc574": {
+      "path": "res://assets/audio/japanese/kanji_alive/otozu(reru)_06_c.ogg",
+      "prompt": "訪れる",
+      "reading": "おとずれる",
+      "sourceFile": "audio-ogg/otozu(reru)_06_c.ogg",
+      "sha256": "b03dfd9176048a289a85aa8ec3f5d6df7431b3e3da58d20613fdf87545f96cbf"
+    },
+    "ka-c90a1bd7ed1ea867ae80": {
+      "path": "res://assets/audio/japanese/kanji_alive/shu-to(ru)_06_e.ogg",
+      "prompt": "取る",
+      "reading": "とる",
+      "sourceFile": "audio-ogg/shu-to(ru)_06_e.ogg",
+      "sha256": "e2af1a7e429814fdc7e4047a53eabbe1058e67cbb9366a3a1455a8fe9dc7027a"
+    },
+    "ka-c914048f6b642c302174": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ze)hi_06_j.ogg",
+      "prompt": "是非",
+      "reading": "ぜひ",
+      "sourceFile": "audio-ogg/(ze)hi_06_j.ogg",
+      "sha256": "0677a5cb1dfeb867f8e82a4b8bd4c8342b0713eb4a0069e08d4fa6617404a9c2"
+    },
+    "ka-cb51ddd28f4bd1735843": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuchi_06_g.ogg",
+      "prompt": "出口",
+      "reading": "でぐち",
+      "sourceFile": "audio-ogg/kuchi_06_g.ogg",
+      "sha256": "89ca8a8136049add1cb71ee2e15811a7c25a7b18ed429e09f981f0d1173ca69a"
+    },
+    "ka-cb7a09a036d5faeaf8fd": {
+      "path": "res://assets/audio/japanese/kanji_alive/kan-ma(ku)_06_e.ogg",
+      "prompt": "巻く",
+      "reading": "まく",
+      "sourceFile": "audio-ogg/kan-ma(ku)_06_e.ogg",
+      "sha256": "495ba23c0f29450d7397d27110a9a3700f097684bbc1b928008b5258646f64b5"
+    },
+    "ka-cbfaf8c412123bf87d4d": {
+      "path": "res://assets/audio/japanese/kanji_alive/kumo_06_e.ogg",
+      "prompt": "雲",
+      "reading": "くも",
+      "sourceFile": "audio-ogg/kumo_06_e.ogg",
+      "sha256": "3db579c0c6df233d734d6aff8291c8219ff6151e9acdb6ae088187ec2db13afa"
+    },
+    "ka-cc8d971d3ddd2e99e922": {
+      "path": "res://assets/audio/japanese/kanji_alive/(ochi)ba_06_e.ogg",
+      "prompt": "葉",
+      "reading": "は",
+      "sourceFile": "audio-ogg/(ochi)ba_06_e.ogg",
+      "sha256": "128a6507ad3ea6d81a3202153e4e591af91e618e7c8b8c43c6f3e26893df6580"
+    },
+    "ka-ccec43eb6126b0be0971": {
+      "path": "res://assets/audio/japanese/kanji_alive/wa-hana(su)_06_e.ogg",
+      "prompt": "話す",
+      "reading": "はなす",
+      "sourceFile": "audio-ogg/wa-hana(su)_06_e.ogg",
+      "sha256": "b75ea8dc7e9020660be50a1937490563cd2c76960ac1750a3f71fb86840f8db8"
+    },
+    "ka-cde74e257637b6029f74": {
+      "path": "res://assets/audio/japanese/kanji_alive/kazo(eru)_06_l.ogg",
+      "prompt": "数える",
+      "reading": "かぞえる",
+      "sourceFile": "audio-ogg/kazo(eru)_06_l.ogg",
+      "sha256": "6ba059f99c6ee42d37c00406e1b1f9fd2ce6c85caae42f3a9afabb6a5c1cd577"
+    },
+    "ka-cedb4dce939a15656392": {
+      "path": "res://assets/audio/japanese/kanji_alive/za-suwa(ru)_06_k.ogg",
+      "prompt": "座る",
+      "reading": "すわる",
+      "sourceFile": "audio-ogg/za-suwa(ru)_06_k.ogg",
+      "sha256": "fa49a319feaa48c689ab4308e74d0e285c28531f0170a58ac4dbc30a3d1f6a70"
+    },
+    "ka-d0cba7ead75eb6332b51": {
+      "path": "res://assets/audio/japanese/kanji_alive/ane_06_c.ogg",
+      "prompt": "お姉さん",
+      "reading": "おねえさん",
+      "sourceFile": "audio-ogg/ane_06_c.ogg",
+      "sha256": "693bbef27a2b5812dcd1c430587019f7a1f8dba04590925c7dd056881211bf5c"
+    },
+    "ka-d1bb596410bd4de9ed48": {
+      "path": "res://assets/audio/japanese/kanji_alive/mou(su)_06_d.ogg",
+      "prompt": "申し訳ない",
+      "reading": "もうしわけない",
+      "sourceFile": "audio-ogg/mou(su)_06_d.ogg",
+      "sha256": "024780b8c36b0d6bc3d8b78e16f10878ba82e17be0ba09eb36866d5756267c25"
+    },
+    "ka-d1c2f3b6a5efdb702d7f": {
+      "path": "res://assets/audio/japanese/kanji_alive/ki-kae(ru)_06_d.ogg",
+      "prompt": "帰る",
+      "reading": "かえる",
+      "sourceFile": "audio-ogg/ki-kae(ru)_06_d.ogg",
+      "sha256": "c7372c120b8e75d7f354f00df94be97800adfa75a27cfd92285b1a7482b861be"
+    },
+    "ka-d2bd8c100204ba784109": {
+      "path": "res://assets/audio/japanese/kanji_alive/chuu(rinjou)_06_a.ogg",
+      "prompt": "駐車場",
+      "reading": "ちゅうしゃじょう",
+      "sourceFile": "audio-ogg/chuu(rinjou)_06_a.ogg",
+      "sha256": "e068d6e56238bef55649f9772fba2934a3b146913ef156314ba691a95e706ea6"
+    },
+    "ka-d2d9ad1c906bbcbf7cd0": {
+      "path": "res://assets/audio/japanese/kanji_alive/chikara_06_k.ogg",
+      "prompt": "力",
+      "reading": "ちから",
+      "sourceFile": "audio-ogg/chikara_06_k.ogg",
+      "sha256": "2a18ca5b5584dffe15cc0b5c18a799d8fa3d25e74b30b8f59d768dc2a21ee851"
+    },
+    "ka-d3708c58ca4d454c35e8": {
+      "path": "res://assets/audio/japanese/kanji_alive/chi-o(ku)_06_g.ogg",
+      "prompt": "置く",
+      "reading": "おく",
+      "sourceFile": "audio-ogg/chi-o(ku)_06_g.ogg",
+      "sha256": "6d5aedbc6daf671656d8685052030a4805addcaee1b1503a6a9508b480fef851"
+    },
+    "ka-d41febaeaf9fa2149401": {
+      "path": "res://assets/audio/japanese/kanji_alive/kanga(e)_06_g.ogg",
+      "prompt": "考える",
+      "reading": "かんがえる",
+      "sourceFile": "audio-ogg/kanga(e)_06_g.ogg",
+      "sha256": "8e35b26a01934a541bcefd46d3baf1e8bd994490807ee66b6fffdd172437d7dd"
+    },
+    "ka-d4491c307279420f8af5": {
+      "path": "res://assets/audio/japanese/kanji_alive/yume_06_d.ogg",
+      "prompt": "夢",
+      "reading": "ゆめ",
+      "sourceFile": "audio-ogg/yume_06_d.ogg",
+      "sha256": "b72c665ffe6faa978085ac96ed2b563deb84141729a55861915b87fd95ec1db4"
+    },
+    "ka-d5dc43932f2c7abd14a5": {
+      "path": "res://assets/audio/japanese/kanji_alive/kou-fu(ru)_06_g.ogg",
+      "prompt": "降りる",
+      "reading": "おりる",
+      "sourceFile": "audio-ogg/kou-fu(ru)_06_g.ogg",
+      "sha256": "19aa6eab44b7e5ebe8bcfe20af9870b15c1046e7160ea9b0565e8c5823253604"
+    },
+    "ka-d5ef90198ce53ad55724": {
+      "path": "res://assets/audio/japanese/kanji_alive/chi(ru)_06_a.ogg",
+      "prompt": "散歩",
+      "reading": "さんぽ",
+      "sourceFile": "audio-ogg/chi(ru)_06_a.ogg",
+      "sha256": "023eb760f79650ea877ae3fb80a27251256cc575d110a1c8850ffdd9bb6a16a3"
+    },
+    "ka-d6a6b8481d0f62b65ad8": {
+      "path": "res://assets/audio/japanese/kanji_alive/yo(mu)_06_f.ogg",
+      "prompt": "読む",
+      "reading": "よむ",
+      "sourceFile": "audio-ogg/yo(mu)_06_f.ogg",
+      "sha256": "c965d2c83df4a932eb945b8858a4e6fb5e53e62b7c3231cf5c1d6836eaea1dbf"
+    },
+    "ka-d802e8c9cee23d860521": {
+      "path": "res://assets/audio/japanese/kanji_alive/kai-kowa(su)_06_f.ogg",
+      "prompt": "壊す",
+      "reading": "こわす",
+      "sourceFile": "audio-ogg/kai-kowa(su)_06_f.ogg",
+      "sha256": "e6b6ca58a6f4b0ace88fffd18ad20b971c1b4d04c3af7255f7376fb616ac4976"
+    },
+    "ka-d952eda33fd2a595032b": {
+      "path": "res://assets/audio/japanese/kanji_alive/6_06_h.ogg",
+      "prompt": "六日",
+      "reading": "むいか",
+      "sourceFile": "audio-ogg/6_06_h.ogg",
+      "sha256": "12b547a115e53baf80843fe6a097703182e5615a729a00420513d61d1a7a1bb9"
+    },
+    "ka-da663734639ef0024956": {
+      "path": "res://assets/audio/japanese/kanji_alive/oso(i)_06_d.ogg",
+      "prompt": "遅い",
+      "reading": "おそい",
+      "sourceFile": "audio-ogg/oso(i)_06_d.ogg",
+      "sha256": "ebaa8314330bf6c417554a23577a1ca2195136f5a347b251f922b04a70e92c77"
+    },
+    "ka-dc0c77741d477c76bf52": {
+      "path": "res://assets/audio/japanese/kanji_alive/moku-me_06_d.ogg",
+      "prompt": "目",
+      "reading": "め",
+      "sourceFile": "audio-ogg/moku-me_06_d.ogg",
+      "sha256": "fd1e20111964fbe78ed5f9438f2e6d11d3c27db0d110ca667ea381260820a73f"
+    },
+    "ka-de88b8aeaa20949dad17": {
+      "path": "res://assets/audio/japanese/kanji_alive/ei(go)_06_a.ogg",
+      "prompt": "英語",
+      "reading": "えいご",
+      "sourceFile": "audio-ogg/ei(go)_06_a.ogg",
+      "sha256": "c8e377ee0e11f51514d2f4e98054214dfd247bc32d9c3b89f92c31c44f985b54"
+    },
+    "ka-dfbb3e587cf4f418069c": {
+      "path": "res://assets/audio/japanese/kanji_alive/haru_06_d.ogg",
+      "prompt": "春",
+      "reading": "はる",
+      "sourceFile": "audio-ogg/haru_06_d.ogg",
+      "sha256": "45df94bc565f1b36231a6ca1f5c0e6263474c6a1716f045b6553f8761c511989"
+    },
+    "ka-dfe063556a4e1bd4cea1": {
+      "path": "res://assets/audio/japanese/kanji_alive/(shoku)dou_06_a.ogg",
+      "prompt": "食堂",
+      "reading": "しょくどう",
+      "sourceFile": "audio-ogg/(shoku)dou_06_a.ogg",
+      "sha256": "dede6e314ba02cd7fc85df8dafd37d131ec2bd3b9ef0a09b661269b93fee2ae8"
+    },
+    "ka-dfe583fd526d40053e98": {
+      "path": "res://assets/audio/japanese/kanji_alive/nani_06_b.ogg",
+      "prompt": "何",
+      "reading": "なに",
+      "sourceFile": "audio-ogg/nani_06_b.ogg",
+      "sha256": "456f354c63e13922680a3291f8881c2c45e1e0ce18143e245787a826380f9f91"
+    },
+    "ka-e0eee83e1b8bd2ecc1a8": {
+      "path": "res://assets/audio/japanese/kanji_alive/ie_06_g.ogg",
+      "prompt": "家",
+      "reading": "いえ",
+      "sourceFile": "audio-ogg/ie_06_g.ogg",
+      "sha256": "2ed88eb6b5abd26bf001195544e0cda0deb9e4a14a67483b9a22984ff662b03b"
+    },
+    "ka-e1491208cd0a421e088f": {
+      "path": "res://assets/audio/japanese/kanji_alive/onna_06_c.ogg",
+      "prompt": "彼女",
+      "reading": "かのじょ",
+      "sourceFile": "audio-ogg/onna_06_c.ogg",
+      "sha256": "e885f26db9a0f46bcf84d1a2e579492b89ba8ea66caac15f54f6a29b3d498912"
+    },
+    "ka-e194794da93915c6f949": {
+      "path": "res://assets/audio/japanese/kanji_alive/fu-chichi_06_e.ogg",
+      "prompt": "お父さん",
+      "reading": "おとうさん",
+      "sourceFile": "audio-ogg/fu-chichi_06_e.ogg",
+      "sha256": "8b410fd2e14a470cb225c0156318e9fe342f276b7c424bbb31704ad2469c984f"
+    },
+    "ka-e1c6518b538ad48a376d": {
+      "path": "res://assets/audio/japanese/kanji_alive/nai-uchi_06_i.ogg",
+      "prompt": "内側",
+      "reading": "うちがわ",
+      "sourceFile": "audio-ogg/nai-uchi_06_i.ogg",
+      "sha256": "e39029d1a87a0265e9485c8c5d1f981e0a833cb3c0ff013236ba4597e2a13ce7"
+    },
+    "ka-e2257adcecc5bfea0490": {
+      "path": "res://assets/audio/japanese/kanji_alive/soda(tsu)_06_d.ogg",
+      "prompt": "育つ",
+      "reading": "そだつ",
+      "sourceFile": "audio-ogg/soda(tsu)_06_d.ogg",
+      "sha256": "61a825e5c9e181b6c0d565322f895ca29b5d0c951b030ea69a29ae14001e26a8"
+    },
+    "ka-e4f85e09e90bf16e2d95": {
+      "path": "res://assets/audio/japanese/kanji_alive/too(ru)_06_a.ogg",
+      "prompt": "交通事故",
+      "reading": "こうつうじこ",
+      "sourceFile": "audio-ogg/too(ru)_06_a.ogg",
+      "sha256": "03677245f2be6d84d63e78d7cb2f3094d9edefaa0ad41e0cee8cb8ddabedd8ee"
+    },
+    "ka-e517c6c732847c929c77": {
+      "path": "res://assets/audio/japanese/kanji_alive/migi_06_e.ogg",
+      "prompt": "右手",
+      "reading": "みぎて",
+      "sourceFile": "audio-ogg/migi_06_e.ogg",
+      "sha256": "f637e743f3e79f37e2fcdc6b50885a939a8fd8f04ad5d456ca1e89445153ba03"
+    },
+    "ka-e5654c014055d5d178bd": {
+      "path": "res://assets/audio/japanese/kanji_alive/10_06_a.ogg",
+      "prompt": "十",
+      "reading": "じゅう",
+      "sourceFile": "audio-ogg/10_06_a.ogg",
+      "sha256": "6929a7f8fbd0e84cb25b1749f63d24b0cbed0465e10f7662d57016b8c698aa72"
+    },
+    "ka-e5749dddea3ded941090": {
+      "path": "res://assets/audio/japanese/kanji_alive/ike_06_d.ogg",
+      "prompt": "池",
+      "reading": "いけ",
+      "sourceFile": "audio-ogg/ike_06_d.ogg",
+      "sha256": "468707d21033f5fa629455fea6ae3d0768c4e9eeec1187930b3d491e57a1f100"
+    },
+    "ka-e66ecd21a23f3bb77bc5": {
+      "path": "res://assets/audio/japanese/kanji_alive/8_06_g.ogg",
+      "prompt": "八つ",
+      "reading": "やっつ",
+      "sourceFile": "audio-ogg/8_06_g.ogg",
+      "sha256": "7e2fc1193f4578eca49cd30eebdaa46fa182f4e6adb5b527b607846d8e15f7e2"
+    },
+    "ka-e67e3a0bbadb05aeb87c": {
+      "path": "res://assets/audio/japanese/kanji_alive/ani_06_c.ogg",
+      "prompt": "兄",
+      "reading": "あに",
+      "sourceFile": "audio-ogg/ani_06_c.ogg",
+      "sha256": "9e92affd9259a6b8043a0f60a8763d5f098a8a9922fb178f54b318cf487b2360"
+    },
+    "ka-e6f07a34d1dd7f013b11": {
+      "path": "res://assets/audio/japanese/kanji_alive/getsu-tsuki_06_f.ogg",
+      "prompt": "正月",
+      "reading": "しょうがつ",
+      "sourceFile": "audio-ogg/getsu-tsuki_06_f.ogg",
+      "sha256": "4055957232fca33c747dc3aba4efebb9c60f3daadd1f656ebb834e5845fd674a"
+    },
+    "ka-e6f41dea9070a5eb8f45": {
+      "path": "res://assets/audio/japanese/kanji_alive/shu-mamo(ru)_06_i.ogg",
+      "prompt": "守る",
+      "reading": "まもる",
+      "sourceFile": "audio-ogg/shu-mamo(ru)_06_i.ogg",
+      "sha256": "84c29713d6784a3498aa38ac68156e8cbb520006f6c721e292692bcd1e02180c"
+    },
+    "ka-e82a4af8bab6a6a2f3a6": {
+      "path": "res://assets/audio/japanese/kanji_alive/de(ru)_06_i.ogg",
+      "prompt": "出かける",
+      "reading": "でかける",
+      "sourceFile": "audio-ogg/de(ru)_06_i.ogg",
+      "sha256": "2f1a460d93c6494461066d994615b267cc3c491ca0d15492d0c0937e31493b4e"
+    },
+    "ka-e849f49ee8a3e79f4c8d": {
+      "path": "res://assets/audio/japanese/kanji_alive/ken-mi(ru)_06_j.ogg",
+      "prompt": "見せる",
+      "reading": "みせる",
+      "sourceFile": "audio-ogg/ken-mi(ru)_06_j.ogg",
+      "sha256": "ed7c081285ad183990b79431c957d53dc8b989c61abc1eb03155512d90ae6ad6"
+    },
+    "ka-e9756ecefc3602bc65f1": {
+      "path": "res://assets/audio/japanese/kanji_alive/onna_06_h.ogg",
+      "prompt": "女の子",
+      "reading": "おんなのこ",
+      "sourceFile": "audio-ogg/onna_06_h.ogg",
+      "sha256": "fa325c3562eb4da7193b99f69d577cf8bcb50bab1571b5dc8fba43f33abf597a"
+    },
+    "ka-eada109fad39a9dc3e12": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuni_06_j.ogg",
+      "prompt": "国",
+      "reading": "くに",
+      "sourceFile": "audio-ogg/kuni_06_j.ogg",
+      "sha256": "970bf1401c3df4f7f90807781c0d8dbc336d9665079d3cd035c9322d6f8e36de"
+    },
+    "ka-eaf596493130b35ed583": {
+      "path": "res://assets/audio/japanese/kanji_alive/mu-na(i)_06_k.ogg",
+      "prompt": "無い",
+      "reading": "ない",
+      "sourceFile": "audio-ogg/mu-na(i)_06_k.ogg",
+      "sha256": "69bd1623a45cb38fb6cc327b4410c21acca04169ba10b8216de69b8da0347c3e"
+    },
+    "ka-ec696666809c78429ea9": {
+      "path": "res://assets/audio/japanese/kanji_alive/7_06_h.ogg",
+      "prompt": "七つ",
+      "reading": "ななつ",
+      "sourceFile": "audio-ogg/7_06_h.ogg",
+      "sha256": "ab28a1d7c3588986e9f02d200b55f2a84d85116f3e16609350c3ac7413ec8696"
+    },
+    "ka-ecf4f89b7bf1afd83a45": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-koto_06_k.ogg",
+      "prompt": "仕事",
+      "reading": "しごと",
+      "sourceFile": "audio-ogg/ji-koto_06_k.ogg",
+      "sha256": "c4cbc37cac4fea0ec5f8e3005e3335dd7b8aeac460256a8935ca9e1625cb1d18"
+    },
+    "ka-ecfc0d95304976cfd6a0": {
+      "path": "res://assets/audio/japanese/kanji_alive/in-no(mu)_06_d.ogg",
+      "prompt": "飲む",
+      "reading": "のむ",
+      "sourceFile": "audio-ogg/in-no(mu)_06_d.ogg",
+      "sha256": "629a67d47e27c300d9ac011993ed634f46108d56cfbeb0a15f25fbbb533c0703"
+    },
+    "ka-ed2de2fad137a6000769": {
+      "path": "res://assets/audio/japanese/kanji_alive/chou-naga(i)_06_k.ogg",
+      "prompt": "長い",
+      "reading": "ながい",
+      "sourceFile": "audio-ogg/chou-naga(i)_06_k.ogg",
+      "sha256": "da8f7e63d05931c422b3ea08f54458b6239f797aa43041f73a5b7d350892b3d2"
+    },
+    "ka-ed9f22531a951d320b2f": {
+      "path": "res://assets/audio/japanese/kanji_alive/6_06_g.ogg",
+      "prompt": "六つ",
+      "reading": "むっつ",
+      "sourceFile": "audio-ogg/6_06_g.ogg",
+      "sha256": "6aae19d1b7be8683a19bcb7895e797277a795e3255df891162534335d985385f"
+    },
+    "ka-ee5409203e517746ca75": {
+      "path": "res://assets/audio/japanese/kanji_alive/shi-to(maru)_06_f.ogg",
+      "prompt": "止める",
+      "reading": "とめる",
+      "sourceFile": "audio-ogg/shi-to(maru)_06_f.ogg",
+      "sha256": "ce61ba01310d687502968b17424d8e64dd1c928e6c0f9d1581e22d34c3e8b173"
+    },
+    "ka-ee978c545c144bd45c58": {
+      "path": "res://assets/audio/japanese/kanji_alive/kyo-yuru(su)_06_d.ogg",
+      "prompt": "許す",
+      "reading": "ゆるす",
+      "sourceFile": "audio-ogg/kyo-yuru(su)_06_d.ogg",
+      "sha256": "0845aaa596bcfd8b68e2ad579cb376d1ccfd912f2d540dc596bc60032e30d9cf"
+    },
+    "ka-ef23af2d51144b806b29": {
+      "path": "res://assets/audio/japanese/kanji_alive/getsu-tsuki_06_d.ogg",
+      "prompt": "今月",
+      "reading": "こんげつ",
+      "sourceFile": "audio-ogg/getsu-tsuki_06_d.ogg",
+      "sha256": "4567e687cc08de058480d477c6dfe09de35f29a7dfc110deaef60de7c924fc8e"
+    },
+    "ka-efd80d0926c39244a3aa": {
+      "path": "res://assets/audio/japanese/kanji_alive/nin-hito_06_k.ogg",
+      "prompt": "二人",
+      "reading": "ふたり",
+      "sourceFile": "audio-ogg/nin-hito_06_k.ogg",
+      "sha256": "4a30d98ce6c8acc118d464795abb954d9f4619c5bec1ecd360ae6c151650d6b1"
+    },
+    "ka-f0b59474f82f40f68894": {
+      "path": "res://assets/audio/japanese/kanji_alive/tsuzu(ku)_06_f.ogg",
+      "prompt": "続ける",
+      "reading": "つづける",
+      "sourceFile": "audio-ogg/tsuzu(ku)_06_f.ogg",
+      "sha256": "53d5e7cca0cbc98b7ac705f6a6eb0adf8ad157ce89a9cab4dddcd6abe2d9fdb4"
+    },
+    "ka-f1158bec139a02001106": {
+      "path": "res://assets/audio/japanese/kanji_alive/aji(wau)_06_h.ogg",
+      "prompt": "味わう",
+      "reading": "あじわう",
+      "sourceFile": "audio-ogg/aji(wau)_06_h.ogg",
+      "sha256": "4532f7ccb41f58f17539cbd9d2603fc0bb03b9691bcaa45f9606f7a268fd2785"
+    },
+    "ka-f1b118ee0abcef02cc1f": {
+      "path": "res://assets/audio/japanese/kanji_alive/shin-ne(ru)_06_c.ogg",
+      "prompt": "寝る",
+      "reading": "ねる",
+      "sourceFile": "audio-ogg/shin-ne(ru)_06_c.ogg",
+      "sha256": "7a20b90ab69f6f06840a8b24fa2ceabb0bf67cc41d11116013f0bb008ec3baab"
+    },
+    "ka-f218f8c219a88166f81f": {
+      "path": "res://assets/audio/japanese/kanji_alive/shiro(i)_06_g.ogg",
+      "prompt": "白い",
+      "reading": "しろい",
+      "sourceFile": "audio-ogg/shiro(i)_06_g.ogg",
+      "sha256": "f729a28d7dde2c2db4338a9725ffff5370af6eaebadec0725fd95e52afb371d8"
+    },
+    "ka-f2fe347efb6e1a966765": {
+      "path": "res://assets/audio/japanese/kanji_alive/7_06_g.ogg",
+      "prompt": "七日",
+      "reading": "なのか",
+      "sourceFile": "audio-ogg/7_06_g.ogg",
+      "sha256": "ad25e17191d409760b79a9a996d87b3a6044ecf1ba29fccdfff8568e9e214042"
+    },
+    "ka-f56f879dd616a810f068": {
+      "path": "res://assets/audio/japanese/kanji_alive/yasu(mi)_06_e.ogg",
+      "prompt": "休み",
+      "reading": "やすみ",
+      "sourceFile": "audio-ogg/yasu(mi)_06_e.ogg",
+      "sha256": "849c3d4c00c7cbe76ceeea4b32ebca3f21153e258a79dd041d0a3e1c211764d2"
+    },
+    "ka-f60bfa33c7a087470ceb": {
+      "path": "res://assets/audio/japanese/kanji_alive/aji(wau)_06_a.ogg",
+      "prompt": "意味",
+      "reading": "いみ",
+      "sourceFile": "audio-ogg/aji(wau)_06_a.ogg",
+      "sha256": "1d6e3c606ad9fef803ab88580ff0864b500b533e7f9b121ad297eb2e7cecf211"
+    },
+    "ka-f6983aacbded16e8bfa7": {
+      "path": "res://assets/audio/japanese/kanji_alive/bun-ki(ku)_06_c.ogg",
+      "prompt": "聞く",
+      "reading": "きく",
+      "sourceFile": "audio-ogg/bun-ki(ku)_06_c.ogg",
+      "sha256": "ad7d4fabdc884882bf1b0b69c0d4167036a9f89f5d5cdc42a807862ec9dfaecb"
+    },
+    "ka-f7b5ce2ca7a4db6ad6d6": {
+      "path": "res://assets/audio/japanese/kanji_alive/tasu(keru)_06_h.ogg",
+      "prompt": "助ける",
+      "reading": "たすける",
+      "sourceFile": "audio-ogg/tasu(keru)_06_h.ogg",
+      "sha256": "f625b2df03f60a3b03603f24bc3ba76d9e9515a7e44a99a19ab6be4f87951941"
+    },
+    "ka-f7f3a7feef2a7001ba1f": {
+      "path": "res://assets/audio/japanese/kanji_alive/ban(gou)_06_a.ogg",
+      "prompt": "番号",
+      "reading": "ばんごう",
+      "sourceFile": "audio-ogg/ban(gou)_06_a.ogg",
+      "sha256": "d08ef614049afc7f2f76c9f91f4aba37fb81d5c234cac62c30b666db7f062cbc"
+    },
+    "ka-f8547bb8c4c2cc88174c": {
+      "path": "res://assets/audio/japanese/kanji_alive/ji-mo(tsu)_06_d.ogg",
+      "prompt": "持つ",
+      "reading": "もつ",
+      "sourceFile": "audio-ogg/ji-mo(tsu)_06_d.ogg",
+      "sha256": "5ae1965ba0e1f7eca9c2382f7d2e3c6b5d22a640eb804a56895fd4ea11b7502a"
+    },
+    "ka-f88917886da95f70de7c": {
+      "path": "res://assets/audio/japanese/kanji_alive/den(wa)_06_g.ogg",
+      "prompt": "電車",
+      "reading": "でんしゃ",
+      "sourceFile": "audio-ogg/den(wa)_06_g.ogg",
+      "sha256": "09821a64d201cf195571f7ceb41e74368636da715411a926c1dec50fc5de4835"
+    },
+    "ka-f8dc4e68d01394ca4779": {
+      "path": "res://assets/audio/japanese/kanji_alive/kyuu-na(ku)_06_b.ogg",
+      "prompt": "泣く",
+      "reading": "なく",
+      "sourceFile": "audio-ogg/kyuu-na(ku)_06_b.ogg",
+      "sha256": "dd0fd21349d8720de93b76cdeebbed5ed1b5167b8e1bb26274a898407ac40c02"
+    },
+    "ka-f9921dd463b7ffb8aa8a": {
+      "path": "res://assets/audio/japanese/kanji_alive/tayo(ru)_06_c.ogg",
+      "prompt": "頼む",
+      "reading": "たのむ",
+      "sourceFile": "audio-ogg/tayo(ru)_06_c.ogg",
+      "sha256": "9070e923b4888de9c55d5582ede32c58dcc95f9597750b600586dd2fb688fe86"
+    },
+    "ka-fb019b05577a648080be": {
+      "path": "res://assets/audio/japanese/kanji_alive/ketsu-chi_06_i.ogg",
+      "prompt": "血",
+      "reading": "ち",
+      "sourceFile": "audio-ogg/ketsu-chi_06_i.ogg",
+      "sha256": "724e9cf566a45a5e8f8945ccf331ce889964a1ccdae2bb510cfa2e3a56d41c04"
+    },
+    "ka-fb4d6bbaf028581d6bb1": {
+      "path": "res://assets/audio/japanese/kanji_alive/ben(kyou)_06_a.ogg",
+      "prompt": "勉強する",
+      "reading": "べんきょうする",
+      "sourceFile": "audio-ogg/ben(kyou)_06_a.ogg",
+      "sha256": "583f3fdb432928e6e081d02cd7c34e5af3aa9f7dc51d3885ffe95e333dc60e69"
+    },
+    "ka-fbe6ba2e79c293b58148": {
+      "path": "res://assets/audio/japanese/kanji_alive/kuchi_06_f.ogg",
+      "prompt": "入り口",
+      "reading": "いりぐち",
+      "sourceFile": "audio-ogg/kuchi_06_f.ogg",
+      "sha256": "1cbb60af9b2d0bd8cd1976b662fff6f914a7163f604a02732eb77ecd564f819a"
+    },
+    "ka-fec71a0cd8da746027bd": {
+      "path": "res://assets/audio/japanese/kanji_alive/shira(beru)_06_i.ogg",
+      "prompt": "調べる",
+      "reading": "しらべる",
+      "sourceFile": "audio-ogg/shira(beru)_06_i.ogg",
+      "sha256": "43ba763cc180d459e39053433f41b3c6b8ff234e838ed98a07bf8b7438b04fb8"
+    },
+    "ka-ffd0ab84295cab03f13c": {
+      "path": "res://assets/audio/japanese/kanji_alive/matta(ku)_06_i.ogg",
+      "prompt": "全く",
+      "reading": "まったく",
+      "sourceFile": "audio-ogg/matta(ku)_06_i.ogg",
+      "sha256": "0f8330f166936d23e84d902971061d509d92e3cefa647bce44a519bfe07106ba"
+    }
+  },
+  "cards": {
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-101": "ka-589c4846a0aba90e71a4",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-102": "ka-09b6f67b4e0522ee026f",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-104": "ka-bb98b1b0afb6bfce23be",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-105": "ka-77001244e702d6af5b70",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-107": "ka-b6fab17a0f466ecb91d0",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-11": "ka-ed9f22531a951d320b2f",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-110": "ka-e194794da93915c6f949",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-111": "ka-4fd0b1a809d710a704fc",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-112": "ka-d0cba7ead75eb6332b51",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-114": "ka-e67e3a0bbadb05aeb87c",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-115": "ka-074a2c2311dbdbd97d94",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-120": "ka-6ad5ceddcd51ed1d4a24",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-121": "ka-be0e50e04a4f0b8c3995",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-123": "ka-246362470d132b8400c3",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-124": "ka-8c8593a876b389e09799",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-129": "ka-194771a440707a9ba6be",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-133": "ka-517fa53550139d6a988c",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-14": "ka-ec696666809c78429ea9",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-144": "ka-5b563da8e47e09777845",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-147": "ka-08f3a221170633aeaf9d",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-149": "ka-0395b08556ee9fa9e299",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-150": "ka-469bd0f7ac7f5b4cbe9d",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-152": "ka-b9a2b58be6bae059f73d",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-156": "ka-211e47678e36bace1496",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-158": "ka-5c72c473831fcedda65a",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-16": "ka-e66ecd21a23f3bb77bc5",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-160": "ka-5c72c473831fcedda65a",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-162": "ka-820e3dfe4557b478f8e3",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-164": "ka-5f653f7a7eac3f46b374",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-165": "ka-69302623899ed73d2f0f",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-166": "ka-a3ce999318f380a29694",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-169": "ka-91a1f33917a4d42d08d4",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-172": "ka-efd80d0926c39244a3aa",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-173": "ka-b9b51c6aadfe03769ed5",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-176": "ka-4ba954374a6bc39d4570",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-177": "ka-f56f879dd616a810f068",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-179": "ka-d2d9ad1c906bbcbf7cd0",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-181": "ka-5eade397f12efebd44dd",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-182": "ka-cb51ddd28f4bd1735843",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-184": "ka-fbe6ba2e79c293b58148",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-185": "ka-3704f402b718f64267f7",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-19": "ka-8d7c3cc5389aadff34a0",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-194": "ka-b8fe2d78a4cf8d08ea93",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-199": "ka-58116abc50e2573c8972",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2": "ka-5b4f06d399a047f85c08",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-20": "ka-e5654c014055d5d178bd",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-21": "ka-586bda9ec2a0e4893bd9",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-26": "ka-d952eda33fd2a595032b",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-27": "ka-36f22c86d8a096d63888",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-28": "ka-b0b4da75e9e58a14f278",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-29": "ka-a62484760248ac6dfeca",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-30": "ka-3f897992599ea0732347",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-31": "ka-0a5a995c7158eccdbeaa",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-32": "ka-10511cdc0f0f764c12d3",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-34": "ka-b80db56d8409c0975fda",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-35": "ka-656ffebb495064a3ed95",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-36": "ka-f2fe347efb6e1a966765",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-38": "ka-3a7da6acc5f4beba303b",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-40": "ka-dfe583fd526d40053e98",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-41": "ka-3f2b66793cddc63a1e92",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-42": "ka-1307adda123e7e476a42",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-43": "ka-7ec6004136ed7bc2b720",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-44": "ka-200cbea9cc2770f1f67b",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-45": "ka-ef23af2d51144b806b29",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-46": "ka-aabd62bc298c352c8870",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-48": "ka-17e163ca0fc730ff9210",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-5": "ka-29fcc7b6783ca669a48e",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-50": "ka-478dc067066bf076d1e2",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-51": "ka-141f0c3628983071924a",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-52": "ka-046507f61365ca078f6f",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-53": "ka-4db3c59fb273d428df8f",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-54": "ka-af2f8db7b0a7a2925411",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-58": "ka-1d0105ac7e2f4395fd71",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-60": "ka-50af1cef82283b5de85e",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-61": "ka-4480901b4f5152637f47",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-62": "ka-aa81be21c1595eee8975",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-64": "ka-b4123647227b3680222e",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-66": "ka-6b586ff5f24e5c5bdffe",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-7": "ka-548bebb19a05a1ec4050",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-70": "ka-a62c8fb5df5d7fefa8e3",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-71": "ka-79f9dbf6b0314e075ddc",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-72": "ka-1931706e6881d5828c17",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-73": "ka-9695a2ef3aecc17b263b",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-75": "ka-6f5e7c7a8bdb4dc03ce1",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-79": "ka-2935a47820835125d086",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-80": "ka-ecf4f89b7bf1afd83a45",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-84": "ka-c191dff9d86c975fd4f5",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-86": "ka-9f25237e93804a8b3a1d",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-87": "ka-12548442417e97ab36ac",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-88": "ka-6c9de77227c32fc0a418",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-9": "ka-60df4e8e78f62a05dfa9",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-91": "ka-5bcbeb24344a470e87e3",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-94": "ka-c90a1bd7ed1ea867ae80",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-96": "ka-4cccbf073e2a942460f8",
+    "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-99": "ka-1511393332742ea2f0e9",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-10": "ka-256bfc41fe7cbbb8811c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-100": "ka-4cf8490f2062f0f0b3b1",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-102": "ka-a32fb21cd1a6db9cd25f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-103": "ka-e82a4af8bab6a6a2f3a6",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-104": "ka-d1c2f3b6a5efdb702d7f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-107": "ka-3a7da6acc5f4beba303b",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-110": "ka-078e1a20fbdffe8d4461",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-111": "ka-339b335adf4b93b3b3d2",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-112": "ka-94b267ef61bb9333b995",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-113": "ka-a767b3a98f55c7037acc",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-115": "ka-b9b2593d047815377902",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-116": "ka-07b09577adaef95e6cb0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-118": "ka-8a182545b7ecd8d27937",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-12": "ka-ee5409203e517746ca75",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-122": "ka-c5a56c2a733367dff873",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-123": "ka-9f26b604e96de18d2beb",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-124": "ka-18c82854c61d32221321",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-128": "ka-0d9160bf9d8923028722",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-129": "ka-0521aa31557b2de74793",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-13": "ka-f7b5ce2ca7a4db6ad6d6",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-130": "ka-95318536ccef8945fa0c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-131": "ka-6d86131948b1e0558f79",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-132": "ka-0500a93104e9105b15d1",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-136": "ka-d6a6b8481d0f62b65ad8",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-137": "ka-4f2655928a5ce5960118",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-138": "ka-4a59c7ca89a3cd5c6b17",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-139": "ka-8e5c72a5262cc3d8cedb",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-14": "ka-b27cebbdce54df119bde",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-140": "ka-cde74e257637b6029f74",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-141": "ka-fb4d6bbaf028581d6bb1",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-142": "ka-4480901b4f5152637f47",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-146": "ka-9ae331c053ea9abbb660",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-148": "ka-910a32a681558a8eb8eb",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-149": "ka-a29e124fd9b2fab05360",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-150": "ka-77001244e702d6af5b70",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-151": "ka-1a6ed23c5b0dea1d731b",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-152": "ka-8d18ffdd85acd8b325b8",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-153": "ka-71f8211cfa85e5a83bc0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-154": "ka-3316a6b44425e8ee03c4",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-156": "ka-53ea91f943324517e65c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-157": "ka-6396cfd9f78abef09213",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-16": "ka-4fd0b1a809d710a704fc",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-160": "ka-59594b38b0c86154930c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-162": "ka-84b9efb7f7b908ca37e5",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-163": "ka-88e43260a02955aa3bf9",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-164": "ka-60c8decc99e506a22665",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-165": "ka-2935a47820835125d086",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-166": "ka-3a140cfa1520904b0fb5",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-167": "ka-cedb4dce939a15656392",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-168": "ka-22eda8e7895841b42b9d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-170": "ka-6b65be466b83ac9500b9",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-171": "ka-bf0419ae435fad881102",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-174": "ka-9f25237e93804a8b3a1d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-175": "ka-12548442417e97ab36ac",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-176": "ka-c077cf15021231c47eff",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-177": "ka-f8dc4e68d01394ca4779",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-178": "ka-3e1d538957e3a6b170a0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-180": "ka-3505da412dd3b2de3b60",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-181": "ka-1a2e1de4eef0b3c27b55",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-182": "ka-962dea21b71a02467f54",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-183": "ka-d5dc43932f2c7abd14a5",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-184": "ka-76710501b76f87ceba74",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-186": "ka-878bd4503ca4a183f478",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-187": "ka-6c9de77227c32fc0a418",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-189": "ka-633e35b2fd9b43da7153",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-19": "ka-0ca434541f5cfce77960",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-190": "ka-54bba9dd965aa423a719",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-191": "ka-dfbb3e587cf4f418069c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-193": "ka-b02cd5b788877c9f567b",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-194": "ka-b8825515b5b2debf1a2d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-196": "ka-38de87c06ffcb6103efa",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-197": "ka-194771a440707a9ba6be",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-2": "ka-4db3c59fb273d428df8f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-20": "ka-18b6ac74f0858c1dbc99",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-200": "ka-25ddd35aea26cf45e359",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-21": "ka-38291b921a436cc27522",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-22": "ka-6379a75e5e8bbce76218",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-23": "ka-e194794da93915c6f949",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-24": "ka-f0b59474f82f40f68894",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-27": "ka-0ea41d0dcaf87d39495e",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-29": "ka-9a0d09c9e2ae9831687d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-3": "ka-995c819b8e8955d5d824",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-30": "ka-a73982a4c93ba9818cf1",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-33": "ka-ad1e2d694cdf91343ee3",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-34": "ka-f88917886da95f70de7c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-37": "ka-f8547bb8c4c2cc88174c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-38": "ka-bb65043792668b901847",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-39": "ka-91b33f71b31574539be1",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-4": "ka-8c8593a876b389e09799",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-40": "ka-ecfc0d95304976cfd6a0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-41": "ka-571013d24d4992d7c9be",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-43": "ka-835ba8a23c1eff8d8367",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-45": "ka-1ba7bafb6d6b7760301c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-46": "ka-15b8db0daa9efc98f5f0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-48": "ka-d2d9ad1c906bbcbf7cd0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-50": "ka-f6983aacbded16e8bfa7",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-52": "ka-a32e94cfb34e74901f73",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-53": "ka-bded6a18d44bff62949d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-54": "ka-e1491208cd0a421e088f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-55": "ka-ac8faadc8bc1799fc21c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-56": "ka-cbfaf8c412123bf87d4d",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-57": "ka-b449fff89eb26c5d3726",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-58": "ka-8eab530223817e5621ce",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-59": "ka-8f1fc9fcfb03ed8242fa",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-60": "ka-3c24717ee7406a1d7f03",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-61": "ka-3280e7bf7fc275ecab9a",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-63": "ka-96d697124482bad33605",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-66": "ka-6c1b08af008a27628c23",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-67": "ka-851e1ad51c587cdfb91a",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-68": "ka-55038c508269e224b6c0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-70": "ka-023046a0fe7dc1cfee66",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-71": "ka-269bef6454607385d6cb",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-72": "ka-09b6f67b4e0522ee026f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-73": "ka-da663734639ef0024956",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-75": "ka-086008fd4222811ad047",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-76": "ka-fb019b05577a648080be",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-77": "ka-51585910e83fccc52101",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-78": "ka-5148791100b5748ffed6",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-79": "ka-dfe583fd526d40053e98",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-8": "ka-2d31d8280725eb441ce0",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-80": "ka-a968e8f7196c90451c17",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-83": "ka-f218f8c219a88166f81f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-84": "ka-6958412761ce4d50af08",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-86": "ka-7a905540cfcc5fd51dbc",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-87": "ka-c90a1bd7ed1ea867ae80",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-88": "ka-210b548e9714d0f6ead6",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-89": "ka-ed2de2fad137a6000769",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-9": "ka-b4d48eb75e6aa7da1b63",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-90": "ka-98573406c8c8e68e0e54",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-91": "ka-36e370b3a30d00940a8c",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-93": "ka-f1b118ee0abcef02cc1f",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-95": "ka-835ba8a23c1eff8d8367",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-97": "ka-6fbf2269dfed2a535d51",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-98": "ka-f1158bec139a02001106",
+    "japanese-common-words-and-phrases-with-audio-kanji-romaji-99": "ka-ccec43eb6126b0be0971",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-10": "ka-4a23ab445da4ff49305d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-100": "ka-dfe063556a4e1bd4cea1",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-102": "ka-ad50c4178a31bdafc460",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-106": "ka-3e929a43ab1bf37f7587",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-111": "ka-18d5aa332fef0959f50d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-112": "ka-8a182545b7ecd8d27937",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-114": "ka-c3ebe323f61bcbbdc73e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-115": "ka-51585910e83fccc52101",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-118": "ka-3c50b8d7529c40da2949",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-119": "ka-d2bd8c100204ba784109",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-121": "ka-250518ce0c2a69a1efbe",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-124": "ka-f8dc4e68d01394ca4779",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-128": "ka-f7f3a7feef2a7001ba1f",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-13": "ka-391f92a285b419f67bf9",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-132": "ka-be51b1e0b16513087751",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-133": "ka-54ded498d712b12144c2",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-134": "ka-6fb68dedcfd141542640",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-136": "ka-473bfae6f99a005b7b6e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-138": "ka-9821879cdb9b217a3d06",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-139": "ka-5aebfd9cf2a8d69b567e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-14": "ka-59533c099aa7b8d0709b",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-143": "ka-ab7e5c8b7396bb73ad0b",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-144": "ka-16cbb79fa7ebd15847af",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-145": "ka-95318536ccef8945fa0c",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-147": "ka-3b9b40ef1d0fbd6a69c0",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-148": "ka-1f8c21ec2c0dfd1840d2",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-149": "ka-e517c6c732847c929c77",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-15": "ka-70d0978b29789da905e3",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-153": "ka-190e1dec2283160bdc7b",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-159": "ka-77860becac69b1cc1cf8",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-16": "ka-196b40cabec361d836aa",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-160": "ka-bfbe070af1e1e58bd97e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-162": "ka-26b131de7c3a4f04675d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-166": "ka-118aaa857fc0902832e5",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-167": "ka-3335c1e94c9ef05c0cb2",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-169": "ka-6c26f44ef43633cdf131",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-171": "ka-57393776f96b2b95aeaf",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-172": "ka-73020fc61558b257f429",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-173": "ka-c046dc3e1ef27fc7ae08",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-175": "ka-2ff1ff38815a503db69d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-176": "ka-68e46c10e50af9d74c10",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-177": "ka-73029103e2890a256a7e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-178": "ka-8b9b4edb5d3a4b3ed00c",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-18": "ka-71f8211cfa85e5a83bc0",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-180": "ka-0fd86aee0adc865dd551",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-181": "ka-6745fd63304ee82028a0",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-182": "ka-0d3e8a4ad7c1d6abeeaf",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-188": "ka-7e9db281f57fc2e46faf",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-189": "ka-6e98275283cfe7603562",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-19": "ka-cde74e257637b6029f74",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-191": "ka-cc8d971d3ddd2e99e922",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-193": "ka-2a374481c845ed7af848",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-194": "ka-cb7a09a036d5faeaf8fd",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-196": "ka-c7f55b849b77f75bc574",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-197": "ka-9fa97ff5b4f4b882ef18",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-21": "ka-e2257adcecc5bfea0490",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-22": "ka-c914048f6b642c302174",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-25": "ka-91972ea5ea5fc0f8e6a3",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-28": "ka-5b96ea1bf99d5bdf9f0e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-29": "ka-5f653f7a7eac3f46b374",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-3": "ka-2238ffe7604b2f04bf96",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-30": "ka-a767b3a98f55c7037acc",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-33": "ka-85fde6a5258975752dfe",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-34": "ka-d5ef90198ce53ad55724",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-37": "ka-8f46cb2b6abe909ad1a5",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-38": "ka-247d9677d25616d15d6d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-4": "ka-469bd0f7ac7f5b4cbe9d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-40": "ka-2f9c71937a12562d0551",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-43": "ka-4768ed6ebb2d5e013c5b",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-44": "ka-3fb187e085933349221c",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-45": "ka-450c094d19f00312b09c",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-49": "ka-8d16db93453d5efd136b",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-50": "ka-c1373c595bafa2768419",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-51": "ka-254c334e298c360c33a3",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-53": "ka-3f05542d5515eedd2af4",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-54": "ka-d802e8c9cee23d860521",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-55": "ka-64101daf11736dd3be86",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-56": "ka-c6b460fe7f3119e8f3fb",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-57": "ka-69738691d1861a47fd54",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-58": "ka-44c89f243c0632965ea1",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-59": "ka-61aabe6eaeedbeca7158",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-60": "ka-63f4660ac4086216b7ea",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-63": "ka-5f4c863a3916619ad506",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-67": "ka-244e421090d9032ffc69",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-68": "ka-8a24f3210c0912fc4f1f",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-69": "ka-a9352dd568d54862dd34",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-71": "ka-675f51357830f4e3a46e",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-75": "ka-e4f85e09e90bf16e2d95",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-78": "ka-02e83f3614546f84c3a6",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-79": "ka-c687be528fce728e7f85",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-8": "ka-4ba954374a6bc39d4570",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-81": "ka-e1c6518b538ad48a376d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-82": "ka-e5749dddea3ded941090",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-83": "ka-30d8bfd52841513a0398",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-84": "ka-851e1ad51c587cdfb91a",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-86": "ka-a6c2a3c946ed1072e216",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-87": "ka-5a4c62365fe610b02097",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-9": "ka-e6f07a34d1dd7f013b11",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-92": "ka-150e7df697d39a8b4d88",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-93": "ka-56acecaac0ae3056f012",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-95": "ka-7ee1670439966a82ac0d",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-97": "ka-b6d84826b6b1b9f5103f",
+    "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-99": "ka-5ce30b768c0f61898941",
+    "japanese-travel-vocabulary-12": "ka-18632842aa6425161be8",
+    "japanese-travel-vocabulary-41": "ka-7f4de5fdeb408912f8b2",
+    "japanese-travel-vocabulary-42": "ka-0eb6ca8ec299ce26383e",
+    "japanese-travel-vocabulary-47": "ka-dfe583fd526d40053e98",
+    "japanese-travel-vocabulary-53": "ka-2d31d8280725eb441ce0",
+    "japanese-travel-vocabulary-66": "ka-de88b8aeaa20949dad17",
+    "japanese-travel-vocabulary-67": "ka-24913ada4a3d1aec48d6",
+    "japanese-travel-vocabulary-68": "ka-ccec43eb6126b0be0971",
+    "japanese-travel-vocabulary-75": "ka-2dfa005ce68638211191",
+    "japanese-travel-vocabulary-85": "ka-b4123647227b3680222e",
+    "japanese-travel-vocabulary-94": "ka-f7b5ce2ca7a4db6ad6d6",
+    "kaishi-15k-basic-japanese-vocabulary-1": "ka-7f4de5fdeb408912f8b2",
+    "kaishi-15k-basic-japanese-vocabulary-100": "ka-79f9dbf6b0314e075ddc",
+    "kaishi-15k-basic-japanese-vocabulary-102": "ka-a474b29b98b4e30bcb0b",
+    "kaishi-15k-basic-japanese-vocabulary-105": "ka-25ddd35aea26cf45e359",
+    "kaishi-15k-basic-japanese-vocabulary-106": "ka-c6f99bc0f6fd472bc6a7",
+    "kaishi-15k-basic-japanese-vocabulary-107": "ka-dc0c77741d477c76bf52",
+    "kaishi-15k-basic-japanese-vocabulary-109": "ka-17e163ca0fc730ff9210",
+    "kaishi-15k-basic-japanese-vocabulary-11": "ka-5148791100b5748ffed6",
+    "kaishi-15k-basic-japanese-vocabulary-115": "ka-f8547bb8c4c2cc88174c",
+    "kaishi-15k-basic-japanese-vocabulary-117": "ka-12548442417e97ab36ac",
+    "kaishi-15k-basic-japanese-vocabulary-118": "ka-18632842aa6425161be8",
+    "kaishi-15k-basic-japanese-vocabulary-119": "ka-0500a93104e9105b15d1",
+    "kaishi-15k-basic-japanese-vocabulary-120": "ka-200cbea9cc2770f1f67b",
+    "kaishi-15k-basic-japanese-vocabulary-121": "ka-38de87c06ffcb6103efa",
+    "kaishi-15k-basic-japanese-vocabulary-122": "ka-821f2b8ecd63ec0a3c5f",
+    "kaishi-15k-basic-japanese-vocabulary-124": "ka-3280e7bf7fc275ecab9a",
+    "kaishi-15k-basic-japanese-vocabulary-125": "ka-3911e2674eea591fe408",
+    "kaishi-15k-basic-japanese-vocabulary-126": "ka-5eab034e410e969efe28",
+    "kaishi-15k-basic-japanese-vocabulary-127": "ka-329a45cc59a199d6b925",
+    "kaishi-15k-basic-japanese-vocabulary-128": "ka-bb98b1b0afb6bfce23be",
+    "kaishi-15k-basic-japanese-vocabulary-129": "ka-4a71dc1cf7402b6a5d5b",
+    "kaishi-15k-basic-japanese-vocabulary-13": "ka-dfe583fd526d40053e98",
+    "kaishi-15k-basic-japanese-vocabulary-130": "ka-2d31d8280725eb441ce0",
+    "kaishi-15k-basic-japanese-vocabulary-133": "ka-f60bfa33c7a087470ceb",
+    "kaishi-15k-basic-japanese-vocabulary-134": "ka-625dab96fc60f4feef75",
+    "kaishi-15k-basic-japanese-vocabulary-136": "ka-57df1f55646dc68c0fad",
+    "kaishi-15k-basic-japanese-vocabulary-138": "ka-a968e8f7196c90451c17",
+    "kaishi-15k-basic-japanese-vocabulary-139": "ka-fec71a0cd8da746027bd",
+    "kaishi-15k-basic-japanese-vocabulary-140": "ka-7a023c194371a9aabaf9",
+    "kaishi-15k-basic-japanese-vocabulary-141": "ka-9e7c1129435b9ca3c4f2",
+    "kaishi-15k-basic-japanese-vocabulary-142": "ka-d1bb596410bd4de9ed48",
+    "kaishi-15k-basic-japanese-vocabulary-145": "ka-be446eecfc6a7dd46202",
+    "kaishi-15k-basic-japanese-vocabulary-147": "ka-6b65be466b83ac9500b9",
+    "kaishi-15k-basic-japanese-vocabulary-148": "ka-738fb5f653b843bec131",
+    "kaishi-15k-basic-japanese-vocabulary-149": "ka-ecf4f89b7bf1afd83a45",
+    "kaishi-15k-basic-japanese-vocabulary-150": "ka-f0b59474f82f40f68894",
+    "kaishi-15k-basic-japanese-vocabulary-151": "ka-e849f49ee8a3e79f4c8d",
+    "kaishi-15k-basic-japanese-vocabulary-154": "ka-8e5c72a5262cc3d8cedb",
+    "kaishi-15k-basic-japanese-vocabulary-155": "ka-e6f41dea9070a5eb8f45",
+    "kaishi-15k-basic-japanese-vocabulary-156": "ka-314eb56c56814f796166",
+    "kaishi-15k-basic-japanese-vocabulary-158": "ka-74dbbf6085fd61cf4514",
+    "kaishi-15k-basic-japanese-vocabulary-160": "ka-ee5409203e517746ca75",
+    "kaishi-15k-basic-japanese-vocabulary-161": "ka-83873f19c4c1f9c69e4c",
+    "kaishi-15k-basic-japanese-vocabulary-162": "ka-f9921dd463b7ffb8aa8a",
+    "kaishi-15k-basic-japanese-vocabulary-163": "ka-ee978c545c144bd45c58",
+    "kaishi-15k-basic-japanese-vocabulary-165": "ka-6604c0ded1ec6d83ad40",
+    "kaishi-15k-basic-japanese-vocabulary-168": "ka-eada109fad39a9dc3e12",
+    "kaishi-15k-basic-japanese-vocabulary-169": "ka-194771a440707a9ba6be",
+    "kaishi-15k-basic-japanese-vocabulary-17": "ka-4f6bd3d39b9b1c448985",
+    "kaishi-15k-basic-japanese-vocabulary-172": "ka-a9548c415fd1b83e64c6",
+    "kaishi-15k-basic-japanese-vocabulary-173": "ka-6f0f298bff4f1bc45dcb",
+    "kaishi-15k-basic-japanese-vocabulary-174": "ka-910a32a681558a8eb8eb",
+    "kaishi-15k-basic-japanese-vocabulary-18": "ka-e67e3a0bbadb05aeb87c",
+    "kaishi-15k-basic-japanese-vocabulary-180": "ka-d4491c307279420f8af5",
+    "kaishi-15k-basic-japanese-vocabulary-182": "ka-0baab769c20c26538203",
+    "kaishi-15k-basic-japanese-vocabulary-183": "ka-74dbbf6085fd61cf4514",
+    "kaishi-15k-basic-japanese-vocabulary-186": "ka-e9756ecefc3602bc65f1",
+    "kaishi-15k-basic-japanese-vocabulary-187": "ka-f1b118ee0abcef02cc1f",
+    "kaishi-15k-basic-japanese-vocabulary-188": "ka-4d58269ec260bc7f0456",
+    "kaishi-15k-basic-japanese-vocabulary-189": "ka-6db3d8ebbe17fd0bc9e7",
+    "kaishi-15k-basic-japanese-vocabulary-190": "ka-6379a75e5e8bbce76218",
+    "kaishi-15k-basic-japanese-vocabulary-191": "ka-cedb4dce939a15656392",
+    "kaishi-15k-basic-japanese-vocabulary-193": "ka-be0e50e04a4f0b8c3995",
+    "kaishi-15k-basic-japanese-vocabulary-194": "ka-905087208eb56e33c97e",
+    "kaishi-15k-basic-japanese-vocabulary-195": "ka-ffd0ab84295cab03f13c",
+    "kaishi-15k-basic-japanese-vocabulary-197": "ka-517fa53550139d6a988c",
+    "kaishi-15k-basic-japanese-vocabulary-198": "ka-1ec1a5f9b3cc1d617399",
+    "kaishi-15k-basic-japanese-vocabulary-199": "ka-ecfc0d95304976cfd6a0",
+    "kaishi-15k-basic-japanese-vocabulary-200": "ka-babad5a4e5b04e0471e9",
+    "kaishi-15k-basic-japanese-vocabulary-22": "ka-7ec6004136ed7bc2b720",
+    "kaishi-15k-basic-japanese-vocabulary-23": "ka-2f0d24ef8f676d8dde2f",
+    "kaishi-15k-basic-japanese-vocabulary-24": "ka-eaf596493130b35ed583",
+    "kaishi-15k-basic-japanese-vocabulary-29": "ka-835ba8a23c1eff8d8367",
+    "kaishi-15k-basic-japanese-vocabulary-30": "ka-c3ebe323f61bcbbdc73e",
+    "kaishi-15k-basic-japanese-vocabulary-31": "ka-336f8dcc88d15816b085",
+    "kaishi-15k-basic-japanese-vocabulary-34": "ka-4cccbf073e2a942460f8",
+    "kaishi-15k-basic-japanese-vocabulary-36": "ka-0eb6ca8ec299ce26383e",
+    "kaishi-15k-basic-japanese-vocabulary-37": "ka-0521aa31557b2de74793",
+    "kaishi-15k-basic-japanese-vocabulary-4": "ka-38291b921a436cc27522",
+    "kaishi-15k-basic-japanese-vocabulary-42": "ka-d3708c58ca4d454c35e8",
+    "kaishi-15k-basic-japanese-vocabulary-43": "ka-e0eee83e1b8bd2ecc1a8",
+    "kaishi-15k-basic-japanese-vocabulary-44": "ka-d1c2f3b6a5efdb702d7f",
+    "kaishi-15k-basic-japanese-vocabulary-45": "ka-6fa33d169198e75a3cce",
+    "kaishi-15k-basic-japanese-vocabulary-46": "ka-4a59c7ca89a3cd5c6b17",
+    "kaishi-15k-basic-japanese-vocabulary-47": "ka-e1491208cd0a421e088f",
+    "kaishi-15k-basic-japanese-vocabulary-5": "ka-51814487f41844ac9500",
+    "kaishi-15k-basic-japanese-vocabulary-51": "ka-34a9def6def3222241e3",
+    "kaishi-15k-basic-japanese-vocabulary-52": "ka-1cb4e528ae7b2691edfe",
+    "kaishi-15k-basic-japanese-vocabulary-53": "ka-a32fb21cd1a6db9cd25f",
+    "kaishi-15k-basic-japanese-vocabulary-54": "ka-6362818cd7c5f551b7b1",
+    "kaishi-15k-basic-japanese-vocabulary-58": "ka-6d86131948b1e0558f79",
+    "kaishi-15k-basic-japanese-vocabulary-6": "ka-4db3c59fb273d428df8f",
+    "kaishi-15k-basic-japanese-vocabulary-62": "ka-2935a47820835125d086",
+    "kaishi-15k-basic-japanese-vocabulary-63": "ka-70d4a9e533f138649f14",
+    "kaishi-15k-basic-japanese-vocabulary-66": "ka-f6983aacbded16e8bfa7",
+    "kaishi-15k-basic-japanese-vocabulary-67": "ka-f6983aacbded16e8bfa7",
+    "kaishi-15k-basic-japanese-vocabulary-69": "ka-3a7da6acc5f4beba303b",
+    "kaishi-15k-basic-japanese-vocabulary-72": "ka-d41febaeaf9fa2149401",
+    "kaishi-15k-basic-japanese-vocabulary-74": "ka-ccec43eb6126b0be0971",
+    "kaishi-15k-basic-japanese-vocabulary-77": "ka-4cf8490f2062f0f0b3b1",
+    "kaishi-15k-basic-japanese-vocabulary-78": "ka-6b586ff5f24e5c5bdffe",
+    "kaishi-15k-basic-japanese-vocabulary-79": "ka-88e43260a02955aa3bf9",
+    "kaishi-15k-basic-japanese-vocabulary-80": "ka-9d2680c32a05dbfa128c",
+    "kaishi-15k-basic-japanese-vocabulary-81": "ka-1b9b63e69fd720e75c9a",
+    "kaishi-15k-basic-japanese-vocabulary-82": "ka-aa3ae60e50dd556caf74",
+    "kaishi-15k-basic-japanese-vocabulary-83": "ka-aa3ae60e50dd556caf74",
+    "kaishi-15k-basic-japanese-vocabulary-84": "ka-5bcbeb24344a470e87e3",
+    "kaishi-15k-basic-japanese-vocabulary-88": "ka-819020b99d76d72d91fb",
+    "kaishi-15k-basic-japanese-vocabulary-9": "ka-24913ada4a3d1aec48d6",
+    "kaishi-15k-basic-japanese-vocabulary-90": "ka-20fd2f67c599229ff450",
+    "kaishi-15k-basic-japanese-vocabulary-94": "ka-895dff31c93d96c6009d",
+    "kaishi-15k-basic-japanese-vocabulary-95": "ka-59533c099aa7b8d0709b",
+    "kaishi-15k-basic-japanese-vocabulary-96": "ka-211e47678e36bace1496",
+    "kaishi-15k-basic-japanese-vocabulary-98": "ka-15b8db0daa9efc98f5f0",
+    "kaishi-15k-basic-japanese-vocabulary-99": "ka-22eda8e7895841b42b9d"
+  }
+}

@@ -44,6 +44,8 @@ var _current: Dictionary = {}
 var _root: Control
 var _heading: Label
 var _question: Label
+var _listen_spacer: Control
+var _listen_btn: Button
 var _hint: Label
 var _feedback: Label
 var _choices_box: GridContainer
@@ -102,7 +104,13 @@ func _render(prompt: Dictionary) -> void:
 	_hint.text = ""
 	_feedback.text = ""
 	_continue_btn.hide()
-	# Hear the question once as it appears — the card's own Japanese text, so what's
+	var card_id := String(prompt["card"].get("id", ""))
+	var has_audio := Audio.has_pronunciation(card_id)
+	_listen_spacer.visible = has_audio
+	_listen_btn.visible = has_audio
+	Audio.stop_pronunciation()
+	if has_audio:
+		Audio.play_pronunciation(card_id)
 
 	# Adaptive scaffolding: struggling players get more context up front.
 	var scaffold := _scaffold_level()
@@ -179,8 +187,8 @@ func _on_choice(choice: String, btn: Button) -> void:
 		_feedback.text = "%s = %s%s" % [card.get("prompt", ""), answer_txt,
 			("   (%s)" % meaning) if meaning != "" else ""]
 
-	# Speak the reading (or answer, if no reading) so the player hears the correct
-	# pronunciation right after committing to a choice — win or miss.
+	# Replay the card's sourced recording after any answer, win or miss.
+	Audio.play_pronunciation(String(card.get("id", "")))
 
 	_continue_btn.show()
 	_continue_btn.grab_focus()
@@ -214,6 +222,7 @@ func _finish() -> void:
 func _close(cancelled: bool) -> void:
 	var attempted := _index
 	var correct := _correct_count
+	Audio.stop_pronunciation()
 	_active = false
 	_current = {}
 	get_tree().paused = false
@@ -283,9 +292,29 @@ func _build_scaffold() -> void:
 	vbox.add_theme_constant_override("separation", 12)
 	margin.add_child(vbox)
 
+	var heading_row := HBoxContainer.new()
+	vbox.add_child(heading_row)
+
+	_listen_spacer = Control.new()
+	_listen_spacer.custom_minimum_size = Vector2(96, 0)
+	heading_row.add_child(_listen_spacer)
+
 	_heading = _label(14, COL_HEADING)
+	_heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(_heading)
+	heading_row.add_child(_heading)
+
+	_listen_btn = Button.new()
+	_listen_btn.text = "Listen"
+	_listen_btn.tooltip_text = "Play the sourced Japanese recording"
+	_listen_btn.custom_minimum_size = Vector2(96, 26)
+	_listen_btn.focus_mode = Control.FOCUS_ALL
+	_listen_btn.add_theme_font_size_override("font_size", 12)
+	_listen_btn.add_theme_stylebox_override("normal", _compact_button_style(COL_BTN, COL_BTN_BORDER))
+	_listen_btn.add_theme_stylebox_override("hover", _compact_button_style(COL_BTN.lightened(0.08), COL_BORDER))
+	_listen_btn.add_theme_stylebox_override("pressed", _compact_button_style(COL_BTN, COL_BORDER))
+	_listen_btn.pressed.connect(_on_listen_pressed)
+	heading_row.add_child(_listen_btn)
 
 	_question = _label(48, Color.WHITE)
 	_question.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -316,6 +345,13 @@ func _build_scaffold() -> void:
 	vbox.add_child(_continue_btn)
 
 
+func _on_listen_pressed() -> void:
+	if _current.is_empty():
+		return
+	var card: Dictionary = _current.get("card", {})
+	Audio.play_pronunciation(String(card.get("id", "")))
+
+
 func _label(size: int, color: Color) -> Label:
 	var l := Label.new()
 	l.add_theme_font_size_override("font_size", size)
@@ -342,4 +378,11 @@ func _button_style(bg: Color, border: Color) -> StyleBoxFlat:
 	s.content_margin_right = 10
 	s.content_margin_top = 8
 	s.content_margin_bottom = 8
+	return s
+
+
+func _compact_button_style(bg: Color, border: Color) -> StyleBoxFlat:
+	var s := _button_style(bg, border)
+	s.content_margin_top = 3
+	s.content_margin_bottom = 3
 	return s

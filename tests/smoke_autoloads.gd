@@ -24,9 +24,24 @@ func _initialize() -> void:
 	var db := root.get_node_or_null("DB")
 	var save := root.get_node_or_null("SaveGame")
 	var learning := root.get_node_or_null("Learning")
+	var audio := root.get_node_or_null("Audio")
 	check_true("DB autoload present", db != null)
 	check_true("SaveGame autoload present", save != null)
 	check_true("Learning autoload present", learning != null)
+	check_true("Audio autoload present", audio != null)
+	if audio != null:
+		check_true("Audio exposes has_pronunciation",
+			audio.has_method("has_pronunciation"))
+		check_true("Audio exposes play_pronunciation",
+			audio.has_method("play_pronunciation"))
+		check_true("Audio exposes stop_pronunciation",
+			audio.has_method("stop_pronunciation"))
+		if audio.has_method("has_pronunciation"):
+			check_true("Audio reports a known pronunciation",
+				audio.has_pronunciation(
+					"core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2"))
+			check_true("Audio reports unavailable kana as silent",
+				not audio.has_pronunciation("kana-a"))
 
 	if learning == null:
 		_restore_real_save(save)

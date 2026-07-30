@@ -28,8 +28,9 @@ Future: katakana signs, numbers/prices, directions/places, nature/verbs, signs/w
 - Author destinations, gates, signs, NPCs, and rewards through LDtk Master/World Builder. Keep
   curriculum data in the shared learning profile so every surface uses the same progress.
 - Imported travel packs retain provider, deck, source URL, and original Anki note ID per card.
-  Do not import a deck's audio or images unless their separate asset rights are reviewed; the current
-  game source pack intentionally keeps media excluded.
+  Their media remains excluded unless separate asset rights are reviewed. Pronunciation audio is
+  sourced independently: approved Kanji alive recordings are joined by explicit card id only when
+  the written form and reading both match, and unsupported or ambiguous cards remain silent.
 
 ## Imported Travel Source
 - **Essential Japanese for Travelers** by Nihongo Picnic, AnkiWeb deck `1203744822`:

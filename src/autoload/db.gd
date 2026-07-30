@@ -11,6 +11,7 @@ extends Node
 
 const GAME_DIR := "res://data/game/"
 const LEARNING_DIR := "res://data/learning/"
+const PRONUNCIATION_AUDIO_FILE := LEARNING_DIR + "pronunciation-audio.json"
 
 # --- game content: id -> Dictionary ---
 var items: Dictionary = {}
@@ -38,6 +39,12 @@ var card_order: Array[String] = []
 var lessons: Dictionary = {}        # lesson id -> definition
 var lesson_order: Array[String] = []
 var learning_content: Dictionary = {}   # reading-material entries
+var pronunciation_audio: Dictionary = {}
+var pronunciation_version := 0
+var pronunciation_clips: Dictionary = {}   # clip id -> licensed audio definition
+var pronunciation_cards: Dictionary = {}   # card id -> clip id
+var pronunciation_source: Dictionary = {}
+var pronunciation_stats: Dictionary = {}
 
 ## Anki decks imported into the card pool. Each pack carries a `source` block that
 ## is stamped onto every card for attribution — the TS `extractSourceCards()` rule.
@@ -106,6 +113,16 @@ func _load_learning_content() -> void:
 	r = _index(_read_array(LEARNING_DIR + "lessons.json"))
 	lessons = r[0]; lesson_order = r[1]
 	learning_content = _index(_read_array(LEARNING_DIR + "learning-content.json"))[0]
+	_load_pronunciation_audio()
+
+
+func _load_pronunciation_audio() -> void:
+	pronunciation_audio = _read_dict(PRONUNCIATION_AUDIO_FILE)
+	pronunciation_version = int(pronunciation_audio.get("version", 0))
+	pronunciation_clips = pronunciation_audio.get("clips", {})
+	pronunciation_cards = pronunciation_audio.get("cards", {})
+	pronunciation_source = pronunciation_audio.get("source", {})
+	pronunciation_stats = pronunciation_audio.get("stats", {})
 
 
 ## Flatten one Anki source pack into the card pool, stamping deck attribution onto
@@ -158,6 +175,15 @@ func card(id: String) -> Dictionary:
 
 func lesson(id: String) -> Dictionary:
 	return _lookup(lessons, id, "lesson")
+
+
+## Licensed recorded audio is optional per card, so a miss is expected and silent.
+func pronunciation_for_card(card_id: String) -> Dictionary:
+	var clip_id := String(pronunciation_cards.get(card_id, ""))
+	if clip_id.is_empty():
+		return {}
+	var clip: Dictionary = pronunciation_clips.get(clip_id, {})
+	return clip
 
 
 func _lookup(table: Dictionary, id: String, kind: String) -> Dictionary:
