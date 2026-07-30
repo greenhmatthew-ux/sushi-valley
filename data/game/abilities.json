@@ -703,7 +703,7 @@
         "role":  "samurai",
         "requiredWeaponType":  "blade",
         "desc":  "A cursed cut that drains 35% of damage dealt as HP. Berserker playstyle.",
-        "icon":  false
+        "icon":  true
     },
     {
         "id":  "war_fury",

@@ -139,6 +139,8 @@ func _initialize() -> void:
 	check_true("lifesteal Talents preview damage, drain percent, and Energy",
 		drain_detail != null and drain_detail.text.contains("Attack 20")
 		and drain_detail.text.contains("Drain 35%") and drain_detail.text.contains("3E"))
+	check_true("audited Blood Blade art renders on its Talent card",
+		drain_preview.find_child("AbilityIcon_blood_blade", true, false) != null)
 	drain_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")

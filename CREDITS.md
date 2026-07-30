@@ -8,10 +8,11 @@ verified against the running scenes — not an aspirational or inherited list.
 
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
-  merchant), hearts HUD icon, Forge anvil, Workshop hammer, and the seven rendered Talent
-  icons (Blade Sweep, Kunai Toss, Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte).
-  Ki Focus, Rune Ward, and Riposte are the unmodified `Ui/Skill Icon/Spell/AttackUpgrade.png`,
-  `Ui/Skill Icon/Spell/DefenseUpgrade.png`, and `Ui/Skill Icon/Spell/Counter.png` sources.
+  merchant), hearts HUD icon, Forge anvil, Workshop hammer, and the eight rendered Talent
+  icons (Blade Sweep, Kunai Toss, Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte,
+  Blood Blade). Ki Focus, Rune Ward, Riposte, and Blood Blade are the unmodified
+  `Ui/Skill Icon/Spell/AttackUpgrade.png`, `Ui/Skill Icon/Spell/DefenseUpgrade.png`,
+  `Ui/Skill Icon/Spell/Counter.png`, and `Ui/Skill Icon/Spell/Cut.png` sources.
   No restrictions of any kind;
   safe for any use including AI-assisted development.
 - **Serene Village Revamped** by LimeZu — commercial-use entitlement previously confirmed by
@@ -32,8 +33,8 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Not currently verified
 
-- The 26 ability icons not named `sweep`, `kunai`, `kana_bolt`, `brace`, `ki_focus`,
-  `rune_ward`, or `riposte` remain unwired and
+- The 25 ability icons not named `sweep`, `kunai`, `kana_bolt`, `brace`, `ki_focus`,
+  `rune_ward`, `riposte`, or `blood_blade` remain unwired and
   provenance-unverified. Verify or replace each before rendering it in the Skills UI.
 
 ## Removed for licensing (2026-07)
