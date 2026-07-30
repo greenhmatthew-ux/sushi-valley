@@ -105,6 +105,8 @@ func _initialize() -> void:
 	check_true("timed buff Talents preview value, Energy, and duration",
 		ward_detail != null and ward_detail.text.contains("Def +4")
 		and ward_detail.text.contains("2E") and ward_detail.text.contains("3 rounds"))
+	check_true("audited Rune Ward art renders on its Talent card",
+		ward_preview.find_child("AbilityIcon_rune_ward", true, false) != null)
 	ward_preview.free()
 	var ki_preview: Control = panel.call("_make_talent_card", db.ability("ki_focus"))
 	check_true("audited Ki Focus art renders on its Talent card",

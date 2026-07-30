@@ -607,7 +607,7 @@
         "requiredLevel":  6,
         "role":  "scholar",
         "requiredWeaponType":  "kana",
-        "icon":  false,
+        "icon":  true,
         "desc":  "Inscribe a protective glyph that hardens your body."
     },
     {
