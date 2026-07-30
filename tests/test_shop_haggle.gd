@@ -18,6 +18,7 @@ var inv: Node
 var learning: Node
 var db: Node
 var save_game: Node
+var last_toast := ""
 
 ## What the fake recall responder should do next.
 var answer_mode := "correct"   # correct | wrong | cancel | nothing
@@ -32,6 +33,7 @@ func _initialize() -> void:
 	save_game = root.get_node("SaveGame")
 
 	bus.learn_open.connect(_fake_recall)
+	bus.toast.connect(func(text: String): last_toast = text)
 
 	var ui: Node = load("res://src/ui/ui_layer.tscn").instantiate()
 	root.add_child(ui)
@@ -46,6 +48,8 @@ func _initialize() -> void:
 	await _wrong_answer_pays_full_but_still_buys()
 	await _cancelled_recall_still_buys()
 	await _beginner_with_nothing_learned_can_still_buy()
+	await _shop_shell_fits_the_game_viewport()
+	await _gear_purchase_explains_stats_and_equip_path()
 
 	save_game.clear()
 	_finish()
@@ -116,6 +120,32 @@ func _beginner_with_nothing_learned_can_still_buy() -> void:
 
 	check_eq("a beginner can still buy", inv.count("rice_ball"), 1)
 	check_eq("at full price", before - inv.coins, price)
+
+
+func _shop_shell_fits_the_game_viewport() -> void:
+	bus.shop_open.emit("mako_stall")
+	await process_frame
+	var shell: Control = shop.find_child("ShopShell", true, false)
+	check_true("shop shell fits the 640x360 viewport",
+		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
+	shop._close()
+
+
+func _gear_purchase_explains_stats_and_equip_path() -> void:
+	var price := 55
+	var card: Control = shop._make_card("wooden_katana", price)
+	var detail: Label = card.find_child("ShopItemDetail", true, false)
+	check_true("shop gear previews its weapon family", "Blade weapon" in detail.text)
+	check_true("shop gear previews its stat bonus", "ATK +2" in detail.text)
+	card.free()
+
+	answer_mode = "nothing"
+	inv.reset()
+	inv.add_coins(price)
+	last_toast = ""
+	await shop._on_buy("wooden_katana", price)
+	check_eq("buying gear still puts it in the bag", inv.count("wooden_katana"), 1)
+	check_true("gear purchase points to the equip screen", "Menu > Bag" in last_toast)
 
 
 # --- fake RecallPanel -------------------------------------------------------

@@ -89,6 +89,15 @@ func _recipe_row(recipe: Dictionary) -> Control:
 	heading.add_theme_font_size_override("font_size", 13)
 	heading.add_theme_color_override("font_color", COL_TEXT)
 	info.add_child(heading)
+	var output_item: Dictionary = DB.item(String(output.get("item", "")))
+	var output_detail := _item_detail(output_item)
+	if not output_detail.is_empty():
+		var output_label := Label.new()
+		output_label.name = "CraftOutputDetail"
+		output_label.text = output_detail
+		output_label.add_theme_font_size_override("font_size", 10)
+		output_label.add_theme_color_override("font_color", COL_MUTED)
+		info.add_child(output_label)
 	var ingredients: Array[String] = []
 	for input in recipe.get("inputs", []):
 		var item_id := String(input.get("item", ""))
@@ -115,10 +124,26 @@ func _on_craft(recipe_id: String) -> void:
 	var result := Crafting.craft(recipe_id, _station)
 	if result.get("ok", false):
 		var output: Dictionary = result["output"]
-		Bus.toast.emit("Crafted %s x%d · +%d XP" % [
-			DB.item(String(output["item"])).get("name", output["item"]), output["qty"], result["xp"]])
+		var item: Dictionary = DB.item(String(output["item"]))
+		var equip_hint := " Equip in Menu > Bag." if String(item.get("kind", "")) == "gear" else ""
+		Bus.toast.emit("Crafted %s x%d · +%d XP.%s" % [
+			item.get("name", output["item"]), output["qty"], result["xp"], equip_hint])
 	else:
 		Bus.toast.emit(String(result.get("reason", "Could not craft.")))
+
+
+func _item_detail(def: Dictionary) -> String:
+	if String(def.get("kind", "")) != "gear":
+		return ""
+	var parts: Array[String] = []
+	var weapon_type := String(def.get("weaponType", ""))
+	if not weapon_type.is_empty():
+		parts.append("%s weapon" % weapon_type.capitalize())
+	for stat in ["atk", "def", "hp", "spd"]:
+		var amount := int(def.get("stats", {}).get(stat, 0))
+		if amount != 0:
+			parts.append("%s %s%d" % [stat.to_upper(), "+" if amount > 0 else "", amount])
+	return " · ".join(parts)
 
 
 func _build() -> void:

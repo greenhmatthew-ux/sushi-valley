@@ -5,6 +5,7 @@ const Rules = preload("res://src/systems/crafting_logic.gd")
 const Bag = preload("res://src/systems/inventory_logic.gd")
 
 var failures := 0
+var last_toast := ""
 var rice_recipe := {"id": "craft_rice_ball", "station": "kitchen", "levelReq": 1,
 	"inputs": [{"item": "rice", "qty": 2}],
 	"output": {"item": "rice_ball", "qty": 3}, "xp": 8}
@@ -189,6 +190,7 @@ func _panel_contract() -> void:
 	var crafting: Node = root.get_node("Crafting")
 	var learning: Node = root.get_node("Learning")
 	var db: Node = root.get_node("DB")
+	bus.toast.connect(_capture_toast)
 	inv.reset()
 	inv.add("rice", 2)
 	var crafted: Dictionary = crafting.craft("craft_rice_ball", "kitchen")
@@ -211,9 +213,29 @@ func _panel_contract() -> void:
 		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
 	check_eq("kitchen hides its three undiscovered recipes", list.get_child_count(), 23)
 	panel.call("_close")
+
+	var bow_recipe: Dictionary = db.recipe("craft_wrist_bow")
+	var bow_row: Control = panel.call("_recipe_row", bow_recipe)
+	var bow_detail: Label = bow_row.find_child("CraftOutputDetail", true, false)
+	check_true("crafting previews a weapon's family", "Ranged weapon" in bow_detail.text)
+	check_true("crafting previews a weapon's stat bonus", "ATK +2" in bow_detail.text)
+	bow_row.free()
+
+	inv.reset()
+	inv.add("bamboo_shoot", 3)
+	inv.add("spider_silk", 2)
+	panel.set("_station", "workshop")
+	last_toast = ""
+	panel.call("_on_craft", "craft_wrist_bow")
+	check_eq("crafted gear remains in the bag", inv.count("wrist_bow"), 1)
+	check_true("crafted gear points to the equip screen", "Menu > Bag" in last_toast)
 	inv.reset()
 	panel.queue_free()
 	await process_frame
+
+
+func _capture_toast(text: String) -> void:
+	last_toast = text
 
 
 func _finish() -> void:

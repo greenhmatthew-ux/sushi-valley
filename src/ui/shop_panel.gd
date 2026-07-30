@@ -138,6 +138,18 @@ func _make_card(id: String, price: int) -> Control:
 	name_label.custom_minimum_size = Vector2(96, 0)
 	vbox.add_child(name_label)
 
+	var detail_text := _item_detail(def)
+	if not detail_text.is_empty():
+		var detail_label := Label.new()
+		detail_label.name = "ShopItemDetail"
+		detail_label.text = detail_text
+		detail_label.add_theme_font_size_override("font_size", 9)
+		detail_label.add_theme_color_override("font_color", COL_HEADING)
+		detail_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		detail_label.custom_minimum_size = Vector2(96, 0)
+		vbox.add_child(detail_label)
+
 	var price_label := Label.new()
 	price_label.text = "%d c" % price
 	price_label.add_theme_font_size_override("font_size", 12)
@@ -189,11 +201,14 @@ func _on_buy(id: String, price: int) -> void:
 		return
 	Inv.add(id, 1)
 	Bus.item_purchased.emit(id, final_price)
-	var name := String(DB.item(id).get("name", id))
+	var item: Dictionary = DB.item(id)
+	var name := String(item.get("name", id))
+	var equip_hint := " Equip in Menu > Bag." if String(item.get("kind", "")) == "gear" else ""
 	if final_price < price:
-		Bus.toast.emit("Bought %s for %d coins (saved %d)." % [name, final_price, price - final_price])
+		Bus.toast.emit("Bought %s for %d coins (saved %d).%s" % [
+			name, final_price, price - final_price, equip_hint])
 	else:
-		Bus.toast.emit("Bought %s for %d coins." % [name, final_price])
+		Bus.toast.emit("Bought %s for %d coins.%s" % [name, final_price, equip_hint])
 	_refresh()
 
 
@@ -233,6 +248,20 @@ func _icon_node(id: String) -> Control:
 	return placeholder
 
 
+func _item_detail(def: Dictionary) -> String:
+	if String(def.get("kind", "")) != "gear":
+		return ""
+	var parts: Array[String] = []
+	var weapon_type := String(def.get("weaponType", ""))
+	if not weapon_type.is_empty():
+		parts.append("%s weapon" % weapon_type.capitalize())
+	for stat in ["atk", "def", "hp", "spd"]:
+		var amount := int(def.get("stats", {}).get(stat, 0))
+		if amount != 0:
+			parts.append("%s %s%d" % [stat.to_upper(), "+" if amount > 0 else "", amount])
+	return " · ".join(parts)
+
+
 # --- static scaffold, built once ------------------------------------------
 
 func _build_scaffold() -> void:
@@ -247,12 +276,10 @@ func _build_scaffold() -> void:
 	_root.add_child(dim)
 
 	var panel := PanelContainer.new()
+	panel.name = "ShopShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.5; panel.anchor_top = 0.5
-	panel.anchor_right = 0.5; panel.anchor_bottom = 0.5
-	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	panel.custom_minimum_size = Vector2(540, 0)
+	panel.anchor_left = 0.05; panel.anchor_top = 0.05
+	panel.anchor_right = 0.95; panel.anchor_bottom = 0.95
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()
@@ -292,7 +319,6 @@ func _build_scaffold() -> void:
 	header.add_child(_coins_label)
 
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(0, 320)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(scroll)
