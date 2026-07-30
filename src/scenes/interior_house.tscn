@@ -95,6 +95,7 @@ spawn_id = "interior_entry"
 position = Vector2(168, 60)
 item_id = "rice"
 qty = 2
+pickup_id = "house_kitchen_rice"
 
 [node name="TeacherDining" parent="Entities" instance=ExtResource("9_teacher")]
 position = Vector2(56, 104)

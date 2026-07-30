@@ -13,6 +13,7 @@ var rice_recipe := {"id": "craft_rice_ball", "station": "kitchen", "levelReq": 1
 func _initialize() -> void:
 	_progression_and_discovery()
 	_atomic_transaction()
+	await _one_time_ingredients()
 	await _panel_contract()
 	_finish()
 
@@ -53,6 +54,36 @@ func _atomic_transaction() -> void:
 	check_true("full output stack rejects the whole craft",
 		not full.craft_transaction(rice_recipe["inputs"], "rice_ball", 3))
 	check_eq("capacity failure preserves ingredients", full.count("rice"), 2)
+
+
+func _one_time_ingredients() -> void:
+	await process_frame
+	var inv: Node = root.get_node("Inv")
+	var learning: Node = root.get_node("Learning")
+	inv.reset()
+	learning.set_flag("pickup_test_kitchen_rice_taken", false)
+	var first := Area2D.new()
+	first.set_script(load("res://src/entities/item_pickup.gd"))
+	first.set("item_id", "rice")
+	first.set("qty", 2)
+	first.set("pickup_id", "test_kitchen_rice")
+	root.add_child(first)
+	await process_frame
+	first.call("interact")
+	await process_frame
+	check_eq("intro ingredients are granted once", inv.count("rice"), 2)
+	check_true("one-time pickup writes its save flag",
+		learning.get_flag("pickup_test_kitchen_rice_taken"))
+	var second := Area2D.new()
+	second.set_script(load("res://src/entities/item_pickup.gd"))
+	second.set("item_id", "rice")
+	second.set("qty", 2)
+	second.set("pickup_id", "test_kitchen_rice")
+	root.add_child(second)
+	await process_frame
+	check_true("saved pickup does not respawn", not is_instance_valid(second))
+	check_eq("re-entering cannot duplicate ingredients", inv.count("rice"), 2)
+	inv.reset()
 
 
 func _panel_contract() -> void:

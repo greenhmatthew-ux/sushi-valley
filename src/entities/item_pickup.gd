@@ -15,6 +15,9 @@ extends Area2D
 
 @export var item_id: String = "rice_ball"
 @export var qty: int = 1
+## Optional save-safe identity for authored one-time pickups. Empty preserves the old
+## respawning behavior for deliberately renewable drops.
+@export var pickup_id: String = ""
 ## Draw the item's name under it so pickups are identifiable before you grab them.
 @export var show_label: bool = true
 
@@ -26,6 +29,9 @@ var _taken := false
 
 
 func _ready() -> void:
+	if not pickup_id.is_empty() and Learning.get_flag(_pickup_flag()):
+		queue_free()
+		return
 	add_to_group("interactable")
 	_build_visual()
 
@@ -71,8 +77,14 @@ func interact(_player: Node = null) -> void:
 		Bus.toast.emit("Your bag is full.")
 		return
 	_taken = true
+	if not pickup_id.is_empty():
+		Learning.set_flag(_pickup_flag())
 	Bus.toast.emit("Picked up %s%s" % [_display_name(), (" x%d" % got) if got > 1 else ""])
 	queue_free()
+
+
+func _pickup_flag() -> String:
+	return "pickup_%s_taken" % pickup_id
 
 
 func _load_icon() -> Texture2D:
