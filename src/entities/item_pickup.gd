@@ -8,10 +8,8 @@ extends Area2D
 ## Bus signals) and frees itself. Authored per-instance in the editor: set
 ## `item_id` and `qty`, drop it in the world.
 ##
-## Placeholder art: the world sprite reuses the item's inventory icon from
-## `assets/icons/items/<id>.png`, scaled down to tile size. Items without an icon
-## show a small gold diamond. A dedicated ground-drop sprite set (the TS build's
-## "world_*" sprites) is a later art pass — noted, not blocking.
+## Current authored pickups are one-time ingredient caches, so they use a real closed
+## treasure chest at the native 16px world scale. The item label keeps each cache clear.
 
 @export var item_id: String = "rice_ball"
 @export var qty: int = 1
@@ -21,9 +19,7 @@ extends Area2D
 ## Draw the item's name under it so pickups are identifiable before you grab them.
 @export var show_label: bool = true
 
-const ICON_DIR := "res://assets/icons/items/"
-const TARGET_PX := 16.0        # render the icon at roughly one tile
-const PLACEHOLDER_COLOR := Color(1.0, 0.824, 0.49)
+const CACHE_SHEET := preload("res://assets/objects/ninja_little_treasure_chest.png")
 
 var _taken := false
 
@@ -37,22 +33,15 @@ func _ready() -> void:
 
 
 func _build_visual() -> void:
-	var icon := _load_icon()
-	if icon != null:
-		var sprite := Sprite2D.new()
-		sprite.texture = icon
-		sprite.position = Vector2(0, -6)
-		var longest := float(maxi(icon.get_width(), icon.get_height()))
-		if longest > TARGET_PX:
-			sprite.scale = Vector2.ONE * (TARGET_PX / longest)
-		add_child(sprite)
-	else:
-		# No icon on file — a small gold diamond stands in.
-		var diamond := Polygon2D.new()
-		diamond.polygon = PackedVector2Array([
-			Vector2(0, -13), Vector2(7, -6), Vector2(0, 1), Vector2(-7, -6)])
-		diamond.color = PLACEHOLDER_COLOR
-		add_child(diamond)
+	var closed_chest := AtlasTexture.new()
+	closed_chest.atlas = CACHE_SHEET
+	closed_chest.region = Rect2(0, 0, 16, 16)
+	closed_chest.filter_clip = true
+	var sprite := Sprite2D.new()
+	sprite.name = "CacheSprite"
+	sprite.texture = closed_chest
+	sprite.position = Vector2(0, -6)
+	add_child(sprite)
 
 	if show_label:
 		var label := Label.new()
@@ -85,13 +74,6 @@ func interact(_player: Node = null) -> void:
 
 func _pickup_flag() -> String:
 	return "pickup_%s_taken" % pickup_id
-
-
-func _load_icon() -> Texture2D:
-	var path := ICON_DIR + item_id + ".png"
-	if ResourceLoader.exists(path):
-		return load(path) as Texture2D
-	return null
 
 
 ## The item's display name from DB, falling back to the raw id if DB has no entry.

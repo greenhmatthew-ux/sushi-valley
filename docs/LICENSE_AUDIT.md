@@ -42,6 +42,10 @@ The Blood Blade Talent icon is the unmodified Ninja Adventure source
 `Ui/Skill Icon/Spell/Cut.png`, copied to
 `assets/icons/abilities/blood_blade.png` under the same CC0 1.0 license.
 
+The ingredient-cache sprite is the unmodified two-frame Ninja Adventure source
+`Items/Treasure/LittleTreasureChest.png`, copied to
+`assets/objects/ninja_little_treasure_chest.png`. Runtime uses its closed 16x16 frame.
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

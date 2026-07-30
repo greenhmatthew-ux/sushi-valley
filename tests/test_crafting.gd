@@ -188,6 +188,13 @@ func _one_time_ingredients() -> void:
 	first.set("pickup_id", "test_kitchen_rice")
 	root.add_child(first)
 	await process_frame
+	var cache_sprite: Sprite2D = first.find_child("CacheSprite", false, false)
+	check_true("ingredient cache uses real treasure-chest art", cache_sprite != null)
+	var cache_frame := cache_sprite.texture as AtlasTexture
+	check_eq("cache art comes from the audited CC0 Ninja sheet",
+		cache_frame.atlas.resource_path,
+		"res://assets/objects/ninja_little_treasure_chest.png")
+	check_eq("cache uses one native 16px frame", cache_frame.region.size, Vector2(16, 16))
 	first.call("interact")
 	await process_frame
 	check_eq("intro ingredients are granted once", inv.count("rice"), 2)
