@@ -25,6 +25,7 @@ var wall_layer: TileMapLayer
 
 
 func _ready() -> void:
+	Audio.play_music("interior")
 	_build_tileset()
 	_build_room()
 	_build_walls()

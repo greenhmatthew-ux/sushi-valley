@@ -12,7 +12,7 @@ $ErrorActionPreference = "Continue"
 $godot = "C:\Users\curby\Godot\Godot_v4.7.1-stable_win64_console.exe"
 $project = Split-Path -Parent $PSScriptRoot
 $suites = @(
-	"smoke_db", "test_pronunciation_audio", "smoke_world", "test_srs", "test_learning",
+	"smoke_db", "test_pronunciation_audio", "test_audio_music", "smoke_world", "test_srs", "test_learning",
 	"test_lesson_gate", "test_recall_loop", "test_inventory", "test_combat",
 	"test_save", "test_inventory_persistence", "test_transitions", "test_quest", "test_quest_giver", "test_teacher_npc", "test_sign_post", "test_study_spot", "test_combat_encounter", "test_player_stats", "test_shop_haggle", "test_japanese_sourcing",
 	"smoke_autoloads"

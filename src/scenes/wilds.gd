@@ -31,6 +31,7 @@ var _blocked: Dictionary = {}   # tiles under props/buildings — kept clear of 
 
 
 func _ready() -> void:
+	Audio.play_music("forest")
 	_rng.seed = GEN_SEED
 	_build_tileset()
 	_build_ground()

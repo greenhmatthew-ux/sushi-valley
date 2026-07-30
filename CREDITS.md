@@ -43,6 +43,28 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Audio and voices
 
+### Music
+
+- **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. Six
+  unmodified Ogg tracks are bundled for the current title, exploration, interior,
+  and combat music:
+
+  | Local asset | Original pack filename |
+  | --- | --- |
+  | `assets/audio/music/title.ogg` | `Audio/Musics/1 - Adventure Begin.ogg` |
+  | `assets/audio/music/village.ogg` | `Audio/Musics/33 - Calm Village.ogg` |
+  | `assets/audio/music/forest.ogg` | `Audio/Musics/37 - Dark Forest.ogg` |
+  | `assets/audio/music/interior.ogg` | `Audio/Musics/27 - Chill.ogg` |
+  | `assets/audio/music/battle.ogg` | `Audio/Musics/17 - Fight.ogg` |
+  | `assets/audio/music/mountain.ogg` | `Audio/Musics/19 - Ascension.ogg` |
+
+  Source: <https://pixel-boy.itch.io/ninja-adventure-asset-pack>. The pack's
+  included `README.md` and `LICENSE.txt` release the assets under CC0 1.0;
+  attribution is appreciated but not required.
+
+This verifies the six music files above only. It does not establish provenance
+for the separate files under `assets/audio/sfx/`.
+
 ### Japanese pronunciation
 
 - **Kanji alive** — human recordings by male and female native Japanese speakers,

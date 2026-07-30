@@ -18,6 +18,7 @@ const PEBBLE := Vector2i(6, 4)
 
 
 func _ready() -> void:
+	Audio.play_music("village")
 	_clamp_camera_to_map()
 	_build_meadow()
 	_load_game()

@@ -15,12 +15,31 @@ doing that.
 
 | Source | License | Status |
 | --- | --- | --- |
-| Ninja Adventure - Asset Pack | CC0 1.0 | In use. No restrictions. |
+| Ninja Adventure - Asset Pack | CC0 1.0 | In use for art and six verified music tracks. No restrictions. |
 | Serene Village Revamped (LimeZu) | Owner-confirmed commercial, no license file in the pack | In use. Re-confirm before commercial release. |
 | Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | In use for dev. **Blocks commercial release** until a commercial license is separately obtained. |
 | Kyrise's 16x16 RPG Icon Pack V1.3 | CC BY 4.0 | In use (item icons). Attribution required. |
 | Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
 | Mana Seed RPG Starter Pack | Free, but explicitly **forbids any use alongside generative AI** (including AI-assisted code) | **Removed 2026-07** — incompatible with an AI-assisted dev workflow. Do not reimport. |
+
+### Verified Ninja Adventure music mapping
+
+The following files are byte-identical copies from
+`D:\Asset Library\Assets\Ninja Adventure - Asset Pack\Audio\Musics\`. The source
+pack's `README.md` names Pixel-boy and AAA as its creators and releases the pack
+under CC0; its bundled `LICENSE.txt` contains the CC0 1.0 Universal terms.
+
+| Runtime asset | Original filename |
+| --- | --- |
+| `assets/audio/music/title.ogg` | `1 - Adventure Begin.ogg` |
+| `assets/audio/music/village.ogg` | `33 - Calm Village.ogg` |
+| `assets/audio/music/forest.ogg` | `37 - Dark Forest.ogg` |
+| `assets/audio/music/interior.ogg` | `27 - Chill.ogg` |
+| `assets/audio/music/battle.ogg` | `17 - Fight.ogg` |
+| `assets/audio/music/mountain.ogg` | `19 - Ascension.ogg` |
+
+This music audit does not cover or make a provenance claim for
+`assets/audio/sfx/`.
 
 ## Blocked
 
