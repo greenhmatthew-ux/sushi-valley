@@ -27,6 +27,12 @@ var abilities := {
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
 		"buffType": "def", "buffValue": 4, "buffDuration": 3,
 		"spCost": 1, "role": "scholar", "requiredWeaponType": "kana"},
+	"spirit_shear": {"id": "spirit_shear", "type": "attack", "power": 16,
+		"debuffType": "def", "debuffValue": 4, "debuffDuration": 3,
+		"spCost": 3, "role": "samurai", "requiredWeaponType": "blade"},
+	"venom_cut": {"id": "venom_cut", "type": "attack", "power": 10,
+		"debuffType": "poison", "debuffValue": 3, "debuffDuration": 3,
+		"spCost": 1, "role": "samurai", "requiredWeaponType": "blade"},
 }
 
 
@@ -58,6 +64,9 @@ func _weapon_and_runtime_gates() -> void:
 		and AbilityRules.is_runtime_supported(abilities["bulwark"]))
 	check_true("timed buffs remain hidden even when their stat name matches",
 		not AbilityRules.is_runtime_supported(abilities["slow_charge"]))
+	check_true("authored stat debuffs are supported but unknown future types stay hidden",
+		AbilityRules.is_runtime_supported(abilities["spirit_shear"])
+		and not AbilityRules.is_runtime_supported(abilities["venom_cut"]))
 	var usable := AbilityRules.usable_defs(build, abilities, "blade")
 	check_eq("combat gets only supported, weapon-ready actions",
 		usable.map(func(a): return a["id"]), ["strike", "guard", "focus"])
@@ -104,6 +113,9 @@ func _talent_unlocks() -> void:
 		AbilityRules.is_honest_talent(abilities["mana_tea"])
 		and AbilityRules.is_honest_talent(abilities["bulwark"])
 		and AbilityRules.is_honest_talent(abilities["rune_ward"]))
+	check_true("resolved debuff talents are honest without exposing unknown statuses",
+		AbilityRules.is_honest_talent(abilities["spirit_shear"])
+		and not AbilityRules.is_honest_talent(abilities["venom_cut"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])

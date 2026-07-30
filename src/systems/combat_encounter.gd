@@ -24,6 +24,9 @@ class RoundResult extends RefCounted:
 	var buff_type: String
 	var buff_value: int
 	var buff_rounds: int
+	var debuff_type: String
+	var debuff_value: int
+	var debuff_rounds: int
 	var shield_absorbed: int
 	var enemy_damage_dealt: int
 	var flow_after: int
@@ -63,6 +66,8 @@ var ability_cooldowns: Dictionary = {}
 ## Rounds tick only after an enemy response, so a defensive buff cannot expire during a
 ## Speed-only bonus turn where there was nothing to defend against.
 var timed_buffs: Dictionary = {}
+## Enemy-side counterpart to timed_buffs, populated only by authored attack riders.
+var timed_debuffs: Dictionary = {}
 
 ## Consecutive correct recalls. Drives CombatLogic.flow_multiplier — accurate recall
 ## literally hits harder, and a miss resets it.
@@ -133,6 +138,14 @@ func can_use_ability(ability: Dictionary) -> bool:
 		if int(active.get("value", 0)) == int(ability.get("buffValue", 0)) \
 				and int(active.get("rounds", 0)) >= int(ability.get("buffDuration", 1)):
 			return false
+	var debuff_type := String(ability.get("debuffType", ""))
+	if debuff_type in ["atk", "def", "speed"]:
+		var active: Dictionary = timed_debuffs.get(debuff_type, {})
+		if int(active.get("value", 0)) > int(ability.get("debuffValue", 0)):
+			return false
+		if int(active.get("value", 0)) == int(ability.get("debuffValue", 0)) \
+				and int(active.get("rounds", 0)) >= int(ability.get("debuffDuration", 1)):
+			return false
 	return String(ability.get("type", "")) != "heal" or player_hp < player_max_hp
 
 
@@ -161,6 +174,14 @@ func ability_status(ability: Dictionary) -> String:
 		if int(active.get("value", 0)) == int(ability.get("buffValue", 0)) \
 				and int(active.get("rounds", 0)) >= int(ability.get("buffDuration", 1)):
 			return "Active"
+	var debuff_type := String(ability.get("debuffType", ""))
+	if debuff_type in ["atk", "def", "speed"]:
+		var active: Dictionary = timed_debuffs.get(debuff_type, {})
+		if int(active.get("value", 0)) > int(ability.get("debuffValue", 0)):
+			return "Stronger active"
+		if int(active.get("value", 0)) == int(ability.get("debuffValue", 0)) \
+				and int(active.get("rounds", 0)) >= int(ability.get("debuffDuration", 1)):
+			return "Active"
 	if String(ability.get("type", "")) == "heal" and player_hp >= player_max_hp:
 		return "Full HP"
 	return ""
@@ -173,8 +194,8 @@ func can_use_item() -> bool:
 ## Honest enemy intent for the UI. Runtime damage varies by +/-15%, so preview the full
 ## reachable HP-loss range instead of showing a false exact number. Current Guard is included.
 func enemy_damage_range() -> Vector2i:
-	var low := CombatLogic.enemy_damage(enemy_atk, effective_def(), 0.0)
-	var high := CombatLogic.enemy_damage(enemy_atk, effective_def(), 1.0)
+	var low := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), 0.0)
+	var high := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), 1.0)
 	return Vector2i(maxi(0, low - shield), maxi(0, high - shield))
 
 
@@ -190,18 +211,44 @@ func effective_speed() -> int:
 	return player_speed + int((timed_buffs.get("speed", {}) as Dictionary).get("value", 0))
 
 
+func effective_enemy_atk() -> int:
+	return maxi(1, enemy_atk - int((timed_debuffs.get("atk", {}) as Dictionary).get("value", 0)))
+
+
+func effective_enemy_def() -> int:
+	return maxi(0, enemy_def - int((timed_debuffs.get("def", {}) as Dictionary).get("value", 0)))
+
+
+func effective_enemy_speed() -> int:
+	return maxi(1, enemy_speed - int((timed_debuffs.get("speed", {}) as Dictionary).get("value", 0)))
+
+
+static func stat_label(stat: String) -> String:
+	return "SPD" if stat == "speed" else stat.to_upper()
+
+
 func timed_buff_summary() -> String:
 	var parts: Array[String] = []
 	for buff_type in ["atk", "def", "speed"]:
 		var active: Dictionary = timed_buffs.get(buff_type, {})
 		if int(active.get("rounds", 0)) > 0:
-			parts.append("%s+%d/%dr" % [buff_type.to_upper(),
+			parts.append("%s+%d/%dr" % [stat_label(buff_type),
+				int(active.get("value", 0)), int(active.get("rounds", 0))])
+	return " · ".join(parts)
+
+
+func enemy_debuff_summary() -> String:
+	var parts: Array[String] = []
+	for debuff_type in ["atk", "def", "speed"]:
+		var active: Dictionary = timed_debuffs.get(debuff_type, {})
+		if int(active.get("rounds", 0)) > 0:
+			parts.append("%s-%d/%dr" % [stat_label(debuff_type),
 				int(active.get("value", 0)), int(active.get("rounds", 0))])
 	return " · ".join(parts)
 
 
 func begin_player_round() -> void:
-	turns_left = player_turn_count(effective_speed(), enemy_speed)
+	turns_left = player_turn_count(effective_speed(), effective_enemy_speed())
 	bonus_turn = false
 	_begin_player_turn()
 
@@ -279,8 +326,26 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 		var hits := maxi(1, int(ability.get("hits", 1)))
 		for _hit in hits:
 			r.player_damage_dealt += CombatLogic.ability_damage(
-				power, effective_atk(), enemy_def, r.correct, roll)
+				power, effective_atk(), effective_enemy_def(), r.correct, roll)
 		enemy_hp = CombatLogic.apply_damage(enemy_hp, r.player_damage_dealt)
+		var debuff_type := String(ability.get("debuffType", ""))
+		var debuff_duration := int(ability.get("debuffDuration", 0))
+		if debuff_type in ["atk", "def", "speed"] and debuff_duration > 0:
+			var amount := int(ability.get("debuffValue", 0))
+			amount = amount if r.correct else maxi(1, roundi(amount * 0.5))
+			var old_enemy_speed := effective_enemy_speed()
+			var active: Dictionary = timed_debuffs.get(debuff_type, {})
+			timed_debuffs[debuff_type] = {
+				"value": maxi(int(active.get("value", 0)), amount),
+				"rounds": maxi(int(active.get("rounds", 0)), debuff_duration),
+			}
+			r.debuff_type = debuff_type
+			r.debuff_value = int((timed_debuffs[debuff_type] as Dictionary)["value"])
+			r.debuff_rounds = int((timed_debuffs[debuff_type] as Dictionary)["rounds"])
+			if debuff_type == "speed":
+				var extra_turns := player_turn_count(effective_speed(), effective_enemy_speed()) \
+					- player_turn_count(effective_speed(), old_enemy_speed)
+				turns_left = mini(2, turns_left + maxi(0, extra_turns))
 	elif r.action_type == "block":
 		r.shield_gained = power if r.correct else maxi(1, roundi(power * 0.5))
 		shield = r.shield_gained
@@ -394,7 +459,7 @@ func _enemy_response(r: RoundResult) -> void:
 	if r.enemy_defeated:
 		return
 	r.enemy_acted = true
-	var incoming := CombatLogic.enemy_damage(enemy_atk, effective_def(), roll)
+	var incoming := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), roll)
 	r.shield_absorbed = mini(shield, incoming)
 	r.enemy_damage_dealt = incoming - r.shield_absorbed
 	shield = 0
@@ -412,6 +477,15 @@ func _tick_timed_buffs() -> void:
 		else:
 			active["rounds"] = remaining
 			timed_buffs[buff_type] = active
+	for raw_type in timed_debuffs.keys():
+		var debuff_type := String(raw_type)
+		var active: Dictionary = timed_debuffs[debuff_type]
+		var remaining := maxi(0, int(active.get("rounds", 0)) - 1)
+		if remaining <= 0:
+			timed_debuffs.erase(debuff_type)
+		else:
+			active["rounds"] = remaining
+			timed_debuffs[debuff_type] = active
 
 
 ## Build one round's challenge from a card plus a pool to draw wrong runes from.

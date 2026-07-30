@@ -21,6 +21,7 @@ func _initialize() -> void:
 	_ability_cadence_is_enforced()
 	_immediate_buffs_are_distinct()
 	_timed_stat_buffs_last_enemy_rounds()
+	_timed_debuffs_change_enemy_math()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -248,6 +249,62 @@ func _timed_stat_buffs_last_enemy_rounds() -> void:
 	var bonus := quick.end_player_turn()
 	check_true("Speed-only bonus does not tick timed buffs", bonus.bonus_turn_granted
 		and (quick.timed_buffs["speed"] as Dictionary)["rounds"] == 3)
+
+
+func _timed_debuffs_change_enemy_math() -> void:
+	var shear := {"id": "spirit_shear", "type": "attack", "power": 16, "cost": 3,
+		"debuffType": "def", "debuffValue": 4, "debuffDuration": 3}
+	var exposed := _fresh()
+	exposed.enemy_max_hp = 200
+	exposed.enemy_hp = 200
+	exposed.enemy_def = 6
+	exposed.begin_player_round()
+	var opening := exposed.spend_and_resolve("mi", "mi", shear)
+	check_eq("debuff attack reports the applied stat", opening.debuff_type, "def")
+	check_eq("debuff attack reports value and duration",
+		Vector2i(opening.debuff_value, opening.debuff_rounds), Vector2i(4, 3))
+	check_eq("DEF debuff changes later attack math", exposed.effective_enemy_def(), 2)
+	var exposed_followup := exposed.spend_and_resolve("mi", "mi").player_damage_dealt
+	var plain := _fresh()
+	plain.enemy_max_hp = 200
+	plain.enemy_hp = 200
+	plain.enemy_def = 6
+	plain.begin_player_round()
+	plain.spend_and_resolve("mi", "mi", {"id": "plain_shear", "type": "attack",
+		"power": 16, "cost": 3})
+	var plain_followup := plain.spend_and_resolve("mi", "mi").player_damage_dealt
+	check_true("DEF debuff helps subsequent actions, not its initiating hit",
+		exposed_followup > plain_followup)
+
+	var void_cleave := {"id": "void_cleave", "type": "attack", "power": 1, "cost": 1,
+		"debuffType": "atk", "debuffValue": 5, "debuffDuration": 3}
+	var weakened := CombatEncounter.new(enemy_def, 100, 100, 6, 2, 5)
+	weakened.roll = 0.5
+	weakened.begin_player_round()
+	weakened.spend_and_resolve("mi", "mi", void_cleave)
+	check_eq("ATK debuff immediately updates enemy intent", weakened.enemy_damage_range(),
+		Vector2i(1, 1))
+	weakened.end_player_turn()
+	check_eq("ATK debuff affects the current enemy response", weakened.player_hp, 99)
+	check_eq("enemy debuffs tick after that response",
+		(weakened.timed_debuffs["atk"] as Dictionary)["rounds"], 2)
+	weakened.end_player_turn()
+	weakened.end_player_turn()
+	check_true("enemy debuff expires after exactly three responses",
+		not weakened.timed_debuffs.has("atk"))
+
+	var sap := {"id": "sap_glyph", "type": "attack", "power": 1, "cost": 2,
+		"debuffType": "speed", "debuffValue": 4, "debuffDuration": 3}
+	var even_enemy := enemy_def.duplicate(true)
+	even_enemy["speed"] = 5
+	var slowed := CombatEncounter.new(even_enemy, 30, 30, 6, 2, 5)
+	slowed.roll = 0.5
+	slowed.begin_player_round()
+	slowed.spend_and_resolve("mi", "mi", sap)
+	check_eq("SPD debuff changes effective enemy Speed", slowed.effective_enemy_speed(), 1)
+	check_eq("SPD debuff can earn the current bonus turn", slowed.turns_left, 2)
+	check_eq("enemy status summary is compact and explicit",
+		slowed.enemy_debuff_summary(), "SPD-4/3r")
 
 
 func _speed_grants_one_extra_full_turn() -> void:

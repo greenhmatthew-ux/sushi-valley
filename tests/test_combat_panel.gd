@@ -26,6 +26,7 @@ func _initialize() -> void:
 	var actions: Control = panel.find_child("CombatActions", true, false)
 	var energy: Label = panel.find_child("CombatEnergy", true, false)
 	var intent: Label = panel.find_child("EnemyIntent", true, false)
+	var enemy_label: Label = panel.get("_enemy_label")
 	var end_turn: Button = panel.find_child("EndTurn", true, false)
 	var flee: Button = panel.find_child("Flee", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
@@ -98,6 +99,12 @@ func _initialize() -> void:
 	check_true("cooldown action tooltip exposes both cadence rules",
 		focus_button.tooltip_text.contains("1 use per turn")
 		and focus_button.tooltip_text.contains("Cooldown: 1 full turn"))
+	second_encounter.timed_debuffs["atk"] = {"value": 5, "rounds": 3}
+	panel.call("_render_bars")
+	check_true("enemy HUD exposes active debuffs", enemy_label.text.contains("ATK-5/3r"))
+	check_eq("ATK debuff updates the visible enemy intent", intent.text,
+		"[!] Attack 1-1 HP")
+	second_encounter.timed_debuffs.erase("atk")
 	second_encounter.timed_buffs["def"] = {"value": 4, "rounds": 3}
 	panel.call("_render_bars")
 	check_true("combat HUD exposes active timed buffs", energy.text.contains("DEF+4/3r"))

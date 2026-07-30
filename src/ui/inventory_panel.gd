@@ -466,6 +466,10 @@ func _ability_cadence(ability: Dictionary) -> String:
 	var buff_duration := maxi(0, int(ability.get("buffDuration", 0)))
 	if buff_type in ["atk", "def", "speed"] and buff_duration > 0:
 		parts.append("%d rounds" % buff_duration)
+	var debuff_type := String(ability.get("debuffType", ""))
+	var debuff_duration := maxi(0, int(ability.get("debuffDuration", 0)))
+	if debuff_type in ["atk", "def", "speed"] and debuff_duration > 0:
+		parts.append("%d rounds" % debuff_duration)
 	return "  ·  ".join(parts)
 
 
@@ -473,8 +477,13 @@ func _ability_effect_text(ability: Dictionary) -> String:
 	if String(ability.get("type", "")) == "buff":
 		var buff_type := String(ability.get("buffType", "effect")).capitalize()
 		return "%s +%d" % [buff_type, int(ability.get("buffValue", 0))]
-	return "%s %d" % [String(ability.get("type", "action")).capitalize(),
+	var effect := "%s %d" % [String(ability.get("type", "action")).capitalize(),
 		int(ability.get("power", 0))]
+	var debuff_type := String(ability.get("debuffType", ""))
+	if debuff_type in ["atk", "def", "speed"]:
+		effect += "  ·  %s -%d" % [CombatEncounter.stat_label(debuff_type),
+			int(ability.get("debuffValue", 0))]
+	return effect
 
 
 func _section_label(text: String) -> Label:
