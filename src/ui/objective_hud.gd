@@ -61,8 +61,12 @@ func _refresh() -> void:
 		_detail.text = "%d word%s ready to review" % [due, "" if due == 1 else "s"]
 		_detail.add_theme_color_override("font_color", UiTheme.LEARNING_VIOLET)
 		_panel.show()
-	else:
-		_panel.hide()
+		return
+
+	# Nothing to say — and that is fine. A fresh player is deliberately NOT given a "talk to the
+	# villagers" nudge here: direction should come from the world (a greeter standing at the
+	# spawn, a signpost, a lit doorway), not from a panel telling you how to play.
+	_panel.hide()
 
 
 ## The one quest to show: accepted, not yet turned in. Ready-to-hand-in wins over in-progress

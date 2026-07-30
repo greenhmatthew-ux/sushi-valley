@@ -17,6 +17,11 @@ extends Area2D
 ## The dialogue, one entry per advanceable line. PackedStringArray keeps the .tscn override
 ## clean (`lines = PackedStringArray("a", "b")`) and is converted to Array[String] on emit.
 @export var lines: PackedStringArray = PackedStringArray(["Hello."])
+## Optional card id (data/learning/cards.json) this villager opens with, so the valley greets
+## you in Japanese before switching to English. Takes an ID rather than text for the same
+## reason signs and teachers do: there is then nowhere to type an unsourced phrase, and the
+## meaning shown on TAB comes from the card itself. Leave empty for a silent opener.
+@export var greeting_card: String = ""
 ## Character sheet for the standing sprite. Swap per-instance so each villager differs.
 @export var sprite_sheet: Texture2D = preload("res://assets/sprites/npc_villager2.png")
 
@@ -40,11 +45,30 @@ func interact(player: Node = null) -> void:
 	Bus.npc_talked.emit(npc_id)
 	# The Bus signal is typed Array[String]; convert so a PackedStringArray export still fits.
 	var typed: Array[String] = []
+	var opener := _greeting_line()
+	if not opener.is_empty():
+		typed.append(opener)
 	for line in lines:
 		typed.append(String(line))
 	Bus.dialogue_open.emit(speaker, typed)
 	await Bus.dialogue_closed
 	_talking = false
+
+
+## "japanese|meaning" from the configured card, or "" when none is set or the id is unknown.
+func _greeting_line() -> String:
+	if greeting_card.is_empty():
+		return ""
+	var card: Dictionary = Learning.profile.card(greeting_card)
+	if card.is_empty():
+		return ""
+	var ja := String(card.get("prompt", ""))
+	if ja.is_empty():
+		return ""
+	var meaning := String(card.get("meaning", ""))
+	if meaning.is_empty():
+		meaning = String(card.get("answer", ""))
+	return "%s|%s" % [ja, meaning]
 
 
 func _facing_from(dir: Vector2) -> String:

@@ -1077,6 +1077,7 @@ fail_message = "The gate hums. Recall your kana to pass."
 position = Vector2(272, 384)
 npc_id = "villager_greeter"
 speaker = "Aiko"
+greeting_card = "greet-konnichiwa"
 lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Hold TAB any time to see the English for what you are reading.")
 
 [node name="PathGate" parent="Props" unique_id=610488022 instance=ExtResource("4_0ls5i")]
