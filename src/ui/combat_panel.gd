@@ -306,10 +306,13 @@ func _build_actions() -> void:
 	for ability in Learning.usable_ability_defs(weapon_type):
 		_add_action_button(ability, String(ability.get("name", ability.get("id", "Skill"))),
 			String(ability.get("desc", "")))
+	var combat_items: Array[Dictionary] = []
 	for entry in Inv.entries():
 		var item: Dictionary = DB.item(String(entry.get("id", "")))
 		if ConsumableRules.is_supported_combat_item(item):
-			_add_item_button(item, int(entry.get("qty", 0)))
+			combat_items.append({"item": item, "qty": int(entry.get("qty", 0))})
+	if not combat_items.is_empty():
+		_add_items_menu(combat_items)
 	var selected_id := String(_selected_ability.get("id", "basic_attack"))
 	if not _action_buttons.has(selected_id) \
 			or (_action_buttons[selected_id] as Button).disabled:
@@ -350,17 +353,35 @@ func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> 
 	_action_buttons[id] = button
 
 
-func _add_item_button(item: Dictionary, qty: int) -> void:
-	var button := Button.new()
-	var item_id := String(item.get("id", ""))
-	var effect := ConsumableRules.effect_summary(item)
-	button.text = "%s x%d" % [item.get("name", item_id), qty]
-	button.tooltip_text = "%s\n%s; one item per turn." % [item.get("desc", ""), effect]
+func _add_items_menu(entries: Array[Dictionary]) -> void:
+	var button := MenuButton.new()
+	button.name = "CombatItems"
+	button.text = "Items (%d)" % entries.size()
+	button.tooltip_text = "Use one item per turn. Unhelpful items stay disabled."
 	button.custom_minimum_size = Vector2(90, 28)
 	button.focus_mode = Control.FOCUS_ALL
-	button.disabled = not _encounter.can_use_combat_item(item)
-	button.pressed.connect(_on_combat_item.bind(item_id))
+	var popup := button.get_popup()
+	var any_usable := false
+	for entry in entries:
+		var item: Dictionary = entry.get("item", {})
+		var item_id := String(item.get("id", ""))
+		var index := popup.item_count
+		popup.add_item("%s x%d" % [item.get("name", item_id), int(entry.get("qty", 0))], index)
+		popup.set_item_metadata(index, item_id)
+		popup.set_item_tooltip(index, "%s\n%s" % [
+			item.get("desc", ""), ConsumableRules.effect_summary(item)])
+		var usable := _encounter.can_use_combat_item(item)
+		popup.set_item_disabled(index, not usable)
+		any_usable = any_usable or usable
+	popup.id_pressed.connect(_on_combat_item_menu.bind(popup))
+	button.disabled = not any_usable
 	_action_box.add_child(button)
+
+
+func _on_combat_item_menu(id: int, popup: PopupMenu) -> void:
+	var index := popup.get_item_index(id)
+	if index >= 0:
+		_on_combat_item(String(popup.get_item_metadata(index)))
 
 
 func _select_action(ability_id: String) -> void:

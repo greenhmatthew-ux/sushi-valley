@@ -36,7 +36,7 @@ func _initialize() -> void:
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
-	check_eq("unarmed combat shows all supported item families", actions.get_child_count(), 6)
+	check_eq("combat groups item stacks behind one compact action", actions.get_child_count(), 4)
 	check_eq("Basic Attack exposes its real Energy cost",
 		(actions.get_child(0) as Button).text, "Basic · 1E")
 	check_true("combat HUD shows Energy and Speed",
@@ -53,9 +53,13 @@ func _initialize() -> void:
 	var encounter: CombatEncounter = panel.get("_encounter")
 	encounter.player_hp = 5
 	panel.call("_build_actions")
-	var item_button := _find_button(actions, "Rice Ball x1")
-	check_true("healing item becomes usable when hurt", item_button != null and not item_button.disabled)
-	item_button.pressed.emit()
+	var item_button := _find_button(actions, "Items (3)") as MenuButton
+	var item_popup := item_button.get_popup()
+	var rice_id := _popup_item_id(item_popup, "Rice Ball x1")
+	check_true("healing item becomes usable inside the Items menu",
+		item_button != null and rice_id >= 0
+		and not item_popup.is_item_disabled(item_popup.get_item_index(rice_id)))
+	item_popup.id_pressed.emit(rice_id)
 	await process_frame
 	check_eq("combat item consumes exactly one", inv.count("rice_ball"), 0)
 	check_true("combat item pauses for readable feedback", bool(panel.get("_answered")))
@@ -82,10 +86,13 @@ func _initialize() -> void:
 	var second_encounter: CombatEncounter = panel.get("_encounter")
 	second_encounter.spend_and_resolve("mi", "mi")
 	panel.call("_build_actions")
-	var tonic_button := _find_button(actions, "Bamboo Breeze Tonic x1")
+	var second_items := _find_button(actions, "Items (2)") as MenuButton
+	var second_popup := second_items.get_popup()
+	var tonic_id := _popup_item_id(second_popup, "Bamboo Breeze Tonic x1")
 	check_true("Energy tonic becomes usable after Energy is spent",
-		tonic_button != null and not tonic_button.disabled)
-	tonic_button.pressed.emit()
+		second_items != null and tonic_id >= 0
+		and not second_popup.is_item_disabled(second_popup.get_item_index(tonic_id)))
+	second_popup.id_pressed.emit(tonic_id)
 	await process_frame
 	check_eq("Energy tonic restores the turn budget", second_encounter.energy, 5)
 	check_eq("Energy tonic consumes exactly one", inv.count("bamboo_tonic"), 0)
@@ -97,11 +104,15 @@ func _initialize() -> void:
 	await process_frame
 	continue_btn.pressed.emit()
 	await process_frame
-	var soup_button := _find_button(actions, "Stone Soup x1")
+	var soup_menu := _find_button(actions, "Items (1)") as MenuButton
+	var soup_popup := soup_menu.get_popup()
+	var soup_id := _popup_item_id(soup_popup, "Stone Soup x1")
+	var soup_index := soup_popup.get_item_index(soup_id)
 	check_true("hybrid meal is exposed with both effects",
-		soup_button != null and soup_button.tooltip_text.contains("Restores 15 HP")
-		and soup_button.tooltip_text.contains("+4 DEF for 4 rounds"))
-	soup_button.pressed.emit()
+		soup_menu != null and soup_id >= 0
+		and soup_popup.get_item_tooltip(soup_index).contains("Restores 15 HP")
+		and soup_popup.get_item_tooltip(soup_index).contains("+4 DEF for 4 rounds"))
+	soup_popup.id_pressed.emit(soup_id)
 	await process_frame
 	check_eq("hybrid meal consumes exactly one", inv.count("stone_soup"), 0)
 	check_eq("hybrid meal updates visible defense", second_encounter.effective_def(), 6)
@@ -166,6 +177,13 @@ func _find_button_prefix(parent: Control, prefix: String) -> Button:
 		if child is Button and (child as Button).text.begins_with(prefix):
 			return child
 	return null
+
+
+func _popup_item_id(popup: PopupMenu, label: String) -> int:
+	for index in popup.item_count:
+		if popup.get_item_text(index) == label:
+			return popup.get_item_id(index)
+	return -1
 
 
 func _finish() -> void:
