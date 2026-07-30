@@ -1456,7 +1456,7 @@ sprite_sheet = ExtResource("35_vil3")
 position = Vector2(600, 352)
 npc_id = "phrase_keeper"
 speaker = "Ren"
-teaches_lesson = "common-phrases"
+teaches_category = "phrases"
 intro_lines = PackedStringArray("Travellers always need the same handful of words.", "Yes, no, where, what, how much. Learn these and you can ask for anything.")
 sprite_sheet = ExtResource("34_woman")
 
@@ -1484,6 +1484,13 @@ speaker = "Toma"
 teaches_lesson = "travel-arrival"
 intro_lines = PackedStringArray("New here? Then start with the words that get you unstuck.", "Excuse me, thank you, say that again, and where is the bathroom. In that order, usually.")
 sprite_sheet = ExtResource("34_woman")
+
+[node name="TeacherScholar" parent="Props" instance=ExtResource("33_teacher")]
+position = Vector2(396, 276)
+npc_id = "scholar"
+speaker = "Scholar"
+teaches_category = "vocab-core"
+intro_lines = PackedStringArray("You have the look of someone who collects words.", "Six hundred of them, one lesson at a time. Come back whenever you are ready for more.")
 
 [node name="StudyBench" parent="Props" instance=ExtResource("37_study")]
 position = Vector2(456, 232)
