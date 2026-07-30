@@ -297,12 +297,21 @@ func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> 
 	var button := Button.new()
 	var id := String(ability.get("id", "basic_attack"))
 	var cost := CombatEncounter.action_cost(ability)
-	button.text = "%s · %dE" % [label, cost]
-	button.tooltip_text = "%s\nCosts %d Energy." % [tooltip, cost]
+	var status := _encounter.ability_status(ability)
+	button.text = "%s · %dE%s" % [label, cost, " · " + status if not status.is_empty() else ""]
+	var cadence: Array[String] = []
+	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
+	var cooldown := maxi(0, int(ability.get("cooldownTurns", 0)))
+	if use_limit > 0:
+		cadence.append("Up to %d use%s per turn." % [use_limit, "" if use_limit == 1 else "s"])
+	if cooldown > 0:
+		cadence.append("Cooldown: %d full turn%s." % [cooldown, "" if cooldown == 1 else "s"])
+	button.tooltip_text = "%s\nCosts %d Energy.%s" % [
+		tooltip, cost, " " + " ".join(cadence) if not cadence.is_empty() else ""]
 	button.custom_minimum_size = Vector2(72, 28)
 	button.focus_mode = Control.FOCUS_ALL
 	button.toggle_mode = true
-	button.disabled = not _encounter.can_afford(ability)
+	button.disabled = not _encounter.can_use_ability(ability)
 	button.pressed.connect(_select_action.bind(id))
 	button.set_meta("ability", ability)
 	_action_box.add_child(button)

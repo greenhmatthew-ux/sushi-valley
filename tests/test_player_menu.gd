@@ -89,6 +89,10 @@ func _initialize() -> void:
 		summary.text.contains("Talent Points"))
 	check_true("fresh profile exposes the three real starter skills",
 		learning.known_ability_defs().size() == 3)
+	var focus_detail: Label = panel.find_child("SkillDetail_focus", true, false)
+	check_true("skill cards expose authored use limits and cooldowns",
+		focus_detail != null and focus_detail.text.contains("1/turn")
+		and focus_detail.text.contains("CD 1 turn"))
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

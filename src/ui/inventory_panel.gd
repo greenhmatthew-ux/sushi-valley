@@ -349,14 +349,19 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	var state := ""
 	if equipped:
 		state = "  ·  Equipped" if weapon_ok else "  ·  Equipped, inactive without %s" % required
-	title.text = "%s  ·  %s  ·  Power %d%s" % [ability.get("name", ability.get("id", "Skill")),
-		String(ability.get("type", "skill")).capitalize(), int(ability.get("power", 0)), state]
+	title.text = "%s  ·  %s  ·  Power %d  ·  %dE%s" % [
+		ability.get("name", ability.get("id", "Skill")),
+		String(ability.get("type", "skill")).capitalize(), int(ability.get("power", 0)),
+		CombatEncounter.action_cost(ability), state]
 	title.add_theme_font_size_override("font_size", 13)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	text.add_child(title)
 	var detail := Label.new()
+	detail.name = "SkillDetail_" + String(ability.get("id", ""))
 	var requirement := "Any weapon" if required.is_empty() else "%s weapon" % required.capitalize()
-	detail.text = "%s  ·  %s" % [requirement, ability.get("desc", "")]
+	var cadence := _ability_cadence(ability)
+	detail.text = "%s%s  ·  %s" % [requirement,
+		"  ·  " + cadence if not cadence.is_empty() else "", ability.get("desc", "")]
 	detail.add_theme_font_size_override("font_size", 10)
 	detail.add_theme_color_override("font_color", COL_HEADING)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -419,6 +424,10 @@ func _make_talent_card(ability: Dictionary) -> Control:
 		int(ability.get("power", 0))]
 	if hits > 1:
 		effect += " x%d hits" % hits
+	effect += "  ·  %dE" % CombatEncounter.action_cost(ability)
+	var cadence := _ability_cadence(ability)
+	if not cadence.is_empty():
+		effect += "  ·  " + cadence
 	detail.text = "%s weapon  ·  %s  ·  %s" % [
 		required.capitalize(), effect, ability.get("desc", "")]
 	detail.add_theme_font_size_override("font_size", 10)
@@ -445,6 +454,17 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	button.pressed.connect(_on_talent_unlock.bind(String(ability.get("id", ""))))
 	row.add_child(button)
 	return card
+
+
+func _ability_cadence(ability: Dictionary) -> String:
+	var parts: Array[String] = []
+	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
+	var cooldown := maxi(0, int(ability.get("cooldownTurns", 0)))
+	if use_limit > 0:
+		parts.append("%d/turn" % use_limit)
+	if cooldown > 0:
+		parts.append("CD %d turn%s" % [cooldown, "" if cooldown == 1 else "s"])
+	return "  ·  ".join(parts)
 
 
 func _section_label(text: String) -> Label:

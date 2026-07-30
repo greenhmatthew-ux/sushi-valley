@@ -88,6 +88,16 @@ func _initialize() -> void:
 	check_eq("Energy tonic consumes exactly one", inv.count("bamboo_tonic"), 0)
 	check_true("Energy tonic feedback names its distinct effect",
 		(panel.get("_feedback") as Label).text.contains("Energy"))
+	second_encounter.player_hp = 5
+	var focus: Dictionary = db.ability("focus")
+	second_encounter.spend_and_resolve("mi", "mi", focus)
+	panel.call("_build_actions")
+	var focus_button := _find_button_prefix(actions, "Focus")
+	check_true("used cooldown action is visibly unavailable",
+		focus_button != null and focus_button.disabled and "CD 1" in focus_button.text)
+	check_true("cooldown action tooltip exposes both cadence rules",
+		focus_button.tooltip_text.contains("1 use per turn")
+		and focus_button.tooltip_text.contains("Cooldown: 1 full turn"))
 	second_encounter.shield = 5
 	panel.call("_render_bars")
 	check_eq("enemy intent updates for Guard instead of lying", intent.text,

@@ -16,6 +16,8 @@ var abilities := {
 		"requiredWeaponType": "ranged"},
 	"iaido": {"id": "iaido", "type": "attack", "spCost": 2, "role": "samurai",
 		"requiredLevel": 4, "requiredWeaponType": "blade", "hits": 2},
+	"storm_draw": {"id": "storm_draw", "type": "attack", "spCost": 3,
+		"role": "samurai", "requiredWeaponType": "blade", "cooldownTurns": 1},
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
 		"spCost": 1, "requiredWeaponType": "kana"},
 }
@@ -84,6 +86,8 @@ func _talent_unlocks() -> void:
 		not AbilityRules.unlock_talent("sweep", 3, build, abilities))
 	check_true("unresolved buffs cannot be sold as Talents",
 		not AbilityRules.unlock_talent("rune_ward", 3, build, abilities))
+	check_true("cooldown-only actions are honest now that combat enforces cadence",
+		AbilityRules.is_honest_talent(abilities["storm_draw"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])

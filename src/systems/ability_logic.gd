@@ -10,7 +10,6 @@ const MAX_SKILLS := 6
 const RUNTIME_TYPES := ["attack", "block", "heal"]
 const UNRESOLVED_EFFECT_FIELDS := [
 	"buffType", "counterDamage", "debuffType", "lifestealPct",
-	"cooldownTurns", "maxUsesPerTurn",
 ]
 
 

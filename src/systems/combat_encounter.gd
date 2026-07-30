@@ -54,6 +54,8 @@ var energy: int = 0
 var turns_left: int = 0
 var bonus_turn: bool = false
 var item_used_this_turn: bool = false
+var ability_uses_this_turn: Dictionary = {}
+var ability_cooldowns: Dictionary = {}
 
 ## Consecutive correct recalls. Drives CombatLogic.flow_multiplier — accurate recall
 ## literally hits harder, and a miss resets it.
@@ -100,6 +102,37 @@ func can_afford(ability: Dictionary) -> bool:
 	return not is_over() and energy >= action_cost(ability)
 
 
+func can_use_ability(ability: Dictionary) -> bool:
+	if not can_afford(ability):
+		return false
+	if ability.is_empty():
+		return true
+	var ability_id := String(ability.get("id", ""))
+	if ability_id.is_empty() or int(ability_cooldowns.get(ability_id, 0)) > 0:
+		return false
+	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
+	if use_limit > 0 and int(ability_uses_this_turn.get(ability_id, 0)) >= use_limit:
+		return false
+	return String(ability.get("type", "")) != "heal" or player_hp < player_max_hp
+
+
+## Short state for action-bar labels. Cooldown N means N complete player turns must pass
+## before the action returns; max-use limits reset at the start of every full player turn.
+func ability_status(ability: Dictionary) -> String:
+	if ability.is_empty():
+		return ""
+	var ability_id := String(ability.get("id", ""))
+	var cooldown_state := int(ability_cooldowns.get(ability_id, 0))
+	if cooldown_state > 0:
+		return "CD %d" % maxi(1, cooldown_state - 1)
+	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
+	if use_limit > 0 and int(ability_uses_this_turn.get(ability_id, 0)) >= use_limit:
+		return "Used"
+	if String(ability.get("type", "")) == "heal" and player_hp >= player_max_hp:
+		return "Full HP"
+	return ""
+
+
 func can_use_item() -> bool:
 	return not is_over() and not item_used_this_turn
 
@@ -121,6 +154,14 @@ func begin_player_round() -> void:
 func _begin_player_turn() -> void:
 	energy = MAX_ENERGY
 	item_used_this_turn = false
+	ability_uses_this_turn.clear()
+	for raw_id in ability_cooldowns.keys():
+		var ability_id := String(raw_id)
+		var remaining := maxi(0, int(ability_cooldowns[ability_id]) - 1)
+		if remaining <= 0:
+			ability_cooldowns.erase(ability_id)
+		else:
+			ability_cooldowns[ability_id] = remaining
 
 
 ## Fast enemies take the opening action once; surviving always hands control to a fresh
@@ -136,10 +177,19 @@ func enemy_opening_turn() -> RoundResult:
 ## Spend Energy and resolve only the player's action. The enemy never interrupts inside an
 ## Energy turn; the UI (or another caller) explicitly ends the full turn afterward.
 func spend_and_resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundResult:
-	if not can_afford(ability):
+	if not can_use_ability(ability):
 		return RoundResult.new()
 	energy -= action_cost(ability)
-	return resolve(chosen, answer, ability, false)
+	var result := resolve(chosen, answer, ability, false)
+	var ability_id := String(ability.get("id", ""))
+	if result.action_resolved and not ability_id.is_empty() and result.action_id == ability_id:
+		ability_uses_this_turn[ability_id] = int(ability_uses_this_turn.get(ability_id, 0)) + 1
+		var cooldown := maxi(0, int(ability.get("cooldownTurns", 0)))
+		if cooldown > 0:
+			# Include the current turn in the internal countdown. This makes authored CD 1
+			# skip exactly the next full player turn, including a Speed-granted bonus turn.
+			ability_cooldowns[ability_id] = cooldown + 1
+	return result
 
 
 ## Resolve one Basic Attack or authored starter action. The default enemy response preserves

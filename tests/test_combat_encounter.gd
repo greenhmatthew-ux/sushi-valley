@@ -18,6 +18,7 @@ func _initialize() -> void:
 	_defeat_ends_the_fight()
 	_equipped_actions_have_distinct_results()
 	_energy_delays_the_enemy_response()
+	_ability_cadence_is_enforced()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -131,6 +132,42 @@ func _energy_delays_the_enemy_response() -> void:
 	check_true("ending the full turn lets the enemy act once", ended.enemy_acted)
 	check_true("the enemy response changes player HP", e.player_hp < hp_before)
 	check_eq("the next full turn refreshes Energy", e.energy, 5)
+
+
+func _ability_cadence_is_enforced() -> void:
+	var focus := {"id": "focus", "type": "heal", "power": 9, "cost": 2,
+		"maxUsesPerTurn": 1, "cooldownTurns": 1}
+	var full := _fresh()
+	full.begin_player_round()
+	check_true("healing actions are unavailable at full HP", not full.can_use_ability(focus))
+	check_eq("full-HP action state is visible", full.ability_status(focus), "Full HP")
+
+	var e := _fresh()
+	e.enemy_max_hp = 200
+	e.enemy_hp = 200
+	e.player_hp = 6
+	e.begin_player_round()
+	var first := e.spend_and_resolve("mi", "mi", focus)
+	check_true("the first Focus use resolves", first.action_resolved)
+	check_eq("Focus starts its authored cooldown", e.ability_status(focus), "CD 1")
+	var energy_after := e.energy
+	check_true("Focus cannot repeat in the same turn",
+		not e.spend_and_resolve("mi", "mi", focus).action_resolved)
+	check_eq("a cadence-rejected action spends no Energy", e.energy, energy_after)
+	e.end_player_turn()
+	check_true("CD 1 skips the next full player turn", not e.can_use_ability(focus))
+	e.end_player_turn()
+	check_true("Focus returns after one skipped full turn", e.can_use_ability(focus))
+
+	var brace := {"id": "brace", "type": "block", "power": 10, "cost": 1,
+		"maxUsesPerTurn": 1}
+	var limited := _fresh()
+	limited.begin_player_round()
+	limited.spend_and_resolve("mi", "mi", brace)
+	check_eq("per-turn-only actions expose their used state",
+		limited.ability_status(brace), "Used")
+	check_true("per-turn-only actions cannot repeat",
+		not limited.spend_and_resolve("mi", "mi", brace).action_resolved)
 
 
 func _speed_grants_one_extra_full_turn() -> void:
