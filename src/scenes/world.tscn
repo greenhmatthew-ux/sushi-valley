@@ -1389,6 +1389,7 @@ sprite = ExtResource("31_pot")
 position = Vector2(596, 300)
 station = "workshop"
 station_name = "Village Workshop"
+sprite = ExtResource("32_crate")
 overlay_sprite = ExtResource("42_hammer")
 
 [node name="ForgeOreCache" parent="Props" instance=ExtResource("40_pickup")]
