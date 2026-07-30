@@ -19,9 +19,29 @@ const PEBBLE := Vector2i(6, 4)
 
 func _ready() -> void:
 	Audio.play_music("village")
+	_build_edge_underlay()
 	_clamp_camera_to_map()
 	_build_meadow()
 	_load_game()
+
+
+## The hand-authored Ground layer is intentionally offset to align its paths and water with
+## the scene's buildings. Its old camera/bounds footprint still begins at world (0, 0), which
+## exposed the gray clear colour along the north and west edges. Fill that footprint with the
+## same licensed Serene Village grass beneath the authored map; this preserves every authored
+## path while making the existing boundary tree line read as part of the world.
+func _build_edge_underlay() -> void:
+	var edge_ground := TileMapLayer.new()
+	edge_ground.name = "EdgeGround"
+	edge_ground.z_index = -10
+	edge_ground.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	edge_ground.tile_set = ground.tile_set
+	var used := ground.get_used_rect()
+	for x in range(used.position.x, used.end.x):
+		for y in range(used.position.y, used.end.y):
+			edge_ground.set_cell(Vector2i(x, y), 0, GRASS_ATLAS)
+	add_child(edge_ground)
+	move_child(edge_ground, 0)
 
 
 ## Texture the flat grass fields the same way the wilds does: a restrained wash of Sprout
