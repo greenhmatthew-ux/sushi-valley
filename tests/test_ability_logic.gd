@@ -41,6 +41,9 @@ var abilities := {
 		"requiredWeaponType": "blade"},
 	"empty_counter": {"id": "empty_counter", "type": "counter", "power": 12,
 		"spCost": 1, "role": "samurai", "requiredWeaponType": "blade"},
+	"blood_blade": {"id": "blood_blade", "type": "attack", "power": 20,
+		"lifestealPct": 0.35, "spCost": 3, "role": "samurai",
+		"requiredWeaponType": "blade"},
 }
 
 
@@ -132,6 +135,8 @@ func _talent_unlocks() -> void:
 		AbilityRules.is_honest_talent(abilities["riposte"])
 		and AbilityRules.is_honest_talent(abilities["perilous_parry"])
 		and not AbilityRules.is_honest_talent(abilities["empty_counter"]))
+	check_true("lifesteal attacks are honest now that combat resolves the drain",
+		AbilityRules.is_honest_talent(abilities["blood_blade"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])

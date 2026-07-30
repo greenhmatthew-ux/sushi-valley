@@ -23,6 +23,7 @@ func _initialize() -> void:
 	_timed_stat_buffs_last_enemy_rounds()
 	_timed_debuffs_change_enemy_math()
 	_reactive_stances_wait_for_enemy()
+	_lifesteal_uses_actual_damage()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -49,6 +50,8 @@ func _wrong_answer_still_swings() -> void:
 ## Recall Flow: consecutive correct recalls hit harder, one miss resets the streak.
 func _flow_builds_and_breaks() -> void:
 	var e := _fresh()
+	e.enemy_max_hp = 200
+	e.enemy_hp = 200
 	e.resolve("み", "み")
 	check_eq("flow after 1 correct", e.flow, 1)
 	e.resolve("み", "み")
@@ -61,6 +64,8 @@ func _flow_builds_and_breaks() -> void:
 
 	# A fresh encounter's first (flow=1) hit should be weaker than a flow=3 hit.
 	var fresh := _fresh()
+	fresh.enemy_max_hp = 200
+	fresh.enemy_hp = 200
 	var first_hit: int = fresh.resolve("み", "み").player_damage_dealt
 	check_true("built-up flow hits harder than a first swing", streak_hit > first_hit)
 
@@ -378,6 +383,45 @@ func _reactive_stances_wait_for_enemy() -> void:
 	var final_response := finisher.end_player_turn()
 	check_true("a surviving Counter can finish the encounter",
 		final_response.enemy_defeated and finisher.player_won())
+
+
+func _lifesteal_uses_actual_damage() -> void:
+	var blood_blade := {"id": "blood_blade", "type": "attack", "power": 20,
+		"cost": 3, "lifestealPct": 0.35}
+	var wounded_enemy := enemy_def.duplicate(true)
+	wounded_enemy["maxHp"] = 200
+	var correct := CombatEncounter.new(wounded_enemy, 5, 100, 6, 2, 5)
+	correct.roll = 0.5
+	correct.begin_player_round()
+	var drained := correct.spend_and_resolve("mi", "mi", blood_blade)
+	check_eq("lifesteal attack reports actual damage", drained.player_damage_dealt, 28)
+	check_eq("lifesteal preserves legacy nearest rounding", drained.player_healed, 10)
+	check_eq("lifesteal immediately restores player HP", correct.player_hp, 15)
+
+	var missed := CombatEncounter.new(wounded_enemy, 5, 100, 6, 2, 5)
+	missed.roll = 0.5
+	missed.begin_player_round()
+	var weak_drain := missed.spend_and_resolve("ka", "mi", blood_blade)
+	check_eq("a recall miss still drains from its weaker damage", weak_drain.player_healed, 5)
+	check_true("a miss drains less because it deals less damage",
+		weak_drain.player_healed < drained.player_healed)
+
+	var overkill := CombatEncounter.new(enemy_def, 5, 100, 6, 2, 5)
+	overkill.roll = 0.5
+	overkill.enemy_hp = 3
+	overkill.begin_player_round()
+	var finishing_drain := overkill.spend_and_resolve("mi", "mi", blood_blade)
+	check_eq("overkill reports only enemy HP actually removed",
+		finishing_drain.player_damage_dealt, 3)
+	check_eq("overkill cannot inflate lifesteal", finishing_drain.player_healed, 1)
+	check_true("lifesteal can heal on the winning blow", overkill.player_won())
+
+	var nearly_full := CombatEncounter.new(wounded_enemy, 99, 100, 6, 2, 5)
+	nearly_full.roll = 0.5
+	nearly_full.begin_player_round()
+	var capped := nearly_full.spend_and_resolve("mi", "mi", blood_blade)
+	check_eq("lifesteal clamps to missing player HP", capped.player_healed, 1)
+	check_eq("lifesteal never exceeds max HP", nearly_full.player_hp, 100)
 
 
 func _speed_grants_one_extra_full_turn() -> void:

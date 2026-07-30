@@ -341,11 +341,21 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 		else int(ability.get("power", CombatLogic.BASIC_ATTACK_POWER))
 	var power := int(round(base_power * CombatLogic.flow_multiplier(flow)))
 	if r.action_type == "attack":
+		var enemy_hp_before := enemy_hp
 		var hits := maxi(1, int(ability.get("hits", 1)))
 		for _hit in hits:
 			r.player_damage_dealt += CombatLogic.ability_damage(
 				power, effective_atk(), effective_enemy_def(), r.correct, roll)
 		enemy_hp = CombatLogic.apply_damage(enemy_hp, r.player_damage_dealt)
+		# Report and drain only HP actually removed. The legacy Kana resolver rounded each
+		# percentage heal but accidentally counted overkill as damage dealt.
+		r.player_damage_dealt = enemy_hp_before - enemy_hp
+		var lifesteal_pct := clampf(float(ability.get("lifestealPct", 0.0)), 0.0, 1.0)
+		if lifesteal_pct > 0.0 and r.player_damage_dealt > 0:
+			var healing := maxi(1, roundi(r.player_damage_dealt * lifesteal_pct))
+			var player_hp_before := player_hp
+			player_hp = mini(player_max_hp, player_hp + healing)
+			r.player_healed = player_hp - player_hp_before
 		var debuff_type := String(ability.get("debuffType", ""))
 		var debuff_duration := int(ability.get("debuffDuration", 0))
 		if debuff_type in ["atk", "def", "speed"] and debuff_duration > 0:

@@ -11,9 +11,7 @@ const RUNTIME_TYPES := ["attack", "block", "heal", "counter", "parry"]
 const IMMEDIATE_BUFF_TYPES := ["energy", "shield"]
 const TIMED_BUFF_TYPES := ["atk", "def", "speed"]
 const TIMED_DEBUFF_TYPES := ["atk", "def", "speed"]
-const UNRESOLVED_EFFECT_FIELDS := [
-	"lifestealPct",
-]
+const UNRESOLVED_EFFECT_FIELDS := []
 
 
 static func sanitize_build(build: Dictionary, abilities: Dictionary) -> void:

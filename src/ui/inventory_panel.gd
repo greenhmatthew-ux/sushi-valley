@@ -489,6 +489,9 @@ func _ability_effect_text(ability: Dictionary) -> String:
 	if debuff_type in ["atk", "def", "speed"]:
 		effect += "  ·  %s -%d" % [CombatEncounter.stat_label(debuff_type),
 			int(ability.get("debuffValue", 0))]
+	var lifesteal_pct := clampf(float(ability.get("lifestealPct", 0.0)), 0.0, 1.0)
+	if lifesteal_pct > 0.0:
+		effect += "  ·  Drain %d%%" % roundi(lifesteal_pct * 100.0)
 	return effect
 
 

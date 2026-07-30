@@ -134,6 +134,12 @@ func _initialize() -> void:
 		parry_detail != null and parry_detail.text.contains("Full block")
 		and parry_detail.text.contains("Return 14") and parry_detail.text.contains("3E"))
 	parry_preview.free()
+	var drain_preview: Control = panel.call("_make_talent_card", db.ability("blood_blade"))
+	var drain_detail: Label = drain_preview.find_child("TalentDetail_blood_blade", true, false)
+	check_true("lifesteal Talents preview damage, drain percent, and Energy",
+		drain_detail != null and drain_detail.text.contains("Attack 20")
+		and drain_detail.text.contains("Drain 35%") and drain_detail.text.contains("3E"))
+	drain_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

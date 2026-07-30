@@ -227,6 +227,8 @@ func _on_rune(rune: String, btn: Button) -> void:
 		outcome = "%s raised %d shield." % [action_name, result.shield_gained]
 	else:
 		outcome = "%s hit for %d." % [action_name, result.player_damage_dealt]
+	if float(_selected_ability.get("lifestealPct", 0.0)) > 0.0:
+		outcome += " Drained %d HP." % result.player_healed
 	if not result.debuff_type.is_empty():
 		outcome += " Enemy %s -%d for %d rounds." % [
 			CombatEncounter.stat_label(result.debuff_type),
