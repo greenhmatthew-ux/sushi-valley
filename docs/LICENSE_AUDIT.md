@@ -76,9 +76,9 @@ This music audit does not cover or make a provenance claim for
 1. Re-confirm the Serene Village Revamped entitlement (no license file ships with the pack;
    the only record is the owner's prior confirmation).
 2. Resolve Sprout Lands' non-commercial restriction — either obtain a commercial license from
-   Cup Nooble or replace the Sprout Lands-sourced files (`sprout-basic-grass-biome.png`,
-   `sprout-basic-furniture.png`, `door.png`, plus the runtime `Detail` layer built from it in
-   `wilds.gd`). The village meadow now uses Serene Village frames instead.
+   Cup Nooble or replace the remaining Sprout Lands-sourced files
+   (`sprout-basic-furniture.png` and `door.png`). Both outdoor meadow layers now use Serene
+   Village frames instead.
 3. Scan for any newly-imported pack the same way: confirm it's actually rendered (grep for
    its `res://assets/...` path), then read that pack's real license file in
    `D:\Asset Library` — don't trust an inherited credits list.

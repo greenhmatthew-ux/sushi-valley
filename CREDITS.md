@@ -22,9 +22,8 @@ verified against the running scenes — not an aspirational or inherited list.
   any commercial release.**
 - **Sprout Lands - Sprites - Basic pack** by Cup Nooble — the pack's own `read_me.txt`
   states **non-commercial projects only**, credit required ("Assets - From: Sprout Lands -
-  By: Cup Nooble"), no AI-training use, no redistribution of the raw pack. Used for the
-  meadow ground-detail decals (grass tufts, wildflowers, mushrooms) in the wilds, plus
-  interior furniture and the door sprite. **This conflicts with an earlier
+  By: Cup Nooble"), no AI-training use, no redistribution of the raw pack. Used for interior
+  furniture and the door sprite. **This conflicts with an earlier
   version of this file that claimed "commercial use" — that claim could not be verified
   against the actual license text and should not be relied on. Confirm a separate/commercial
   license before any commercial release; non-commercial/dev use is fine as-is.**

@@ -113,6 +113,21 @@ func _run() -> void:
 	check_true("pond stops the player short of its interior (y=%.1f)" % player.position.y,
 		player.position.y > 150.0)
 
+	# The connected frontier must use the same real terrain vocabulary, not placeholder decals.
+	world.queue_free()
+	await process_frame
+	var wilds: Node2D = load("res://src/scenes/wilds.tscn").instantiate()
+	root.add_child(wilds)
+	await process_frame
+	var wilds_detail: TileMapLayer = wilds.get_node_or_null("Detail")
+	check_true("Wilds has authored meadow detail", wilds_detail != null)
+	if wilds_detail != null:
+		var wilds_source: TileSetAtlasSource = wilds_detail.tile_set.get_source(1)
+		check_true("Wilds meadow uses the native Serene Village sheet",
+			wilds_source.texture.resource_path ==
+			"res://assets/tilesets/serene_village.png")
+	wilds.queue_free()
+
 	_finish()
 
 

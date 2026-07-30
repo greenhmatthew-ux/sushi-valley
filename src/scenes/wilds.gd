@@ -2,12 +2,12 @@ extends Node2D
 ## The wilds — an open combat frontier reached by a path out of the village. Foes here are
 ## AGGRO (unlike the safe village where you opt into sparring). Ground is generated in code
 ## (this workflow has no interactive editor): a grass base plus a restrained DETAIL layer —
-## a light meadow of grass tufts, clustered wildflowers, the odd mushroom/pebble — so it
+## a light meadow of small blossoms, clustered flower beds, and the odd shrub — so it
 ## never reads as a flat monotone field. Trees/rocks/outpost/enemies are authored in the
 ## .tscn, grouped into groves and a yard framing an open central clearing to fight in.
 ##
-## Detail comes from the Sprout decal sheet (the same set the village scatters), for a
-## consistent look. Density is deliberately low: textured, not overgrown.
+## Detail comes from the same Serene Village sheet as the terrain. Density is deliberately
+## low: textured, not overgrown.
 
 const TILE := 16
 const W := 42   # tiles wide
@@ -44,11 +44,11 @@ const EAST_HUNT_LOOP: Array[Vector2i] = [
 	Vector2i(29, 22), Vector2i(24, 20), Vector2i(20, 20),
 ]
 
-# Sprout decal atlas (source 1): confirmed by inspecting sprout-basic-grass-biome.png.
-const TUFTS: Array[Vector2i] = [Vector2i(5, 1), Vector2i(6, 1)]           # small leaf clumps
-const FLOWERS: Array[Vector2i] = [Vector2i(6, 2), Vector2i(6, 3), Vector2i(7, 3)]  # yellow/pink
-const MUSHROOM := Vector2i(5, 0)
-const PEBBLE := Vector2i(6, 4)
+# Complete, standalone Serene Village detail frames (source 1).
+const MEADOW_FLOWERS: Array[Vector2i] = [
+	Vector2i(2, 13), Vector2i(17, 24), Vector2i(17, 25), Vector2i(18, 25)]
+const FLOWER_BEDS: Array[Vector2i] = [Vector2i(2, 14), Vector2i(18, 24)]
+const SHRUB := Vector2i(7, 12)
 
 @onready var ground: TileMapLayer = $Ground
 @onready var entities: Node2D = $Entities
@@ -71,10 +71,10 @@ func _ready() -> void:
 	_clamp_camera()
 
 
-## One shared TileSet: source 0 is serene_village (grass ground), source 1 is the Sprout decal
-## sheet (meadow detail). Built in code so every coord we paint is registered. Ground keeps
-## the .tscn tile_set slot; the Detail layer is created here, just above Ground and below the
-## y-sorted Entities so the player and trees draw over the flowers.
+## One shared TileSet: source 0 is Serene Village terrain and source 1 is a small set of
+## standalone Serene meadow details. Built in code so every coord we paint is registered.
+## Ground keeps the .tscn tile_set slot; the Detail layer is created here, just above Ground
+## and below the y-sorted Entities so the player and trees draw over the flowers.
 func _build_tileset() -> void:
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
@@ -93,11 +93,11 @@ func _build_tileset() -> void:
 	ts.add_source(grass_src, 0)
 
 	var decal_src := TileSetAtlasSource.new()
-	decal_src.texture = preload("res://assets/sprites/sprout-basic-grass-biome.png")
+	decal_src.texture = preload("res://assets/tilesets/serene_village.png")
 	decal_src.texture_region_size = Vector2i(TILE, TILE)
-	var coords: Array[Vector2i] = [MUSHROOM, PEBBLE]
-	coords.append_array(TUFTS)
-	coords.append_array(FLOWERS)
+	var coords: Array[Vector2i] = [SHRUB]
+	coords.append_array(MEADOW_FLOWERS)
+	coords.append_array(FLOWER_BEDS)
 	for c in coords:
 		decal_src.create_tile(c)
 	ts.add_source(decal_src, 1)
@@ -239,8 +239,8 @@ func _mark_occupied() -> void:
 				_blocked[t + Vector2i(dx, dy)] = true
 
 
-## Restrained meadow: a light wash of grass tufts across the open grass, tight wildflower
-## patches for colour, and rare mushroom/pebble accents. Then a flower bed framing the yard.
+## Restrained meadow: a light wash of blossoms across the open grass, tight wildflower
+## patches for colour, and rare shrub accents. Then a flower bed framing the yard.
 func _build_detail() -> void:
 	for x in range(1, W - 1):
 		for y in range(1, H - 1):
@@ -248,17 +248,15 @@ func _build_detail() -> void:
 			if _blocked.has(c):
 				continue
 			var roll := _rng.randf()
-			if roll < 0.11:
-				_set_detail(c, TUFTS[_rng.randi() % TUFTS.size()])
-			elif roll < 0.118:
-				_set_detail(c, PEBBLE)
-			elif roll < 0.122:
-				_set_detail(c, MUSHROOM)
+			if roll < 0.08:
+				_set_detail(c, MEADOW_FLOWERS[_rng.randi() % MEADOW_FLOWERS.size()])
+			elif roll < 0.086:
+				_set_detail(c, SHRUB)
 
-	# Wildflower patches — clustered so colour reads as beds, not confetti (overwrites tufts).
+	# Wildflower patches — clustered so colour reads as beds, not confetti.
 	for i in 7:
 		var center := Vector2i(_rng.randi_range(3, W - 4), _rng.randi_range(3, H - 4))
-		var species: Vector2i = FLOWERS[_rng.randi() % FLOWERS.size()]
+		var species: Vector2i = FLOWER_BEDS[_rng.randi() % FLOWER_BEDS.size()]
 		for j in _rng.randi_range(4, 7):
 			var c := center + Vector2i(_rng.randi_range(-2, 2), _rng.randi_range(-1, 1))
 			_set_detail(c, species)
@@ -271,7 +269,7 @@ func _build_outpost_yard() -> void:
 	var base := _to_tile(_outpost_pos())
 	for cell in [Vector2i(-3, 2), Vector2i(-3, 3), Vector2i(-2, 3),
 			Vector2i(3, 2), Vector2i(3, 3), Vector2i(2, 3)]:
-		_set_detail(base + cell, FLOWERS[_rng.randi() % FLOWERS.size()])
+		_set_detail(base + cell, FLOWER_BEDS[_rng.randi() % FLOWER_BEDS.size()])
 
 
 func _set_detail(c: Vector2i, tile: Vector2i) -> void:
@@ -279,7 +277,7 @@ func _set_detail(c: Vector2i, tile: Vector2i) -> void:
 		return
 	if _blocked.has(c):
 		return
-	detail.set_cell(c, 1, tile)   # source 1 = Sprout decals
+	detail.set_cell(c, 1, tile)   # source 1 = Serene meadow details
 
 
 func _outpost_pos() -> Vector2:
