@@ -154,6 +154,12 @@ func _load_game() -> void:
 	if not SaveGame.has_save():
 		return
 	var placement := SaveGame.apply_snapshot(SaveGame.load_snapshot())
+	# Restore the bag BEFORE the early return: a save can legitimately hold items and coins
+	# without a player placement, and dropping them would silently delete quest progress
+	# (quest completion is measured from what you are carrying).
+	var bag: Dictionary = placement.get("inventory", {})
+	if not bag.is_empty():
+		Inv.load_dict(bag)
 	if not placement.get("has_player", false):
 		return
 	var player := get_node_or_null("Props/Player")
@@ -194,7 +200,7 @@ func _save_game() -> void:
 	if player != null:
 		pos = player.global_position
 		facing = String(player.facing)
-	SaveGame.save_snapshot(learning_data, pos, facing)
+	SaveGame.save_snapshot(learning_data, pos, facing, Inv.to_dict())
 
 
 func _clamp_camera_to_map() -> void:

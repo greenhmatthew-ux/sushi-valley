@@ -14,6 +14,21 @@ extends Node
 
 var logic := InventoryLogic.new()
 
+## Guards the autosave while load_dict is repopulating the bag from disk — otherwise
+## restoring a save would immediately write it straight back out again.
+var _restoring := false
+
+
+func _ready() -> void:
+	# The bag is the only subsystem whose loss is pure player time (gathered quest items,
+	# earned coins), so it persists on every change rather than only at quit.
+	Bus.inventory_changed.connect(_autosave)
+
+
+func _autosave() -> void:
+	if not _restoring:
+		SaveGame.save_inventory(to_dict())
+
 
 # --- items -----------------------------------------------------------------
 
@@ -85,7 +100,9 @@ func to_dict() -> Dictionary:
 
 ## Replace the whole bag + coins from a save, then announce so UI rebuilds.
 func load_dict(data: Dictionary) -> void:
+	_restoring = true
 	logic.load_dict(data)
+	_restoring = false
 	Bus.coins_changed.emit(logic.coins)
 	Bus.inventory_changed.emit()
 
