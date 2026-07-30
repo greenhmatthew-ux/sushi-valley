@@ -18,7 +18,7 @@ func _initialize() -> void:
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
 	check("recipes", db.recipes.size(), 78)
-	check("quests", db.quests.size(), 18)
+	check("quests", db.quests.size(), 19)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
 	check("raids", db.raids.size(), 1)
@@ -29,6 +29,24 @@ func _initialize() -> void:
 	# Keyed-object tables keep their authored shape rather than being indexed.
 	check_true("shops has mako_stall", db.shops.has("mako_stall"))
 	check_true("world_events has events", db.world_events.has("events"))
+
+	# Region status is player-facing truth: only scenes that can actually be
+	# entered in this build may advertise themselves as playable.
+	var playable_regions: Array[String] = []
+	var planned_regions: Array[String] = []
+	for raw_id: Variant in db.regions:
+		var region_id := String(raw_id)
+		var status := String(db.regions[raw_id].get("status", ""))
+		if status == "playable":
+			playable_regions.append(region_id)
+		elif status == "planned":
+			planned_regions.append(region_id)
+	playable_regions.sort()
+	planned_regions.sort()
+	check_true("only the village and Whispering Woods are playable",
+		playable_regions == ["valley_crossroads", "whispering_woods"])
+	check_true("all ten inaccessible regions are marked planned",
+		planned_regions.size() == 10)
 
 	# 62 hand-authored cards + 1330 deck rows across 11 packs, with zero id
 	# collisions (verified against the source JSON). An exact number here catches
@@ -45,6 +63,12 @@ func _initialize() -> void:
 	check_str("item wooden_katana", db.item("wooden_katana").get("name", ""), "Wooden Katana")
 	check_str("enemy mushroom", db.enemy("mushroom").get("name", ""), "Spore Mushroom")
 	check_str("ability strike", db.ability("strike").get("name", ""), "Strike")
+	var woods_quest: Dictionary = db.quest("woods_quiet_steps")
+	check_true("Whispering Woods quest exists", not woods_quest.is_empty())
+	check_str("Woods quest goal",
+		woods_quest.get("goal", {}).get("item", ""), "raccoon_tail")
+	check("Woods quest coin reward",
+		int(woods_quest.get("reward", {}).get("coins", 0)), 25)
 	check_str("card kana-a prompt", db.card("kana-a").get("prompt", ""), "あ")
 	var pronunciation: Dictionary = db.pronunciation_for_card(
 		"core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2")

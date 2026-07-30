@@ -196,5 +196,16 @@
     "offerLines": ["The Watcher Eyes see more than they should — old ruins, old roads, old sins.", "Bring me three of their lenses. I can read the inscriptions they have stared at for centuries. A spirit amulet for your trouble."],
     "progressLines": ["Watcher lenses — {progress} of {goal}. The eyes drift near the ruin heart and the watcher circles."],
     "turnInLines": ["Each lens holds a fragment of the old script. This amulet was carved from a similar lens — it will guard you on deeper roads."]
+  },
+  {
+    "id": "woods_quiet_steps",
+    "title": "Quiet Steps",
+    "giver": "Nori",
+    "desc": "Nori needs one striped tail to bind a pair of quiet trail sandals. The Sly Raccoon east of the Whispering Woods outpost always drops one.",
+    "goal": { "item": "raccoon_tail", "qty": 1 },
+    "reward": { "coins": 25, "items": [{ "id": "straw_sandals", "qty": 1 }] },
+    "offerLines": ["The woods punish heavy feet. I can fix that.", "Bring me one striped tail from the Sly Raccoon east of the outpost. It always leaves one behind."],
+    "progressLines": ["One raccoon tail — {progress} of {goal}. Follow the east trail from the outpost; the Sly Raccoon always drops one."],
+    "turnInLines": ["Strong fibers, and clean. These sandals are yours — step lightly."]
   }
 ]

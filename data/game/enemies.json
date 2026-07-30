@@ -239,7 +239,7 @@
     "xp": 20,
     "intro": "A Sly Raccoon snatches at your pack, chittering defiantly.",
     "drops": [
-      { "item": "raccoon_tail", "chance": 0.9 },
+      { "item": "raccoon_tail", "chance": 1 },
       { "item": "rice_ball", "chance": 0.3 }
     ]
   },

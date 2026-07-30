@@ -16,6 +16,34 @@ const GEN_SEED := 20260727   # fixed so the generated meadow is stable run-to-ru
 
 const GRASS := Vector2i(4, 0)   # serene_village grass (ground, source 0)
 
+# Dirt trail atlas coords in serene_village. The route chooses among these from each
+# cell's open cardinal edges, so bends have real corners instead of one repeated centre tile.
+const TRAIL_CENTER := Vector2i(10, 2)
+const TRAIL_LEFT := Vector2i(9, 2)
+const TRAIL_RIGHT := Vector2i(6, 2)
+const TRAIL_TOP: Array[Vector2i] = [Vector2i(7, 3), Vector2i(8, 3)]
+const TRAIL_BOTTOM: Array[Vector2i] = [Vector2i(7, 1), Vector2i(8, 1)]
+const TRAIL_TOP_LEFT := Vector2i(5, 2)
+const TRAIL_TOP_RIGHT := Vector2i(3, 2)
+const TRAIL_BOTTOM_LEFT := Vector2i(5, 1)
+const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
+
+# Fixed route waypoints, in tile coordinates. A three-tile brush turns each centreline into
+# a readable trail: the main north road, the outpost spur, and an east-side hunt loop.
+const MAIN_ROUTE: Array[Vector2i] = [
+	Vector2i(21, 27), Vector2i(21, 23), Vector2i(20, 20),
+	Vector2i(18, 15), Vector2i(19, 11), Vector2i(20, 5),
+]
+const OUTPOST_SPUR: Array[Vector2i] = [
+	Vector2i(20, 20), Vector2i(16, 20), Vector2i(12, 20),
+	Vector2i(10, 20), Vector2i(8, 20), Vector2i(6, 19),
+]
+const EAST_HUNT_LOOP: Array[Vector2i] = [
+	Vector2i(18, 15), Vector2i(27, 15), Vector2i(33, 16),
+	Vector2i(38, 18), Vector2i(38, 20), Vector2i(34, 22),
+	Vector2i(29, 22), Vector2i(24, 20), Vector2i(20, 20),
+]
+
 # Sprout decal atlas (source 1): confirmed by inspecting sprout-basic-grass-biome.png.
 const TUFTS: Array[Vector2i] = [Vector2i(5, 1), Vector2i(6, 1)]           # small leaf clumps
 const FLOWERS: Array[Vector2i] = [Vector2i(6, 2), Vector2i(6, 3), Vector2i(7, 3)]  # yellow/pink
@@ -28,6 +56,7 @@ var detail: TileMapLayer
 
 var _rng := RandomNumberGenerator.new()
 var _blocked: Dictionary = {}   # tiles under props/buildings — kept clear of detail
+var _route_cells: Dictionary = {}
 
 
 func _ready() -> void:
@@ -35,6 +64,7 @@ func _ready() -> void:
 	_rng.seed = GEN_SEED
 	_build_tileset()
 	_build_ground()
+	_build_bounds()
 	_mark_occupied()
 	_build_detail()
 	_place_player()
@@ -53,6 +83,13 @@ func _build_tileset() -> void:
 	grass_src.texture = preload("res://assets/tilesets/serene_village.png")
 	grass_src.texture_region_size = Vector2i(TILE, TILE)
 	grass_src.create_tile(GRASS)
+	var trail_tiles: Array[Vector2i] = [
+		TRAIL_CENTER, TRAIL_LEFT, TRAIL_RIGHT,
+		TRAIL_TOP[0], TRAIL_TOP[1], TRAIL_BOTTOM[0], TRAIL_BOTTOM[1],
+		TRAIL_TOP_LEFT, TRAIL_TOP_RIGHT, TRAIL_BOTTOM_LEFT, TRAIL_BOTTOM_RIGHT,
+	]
+	for tile in trail_tiles:
+		grass_src.create_tile(tile)
 	ts.add_source(grass_src, 0)
 
 	var decal_src := TileSetAtlasSource.new()
@@ -78,6 +115,115 @@ func _build_ground() -> void:
 	for x in W:
 		for y in H:
 			ground.set_cell(Vector2i(x, y), 0, GRASS)
+	_build_route()
+
+
+## Rasterize fixed waypoints with a three-tile brush, then pick real edge/corner art from
+## each cell's missing cardinal neighbours. Route cells also join `_blocked`, keeping grass
+## tufts and flowers off the walked trail.
+func _build_route() -> void:
+	_route_cells.clear()
+	_add_route(MAIN_ROUTE)
+	_add_route(OUTPOST_SPUR)
+	_add_route(EAST_HUNT_LOOP)
+	for raw_cell in _route_cells:
+		var cell: Vector2i = raw_cell
+		ground.set_cell(cell, 0, _trail_tile(cell))
+		_blocked[cell] = true
+
+
+func _add_route(waypoints: Array[Vector2i]) -> void:
+	for i in range(waypoints.size() - 1):
+		for center in _raster_line(waypoints[i], waypoints[i + 1]):
+			for dx in range(-1, 2):
+				for dy in range(-1, 2):
+					var cell := center + Vector2i(dx, dy)
+					if cell.x >= 0 and cell.x < W and cell.y >= 0 and cell.y < H:
+						_route_cells[cell] = true
+
+
+## Integer Bresenham keeps diagonal waypoint segments connected without any float rounding.
+func _raster_line(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+	var x := from_cell.x
+	var y := from_cell.y
+	var dx := absi(to_cell.x - from_cell.x)
+	var sx := 1 if from_cell.x < to_cell.x else -1
+	var dy := -absi(to_cell.y - from_cell.y)
+	var sy := 1 if from_cell.y < to_cell.y else -1
+	var error := dx + dy
+	while true:
+		cells.append(Vector2i(x, y))
+		if x == to_cell.x and y == to_cell.y:
+			break
+		var twice_error := 2 * error
+		if twice_error >= dy:
+			error += dy
+			x += sx
+		if twice_error <= dx:
+			error += dx
+			y += sy
+	return cells
+
+
+## Bit flags mean the route is open (missing) on that side: top=1, right=2,
+## bottom=4, left=8. Concave junctions and endpoints deliberately use the centre tile.
+func _trail_tile(cell: Vector2i) -> Vector2i:
+	var open_mask := 0
+	if not _route_cells.has(cell + Vector2i.UP):
+		open_mask |= 1
+	if not _route_cells.has(cell + Vector2i.RIGHT):
+		open_mask |= 2
+	if not _route_cells.has(cell + Vector2i.DOWN):
+		open_mask |= 4
+	if not _route_cells.has(cell + Vector2i.LEFT):
+		open_mask |= 8
+	match open_mask:
+		1:
+			return TRAIL_TOP[(cell.x + cell.y) & 1]
+		2:
+			return TRAIL_RIGHT
+		3:
+			return TRAIL_TOP_RIGHT
+		4:
+			return TRAIL_BOTTOM[(cell.x + cell.y) & 1]
+		6:
+			return TRAIL_BOTTOM_RIGHT
+		8:
+			return TRAIL_LEFT
+		9:
+			return TRAIL_TOP_LEFT
+		12:
+			return TRAIL_BOTTOM_LEFT
+		_:
+			return TRAIL_CENTER
+
+
+## Match the village's proven four-wall boundary pattern. The south transition's 20px
+## auto-enter radius fires before the player reaches the bottom wall.
+func _build_bounds() -> void:
+	var bounds := StaticBody2D.new()
+	bounds.name = "Bounds"
+	bounds.collision_layer = 1
+	bounds.collision_mask = 0
+	add_child(bounds)
+	_add_bound(bounds, "Top", Vector2(W * TILE / 2.0, -4), Vector2(W * TILE, 8))
+	_add_bound(bounds, "Bottom", Vector2(W * TILE / 2.0, H * TILE + 4),
+		Vector2(W * TILE, 8))
+	_add_bound(bounds, "Left", Vector2(-4, H * TILE / 2.0), Vector2(8, H * TILE))
+	_add_bound(bounds, "Right", Vector2(W * TILE + 4, H * TILE / 2.0),
+		Vector2(8, H * TILE))
+
+
+func _add_bound(parent: StaticBody2D, shape_name: String,
+		position: Vector2, size: Vector2) -> void:
+	var collision := CollisionShape2D.new()
+	collision.name = shape_name
+	collision.position = position
+	var rectangle := RectangleShape2D.new()
+	rectangle.size = size
+	collision.shape = rectangle
+	parent.add_child(collision)
 
 
 ## Record the tiles a prop/building sits on so scattered detail never pokes through a house

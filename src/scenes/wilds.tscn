@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="18_ui"]
 [ext_resource type="PackedScene" path="res://src/entities/vendor.tscn" id="19_vendor"]
+[ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="23_quest"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -49,10 +50,10 @@ tile_set = SubResource("ts_g")
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("3_player")]
-position = Vector2(336, 336)
+position = Vector2(336, 400)
 
 [node name="WildsEntry" type="Marker2D" parent="Entities"]
-position = Vector2(336, 336)
+position = Vector2(336, 400)
 script = ExtResource("5_spawn")
 spawn_id = "wilds_entry"
 
@@ -153,7 +154,7 @@ coin_reward = 7
 coin_variance = 2
 
 [node name="Lantern" parent="Entities" instance=ExtResource("11_enemy")]
-position = Vector2(340, 320)
+position = Vector2(352, 240)
 behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("17_lantern")
@@ -171,7 +172,7 @@ coin_reward = 6
 coin_variance = 2
 
 [node name="Snake" parent="Entities" instance=ExtResource("11_enemy")]
-position = Vector2(400, 420)
+position = Vector2(464, 400)
 behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("25_snake")
@@ -211,6 +212,12 @@ position = Vector2(160, 320)
 shop_id = "forest_trader"
 vendor_name = "Forest Trader"
 
+[node name="TrailRanger" parent="Entities" instance=ExtResource("23_quest")]
+position = Vector2(96, 304)
+quest_id = "woods_quiet_steps"
+greeting_card = "greet-sumimasen"
+sprite_sheet = ExtResource("23_vil3")
+
 [node name="UILayer" parent="." instance=ExtResource("18_ui")]
 
 [node name="TeacherTransit" parent="Entities" instance=ExtResource("20_teacher")]
@@ -222,7 +229,7 @@ intro_lines = PackedStringArray("Heading further out? You'll need to ask the way
 sprite_sheet = ExtResource("22_merch")
 
 [node name="SignTrail" parent="Entities" instance=ExtResource("21_sign")]
-position = Vector2(336, 400)
+position = Vector2(304, 400)
 sign_id = "wilds_trail"
 shows_card = "kana-mo"
 caption = "A trail marker, half-swallowed by grass."
