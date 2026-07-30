@@ -9,10 +9,15 @@ extends SceneTree
 ## bugs the --script tests can't: a wrong autoload order, a bad DB reference in
 ## Learning, or a saver that isn't hooked to SaveGame.
 
+const PROFILE_PATH := "user://profile.json"
+
 var failures: int = 0
+var _backup_text: String = ""
+var _had_backup: bool = false
 
 
 func _initialize() -> void:
+	_stash_real_save()
 	# Autoloads are children of root once the SceneTree main loop starts.
 	await process_frame
 
@@ -24,6 +29,7 @@ func _initialize() -> void:
 	check_true("Learning autoload present", learning != null)
 
 	if learning == null:
+		_restore_real_save(save)
 		_finish()
 		return
 
@@ -49,7 +55,24 @@ func _initialize() -> void:
 	check_true("xp survived a reload", learning.profile.data["stats"]["xp"] == 10)
 
 	save.clear()
+	_restore_real_save(save)
 	_finish()
+
+
+func _stash_real_save() -> void:
+	if FileAccess.file_exists(PROFILE_PATH):
+		_backup_text = FileAccess.get_file_as_string(PROFILE_PATH)
+		_had_backup = true
+
+
+func _restore_real_save(save: Node) -> void:
+	if _had_backup:
+		var f := FileAccess.open(PROFILE_PATH, FileAccess.WRITE)
+		if f != null:
+			f.store_string(_backup_text)
+			f.close()
+	elif save != null:
+		save.clear()
 
 
 func _finish() -> void:

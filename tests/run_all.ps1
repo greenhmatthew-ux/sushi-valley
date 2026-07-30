@@ -19,20 +19,43 @@ $suites = @(
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
 
+$originalAppData = $env:APPDATA
+$tempRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
+$testAppData = [System.IO.Path]::GetFullPath(
+	(Join-Path $tempRoot ("sushi-valley-tests-" + [System.Guid]::NewGuid().ToString("N")))
+)
+if (-not $testAppData.StartsWith($tempRoot, [System.StringComparison]::OrdinalIgnoreCase) -or
+	$testAppData -eq $tempRoot) {
+	throw "Refusing unsafe test APPDATA path: $testAppData"
+}
+New-Item -ItemType Directory -Path $testAppData | Out-Null
+
 $failed = @()
-foreach ($s in $suites) {
-	Write-Host "===== $s =====" -ForegroundColor Cyan
-	& $godot --headless --path $project --script "res://tests/$s.gd" 2>&1 |
-		Select-String -NotMatch $noise |
-		ForEach-Object { $_.Line }
-	if ($LASTEXITCODE -ne 0) { $failed += $s }
-	Write-Host ""
+try {
+	# Save tests deliberately create and remove user://profile.json. Point Godot at a
+	# unique APPDATA root so the real playthrough can never be touched by this runner.
+	$env:APPDATA = $testAppData
+	foreach ($s in $suites) {
+		Write-Host "===== $s =====" -ForegroundColor Cyan
+		& $godot --headless --path $project --script "res://tests/$s.gd" 2>&1 |
+			Select-String -NotMatch $noise |
+			ForEach-Object { $_.Line }
+		if ($LASTEXITCODE -ne 0) { $failed += $s }
+		Write-Host ""
+	}
+} finally {
+	$env:APPDATA = $originalAppData
+	$cleanupPath = [System.IO.Path]::GetFullPath($testAppData)
+	if ($cleanupPath.StartsWith($tempRoot, [System.StringComparison]::OrdinalIgnoreCase) -and
+		$cleanupPath -ne $tempRoot -and (Test-Path -LiteralPath $cleanupPath)) {
+		Remove-Item -LiteralPath $cleanupPath -Recurse -Force
+	}
 }
 
 if ($failed.Count -eq 0) {
 	Write-Host "ALL SUITES PASSED ($($suites.Count))" -ForegroundColor Green
 	exit 0
-} else {
-	Write-Host "FAILED SUITES: $($failed -join ', ')" -ForegroundColor Red
-	exit 1
 }
+
+Write-Host "FAILED SUITES: $($failed -join ', ')" -ForegroundColor Red
+exit 1

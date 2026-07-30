@@ -12,13 +12,18 @@ extends SceneTree
 ## Schema went 1 -> 2. A v1 document has no "inventory" key and must still load, as an empty
 ## bag — which is precisely the state it described.
 
+const PROFILE_PATH := "user://profile.json"
+
 var failures: int = 0
 var inv: Node
 var learning: Node
 var save_game: Node
+var _backup_text: String = ""
+var _had_backup: bool = false
 
 
 func _initialize() -> void:
+	_stash_real_save()
 	await process_frame
 	inv = root.get_node("Inv")
 	learning = root.get_node("Learning")
@@ -34,6 +39,7 @@ func _initialize() -> void:
 
 	save_game.clear()
 	inv.reset()
+	_restore_real_save()
 	_finish()
 
 
@@ -111,6 +117,22 @@ func _finish() -> void:
 	print(("PASS — the bag persists, autosaves, and old saves still load."
 		if failures == 0 else "FAIL — %d persistence check(s) failed." % failures))
 	quit(1 if failures > 0 else 0)
+
+
+func _stash_real_save() -> void:
+	if FileAccess.file_exists(PROFILE_PATH):
+		_backup_text = FileAccess.get_file_as_string(PROFILE_PATH)
+		_had_backup = true
+
+
+func _restore_real_save() -> void:
+	if _had_backup:
+		var f := FileAccess.open(PROFILE_PATH, FileAccess.WRITE)
+		if f != null:
+			f.store_string(_backup_text)
+			f.close()
+	else:
+		save_game.clear()
 
 
 func check_true(label: String, ok: bool) -> void:
