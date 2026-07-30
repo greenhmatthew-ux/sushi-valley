@@ -37,6 +37,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_notebook"):
+		if not _open and get_tree().paused:
+			return
 		_set_open(not _open)
 		get_viewport().set_input_as_handled()
 	elif _open and event.is_action_pressed("ui_cancel"):

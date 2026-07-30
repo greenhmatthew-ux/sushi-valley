@@ -1,6 +1,6 @@
 extends CanvasLayer
-## The bag screen: a card grid of what you're carrying, plus coins and a capacity
-## bar. Toggled by the `open_menu` action, rebuilt on every `Bus.inventory_changed`
+## The compact Player menu: a Character summary plus a card grid of what you're carrying.
+## Toggled by the `open_menu` action, rebuilt on every `Bus.inventory_changed`
 ## so it never polls. Built in code to match recall_panel / toast_layer, and
 ## because the card count is dynamic.
 ##
@@ -31,12 +31,20 @@ const KIND_COLORS := {
 }
 
 const ICON_DIR := "res://assets/icons/items/"
+const TAB_CHARACTER := "character"
+const TAB_BAG := "bag"
 
 var _open := false
+var _active_tab := TAB_BAG
 var _root: Control
 var _coins_label: Label
 var _equipment_box: HFlowContainer
-var _equipment_empty: Label
+var _character_scroll: ScrollContainer
+var _character_view: VBoxContainer
+var _bag_view: VBoxContainer
+var _stats_label: Label
+var _character_tab: Button
+var _bag_tab: Button
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
@@ -52,6 +60,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu"):
+		# Never stack this menu over dialogue, combat, recall, shops, or another modal.
+		if not _open and get_tree().paused:
+			return
 		_toggle()
 		get_viewport().set_input_as_handled()
 	elif _open and event.is_action_pressed("ui_cancel"):
@@ -67,8 +78,10 @@ func _set_open(open: bool) -> void:
 	_open = open
 	if open:
 		_refresh()
+		_set_tab(_active_tab)
 		_root.show()
 		get_tree().paused = true
+		(_character_tab if _active_tab == TAB_CHARACTER else _bag_tab).grab_focus()
 	else:
 		_root.hide()
 		get_tree().paused = false
@@ -87,10 +100,27 @@ func _refresh() -> void:
 		child.queue_free()
 
 	var equipped: Dictionary = Inv.equipment()
-	_equipment_empty.visible = equipped.is_empty()
 	for slot in InventoryLogic.EQUIPMENT_SLOTS:
-		if equipped.has(slot):
-			_equipment_box.add_child(_make_equipped_button(slot, String(equipped[slot])))
+		_equipment_box.add_child(_make_equipment_slot_button(
+			slot, String(equipped.get(slot, ""))))
+
+	var xp := 0
+	if Learning.profile != null:
+		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs())
+	var gear := PlayerStats.gear_bonus(Inv.equipped_defs(), int(stats["level"]))
+	var player := get_tree().get_first_node_in_group("player")
+	var current_hp := int(player.hp) if player != null else int(stats["max_hp"])
+	_stats_label.text = (
+		"Level %d\nLearning XP  %d / %d\n\n"
+		+ "HP   %d / %d\nATK  %d\nDEF  %d\n\n"
+		+ "Gear bonus  %+d HP   %+d ATK   %+d DEF\n"
+		+ "Japanese study raises your base stats; equipped gear is included above."
+	) % [
+		stats["level"], stats["xp_into_level"], stats["xp_per_level"],
+		current_hp, stats["max_hp"], stats["atk"], stats["def"],
+		gear["hp"], gear["atk"], gear["def"],
+	]
 
 	var items: Array = Inv.entries()
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
@@ -101,10 +131,30 @@ func _refresh() -> void:
 	for entry in items:
 		_grid.add_child(_make_card(String(entry["id"]), int(entry["qty"])))
 
-	var enc: Dictionary = Inv.encumbrance()
-	_capacity_label.text = "Carrying %d / %d" % [enc["units"], enc["cap"]]
-	_capacity_label.add_theme_color_override("font_color",
-		COL_WARN if enc["encumbered"] else COL_HEADING)
+	_refresh_footer()
+
+
+func _set_tab(tab: String) -> void:
+	_active_tab = TAB_CHARACTER if tab == TAB_CHARACTER else TAB_BAG
+	_character_scroll.visible = _active_tab == TAB_CHARACTER
+	_character_view.visible = _active_tab == TAB_CHARACTER
+	_bag_view.visible = _active_tab == TAB_BAG
+	_character_tab.disabled = _active_tab == TAB_CHARACTER
+	_bag_tab.disabled = _active_tab == TAB_BAG
+	_refresh_footer()
+
+
+func _refresh_footer() -> void:
+	if _capacity_label == null:
+		return
+	if _active_tab == TAB_CHARACTER:
+		_capacity_label.text = "SPD* is authored but not active in the current combat loop yet."
+		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
+	else:
+		var enc: Dictionary = Inv.encumbrance()
+		_capacity_label.text = "Carrying %d / %d" % [enc["units"], enc["cap"]]
+		_capacity_label.add_theme_color_override("font_color",
+			COL_WARN if enc["encumbered"] else COL_HEADING)
 
 
 func _make_card(id: String, qty: int) -> Control:
@@ -162,14 +212,21 @@ func _make_card(id: String, qty: int) -> Control:
 	return card
 
 
-func _make_equipped_button(slot: String, item_id: String) -> Button:
-	var item: Dictionary = DB.item(item_id)
+func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	var button := Button.new()
-	button.text = "%s: %s" % [slot.capitalize(), item.get("name", item_id)]
-	button.tooltip_text = "%s\n%s\nPress to unequip." % [
-		_stats_line(PlayerStats.scaled_item_stats(item, _player_level())), item.get("desc", "")]
+	button.custom_minimum_size = Vector2(150, 34)
 	button.focus_mode = Control.FOCUS_ALL
-	button.pressed.connect(_on_unequip.bind(slot, item_id))
+	if item_id.is_empty():
+		button.text = "%s: —" % slot.capitalize()
+		button.tooltip_text = "Empty %s slot." % slot
+		button.disabled = true
+	else:
+		var item: Dictionary = DB.item(item_id)
+		button.text = "%s: %s" % [slot.capitalize(), item.get("name", item_id)]
+		button.tooltip_text = "%s\n%s\nPress to unequip." % [
+			_stats_line(PlayerStats.scaled_item_stats(item, _player_level())),
+			item.get("desc", "")]
+		button.pressed.connect(_on_unequip.bind(slot, item_id))
 	return button
 
 
@@ -200,7 +257,7 @@ func _stats_line(stats: Dictionary) -> String:
 	for stat in ["hp", "atk", "def", "spd"]:
 		var value := int(stats.get(stat, 0))
 		if value != 0:
-			parts.append("%+d %s" % [value, stat.to_upper()])
+			parts.append("%+d %s%s" % [value, stat.to_upper(), "*" if stat == "spd" else ""])
 	return "  ".join(parts)
 
 
@@ -227,6 +284,7 @@ func _name_of(id: String) -> String:
 
 func _build_scaffold() -> void:
 	_root = Control.new()
+	_root.name = "PlayerMenuRoot"
 	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
@@ -237,6 +295,7 @@ func _build_scaffold() -> void:
 	_root.add_child(dim)
 
 	var panel := PanelContainer.new()
+	panel.name = "PlayerMenuShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
 	panel.anchor_left = 0.08; panel.anchor_top = 0.06
 	panel.anchor_right = 0.92; panel.anchor_bottom = 0.94
@@ -256,7 +315,7 @@ func _build_scaffold() -> void:
 	vbox.add_child(header)
 
 	var title := Label.new()
-	title.text = "Bag"
+	title.text = "Player"
 	title.add_theme_font_size_override("font_size", 22)
 	title.add_theme_color_override("font_color", COL_BORDER)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -268,42 +327,89 @@ func _build_scaffold() -> void:
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(_coins_label)
 
+	var tabs := HBoxContainer.new()
+	tabs.name = "DomainTabs"
+	tabs.add_theme_constant_override("separation", 8)
+	vbox.add_child(tabs)
+
+	_character_tab = Button.new()
+	_character_tab.name = "CharacterTab"
+	_character_tab.text = "Character"
+	_character_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_character_tab.focus_mode = Control.FOCUS_ALL
+	_character_tab.pressed.connect(_set_tab.bind(TAB_CHARACTER))
+	tabs.add_child(_character_tab)
+
+	_bag_tab = Button.new()
+	_bag_tab.name = "BagTab"
+	_bag_tab.text = "Bag"
+	_bag_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_bag_tab.focus_mode = Control.FOCUS_ALL
+	_bag_tab.pressed.connect(_set_tab.bind(TAB_BAG))
+	tabs.add_child(_bag_tab)
+
+	_character_scroll = ScrollContainer.new()
+	_character_scroll.name = "CharacterScroll"
+	_character_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_character_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_character_scroll)
+
+	_character_view = VBoxContainer.new()
+	_character_view.name = "CharacterView"
+	_character_view.add_theme_constant_override("separation", 10)
+	_character_view.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_character_scroll.add_child(_character_view)
+
+	_stats_label = Label.new()
+	_stats_label.name = "StatsSummary"
+	_stats_label.add_theme_font_size_override("font_size", 14)
+	_stats_label.add_theme_color_override("font_color", COL_TEXT)
+	_stats_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_character_view.add_child(_stats_label)
+
 	var equipment_heading := Label.new()
-	equipment_heading.text = "Equipped — press an item to remove it"
+	equipment_heading.text = "Equipment — press a filled slot to remove it"
 	equipment_heading.add_theme_font_size_override("font_size", 13)
 	equipment_heading.add_theme_color_override("font_color", COL_HEADING)
-	vbox.add_child(equipment_heading)
-
-	_equipment_empty = Label.new()
-	_equipment_empty.text = "No equipment yet. Equip gear from the bag below."
-	_equipment_empty.add_theme_font_size_override("font_size", 12)
-	_equipment_empty.add_theme_color_override("font_color", COL_HEADING)
-	vbox.add_child(_equipment_empty)
+	_character_view.add_child(equipment_heading)
 
 	_equipment_box = HFlowContainer.new()
+	_equipment_box.name = "EquipmentSlots"
 	_equipment_box.add_theme_constant_override("h_separation", 6)
 	_equipment_box.add_theme_constant_override("v_separation", 4)
-	vbox.add_child(_equipment_box)
+	_character_view.add_child(_equipment_box)
+
+	_bag_view = VBoxContainer.new()
+	_bag_view.name = "BagView"
+	_bag_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_bag_view)
+
+	var bag_hint := Label.new()
+	bag_hint.text = "Select gear to equip it. Level requirements explain locked choices."
+	bag_hint.add_theme_font_size_override("font_size", 12)
+	bag_hint.add_theme_color_override("font_color", COL_HEADING)
+	_bag_view.add_child(bag_hint)
 
 	# Grid of cards, height-capped so overflow scrolls instead of the whole page.
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.add_child(scroll)
+	var bag_scroll := ScrollContainer.new()
+	bag_scroll.name = "BagScroll"
+	bag_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	bag_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_bag_view.add_child(bag_scroll)
 
 	_grid = GridContainer.new()
 	_grid.columns = 4
 	_grid.add_theme_constant_override("h_separation", 10)
 	_grid.add_theme_constant_override("v_separation", 10)
 	_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.add_child(_grid)
+	bag_scroll.add_child(_grid)
 
 	_empty_label = Label.new()
 	_empty_label.text = "Your bag is empty."
 	_empty_label.add_theme_font_size_override("font_size", 14)
 	_empty_label.add_theme_color_override("font_color", COL_HEADING)
 	_empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	scroll.add_child(_empty_label)
+	bag_scroll.add_child(_empty_label)
 
 	# Footer: capacity + how to close.
 	var footer := HBoxContainer.new()
@@ -316,11 +422,13 @@ func _build_scaffold() -> void:
 	footer.add_child(_capacity_label)
 
 	var hint := Label.new()
-	hint.text = "Esc / menu to close"
+	hint.text = "I / Esc close"
 	hint.add_theme_font_size_override("font_size", 12)
 	hint.add_theme_color_override("font_color", COL_HEADING)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	footer.add_child(hint)
+
+	_set_tab(_active_tab)
 
 
 func _panel_style() -> StyleBoxFlat:
