@@ -1,7 +1,7 @@
 class_name ConsumableLogic
 extends RefCounted
-## Honest first-pass consumable rules. Pure healing and instant Energy items work now;
-## hybrid food, timed buffs, shields, and attack scrolls wait for their full effect resolver.
+## Honest consumable rules. Exploration supports the explicit instant-heal family; combat
+## additionally supports Energy, Shield, and authored timed ATK/DEF meals.
 
 ## Explicit, reviewable MVP families. Meals/broths/feasts are deliberately absent: they
 ## belong to the later preparation-buff loop, not the legacy pile of larger instant heals.
@@ -41,5 +41,42 @@ static func restored_energy(item: Dictionary, current_energy: int, max_energy: i
 	return mini(int(item.get("buffValue", 0)), maxi(0, max_energy - current_energy))
 
 
+static func is_supported_shield(item: Dictionary) -> bool:
+	return String(item.get("kind", "")) == "consumable" \
+		and String(item.get("buffType", "")) == "shield" \
+		and int(item.get("buffValue", 0)) > 0
+
+
+static func is_supported_timed_buff(item: Dictionary) -> bool:
+	return String(item.get("kind", "")) == "consumable" \
+		and String(item.get("buffType", "")) in ["atk", "def"] \
+		and int(item.get("buffValue", 0)) > 0 \
+		and int(item.get("buffDuration", 0)) > 0
+
+
+static func combat_restored_hp(item: Dictionary, current_hp: int, max_hp: int) -> int:
+	if not is_supported_combat_item(item) or current_hp >= max_hp:
+		return 0
+	return mini(maxi(0, int(item.get("heal", 0))), maxi(0, max_hp - current_hp))
+
+
+static func effect_summary(item: Dictionary) -> String:
+	var effects: Array[String] = []
+	var healing := int(item.get("heal", 0))
+	if healing > 0:
+		effects.append("Restores %d HP" % healing)
+	var buff_type := String(item.get("buffType", ""))
+	var value := int(item.get("buffValue", 0))
+	if buff_type == "energy":
+		effects.append("Restores %d Energy" % value)
+	elif buff_type == "shield":
+		effects.append("Grants up to %d Shield" % value)
+	elif buff_type in ["atk", "def"]:
+		effects.append("+%d %s for %d rounds" % [
+			value, buff_type.to_upper(), int(item.get("buffDuration", 0))])
+	return " · ".join(effects)
+
+
 static func is_supported_combat_item(item: Dictionary) -> bool:
-	return is_supported_healing(item) or is_supported_energy(item)
+	return is_supported_healing(item) or is_supported_energy(item) \
+		or is_supported_shield(item) or is_supported_timed_buff(item)

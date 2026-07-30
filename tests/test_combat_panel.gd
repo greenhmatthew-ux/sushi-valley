@@ -14,6 +14,7 @@ func _initialize() -> void:
 	inv.reset()
 	inv.add("rice_ball", 1)
 	inv.add("bamboo_tonic", 1)
+	inv.add("stone_soup", 1)
 	learning.profile.unlock_card("kana-a")
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/combat_panel.gd"))
@@ -28,13 +29,14 @@ func _initialize() -> void:
 	var intent: Label = panel.find_child("EnemyIntent", true, false)
 	var enemy_label: Label = panel.get("_enemy_label")
 	var end_turn: Button = panel.find_child("EndTurn", true, false)
+	var continue_btn: Button = panel.get("_continue_btn")
 	var flee: Button = panel.find_child("Flee", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
-	check_eq("unarmed combat shows both supported item families", actions.get_child_count(), 5)
+	check_eq("unarmed combat shows all supported item families", actions.get_child_count(), 6)
 	check_eq("Basic Attack exposes its real Energy cost",
 		(actions.get_child(0) as Button).text, "Basic · 1E")
 	check_true("combat HUD shows Energy and Speed",
@@ -89,6 +91,22 @@ func _initialize() -> void:
 	check_eq("Energy tonic consumes exactly one", inv.count("bamboo_tonic"), 0)
 	check_true("Energy tonic feedback names its distinct effect",
 		(panel.get("_feedback") as Label).text.contains("Energy"))
+	continue_btn.pressed.emit()
+	await process_frame
+	end_turn.pressed.emit()
+	await process_frame
+	continue_btn.pressed.emit()
+	await process_frame
+	var soup_button := _find_button(actions, "Stone Soup x1")
+	check_true("hybrid meal is exposed with both effects",
+		soup_button != null and soup_button.tooltip_text.contains("Restores 15 HP")
+		and soup_button.tooltip_text.contains("+4 DEF for 4 rounds"))
+	soup_button.pressed.emit()
+	await process_frame
+	check_eq("hybrid meal consumes exactly one", inv.count("stone_soup"), 0)
+	check_eq("hybrid meal updates visible defense", second_encounter.effective_def(), 6)
+	check_true("hybrid feedback names its applied status",
+		(panel.get("_feedback") as Label).text.contains("DEF"))
 	second_encounter.player_hp = 5
 	var focus: Dictionary = db.ability("focus")
 	second_encounter.spend_and_resolve("mi", "mi", focus)

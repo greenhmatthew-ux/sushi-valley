@@ -204,6 +204,25 @@ func can_use_item() -> bool:
 	return not is_over() and not item_used_this_turn
 
 
+func can_use_combat_item(item: Dictionary) -> bool:
+	if not can_use_item() or not ConsumableLogic.is_supported_combat_item(item):
+		return false
+	if ConsumableLogic.combat_restored_hp(item, player_hp, player_max_hp) > 0:
+		return true
+	if ConsumableLogic.restored_energy(item, energy, MAX_ENERGY) > 0:
+		return true
+	var buff_type := String(item.get("buffType", ""))
+	var value := int(item.get("buffValue", 0))
+	if buff_type == "shield":
+		return shield < value
+	if buff_type in ["atk", "def"]:
+		var active: Dictionary = timed_buffs.get(buff_type, {})
+		return int(active.get("value", 0)) < value \
+			or (int(active.get("value", 0)) == value \
+				and int(active.get("rounds", 0)) < int(item.get("buffDuration", 0)))
+	return false
+
+
 ## Honest enemy intent for the UI. Runtime damage varies by +/-15%, so preview the full
 ## reachable HP-loss range instead of showing a false exact number. Current Guard is included.
 func enemy_damage_range() -> Vector2i:
@@ -464,6 +483,57 @@ func use_energy_item(item_id: String, amount: int, enemy_responds: bool = true) 
 	energy = mini(MAX_ENERGY, energy + maxi(0, amount))
 	r.energy_restored = energy - before
 	r.action_resolved = r.energy_restored > 0
+	item_used_this_turn = r.action_resolved
+	r.flow_after = flow
+	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	if r.action_resolved and enemy_responds:
+		_enemy_response(r)
+		if r.enemy_acted:
+			_tick_timed_buffs()
+	return r
+
+
+## Resolve every structured non-damage consumable through the same status model as abilities.
+## Hybrid food succeeds when any one of its effects helps and never overwrites a stronger buff.
+func use_combat_item(item: Dictionary, enemy_responds: bool = true) -> RoundResult:
+	var r := RoundResult.new()
+	if not can_use_combat_item(item):
+		return r
+	r.action_id = String(item.get("id", "item"))
+	r.action_type = "item"
+
+	var hp_before := player_hp
+	player_hp = mini(player_max_hp, player_hp + maxi(0, int(item.get("heal", 0))))
+	r.player_healed = player_hp - hp_before
+
+	if ConsumableLogic.is_supported_energy(item):
+		var energy_before := energy
+		energy = mini(MAX_ENERGY, energy + int(item.get("buffValue", 0)))
+		r.energy_restored = energy - energy_before
+
+	var buff_type := String(item.get("buffType", ""))
+	var value := maxi(0, int(item.get("buffValue", 0)))
+	if buff_type == "shield":
+		var shield_before := shield
+		shield = maxi(shield, value)
+		r.shield_gained = shield - shield_before
+	elif buff_type in ["atk", "def"]:
+		var duration := maxi(0, int(item.get("buffDuration", 0)))
+		var active: Dictionary = timed_buffs.get(buff_type, {})
+		var improves := int(active.get("value", 0)) < value \
+			or (int(active.get("value", 0)) == value \
+				and int(active.get("rounds", 0)) < duration)
+		if improves:
+			timed_buffs[buff_type] = {
+				"value": maxi(int(active.get("value", 0)), value),
+				"rounds": maxi(int(active.get("rounds", 0)), duration),
+			}
+			r.buff_type = buff_type
+			r.buff_value = int((timed_buffs[buff_type] as Dictionary)["value"])
+			r.buff_rounds = int((timed_buffs[buff_type] as Dictionary)["rounds"])
+
+	r.action_resolved = r.player_healed > 0 or r.energy_restored > 0 \
+		or r.shield_gained > 0 or not r.buff_type.is_empty()
 	item_used_this_turn = r.action_resolved
 	r.flow_after = flow
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)

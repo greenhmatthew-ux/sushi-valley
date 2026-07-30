@@ -13,19 +13,21 @@ func _initialize() -> void:
 	_autoload_consumption()
 	_combat_item_action()
 	_energy_item_action()
+	_structured_meal_actions()
 	_finish()
 
 
 func _pure_rules() -> void:
 	var rice := {"id": "rice_ball", "kind": "consumable", "heal": 12}
 	var hybrid := {"id": "stone_soup", "kind": "consumable", "heal": 15,
-		"buffType": "def"}
+		"buffType": "def", "buffValue": 4, "buffDuration": 4}
 	var meal := {"id": "forest_lunchbox", "kind": "consumable", "heal": 48}
 	var energy := {"id": "bamboo_tonic", "kind": "consumable",
 		"buffType": "energy", "buffValue": 3}
 	check_true("pure healing consumable is supported", ConsumableRules.is_supported_healing(rice))
-	check_true("hybrid waits until its buff is implemented",
-		not ConsumableRules.is_supported_healing(hybrid))
+	check_true("hybrid meal stays combat-only",
+		not ConsumableRules.is_supported_healing(hybrid)
+		and ConsumableRules.is_supported_timed_buff(hybrid))
 	check_true("meal waits for the preparation loop",
 		not ConsumableRules.is_supported_healing(meal))
 	check_true("a pure Energy tonic is supported",
@@ -35,6 +37,8 @@ func _pure_rules() -> void:
 	check_eq("Energy recovery clamps to the five-point budget",
 		ConsumableRules.restored_energy(energy, 4, 5), 1)
 	check_eq("full Energy wastes nothing", ConsumableRules.restored_energy(energy, 5, 5), 0)
+	check_eq("hybrid preview names both effects",
+		ConsumableRules.effect_summary(hybrid), "Restores 15 HP · +4 DEF for 4 rounds")
 
 
 func _autoload_consumption() -> void:
@@ -75,9 +79,43 @@ func _energy_item_action() -> void:
 		not encounter.use_energy_item("bamboo_tonic", 3, false).action_resolved)
 
 
+func _structured_meal_actions() -> void:
+	var enemy := {"id": "mushroom", "name": "Mushroom", "maxHp": 100,
+		"atk": 6, "def": 1, "speed": 3}
+	var curry := {"id": "spicy_curry", "kind": "consumable",
+		"buffType": "atk", "buffValue": 6, "buffDuration": 3}
+	var offense := CombatEncounter.new(enemy, 12, 12, 6, 2, 5)
+	offense.begin_player_round()
+	var curry_result := offense.use_combat_item(curry, false)
+	check_eq("curry applies authored ATK and duration",
+		Vector2i(curry_result.buff_value, curry_result.buff_rounds), Vector2i(6, 3))
+	check_eq("curry changes combat attack math", offense.effective_atk(), 12)
+	check_true("active curry cannot be wasted", not offense.can_use_combat_item(curry))
+
+	var sushi := {"id": "salmon_sushi", "kind": "consumable", "heal": 35,
+		"buffType": "shield", "buffValue": 20}
+	var guarded := CombatEncounter.new(enemy, 80, 100, 6, 2, 5)
+	guarded.begin_player_round()
+	var sushi_result := guarded.use_combat_item(sushi, false)
+	check_eq("sushi reports clamped healing", sushi_result.player_healed, 20)
+	check_eq("sushi grants its authored Shield", sushi_result.shield_gained, 20)
+	check_true("full HP and full Shield reject sushi",
+		not guarded.can_use_combat_item(sushi))
+
+	var soup := {"id": "stone_soup", "kind": "consumable", "heal": 15,
+		"buffType": "def", "buffValue": 4, "buffDuration": 4}
+	var fortified := CombatEncounter.new(enemy, 100, 100, 6, 2, 5)
+	fortified.begin_player_round()
+	var soup_result := fortified.use_combat_item(soup, false)
+	check_eq("soup remains useful at full HP through its DEF buff", soup_result.player_healed, 0)
+	check_eq("soup applies authored DEF and duration",
+		Vector2i(soup_result.buff_value, soup_result.buff_rounds), Vector2i(4, 4))
+	check_eq("soup changes defense math", fortified.effective_def(), 6)
+
+
 func _finish() -> void:
 	print("")
-	print("PASS — supported HP and Energy items resolve honestly and atomically." \
+	print("PASS — supported recovery and status items resolve honestly and atomically." \
 		if failures == 0 else "FAIL — %d consumable check(s) failed." % failures)
 	quit(1 if failures > 0 else 0)
 

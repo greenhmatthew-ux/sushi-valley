@@ -295,10 +295,19 @@ func _make_card(id: String, qty: int) -> Control:
 		energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		energy_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		vbox.add_child(energy_label)
+	elif ConsumableRules.is_supported_combat_item(def):
+		var combat_label := Label.new()
+		combat_label.text = "Combat only · %s" % ConsumableRules.effect_summary(def)
+		combat_label.tooltip_text = "Use during your turn; limited to one item per turn."
+		combat_label.add_theme_font_size_override("font_size", 9)
+		combat_label.add_theme_color_override("font_color", COL_TEXT)
+		combat_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		combat_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vbox.add_child(combat_label)
 	elif def.get("kind", "") == "consumable":
 		var later_label := Label.new()
 		later_label.text = "Effect not active yet"
-		later_label.tooltip_text = "Meals, timed buffs, shields, and attack items stay stored until their full effect is implemented."
+		later_label.tooltip_text = "Attack items stay stored until their damage effect is implemented."
 		later_label.add_theme_font_size_override("font_size", 9)
 		later_label.add_theme_color_override("font_color", COL_HEADING)
 		later_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

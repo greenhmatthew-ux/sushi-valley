@@ -353,16 +353,12 @@ func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> 
 func _add_item_button(item: Dictionary, qty: int) -> void:
 	var button := Button.new()
 	var item_id := String(item.get("id", ""))
-	var is_energy := ConsumableRules.is_supported_energy(item)
-	var effect := "Restores %d Energy" % int(item.get("buffValue", 0)) if is_energy \
-		else "Restores %d HP" % int(item.get("heal", 0))
+	var effect := ConsumableRules.effect_summary(item)
 	button.text = "%s x%d" % [item.get("name", item_id), qty]
 	button.tooltip_text = "%s\n%s; one item per turn." % [item.get("desc", ""), effect]
 	button.custom_minimum_size = Vector2(90, 28)
 	button.focus_mode = Control.FOCUS_ALL
-	button.disabled = (_encounter.energy >= CombatEncounter.MAX_ENERGY if is_energy \
-		else _encounter.player_hp >= _encounter.player_max_hp) \
-		or not _encounter.can_use_item()
+	button.disabled = not _encounter.can_use_combat_item(item)
 	button.pressed.connect(_on_combat_item.bind(item_id))
 	_action_box.add_child(button)
 
@@ -382,26 +378,27 @@ func _on_combat_item(item_id: String) -> void:
 	if _answered or not _encounter.can_use_item():
 		return
 	var item: Dictionary = DB.item(item_id)
-	var healing := ConsumableRules.restored_hp(item, _encounter.player_hp, _encounter.player_max_hp)
-	var energy_gain := ConsumableRules.restored_energy(
-		item, _encounter.energy, CombatEncounter.MAX_ENERGY)
-	if (healing <= 0 and energy_gain <= 0) or Inv.remove(item_id, 1) != 1:
+	if not _encounter.can_use_combat_item(item) or Inv.remove(item_id, 1) != 1:
 		Bus.toast.emit("That item cannot be used right now.")
 		return
 	_answered = true
-	var result: CombatEncounter.RoundResult
-	if energy_gain > 0:
-		result = _encounter.use_energy_item(item_id, int(item.get("buffValue", 0)), false)
-	else:
-		result = _encounter.use_healing_item(item_id, int(item.get("heal", 0)), false)
+	var result := _encounter.use_combat_item(item, false)
 	for choice in _choices_box.get_children():
 		if choice is Button:
 			(choice as Button).disabled = true
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD)
-	_feedback.text = "%s restored %d Energy." % [item.get("name", item_id), result.energy_restored] \
-		if result.energy_restored > 0 else "%s restored %d HP." % [
-			item.get("name", item_id), result.player_healed]
+	var effects: Array[String] = []
+	if result.player_healed > 0:
+		effects.append("restored %d HP" % result.player_healed)
+	if result.energy_restored > 0:
+		effects.append("restored %d Energy" % result.energy_restored)
+	if result.shield_gained > 0:
+		effects.append("gained %d Shield" % result.shield_gained)
+	if not result.buff_type.is_empty():
+		effects.append("gained +%d %s for %d rounds" % [result.buff_value,
+			result.buff_type.to_upper(), result.buff_rounds])
+	_feedback.text = "%s %s." % [item.get("name", item_id), " and ".join(effects)]
 	_continue_btn.text = "Continue" if _encounter.is_over() else "Act again"
 	_continue_btn.show()
 	_continue_btn.grab_focus()
