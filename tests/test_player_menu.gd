@@ -74,7 +74,24 @@ func _initialize() -> void:
 	var summary: Label = panel.find_child("SkillsSummary", true, false)
 	var skill_cards: Control = panel.find_child("SkillCards", true, false)
 	check_true("skills tab states the six-slot loadout", summary.text.contains("/ 6"))
-	check_eq("fresh profile exposes the three real starter skills", skill_cards.get_child_count(), 3)
+	check_true("skills tab shows the separate Talent Point budget",
+		summary.text.contains("Talent Points"))
+	check_true("fresh profile exposes the three real starter skills",
+		learning.known_ability_defs().size() == 3)
+	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
+	panel.call("_refresh")
+	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)
+	check_true("level 2 exposes an affordable Blade Sweep Talent",
+		sweep_unlock != null and not sweep_unlock.disabled)
+	sweep_unlock.pressed.emit()
+	check_true("Talent control permanently learns the action",
+		"sweep" in learning.profile.build()["unlockedAbilities"])
+	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
+	check_true("Talent unlock is written to disk",
+		"sweep" in talent_saved["build"]["unlockedAbilities"])
+	learning.profile.build()["unlockedAbilities"] = []
+	learning.profile.data["stats"]["xp"] = 0
+	learning.profile.save()
 
 	panel.call("_set_open", false)
 	paused = true

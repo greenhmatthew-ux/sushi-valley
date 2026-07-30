@@ -156,12 +156,20 @@ func _refresh() -> void:
 			or Learning.unspent_attribute_points() <= 0
 
 	var equipped_skills := Learning.equipped_ability_ids()
-	_skills_summary.text = "Active loadout  %d / %d\nBasic Attack is always available." % [
-		equipped_skills.size(), AbilityRules.MAX_SKILLS]
+	_skills_summary.text = (
+		"Active loadout  %d / %d  ·  Talent Points  %d\n"
+		+ "Basic Attack is always available. Talent unlocks are permanent."
+	) % [equipped_skills.size(), AbilityRules.MAX_SKILLS, Learning.unspent_talent_points()]
 	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	_skills_box.add_child(_section_label("Known Actions"))
 	for ability in Learning.known_ability_defs():
 		_skills_box.add_child(_make_skill_card(ability, weapon_type,
 			String(ability.get("id", "")) in equipped_skills))
+	var talents := Learning.next_talent_defs()
+	if not talents.is_empty():
+		_skills_box.add_child(_section_label("Next Talents — one honest action per style"))
+		for ability in talents:
+			_skills_box.add_child(_make_talent_card(ability))
 
 	var items: Array = Inv.entries()
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
@@ -363,6 +371,55 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	return card
 
 
+func _make_talent_card(ability: Dictionary) -> Control:
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel", _card_style())
+	card.custom_minimum_size = Vector2(0, 54)
+	var margin := MarginContainer.new()
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 7)
+	card.add_child(margin)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	margin.add_child(row)
+	var text := VBoxContainer.new()
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(text)
+	var title := Label.new()
+	var role := String(ability.get("role", "adventurer")).capitalize()
+	var cost := int(ability.get("spCost", 0))
+	title.text = "%s  ·  %s  ·  %d TP" % [ability.get("name", "Talent"), role, cost]
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", COL_TEXT)
+	text.add_child(title)
+	var detail := Label.new()
+	var required := String(ability.get("requiredWeaponType", ""))
+	detail.text = "%s weapon  ·  %s" % [required.capitalize(), ability.get("desc", "")]
+	detail.add_theme_font_size_override("font_size", 10)
+	detail.add_theme_color_override("font_color", COL_HEADING)
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	text.add_child(detail)
+	var button := Button.new()
+	button.name = "TalentUnlock_" + String(ability.get("id", ""))
+	button.text = "Unlock"
+	button.custom_minimum_size = Vector2(76, 32)
+	button.focus_mode = Control.FOCUS_ALL
+	button.disabled = Learning.unspent_talent_points() < cost
+	button.tooltip_text = "Earn Talent Points by gaining levels." if button.disabled \
+		else "Permanently learn this action."
+	button.pressed.connect(_on_talent_unlock.bind(String(ability.get("id", ""))))
+	row.add_child(button)
+	return card
+
+
+func _section_label(text: String) -> Label:
+	var label := Label.new()
+	label.text = text
+	label.add_theme_font_size_override("font_size", 13)
+	label.add_theme_color_override("font_color", COL_BORDER)
+	return label
+
+
 func _on_skill_toggle(ability_id: String, equip: bool) -> void:
 	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
 	if Learning.set_ability_equipped(ability_id, equip, weapon_type):
@@ -370,6 +427,13 @@ func _on_skill_toggle(ability_id: String, equip: bool) -> void:
 		Bus.toast.emit("%s %s." % [verb, DB.ability(ability_id).get("name", ability_id)])
 	else:
 		Bus.toast.emit("That ability cannot be equipped right now.")
+
+
+func _on_talent_unlock(ability_id: String) -> void:
+	if Learning.unlock_talent(ability_id):
+		Bus.toast.emit("Talent learned: %s." % DB.ability(ability_id).get("name", ability_id))
+	else:
+		Bus.toast.emit("That talent cannot be unlocked yet.")
 
 
 func _on_attribute_change(attribute: String, delta: int) -> void:

@@ -10,8 +10,12 @@ var abilities := {
 		"requiredWeaponType": "blade"},
 	"guard": {"id": "guard", "type": "block", "starter": true},
 	"focus": {"id": "focus", "type": "heal", "starter": true},
+	"sweep": {"id": "sweep", "type": "attack", "spCost": 1, "role": "samurai",
+		"requiredWeaponType": "blade"},
+	"kunai": {"id": "kunai", "type": "attack", "spCost": 1, "role": "ranger",
+		"requiredWeaponType": "ranged"},
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
-		"requiredWeaponType": "kana"},
+		"spCost": 1, "requiredWeaponType": "kana"},
 }
 
 
@@ -19,6 +23,7 @@ func _initialize() -> void:
 	_sanitize_old_saves()
 	_weapon_and_runtime_gates()
 	_six_slot_mutation()
+	_talent_unlocks()
 	_finish()
 
 
@@ -60,6 +65,28 @@ func _six_slot_mutation() -> void:
 		not AbilityRules.set_equipped(full_build, "strike", true, abilities, "blade"))
 	check_eq("full loadout remains capped at six",
 		full_build["skills"].size(), AbilityRules.MAX_SKILLS)
+
+
+func _talent_unlocks() -> void:
+	var build := {"skills": ["guard"], "unlockedAbilities": []}
+	check_eq("level 1 earns no Talent Points",
+		AbilityRules.unspent_talent_points(1, build, abilities), 0)
+	check_true("a supported talent cannot unlock before its point is earned",
+		not AbilityRules.unlock_talent("sweep", 1, build, abilities))
+	check_true("level 2 can permanently unlock Blade Sweep",
+		AbilityRules.unlock_talent("sweep", 2, build, abilities))
+	check_true("unlocked talent becomes known", AbilityRules.is_known(abilities["sweep"], build))
+	check_eq("the unlock consumes its Talent Point",
+		AbilityRules.unspent_talent_points(2, build, abilities), 0)
+	check_true("the same Talent cannot be purchased twice",
+		not AbilityRules.unlock_talent("sweep", 3, build, abilities))
+	check_true("unresolved buffs cannot be sold as Talents",
+		not AbilityRules.unlock_talent("rune_ward", 3, build, abilities))
+	var choices := AbilityRules.next_talent_defs(
+		2, {"skills": [], "unlockedAbilities": []}, abilities,
+		["sweep", "kunai", "rune_ward"])
+	check_eq("next choices expose one honest action per role",
+		choices.map(func(a): return a["id"]), ["sweep", "kunai"])
 
 
 func _finish() -> void:

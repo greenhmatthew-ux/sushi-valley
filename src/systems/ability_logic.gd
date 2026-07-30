@@ -8,6 +8,10 @@ extends RefCounted
 
 const MAX_SKILLS := 6
 const RUNTIME_TYPES := ["attack", "block", "heal"]
+const UNRESOLVED_EFFECT_FIELDS := [
+	"buffType", "counterDamage", "debuffType", "lifestealPct",
+	"cooldownTurns", "maxUsesPerTurn",
+]
 
 
 static func sanitize_build(build: Dictionary, abilities: Dictionary) -> void:
@@ -50,6 +54,73 @@ static func weapon_matches(ability: Dictionary, weapon_type: String) -> bool:
 
 static func is_runtime_supported(ability: Dictionary) -> bool:
 	return String(ability.get("type", "")) in RUNTIME_TYPES
+
+
+## Talent purchases are stricter than old-save/runtime filtering: never sell an action whose
+## authored secondary effect the current encounter would silently ignore.
+static func is_honest_talent(ability: Dictionary) -> bool:
+	if not is_runtime_supported(ability) or bool(ability.get("starter", false)) \
+			or int(ability.get("spCost", 0)) <= 0:
+		return false
+	for field in UNRESOLVED_EFFECT_FIELDS:
+		if ability.has(field):
+			return false
+	return true
+
+
+static func talent_points_earned(level: int) -> int:
+	return maxi(0, level - 1)
+
+
+static func talent_points_spent(build: Dictionary, abilities: Dictionary) -> int:
+	var spent := 0
+	for raw_id in build.get("unlockedAbilities", []):
+		var ability: Dictionary = abilities.get(String(raw_id), {})
+		spent += maxi(0, int(ability.get("spCost", 0)))
+	return spent
+
+
+static func unspent_talent_points(level: int, build: Dictionary,
+		abilities: Dictionary) -> int:
+	return maxi(0, talent_points_earned(level) - talent_points_spent(build, abilities))
+
+
+static func can_unlock_talent(ability: Dictionary, level: int, build: Dictionary,
+		abilities: Dictionary) -> bool:
+	if not is_honest_talent(ability) or is_known(ability, build):
+		return false
+	if level < int(ability.get("requiredLevel", 1)):
+		return false
+	return unspent_talent_points(level, build, abilities) >= int(ability.get("spCost", 0))
+
+
+static func unlock_talent(ability_id: String, level: int, build: Dictionary,
+		abilities: Dictionary) -> bool:
+	if not abilities.has(ability_id):
+		return false
+	var ability: Dictionary = abilities[ability_id]
+	if not can_unlock_talent(ability, level, build, abilities):
+		return false
+	build["unlockedAbilities"].append(ability_id)
+	return true
+
+
+## Keep the choice readable: show the earliest honest unknown action for each authored role.
+static func next_talent_defs(level: int, build: Dictionary, abilities: Dictionary,
+		authored_order: Array = []) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var roles_seen := {}
+	var ids: Array = authored_order if not authored_order.is_empty() else abilities.keys()
+	for raw_id in ids:
+		var ability: Dictionary = abilities.get(String(raw_id), {})
+		var role := String(ability.get("role", "adventurer"))
+		if roles_seen.has(role) or is_known(ability, build) or not is_honest_talent(ability):
+			continue
+		if level < int(ability.get("requiredLevel", 1)):
+			continue
+		roles_seen[role] = true
+		out.append(ability)
+	return out
 
 
 static func can_equip(ability: Dictionary, build: Dictionary, weapon_type: String) -> bool:

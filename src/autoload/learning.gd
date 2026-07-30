@@ -84,6 +84,30 @@ func set_ability_equipped(ability_id: String, equipped: bool, weapon_type: Strin
 	return true
 
 
+func unspent_talent_points() -> int:
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	var level := PlayerStats.level_from_xp(xp)
+	return AbilityRules.unspent_talent_points(level, profile.build(), DB.abilities)
+
+
+func next_talent_defs() -> Array[Dictionary]:
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	var level := PlayerStats.level_from_xp(xp)
+	return AbilityRules.next_talent_defs(
+		level, profile.build(), DB.abilities, DB.ability_order)
+
+
+func unlock_talent(ability_id: String) -> bool:
+	var build := profile.build()
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	var level := PlayerStats.level_from_xp(xp)
+	if not AbilityRules.unlock_talent(ability_id, level, build, DB.abilities):
+		return false
+	profile.save()
+	Bus.ability_loadout_changed.emit()
+	return true
+
+
 # --- combat attributes ----------------------------------------------------
 
 func allocations() -> Dictionary:
