@@ -9,10 +9,11 @@ extends Node2D
 const GRASS_ATLAS := Vector2i(4, 0)   # serene_village grass tile in the Ground layer
 const MEADOW_SEED := 20260728
 
-# Sprout decal coords (same restrained meadow set used in the wilds, for a consistent look).
-const TUFTS: Array[Vector2i] = [Vector2i(5, 1), Vector2i(6, 1)]
-const FLOWERS: Array[Vector2i] = [Vector2i(6, 2), Vector2i(6, 3), Vector2i(7, 3)]
-const PEBBLE := Vector2i(6, 4)
+# Complete, standalone Serene Village flower frames. These are native to the terrain sheet,
+# unlike the old Sprout decals, so the village and its exposed edge underlay share one palette.
+const MEADOW_FLOWERS: Array[Vector2i] = [
+	Vector2i(2, 13), Vector2i(17, 24), Vector2i(17, 25), Vector2i(18, 25)]
+const FLOWER_BEDS: Array[Vector2i] = [Vector2i(2, 14), Vector2i(18, 24)]
 
 @onready var ground: TileMapLayer = $Ground
 
@@ -44,8 +45,8 @@ func _build_edge_underlay() -> void:
 	move_child(edge_ground, 0)
 
 
-## Texture the flat grass fields the same way the wilds does: a restrained wash of Sprout
-## tufts, a few clustered wildflower beds, rare pebbles — placed ONLY on plain grass tiles
+## Texture the flat grass fields with a restrained wash of native Serene Village blossoms
+## and a few clustered flower beds — placed ONLY on plain grass tiles
 ## and never under a prop/building. Purely decorative, generated on entry, so the authored
 ## .tscn stays untouched. Low density on purpose (Matthew: areas should not be dense).
 func _build_meadow() -> void:
@@ -55,11 +56,11 @@ func _build_meadow() -> void:
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(16, 16)
 	var src := TileSetAtlasSource.new()
-	src.texture = preload("res://assets/sprites/sprout-basic-grass-biome.png")
+	src.texture = preload("res://assets/tilesets/serene_village.png")
 	src.texture_region_size = Vector2i(16, 16)
-	var coords: Array[Vector2i] = [PEBBLE]
-	coords.append_array(TUFTS)
-	coords.append_array(FLOWERS)
+	var coords: Array[Vector2i] = []
+	coords.append_array(MEADOW_FLOWERS)
+	coords.append_array(FLOWER_BEDS)
 	for c in coords:
 		src.create_tile(c)
 	ts.add_source(src, 0)
@@ -75,19 +76,19 @@ func _build_meadow() -> void:
 
 	var rng := RandomNumberGenerator.new()
 	rng.seed = MEADOW_SEED
-	# a light wash of tufts + rare pebbles across open grass
+	# A light wash of tiny blossoms across open grass, plus a few larger accents.
 	for cell in grass:
 		var roll := rng.randf()
-		if roll < 0.09:
-			detail.set_cell(cell, 0, TUFTS[rng.randi() % TUFTS.size()])
-		elif roll < 0.098:
-			detail.set_cell(cell, 0, PEBBLE)
+		if roll < 0.06:
+			detail.set_cell(cell, 0, MEADOW_FLOWERS[rng.randi() % MEADOW_FLOWERS.size()])
+		elif roll < 0.066:
+			detail.set_cell(cell, 0, FLOWER_BEDS[rng.randi() % FLOWER_BEDS.size()])
 	# a few clustered wildflower beds for colour (grass-only, skips blocked)
 	for i in 8:
 		if grass.is_empty():
 			break
 		var center: Vector2i = grass[rng.randi() % grass.size()]
-		var species: Vector2i = FLOWERS[rng.randi() % FLOWERS.size()]
+		var species: Vector2i = FLOWER_BEDS[rng.randi() % FLOWER_BEDS.size()]
 		for j in rng.randi_range(3, 6):
 			var c := center + Vector2i(rng.randi_range(-2, 2), rng.randi_range(-1, 1))
 			if ground.get_cell_atlas_coords(c) == GRASS_ATLAS and not blocked.has(c):
@@ -113,8 +114,8 @@ func _soften_path_edges(detail: TileMapLayer, blocked: Dictionary, rng: RandomNu
 					and ground.get_cell_atlas_coords(probe) != GRASS_ATLAS:
 				on_edge = true
 				break
-		if on_edge and rng.randf() < 0.55:
-			detail.set_cell(cell, 0, TUFTS[rng.randi() % TUFTS.size()])
+		if on_edge and rng.randf() < 0.35:
+			detail.set_cell(cell, 0, MEADOW_FLOWERS[rng.randi() % MEADOW_FLOWERS.size()])
 
 
 ## Each house gets a small tended yard — flower beds flanking the door — so the buildings
@@ -140,7 +141,7 @@ func _build_house_yards(detail: TileMapLayer, blocked: Dictionary, rng: RandomNu
 					var c: Vector2i = base + Vector2i(side * dx, dy)
 					if ground.get_cell_atlas_coords(c) == GRASS_ATLAS and not blocked.has(c) \
 							and detail.get_cell_source_id(c) == -1:
-						detail.set_cell(c, 0, FLOWERS[rng.randi() % FLOWERS.size()])
+						detail.set_cell(c, 0, FLOWER_BEDS[rng.randi() % FLOWER_BEDS.size()])
 						planted += 1
 
 

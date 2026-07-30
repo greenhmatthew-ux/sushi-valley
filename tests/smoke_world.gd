@@ -30,10 +30,12 @@ func _run() -> void:
 	var player: CharacterBody2D = world.get_node_or_null("Props/Player")
 	var ground: TileMapLayer = world.get_node_or_null("Ground")
 	var edge_ground: TileMapLayer = world.get_node_or_null("EdgeGround")
+	var meadow: TileMapLayer = world.get_node_or_null("Meadow")
 	var gate: Node = world.get_node_or_null("Props/LessonGate")
 	check_true("harness has a Player", player != null)
 	check_true("harness has a Ground layer", ground != null)
 	check_true("world has a textured edge underlay", edge_ground != null)
+	check_true("world has authored meadow detail", meadow != null)
 	check_true("harness has a recall gate", gate != null)
 
 	if player == null or ground == null or gate == null:
@@ -49,6 +51,11 @@ func _run() -> void:
 			edge_ground.get_cell_atlas_coords(Vector2i.ZERO) == Vector2i(4, 0))
 		check_true("edge underlay stays behind authored paths and props",
 			edge_ground.z_index < ground.z_index)
+	if meadow != null:
+		var meadow_source: TileSetAtlasSource = meadow.tile_set.get_source(0)
+		check_true("village meadow uses the native Serene Village sheet",
+			meadow_source.texture.resource_path ==
+			"res://assets/tilesets/serene_village.png")
 
 	# --- the gate starts closed ---
 	var barrier: CollisionShape2D = gate.get_node("Barrier/Collision")
