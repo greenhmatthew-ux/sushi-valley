@@ -817,7 +817,8 @@ func _build_scaffold() -> void:
 	vbox.add_child(_bag_view)
 
 	var bag_hint := Label.new()
-	bag_hint.text = "Select gear to equip it. Level requirements explain locked choices."
+	bag_hint.name = "BagHint"
+	bag_hint.text = "Equip gear, use healing food, or inspect labeled combat-only items."
 	bag_hint.add_theme_font_size_override("font_size", 12)
 	bag_hint.add_theme_color_override("font_color", COL_HEADING)
 	_bag_view.add_child(bag_hint)

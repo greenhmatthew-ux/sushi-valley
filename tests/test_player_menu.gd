@@ -39,6 +39,11 @@ func _initialize() -> void:
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	check_true("menu shell stays inside the 640x360 viewport",
 		viewport_rect.encloses(shell.get_global_rect()))
+	var bag_hint: Label = panel.find_child("BagHint", true, false)
+	check_true("Bag help describes its mixed item actions",
+		bag_hint.text.contains("Equip gear")
+		and bag_hint.text.contains("healing food")
+		and bag_hint.text.contains("combat-only"))
 	var alias_icon := panel.call("_icon_node", "spicy_curry") as TextureRect
 	check_eq("Bag resolves authored item icon aliases",
 		alias_icon.texture.resource_path, "res://assets/icons/items/noodle_bowl.png")
