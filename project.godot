@@ -24,6 +24,7 @@ Audio="*res://src/autoload/audio.gd"
 SaveGame="*res://src/autoload/save_game.gd"
 Learning="*res://src/autoload/learning.gd"
 Inv="*res://src/autoload/inv.gd"
+Crafting="*res://src/autoload/crafting.gd"
 Transitions="*res://src/autoload/transitions.gd"
 Settings="*res://src/autoload/settings.gd"
 

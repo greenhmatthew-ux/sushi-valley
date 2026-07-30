@@ -35,6 +35,10 @@ signal inventory_changed()
 ## Fired after the six-slot active ability loadout changes.
 signal ability_loadout_changed()
 
+# --- crafting ---
+signal crafting_open(station: String)
+signal crafting_changed(station: String)
+
 # --- settings ---
 ## Camera zoom preference changed. The live player camera listens and retunes itself,
 ## so no scene needs to hold a reference back to the Settings autoload.

@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bgwii8qjekjdq" path="res://assets/props/pot.png" id="31_pot"]
 [ext_resource type="Texture2D" uid="uid://d0lkhqnvw5vo1" path="res://assets/props/crate.png" id="32_crate"]
 [ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="38_house"]
+[ext_resource type="PackedScene" path="res://src/entities/crafting_station.tscn" id="39_crafting"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1375,11 +1376,11 @@ texture = ExtResource("30_bar")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
-[node name="Pot" parent="Props" unique_id=1753053792 instance=ExtResource("20_prop")]
+[node name="KitchenPot" parent="Props" unique_id=1753053792 instance=ExtResource("39_crafting")]
 position = Vector2(232, 300)
-texture = ExtResource("31_pot")
-foot_size = Vector2(10, 5)
-foot_offset = Vector2(0, -2)
+station = "kitchen"
+station_name = "Kitchen Pot"
+sprite = ExtResource("31_pot")
 
 [node name="Crate" parent="Props" unique_id=1963998016 instance=ExtResource("20_prop")]
 position = Vector2(596, 300)

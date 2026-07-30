@@ -82,6 +82,16 @@ func use_healing_item(item_id: String, current_hp: int, max_hp: int) -> int:
 	return restored
 
 
+func craft_transaction(inputs: Array, output_id: String, output_qty: int) -> bool:
+	if not logic.craft_transaction(inputs, output_id, output_qty):
+		return false
+	for input in inputs:
+		Bus.item_removed.emit(String(input.get("item", "")), int(input.get("qty", 0)))
+	Bus.item_added.emit(output_id, output_qty)
+	Bus.inventory_changed.emit()
+	return true
+
+
 # --- equipment -------------------------------------------------------------
 
 func equipped_id(slot: String) -> String:

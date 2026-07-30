@@ -84,6 +84,43 @@ func entries() -> Array:
 	return out
 
 
+## Validate and apply a recipe as one bag mutation. Inputs are aggregated first, then
+## output capacity is checked against the post-consumption bag; failure changes nothing.
+func can_craft_transaction(inputs: Array, output_id: String, output_qty: int,
+		amount: int = 1) -> bool:
+	if output_id.is_empty() or output_qty <= 0 or amount <= 0:
+		return false
+	var required := {}
+	for input in inputs:
+		var item_id := String(input.get("item", ""))
+		var qty := int(input.get("qty", 0)) * amount
+		if item_id.is_empty() or qty <= 0:
+			return false
+		required[item_id] = int(required.get(item_id, 0)) + qty
+	for item_id in required:
+		if count(item_id) < int(required[item_id]):
+			return false
+	var output_after_inputs := count(output_id) - int(required.get(output_id, 0))
+	return output_after_inputs + output_qty * amount <= MAX_STACK
+
+
+func craft_transaction(inputs: Array, output_id: String, output_qty: int,
+		amount: int = 1) -> bool:
+	if not can_craft_transaction(inputs, output_id, output_qty, amount):
+		return false
+	var next_bag := bag.duplicate(true)
+	for input in inputs:
+		var item_id := String(input.get("item", ""))
+		var left := int(next_bag.get(item_id, 0)) - int(input.get("qty", 0)) * amount
+		if left <= 0:
+			next_bag.erase(item_id)
+		else:
+			next_bag[item_id] = left
+	next_bag[output_id] = int(next_bag.get(output_id, 0)) + output_qty * amount
+	bag = next_bag
+	return true
+
+
 ## Sum of every stack — the number compared against capacity.
 func total_units() -> int:
 	var units := 0

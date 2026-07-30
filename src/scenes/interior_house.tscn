@@ -93,7 +93,7 @@ spawn_id = "interior_entry"
 
 [node name="Loot" parent="Entities" instance=ExtResource("8_pickup")]
 position = Vector2(168, 60)
-item_id = "rice_ball"
+item_id = "rice"
 qty = 2
 
 [node name="TeacherDining" parent="Entities" instance=ExtResource("9_teacher")]
