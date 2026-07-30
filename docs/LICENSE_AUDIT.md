@@ -42,6 +42,15 @@ The Blood Blade Talent icon is the unmodified Ninja Adventure source
 `Ui/Skill Icon/Spell/Cut.png`, copied to
 `assets/icons/abilities/blood_blade.png` under the same CC0 1.0 license.
 
+The first follow-up Talent tier uses four more unmodified Ninja Adventure sources:
+
+| Talent | Runtime asset | Original source |
+| --- | --- | --- |
+| Iaido Cut | `assets/icons/abilities/iaido.png` | `Ui/Skill Icon/Spell/MagicWeapon.png` |
+| Pinning Shot | `assets/icons/abilities/pinning_shot.png` | `Ui/Skill Icon/Items & Weapon/Arrow.png` |
+| Glyph Storm | `assets/icons/abilities/glyph_storm.png` | `Ui/Skill Icon/Spell/BookThunder.png` |
+| Fortress Wall | `assets/icons/abilities/fortress.png` | `Ui/Skill Icon/Items & Weapon/Guard.png` |
+
 The ingredient-cache sprite is the unmodified two-frame Ninja Adventure source
 `Items/Treasure/LittleTreasureChest.png`, copied to
 `assets/objects/ninja_little_treasure_chest.png`. Runtime uses its closed 16x16 frame.

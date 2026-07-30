@@ -9,8 +9,9 @@ verified against the running scenes — not an aspirational or inherited list.
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
   merchant), hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
-  furniture and exit door, and the eight rendered Talent icons (Blade Sweep, Kunai Toss,
-  Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade), plus the 16px treasure
+  furniture and exit door, and the twelve rendered Talent icons (Blade Sweep, Kunai Toss,
+  Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade, Iaido Cut, Pinning Shot,
+  Glyph Storm, Fortress Wall), plus the 16px treasure
   chest used for authored ingredient caches and the tied sack used for Garden Compost.
   Ki Focus, Rune Ward,
   Riposte, and Blood Blade are the unmodified
@@ -30,7 +31,8 @@ verified against the running scenes — not an aspirational or inherited list.
 ## Not currently verified
 
 - The 25 ability icons not named `sweep`, `kunai`, `kana_bolt`, `brace`, `ki_focus`,
-  `rune_ward`, `riposte`, or `blood_blade` remain unwired and
+  `rune_ward`, `riposte`, `blood_blade`, `iaido`, `pinning_shot`, `glyph_storm`, or
+  `fortress` remain unwired and
   provenance-unverified. Verify or replace each before rendering it in the Skills UI.
 
 ## Removed for licensing (2026-07)

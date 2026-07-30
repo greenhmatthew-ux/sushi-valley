@@ -39,7 +39,7 @@ const ABILITY_ICON_DIR := "res://assets/icons/abilities/"
 ## Talent-art slice. Do not render the remaining legacy ability icons until audited.
 const VERIFIED_ABILITY_ICONS := [
 	"sweep", "kunai", "kana_bolt", "brace", "ki_focus", "rune_ward", "riposte",
-	"blood_blade",
+	"blood_blade", "iaido", "pinning_shot", "glyph_storm", "fortress",
 ]
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"

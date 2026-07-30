@@ -155,6 +155,15 @@ func _initialize() -> void:
 	check_true("audited Blood Blade art renders on its Talent card",
 		drain_preview.find_child("AbilityIcon_blood_blade", true, false) != null)
 	drain_preview.free()
+	for ability_id in ["iaido", "pinning_shot", "glyph_storm", "fortress"]:
+		var followup_preview: Control = panel.call("_make_talent_card", db.ability(ability_id))
+		var followup_icon := followup_preview.find_child(
+			"AbilityIcon_" + ability_id, true, false) as TextureRect
+		check_true("audited %s follow-up art renders" % ability_id,
+			followup_icon != null
+			and followup_icon.texture.resource_path == (
+				"res://assets/icons/abilities/%s.png" % ability_id))
+		followup_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)
@@ -170,6 +179,8 @@ func _initialize() -> void:
 		iaido_unlock != null and iaido_unlock.disabled and iaido_unlock.text == "Need 2 TP")
 	check_true("multi-hit Talent strength is visible before purchase",
 		iaido_detail != null and iaido_detail.text.contains("Attack 11 x2 hits"))
+	check_true("the next Samurai Talent now has audited art",
+		panel.find_child("AbilityIcon_iaido", true, false) != null)
 	check_true("audited Talent art remains visible after learning the action",
 		panel.find_child("AbilityIcon_sweep", true, false) != null)
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
