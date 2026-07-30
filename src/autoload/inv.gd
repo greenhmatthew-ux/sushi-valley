@@ -70,6 +70,66 @@ func encumbrance() -> Dictionary:
 	return logic.encumbrance()
 
 
+# --- equipment -------------------------------------------------------------
+
+func equipped_id(slot: String) -> String:
+	return logic.equipped_id(slot)
+
+
+func equipment() -> Dictionary:
+	return logic.equipment_dict()
+
+
+func equipped_def(slot: String) -> Dictionary:
+	var item_id := equipped_id(slot)
+	return {} if item_id.is_empty() else DB.item(item_id)
+
+
+func equipped_defs() -> Array[Dictionary]:
+	var defs: Array[Dictionary] = []
+	for slot in InventoryLogic.EQUIPMENT_SLOTS:
+		var item_id := logic.equipped_id(slot)
+		if item_id.is_empty():
+			continue
+		var item: Dictionary = DB.item(item_id)
+		if not item.is_empty():
+			defs.append(item)
+	return defs
+
+
+## Equip one held gear item after validating its authored slot and level floor.
+## InventoryLogic performs the actual swap atomically, including two-hand conflicts.
+func equip(item_id: String) -> bool:
+	var item: Dictionary = DB.item(item_id)
+	if item.get("kind", "") != "gear":
+		return false
+	var slot := String(item.get("slot", ""))
+	if slot.is_empty() or not has(item_id):
+		return false
+	if _player_level() < int(item.get("requiredLevel", 1)):
+		return false
+	var weapon_handedness := String(equipped_def("weapon").get("handedness", ""))
+	if not logic.equip(item_id, slot, String(item.get("handedness", "")),
+			weapon_handedness):
+		return false
+	Bus.inventory_changed.emit()
+	return true
+
+
+func unequip(slot: String) -> bool:
+	if not logic.unequip(slot):
+		return false
+	Bus.inventory_changed.emit()
+	return true
+
+
+func _player_level() -> int:
+	var xp := 0
+	if Learning.profile != null:
+		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
+	return PlayerStats.level_from_xp(xp)
+
+
 # --- coins ------------------------------------------------------------------
 
 var coins: int:
@@ -102,9 +162,9 @@ func to_dict() -> Dictionary:
 func load_dict(data: Dictionary) -> void:
 	_restoring = true
 	logic.load_dict(data)
-	_restoring = false
 	Bus.coins_changed.emit(logic.coins)
 	Bus.inventory_changed.emit()
+	_restoring = false
 
 
 func reset() -> void:

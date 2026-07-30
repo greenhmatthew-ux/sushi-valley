@@ -51,6 +51,7 @@ func _ready() -> void:
 	# Levelling up mid-session should widen the health bar immediately.
 	Bus.xp_gained.connect(func(_a): _sync_stats(false))
 	Bus.card_reviewed.connect(func(_i, _g, _c): _sync_stats(false))
+	Bus.inventory_changed.connect(func(): _sync_stats(false))
 	Bus.player_hp_changed.emit(hp, MAX_HP)
 	# Camera framing is a saved preference, not a scene constant — apply it on spawn and
 	# keep following it, so changing zoom in settings updates the live view immediately.
@@ -65,13 +66,15 @@ func _sync_stats(heal: bool) -> void:
 	var xp := 0
 	if Learning.profile != null:
 		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
-	var stats := PlayerStats.from_xp(xp)
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs())
 	var new_max: int = stats["max_hp"]
-	if new_max == MAX_HP and not heal:
+	var new_atk: int = stats["atk"]
+	var new_def: int = stats["def"]
+	if new_max == MAX_HP and new_atk == atk and new_def == defense and not heal:
 		return
 	MAX_HP = new_max
-	atk = stats["atk"]
-	defense = stats["def"]
+	atk = new_atk
+	defense = new_def
 	hp = MAX_HP if heal else mini(hp, MAX_HP)
 	Bus.player_hp_changed.emit(hp, MAX_HP)
 

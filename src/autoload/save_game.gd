@@ -10,9 +10,9 @@ extends Node
 ## --- Save document shape (Slice: Persistence) ---
 ## The file is a single versioned document that wraps every persisted subsystem:
 ##
-##   { "version": 2,
+##   { "version": 3,
 ##     "learning":  { ...slim LearningProfile save dict (cards/flags/stats/build)... },
-##     "inventory": { ...InventoryLogic.to_dict(): bag + coins... },
+##     "inventory": { ...InventoryLogic.to_dict(): bag + coins + equipment... },
 ##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" } } }
 ##
 ## MIGRATION v1 -> v2 (inventory). v1 never persisted the bag or the coin purse at all, so
@@ -21,6 +21,10 @@ extends Node
 ## with its gathered items gone. A v1 document simply has no "inventory" key; it loads as an
 ## empty bag, which is exactly the state it effectively described. No data is reinterpreted,
 ## so the upgrade is lossless in both directions.
+##
+## MIGRATION v2 -> v3 (equipment). v2 inventory sections contain only `inventory` and
+## `coins`. InventoryLogic defaults a missing `equipment` map to {}, so every v2 save keeps
+## its bag and purse unchanged and begins with the same unequipped loadout it had before.
 ##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).
@@ -31,7 +35,7 @@ extends Node
 ## (flat) profile.json is migrated on the first read: a document with no "learning"
 ## key is treated as the legacy learning dict and wrapped on the next save.
 
-const SAVE_SCHEMA_VERSION := 2
+const SAVE_SCHEMA_VERSION := 3
 const PROFILE_PATH := "user://profile.json"
 
 

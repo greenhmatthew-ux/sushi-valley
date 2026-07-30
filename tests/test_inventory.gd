@@ -17,6 +17,8 @@ func _initialize() -> void:
 	_stack_cap_and_leftover()
 	_coins()
 	_capacity()
+	_equipment_swaps()
+	_full_stack_cannot_delete_displaced_gear()
 	_round_trip()
 	_finish()
 
@@ -101,11 +103,49 @@ func _capacity() -> void:
 	check_eq("encumbrance percent is clamped to 100", inv2.encumbrance()["percent"], 100)
 
 
+func _equipment_swaps() -> void:
+	var inv := InventoryLogic.new()
+	inv.add("wooden_katana")
+	check_true("held weapon equips", inv.equip("wooden_katana", "weapon", "1h"))
+	check_eq("equipped weapon leaves the bag", inv.count("wooden_katana"), 0)
+	check_eq("weapon slot records its item", inv.equipped_id("weapon"), "wooden_katana")
+
+	inv.add("wooden_buckler")
+	check_true("offhand equips beside a one-hand weapon",
+		inv.equip("wooden_buckler", "offhand", "", "1h"))
+	inv.add("bamboo_spear")
+	check_true("two-hand weapon equips", inv.equip("bamboo_spear", "weapon", "2h"))
+	check_eq("two-hand weapon clears offhand", inv.equipped_id("offhand"), "")
+	check_eq("cleared offhand returns to bag", inv.count("wooden_buckler"), 1)
+	check_eq("replaced weapon returns to bag", inv.count("wooden_katana"), 1)
+
+	check_true("offhand can replace a two-hand weapon",
+		inv.equip("wooden_buckler", "offhand", "", "2h"))
+	check_eq("equipping offhand clears two-hand weapon", inv.equipped_id("weapon"), "")
+	check_eq("cleared two-hand weapon returns to bag", inv.count("bamboo_spear"), 1)
+	check_true("unequip returns the offhand", inv.unequip("offhand"))
+	check_eq("unequipped item returns to bag", inv.count("wooden_buckler"), 1)
+
+
+func _full_stack_cannot_delete_displaced_gear() -> void:
+	var inv := InventoryLogic.new()
+	inv.add("straw_hat")
+	inv.equip("straw_hat", "head")
+	inv.add("straw_hat", InventoryLogic.MAX_STACK)
+	inv.add("samurai_helmet")
+	check_true("swap fails when displaced gear has no bag room",
+		not inv.equip("samurai_helmet", "head"))
+	check_eq("failed swap keeps old gear equipped", inv.equipped_id("head"), "straw_hat")
+	check_eq("failed swap keeps new gear in bag", inv.count("samurai_helmet"), 1)
+
+
 func _round_trip() -> void:
 	var inv := InventoryLogic.new()
 	inv.add("rice_ball", 5)
 	inv.add("wild_herb", 3)
 	inv.add_coins(42)
+	inv.add("straw_hat")
+	inv.equip("straw_hat", "head")
 	var saved := inv.to_dict()
 	check_true("save dict carries the coins", saved["coins"] == 42)
 	check_true("save dict carries the bag", saved["inventory"]["rice_ball"] == 5)
@@ -115,6 +155,7 @@ func _round_trip() -> void:
 	check_eq("loaded bag restores counts", loaded.count("rice_ball"), 5)
 	check_eq("loaded bag restores second stack", loaded.count("wild_herb"), 3)
 	check_eq("loaded coins restored", loaded.coins, 42)
+	check_eq("loaded equipment restored", loaded.equipped_id("head"), "straw_hat")
 
 	# A hand-edited save with junk quantities is sanitized on load.
 	var dirty := InventoryLogic.new()

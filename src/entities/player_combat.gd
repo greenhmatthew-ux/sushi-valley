@@ -11,9 +11,8 @@ extends Node2D
 ##
 ## Detection layers: the hitbox masks layer 9 (value 256), the enemy Hurtbox's layer.
 
-## Placeholder attacker stats. The TS build derives ATK from learning level + gear
-## (combatStats()/playerCombatant() in CombatSystem.ts); until Progression/Inventory are
-## wired in, ATK is a flat editor value fed straight into CombatLogic.ability_damage.
+## Fallback for isolated scene/test use. A live Player exposes its learning-and-gear-derived
+## `atk`, which wins over this value when a swing resolves.
 @export var player_atk: int = 6
 
 ## How far in front of the feet the hitbox centers, per facing. Enemy hurtboxes sit ~8px
@@ -59,7 +58,9 @@ func _swing() -> void:
 		if enemy == null or struck.has(enemy) or not enemy.has_method("take_damage"):
 			continue
 		struck[enemy] = true
-		var dmg := CombatLogic.ability_damage(CombatLogic.BASIC_ATTACK_POWER, player_atk, enemy.enemy_def)
+		var attack_stat := int(_player.atk) if _player != null and "atk" in _player else player_atk
+		var dmg := CombatLogic.ability_damage(
+			CombatLogic.BASIC_ATTACK_POWER, attack_stat, enemy.enemy_def)
 		enemy.take_damage(dmg)
 
 

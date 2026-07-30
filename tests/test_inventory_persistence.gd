@@ -33,8 +33,10 @@ func _initialize() -> void:
 	inv.reset()
 
 	_round_trips_items_and_coins()
+	await _equipment_updates_live_player_stats()
 	_autosaves_without_an_explicit_quit()
 	_v1_save_still_loads()
+	_v2_save_defaults_to_empty_equipment()
 	_learning_save_does_not_clobber_the_bag()
 
 	save_game.clear()
@@ -48,9 +50,11 @@ func _round_trips_items_and_coins() -> void:
 	inv.add("spore_cap", 3)
 	inv.add("rice_ball", 2)
 	inv.add_coins(137)
+	inv.add("wooden_katana", 1)
+	check_true("test weapon equips", inv.equip("wooden_katana"))
 
 	var snapshot: Dictionary = save_game.build_snapshot({}, Vector2(10, 20), "left", inv.to_dict())
-	check_eq("snapshot records the new schema version", int(snapshot["version"]), 2)
+	check_eq("snapshot records the new schema version", int(snapshot["version"]), 3)
 	check_true("snapshot carries an inventory section", snapshot.has("inventory"))
 
 	# Wipe the live bag, then restore from the snapshot the way world.gd does.
@@ -62,6 +66,31 @@ func _round_trips_items_and_coins() -> void:
 	check_eq("items survive the round trip", inv.count("spore_cap"), 3)
 	check_eq("second stack survives too", inv.count("rice_ball"), 2)
 	check_eq("coins survive the round trip", inv.coins, 137)
+	check_eq("equipped weapon survives the round trip",
+		inv.equipped_id("weapon"), "wooden_katana")
+
+
+func _equipment_updates_live_player_stats() -> void:
+	inv.reset()
+	var player: Node = load("res://src/entities/player.tscn").instantiate()
+	root.add_child(player)
+	await process_frame
+	var base_atk: int = player.atk
+	var base_hp: int = player.MAX_HP
+
+	inv.add("wooden_katana")
+	check_true("live test weapon equips", inv.equip("wooden_katana"))
+	inv.add("straw_hat")
+	check_true("live test armor equips", inv.equip("straw_hat"))
+	await process_frame
+	check_eq("equipped weapon updates live attack", player.atk, base_atk + 2)
+	check_eq("equipped armor updates live max HP", player.MAX_HP, base_hp + 6)
+
+	check_true("live weapon unequips", inv.unequip("weapon"))
+	await process_frame
+	check_eq("unequipping restores live attack", player.atk, base_atk)
+	player.queue_free()
+	await process_frame
 
 
 ## The bag must persist on change, not only on a clean quit — a crash should not cost an hour.
@@ -95,6 +124,22 @@ func _v1_save_still_loads() -> void:
 	check_eq("its player placement is preserved", restored["position"], Vector2(5.0, 6.0))
 	check_true("its learning flags are preserved",
 		(restored["learning"] as Dictionary).get("flags", {}).has("quest_stock_the_stall_started"))
+
+
+## v2 persisted bag + coins but had no equipment map. It must retain both and default
+## the new loadout to empty rather than rejecting or reinterpreting the save.
+func _v2_save_defaults_to_empty_equipment() -> void:
+	var v2 := {
+		"version": 2,
+		"learning": {},
+		"inventory": {"inventory": {"straw_hat": 1}, "coins": 9},
+		"world": {},
+	}
+	var restored: Dictionary = save_game.apply_snapshot(v2)
+	inv.load_dict(restored["inventory"])
+	check_eq("v2 bag still loads", inv.count("straw_hat"), 1)
+	check_eq("v2 coins still load", inv.coins, 9)
+	check_true("v2 begins with empty equipment", inv.equipment().is_empty())
 
 
 ## Learning saves fire constantly (every review). They must not wipe the bag.

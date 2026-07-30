@@ -8,9 +8,8 @@ extends CanvasLayer
 ## fixed-height grid, and only overflow scrolls. Reads item names / icons / kinds
 ## from DB and quantities from the Inv autoload.
 ##
-## Standalone: this scene is NOT yet wired into ui_layer.tscn (the polish slice
-## owns that file). Instance it once under UILayer — or add a CanvasLayer child
-## pointing at this script — and it self-registers on the Bus.
+## Gear cards expose one clear Equip action. Equipped items sit in a compact strip
+## above the bag and can be removed there, so equipment never becomes hidden state.
 
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
@@ -36,6 +35,8 @@ const ICON_DIR := "res://assets/icons/items/"
 var _open := false
 var _root: Control
 var _coins_label: Label
+var _equipment_box: HFlowContainer
+var _equipment_empty: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
@@ -82,6 +83,14 @@ func _refresh() -> void:
 
 	for child in _grid.get_children():
 		child.queue_free()
+	for child in _equipment_box.get_children():
+		child.queue_free()
+
+	var equipped: Dictionary = Inv.equipment()
+	_equipment_empty.visible = equipped.is_empty()
+	for slot in InventoryLogic.EQUIPMENT_SLOTS:
+		if equipped.has(slot):
+			_equipment_box.add_child(_make_equipped_button(slot, String(equipped[slot])))
 
 	var items: Array = Inv.entries()
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
@@ -133,7 +142,66 @@ func _make_card(id: String, qty: int) -> Control:
 	qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(qty_label)
 
+	if def.get("kind", "") == "gear":
+		var stats_label := Label.new()
+		stats_label.text = _stats_line(PlayerStats.scaled_item_stats(def, _player_level()))
+		stats_label.add_theme_font_size_override("font_size", 10)
+		stats_label.add_theme_color_override("font_color", COL_TEXT)
+		stats_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vbox.add_child(stats_label)
+
+		var equip_button := Button.new()
+		var required_level := int(def.get("requiredLevel", 1))
+		equip_button.text = "Equip" if required_level <= _player_level() \
+			else "Lv %d" % required_level
+		equip_button.disabled = required_level > _player_level()
+		equip_button.focus_mode = Control.FOCUS_ALL
+		equip_button.pressed.connect(_on_equip.bind(id))
+		vbox.add_child(equip_button)
+
 	return card
+
+
+func _make_equipped_button(slot: String, item_id: String) -> Button:
+	var item: Dictionary = DB.item(item_id)
+	var button := Button.new()
+	button.text = "%s: %s" % [slot.capitalize(), item.get("name", item_id)]
+	button.tooltip_text = "%s\n%s\nPress to unequip." % [
+		_stats_line(PlayerStats.scaled_item_stats(item, _player_level())), item.get("desc", "")]
+	button.focus_mode = Control.FOCUS_ALL
+	button.pressed.connect(_on_unequip.bind(slot, item_id))
+	return button
+
+
+func _on_equip(item_id: String) -> void:
+	var item: Dictionary = DB.item(item_id)
+	if Inv.equip(item_id):
+		Bus.toast.emit("Equipped %s." % item.get("name", item_id))
+	else:
+		Bus.toast.emit("Could not equip %s." % item.get("name", item_id))
+
+
+func _on_unequip(slot: String, item_id: String) -> void:
+	if Inv.unequip(slot):
+		Bus.toast.emit("Unequipped %s." % DB.item(item_id).get("name", item_id))
+	else:
+		Bus.toast.emit("Bag stack is full; equipment was left in place.")
+
+
+func _player_level() -> int:
+	var xp := 0
+	if Learning.profile != null:
+		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
+	return PlayerStats.level_from_xp(xp)
+
+
+func _stats_line(stats: Dictionary) -> String:
+	var parts: Array[String] = []
+	for stat in ["hp", "atk", "def", "spd"]:
+		var value := int(stats.get(stat, 0))
+		if value != 0:
+			parts.append("%+d %s" % [value, stat.to_upper()])
+	return "  ".join(parts)
 
 
 func _icon_node(id: String) -> Control:
@@ -170,16 +238,13 @@ func _build_scaffold() -> void:
 
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.5; panel.anchor_top = 0.5
-	panel.anchor_right = 0.5; panel.anchor_bottom = 0.5
-	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	panel.custom_minimum_size = Vector2(520, 0)
+	panel.anchor_left = 0.08; panel.anchor_top = 0.06
+	panel.anchor_right = 0.92; panel.anchor_bottom = 0.94
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 20)
+		margin.add_theme_constant_override("margin_" + side, 14)
 	panel.add_child(margin)
 
 	var vbox := VBoxContainer.new()
@@ -203,9 +268,25 @@ func _build_scaffold() -> void:
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(_coins_label)
 
+	var equipment_heading := Label.new()
+	equipment_heading.text = "Equipped — press an item to remove it"
+	equipment_heading.add_theme_font_size_override("font_size", 13)
+	equipment_heading.add_theme_color_override("font_color", COL_HEADING)
+	vbox.add_child(equipment_heading)
+
+	_equipment_empty = Label.new()
+	_equipment_empty.text = "No equipment yet. Equip gear from the bag below."
+	_equipment_empty.add_theme_font_size_override("font_size", 12)
+	_equipment_empty.add_theme_color_override("font_color", COL_HEADING)
+	vbox.add_child(_equipment_empty)
+
+	_equipment_box = HFlowContainer.new()
+	_equipment_box.add_theme_constant_override("h_separation", 6)
+	_equipment_box.add_theme_constant_override("v_separation", 4)
+	vbox.add_child(_equipment_box)
+
 	# Grid of cards, height-capped so overflow scrolls instead of the whole page.
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(0, 300)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(scroll)

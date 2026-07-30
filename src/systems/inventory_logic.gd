@@ -6,11 +6,11 @@ extends RefCounted
 ## Node-free and DB-free on purpose, so it stays headless-testable and the real
 ## stacking / capacity rules can be asserted against the TS behavior. The Inv
 ## autoload wraps this, resolves item defs through DB, and emits Bus signals; the
-## equip / gear-bonus half of the TS system belongs to the combat slice, not here.
+## Equipment slot mutation now lives here too, while item-definition validation and
+## gear stat math remain in Inv and PlayerStats respectively.
 ##
-## The bag is `{item_id: qty}` and coins is a plain int — the exact shape the TS
-## build persisted under `profile.data.inventory` / `profile.data.coins`, so a save
-## round-trips through `to_dict()` / `load_dict()` without translation.
+## The bag is `{item_id: qty}`, equipment is `{slot: item_id}`, and coins is a plain int,
+## matching the three legacy profile fields inside one Godot inventory save section.
 
 ## Ported verbatim from Inventory.ts. A single stack never exceeds MAX_STACK; a
 ## surplus add returns the leftover so the caller can drop or discard it. Total
@@ -18,9 +18,14 @@ extends RefCounted
 ## "encumbered" warning — capacity does NOT block adds, it only flags the bag.
 const MAX_STACK := 99          # MAX_STACK_SIZE in Inventory.ts
 const BASE_CAPACITY := 300     # BASE_CAPACITY in Inventory.ts
+const EQUIPMENT_SLOTS: Array[String] = [
+	"weapon", "offhand", "head", "body", "shoulders", "cape",
+	"belt", "hands", "legs", "feet", "ring", "amulet",
+]
 
 var bag: Dictionary = {}       # item_id -> qty (>0); empty stacks are deleted
 var coins: int = 0
+var equipment: Dictionary = {} # slot -> item_id; equipped items are not also in the bag
 
 
 # --- items -----------------------------------------------------------------
@@ -123,9 +128,14 @@ func set_coins(n: int) -> void:
 
 # --- persistence hooks (the save slice wires these to SaveGame) --------------
 
-## Serialize to the exact TS save shape: `{ "inventory": {...}, "coins": int }`.
+## Serialize the bag, coin purse, and equipped slot map. Old saves omit equipment;
+## load_dict treats that as an empty loadout.
 func to_dict() -> Dictionary:
-	return {"inventory": bag.duplicate(true), "coins": coins}
+	return {
+		"inventory": bag.duplicate(true),
+		"coins": coins,
+		"equipment": equipment.duplicate(true),
+	}
 
 
 ## Load from a save dict, tolerating a missing/partial payload. Quantities are
@@ -133,15 +143,96 @@ func to_dict() -> Dictionary:
 ## seed a negative or zero stack.
 func load_dict(data: Dictionary) -> void:
 	bag.clear()
+	equipment.clear()
 	var raw: Dictionary = data.get("inventory", {})
 	for id in raw:
 		var qty := int(raw[id])
 		if qty > 0:
 			bag[String(id)] = qty
+	var raw_equipment: Dictionary = data.get("equipment", {})
+	for raw_slot in raw_equipment:
+		var slot := String(raw_slot)
+		var item_id := String(raw_equipment[raw_slot])
+		if EQUIPMENT_SLOTS.has(slot) and not item_id.is_empty():
+			equipment[slot] = item_id
 	coins = maxi(0, int(data.get("coins", 0)))
 
 
 ## Drop everything — used by a "new game" reset.
 func clear() -> void:
 	bag.clear()
+	equipment.clear()
 	coins = 0
+
+
+# --- equipment -------------------------------------------------------------
+
+## The equipped item id in one slot, or an empty string. Item definitions and level
+## requirements stay outside this DB-free class; the Inv autoload validates those first.
+func equipped_id(slot: String) -> String:
+	return String(equipment.get(slot, ""))
+
+
+func equipment_dict() -> Dictionary:
+	return equipment.duplicate(true)
+
+
+## Move one held item into its slot as an atomic transaction. Displaced gear returns
+## to the bag. Two-handed weapon/offhand conflicts match the archived Kana rules.
+func equip(item_id: String, slot: String, handedness: String = "",
+		equipped_weapon_handedness: String = "") -> bool:
+	if item_id.is_empty() or not EQUIPMENT_SLOTS.has(slot) or not has(item_id):
+		return false
+
+	var next_bag: Dictionary = bag.duplicate(true)
+	var next_equipment: Dictionary = equipment.duplicate(true)
+	_remove_from(next_bag, item_id, 1)
+
+	var displaced_slots: Array[String] = []
+	if slot == "weapon" and handedness == "2h" and next_equipment.has("offhand"):
+		displaced_slots.append("offhand")
+	if slot == "offhand" and equipped_weapon_handedness == "2h" \
+			and next_equipment.has("weapon"):
+		displaced_slots.append("weapon")
+	if next_equipment.has(slot) and not displaced_slots.has(slot):
+		displaced_slots.append(slot)
+
+	for displaced_slot in displaced_slots:
+		var displaced_id := String(next_equipment.get(displaced_slot, ""))
+		next_equipment.erase(displaced_slot)
+		if not displaced_id.is_empty() and not _add_to(next_bag, displaced_id, 1):
+			return false
+
+	next_equipment[slot] = item_id
+	bag = next_bag
+	equipment = next_equipment
+	return true
+
+
+## Return one equipped item to the bag. Fails without changing state if its stack is full.
+func unequip(slot: String) -> bool:
+	var item_id := equipped_id(slot)
+	if item_id.is_empty():
+		return false
+	var next_bag: Dictionary = bag.duplicate(true)
+	if not _add_to(next_bag, item_id, 1):
+		return false
+	bag = next_bag
+	equipment.erase(slot)
+	return true
+
+
+func _add_to(target: Dictionary, id: String, qty: int) -> bool:
+	var current := int(target.get(id, 0))
+	if current + qty > MAX_STACK:
+		return false
+	target[id] = current + qty
+	return true
+
+
+func _remove_from(target: Dictionary, id: String, qty: int) -> void:
+	var left := int(target.get(id, 0)) - qty
+	if left <= 0:
+		target.erase(id)
+	else:
+		target[id] = left

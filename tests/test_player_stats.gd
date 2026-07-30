@@ -26,6 +26,7 @@ func _initialize() -> void:
 
 	_level_curve_is_monotonic()
 	_xp_maps_to_levels()
+	_gear_bonuses_and_scaling()
 	_winnable_at_the_right_levels()
 
 	_finish()
@@ -50,6 +51,26 @@ func _level_curve_is_monotonic() -> void:
 			ok = false
 	check_true("stats never decrease with level", ok)
 	check_eq("level 1 keeps the authored baseline", PlayerStats.max_hp(1), PlayerStats.BASE_MAX_HP)
+
+
+func _gear_bonuses_and_scaling() -> void:
+	var starter_gear: Array[Dictionary] = [{
+		"kind": "gear", "stats": {"hp": 6, "atk": 2, "def": 1, "spd": -1},
+	}]
+	var equipped := PlayerStats.from_xp(0, starter_gear)
+	check_eq("gear adds max HP", equipped["max_hp"], PlayerStats.BASE_MAX_HP + 6)
+	check_eq("gear adds attack", equipped["atk"], PlayerStats.BASE_ATK + 2)
+	check_eq("gear adds defense", equipped["def"], PlayerStats.BASE_DEF + 1)
+	check_eq("negative speed penalties do not scale", equipped["speed"], -1)
+
+	var rare_gear := {
+		"kind": "gear", "requiredLevel": 12, "rarity": "rare",
+		"stats": {"hp": 10},
+	}
+	check_eq("rare positive stats grow after their equip floor",
+		PlayerStats.scaled_item_stats(rare_gear, 20)["hp"], 11)
+	check_eq("gear never scales before its equip floor",
+		PlayerStats.scaled_item_stats(rare_gear, 5)["hp"], 10)
 
 
 ## Simulate real fights with a perfect player and assert the ladder.
