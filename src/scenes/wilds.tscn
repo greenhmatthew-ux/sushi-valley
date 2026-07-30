@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/wilds.gd" id="1_wilds"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="18_ui"]
 [ext_resource type="PackedScene" path="res://src/entities/vendor.tscn" id="19_vendor"]
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="23_quest"]
+[ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="28_pickup"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -206,6 +207,12 @@ position = Vector2(126, 326)
 texture = ExtResource("14_crate")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
+
+[node name="BambooCache" parent="Entities" instance=ExtResource("28_pickup")]
+position = Vector2(272, 360)
+item_id = "bamboo_shoot"
+qty = 2
+pickup_id = "wilds_workshop_intro_bamboo"
 
 [node name="ForestTrader" parent="Entities" instance=ExtResource("19_vendor")]
 position = Vector2(160, 320)

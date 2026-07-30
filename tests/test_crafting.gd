@@ -13,6 +13,7 @@ var rice_recipe := {"id": "craft_rice_ball", "station": "kitchen", "levelReq": 1
 func _initialize() -> void:
 	_progression_and_discovery()
 	_atomic_transaction()
+	_authored_station_access()
 	await _one_time_ingredients()
 	await _panel_contract()
 	_finish()
@@ -54,6 +55,51 @@ func _atomic_transaction() -> void:
 	check_true("full output stack rejects the whole craft",
 		not full.craft_transaction(rice_recipe["inputs"], "rice_ball", 3))
 	check_eq("capacity failure preserves ingredients", full.count("rice"), 2)
+
+
+func _authored_station_access() -> void:
+	var village: Node = load("res://src/scenes/world.tscn").instantiate()
+	var forge: Node = village.find_child("ForgeStation", true, false)
+	var workshop: Node = village.find_child("WorkshopStation", true, false)
+	var ore: Node = village.find_child("ForgeOreCache", true, false)
+	check_true("village exposes a Forge station", forge != null)
+	check_true("village exposes a Workshop station", workshop != null)
+	check_eq("Forge interaction is station-scoped", forge.get("station"), "forge")
+	check_eq("Workshop interaction is station-scoped", workshop.get("station"), "workshop")
+	check_eq("Forge cache grants one ingot's ore", ore.get("item_id"), "raw_iron_ore")
+	check_eq("Forge cache grants the required ore quantity", ore.get("qty"), 3)
+	check_eq("Forge cache has a save-safe identity", ore.get("pickup_id"),
+		"village_forge_intro_ore")
+	village.free()
+
+	var wilds: Node = load("res://src/scenes/wilds.tscn").instantiate()
+	var bamboo: Node = wilds.find_child("BambooCache", true, false)
+	check_true("Wilds exposes the Workshop's missing starter material", bamboo != null)
+	check_eq("Bamboo cache grants the first recipe quantity", bamboo.get("qty"), 2)
+	check_eq("Bamboo cache has a save-safe identity", bamboo.get("pickup_id"),
+		"wilds_workshop_intro_bamboo")
+	wilds.free()
+
+	var forge_bag := Bag.new()
+	forge_bag.add("raw_iron_ore", 3)
+	var forge_recipe := {
+		"id": "refine_iron_ingot", "station": "forge", "levelReq": 1,
+		"inputs": [{"item": "raw_iron_ore", "qty": 3}],
+		"output": {"item": "iron_ingot", "qty": 1}}
+	check_true("Forge cache unlocks its first level-1 recipe",
+		Rules.status(forge_recipe, "forge", {}, forge_bag)["ok"])
+
+	var workshop_bag := Bag.new()
+	workshop_bag.add("bamboo_shoot", 2)
+	workshop_bag.add("raccoon_tail", 1)
+	var workshop_recipe := {
+		"id": "craft_straw_sandals", "station": "workshop", "levelReq": 1,
+		"inputs": [
+			{"item": "bamboo_shoot", "qty": 2},
+			{"item": "raccoon_tail", "qty": 1}],
+		"output": {"item": "straw_sandals", "qty": 1}}
+	check_true("Bamboo cache plus a local Raccoon unlocks a Workshop recipe",
+		Rules.status(workshop_recipe, "workshop", {}, workshop_bag)["ok"])
 
 
 func _one_time_ingredients() -> void:
