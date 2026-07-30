@@ -39,6 +39,14 @@ func _initialize() -> void:
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	check_true("menu shell stays inside the 640x360 viewport",
 		viewport_rect.encloses(shell.get_global_rect()))
+	var alias_icon := panel.call("_icon_node", "spicy_curry") as TextureRect
+	check_eq("Bag resolves authored item icon aliases",
+		alias_icon.texture.resource_path, "res://assets/icons/items/noodle_bowl.png")
+	alias_icon.free()
+	var compost_icon := panel.call("_icon_node", "compost") as TextureRect
+	check_eq("Garden Compost uses its audited sack art",
+		compost_icon.texture.resource_path, "res://assets/icons/items/compost.png")
+	compost_icon.free()
 
 	panel.call("_set_tab", "character")
 	check_true("character tab replaces bag content", character.visible and not bag.visible)

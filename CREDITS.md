@@ -11,7 +11,8 @@ verified against the running scenes — not an aspirational or inherited list.
   merchant), hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
   furniture and exit door, and the eight rendered Talent icons (Blade Sweep, Kunai Toss,
   Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade), plus the 16px treasure
-  chest used for authored ingredient caches. Ki Focus, Rune Ward,
+  chest used for authored ingredient caches and the tied sack used for Garden Compost.
+  Ki Focus, Rune Ward,
   Riposte, and Blood Blade are the unmodified
   `Ui/Skill Icon/Spell/AttackUpgrade.png`, `Ui/Skill Icon/Spell/DefenseUpgrade.png`,
   `Ui/Skill Icon/Spell/Counter.png`, and `Ui/Skill Icon/Spell/Cut.png` sources.

@@ -46,6 +46,9 @@ The ingredient-cache sprite is the unmodified two-frame Ninja Adventure source
 `Items/Treasure/LittleTreasureChest.png`, copied to
 `assets/objects/ninja_little_treasure_chest.png`. Runtime uses its closed 16x16 frame.
 
+The Garden Compost icon is the unmodified Ninja Adventure source `Items/Object/Bag.png`,
+copied to `assets/icons/items/compost.png` at its native 16x16 size.
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

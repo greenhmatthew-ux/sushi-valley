@@ -234,9 +234,12 @@ func _haggle(price: int) -> int:
 
 
 func _icon_node(id: String) -> Control:
-	var path := ICON_DIR + id + ".png"
+	var def := DB.item(id)
+	var icon_id := String(def.get("iconAlias", id))
+	var path := ICON_DIR + icon_id + ".png"
 	if ResourceLoader.exists(path):
 		var tex := TextureRect.new()
+		tex.name = "ItemIcon_%s" % id
 		tex.texture = load(path) as Texture2D
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

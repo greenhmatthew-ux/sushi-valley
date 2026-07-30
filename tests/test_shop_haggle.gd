@@ -128,6 +128,10 @@ func _shop_shell_fits_the_game_viewport() -> void:
 	var shell: Control = shop.find_child("ShopShell", true, false)
 	check_true("shop shell fits the 640x360 viewport",
 		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
+	var alias_icon := shop._icon_node("stone_soup") as TextureRect
+	check_eq("Shop resolves authored item icon aliases",
+		alias_icon.texture.resource_path, "res://assets/icons/items/mushroom_soup.png")
+	alias_icon.free()
 	shop._close()
 
 

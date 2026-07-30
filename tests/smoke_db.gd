@@ -63,6 +63,16 @@ func _initialize() -> void:
 	check_str("item wooden_katana", db.item("wooden_katana").get("name", ""), "Wooden Katana")
 	check_str("item bamboo_tonic", db.item("bamboo_tonic").get("name", ""),
 		"Bamboo Breeze Tonic")
+	var missing_item_icons: Array[String] = []
+	for item_id in db.item_order:
+		var item: Dictionary = db.items[item_id]
+		if not bool(item.get("icon", false)):
+			continue
+		var icon_id := String(item.get("iconAlias", item_id))
+		if not ResourceLoader.exists("res://assets/icons/items/%s.png" % icon_id):
+			missing_item_icons.append(item_id)
+	check_true("all icon-enabled items resolve real art (%s)" % [str(missing_item_icons)],
+		missing_item_icons.is_empty())
 	check_str("enemy mushroom", db.enemy("mushroom").get("name", ""), "Spore Mushroom")
 	check_str("ability strike", db.ability("strike").get("name", ""), "Strike")
 	var woods_quest: Dictionary = db.quest("woods_quiet_steps")
