@@ -26,6 +26,13 @@ func reload() -> void:
 	progression = LearningProgression.new(profile, DB)
 	progression.on_lesson_unlock = func(title: String):
 		Bus.toast.emit("New lesson unlocked: %s" % title)
+	# XP is what drives player level and therefore combat stats, so it has to be announced.
+	progression.on_xp_changed = func(amount: int, total: int):
+		Bus.xp_gained.emit(amount)
+		var lv := PlayerStats.level_from_xp(total)
+		if lv > PlayerStats.level_from_xp(total - amount):
+			Bus.level_up.emit(lv)
+			Bus.toast.emit("Level %d — you feel steadier." % lv)
 
 
 # --- convenience pass-throughs the game calls constantly ---

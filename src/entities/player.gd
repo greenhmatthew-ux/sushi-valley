@@ -17,7 +17,9 @@ extends CharacterBody2D
 
 const SPEED := 80.0   ## world px/sec. 16px tiles; camera zoom handles apparent speed.
 
-const MAX_HP := 12              ## 3 hearts of 4 HP each (see hud_layer's heart display)
+## Max HP is derived from learning level now, not fixed — see PlayerStats. Kept as a
+## property so existing callers (HUD, combat) keep working unchanged.
+var MAX_HP: int = PlayerStats.BASE_MAX_HP              ## 3 hearts of 4 HP each (see hud_layer's heart display)
 const INVULN_AFTER_HIT := 0.8   ## brief mercy window so one contact can't drain everything
 
 ## Facing is stored as a String to match the card/data vocabulary used by save
@@ -29,6 +31,9 @@ var control_enabled: bool = true
 var hp: int = MAX_HP
 var _invuln: float = 0.0
 var _spawn_pos: Vector2 = Vector2.ZERO   ## where a defeat sends you back to
+## Combat stats, refreshed from learning level by _sync_stats.
+var atk: int = PlayerStats.BASE_ATK
+var defense: int = PlayerStats.BASE_DEF
 
 var _current_anim: String = ""
 
@@ -42,11 +47,33 @@ func _ready() -> void:
 	var texture: Texture2D = preload("res://assets/sprites/player_walk.png")
 	_sprite.sprite_frames = SpriteSheets.walk_frames(texture, SpriteSheets.row_count(texture))
 	_show_idle()
+	_sync_stats(true)
+	# Levelling up mid-session should widen the health bar immediately.
+	Bus.xp_gained.connect(func(_a): _sync_stats(false))
+	Bus.card_reviewed.connect(func(_i, _g, _c): _sync_stats(false))
 	Bus.player_hp_changed.emit(hp, MAX_HP)
 	# Camera framing is a saved preference, not a scene constant — apply it on spawn and
 	# keep following it, so changing zoom in settings updates the live view immediately.
 	_apply_zoom(Settings.zoom)
 	Bus.zoom_changed.connect(_apply_zoom)
+
+
+## Pull level-derived stats from the learning profile. `heal` fills HP (spawn); otherwise the
+## current HP is kept and only the ceiling moves, so levelling up does not act as a free heal
+## mid-fight — it just raises the cap.
+func _sync_stats(heal: bool) -> void:
+	var xp := 0
+	if Learning.profile != null:
+		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
+	var stats := PlayerStats.from_xp(xp)
+	var new_max: int = stats["max_hp"]
+	if new_max == MAX_HP and not heal:
+		return
+	MAX_HP = new_max
+	atk = stats["atk"]
+	defense = stats["def"]
+	hp = MAX_HP if heal else mini(hp, MAX_HP)
+	Bus.player_hp_changed.emit(hp, MAX_HP)
 
 
 func _apply_zoom(zoom: float) -> void:

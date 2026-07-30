@@ -58,11 +58,16 @@ func _on_combat_started(enemy_id: String) -> void:
 		Bus.combat_ended.emit(false)
 		return
 
+	# Stats come from the player, which derives them from learning level (PlayerStats) —
+	# so studying is what makes a fight winnable. A simulation of the ported enemy numbers
+	# against the old flat 12 HP showed the kappa and lantern were unwinnable at 0%.
 	var player := get_tree().get_first_node_in_group("player")
-	var hp: int = player.hp if player != null else 12
-	var max_hp: int = player.MAX_HP if player != null else 12
+	var hp: int = player.hp if player != null else PlayerStats.BASE_MAX_HP
+	var max_hp: int = player.MAX_HP if player != null else PlayerStats.BASE_MAX_HP
+	var p_atk: int = player.atk if player != null else PlayerStats.BASE_ATK
+	var p_def: int = player.defense if player != null else PlayerStats.BASE_DEF
 
-	_encounter = CombatEncounter.new(enemy, hp, max_hp)
+	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def)
 	_active = true
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name

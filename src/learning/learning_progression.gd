@@ -16,6 +16,11 @@ var _content
 ## Fired with a lesson title when auto-progression unlocks a new lesson. The game
 ## wires this to a toast; the webapp ignored it.
 var on_lesson_unlock: Callable = Callable()
+## Fired with (amount, new_total) whenever XP changes. Same pattern as on_lesson_unlock: this
+## file must stay node-free (it is pure logic), so the Learning autoload owns turning this into
+## a Bus signal. Without it, XP moved silently — Bus.xp_gained had two listeners and no
+## emitter, so level-derived player stats never grew until the scene reloaded.
+var on_xp_changed: Callable = Callable()
 
 
 func _init(learning_profile: LearningProfile, content) -> void:
@@ -123,7 +128,9 @@ func grade(card: Dictionary, grade_str: String) -> void:
 	s["totalReviews"] = int(s.get("totalReviews", 0)) + 1
 	if grade_str != "again":
 		s["totalCorrect"] = int(s.get("totalCorrect", 0)) + 1
-		s["xp"] = int(s.get("xp", 0)) + int(XP_BY_GRADE.get(grade_str, 6))
+		var gain := int(XP_BY_GRADE.get(grade_str, 6))
+		s["xp"] = int(s.get("xp", 0)) + gain
+		_announce_xp(gain, int(s["xp"]))
 	# Auto-progression: if this card's lesson is now mastered, unlock the next one.
 	_check_lesson_progression(String(card.get("lessonId", "")))
 	profile.save()
@@ -131,7 +138,13 @@ func grade(card: Dictionary, grade_str: String) -> void:
 
 func award_xp(amount: int) -> void:
 	profile.data["stats"]["xp"] = int(profile.data["stats"].get("xp", 0)) + amount
+	_announce_xp(amount, int(profile.data["stats"]["xp"]))
 	profile.save()
+
+
+func _announce_xp(amount: int, total: int) -> void:
+	if amount != 0 and on_xp_changed.is_valid():
+		on_xp_changed.call(amount, total)
 
 
 ## A lesson is mastered when every card is unlocked, answered correctly at least

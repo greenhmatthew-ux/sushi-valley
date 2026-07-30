@@ -17,14 +17,21 @@ extends CanvasLayer
 ## state beyond reading it on a signal.
 
 const HEART_TEX := preload("res://assets/ui/hearts.png")
-const HEART_COUNT := 3        ## Player.MAX_HP (12) / 4 HP per heart
-const HP_PER_HEART := 4
+## A FIXED row of hearts, each worth a fifth of max HP and filled in quarters from the
+## 5-frame sheet. Max HP grows with learning level (12 -> 60+), so one-heart-per-4-HP would
+## have marched 15 hearts across half the screen by level 5 and 26 by level 20 — the guide
+## asks for a "top-left compact group", and a row that grows without bound is not compact.
+## A fixed row reads the same at every level: how full you are, not how many pips you own.
+const HEART_COUNT := 5
+const QUARTERS_PER_HEART := 4
 const DIM_WHEN_SAFE := 0.55   ## alpha for the vitals group at full HP
 
 var _coins_label: Label
 var _due_label: Label
 var _level_label: Label
+var _hp_label: Label
 var _vitals: Control
+var _hearts_box: HBoxContainer
 var _hearts: Array[TextureRect] = []
 var _hp_full := true
 
@@ -52,32 +59,51 @@ func _build_vitals() -> void:
 	_vitals.add_theme_constant_override("separation", 2)
 	add_child(_vitals)
 
-	var hearts_box := HBoxContainer.new()
-	hearts_box.add_theme_constant_override("separation", 1)
-	_vitals.add_child(hearts_box)
+	_hearts_box = HBoxContainer.new()
+	_hearts_box.add_theme_constant_override("separation", 1)
+	_vitals.add_child(_hearts_box)
 	for i in HEART_COUNT:
 		var tr := TextureRect.new()
 		var at := AtlasTexture.new()
 		at.atlas = HEART_TEX
-		at.region = Rect2(HP_PER_HEART * 16, 0, 16, 16)   # full to start
+		at.region = Rect2(QUARTERS_PER_HEART * 16, 0, 16, 16)   # full to start
 		tr.texture = at
 		tr.custom_minimum_size = Vector2(28, 28)
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		hearts_box.add_child(tr)
+		_hearts_box.add_child(tr)
 		_hearts.append(tr)
+
+	var meta := HBoxContainer.new()
+	meta.add_theme_constant_override("separation", 6)
+	_vitals.add_child(meta)
 
 	_level_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.TEXT_MUTED)
 	_level_label.add_theme_color_override("font_outline_color", UiTheme.SURFACE_DEEP)
 	_level_label.add_theme_constant_override("outline_size", 4)
-	_vitals.add_child(_level_label)
+	meta.add_child(_level_label)
+
+	_hp_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.TEXT_MUTED)
+	_hp_label.add_theme_color_override("font_outline_color", UiTheme.SURFACE_DEEP)
+	_hp_label.add_theme_constant_override("outline_size", 4)
+	meta.add_child(_hp_label)
 	_vitals.modulate.a = DIM_WHEN_SAFE
 
 
 func _on_hp(hp: int, max_hp: int) -> void:
+	# Total quarters across the whole row, so the bar reads proportionally at any max HP.
+	var total_q := HEART_COUNT * QUARTERS_PER_HEART
+	var filled_q := 0 if max_hp <= 0 else int(ceil(float(hp) / float(max_hp) * total_q))
+	# A living player never shows a fully empty row — that would read as dead.
+	if hp > 0:
+		filled_q = maxi(1, filled_q)
+	filled_q = clampi(filled_q, 0, total_q)
+
 	for i in _hearts.size():
-		var fill := clampi(hp - i * HP_PER_HEART, 0, HP_PER_HEART)
+		var fill := clampi(filled_q - i * QUARTERS_PER_HEART, 0, QUARTERS_PER_HEART)
 		(_hearts[i].texture as AtlasTexture).region = Rect2(fill * 16, 0, 16, 16)
+	if _hp_label != null:
+		_hp_label.text = "%d/%d" % [hp, max_hp]
 	# Full and safe -> recede; hurt -> come forward. Redundant with the hearts themselves,
 	# which is the point: colour/alpha never carries meaning alone.
 	var full := hp >= max_hp
@@ -135,10 +161,5 @@ func _refresh() -> void:
 
 	if _level_label != null and Learning.profile != null:
 		var xp := int(Learning.profile.data.get("stats", {}).get("xp", 0))
-		_level_label.text = "Lv %d" % _level_from_xp(xp)
+		_level_label.text = "Lv %d" % PlayerStats.level_from_xp(xp)
 
-
-## Level curve: 100 XP per level, starting at 1. Kept here (presentation) rather than in the
-## learning core, which deliberately tracks XP only — no save-schema change.
-func _level_from_xp(xp: int) -> int:
-	return 1 + int(floor(float(maxi(0, xp)) / 100.0))
