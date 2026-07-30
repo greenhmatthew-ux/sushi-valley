@@ -84,6 +84,10 @@ func _verb_for(target: Node) -> String:
 				return "Hand in to %s" % giver_name
 			"intro":
 				return "Ask %s for work" % giver_name
+			"done":
+				if target.get("shop_id") != null and not String(target.get("shop_id")).is_empty():
+					return "Trade with %s" % giver_name
+				return "Talk to %s" % giver_name
 			_:
 				return "Talk to %s" % giver_name
 

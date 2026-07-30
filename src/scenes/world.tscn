@@ -1144,6 +1144,7 @@ position = Vector2(304, 180)
 [node name="QuestGiver" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
 position = Vector2(344, 224)
 quest_id = "stock_the_stall"
+shop_id = "mako_stall"
 greeting_card = "greet-konnichiwa"
 
 [node name="Tree0" parent="Props" unique_id=1439562200 instance=ExtResource("20_prop")]

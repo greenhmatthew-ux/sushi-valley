@@ -21,6 +21,7 @@ var inv: Node
 var learning: Node
 var db: Node
 var save_game: Node
+var opened_shop := ""
 
 
 func _initialize() -> void:
@@ -32,9 +33,11 @@ func _initialize() -> void:
 	save_game = root.get_node("SaveGame")
 
 	bus.dialogue_open.connect(func(_s, _l): bus.dialogue_closed.emit.call_deferred())
+	bus.shop_open.connect(func(id: String): opened_shop = id)
 
 	giver = load("res://src/entities/quest_giver.tscn").instantiate()
 	giver.quest_id = "stock_the_stall"
+	giver.shop_id = "mako_stall"
 	root.add_child(giver)
 	await process_frame
 
@@ -43,6 +46,8 @@ func _initialize() -> void:
 	inv.reset()
 
 	_drop_table_can_supply_the_goal()
+	_mako_stocks_each_starter_weapon_style()
+	_village_mako_is_linked_to_the_stall()
 	await _accept_then_gather_then_turn_in()
 	await _reward_is_paid_only_once()
 	await _woods_quiet_steps_pays_once()
@@ -67,6 +72,28 @@ func _drop_table_can_supply_the_goal() -> void:
 		racoon_table, [0.99, 0.99, 0.99, 0.99])
 	check_true("racoon always drops a raccoon tail",
 		racoon_guaranteed.has("raccoon_tail"))
+
+
+## The permanent talent choices each require a weapon family. Mako's first unlocked shop
+## must offer one honest starter for every family, rather than presenting dead build choices.
+func _mako_stocks_each_starter_weapon_style() -> void:
+	var styles := {}
+	for entry in db.shops.get("mako_stall", {}).get("stock", []):
+		var item: Dictionary = db.item(String(entry.get("item", "")))
+		if String(item.get("slot", "")) == "weapon":
+			styles[String(item.get("weaponType", ""))] = true
+	check_eq("Mako stocks blade, heavy, ranged, and kana starters",
+		styles.size(), 4)
+	for style in ["blade", "heavy", "ranged", "kana"]:
+		check_true("Mako stocks a %s starter" % style, styles.has(style))
+
+
+func _village_mako_is_linked_to_the_stall() -> void:
+	var village: Node = load("res://src/scenes/world.tscn").instantiate()
+	var mako: Node = village.find_child("QuestGiver", true, false)
+	check_true("the playable village contains Mako", mako != null)
+	check_eq("village Mako unlocks the starter stall", mako.get("shop_id"), "mako_stall")
+	village.free()
 
 
 func _accept_then_gather_then_turn_in() -> void:
@@ -103,7 +130,9 @@ func _accept_then_gather_then_turn_in() -> void:
 func _reward_is_paid_only_once() -> void:
 	var coins_before: int = inv.coins
 	inv.add("spore_cap", giver.goal_qty())   # even holding the items again
+	opened_shop = ""
 	await giver.interact(null)
+	check_eq("completed Mako opens her stocked stall", opened_shop, "mako_stall")
 	check_eq("no second payout", inv.coins, coins_before)
 	check_eq("and the items are not re-consumed", inv.count("spore_cap"), giver.goal_qty())
 	check_eq("stage stays done", giver.current_stage(), "done")

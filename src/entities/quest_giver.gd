@@ -16,6 +16,10 @@ extends Area2D
 @export var quest_id: String = "stock_the_stall"
 ## Shown above the sprite. Defaults to the quest's authored `giver` when left empty.
 @export var speaker: String = ""
+## Optional shop this giver opens after their quest is complete. This keeps a character such
+## as Mako from needing a duplicate vendor NPC beside them, while leaving ordinary quest
+## givers unchanged. The reward interaction stays focused; trade opens on the next visit.
+@export var shop_id: String = ""
 ## Optional card id this giver opens with, so the valley greets you in Japanese before the
 ## quest's authored English. A card ID rather than text, matching Npc/SignPost — there is then
 ## nowhere to type an unsourced phrase.
@@ -80,6 +84,9 @@ func _run() -> void:
 		return
 
 	var stage := current_stage()
+	if stage == "done" and not shop_id.is_empty():
+		Bus.shop_open.emit(shop_id)
+		return
 	if stage == "intro":
 		_set_flag("started")
 		Bus.quest_accepted.emit(quest_id)
