@@ -8,7 +8,8 @@ extends RefCounted
 
 const MAX_SKILLS := 6
 const RUNTIME_TYPES := ["attack", "block", "heal"]
-const RUNTIME_BUFF_TYPES := ["energy", "shield"]
+const IMMEDIATE_BUFF_TYPES := ["energy", "shield"]
+const TIMED_BUFF_TYPES := ["atk", "def", "speed"]
 const UNRESOLVED_EFFECT_FIELDS := [
 	"counterDamage", "debuffType", "lifestealPct",
 ]
@@ -54,9 +55,14 @@ static func weapon_matches(ability: Dictionary, weapon_type: String) -> bool:
 
 static func is_runtime_supported(ability: Dictionary) -> bool:
 	var action_type := String(ability.get("type", ""))
-	return action_type in RUNTIME_TYPES or (action_type == "buff" \
-		and String(ability.get("buffType", "")) in RUNTIME_BUFF_TYPES \
-		and int(ability.get("buffDuration", 1)) <= 1)
+	if action_type in RUNTIME_TYPES:
+		return true
+	if action_type != "buff":
+		return false
+	var buff_type := String(ability.get("buffType", ""))
+	var duration := int(ability.get("buffDuration", 1))
+	return (buff_type in IMMEDIATE_BUFF_TYPES and duration <= 1) \
+		or (buff_type in TIMED_BUFF_TYPES and duration > 0)
 
 
 ## Talent purchases are stricter than old-save/runtime filtering: never sell an action whose

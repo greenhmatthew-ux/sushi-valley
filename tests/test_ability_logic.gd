@@ -25,7 +25,8 @@ var abilities := {
 	"slow_charge": {"id": "slow_charge", "type": "buff", "buffType": "energy",
 		"buffValue": 2, "buffDuration": 3, "spCost": 1, "role": "scholar"},
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
-		"spCost": 1, "requiredWeaponType": "kana"},
+		"buffType": "def", "buffValue": 4, "buffDuration": 3,
+		"spCost": 1, "role": "scholar", "requiredWeaponType": "kana"},
 }
 
 
@@ -50,8 +51,8 @@ func _weapon_and_runtime_gates() -> void:
 		"unlockedAbilities": ["rune_ward"]}
 	check_true("Strike needs its blade", not AbilityRules.weapon_matches(abilities["strike"], ""))
 	check_true("Strike accepts a blade", AbilityRules.weapon_matches(abilities["strike"], "blade"))
-	check_true("authored buffs wait for their real resolver",
-		not AbilityRules.is_runtime_supported(abilities["rune_ward"]))
+	check_true("timed ATK, DEF, and Speed buffs use the duration resolver",
+		AbilityRules.is_runtime_supported(abilities["rune_ward"]))
 	check_true("immediate Energy and Shield buffs use the real resolver",
 		AbilityRules.is_runtime_supported(abilities["mana_tea"])
 		and AbilityRules.is_runtime_supported(abilities["bulwark"]))
@@ -95,19 +96,19 @@ func _talent_unlocks() -> void:
 		AbilityRules.unspent_talent_points(2, build, abilities), 0)
 	check_true("the same Talent cannot be purchased twice",
 		not AbilityRules.unlock_talent("sweep", 3, build, abilities))
-	check_true("unresolved buffs cannot be sold as Talents",
-		not AbilityRules.unlock_talent("rune_ward", 3, build, abilities))
+	check_true("timed stat buffs can be sold now that duration is visible and enforced",
+		AbilityRules.is_honest_talent(abilities["rune_ward"]))
 	check_true("cooldown-only actions are honest now that combat enforces cadence",
 		AbilityRules.is_honest_talent(abilities["storm_draw"]))
-	check_true("immediate buff talents are honest without enabling timed stat buffs",
+	check_true("immediate and timed resolved buff talents are honest",
 		AbilityRules.is_honest_talent(abilities["mana_tea"])
 		and AbilityRules.is_honest_talent(abilities["bulwark"])
-		and not AbilityRules.is_honest_talent(abilities["rune_ward"]))
+		and AbilityRules.is_honest_talent(abilities["rune_ward"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])
 	check_eq("next choices expose one honest action per role",
-		choices.map(func(a): return a["id"]), ["sweep", "kunai"])
+		choices.map(func(a): return a["id"]), ["sweep", "kunai", "rune_ward"])
 	var follow_up := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": ["sweep"]}, abilities,
 		["sweep", "iaido", "kunai", "rune_ward"])

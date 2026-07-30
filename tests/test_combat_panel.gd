@@ -98,6 +98,12 @@ func _initialize() -> void:
 	check_true("cooldown action tooltip exposes both cadence rules",
 		focus_button.tooltip_text.contains("1 use per turn")
 		and focus_button.tooltip_text.contains("Cooldown: 1 full turn"))
+	second_encounter.timed_buffs["def"] = {"value": 4, "rounds": 3}
+	panel.call("_render_bars")
+	check_true("combat HUD exposes active timed buffs", energy.text.contains("DEF+4/3r"))
+	check_eq("timed DEF updates the visible enemy intent", intent.text,
+		"[!] Attack 3-4 HP")
+	second_encounter.timed_buffs.erase("def")
 	second_encounter.shield = 5
 	panel.call("_render_bars")
 	check_eq("enemy intent updates for Guard instead of lying", intent.text,

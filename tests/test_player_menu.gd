@@ -100,6 +100,12 @@ func _initialize() -> void:
 		mana_detail != null and mana_detail.text.contains("Energy +3")
 		and mana_detail.text.contains("1E"))
 	mana_preview.free()
+	var ward_preview: Control = panel.call("_make_talent_card", db.ability("rune_ward"))
+	var ward_detail: Label = ward_preview.find_child("TalentDetail_rune_ward", true, false)
+	check_true("timed buff Talents preview value, Energy, and duration",
+		ward_detail != null and ward_detail.text.contains("Def +4")
+		and ward_detail.text.contains("2E") and ward_detail.text.contains("3 rounds"))
+	ward_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

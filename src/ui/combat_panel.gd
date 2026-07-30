@@ -161,9 +161,10 @@ func _render_bars() -> void:
 	_render_enemy_intent()
 	_flow_label.text = ("Flow x%d" % _encounter.flow) if _encounter.flow > 0 else ""
 	var speed_note := " · Extra turn" if _encounter.bonus_turn else ""
-	_energy_label.text = "Energy %d/%d · SPD %d · %s%s" % [
-		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.player_speed,
-		_weapon_name, speed_note]
+	var buffs := _encounter.timed_buff_summary()
+	_energy_label.text = "Energy %d/%d · SPD %d · %s%s%s" % [
+		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.effective_speed(),
+		_weapon_name, speed_note, " · " + buffs if not buffs.is_empty() else ""]
 
 
 func _render_enemy_intent() -> void:
@@ -207,6 +208,9 @@ func _on_rune(rune: String, btn: Button) -> void:
 	var outcome := ""
 	if result.energy_restored > 0:
 		outcome = "%s restored %d Energy." % [action_name, result.energy_restored]
+	elif not result.buff_type.is_empty():
+		outcome = "%s granted %s +%d for %d rounds." % [action_name,
+			result.buff_type.to_upper(), result.buff_value, result.buff_rounds]
 	elif result.action_type == "heal":
 		outcome = "%s restored %d HP." % [action_name, result.player_healed]
 	elif result.action_type == "block" or result.shield_gained > 0:
@@ -304,10 +308,14 @@ func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> 
 	var cadence: Array[String] = []
 	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
 	var cooldown := maxi(0, int(ability.get("cooldownTurns", 0)))
+	var buff_type := String(ability.get("buffType", ""))
+	var buff_duration := maxi(0, int(ability.get("buffDuration", 0)))
 	if use_limit > 0:
 		cadence.append("Up to %d use%s per turn." % [use_limit, "" if use_limit == 1 else "s"])
 	if cooldown > 0:
 		cadence.append("Cooldown: %d full turn%s." % [cooldown, "" if cooldown == 1 else "s"])
+	if buff_type in ["atk", "def", "speed"] and buff_duration > 0:
+		cadence.append("Lasts %d enemy-response rounds." % buff_duration)
 	button.tooltip_text = "%s\nCosts %d Energy.%s" % [
 		tooltip, cost, " " + " ".join(cadence) if not cadence.is_empty() else ""]
 	button.custom_minimum_size = Vector2(72, 28)

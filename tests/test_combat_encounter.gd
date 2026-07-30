@@ -20,6 +20,7 @@ func _initialize() -> void:
 	_energy_delays_the_enemy_response()
 	_ability_cadence_is_enforced()
 	_immediate_buffs_are_distinct()
+	_timed_stat_buffs_last_enemy_rounds()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -198,6 +199,55 @@ func _immediate_buffs_are_distinct() -> void:
 		not guarded.can_use_ability(bulwark))
 	check_eq("the shield action exposes why it is unavailable",
 		guarded.ability_status(bulwark), "Shielded")
+
+
+func _timed_stat_buffs_last_enemy_rounds() -> void:
+	var ki_focus := {"id": "ki_focus", "type": "buff", "buffType": "atk",
+		"buffValue": 4, "buffDuration": 3, "cost": 2}
+	var offense := _fresh()
+	offense.begin_player_round()
+	var focused := offense.spend_and_resolve("mi", "mi", ki_focus)
+	check_eq("timed ATK buff reports its real value", focused.buff_value, 4)
+	check_eq("timed ATK buff reports its real duration", focused.buff_rounds, 3)
+	check_eq("timed ATK buff changes attack math", offense.effective_atk(), 10)
+	check_eq("active timed buff has a compact HUD summary",
+		offense.timed_buff_summary(), "ATK+4/3r")
+	check_true("an identical full-duration buff cannot waste Energy",
+		not offense.can_use_ability(ki_focus))
+
+	var rune_ward := {"id": "rune_ward", "type": "buff", "buffType": "def",
+		"buffValue": 4, "buffDuration": 3, "cost": 2}
+	var defense := CombatEncounter.new(enemy_def, 100, 100, 6, 2, 5)
+	defense.roll = 0.5
+	defense.begin_player_round()
+	defense.spend_and_resolve("mi", "mi", rune_ward)
+	check_eq("timed DEF buff changes the intent range", defense.enemy_damage_range(),
+		Vector2i(3, 4))
+	defense.end_player_turn()
+	check_eq("DEF buff ticks only after the first enemy response",
+		(defense.timed_buffs["def"] as Dictionary)["rounds"], 2)
+	defense.end_player_turn()
+	check_eq("DEF buff remains for its third enemy response",
+		(defense.timed_buffs["def"] as Dictionary)["rounds"], 1)
+	defense.end_player_turn()
+	check_true("DEF buff expires after exactly three enemy responses",
+		not defense.timed_buffs.has("def"))
+	check_eq("expired DEF returns to the base stat", defense.effective_def(), 2)
+
+	var wind_step := {"id": "wind_step", "type": "buff", "buffType": "speed",
+		"buffValue": 4, "buffDuration": 3, "cost": 2}
+	var even_enemy := enemy_def.duplicate(true)
+	even_enemy["speed"] = 5
+	var quick := CombatEncounter.new(even_enemy, 30, 30, 6, 2, 5)
+	quick.roll = 0.5
+	quick.begin_player_round()
+	check_eq("setup begins without a Speed bonus turn", quick.turns_left, 1)
+	quick.spend_and_resolve("mi", "mi", wind_step)
+	check_eq("Speed buff updates the effective stat immediately", quick.effective_speed(), 9)
+	check_eq("Speed buff can earn the current round's one bonus turn", quick.turns_left, 2)
+	var bonus := quick.end_player_turn()
+	check_true("Speed-only bonus does not tick timed buffs", bonus.bonus_turn_granted
+		and (quick.timed_buffs["speed"] as Dictionary)["rounds"] == 3)
 
 
 func _speed_grants_one_extra_full_turn() -> void:

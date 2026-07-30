@@ -462,6 +462,10 @@ func _ability_cadence(ability: Dictionary) -> String:
 		parts.append("%d/turn" % use_limit)
 	if cooldown > 0:
 		parts.append("CD %d turn%s" % [cooldown, "" if cooldown == 1 else "s"])
+	var buff_type := String(ability.get("buffType", ""))
+	var buff_duration := maxi(0, int(ability.get("buffDuration", 0)))
+	if buff_type in ["atk", "def", "speed"] and buff_duration > 0:
+		parts.append("%d rounds" % buff_duration)
 	return "  ·  ".join(parts)
 
 
