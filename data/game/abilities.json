@@ -526,7 +526,7 @@
         "requiredLevel":  6,
         "role":  "samurai",
         "requiredWeaponType":  "blade",
-        "icon":  false,
+        "icon":  true,
         "desc":  "Block the next blow and strike back in the same breath."
     },
     {

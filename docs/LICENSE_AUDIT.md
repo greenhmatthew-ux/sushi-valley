@@ -34,6 +34,10 @@ The Rune Ward Talent icon is the unmodified Ninja Adventure source
 `Ui/Skill Icon/Spell/DefenseUpgrade.png`, copied to
 `assets/icons/abilities/rune_ward.png` under the same CC0 1.0 license.
 
+The Riposte Talent icon is the unmodified Ninja Adventure source
+`Ui/Skill Icon/Spell/Counter.png`, copied to
+`assets/icons/abilities/riposte.png` under the same CC0 1.0 license.
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

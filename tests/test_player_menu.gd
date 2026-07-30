@@ -124,6 +124,8 @@ func _initialize() -> void:
 	check_true("Counter Talents preview guard, return, and Energy",
 		counter_detail != null and counter_detail.text.contains("Shield 12")
 		and counter_detail.text.contains("Return 8") and counter_detail.text.contains("2E"))
+	check_true("audited Riposte art renders on its Talent card",
+		counter_preview.find_child("AbilityIcon_riposte", true, false) != null)
 	counter_preview.free()
 	var parry_preview: Control = panel.call("_make_talent_card", db.ability("perilous_parry"))
 	var parry_detail: Label = parry_preview.find_child(
