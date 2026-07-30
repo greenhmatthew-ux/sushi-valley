@@ -8,8 +8,9 @@ verified against the running scenes — not an aspirational or inherited list.
 
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
-  merchant), and the hearts HUD icon. No restrictions of any kind; safe for any use
-  including AI-assisted development.
+  merchant), hearts HUD icon, Forge anvil, Workshop hammer, and the four rendered Talent
+  icons (Blade Sweep, Kunai Toss, Kana Bolt, Iron Brace). No restrictions of any kind;
+  safe for any use including AI-assisted development.
 - **Serene Village Revamped** by LimeZu — commercial-use entitlement previously confirmed by
   the owner; no license file ships in the pack folder itself, so that confirmation is the
   only record. Village/wilds terrain, all props (trees, rocks, barrels, crates, berry bush),
@@ -27,9 +28,8 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Not currently verified
 
-- `assets/icons/abilities/` (33 files, id-matched to `data/game/abilities.json` but not yet
-  wired into any UI) — provenance not traced this pass. Verify before building the
-  combat-skills panel that would put these on screen.
+- The 29 ability icons not named `sweep`, `kunai`, `kana_bolt`, or `brace` remain unwired and
+  provenance-unverified. Verify or replace each before rendering it in the Skills UI.
 
 ## Removed for licensing (2026-07)
 

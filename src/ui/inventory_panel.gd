@@ -34,6 +34,10 @@ const KIND_COLORS := {
 }
 
 const ICON_DIR := "res://assets/icons/items/"
+const ABILITY_ICON_DIR := "res://assets/icons/abilities/"
+## These four files were replaced with traced Ninja Adventure CC0 originals in the
+## Talent-art slice. Do not render the remaining legacy ability icons until audited.
+const VERIFIED_ABILITY_ICONS := ["sweep", "kunai", "kana_bolt", "brace"]
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"
@@ -325,6 +329,9 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	margin.add_child(row)
 
 	var text := VBoxContainer.new()
+	var icon := _verified_ability_icon(String(ability.get("id", "")))
+	if icon != null:
+		row.add_child(icon)
 	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(text)
 	var title := Label.new()
@@ -383,6 +390,9 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	row.add_theme_constant_override("separation", 10)
 	margin.add_child(row)
 	var text := VBoxContainer.new()
+	var icon := _verified_ability_icon(String(ability.get("id", "")))
+	if icon != null:
+		row.add_child(icon)
 	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(text)
 	var title := Label.new()
@@ -418,6 +428,22 @@ func _section_label(text: String) -> Label:
 	label.add_theme_font_size_override("font_size", 13)
 	label.add_theme_color_override("font_color", COL_BORDER)
 	return label
+
+
+func _verified_ability_icon(ability_id: String) -> TextureRect:
+	if ability_id not in VERIFIED_ABILITY_ICONS:
+		return null
+	var path := ABILITY_ICON_DIR + ability_id + ".png"
+	if not ResourceLoader.exists(path):
+		return null
+	var icon := TextureRect.new()
+	icon.name = "AbilityIcon_" + ability_id
+	icon.texture = load(path) as Texture2D
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.custom_minimum_size = Vector2(32, 32)
+	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	return icon
 
 
 func _on_skill_toggle(ability_id: String, equip: bool) -> void:

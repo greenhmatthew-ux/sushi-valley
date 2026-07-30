@@ -86,6 +86,8 @@ func _initialize() -> void:
 	sweep_unlock.pressed.emit()
 	check_true("Talent control permanently learns the action",
 		"sweep" in learning.profile.build()["unlockedAbilities"])
+	check_true("audited Talent art remains visible after learning the action",
+		panel.find_child("AbilityIcon_sweep", true, false) != null)
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
 	check_true("Talent unlock is written to disk",
 		"sweep" in talent_saved["build"]["unlockedAbilities"])

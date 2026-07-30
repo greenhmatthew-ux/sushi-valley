@@ -66,6 +66,8 @@ func _authored_station_access() -> void:
 	check_true("village exposes a Workshop station", workshop != null)
 	check_eq("Forge interaction is station-scoped", forge.get("station"), "forge")
 	check_eq("Workshop interaction is station-scoped", workshop.get("station"), "workshop")
+	check_true("Forge uses the audited anvil art", forge.get("sprite") != null)
+	check_true("Workshop uses the audited hammer art", workshop.get("overlay_sprite") != null)
 	check_eq("Forge cache grants one ingot's ore", ore.get("item_id"), "raw_iron_ore")
 	check_eq("Forge cache grants the required ore quantity", ore.get("qty"), 3)
 	check_eq("Forge cache has a save-safe identity", ore.get("pickup_id"),

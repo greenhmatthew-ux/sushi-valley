@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="38_house"]
 [ext_resource type="PackedScene" path="res://src/entities/crafting_station.tscn" id="39_crafting"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="40_pickup"]
+[ext_resource type="Texture2D" path="res://assets/props/crafting_anvil.png" id="41_anvil"]
+[ext_resource type="Texture2D" path="res://assets/props/crafting_hammer.png" id="42_hammer"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1374,6 +1376,7 @@ solid = false
 position = Vector2(120, 300)
 station = "forge"
 station_name = "Village Forge"
+sprite = ExtResource("41_anvil")
 
 [node name="KitchenPot" parent="Props" unique_id=1753053792 instance=ExtResource("39_crafting")]
 position = Vector2(232, 300)
@@ -1385,6 +1388,7 @@ sprite = ExtResource("31_pot")
 position = Vector2(596, 300)
 station = "workshop"
 station_name = "Village Workshop"
+overlay_sprite = ExtResource("42_hammer")
 
 [node name="ForgeOreCache" parent="Props" instance=ExtResource("40_pickup")]
 position = Vector2(144, 300)

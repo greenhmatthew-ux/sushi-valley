@@ -5,6 +5,8 @@ extends Area2D
 @export_enum("forge", "workshop", "kitchen") var station: String = "kitchen"
 @export var station_name: String = "Kitchen Pot"
 @export var sprite: Texture2D
+## Optional tool laid over a code-native station base (the Workshop uses a hammer over its bench).
+@export var overlay_sprite: Texture2D
 
 
 func _ready() -> void:
@@ -17,6 +19,12 @@ func _ready() -> void:
 		add_child(visual)
 	else:
 		_build_fallback_visual()
+	if overlay_sprite != null:
+		var overlay := Sprite2D.new()
+		overlay.texture = overlay_sprite
+		overlay.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		overlay.position = Vector2(0, -10)
+		add_child(overlay)
 	var label := Label.new()
 	label.text = station_name
 	label.add_theme_font_size_override("font_size", 8)
