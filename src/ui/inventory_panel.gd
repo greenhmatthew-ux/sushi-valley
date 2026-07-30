@@ -12,6 +12,7 @@ extends CanvasLayer
 ## above the bag and can be removed there, so equipment never becomes hidden state.
 
 const AbilityRules = preload("res://src/systems/ability_logic.gd")
+const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
 
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
@@ -236,6 +237,32 @@ func _make_card(id: String, qty: int) -> Control:
 		equip_button.focus_mode = Control.FOCUS_ALL
 		equip_button.pressed.connect(_on_equip.bind(id))
 		vbox.add_child(equip_button)
+	elif ConsumableRules.is_supported_healing(def):
+		var heal_label := Label.new()
+		heal_label.text = "Restores %d HP" % int(def.get("heal", 0))
+		heal_label.add_theme_font_size_override("font_size", 10)
+		heal_label.add_theme_color_override("font_color", COL_TEXT)
+		heal_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vbox.add_child(heal_label)
+
+		var use_button := Button.new()
+		use_button.text = "Use"
+		use_button.focus_mode = Control.FOCUS_ALL
+		var player := get_tree().get_first_node_in_group("player")
+		use_button.disabled = player == null or int(player.hp) >= int(player.MAX_HP)
+		use_button.tooltip_text = "HP is already full." if use_button.disabled \
+			else "Consume one now."
+		use_button.pressed.connect(_on_use_healing.bind(id))
+		vbox.add_child(use_button)
+	elif def.get("kind", "") == "consumable":
+		var later_label := Label.new()
+		later_label.text = "Effect not active yet"
+		later_label.tooltip_text = "Meals, buffs, energy items, and attack items stay stored until their full effect is implemented."
+		later_label.add_theme_font_size_override("font_size", 9)
+		later_label.add_theme_color_override("font_color", COL_HEADING)
+		later_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		later_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vbox.add_child(later_label)
 
 	return card
 
@@ -326,6 +353,19 @@ func _on_skill_toggle(ability_id: String, equip: bool) -> void:
 		Bus.toast.emit("%s %s." % [verb, DB.ability(ability_id).get("name", ability_id)])
 	else:
 		Bus.toast.emit("That ability cannot be equipped right now.")
+
+
+func _on_use_healing(item_id: String) -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var restored := Inv.use_healing_item(item_id, int(player.hp), int(player.MAX_HP))
+	if restored <= 0:
+		Bus.toast.emit("That item cannot be used right now.")
+		return
+	player.set_hp(int(player.hp) + restored)
+	_refresh()
+	Bus.toast.emit("%s restored %d HP." % [DB.item(item_id).get("name", item_id), restored])
 
 
 func _on_equip(item_id: String) -> void:

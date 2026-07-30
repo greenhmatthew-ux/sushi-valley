@@ -12,6 +12,8 @@ extends Node
 ## load. This autoload deliberately does NOT touch SaveGame itself, to keep the
 ## save schema owned by that slice.
 
+const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
+
 var logic := InventoryLogic.new()
 
 ## Guards the autosave while load_dict is repopulating the bag from disk — otherwise
@@ -68,6 +70,16 @@ func entries() -> Array:
 
 func encumbrance() -> Dictionary:
 	return logic.encumbrance()
+
+
+## Consume one supported healing item and return actual HP restored. Zero means the
+## item was unsupported, absent, or would be wasted at full health; nothing is removed.
+func use_healing_item(item_id: String, current_hp: int, max_hp: int) -> int:
+	var item: Dictionary = DB.item(item_id)
+	var restored := ConsumableRules.restored_hp(item, current_hp, max_hp)
+	if restored <= 0 or remove(item_id, 1) != 1:
+		return 0
+	return restored
 
 
 # --- equipment -------------------------------------------------------------

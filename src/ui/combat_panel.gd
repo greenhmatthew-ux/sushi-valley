@@ -9,6 +9,8 @@ extends CanvasLayer
 ## answer goes back through Learning.answer(), so fighting IS reviewing — combat owns no
 ## deck and no schedule of its own (SITE_WIDE_LEARNING_ARCHITECTURE.md).
 
+const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
+
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
 const COL_BORDER := UiTheme.ACCENT_GOLD
@@ -76,7 +78,6 @@ func _on_combat_started(enemy_id: String) -> void:
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name
 	_root.show()
-	_build_actions()
 	_next_round()
 
 
@@ -85,6 +86,8 @@ func _next_round() -> void:
 	_answered = false
 	_continue_btn.hide()
 	_feedback.text = ""
+	_challenge = {}
+	_build_actions()
 
 	var prompt: Dictionary = Learning.build_prompt({}, true)
 	if prompt.is_empty():
@@ -181,6 +184,7 @@ func _on_continue() -> void:
 
 func _build_actions() -> void:
 	for child in _action_box.get_children():
+		_action_box.remove_child(child)
 		child.queue_free()
 	_action_buttons.clear()
 	_add_action_button({}, "Basic", "Always available; a reliable light attack.")
@@ -188,6 +192,10 @@ func _build_actions() -> void:
 	for ability in Learning.usable_ability_defs(weapon_type):
 		_add_action_button(ability, String(ability.get("name", ability.get("id", "Skill"))),
 			String(ability.get("desc", "")))
+	for entry in Inv.entries():
+		var item: Dictionary = DB.item(String(entry.get("id", "")))
+		if ConsumableRules.is_supported_healing(item):
+			_add_item_button(item, int(entry.get("qty", 0)))
 	_select_action(String(_selected_ability.get("id", "basic_attack")))
 
 
@@ -205,6 +213,19 @@ func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> 
 	_action_buttons[id] = button
 
 
+func _add_item_button(item: Dictionary, qty: int) -> void:
+	var button := Button.new()
+	var item_id := String(item.get("id", ""))
+	button.text = "%s x%d" % [item.get("name", item_id), qty]
+	button.tooltip_text = "%s\nRestores %d HP and ends this combat action." % [
+		item.get("desc", ""), int(item.get("heal", 0))]
+	button.custom_minimum_size = Vector2(90, 28)
+	button.focus_mode = Control.FOCUS_ALL
+	button.disabled = _encounter.player_hp >= _encounter.player_max_hp
+	button.pressed.connect(_on_combat_item.bind(item_id))
+	_action_box.add_child(button)
+
+
 func _select_action(ability_id: String) -> void:
 	if not _action_buttons.has(ability_id):
 		ability_id = "basic_attack"
@@ -214,6 +235,29 @@ func _select_action(ability_id: String) -> void:
 		(_action_buttons[id] as Button).button_pressed = String(id) == ability_id
 	if not _challenge.is_empty():
 		_refresh_guard_hint()
+
+
+func _on_combat_item(item_id: String) -> void:
+	if _answered:
+		return
+	var item: Dictionary = DB.item(item_id)
+	var healing := ConsumableRules.restored_hp(item, _encounter.player_hp, _encounter.player_max_hp)
+	if healing <= 0 or Inv.remove(item_id, 1) != 1:
+		Bus.toast.emit("That item cannot be used right now.")
+		return
+	_answered = true
+	var result := _encounter.use_healing_item(item_id, int(item.get("heal", 0)))
+	for choice in _choices_box.get_children():
+		if choice is Button:
+			(choice as Button).disabled = true
+	_render_bars()
+	_feedback.add_theme_color_override("font_color", COL_GOOD)
+	_feedback.text = "%s restored %d HP." % [item.get("name", item_id), result.player_healed]
+	if result.enemy_damage_dealt > 0:
+		_feedback.text += "   %s hits back for %d." % [_encounter.enemy_name, result.enemy_damage_dealt]
+	_continue_btn.text = "Continue" if _encounter.is_over() else "Next"
+	_continue_btn.show()
+	_continue_btn.grab_focus()
 
 
 func _finish(victory: bool, message: String) -> void:

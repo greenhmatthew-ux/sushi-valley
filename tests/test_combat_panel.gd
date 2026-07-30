@@ -10,6 +10,9 @@ func _initialize() -> void:
 	var learning: Node = root.get_node("Learning")
 	var db: Node = root.get_node("DB")
 	var bus: Node = root.get_node("Bus")
+	var inv: Node = root.get_node("Inv")
+	inv.reset()
+	inv.add("rice_ball", 1)
 	learning.profile.unlock_card("kana-a")
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/combat_panel.gd"))
@@ -25,12 +28,23 @@ func _initialize() -> void:
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
-	check_eq("unarmed combat offers Basic, Guard, and Focus", actions.get_child_count(), 3)
+	check_eq("unarmed combat also shows a held healing item", actions.get_child_count(), 4)
 	check_eq("Basic Attack is the safe default", (actions.get_child(0) as Button).text, "Basic")
 	check_true("weapon-gated Strike is not a fake action",
 		_find_button(actions, "Strike") == null)
+	var encounter: CombatEncounter = panel.get("_encounter")
+	encounter.player_hp = 5
+	panel.call("_build_actions")
+	var item_button := _find_button(actions, "Rice Ball x1")
+	check_true("healing item becomes usable when hurt", item_button != null and not item_button.disabled)
+	item_button.pressed.emit()
+	await process_frame
+	check_eq("combat item consumes exactly one", inv.count("rice_ball"), 0)
+	check_true("combat item ends the current action", bool(panel.get("_answered")))
+	check_true("combat item improves HP even after the counterattack", encounter.player_hp > 5)
 
 	panel.call("_finish", false, "")
+	inv.reset()
 	panel.queue_free()
 	await process_frame
 	_finish()

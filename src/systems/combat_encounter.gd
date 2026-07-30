@@ -109,6 +109,27 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundR
 	return r
 
 
+## Healing items are a direct combat action, not a Japanese prompt. The caller owns
+## inventory removal and passes the authored healing value only after validating stock.
+func use_healing_item(item_id: String, healing: int) -> RoundResult:
+	var r := RoundResult.new()
+	r.action_id = item_id
+	r.action_type = "item"
+	var before := player_hp
+	player_hp = mini(player_max_hp, player_hp + maxi(0, healing))
+	r.player_healed = player_hp - before
+	r.flow_after = flow
+	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	if r.player_healed > 0 and not r.enemy_defeated:
+		var incoming := CombatLogic.enemy_damage(enemy_atk, player_def, roll)
+		r.shield_absorbed = mini(shield, incoming)
+		r.enemy_damage_dealt = incoming - r.shield_absorbed
+		shield = 0
+		player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
+		r.player_defeated = CombatLogic.is_dead(player_hp)
+	return r
+
+
 ## Build one round's challenge from a card plus a pool to draw wrong runes from.
 ##
 ## This INVERTS the usual recall prompt. The notebook and gates ask "what does み mean?"
