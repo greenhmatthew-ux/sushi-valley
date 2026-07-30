@@ -10,6 +10,7 @@ func _initialize() -> void:
 	# Earlier suites deliberately exercise persistence in the same isolated APPDATA root.
 	# Pin this UI contract to an actual fresh build instead of inheriting their XP.
 	var learning: Node = root.get_node("Learning")
+	var db: Node = root.get_node("DB")
 	learning.profile.data["stats"]["xp"] = 0
 	learning.profile.build()["allocations"] = {"vitality": 0, "power": 0, "agility": 0}
 	var panel := CanvasLayer.new()
@@ -93,6 +94,12 @@ func _initialize() -> void:
 	check_true("skill cards expose authored use limits and cooldowns",
 		focus_detail != null and focus_detail.text.contains("1/turn")
 		and focus_detail.text.contains("CD 1 turn"))
+	var mana_preview: Control = panel.call("_make_talent_card", db.ability("mana_tea"))
+	var mana_detail: Label = mana_preview.find_child("TalentDetail_mana_tea", true, false)
+	check_true("immediate buff Talents preview their real effect instead of Power 0",
+		mana_detail != null and mana_detail.text.contains("Energy +3")
+		and mana_detail.text.contains("1E"))
+	mana_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

@@ -349,10 +349,9 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	var state := ""
 	if equipped:
 		state = "  ·  Equipped" if weapon_ok else "  ·  Equipped, inactive without %s" % required
-	title.text = "%s  ·  %s  ·  Power %d  ·  %dE%s" % [
+	title.text = "%s  ·  %s  ·  %dE%s" % [
 		ability.get("name", ability.get("id", "Skill")),
-		String(ability.get("type", "skill")).capitalize(), int(ability.get("power", 0)),
-		CombatEncounter.action_cost(ability), state]
+		_ability_effect_text(ability), CombatEncounter.action_cost(ability), state]
 	title.add_theme_font_size_override("font_size", 13)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	text.add_child(title)
@@ -420,8 +419,7 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	var required := String(ability.get("requiredWeaponType", ""))
 	detail.name = "TalentDetail_" + String(ability.get("id", ""))
 	var hits := maxi(1, int(ability.get("hits", 1)))
-	var effect := "%s %d" % [String(ability.get("type", "action")).capitalize(),
-		int(ability.get("power", 0))]
+	var effect := _ability_effect_text(ability)
 	if hits > 1:
 		effect += " x%d hits" % hits
 	effect += "  ·  %dE" % CombatEncounter.action_cost(ability)
@@ -465,6 +463,14 @@ func _ability_cadence(ability: Dictionary) -> String:
 	if cooldown > 0:
 		parts.append("CD %d turn%s" % [cooldown, "" if cooldown == 1 else "s"])
 	return "  ·  ".join(parts)
+
+
+func _ability_effect_text(ability: Dictionary) -> String:
+	if String(ability.get("type", "")) == "buff":
+		var buff_type := String(ability.get("buffType", "effect")).capitalize()
+		return "%s +%d" % [buff_type, int(ability.get("buffValue", 0))]
+	return "%s %d" % [String(ability.get("type", "action")).capitalize(),
+		int(ability.get("power", 0))]
 
 
 func _section_label(text: String) -> Label:

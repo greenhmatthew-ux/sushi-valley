@@ -113,6 +113,10 @@ func can_use_ability(ability: Dictionary) -> bool:
 	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
 	if use_limit > 0 and int(ability_uses_this_turn.get(ability_id, 0)) >= use_limit:
 		return false
+	if String(ability.get("type", "")) == "buff" \
+			and String(ability.get("buffType", "")) == "shield" \
+			and shield >= int(ability.get("buffValue", 0)):
+		return false
 	return String(ability.get("type", "")) != "heal" or player_hp < player_max_hp
 
 
@@ -128,6 +132,10 @@ func ability_status(ability: Dictionary) -> String:
 	var use_limit := maxi(0, int(ability.get("maxUsesPerTurn", 0)))
 	if use_limit > 0 and int(ability_uses_this_turn.get(ability_id, 0)) >= use_limit:
 		return "Used"
+	if String(ability.get("type", "")) == "buff" \
+			and String(ability.get("buffType", "")) == "shield" \
+			and shield >= int(ability.get("buffValue", 0)):
+		return "Shielded"
 	if String(ability.get("type", "")) == "heal" and player_hp >= player_max_hp:
 		return "Full HP"
 	return ""
@@ -204,7 +212,10 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 	r.correct = _normalize(chosen) == _normalize(answer)
 	r.action_id = String(ability.get("id", "basic_attack"))
 	r.action_type = String(ability.get("type", "attack"))
-	if r.action_type not in ["attack", "block", "heal"]:
+	var buff_type := String(ability.get("buffType", ""))
+	if r.action_type not in ["attack", "block", "heal"] \
+			and not (r.action_type == "buff" and buff_type in ["energy", "shield"] \
+			and int(ability.get("buffDuration", 1)) <= 1):
 		r.action_id = "basic_attack"
 		r.action_type = "attack"
 
@@ -229,6 +240,17 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 		var before := player_hp
 		player_hp = mini(player_max_hp, player_hp + healing)
 		r.player_healed = player_hp - before
+	elif r.action_type == "buff":
+		var amount := int(ability.get("buffValue", 0))
+		amount = amount if r.correct else maxi(1, roundi(amount * 0.5))
+		if buff_type == "energy":
+			var energy_before := energy
+			energy = mini(MAX_ENERGY, energy + amount)
+			r.energy_restored = energy - energy_before
+		elif buff_type == "shield":
+			var shield_before := shield
+			shield = maxi(shield, amount)
+			r.shield_gained = shield - shield_before
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
 
 	if enemy_responds:

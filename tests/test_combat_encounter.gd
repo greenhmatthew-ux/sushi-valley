@@ -19,6 +19,7 @@ func _initialize() -> void:
 	_equipped_actions_have_distinct_results()
 	_energy_delays_the_enemy_response()
 	_ability_cadence_is_enforced()
+	_immediate_buffs_are_distinct()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -168,6 +169,35 @@ func _ability_cadence_is_enforced() -> void:
 		limited.ability_status(brace), "Used")
 	check_true("per-turn-only actions cannot repeat",
 		not limited.spend_and_resolve("mi", "mi", brace).action_resolved)
+
+
+func _immediate_buffs_are_distinct() -> void:
+	var tea := {"id": "mana_tea", "type": "buff", "buffType": "energy",
+		"buffValue": 3, "cost": 1}
+	var e := _fresh()
+	e.enemy_max_hp = 200
+	e.enemy_hp = 200
+	e.begin_player_round()
+	e.spend_and_resolve("mi", "mi",
+		{"id": "sweep", "type": "attack", "power": 14, "cost": 3})
+	var tea_result := e.spend_and_resolve("mi", "mi", tea)
+	check_eq("Mana Tea restores its authored Energy after paying its cost",
+		tea_result.energy_restored, 3)
+	check_eq("Mana Tea has a real net Energy gain", e.energy, 4)
+	check_eq("Mana Tea does not fake attack damage", tea_result.player_damage_dealt, 0)
+
+	var bulwark := {"id": "bulwark", "type": "buff", "buffType": "shield",
+		"buffValue": 30, "cost": 3}
+	var guarded := _fresh()
+	guarded.begin_player_round()
+	var wall := guarded.spend_and_resolve("mi", "mi", bulwark)
+	check_eq("Bulwark raises its authored Shield", wall.shield_gained, 30)
+	check_eq("Bulwark changes the enemy intent to zero HP damage",
+		guarded.enemy_damage_range(), Vector2i(0, 0))
+	check_true("a weaker duplicate shield buff is rejected",
+		not guarded.can_use_ability(bulwark))
+	check_eq("the shield action exposes why it is unavailable",
+		guarded.ability_status(bulwark), "Shielded")
 
 
 func _speed_grants_one_extra_full_turn() -> void:

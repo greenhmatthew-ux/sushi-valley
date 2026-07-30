@@ -18,6 +18,12 @@ var abilities := {
 		"requiredLevel": 4, "requiredWeaponType": "blade", "hits": 2},
 	"storm_draw": {"id": "storm_draw", "type": "attack", "spCost": 3,
 		"role": "samurai", "requiredWeaponType": "blade", "cooldownTurns": 1},
+	"mana_tea": {"id": "mana_tea", "type": "buff", "buffType": "energy",
+		"buffValue": 3, "spCost": 1, "role": "scholar", "requiredWeaponType": "kana"},
+	"bulwark": {"id": "bulwark", "type": "buff", "buffType": "shield",
+		"buffValue": 30, "spCost": 3, "role": "guardian", "requiredWeaponType": "heavy"},
+	"slow_charge": {"id": "slow_charge", "type": "buff", "buffType": "energy",
+		"buffValue": 2, "buffDuration": 3, "spCost": 1, "role": "scholar"},
 	"rune_ward": {"id": "rune_ward", "type": "buff", "starter": false,
 		"spCost": 1, "requiredWeaponType": "kana"},
 }
@@ -46,6 +52,11 @@ func _weapon_and_runtime_gates() -> void:
 	check_true("Strike accepts a blade", AbilityRules.weapon_matches(abilities["strike"], "blade"))
 	check_true("authored buffs wait for their real resolver",
 		not AbilityRules.is_runtime_supported(abilities["rune_ward"]))
+	check_true("immediate Energy and Shield buffs use the real resolver",
+		AbilityRules.is_runtime_supported(abilities["mana_tea"])
+		and AbilityRules.is_runtime_supported(abilities["bulwark"]))
+	check_true("timed buffs remain hidden even when their stat name matches",
+		not AbilityRules.is_runtime_supported(abilities["slow_charge"]))
 	var usable := AbilityRules.usable_defs(build, abilities, "blade")
 	check_eq("combat gets only supported, weapon-ready actions",
 		usable.map(func(a): return a["id"]), ["strike", "guard", "focus"])
@@ -88,6 +99,10 @@ func _talent_unlocks() -> void:
 		not AbilityRules.unlock_talent("rune_ward", 3, build, abilities))
 	check_true("cooldown-only actions are honest now that combat enforces cadence",
 		AbilityRules.is_honest_talent(abilities["storm_draw"]))
+	check_true("immediate buff talents are honest without enabling timed stat buffs",
+		AbilityRules.is_honest_talent(abilities["mana_tea"])
+		and AbilityRules.is_honest_talent(abilities["bulwark"])
+		and not AbilityRules.is_honest_talent(abilities["rune_ward"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])

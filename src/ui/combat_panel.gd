@@ -205,9 +205,11 @@ func _on_rune(rune: String, btn: Button) -> void:
 	_feedback.add_theme_color_override("font_color", COL_GOOD if result.correct else COL_BAD)
 	var action_name := String(_selected_ability.get("name", "Basic Attack"))
 	var outcome := ""
-	if result.action_type == "heal":
+	if result.energy_restored > 0:
+		outcome = "%s restored %d Energy." % [action_name, result.energy_restored]
+	elif result.action_type == "heal":
 		outcome = "%s restored %d HP." % [action_name, result.player_healed]
-	elif result.action_type == "block":
+	elif result.action_type == "block" or result.shield_gained > 0:
 		outcome = "%s raised %d shield." % [action_name, result.shield_gained]
 	else:
 		outcome = "%s hit for %d." % [action_name, result.player_damage_dealt]
