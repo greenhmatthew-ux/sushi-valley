@@ -27,6 +27,9 @@ class RoundResult extends RefCounted:
 	var debuff_type: String
 	var debuff_value: int
 	var debuff_rounds: int
+	var counter_damage_armed: int
+	var counter_damage_dealt: int
+	var parry_armed: bool
 	var shield_absorbed: int
 	var enemy_damage_dealt: int
 	var flow_after: int
@@ -68,6 +71,10 @@ var ability_cooldowns: Dictionary = {}
 var timed_buffs: Dictionary = {}
 ## Enemy-side counterpart to timed_buffs, populated only by authored attack riders.
 var timed_debuffs: Dictionary = {}
+## One reactive stance can wait across Speed bonus turns. It is consumed only by a real
+## enemy response, never by End Turn when the player immediately receives another turn.
+var pending_counter_damage: int = 0
+var full_parry_ready: bool = false
 
 ## Consecutive correct recalls. Drives CombatLogic.flow_multiplier — accurate recall
 ## literally hits harder, and a miss resets it.
@@ -146,6 +153,9 @@ func can_use_ability(ability: Dictionary) -> bool:
 		if int(active.get("value", 0)) == int(ability.get("debuffValue", 0)) \
 				and int(active.get("rounds", 0)) >= int(ability.get("debuffDuration", 1)):
 			return false
+	if String(ability.get("type", "")) in ["counter", "parry"] \
+			and pending_counter_damage >= int(ability.get("counterDamage", 0)):
+		return false
 	return String(ability.get("type", "")) != "heal" or player_hp < player_max_hp
 
 
@@ -182,6 +192,9 @@ func ability_status(ability: Dictionary) -> String:
 		if int(active.get("value", 0)) == int(ability.get("debuffValue", 0)) \
 				and int(active.get("rounds", 0)) >= int(ability.get("debuffDuration", 1)):
 			return "Active"
+	if String(ability.get("type", "")) in ["counter", "parry"] \
+			and pending_counter_damage >= int(ability.get("counterDamage", 0)):
+		return "Armed"
 	if String(ability.get("type", "")) == "heal" and player_hp >= player_max_hp:
 		return "Full HP"
 	return ""
@@ -194,6 +207,8 @@ func can_use_item() -> bool:
 ## Honest enemy intent for the UI. Runtime damage varies by +/-15%, so preview the full
 ## reachable HP-loss range instead of showing a false exact number. Current Guard is included.
 func enemy_damage_range() -> Vector2i:
+	if full_parry_ready:
+		return Vector2i.ZERO
 	var low := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), 0.0)
 	var high := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), 1.0)
 	return Vector2i(maxi(0, low - shield), maxi(0, high - shield))
@@ -234,6 +249,9 @@ func timed_buff_summary() -> String:
 		if int(active.get("rounds", 0)) > 0:
 			parts.append("%s+%d/%dr" % [stat_label(buff_type),
 				int(active.get("value", 0)), int(active.get("rounds", 0))])
+	if pending_counter_damage > 0:
+		parts.append("%s RET%d" % ["PARRY" if full_parry_ready else "COUNTER",
+			pending_counter_damage])
 	return " · ".join(parts)
 
 
@@ -308,7 +326,7 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 	r.action_type = String(ability.get("type", "attack"))
 	var buff_type := String(ability.get("buffType", ""))
 	var buff_duration := int(ability.get("buffDuration", 1))
-	if r.action_type not in ["attack", "block", "heal"] \
+	if r.action_type not in ["attack", "block", "heal", "counter", "parry"] \
 			and not (r.action_type == "buff" and (
 				(buff_type in ["energy", "shield"] and buff_duration <= 1) \
 				or (buff_type in ["atk", "def", "speed"] and buff_duration > 0))):
@@ -354,6 +372,19 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 		var before := player_hp
 		player_hp = mini(player_max_hp, player_hp + healing)
 		r.player_healed = player_hp - before
+	elif r.action_type in ["counter", "parry"]:
+		# Reactive guard is a listed contract, like its return damage. Recall Flow changes
+		# attacks, but must not make the Skills preview understate this defensive value.
+		var guard_power := base_power if r.correct else maxi(1, roundi(base_power * 0.5))
+		full_parry_ready = r.action_type == "parry" and r.correct
+		if not full_parry_ready:
+			shield = maxi(shield, guard_power)
+			r.shield_gained = guard_power
+		var return_damage := int(ability.get("counterDamage", 0))
+		return_damage = return_damage if r.correct else maxi(1, roundi(return_damage * 0.5))
+		pending_counter_damage = return_damage
+		r.counter_damage_armed = pending_counter_damage
+		r.parry_armed = full_parry_ready
 	elif r.action_type == "buff":
 		var amount := int(ability.get("buffValue", 0))
 		amount = amount if r.correct else maxi(1, roundi(amount * 0.5))
@@ -460,11 +491,17 @@ func _enemy_response(r: RoundResult) -> void:
 		return
 	r.enemy_acted = true
 	var incoming := CombatLogic.enemy_damage(effective_enemy_atk(), effective_def(), roll)
-	r.shield_absorbed = mini(shield, incoming)
+	r.shield_absorbed = incoming if full_parry_ready else mini(shield, incoming)
 	r.enemy_damage_dealt = incoming - r.shield_absorbed
 	shield = 0
+	full_parry_ready = false
 	player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
 	r.player_defeated = CombatLogic.is_dead(player_hp)
+	if pending_counter_damage > 0 and not r.player_defeated:
+		r.counter_damage_dealt = pending_counter_damage
+		enemy_hp = CombatLogic.apply_damage(enemy_hp, r.counter_damage_dealt)
+		r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	pending_counter_damage = 0
 
 
 func _tick_timed_buffs() -> void:

@@ -22,6 +22,7 @@ func _initialize() -> void:
 	_immediate_buffs_are_distinct()
 	_timed_stat_buffs_last_enemy_rounds()
 	_timed_debuffs_change_enemy_math()
+	_reactive_stances_wait_for_enemy()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
 	_enemy_intent_is_truthful()
@@ -305,6 +306,78 @@ func _timed_debuffs_change_enemy_math() -> void:
 	check_eq("SPD debuff can earn the current bonus turn", slowed.turns_left, 2)
 	check_eq("enemy status summary is compact and explicit",
 		slowed.enemy_debuff_summary(), "SPD-4/3r")
+
+
+func _reactive_stances_wait_for_enemy() -> void:
+	var riposte := {"id": "riposte", "type": "counter", "power": 12,
+		"cost": 2, "counterDamage": 8}
+	var counter := _fresh()
+	counter.enemy_max_hp = 200
+	counter.enemy_hp = 200
+	counter.begin_player_round()
+	var armed := counter.spend_and_resolve("mi", "mi", riposte)
+	check_eq("Counter raises its authored shield", armed.shield_gained, 12)
+	check_eq("Counter arms its fixed return damage", armed.counter_damage_armed, 8)
+	check_eq("armed Counter exposes a compact status", counter.timed_buff_summary(),
+		"COUNTER RET8")
+	check_eq("Counter shield updates enemy intent", counter.enemy_damage_range(),
+		Vector2i.ZERO)
+	check_eq("an equal Counter cannot waste Energy", counter.ability_status(riposte), "Armed")
+	var counter_hp := counter.enemy_hp
+	var response := counter.end_player_turn()
+	check_true("Counter waits for a real enemy action", response.enemy_acted)
+	check_eq("Counter shield prevents the expected hit", response.enemy_damage_dealt, 0)
+	check_eq("Counter returns fixed damage after the hit", response.counter_damage_dealt, 8)
+	check_eq("Counter return reduces enemy HP", counter.enemy_hp, counter_hp - 8)
+	check_eq("Counter stance clears after the response", counter.pending_counter_damage, 0)
+
+	var parry := {"id": "perilous_parry", "type": "parry", "power": 18,
+		"cost": 3, "counterDamage": 14}
+	var brute_def := enemy_def.duplicate(true)
+	brute_def["maxHp"] = 200
+	brute_def["atk"] = 50
+	var perfect := CombatEncounter.new(brute_def, 100, 100, 6, 2, 5)
+	perfect.roll = 0.5
+	perfect.begin_player_round()
+	var perfect_arm := perfect.spend_and_resolve("mi", "mi", parry)
+	check_true("correct Parry arms a full block", perfect_arm.parry_armed)
+	check_eq("full Parry previews zero HP damage", perfect.enemy_damage_range(), Vector2i.ZERO)
+	var perfect_response := perfect.end_player_turn()
+	check_true("full Parry absorbs more than its listed guard power",
+		perfect_response.shield_absorbed > 18)
+	check_eq("full Parry preserves player HP", perfect.player_hp, 100)
+	check_eq("full Parry returns authored damage", perfect_response.counter_damage_dealt, 14)
+
+	var missed := CombatEncounter.new(brute_def, 100, 100, 6, 2, 5)
+	missed.roll = 0.5
+	missed.begin_player_round()
+	var missed_arm := missed.spend_and_resolve("ka", "mi", parry)
+	check_true("missed Parry does not grant a full block", not missed_arm.parry_armed)
+	check_eq("missed Parry keeps half its listed guard", missed_arm.shield_gained, 9)
+	var missed_response := missed.end_player_turn()
+	check_true("missed Parry still costs HP", missed_response.enemy_damage_dealt > 0)
+	check_eq("missed Parry keeps half its return", missed_response.counter_damage_dealt, 7)
+
+	var fast_enemy := enemy_def.duplicate(true)
+	fast_enemy["maxHp"] = 200
+	fast_enemy["speed"] = 2
+	var quick := CombatEncounter.new(fast_enemy, 20, 20, 6, 2, 6)
+	quick.roll = 0.5
+	quick.begin_player_round()
+	quick.spend_and_resolve("mi", "mi", riposte)
+	var bonus := quick.end_player_turn()
+	check_true("Counter persists through a Speed bonus turn",
+		bonus.bonus_turn_granted and quick.pending_counter_damage == 8)
+	check_eq("Counter resolves after the eventual enemy response",
+		quick.end_player_turn().counter_damage_dealt, 8)
+
+	var finisher := _fresh()
+	finisher.enemy_hp = 8
+	finisher.begin_player_round()
+	finisher.spend_and_resolve("mi", "mi", riposte)
+	var final_response := finisher.end_player_turn()
+	check_true("a surviving Counter can finish the encounter",
+		final_response.enemy_defeated and finisher.player_won())
 
 
 func _speed_grants_one_extra_full_turn() -> void:

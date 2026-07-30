@@ -99,6 +99,19 @@ func _initialize() -> void:
 	check_true("cooldown action tooltip exposes both cadence rules",
 		focus_button.tooltip_text.contains("1 use per turn")
 		and focus_button.tooltip_text.contains("Cooldown: 1 full turn"))
+	second_encounter.energy = 5
+	second_encounter.spend_and_resolve("mi", "mi", db.ability("riposte"))
+	panel.call("_render_bars")
+	check_true("combat HUD exposes an armed Counter", energy.text.contains("COUNTER RET8"))
+	check_eq("Counter guard updates the visible enemy intent", intent.text,
+		"[!] Attack 0-0 HP")
+	second_encounter.full_parry_ready = true
+	panel.call("_render_bars")
+	check_true("full Parry intent explains the zero-damage preview",
+		intent.tooltip_text.contains("Full Parry blocks this hit"))
+	second_encounter.pending_counter_damage = 0
+	second_encounter.full_parry_ready = false
+	second_encounter.shield = 0
 	second_encounter.timed_debuffs["atk"] = {"value": 5, "rounds": 3}
 	panel.call("_render_bars")
 	check_true("enemy HUD exposes active debuffs", enemy_label.text.contains("ATK-5/3r"))

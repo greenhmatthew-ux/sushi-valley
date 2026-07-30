@@ -479,6 +479,10 @@ func _ability_effect_text(ability: Dictionary) -> String:
 	if String(ability.get("type", "")) == "buff":
 		var buff_type := String(ability.get("buffType", "effect")).capitalize()
 		return "%s +%d" % [buff_type, int(ability.get("buffValue", 0))]
+	if String(ability.get("type", "")) in ["counter", "parry"]:
+		var defense := "Full block" if String(ability.get("type", "")) == "parry" \
+			else "Shield %d" % int(ability.get("power", 0))
+		return "%s  ·  Return %d" % [defense, int(ability.get("counterDamage", 0))]
 	var effect := "%s %d" % [String(ability.get("type", "action")).capitalize(),
 		int(ability.get("power", 0))]
 	var debuff_type := String(ability.get("debuffType", ""))

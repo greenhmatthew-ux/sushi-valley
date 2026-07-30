@@ -33,6 +33,14 @@ var abilities := {
 	"venom_cut": {"id": "venom_cut", "type": "attack", "power": 10,
 		"debuffType": "poison", "debuffValue": 3, "debuffDuration": 3,
 		"spCost": 1, "role": "samurai", "requiredWeaponType": "blade"},
+	"riposte": {"id": "riposte", "type": "counter", "power": 12,
+		"counterDamage": 8, "spCost": 2, "role": "samurai",
+		"requiredWeaponType": "blade"},
+	"perilous_parry": {"id": "perilous_parry", "type": "parry", "power": 18,
+		"counterDamage": 14, "spCost": 3, "role": "samurai",
+		"requiredWeaponType": "blade"},
+	"empty_counter": {"id": "empty_counter", "type": "counter", "power": 12,
+		"spCost": 1, "role": "samurai", "requiredWeaponType": "blade"},
 }
 
 
@@ -67,6 +75,10 @@ func _weapon_and_runtime_gates() -> void:
 	check_true("authored stat debuffs are supported but unknown future types stay hidden",
 		AbilityRules.is_runtime_supported(abilities["spirit_shear"])
 		and not AbilityRules.is_runtime_supported(abilities["venom_cut"]))
+	check_true("authored counters and parries resolve but empty reactions stay hidden",
+		AbilityRules.is_runtime_supported(abilities["riposte"])
+		and AbilityRules.is_runtime_supported(abilities["perilous_parry"])
+		and not AbilityRules.is_runtime_supported(abilities["empty_counter"]))
 	var usable := AbilityRules.usable_defs(build, abilities, "blade")
 	check_eq("combat gets only supported, weapon-ready actions",
 		usable.map(func(a): return a["id"]), ["strike", "guard", "focus"])
@@ -116,6 +128,10 @@ func _talent_unlocks() -> void:
 	check_true("resolved debuff talents are honest without exposing unknown statuses",
 		AbilityRules.is_honest_talent(abilities["spirit_shear"])
 		and not AbilityRules.is_honest_talent(abilities["venom_cut"]))
+	check_true("counter and parry Talents are honest only with real return damage",
+		AbilityRules.is_honest_talent(abilities["riposte"])
+		and AbilityRules.is_honest_talent(abilities["perilous_parry"])
+		and not AbilityRules.is_honest_talent(abilities["empty_counter"]))
 	var choices := AbilityRules.next_talent_defs(
 		2, {"skills": [], "unlockedAbilities": []}, abilities,
 		["sweep", "kunai", "rune_ward"])

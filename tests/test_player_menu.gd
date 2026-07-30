@@ -119,6 +119,19 @@ func _initialize() -> void:
 		and shear_detail.text.contains("DEF -4") and shear_detail.text.contains("3E")
 		and shear_detail.text.contains("3 rounds"))
 	shear_preview.free()
+	var counter_preview: Control = panel.call("_make_talent_card", db.ability("riposte"))
+	var counter_detail: Label = counter_preview.find_child("TalentDetail_riposte", true, false)
+	check_true("Counter Talents preview guard, return, and Energy",
+		counter_detail != null and counter_detail.text.contains("Shield 12")
+		and counter_detail.text.contains("Return 8") and counter_detail.text.contains("2E"))
+	counter_preview.free()
+	var parry_preview: Control = panel.call("_make_talent_card", db.ability("perilous_parry"))
+	var parry_detail: Label = parry_preview.find_child(
+		"TalentDetail_perilous_parry", true, false)
+	check_true("Parry Talents preview full block, return, and Energy",
+		parry_detail != null and parry_detail.text.contains("Full block")
+		and parry_detail.text.contains("Return 14") and parry_detail.text.contains("3E"))
+	parry_preview.free()
 	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
 	panel.call("_refresh")
 	var sweep_unlock: Button = panel.find_child("TalentUnlock_sweep", true, false)

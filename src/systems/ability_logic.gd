@@ -7,12 +7,12 @@ extends RefCounted
 ## "known", "equipped", and "usable" without depending on autoloads.
 
 const MAX_SKILLS := 6
-const RUNTIME_TYPES := ["attack", "block", "heal"]
+const RUNTIME_TYPES := ["attack", "block", "heal", "counter", "parry"]
 const IMMEDIATE_BUFF_TYPES := ["energy", "shield"]
 const TIMED_BUFF_TYPES := ["atk", "def", "speed"]
 const TIMED_DEBUFF_TYPES := ["atk", "def", "speed"]
 const UNRESOLVED_EFFECT_FIELDS := [
-	"counterDamage", "lifestealPct",
+	"lifestealPct",
 ]
 
 
@@ -57,6 +57,8 @@ static func weapon_matches(ability: Dictionary, weapon_type: String) -> bool:
 static func is_runtime_supported(ability: Dictionary) -> bool:
 	var action_type := String(ability.get("type", ""))
 	if action_type in RUNTIME_TYPES:
+		if action_type in ["counter", "parry"]:
+			return int(ability.get("counterDamage", 0)) > 0
 		if ability.has("debuffType"):
 			return String(ability.get("debuffType", "")) in TIMED_DEBUFF_TYPES \
 				and int(ability.get("debuffDuration", 0)) > 0

@@ -181,7 +181,8 @@ func _render_enemy_intent() -> void:
 	_intent_label.text = "[!] Attack %d-%d HP" % [damage.x, damage.y]
 	var timing := "after %d End Turns" % _encounter.turns_left if _encounter.turns_left > 1 \
 		else "after End Turn"
-	var guard_note := " Current Guard is included." if _encounter.shield > 0 else ""
+	var guard_note := " Full Parry blocks this hit." if _encounter.full_parry_ready \
+		else (" Current Guard is included." if _encounter.shield > 0 else "")
 	_intent_label.tooltip_text = "%s will use a basic attack %s. Damage varies by 15%%.%s" % [
 		_encounter.enemy_name, timing, guard_note]
 
@@ -218,6 +219,10 @@ func _on_rune(rune: String, btn: Button) -> void:
 			CombatEncounter.stat_label(result.buff_type), result.buff_value, result.buff_rounds]
 	elif result.action_type == "heal":
 		outcome = "%s restored %d HP." % [action_name, result.player_healed]
+	elif result.action_type in ["counter", "parry"]:
+		outcome = "%s armed %s and %d return damage." % [action_name,
+			"a full parry" if result.parry_armed else "%d shield" % result.shield_gained,
+			result.counter_damage_armed]
 	elif result.action_type == "block" or result.shield_gained > 0:
 		outcome = "%s raised %d shield." % [action_name, result.shield_gained]
 	else:
@@ -280,6 +285,8 @@ func _resolve_end_turn() -> void:
 		if result.enemy_damage_dealt > 0:
 			_feedback.text += "   %s hits for %d." % [
 				_encounter.enemy_name, result.enemy_damage_dealt]
+		if result.counter_damage_dealt > 0:
+			_feedback.text += "   Returned %d damage." % result.counter_damage_dealt
 	_render_bars()
 	_continue_btn.text = "Continue" if _encounter.is_over() \
 		else ("Bonus turn" if result.bonus_turn_granted else "Next turn")
