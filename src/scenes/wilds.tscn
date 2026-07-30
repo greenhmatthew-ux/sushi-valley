@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_lanternred.png" id="17_lantern"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_snake.png" id="25_snake"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_racoon.png" id="26_racoon"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_owl.png" id="27_owl"]
 [ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="12_bld"]
 [ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="13_bar"]
 [ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
@@ -157,6 +160,33 @@ sprite_sheet = ExtResource("17_lantern")
 enemy_id = "lantern"
 coin_reward = 9
 coin_variance = 3
+
+[node name="Racoon" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(250, 240)
+behavior = 2
+enemy_atk = 4
+sprite_sheet = ExtResource("26_racoon")
+enemy_id = "racoon"
+coin_reward = 6
+coin_variance = 2
+
+[node name="Snake" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(400, 420)
+behavior = 2
+enemy_atk = 4
+sprite_sheet = ExtResource("25_snake")
+enemy_id = "snake"
+coin_reward = 6
+coin_variance = 2
+
+[node name="Owl" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(620, 290)
+behavior = 2
+enemy_atk = 4
+sprite_sheet = ExtResource("27_owl")
+enemy_id = "owl"
+coin_reward = 8
+coin_variance = 2
 
 [node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(160, 300)

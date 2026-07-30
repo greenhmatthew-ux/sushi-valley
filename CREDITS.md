@@ -7,9 +7,9 @@ verified against the running scenes — not an aspirational or inherited list.
 ## Art in use
 
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
-  (mushroom/kappa/lantern-ghost/slime), NPCs (villager, quest-giver, merchant), and the
-  hearts HUD icon. No restrictions of any kind; safe for any use including AI-assisted
-  development.
+  (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
+  merchant), and the hearts HUD icon. No restrictions of any kind; safe for any use
+  including AI-assisted development.
 - **Serene Village Revamped** by LimeZu — commercial-use entitlement previously confirmed by
   the owner; no license file ships in the pack folder itself, so that confirmation is the
   only record. Village/wilds terrain, all props (trees, rocks, barrels, crates, berry bush),

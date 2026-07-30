@@ -61,13 +61,18 @@ func _winnable_at_the_right_levels() -> void:
 	# teachers is level 2+, and it must be reliably winnable by then.
 	check_true("mushroom is winnable by level 2", _win_rate("mushroom", 2) > 0.9)
 
+	# The mid-tier wilds foes slot between the mushroom and the kappa.
+	check_true("snake is winnable by level 3", _win_rate("snake", 3) > 0.9)
+	check_true("racoon is winnable by level 3", _win_rate("racoon", 3) > 0.9)
+
 	# The tough wilds foes must be gated behind real study, not impossible.
 	check_true("kappa is NOT a pushover at level 2", _win_rate("kappa", 2) < 0.5)
 	check_true("kappa becomes winnable with study", _win_rate("kappa", 5) > 0.9)
+	check_true("owl becomes winnable with study", _win_rate("owl", 5) > 0.9)
 	check_true("lantern becomes winnable with study", _win_rate("lantern", 5) > 0.9)
 
 	# The regression that started this: nothing in the roster may be unwinnable forever.
-	for eid in ["slime", "mushroom", "kappa", "lantern"]:
+	for eid in ["slime", "mushroom", "snake", "racoon", "kappa", "owl", "lantern"]:
 		check_true("%s is winnable at a high level" % eid, _win_rate(eid, 10) > 0.9)
 
 
