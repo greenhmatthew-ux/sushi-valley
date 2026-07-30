@@ -11,9 +11,11 @@ var rice_recipe := {"id": "craft_rice_ball", "station": "kitchen", "levelReq": 1
 
 
 func _initialize() -> void:
+	await process_frame
 	_progression_and_discovery()
 	_atomic_transaction()
 	_authored_station_access()
+	_starter_weapon_paths_are_reachable()
 	await _one_time_ingredients()
 	await _panel_contract()
 	_finish()
@@ -102,6 +104,52 @@ func _authored_station_access() -> void:
 		"output": {"item": "straw_sandals", "qty": 1}}
 	check_true("Bamboo cache plus a local Raccoon unlocks a Workshop recipe",
 		Rules.status(workshop_recipe, "workshop", {}, workshop_bag)["ok"])
+
+
+## Each permanent Talent path has a level-1 weapon recipe, and every ingredient is sold
+## by the playable material trader or dropped by a foe already in the playable Woods.
+func _starter_weapon_paths_are_reachable() -> void:
+	var db: Node = root.get_node("DB")
+	var trader_stock := {}
+	for entry in db.shops.get("forest_trader", {}).get("stock", []):
+		trader_stock[String(entry.get("item", ""))] = true
+	for material in ["bamboo_shoot", "slime_gel", "spider_silk"]:
+		check_true("Forest Trader renewably stocks %s" % material, trader_stock.has(material))
+
+	var local_drops := {}
+	var wilds: Node = load("res://src/scenes/wilds.tscn").instantiate()
+	for node_name in ["Snake", "Owl"]:
+		var enemy: Node = wilds.find_child(node_name, true, false)
+		check_true("playable Woods contains %s" % node_name, enemy != null)
+		var enemy_id := String(enemy.get("enemy_id"))
+		for drop in db.enemy(enemy_id).get("drops", []):
+			local_drops[String(drop.get("item", ""))] = true
+	wilds.free()
+	check_true("local Snake supplies spear fangs", local_drops.has("snake_fang"))
+	check_true("local Owl supplies brush feathers", local_drops.has("owl_feather"))
+
+	var expected := {
+		"craft_wooden_katana": ["blade", "forge"],
+		"craft_bamboo_spear": ["heavy", "forge"],
+		"craft_wrist_bow": ["ranged", "workshop"],
+		"craft_calligraphy_brush": ["kana", "workshop"],
+	}
+	for recipe_id in expected:
+		var recipe: Dictionary = db.recipe(recipe_id)
+		var output: Dictionary = db.item(String(recipe.get("output", {}).get("item", "")))
+		check_eq("%s has the intended weapon family" % recipe_id,
+			output.get("weaponType", ""), expected[recipe_id][0])
+		check_eq("%s opens at the intended station" % recipe_id,
+			recipe.get("station", ""), expected[recipe_id][1])
+		check_eq("%s is a level-1 recipe" % recipe_id, recipe.get("levelReq", 0), 1)
+		var bag := Bag.new()
+		for input in recipe.get("inputs", []):
+			var item_id := String(input.get("item", ""))
+			check_true("%s input %s has a playable source" % [recipe_id, item_id],
+				trader_stock.has(item_id) or local_drops.has(item_id))
+			bag.add(item_id, int(input.get("qty", 0)))
+		check_true("%s can complete atomically" % recipe_id,
+			Rules.status(recipe, String(expected[recipe_id][1]), {}, bag)["ok"])
 
 
 func _one_time_ingredients() -> void:

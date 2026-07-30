@@ -17,7 +17,7 @@ func _initialize() -> void:
 	check("items", db.items.size(), 167)
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
-	check("recipes", db.recipes.size(), 78)
+	check("recipes", db.recipes.size(), 80)
 	check("quests", db.quests.size(), 19)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)

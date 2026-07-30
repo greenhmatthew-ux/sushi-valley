@@ -45,7 +45,7 @@ docs/     design docs + PORT_NOTES.md
 ## Content
 
 1392 spaced-repetition cards across 138 lessons, drawn from 11 imported Anki decks plus
-hand-authored kana. 167 items, 76 enemies, 68 abilities, 78 recipes, 18 quests.
+hand-authored kana. 167 items, 76 enemies, 68 abilities, 80 recipes, 19 quests.
 
 ## History
 

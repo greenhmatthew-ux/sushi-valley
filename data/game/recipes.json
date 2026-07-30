@@ -35,6 +35,30 @@
     "desc": "A longer-reaching weapon tipped with snake fang."
   },
   {
+    "id": "craft_wrist_bow",
+    "name": "Wrist Bow",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 3 },
+      { "item": "spider_silk", "qty": 2 }
+    ],
+    "output": { "item": "wrist_bow", "qty": 1 },
+    "desc": "A compact bamboo bow strung with tough forest silk."
+  },
+  {
+    "id": "craft_calligraphy_brush",
+    "name": "Calligraphy Brush",
+    "station": "workshop",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 2 },
+      { "item": "owl_feather", "qty": 1 }
+    ],
+    "output": { "item": "calligraphy_brush", "qty": 1 },
+    "desc": "A bamboo-handled focus bound with a keen owl feather."
+  },
+  {
     "id": "craft_straw_hat",
     "name": "Straw Hat",
     "station": "workshop",
