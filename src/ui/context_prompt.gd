@@ -70,9 +70,24 @@ func _nearest_interactable() -> Node:
 ## "Player-facing screens never expose entity IDs, internal flags... implementation
 ## terminology").
 func _verb_for(target: Node) -> String:
-	var named := String(target.get("speaker") if target.get("speaker") != null else "")
 	if target.has_method("begin_spar"):
 		return "Spar"
+
+	# A quest giver's display name comes from the quest data, not its `speaker` export (which
+	# is usually left blank so the authored giver wins) — so ask it, and say what's waiting.
+	if target.has_method("current_stage") and target.has_method("quest"):
+		var giver_name := String(target.quest().get("giver", "them"))
+		if not String(target.get("speaker")).is_empty():
+			giver_name = String(target.get("speaker"))
+		match target.current_stage():
+			"turnin":
+				return "Hand in to %s" % giver_name
+			"intro":
+				return "Ask %s for work" % giver_name
+			_:
+				return "Talk to %s" % giver_name
+
+	var named := String(target.get("speaker") if target.get("speaker") != null else "")
 	if not named.is_empty():
 		return "Talk to %s" % named
 	if target.get("shows_card") != null:

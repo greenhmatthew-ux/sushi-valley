@@ -1138,6 +1138,7 @@ position = Vector2(304, 180)
 
 [node name="QuestGiver" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
 position = Vector2(344, 224)
+quest_id = "stock_the_stall"
 
 [node name="Tree0" parent="Props" unique_id=1439562200 instance=ExtResource("20_prop")]
 position = Vector2(24, 32)
@@ -1467,3 +1468,7 @@ position = Vector2(408, 344)
 sign_id = "well"
 shows_card = "food-mizu"
 caption = "Scratched into the well's post."
+
+[node name="QuestGiverRiver" parent="Props" instance=ExtResource("14_quest")]
+position = Vector2(248, 424)
+quest_id = "river_guard"

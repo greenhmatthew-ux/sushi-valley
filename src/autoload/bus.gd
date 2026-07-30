@@ -67,3 +67,9 @@ signal game_loaded()
 
 # --- world / NPCs ---
 signal npc_talked(npc_id: String)
+
+# --- quests ---
+## A quest was accepted; the HUD starts tracking it as the current objective.
+signal quest_accepted(quest_id: String)
+## A quest was turned in and paid out.
+signal quest_completed(quest_id: String)

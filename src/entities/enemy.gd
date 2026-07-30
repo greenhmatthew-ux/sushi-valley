@@ -142,14 +142,31 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 
-## Reward a hostile kill: coins into the shared purse plus a toast so the drop reads. Called
-## only on PASSIVE/AGGRO deaths — sparring bouts route to the spar-won message instead.
+## Reward a hostile kill: coins plus this enemy's authored item drops. Called only on
+## PASSIVE/AGGRO deaths — sparring bouts route to the spar-won message instead.
+##
+## The item half reads the drop table straight from data/game/enemies.json. Before this,
+## enemies paid coins and ignored their tables entirely, which quietly made every
+## item-collection quest in quests.json impossible to finish.
 func _drop_loot() -> void:
-	if coin_reward <= 0:
-		return
-	var amt := maxi(1, coin_reward + randi_range(-coin_variance, coin_variance))
-	Inv.add_coins(amt)
-	Bus.toast.emit("The %s dropped %d coins." % [enemy_id, amt])
+	var parts: Array[String] = []
+
+	if coin_reward > 0:
+		var amt := maxi(1, coin_reward + randi_range(-coin_variance, coin_variance))
+		Inv.add_coins(amt)
+		parts.append("%d coins" % amt)
+
+	var table: Array = DB.enemy(enemy_id).get("drops", [])
+	var drops := LootLogic.roll(table)
+	for id in drops:
+		Inv.add(id, 1)
+	var items := LootLogic.describe(drops, func(id): return DB.item(id).get("name", id))
+	if not items.is_empty():
+		parts.append(items)
+
+	if not parts.is_empty():
+		var name := String(DB.enemy(enemy_id).get("name", enemy_id))
+		Bus.toast.emit("%s dropped %s." % [name, " and ".join(parts)])
 
 
 ## Begin a practice bout — called through the player's interact probe (see SparZone) when
