@@ -52,6 +52,7 @@ func _ready() -> void:
 	Bus.xp_gained.connect(func(_a): _sync_stats(false))
 	Bus.card_reviewed.connect(func(_i, _g, _c): _sync_stats(false))
 	Bus.inventory_changed.connect(func(): _sync_stats(false))
+	Bus.player_build_changed.connect(func(): _sync_stats(false))
 	Bus.player_hp_changed.emit(hp, MAX_HP)
 	# Camera framing is a saved preference, not a scene constant — apply it on spawn and
 	# keep following it, so changing zoom in settings updates the live view immediately.
@@ -66,7 +67,8 @@ func _sync_stats(heal: bool) -> void:
 	var xp := 0
 	if Learning.profile != null:
 		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
-	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs())
+	var allocations: Dictionary = Learning.allocations() if Learning.profile != null else {}
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations)
 	var new_max: int = stats["max_hp"]
 	var new_atk: int = stats["atk"]
 	var new_def: int = stats["def"]

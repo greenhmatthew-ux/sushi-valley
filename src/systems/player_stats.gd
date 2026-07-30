@@ -3,9 +3,8 @@ extends RefCounted
 ## Player level and combat stats, derived from learning XP. Pure and node-free.
 ##
 ## COMBAT_DESIGN.md: "Player stats derive from learning XP level, vitality/power/agility
-## allocation, and equipped gear." Level and equipped-gear bonuses exist here; allocation remains
-## a later slice. The important direction of causality stays intact: studying Japanese raises the
-## level that drives base stats and gear scaling. Nothing else grants combat-level XP.
+## allocation, and equipped gear." The important direction of causality stays intact: studying
+## Japanese raises the level that grants Attribute Points. Nothing else grants combat-level XP.
 ##
 ## WHY THIS EXISTS. The ported enemy numbers assume a character who levels. Without that the
 ## player was a permanent 12 HP with a flat basic attack, and a simulation of the real
@@ -28,6 +27,14 @@ const ATK_PER_LEVEL := 2
 ## DEF every other level, so mitigation improves without trivialising early foes.
 const LEVELS_PER_DEF := 2
 
+## Kana's useful allocation values are retained. Attribute Points are intentionally separate
+## from future Talent unlocks so an early HP choice cannot quietly block a later ability.
+const ALLOCATION_KEYS := ["vitality", "power", "agility"]
+const ACTIVE_ALLOCATION_KEYS := ["vitality", "power"]
+const VITALITY_HP := 6
+const POWER_ATK := 1
+const AGILITY_SPEED := 1
+
 const RARITY_GROWTH := {
 	"common": 0.012,
 	"uncommon": 0.015,
@@ -45,6 +52,46 @@ static func level_from_xp(xp: int) -> int:
 ## XP still needed for the next level, for a progress readout.
 static func xp_into_level(xp: int) -> int:
 	return maxi(0, xp) % XP_PER_LEVEL
+
+
+## One refundable Attribute Point per level gained. Level 1 starts with no unearned choice.
+static func attribute_points_earned(xp: int) -> int:
+	return maxi(0, level_from_xp(xp) - 1)
+
+
+static func normalized_allocations(raw: Dictionary) -> Dictionary:
+	var allocations := {"vitality": 0, "power": 0, "agility": 0}
+	for key in ALLOCATION_KEYS:
+		allocations[key] = maxi(0, int(raw.get(key, 0)))
+	return allocations
+
+
+static func attribute_points_spent(raw: Dictionary) -> int:
+	var allocations := normalized_allocations(raw)
+	return int(allocations["vitality"]) + int(allocations["power"]) \
+		+ int(allocations["agility"])
+
+
+static func unspent_attribute_points(xp: int, raw: Dictionary) -> int:
+	return maxi(0, attribute_points_earned(xp) - attribute_points_spent(raw))
+
+
+## Mutate one allocation step. Decreases are always allowed for free respec; increases must
+## be active and affordable. Agility remains stored for save compatibility, but cannot grow
+## until the combat loop actually uses Speed.
+static func adjust_allocation(raw: Dictionary, key: String, delta: int, xp: int) -> bool:
+	if key not in ALLOCATION_KEYS or delta not in [-1, 1]:
+		return false
+	var current := maxi(0, int(raw.get(key, 0)))
+	if delta < 0:
+		if current <= 0:
+			return false
+		raw[key] = current - 1
+		return true
+	if key not in ACTIVE_ALLOCATION_KEYS or unspent_attribute_points(xp, raw) <= 0:
+		return false
+	raw[key] = current + 1
+	return true
 
 
 static func max_hp(level: int) -> int:
@@ -105,16 +152,20 @@ static func gear_bonus(gear_defs: Array[Dictionary], level: int) -> Dictionary:
 	return total
 
 
-## Everything a fight needs, from learning XP plus the currently equipped gear.
-static func from_xp(xp: int, gear_defs: Array[Dictionary] = []) -> Dictionary:
+## Everything a fight needs, from learning XP, allocations, and equipped gear.
+static func from_xp(xp: int, gear_defs: Array[Dictionary] = [],
+		allocation_data: Dictionary = {}) -> Dictionary:
 	var lv := level_from_xp(xp)
 	var gear := gear_bonus(gear_defs, lv)
+	var allocations := normalized_allocations(allocation_data)
 	return {
 		"level": lv,
-		"max_hp": maxi(1, max_hp(lv) + int(gear["hp"])),
-		"atk": maxi(1, atk(lv) + int(gear["atk"])),
+		"max_hp": maxi(1, max_hp(lv) + int(gear["hp"])
+			+ int(allocations["vitality"]) * VITALITY_HP),
+		"atk": maxi(1, atk(lv) + int(gear["atk"])
+			+ int(allocations["power"]) * POWER_ATK),
 		"def": maxi(0, def(lv) + int(gear["def"])),
-		"speed": int(gear["spd"]),
+		"speed": int(gear["spd"]) + int(allocations["agility"]) * AGILITY_SPEED,
 		"xp_into_level": xp_into_level(xp),
 		"xp_per_level": XP_PER_LEVEL,
 	}

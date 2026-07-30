@@ -26,6 +26,7 @@ func _initialize() -> void:
 
 	_level_curve_is_monotonic()
 	_xp_maps_to_levels()
+	_attribute_allocations()
 	_gear_bonuses_and_scaling()
 	_winnable_at_the_right_levels()
 
@@ -51,6 +52,32 @@ func _level_curve_is_monotonic() -> void:
 			ok = false
 	check_true("stats never decrease with level", ok)
 	check_eq("level 1 keeps the authored baseline", PlayerStats.max_hp(1), PlayerStats.BASE_MAX_HP)
+
+
+func _attribute_allocations() -> void:
+	var xp := PlayerStats.XP_PER_LEVEL * 2
+	var allocations := {"vitality": 0, "power": 0, "agility": 0}
+	check_eq("one Attribute Point is earned per level gained",
+		PlayerStats.attribute_points_earned(xp), 2)
+	check_eq("all earned Attribute Points start unspent",
+		PlayerStats.unspent_attribute_points(xp, allocations), 2)
+	check_true("a point can raise Vitality",
+		PlayerStats.adjust_allocation(allocations, "vitality", 1, xp))
+	check_true("a point can raise Power",
+		PlayerStats.adjust_allocation(allocations, "power", 1, xp))
+	var allocated := PlayerStats.from_xp(xp, [], allocations)
+	check_eq("Vitality keeps Kana's +6 HP step", allocated["max_hp"],
+		PlayerStats.max_hp(3) + PlayerStats.VITALITY_HP)
+	check_eq("Power keeps Kana's +1 ATK step", allocated["atk"],
+		PlayerStats.atk(3) + PlayerStats.POWER_ATK)
+	check_true("spent points cannot be overspent",
+		not PlayerStats.adjust_allocation(allocations, "power", 1, xp))
+	check_true("Agility cannot buy an inactive Speed effect",
+		not PlayerStats.adjust_allocation(allocations, "agility", 1, xp))
+	check_true("allocations are freely refundable",
+		PlayerStats.adjust_allocation(allocations, "vitality", -1, xp))
+	check_eq("a refund restores the point",
+		PlayerStats.unspent_attribute_points(xp, allocations), 1)
 
 
 func _gear_bonuses_and_scaling() -> void:

@@ -82,3 +82,26 @@ func set_ability_equipped(ability_id: String, equipped: bool, weapon_type: Strin
 	profile.save()
 	Bus.ability_loadout_changed.emit()
 	return true
+
+
+# --- combat attributes ----------------------------------------------------
+
+func allocations() -> Dictionary:
+	return PlayerStats.normalized_allocations(profile.build().get("allocations", {}))
+
+
+func unspent_attribute_points() -> int:
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	return PlayerStats.unspent_attribute_points(xp, profile.build().get("allocations", {}))
+
+
+func adjust_allocation(attribute: String, delta: int) -> bool:
+	var build := profile.build()
+	var allocation_data: Dictionary = build.get("allocations", {})
+	var xp := int(profile.data.get("stats", {}).get("xp", 0))
+	if not PlayerStats.adjust_allocation(allocation_data, attribute, delta, xp):
+		return false
+	build["allocations"] = allocation_data
+	profile.save()
+	Bus.player_build_changed.emit()
+	return true

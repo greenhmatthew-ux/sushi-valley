@@ -7,6 +7,11 @@ var failures: int = 0
 
 func _initialize() -> void:
 	await process_frame
+	# Earlier suites deliberately exercise persistence in the same isolated APPDATA root.
+	# Pin this UI contract to an actual fresh build instead of inheriting their XP.
+	var learning: Node = root.get_node("Learning")
+	learning.profile.data["stats"]["xp"] = 0
+	learning.profile.build()["allocations"] = {"vitality": 0, "power": 0, "agility": 0}
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/inventory_panel.gd"))
 	root.add_child(panel)
@@ -40,6 +45,29 @@ func _initialize() -> void:
 		stats.text.contains("Japanese study raises your base stats"))
 	check_eq("all authored equipment slots are visible",
 		slots.get_child_count(), InventoryLogic.EQUIPMENT_SLOTS.size())
+	var points: Label = panel.find_child("AttributePoints", true, false)
+	var vitality_plus: Button = panel.find_child("VitalityPlus", true, false)
+	var agility_plus: Button = panel.find_child("AgilityPlus", true, false)
+	check_true("Character shows the honest Attribute Point budget", points != null)
+	check_true("fresh level-1 profile cannot spend an unearned point", vitality_plus.disabled)
+	check_true("Agility stays disabled while Speed is inactive", agility_plus.disabled)
+	learning.profile.data["stats"]["xp"] = PlayerStats.XP_PER_LEVEL
+	panel.call("_refresh")
+	check_true("levelling earns a spendable Attribute Point", not vitality_plus.disabled)
+	vitality_plus.pressed.emit()
+	check_eq("Character control raises saved Vitality",
+		learning.profile.build()["allocations"]["vitality"], 1)
+	check_true("Vitality immediately appears in the effective HP summary",
+		stats.text.contains("HP   24 / 24"))
+	var saved: Dictionary = root.get_node("SaveGame").load_profile()
+	check_eq("Attribute allocation is written to disk",
+		saved["build"]["allocations"]["vitality"], 1)
+	var vitality_minus: Button = panel.find_child("VitalityMinus", true, false)
+	vitality_minus.pressed.emit()
+	check_eq("Character control refunds Vitality for free",
+		learning.profile.build()["allocations"]["vitality"], 0)
+	learning.profile.data["stats"]["xp"] = 0
+	learning.profile.save()
 
 	panel.call("_set_tab", "skills")
 	check_true("skills tab replaces character content", skills.visible and not character.visible)

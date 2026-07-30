@@ -34,6 +34,8 @@ signal coins_changed(coins: int)
 signal inventory_changed()
 ## Fired after the six-slot active ability loadout changes.
 signal ability_loadout_changed()
+## Fired after a saved stat allocation changes so the player and all summaries resync.
+signal player_build_changed()
 
 # --- crafting ---
 signal crafting_open(station: String)

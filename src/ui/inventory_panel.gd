@@ -50,6 +50,10 @@ var _skills_box: VBoxContainer
 var _skills_summary: Label
 var _bag_view: VBoxContainer
 var _stats_label: Label
+var _attribute_points_label: Label
+var _attribute_value_labels: Dictionary = {}
+var _attribute_plus_buttons: Dictionary = {}
+var _attribute_minus_buttons: Dictionary = {}
 var _character_tab: Button
 var _skills_tab: Button
 var _bag_tab: Button
@@ -65,6 +69,7 @@ func _ready() -> void:
 	_root.hide()
 	Bus.inventory_changed.connect(_refresh)
 	Bus.ability_loadout_changed.connect(_refresh)
+	Bus.player_build_changed.connect(_refresh)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -109,10 +114,13 @@ func _refresh() -> void:
 	_coins_label.text = "%d coins" % Inv.coins
 
 	for child in _grid.get_children():
+		_grid.remove_child(child)
 		child.queue_free()
 	for child in _equipment_box.get_children():
+		_equipment_box.remove_child(child)
 		child.queue_free()
 	for child in _skills_box.get_children():
+		_skills_box.remove_child(child)
 		child.queue_free()
 
 	var equipped: Dictionary = Inv.equipment()
@@ -123,7 +131,8 @@ func _refresh() -> void:
 	var xp := 0
 	if Learning.profile != null:
 		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
-	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs())
+	var allocations: Dictionary = Learning.allocations()
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations)
 	var gear := PlayerStats.gear_bonus(Inv.equipped_defs(), int(stats["level"]))
 	var player := get_tree().get_first_node_in_group("player")
 	var current_hp := int(player.hp) if player != null else int(stats["max_hp"])
@@ -137,6 +146,14 @@ func _refresh() -> void:
 		current_hp, stats["max_hp"], stats["atk"], stats["def"],
 		gear["hp"], gear["atk"], gear["def"],
 	]
+	_attribute_points_label.text = "Attribute Points  %d" % Learning.unspent_attribute_points()
+	for key in PlayerStats.ALLOCATION_KEYS:
+		var amount := int(allocations.get(key, 0))
+		(_attribute_value_labels[key] as Label).text = str(amount)
+		(_attribute_minus_buttons[key] as Button).disabled = amount <= 0
+		var plus := _attribute_plus_buttons[key] as Button
+		plus.disabled = key not in PlayerStats.ACTIVE_ALLOCATION_KEYS \
+			or Learning.unspent_attribute_points() <= 0
 
 	var equipped_skills := Learning.equipped_ability_ids()
 	_skills_summary.text = "Active loadout  %d / %d\nBasic Attack is always available." % [
@@ -355,6 +372,13 @@ func _on_skill_toggle(ability_id: String, equip: bool) -> void:
 		Bus.toast.emit("That ability cannot be equipped right now.")
 
 
+func _on_attribute_change(attribute: String, delta: int) -> void:
+	if Learning.adjust_allocation(attribute, delta):
+		Bus.toast.emit("%s %s." % [attribute.capitalize(), "raised" if delta > 0 else "refunded"])
+	else:
+		Bus.toast.emit("That attribute cannot change right now.")
+
+
 func _on_use_healing(item_id: String) -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -512,6 +536,69 @@ func _build_scaffold() -> void:
 	_stats_label.add_theme_color_override("font_color", COL_TEXT)
 	_stats_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_character_view.add_child(_stats_label)
+
+	var attribute_header := HBoxContainer.new()
+	_character_view.add_child(attribute_header)
+	var attribute_heading := Label.new()
+	attribute_heading.text = "Attributes — freely refundable"
+	attribute_heading.add_theme_font_size_override("font_size", 13)
+	attribute_heading.add_theme_color_override("font_color", COL_HEADING)
+	attribute_heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	attribute_header.add_child(attribute_heading)
+	_attribute_points_label = Label.new()
+	_attribute_points_label.name = "AttributePoints"
+	_attribute_points_label.add_theme_font_size_override("font_size", 12)
+	_attribute_points_label.add_theme_color_override("font_color", COL_BORDER)
+	attribute_header.add_child(_attribute_points_label)
+
+	var allocation_rows := [
+		["vitality", "Vitality", "+6 max HP"],
+		["power", "Power", "+1 ATK"],
+		["agility", "Agility", "Speed is not active yet"],
+	]
+	for row_data in allocation_rows:
+		var key := String(row_data[0])
+		var row := HBoxContainer.new()
+		row.name = key.capitalize() + "Attribute"
+		row.add_theme_constant_override("separation", 6)
+		_character_view.add_child(row)
+		var name_label := Label.new()
+		name_label.text = String(row_data[1])
+		name_label.custom_minimum_size = Vector2(70, 0)
+		name_label.add_theme_color_override("font_color", COL_TEXT)
+		row.add_child(name_label)
+		var value_label := Label.new()
+		value_label.name = key.capitalize() + "Value"
+		value_label.custom_minimum_size = Vector2(22, 0)
+		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		value_label.add_theme_color_override("font_color", COL_BORDER)
+		row.add_child(value_label)
+		_attribute_value_labels[key] = value_label
+		var effect_label := Label.new()
+		effect_label.text = String(row_data[2])
+		effect_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		effect_label.add_theme_font_size_override("font_size", 10)
+		effect_label.add_theme_color_override("font_color", COL_HEADING)
+		row.add_child(effect_label)
+		var minus := Button.new()
+		minus.name = key.capitalize() + "Minus"
+		minus.text = "−"
+		minus.custom_minimum_size = Vector2(32, 26)
+		minus.focus_mode = Control.FOCUS_ALL
+		minus.tooltip_text = "Refund one Attribute Point."
+		minus.pressed.connect(_on_attribute_change.bind(key, -1))
+		row.add_child(minus)
+		_attribute_minus_buttons[key] = minus
+		var plus := Button.new()
+		plus.name = key.capitalize() + "Plus"
+		plus.text = "+"
+		plus.custom_minimum_size = Vector2(32, 26)
+		plus.focus_mode = Control.FOCUS_ALL
+		plus.tooltip_text = "Speed has no combat effect yet." if key == "agility" \
+			else "Spend one Attribute Point."
+		plus.pressed.connect(_on_attribute_change.bind(key, 1))
+		row.add_child(plus)
+		_attribute_plus_buttons[key] = plus
 
 	var equipment_heading := Label.new()
 	equipment_heading.text = "Equipment — press a filled slot to remove it"
