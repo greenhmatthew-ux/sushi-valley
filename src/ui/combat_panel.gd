@@ -35,6 +35,9 @@ var _flow_label: Label
 var _guard_label: Label
 var _guard_hint: Label
 var _feedback: Label
+var _action_box: HBoxContainer
+var _action_buttons: Dictionary = {}
+var _selected_ability: Dictionary = {}
 var _choices_box: GridContainer
 var _continue_btn: Button
 
@@ -68,10 +71,12 @@ func _on_combat_started(enemy_id: String) -> void:
 	var p_def: int = player.defense if player != null else PlayerStats.BASE_DEF
 
 	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def)
+	_selected_ability = {}
 	_active = true
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name
 	_root.show()
+	_build_actions()
 	_next_round()
 
 
@@ -108,8 +113,9 @@ func _next_round() -> void:
 func _refresh_guard_hint() -> void:
 	# The guard word is the MEANING — the player must produce the Japanese for it.
 	_guard_label.text = String(_challenge.get("guard", ""))
-	_guard_hint.text = "Strike with the matching rune" if not Settings.english_visible() \
-		else "Strike with the rune meaning \"%s\"" % _challenge.get("guard", "")
+	var action_name := String(_selected_ability.get("name", "Basic Attack"))
+	_guard_hint.text = "%s: choose the matching rune" % action_name if not Settings.english_visible() \
+		else "%s: choose the rune meaning \"%s\"" % [action_name, _challenge.get("guard", "")]
 
 
 func _render_bars() -> void:
@@ -125,7 +131,8 @@ func _on_rune(rune: String, btn: Button) -> void:
 		return
 	_answered = true
 
-	var result: CombatEncounter.RoundResult = _encounter.resolve(rune, _challenge["answer"])
+	var result: CombatEncounter.RoundResult = _encounter.resolve(
+		rune, _challenge["answer"], _selected_ability)
 	# Feed the shared SRS — this is what makes fighting count as review.
 	Learning.answer(_current_card, String(_current_card.get("answer", "")) if result.correct else "__wrong__")
 
@@ -138,11 +145,20 @@ func _on_rune(rune: String, btn: Button) -> void:
 
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD if result.correct else COL_BAD)
-	if result.correct:
-		_feedback.text = "Hit for %d!%s" % [result.player_damage_dealt,
-			("   Flow x%d" % result.flow_after) if result.flow_after > 1 else ""]
+	var action_name := String(_selected_ability.get("name", "Basic Attack"))
+	var outcome := ""
+	if result.action_type == "heal":
+		outcome = "%s restored %d HP." % [action_name, result.player_healed]
+	elif result.action_type == "block":
+		outcome = "%s raised %d shield." % [action_name, result.shield_gained]
 	else:
-		_feedback.text = "%s was the rune. Glancing blow for %d." % [result.answer, result.player_damage_dealt]
+		outcome = "%s hit for %d." % [action_name, result.player_damage_dealt]
+	_feedback.text = outcome if result.correct \
+		else "%s was the rune. Weakened %s" % [result.answer, outcome]
+	if result.correct and result.flow_after > 1:
+		_feedback.text += "   Flow x%d" % result.flow_after
+	if result.shield_absorbed > 0:
+		_feedback.text += "   Blocked %d." % result.shield_absorbed
 	if result.enemy_damage_dealt > 0:
 		_feedback.text += "   %s hits back for %d." % [_encounter.enemy_name, result.enemy_damage_dealt]
 
@@ -161,6 +177,43 @@ func _on_continue() -> void:
 		_finish(_encounter.player_won(), "")
 	else:
 		_next_round()
+
+
+func _build_actions() -> void:
+	for child in _action_box.get_children():
+		child.queue_free()
+	_action_buttons.clear()
+	_add_action_button({}, "Basic", "Always available; a reliable light attack.")
+	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	for ability in Learning.usable_ability_defs(weapon_type):
+		_add_action_button(ability, String(ability.get("name", ability.get("id", "Skill"))),
+			String(ability.get("desc", "")))
+	_select_action(String(_selected_ability.get("id", "basic_attack")))
+
+
+func _add_action_button(ability: Dictionary, label: String, tooltip: String) -> void:
+	var button := Button.new()
+	var id := String(ability.get("id", "basic_attack"))
+	button.text = label
+	button.tooltip_text = tooltip
+	button.custom_minimum_size = Vector2(72, 28)
+	button.focus_mode = Control.FOCUS_ALL
+	button.toggle_mode = true
+	button.pressed.connect(_select_action.bind(id))
+	button.set_meta("ability", ability)
+	_action_box.add_child(button)
+	_action_buttons[id] = button
+
+
+func _select_action(ability_id: String) -> void:
+	if not _action_buttons.has(ability_id):
+		ability_id = "basic_attack"
+	var button: Button = _action_buttons[ability_id]
+	_selected_ability = (button.get_meta("ability", {}) as Dictionary).duplicate(true)
+	for id in _action_buttons:
+		(_action_buttons[id] as Button).button_pressed = String(id) == ability_id
+	if not _challenge.is_empty():
+		_refresh_guard_hint()
 
 
 func _finish(victory: bool, message: String) -> void:
@@ -197,7 +250,7 @@ func _input(event: InputEvent) -> void:
 func _rune_button(rune: String) -> Button:
 	var b := Button.new()
 	b.text = rune
-	b.custom_minimum_size = Vector2(200, 50)
+	b.custom_minimum_size = Vector2(190, 44)
 	b.focus_mode = Control.FOCUS_ALL
 	b.add_theme_font_size_override("font_size", 30)
 	b.add_theme_stylebox_override("normal", _button_style(COL_BTN, COL_BTN_BORDER))
@@ -219,19 +272,20 @@ func _build() -> void:
 	_root.add_child(dim)
 
 	var panel := PanelContainer.new()
+	panel.name = "CombatShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.22; panel.anchor_right = 0.78
+	panel.anchor_left = 0.14; panel.anchor_right = 0.86
 	panel.anchor_top = 0.5; panel.anchor_bottom = 0.5
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 18)
+		margin.add_theme_constant_override("margin_" + side, 10)
 	panel.add_child(margin)
 
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 8)
+	vbox.add_theme_constant_override("separation", 5)
 	margin.add_child(vbox)
 
 	# enemy
@@ -247,13 +301,25 @@ func _build() -> void:
 	vbox.add_child(_enemy_hp_bar)
 
 	# the guard word the player must answer
-	_guard_label = _label(32, COL_TEXT)
+	_guard_label = _label(28, COL_TEXT)
 	_guard_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(_guard_label)
 
 	_guard_hint = _label(12, COL_EN)
 	_guard_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(_guard_hint)
+
+	# Equipped actions stay in one compact, horizontally scrollable row. Selection pauses
+	# with the fight, so keyboard/controller users can inspect consequences before recall.
+	var action_scroll := ScrollContainer.new()
+	action_scroll.name = "ActionScroll"
+	action_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	action_scroll.custom_minimum_size = Vector2(0, 30)
+	vbox.add_child(action_scroll)
+	_action_box = HBoxContainer.new()
+	_action_box.name = "CombatActions"
+	_action_box.add_theme_constant_override("separation", 6)
+	action_scroll.add_child(_action_box)
 
 	# 2x2 rather than a single row: four Japanese runes at a readable size do not fit
 	# across one line on a 1280-wide window, and shrink-center keeps the grid from being
@@ -268,7 +334,7 @@ func _build() -> void:
 	_feedback = _label(14, COL_GOOD)
 	_feedback.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_feedback.custom_minimum_size = Vector2(0, 34)
+	_feedback.custom_minimum_size = Vector2(0, 28)
 	vbox.add_child(_feedback)
 
 	# player

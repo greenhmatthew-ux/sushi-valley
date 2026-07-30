@@ -15,6 +15,7 @@ func _initialize() -> void:
 	_flow_builds_and_breaks()
 	_enemy_does_not_counter_when_defeated()
 	_defeat_ends_the_fight()
+	_equipped_actions_have_distinct_results()
 	_challenge_is_japanese_and_solvable()
 	_finish()
 
@@ -71,6 +72,32 @@ func _defeat_ends_the_fight() -> void:
 	check_true("player is defeated", r.player_defeated)
 	check_true("encounter is over", e.is_over())
 	check_true("encounter is not a win", not e.player_won())
+
+
+## The starter loadout is not cosmetic: attack, defense, and recovery each change a
+## different piece of encounter state while using the same recall contract.
+func _equipped_actions_have_distinct_results() -> void:
+	var basic := _fresh()
+	var basic_result := basic.resolve("mi", "mi")
+	var strike := _fresh()
+	var strike_result := strike.resolve("mi", "mi",
+		{"id": "strike", "type": "attack", "power": 9})
+	check_true("Strike hits harder than Basic Attack",
+		strike_result.player_damage_dealt > basic_result.player_damage_dealt)
+
+	var guard := _fresh()
+	var guard_result := guard.resolve("mi", "mi",
+		{"id": "guard", "type": "block", "power": 10})
+	check_true("Guard raises shield", guard_result.shield_gained > 0)
+	check_true("Guard absorbs the enemy hit", guard_result.shield_absorbed > 0)
+	check_eq("fully blocked hits deal no HP damage", guard_result.enemy_damage_dealt, 0)
+
+	var focus := _fresh()
+	focus.player_hp = 3
+	var focus_result := focus.resolve("mi", "mi",
+		{"id": "focus", "type": "heal", "power": 9})
+	check_true("Focus restores missing HP", focus_result.player_healed > 0)
+	check_eq("Focus does not damage the enemy", focus_result.player_damage_dealt, 0)
 
 
 ## The menu must be Japanese, contain the answer exactly once, and never repeat a rune.

@@ -15,6 +15,7 @@ extends RefCounted
 ## new field needs no schema migration.
 
 const PROFILE_VERSION := 1
+const AbilityRules = preload("res://src/systems/ability_logic.gd")
 
 ## Card scheduling fields — the only per-card data that is persisted. Static def
 ## fields (prompt, answer, choices, tags, ...) are re-hydrated from content.
@@ -67,6 +68,7 @@ func _ensure_build() -> void:
 			"skills": DEFAULT_SKILLS.duplicate(),
 			"unlockedAbilities": [],
 		}
+		_sanitize_abilities(data["build"])
 		return
 	var b: Dictionary = data["build"]
 	if not b.has("skills"):
@@ -84,6 +86,12 @@ func _ensure_build() -> void:
 		b["allocations"] = {"vitality": 0, "power": 0, "agility": 0}
 	if not b.has("unlockedAbilities"):
 		b["unlockedAbilities"] = []
+	_sanitize_abilities(b)
+
+
+func _sanitize_abilities(b: Dictionary) -> void:
+	if _content != null and "abilities" in _content:
+		AbilityRules.sanitize_build(b, _content.abilities)
 
 
 func build() -> Dictionary:

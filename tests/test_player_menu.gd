@@ -15,6 +15,7 @@ func _initialize() -> void:
 	var menu: Control = panel.find_child("PlayerMenuRoot", true, false)
 	var shell: Control = panel.find_child("PlayerMenuShell", true, false)
 	var character: Control = panel.find_child("CharacterView", true, false)
+	var skills: Control = panel.find_child("SkillsView", true, false)
 	var bag: Control = panel.find_child("BagView", true, false)
 	var stats: Label = panel.find_child("StatsSummary", true, false)
 	var slots: Control = panel.find_child("EquipmentSlots", true, false)
@@ -25,8 +26,9 @@ func _initialize() -> void:
 	await process_frame
 	check_true("opening pauses the world", paused)
 	check_true("menu opens to a real domain", bag.visible and not character.visible)
-	check_true("character and bag tabs both exist",
+	check_true("character, skills, and bag tabs exist",
 		panel.find_child("CharacterTab", true, false) != null
+		and panel.find_child("SkillsTab", true, false) != null
 		and panel.find_child("BagTab", true, false) != null)
 	var viewport_rect := root.get_viewport().get_visible_rect()
 	check_true("menu shell stays inside the 640x360 viewport",
@@ -38,6 +40,13 @@ func _initialize() -> void:
 		stats.text.contains("Japanese study raises your base stats"))
 	check_eq("all authored equipment slots are visible",
 		slots.get_child_count(), InventoryLogic.EQUIPMENT_SLOTS.size())
+
+	panel.call("_set_tab", "skills")
+	check_true("skills tab replaces character content", skills.visible and not character.visible)
+	var summary: Label = panel.find_child("SkillsSummary", true, false)
+	var skill_cards: Control = panel.find_child("SkillCards", true, false)
+	check_true("skills tab states the six-slot loadout", summary.text.contains("/ 6"))
+	check_eq("fresh profile exposes the three real starter skills", skill_cards.get_child_count(), 3)
 
 	panel.call("_set_open", false)
 	paused = true

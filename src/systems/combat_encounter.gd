@@ -14,7 +14,12 @@ extends RefCounted
 ## Result of resolving one player choice.
 class RoundResult extends RefCounted:
 	var correct: bool
+	var action_id: String
+	var action_type: String
 	var player_damage_dealt: int
+	var player_healed: int
+	var shield_gained: int
+	var shield_absorbed: int
 	var enemy_damage_dealt: int
 	var flow_after: int
 	var enemy_defeated: bool
@@ -36,6 +41,8 @@ var enemy_def: int
 ## Consecutive correct recalls. Drives CombatLogic.flow_multiplier — accurate recall
 ## literally hits harder, and a miss resets it.
 var flow: int = 0
+## Guard is a one-hit buffer. Any remainder is discarded after the enemy's next attack.
+var shield: int = 0
 
 ## Deterministic variance for tests. -1 draws a fresh roll at runtime like the TS build.
 var roll: float = -1.0
@@ -54,25 +61,48 @@ func _init(enemy_def_dict: Dictionary, hp: int, max_hp: int, atk: int = 6, def_s
 	player_def = def_stat
 
 
-## Resolve one round: the player's swing, then the enemy's if it survived.
-## `chosen` and `answer` are compared case/space-insensitively, matching LearningProgression.
-func resolve(chosen: String, answer: String) -> RoundResult:
+## Resolve one round: Basic Attack or one authored starter action, then the enemy's hit if
+## it survived. Unsupported future effect types fail safely to Basic Attack until their
+## distinct behavior exists; this keeps authored data from creating fake menu choices.
+func resolve(chosen: String, answer: String, ability: Dictionary = {}) -> RoundResult:
 	var r := RoundResult.new()
 	r.answer = answer
 	r.correct = _normalize(chosen) == _normalize(answer)
+	r.action_id = String(ability.get("id", "basic_attack"))
+	r.action_type = String(ability.get("type", "attack"))
+	if r.action_type not in ["attack", "block", "heal"]:
+		r.action_id = "basic_attack"
+		r.action_type = "attack"
 
 	# Recall Flow updates BEFORE the swing, so a correct answer's own stack counts toward it.
 	flow = flow + 1 if r.correct else 0
 	r.flow_after = flow
 
-	var power := int(round(CombatLogic.BASIC_ATTACK_POWER * CombatLogic.flow_multiplier(flow)))
-	r.player_damage_dealt = CombatLogic.ability_damage(power, player_atk, enemy_def, r.correct, roll)
-	enemy_hp = CombatLogic.apply_damage(enemy_hp, r.player_damage_dealt)
+	var base_power := CombatLogic.BASIC_ATTACK_POWER if r.action_id == "basic_attack" \
+		else int(ability.get("power", CombatLogic.BASIC_ATTACK_POWER))
+	var power := int(round(base_power * CombatLogic.flow_multiplier(flow)))
+	if r.action_type == "attack":
+		var hits := maxi(1, int(ability.get("hits", 1)))
+		for _hit in hits:
+			r.player_damage_dealt += CombatLogic.ability_damage(
+				power, player_atk, enemy_def, r.correct, roll)
+		enemy_hp = CombatLogic.apply_damage(enemy_hp, r.player_damage_dealt)
+	elif r.action_type == "block":
+		r.shield_gained = power if r.correct else maxi(1, roundi(power * 0.5))
+		shield = r.shield_gained
+	elif r.action_type == "heal":
+		var healing := power if r.correct else maxi(1, roundi(power * 0.5))
+		var before := player_hp
+		player_hp = mini(player_max_hp, player_hp + healing)
+		r.player_healed = player_hp - before
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
 
 	# A defeated enemy does not get a parting shot.
 	if not r.enemy_defeated:
-		r.enemy_damage_dealt = CombatLogic.enemy_damage(enemy_atk, player_def, roll)
+		var incoming := CombatLogic.enemy_damage(enemy_atk, player_def, roll)
+		r.shield_absorbed = mini(shield, incoming)
+		r.enemy_damage_dealt = incoming - r.shield_absorbed
+		shield = 0
 		player_hp = CombatLogic.apply_damage(player_hp, r.enemy_damage_dealt)
 		r.player_defeated = CombatLogic.is_dead(player_hp)
 

@@ -32,6 +32,8 @@ signal item_removed(item_id: String, qty: int)
 signal coins_changed(coins: int)
 ## Fired after any inventory mutation so panels can refresh without polling.
 signal inventory_changed()
+## Fired after the six-slot active ability loadout changes.
+signal ability_loadout_changed()
 
 # --- settings ---
 ## Camera zoom preference changed. The live player camera listens and retunes itself,

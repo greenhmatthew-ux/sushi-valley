@@ -10,6 +10,8 @@ extends Node
 ## LearningProgression, Srs) so it stays headless-testable; this node is only the
 ## glue that binds them to DB, SaveGame, and Bus.
 
+const AbilityRules = preload("res://src/systems/ability_logic.gd")
+
 var profile: LearningProfile
 var progression: LearningProgression
 
@@ -57,3 +59,26 @@ func get_flag(flag: String) -> bool:
 func set_flag(flag: String, value: bool = true) -> void:
 	profile.set_flag(flag, value)
 	profile.save()
+
+
+# --- combat abilities ------------------------------------------------------
+
+func equipped_ability_ids() -> Array:
+	return profile.build().get("skills", []).duplicate()
+
+
+func known_ability_defs() -> Array[Dictionary]:
+	return AbilityRules.known_defs(profile.build(), DB.abilities, DB.ability_order)
+
+
+func usable_ability_defs(weapon_type: String) -> Array[Dictionary]:
+	return AbilityRules.usable_defs(profile.build(), DB.abilities, weapon_type)
+
+
+func set_ability_equipped(ability_id: String, equipped: bool, weapon_type: String) -> bool:
+	var build := profile.build()
+	if not AbilityRules.set_equipped(build, ability_id, equipped, DB.abilities, weapon_type):
+		return false
+	profile.save()
+	Bus.ability_loadout_changed.emit()
+	return true

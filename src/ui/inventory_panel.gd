@@ -11,6 +11,8 @@ extends CanvasLayer
 ## Gear cards expose one clear Equip action. Equipped items sit in a compact strip
 ## above the bag and can be removed there, so equipment never becomes hidden state.
 
+const AbilityRules = preload("res://src/systems/ability_logic.gd")
+
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
@@ -32,6 +34,7 @@ const KIND_COLORS := {
 
 const ICON_DIR := "res://assets/icons/items/"
 const TAB_CHARACTER := "character"
+const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"
 
 var _open := false
@@ -41,9 +44,13 @@ var _coins_label: Label
 var _equipment_box: HFlowContainer
 var _character_scroll: ScrollContainer
 var _character_view: VBoxContainer
+var _skills_view: VBoxContainer
+var _skills_box: VBoxContainer
+var _skills_summary: Label
 var _bag_view: VBoxContainer
 var _stats_label: Label
 var _character_tab: Button
+var _skills_tab: Button
 var _bag_tab: Button
 var _grid: GridContainer
 var _empty_label: Label
@@ -56,6 +63,7 @@ func _ready() -> void:
 	_build_scaffold()
 	_root.hide()
 	Bus.inventory_changed.connect(_refresh)
+	Bus.ability_loadout_changed.connect(_refresh)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -81,7 +89,12 @@ func _set_open(open: bool) -> void:
 		_set_tab(_active_tab)
 		_root.show()
 		get_tree().paused = true
-		(_character_tab if _active_tab == TAB_CHARACTER else _bag_tab).grab_focus()
+		var active_button := _character_tab
+		if _active_tab == TAB_SKILLS:
+			active_button = _skills_tab
+		elif _active_tab == TAB_BAG:
+			active_button = _bag_tab
+		active_button.grab_focus()
 	else:
 		_root.hide()
 		get_tree().paused = false
@@ -97,6 +110,8 @@ func _refresh() -> void:
 	for child in _grid.get_children():
 		child.queue_free()
 	for child in _equipment_box.get_children():
+		child.queue_free()
+	for child in _skills_box.get_children():
 		child.queue_free()
 
 	var equipped: Dictionary = Inv.equipment()
@@ -122,6 +137,14 @@ func _refresh() -> void:
 		gear["hp"], gear["atk"], gear["def"],
 	]
 
+	var equipped_skills := Learning.equipped_ability_ids()
+	_skills_summary.text = "Active loadout  %d / %d\nBasic Attack is always available." % [
+		equipped_skills.size(), AbilityRules.MAX_SKILLS]
+	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	for ability in Learning.known_ability_defs():
+		_skills_box.add_child(_make_skill_card(ability, weapon_type,
+			String(ability.get("id", "")) in equipped_skills))
+
 	var items: Array = Inv.entries()
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
 	items.sort_custom(func(a, b): return _name_of(a["id"]).naturalnocasecmp_to(_name_of(b["id"])) < 0)
@@ -135,11 +158,13 @@ func _refresh() -> void:
 
 
 func _set_tab(tab: String) -> void:
-	_active_tab = TAB_CHARACTER if tab == TAB_CHARACTER else TAB_BAG
+	_active_tab = tab if tab in [TAB_CHARACTER, TAB_SKILLS, TAB_BAG] else TAB_BAG
 	_character_scroll.visible = _active_tab == TAB_CHARACTER
 	_character_view.visible = _active_tab == TAB_CHARACTER
+	_skills_view.visible = _active_tab == TAB_SKILLS
 	_bag_view.visible = _active_tab == TAB_BAG
 	_character_tab.disabled = _active_tab == TAB_CHARACTER
+	_skills_tab.disabled = _active_tab == TAB_SKILLS
 	_bag_tab.disabled = _active_tab == TAB_BAG
 	_refresh_footer()
 
@@ -149,6 +174,9 @@ func _refresh_footer() -> void:
 		return
 	if _active_tab == TAB_CHARACTER:
 		_capacity_label.text = "SPD* is authored but not active in the current combat loop yet."
+		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
+	elif _active_tab == TAB_SKILLS:
+		_capacity_label.text = "Choose an action in combat, then answer with the matching rune."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	else:
 		var enc: Dictionary = Inv.encumbrance()
@@ -228,6 +256,76 @@ func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 			item.get("desc", "")]
 		button.pressed.connect(_on_unequip.bind(slot, item_id))
 	return button
+
+
+func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) -> Control:
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel", _card_style())
+	card.custom_minimum_size = Vector2(0, 58)
+
+	var margin := MarginContainer.new()
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 7)
+	card.add_child(margin)
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	margin.add_child(row)
+
+	var text := VBoxContainer.new()
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(text)
+	var title := Label.new()
+	var required := String(ability.get("requiredWeaponType", ""))
+	var weapon_ok := AbilityRules.weapon_matches(ability, weapon_type)
+	var state := ""
+	if equipped:
+		state = "  ·  Equipped" if weapon_ok else "  ·  Equipped, inactive without %s" % required
+	title.text = "%s  ·  %s  ·  Power %d%s" % [ability.get("name", ability.get("id", "Skill")),
+		String(ability.get("type", "skill")).capitalize(), int(ability.get("power", 0)), state]
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", COL_TEXT)
+	text.add_child(title)
+	var detail := Label.new()
+	var requirement := "Any weapon" if required.is_empty() else "%s weapon" % required.capitalize()
+	detail.text = "%s  ·  %s" % [requirement, ability.get("desc", "")]
+	detail.add_theme_font_size_override("font_size", 10)
+	detail.add_theme_color_override("font_color", COL_HEADING)
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detail.custom_minimum_size = Vector2(0, 24)
+	text.add_child(detail)
+
+	var button := Button.new()
+	button.custom_minimum_size = Vector2(82, 32)
+	button.focus_mode = Control.FOCUS_ALL
+	var supported := AbilityRules.is_runtime_supported(ability)
+	if equipped:
+		button.text = "Remove"
+		button.pressed.connect(_on_skill_toggle.bind(String(ability.get("id", "")), false))
+	elif not supported:
+		button.text = "Later"
+		button.disabled = true
+		button.tooltip_text = "This effect is authored but is not resolved by the current combat engine."
+	elif not weapon_ok:
+		button.text = "Needs %s" % required.capitalize()
+		button.disabled = true
+	elif Learning.equipped_ability_ids().size() >= AbilityRules.MAX_SKILLS:
+		button.text = "Full"
+		button.disabled = true
+	else:
+		button.text = "Equip"
+		button.pressed.connect(_on_skill_toggle.bind(String(ability.get("id", "")), true))
+	row.add_child(button)
+	return card
+
+
+func _on_skill_toggle(ability_id: String, equip: bool) -> void:
+	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	if Learning.set_ability_equipped(ability_id, equip, weapon_type):
+		var verb := "Equipped" if equip else "Removed"
+		Bus.toast.emit("%s %s." % [verb, DB.ability(ability_id).get("name", ability_id)])
+	else:
+		Bus.toast.emit("That ability cannot be equipped right now.")
 
 
 func _on_equip(item_id: String) -> void:
@@ -340,6 +438,14 @@ func _build_scaffold() -> void:
 	_character_tab.pressed.connect(_set_tab.bind(TAB_CHARACTER))
 	tabs.add_child(_character_tab)
 
+	_skills_tab = Button.new()
+	_skills_tab.name = "SkillsTab"
+	_skills_tab.text = "Skills"
+	_skills_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_skills_tab.focus_mode = Control.FOCUS_ALL
+	_skills_tab.pressed.connect(_set_tab.bind(TAB_SKILLS))
+	tabs.add_child(_skills_tab)
+
 	_bag_tab = Button.new()
 	_bag_tab.name = "BagTab"
 	_bag_tab.text = "Bag"
@@ -378,6 +484,30 @@ func _build_scaffold() -> void:
 	_equipment_box.add_theme_constant_override("h_separation", 6)
 	_equipment_box.add_theme_constant_override("v_separation", 4)
 	_character_view.add_child(_equipment_box)
+
+	_skills_view = VBoxContainer.new()
+	_skills_view.name = "SkillsView"
+	_skills_view.add_theme_constant_override("separation", 8)
+	_skills_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_skills_view)
+
+	_skills_summary = Label.new()
+	_skills_summary.name = "SkillsSummary"
+	_skills_summary.add_theme_font_size_override("font_size", 12)
+	_skills_summary.add_theme_color_override("font_color", COL_HEADING)
+	_skills_view.add_child(_skills_summary)
+
+	var skills_scroll := ScrollContainer.new()
+	skills_scroll.name = "SkillsScroll"
+	skills_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	skills_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_skills_view.add_child(skills_scroll)
+
+	_skills_box = VBoxContainer.new()
+	_skills_box.name = "SkillCards"
+	_skills_box.add_theme_constant_override("separation", 6)
+	_skills_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	skills_scroll.add_child(_skills_box)
 
 	_bag_view = VBoxContainer.new()
 	_bag_view.name = "BagView"

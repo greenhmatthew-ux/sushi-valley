@@ -15,6 +15,7 @@ $suites = @(
 	"smoke_db", "test_pronunciation_audio", "test_audio_music", "smoke_world", "test_srs", "test_learning",
 	"test_lesson_gate", "test_recall_loop", "test_inventory", "test_combat",
 	"test_save", "test_inventory_persistence", "test_transitions", "test_quest", "test_quest_giver", "test_teacher_npc", "test_sign_post", "test_study_spot", "test_combat_encounter", "test_player_stats", "test_shop_haggle", "test_japanese_sourcing",
+	"test_ability_logic", "test_combat_panel", "test_player_menu",
 	"smoke_autoloads"
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
