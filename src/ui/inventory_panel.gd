@@ -283,10 +283,19 @@ func _make_card(id: String, qty: int) -> Control:
 			else "Consume one now."
 		use_button.pressed.connect(_on_use_healing.bind(id))
 		vbox.add_child(use_button)
+	elif ConsumableRules.is_supported_energy(def):
+		var energy_label := Label.new()
+		energy_label.text = "Combat only · Restores %d Energy" % int(def.get("buffValue", 0))
+		energy_label.tooltip_text = "Use during your turn after spending Energy."
+		energy_label.add_theme_font_size_override("font_size", 9)
+		energy_label.add_theme_color_override("font_color", COL_TEXT)
+		energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		energy_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vbox.add_child(energy_label)
 	elif def.get("kind", "") == "consumable":
 		var later_label := Label.new()
 		later_label.text = "Effect not active yet"
-		later_label.tooltip_text = "Meals, buffs, energy items, and attack items stay stored until their full effect is implemented."
+		later_label.tooltip_text = "Meals, timed buffs, shields, and attack items stay stored until their full effect is implemented."
 		later_label.add_theme_font_size_override("font_size", 9)
 		later_label.add_theme_color_override("font_color", COL_HEADING)
 		later_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

@@ -22,6 +22,10 @@ doing that.
 | Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
 | Mana Seed RPG Starter Pack | Free, but explicitly **forbids any use alongside generative AI** (including AI-assisted code) | **Removed 2026-07** — incompatible with an AI-assisted dev workflow. Do not reimport. |
 
+The Bamboo Breeze Tonic icon is the unmodified 16x16 source
+`icons/16x16/potion_01h.png` from the licensed Kyrise pack, copied to
+`assets/icons/items/bamboo_tonic.png` for the repo-local runtime path.
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

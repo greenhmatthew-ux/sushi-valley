@@ -14,10 +14,10 @@ func _initialize() -> void:
 	var db: Node = load("res://src/autoload/db.gd").new()
 	db.load_all()   # not add_child(): _ready() is deferred and would run too late
 
-	check("items", db.items.size(), 167)
+	check("items", db.items.size(), 168)
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
-	check("recipes", db.recipes.size(), 80)
+	check("recipes", db.recipes.size(), 81)
 	check("quests", db.quests.size(), 19)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
@@ -61,6 +61,8 @@ func _initialize() -> void:
 	# Spot-check real content, not just counts — a loader that returns empty
 	# dictionaries would pass size checks on an empty table otherwise.
 	check_str("item wooden_katana", db.item("wooden_katana").get("name", ""), "Wooden Katana")
+	check_str("item bamboo_tonic", db.item("bamboo_tonic").get("name", ""),
+		"Bamboo Breeze Tonic")
 	check_str("enemy mushroom", db.enemy("mushroom").get("name", ""), "Spore Mushroom")
 	check_str("ability strike", db.ability("strike").get("name", ""), "Strike")
 	var woods_quest: Dictionary = db.quest("woods_quiet_steps")

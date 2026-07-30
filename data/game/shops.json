@@ -83,6 +83,7 @@
       { "item": "rice_ball", "price": 10 },
       { "item": "matcha_latte", "price": 12 },
       { "item": "honey", "price": 15 },
+      { "item": "wild_herb", "price": 8 },
       { "item": "bamboo_shoot", "price": 8 },
       { "item": "slime_gel", "price": 7 },
       { "item": "spider_silk", "price": 14 },

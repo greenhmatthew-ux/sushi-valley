@@ -24,7 +24,8 @@ verified against the running scenes — not an aspirational or inherited list.
   against the actual license text and should not be relied on. Confirm a separate/commercial
   license before any commercial release; non-commercial/dev use is fine as-is.**
 - **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
-  ("Icons by Kyrise, https://kyrise.itch.io/"). Item icons in `assets/icons/items/`.
+  ("Icons by Kyrise, https://kyrise.itch.io/"). Item icons in `assets/icons/items/`, including
+  the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.
 
 ## Not currently verified
 

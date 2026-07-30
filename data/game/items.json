@@ -1510,6 +1510,16 @@
         "buffValue": 20
     },
     {
+        "id": "bamboo_tonic",
+        "name": "Bamboo Breeze Tonic",
+        "kind": "consumable",
+        "value": 24,
+        "desc": "A crisp herb-and-bamboo infusion. Restores 3 Energy in combat.",
+        "icon": true,
+        "buffType": "energy",
+        "buffValue": 3
+    },
+    {
         "id": "void_elixir",
         "name": "Void Elixir",
         "kind": "consumable",

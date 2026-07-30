@@ -19,6 +19,7 @@ class RoundResult extends RefCounted:
 	var action_type: String
 	var player_damage_dealt: int
 	var player_healed: int
+	var energy_restored: int
 	var shield_gained: int
 	var shield_absorbed: int
 	var enemy_damage_dealt: int
@@ -190,6 +191,26 @@ func use_healing_item(item_id: String, healing: int, enemy_responds: bool = true
 	player_hp = mini(player_max_hp, player_hp + maxi(0, healing))
 	r.player_healed = player_hp - before
 	r.action_resolved = r.player_healed > 0
+	item_used_this_turn = r.action_resolved
+	r.flow_after = flow
+	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	if r.action_resolved and enemy_responds:
+		_enemy_response(r)
+	return r
+
+
+## Energy tonics share the one-item-per-turn limit with healing items. They refill only the
+## current full turn's budget and never overflow, so using one at full Energy is rejected.
+func use_energy_item(item_id: String, amount: int, enemy_responds: bool = true) -> RoundResult:
+	var r := RoundResult.new()
+	if not can_use_item() or energy >= MAX_ENERGY:
+		return r
+	r.action_id = item_id
+	r.action_type = "item"
+	var before := energy
+	energy = mini(MAX_ENERGY, energy + maxi(0, amount))
+	r.energy_restored = energy - before
+	r.action_resolved = r.energy_restored > 0
 	item_used_this_turn = r.action_resolved
 	r.flow_after = flow
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)

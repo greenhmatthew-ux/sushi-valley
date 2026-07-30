@@ -1,6 +1,6 @@
 extends SceneTree
-## Healing-item contract: only fully implemented effects consume stock, healing clamps to
-## missing HP, and a combat item still gives the enemy its response.
+## Consumable contract: only fully implemented effects consume stock, recovery clamps to
+## what is missing, and one item can be used per full combat turn.
 
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
 
@@ -12,6 +12,7 @@ func _initialize() -> void:
 	_pure_rules()
 	_autoload_consumption()
 	_combat_item_action()
+	_energy_item_action()
 	_finish()
 
 
@@ -20,13 +21,20 @@ func _pure_rules() -> void:
 	var hybrid := {"id": "stone_soup", "kind": "consumable", "heal": 15,
 		"buffType": "def"}
 	var meal := {"id": "forest_lunchbox", "kind": "consumable", "heal": 48}
+	var energy := {"id": "bamboo_tonic", "kind": "consumable",
+		"buffType": "energy", "buffValue": 3}
 	check_true("pure healing consumable is supported", ConsumableRules.is_supported_healing(rice))
 	check_true("hybrid waits until its buff is implemented",
 		not ConsumableRules.is_supported_healing(hybrid))
 	check_true("meal waits for the preparation loop",
 		not ConsumableRules.is_supported_healing(meal))
+	check_true("a pure Energy tonic is supported",
+		ConsumableRules.is_supported_energy(energy))
 	check_eq("healing clamps to missing HP", ConsumableRules.restored_hp(rice, 7, 12), 5)
 	check_eq("full HP wastes nothing", ConsumableRules.restored_hp(rice, 12, 12), 0)
+	check_eq("Energy recovery clamps to the five-point budget",
+		ConsumableRules.restored_energy(energy, 4, 5), 1)
+	check_eq("full Energy wastes nothing", ConsumableRules.restored_energy(energy, 5, 5), 0)
 
 
 func _autoload_consumption() -> void:
@@ -50,9 +58,26 @@ func _combat_item_action() -> void:
 	check_true("item action leaves player better off", encounter.player_hp > 3)
 
 
+func _energy_item_action() -> void:
+	var enemy := {"id": "mushroom", "name": "Mushroom", "maxHp": 100,
+		"atk": 6, "def": 1, "speed": 3}
+	var encounter := CombatEncounter.new(enemy, 12, 12, 6, 2, 5)
+	encounter.roll = 0.5
+	encounter.begin_player_round()
+	encounter.spend_and_resolve("mi", "mi",
+		{"id": "sweep", "type": "attack", "power": 14, "cost": 3})
+	check_eq("setup spends three Energy", encounter.energy, 2)
+	var result := encounter.use_energy_item("bamboo_tonic", 3, false)
+	check_eq("tonic reports the real Energy restored", result.energy_restored, 3)
+	check_eq("tonic refills without overflowing", encounter.energy, 5)
+	check_true("Energy item does not invite an interrupt", not result.enemy_acted)
+	check_true("one-item limit rejects a second tonic",
+		not encounter.use_energy_item("bamboo_tonic", 3, false).action_resolved)
+
+
 func _finish() -> void:
 	print("")
-	print("PASS — supported healing items consume atomically in and out of combat." \
+	print("PASS — supported HP and Energy items resolve honestly and atomically." \
 		if failures == 0 else "FAIL — %d consumable check(s) failed." % failures)
 	quit(1 if failures > 0 else 0)
 

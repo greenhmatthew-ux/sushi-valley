@@ -189,6 +189,20 @@
     "desc": "Steep gathered herbs and honey into a restorative trail tonic."
   },
   {
+    "id": "brew_bamboo_tonic",
+    "name": "Bamboo Breeze Tonic",
+    "station": "kitchen",
+    "levelReq": 1,
+    "inputs": [
+      { "item": "bamboo_shoot", "qty": 2 },
+      { "item": "wild_herb", "qty": 1 }
+    ],
+    "output": { "item": "bamboo_tonic", "qty": 1 },
+    "xp": 9,
+    "discovery": "starter",
+    "desc": "Steep bamboo pith and forest herbs into a tonic that restores combat Energy."
+  },
+  {
     "id": "craft_river_stew",
     "name": "River Stew",
     "station": "kitchen",

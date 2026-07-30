@@ -17,6 +17,7 @@ func _initialize() -> void:
 	_atomic_transaction()
 	_authored_station_access()
 	_starter_weapon_paths_are_reachable()
+	_energy_tonic_path_is_reachable()
 	await _one_time_ingredients()
 	await _panel_contract()
 	_finish()
@@ -153,6 +154,26 @@ func _starter_weapon_paths_are_reachable() -> void:
 			Rules.status(recipe, String(expected[recipe_id][1]), {}, bag)["ok"])
 
 
+func _energy_tonic_path_is_reachable() -> void:
+	var db: Node = root.get_node("DB")
+	var recipe: Dictionary = db.recipe("brew_bamboo_tonic")
+	check_eq("Bamboo Tonic opens at the Kitchen", recipe.get("station", ""), "kitchen")
+	check_eq("Bamboo Tonic is a level-1 recipe", recipe.get("levelReq", 0), 1)
+	var stock := {}
+	for entry in db.shops.get("forest_trader", {}).get("stock", []):
+		stock[String(entry.get("item", ""))] = true
+	var bag := Bag.new()
+	for input in recipe.get("inputs", []):
+		var item_id := String(input.get("item", ""))
+		check_true("Bamboo Tonic input %s has a renewable playable source" % item_id,
+			stock.has(item_id))
+		bag.add(item_id, int(input.get("qty", 0)))
+	check_true("Bamboo Tonic can complete atomically",
+		Rules.status(recipe, "kitchen", {}, bag)["ok"])
+	check_true("Bamboo Tonic ships its audited repo-local icon",
+		FileAccess.file_exists("res://assets/icons/items/bamboo_tonic.png"))
+
+
 func _one_time_ingredients() -> void:
 	await process_frame
 	var inv: Node = root.get_node("Inv")
@@ -211,7 +232,7 @@ func _panel_contract() -> void:
 	check_true("station interaction opens crafting", bool(panel.get("_open")))
 	check_true("crafting shell fits the 640x360 viewport",
 		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
-	check_eq("kitchen hides its three undiscovered recipes", list.get_child_count(), 23)
+	check_eq("kitchen hides its three undiscovered recipes", list.get_child_count(), 24)
 	panel.call("_close")
 
 	var bow_recipe: Dictionary = db.recipe("craft_wrist_bow")

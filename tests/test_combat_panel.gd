@@ -13,6 +13,7 @@ func _initialize() -> void:
 	var inv: Node = root.get_node("Inv")
 	inv.reset()
 	inv.add("rice_ball", 1)
+	inv.add("bamboo_tonic", 1)
 	learning.profile.unlock_card("kana-a")
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/combat_panel.gd"))
@@ -31,7 +32,7 @@ func _initialize() -> void:
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
-	check_eq("unarmed combat also shows a held healing item", actions.get_child_count(), 4)
+	check_eq("unarmed combat shows both supported item families", actions.get_child_count(), 5)
 	check_eq("Basic Attack exposes its real Energy cost",
 		(actions.get_child(0) as Button).text, "Basic · 1E")
 	check_true("combat HUD shows Energy and Speed",
@@ -40,7 +41,7 @@ func _initialize() -> void:
 	check_true("the player can explicitly end a full turn", end_turn.visible)
 	check_true("the player can leave without pretending to win", flee.visible)
 	check_true("weapon-gated Strike is not a fake action",
-		_find_button(actions, "Strike") == null)
+		_find_button_prefix(actions, "Strike") == null)
 	var encounter: CombatEncounter = panel.get("_encounter")
 	encounter.player_hp = 5
 	panel.call("_build_actions")
@@ -70,6 +71,18 @@ func _initialize() -> void:
 	check_true("combat HUD uses the actual equipped weapon",
 		energy.text.contains("Wooden Katana"))
 	check_true("Flee returns on the next encounter", flee.visible)
+	var second_encounter: CombatEncounter = panel.get("_encounter")
+	second_encounter.spend_and_resolve("mi", "mi")
+	panel.call("_build_actions")
+	var tonic_button := _find_button(actions, "Bamboo Breeze Tonic x1")
+	check_true("Energy tonic becomes usable after Energy is spent",
+		tonic_button != null and not tonic_button.disabled)
+	tonic_button.pressed.emit()
+	await process_frame
+	check_eq("Energy tonic restores the turn budget", second_encounter.energy, 5)
+	check_eq("Energy tonic consumes exactly one", inv.count("bamboo_tonic"), 0)
+	check_true("Energy tonic feedback names its distinct effect",
+		(panel.get("_feedback") as Label).text.contains("Energy"))
 
 	panel.call("_finish", false, "")
 	inv.reset()
@@ -81,6 +94,13 @@ func _initialize() -> void:
 func _find_button(parent: Control, label: String) -> Button:
 	for child in parent.get_children():
 		if child is Button and (child as Button).text == label:
+			return child
+	return null
+
+
+func _find_button_prefix(parent: Control, prefix: String) -> Button:
+	for child in parent.get_children():
+		if child is Button and (child as Button).text.begins_with(prefix):
 			return child
 	return null
 

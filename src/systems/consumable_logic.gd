@@ -1,7 +1,7 @@
 class_name ConsumableLogic
 extends RefCounted
-## Honest first-pass consumable rules. Pure healing items work now; hybrid food, buffs,
-## energy items, and attack scrolls remain unavailable until all authored effects resolve.
+## Honest first-pass consumable rules. Pure healing and instant Energy items work now;
+## hybrid food, timed buffs, shields, and attack scrolls wait for their full effect resolver.
 
 ## Explicit, reviewable MVP families. Meals/broths/feasts are deliberately absent: they
 ## belong to the later preparation-buff loop, not the legacy pile of larger instant heals.
@@ -26,3 +26,20 @@ static func restored_hp(item: Dictionary, current_hp: int, max_hp: int) -> int:
 	if not is_supported_healing(item) or current_hp >= max_hp:
 		return 0
 	return mini(int(item.get("heal", 0)), maxi(0, max_hp - current_hp))
+
+
+static func is_supported_energy(item: Dictionary) -> bool:
+	return String(item.get("kind", "")) == "consumable" \
+		and String(item.get("buffType", "")) == "energy" \
+		and int(item.get("buffValue", 0)) > 0 \
+		and int(item.get("heal", 0)) <= 0
+
+
+static func restored_energy(item: Dictionary, current_energy: int, max_energy: int) -> int:
+	if not is_supported_energy(item) or current_energy >= max_energy:
+		return 0
+	return mini(int(item.get("buffValue", 0)), maxi(0, max_energy - current_energy))
+
+
+static func is_supported_combat_item(item: Dictionary) -> bool:
+	return is_supported_healing(item) or is_supported_energy(item)
