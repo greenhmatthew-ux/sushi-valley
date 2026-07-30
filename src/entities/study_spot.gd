@@ -23,12 +23,21 @@ extends Area2D
 @export var caption: String = "You sit for a moment and go over what you have learned."
 ## How many cards a sitting covers. Micro-reviews only: 1/3/5.
 @export var session_size: int = 5
+## What the player sits at. Not optional in practice: an interactable with no visual is
+## discoverable only by walking into it and trusting the context prompt, which reads as a
+## bug, not a secret. Point this at a prop texture (crate/barrel) that matches the caption.
+@export var sprite: Texture2D
 
 var _busy := false
 
 
 func _ready() -> void:
 	add_to_group("interactable")
+	if sprite != null:
+		var s := Sprite2D.new()
+		s.texture = sprite
+		s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		add_child(s)
 
 
 func interact(player: Node = null) -> void:

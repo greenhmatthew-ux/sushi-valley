@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="20_teacher"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="21_sign"]
+[ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="22_study"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_merchant_walk.png" id="22_merch"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
@@ -193,3 +194,22 @@ position = Vector2(336, 400)
 sign_id = "wilds_trail"
 shows_card = "kana-mo"
 caption = "A trail marker, half-swallowed by grass."
+
+[node name="SignOutpost" parent="Entities" instance=ExtResource("21_sign")]
+position = Vector2(232, 328)
+sign_id = "outpost_board"
+shows_card = "greet-sumimasen"
+caption = "A traveller's board nailed beside the outpost door."
+
+[node name="SignGrove" parent="Entities" instance=ExtResource("21_sign")]
+position = Vector2(592, 344)
+sign_id = "grove_marker"
+shows_card = "kana-ki"
+caption = "Someone has carved a character into the trunk."
+
+[node name="StudyOutpost" parent="Entities" instance=ExtResource("22_study")]
+position = Vector2(120, 328)
+spot_id = "outpost_crate"
+caption = "You lean on a crate and go over your notes before heading deeper."
+session_size = 5
+sprite = ExtResource("14_crate")

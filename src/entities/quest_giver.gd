@@ -16,6 +16,10 @@ extends Area2D
 @export var quest_id: String = "stock_the_stall"
 ## Shown above the sprite. Defaults to the quest's authored `giver` when left empty.
 @export var speaker: String = ""
+## Optional card id this giver opens with, so the valley greets you in Japanese before the
+## quest's authored English. A card ID rather than text, matching Npc/SignPost — there is then
+## nowhere to type an unsourced phrase.
+@export var greeting_card: String = ""
 @export var sprite_sheet: Texture2D = preload("res://assets/sprites/npc_villager.png")
 
 var _busy := false
@@ -137,10 +141,27 @@ func _say(lines: Array) -> void:
 		return
 	Bus.npc_talked.emit(quest_id)
 	var typed: Array[String] = []
+	var opener := _greeting_line()
+	if not opener.is_empty():
+		typed.append(opener)
 	for line in lines:
 		typed.append(QuestLogic.fill(String(line), progress(), goal_qty()))
 	Bus.dialogue_open.emit(_name(), typed)
 	await Bus.dialogue_closed
+
+
+## "japanese|meaning" from the configured card, or "" when unset/unknown.
+func _greeting_line() -> String:
+	if greeting_card.is_empty():
+		return ""
+	var card: Dictionary = Learning.profile.card(greeting_card)
+	var ja := String(card.get("prompt", ""))
+	if ja.is_empty():
+		return ""
+	var meaning := String(card.get("meaning", ""))
+	if meaning.is_empty():
+		meaning = String(card.get("answer", ""))
+	return "%s|%s" % [ja, meaning]
 
 
 func _facing_from(dir: Vector2) -> String:

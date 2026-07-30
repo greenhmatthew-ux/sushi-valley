@@ -1141,6 +1141,7 @@ position = Vector2(304, 180)
 [node name="QuestGiver" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
 position = Vector2(344, 224)
 quest_id = "stock_the_stall"
+greeting_card = "greet-konnichiwa"
 
 [node name="Tree0" parent="Props" unique_id=1439562200 instance=ExtResource("20_prop")]
 position = Vector2(24, 32)
@@ -1474,6 +1475,7 @@ caption = "Scratched into the well's post."
 [node name="QuestGiverRiver" parent="Props" instance=ExtResource("14_quest")]
 position = Vector2(248, 424)
 quest_id = "river_guard"
+greeting_card = "greet-ohayou"
 
 [node name="TeacherArrival" parent="Props" instance=ExtResource("33_teacher")]
 position = Vector2(392, 464)
@@ -1486,5 +1488,6 @@ sprite_sheet = ExtResource("34_woman")
 [node name="StudyBench" parent="Props" instance=ExtResource("37_study")]
 position = Vector2(456, 232)
 spot_id = "village_bench"
-caption = "You sit on the bench by the water and run through your notes."
+caption = "You sit on an old crate by the water and run through your notes."
 session_size = 5
+sprite = ExtResource("32_crate")
