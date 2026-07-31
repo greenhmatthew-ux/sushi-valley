@@ -131,6 +131,7 @@ func _lesson_header(lesson: Dictionary, learned: int, total: int, due: int) -> C
 func _card_chip(card: Dictionary, show_en: bool) -> Control:
 	var box := VBoxContainer.new()
 	box.custom_minimum_size = Vector2(150, 0)
+	var card_id := String(card.get("id", ""))
 
 	var ja := _label(17, COL_DUE if Srs.is_due(card) else COL_JA)
 	ja.text = String(card.get("prompt", ""))
@@ -142,6 +143,23 @@ func _card_chip(card: Dictionary, show_en: bool) -> Control:
 		en.text = meaning if not meaning.is_empty() else String(card.get("answer", ""))
 		en.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		box.add_child(en)
+
+	# The notebook is the one place the player browses everything they know, and
+	# every one of those words has a native recording sitting unused. A focusable
+	# button rather than a click target, so the keyboard and controller can reach
+	# it like the rest of the UI.
+	if Audio.has_pronunciation(card_id):
+		var play := Button.new()
+		play.name = "Play_" + card_id
+		play.text = "Play"
+		play.tooltip_text = "Hear this word"
+		play.focus_mode = Control.FOCUS_ALL
+		play.custom_minimum_size = Vector2(52, 20)
+		play.add_theme_font_size_override("font_size", 10)
+		play.pressed.connect(func() -> void:
+			Audio.stop_pronunciation()
+			Audio.play_pronunciation(card_id))
+		box.add_child(play)
 	return box
 
 
