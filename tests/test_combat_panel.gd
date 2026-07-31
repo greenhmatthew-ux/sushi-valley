@@ -212,6 +212,46 @@ func _initialize() -> void:
 	continue_btn.pressed.emit()
 	await process_frame
 	check_true("continuing a damage-item victory closes combat", not bool(panel.get("_active")))
+
+	# Fighting IS the review session, so a missed rune has to teach: say the word
+	# out loud and show how it is read. Combat was silent even after 1,311 cards
+	# gained native audio, and a miss only showed the glyph the player just failed
+	# to recognise.
+	# Unlock a lesson whose cards all shipped with deck audio, then draw until one
+	# of them comes up, so the playback assertion below actually runs instead of
+	# quietly skipping on a silent authored kana card.
+	learning.profile.unlock_lesson("travel-vocab-1")
+	bus.combat_started.emit(String(db.enemy_order[0]))
+	await process_frame
+	var audio_node: Node = root.get_node("Audio")
+	for attempt in 50:
+		var drawn := String((panel.get("_current_card") as Dictionary).get("id", ""))
+		if bool(audio_node.call("has_pronunciation", drawn)):
+			break
+		panel.call("_next_round")
+		await process_frame
+	var missed_card: Dictionary = panel.get("_current_card")
+	var answer := String((panel.get("_challenge") as Dictionary).get("answer", ""))
+	var wrong_btn: Button = null
+	for child in (panel.get("_choices_box") as Control).get_children():
+		if child is Button and (child as Button).text != answer:
+			wrong_btn = child
+			break
+	check_true("a wrong rune is available to press", wrong_btn != null)
+	if wrong_btn != null:
+		wrong_btn.pressed.emit()
+		await process_frame
+		var feedback := (panel.get("_feedback") as Label).text
+		check_true("a missed rune reveals the right answer", feedback.contains(answer))
+		var reading := String(missed_card.get("reading", "")).strip_edges()
+		if not reading.is_empty():
+			check_true("a missed rune also shows how it is read (%s)" % reading,
+				feedback.contains(reading))
+		var card_id := String(missed_card.get("id", ""))
+		check_true("a card with a recording was drawn to test playback (%s)" % card_id,
+			bool(audio_node.call("has_pronunciation", card_id)))
+		check_true("combat plays the card's recording on the reveal",
+			(audio_node.get("_player") as AudioStreamPlayer).stream != null)
 	inv.reset()
 	panel.queue_free()
 	await process_frame

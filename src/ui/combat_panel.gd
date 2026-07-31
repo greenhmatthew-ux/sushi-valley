@@ -208,6 +208,12 @@ func _on_rune(rune: String, btn: Button) -> void:
 			if other is Button and (other as Button).text == String(_challenge["answer"]):
 				other.add_theme_stylebox_override("normal", _button_style(UiTheme.FILL_CORRECT, COL_BORDER))
 
+	# Hear the word at the moment it is revealed. Combat asks for the Japanese, so
+	# this cannot play before the answer without giving it away — but the reveal is
+	# where pronunciation actually sticks, win or lose, and it is the same beat the
+	# notebook's recall panel uses.
+	Audio.play_pronunciation(String(_current_card.get("id", "")))
+
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD if result.correct else COL_BAD)
 	var action_name := String(_selected_ability.get("name", "Basic Attack"))
@@ -233,8 +239,15 @@ func _on_rune(rune: String, btn: Button) -> void:
 		outcome += " Enemy %s -%d for %d rounds." % [
 			CombatEncounter.stat_label(result.debuff_type),
 			result.debuff_value, result.debuff_rounds]
+	# A miss is the one moment the player is definitely paying attention to the
+	# right answer, so spend it: show how the rune is actually read, not just what
+	# it looked like. Silent when the card carries no reading rather than padding
+	# the line with empty brackets.
+	var reading := String(_current_card.get("reading", "")).strip_edges()
+	var revealed := "%s (%s)" % [result.answer, reading] if not reading.is_empty() \
+		else String(result.answer)
 	_feedback.text = outcome if result.correct \
-		else "%s was the rune. Weakened %s" % [result.answer, outcome]
+		else "%s was the rune. Weakened %s" % [revealed, outcome]
 	if result.correct and result.flow_after > 1:
 		_feedback.text += "   Flow x%d" % result.flow_after
 	if _encounter.is_over():
