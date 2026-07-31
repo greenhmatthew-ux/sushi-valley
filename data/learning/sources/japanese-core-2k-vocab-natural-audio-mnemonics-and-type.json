@@ -524,7 +524,7 @@
         "shoes",
         "to quit (one’s job), resign, leave(no direct object)",
         "long time (no see), after a long time",
-        "1. how many times2. how many degrees"
+        "1. how many times 2. how many degrees"
       ],
       "reading": "くつ",
       "meaning": "shoes",
@@ -2160,15 +2160,15 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "何度",
-      "answer": "1. how many times2. how many degrees",
+      "answer": "1. how many times 2. how many degrees",
       "choices": [
-        "1. how many times2. how many degrees",
+        "1. how many times 2. how many degrees",
         "coat, jacket (loan word)",
         "separately",
         "to see (someone) off, send someone off (direct object)"
       ],
       "reading": "なんど",
-      "meaning": "1. how many times2. how many degrees",
+      "meaning": "1. how many times 2. how many degrees",
       "tags": [
         "core2000",
         "imported",
@@ -2627,7 +2627,7 @@
       "choices": [
         "restaurant",
         "dentist",
-        "1. how many times2. how many degrees",
+        "1. how many times 2. how many degrees",
         "not at all ➖"
       ],
       "reading": "れすとらん",
@@ -3025,7 +3025,7 @@
       "answer": "to throw (direct object)",
       "choices": [
         "to throw (direct object)",
-        "1. how many times2. how many degrees",
+        "1. how many times 2. how many degrees",
         "amazing, incredible, great, intense",
         "memory"
       ],
@@ -3426,7 +3426,7 @@
       "choices": [
         "to shake (back and forth), sway, tremble",
         "weight",
-        "1. how many times2. how many degrees",
+        "1. how many times 2. how many degrees",
         "department store"
       ],
       "reading": "ゆれる",
@@ -3447,7 +3447,7 @@
       "answer": "Fine, Elegant, Magnificent (な adj)",
       "choices": [
         "Fine, Elegant, Magnificent (な adj)",
-        "1. how many times2. how many degrees",
+        "1. how many times 2. how many degrees",
         "sudden, urgent, steep (な adj)",
         "hobby, taste, pastime, interest"
       ],

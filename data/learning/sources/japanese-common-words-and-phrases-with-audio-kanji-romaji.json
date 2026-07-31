@@ -199,7 +199,7 @@
         "to search (for) (verb)",
         "far, distant (adj)",
         "cloud (noun)",
-        "1. To attach (direct or no direct object)2. To turn on"
+        "1. To attach (direct or no direct object) 2. To turn on"
       ],
       "reading": "sagasu",
       "meaning": "to search (for) (verb)",
@@ -781,7 +781,7 @@
       "choices": [
         "To hear, be heard (verb)",
         "big",
-        "1. to cut2. to put on clothes (above the waist)",
+        "1. to cut 2. to put on clothes (above the waist)",
         "to end"
       ],
       "reading": "kikoeru",
@@ -937,15 +937,15 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "幾つ(2)",
-      "answer": "1. how many? (tsu counter)2. how old? (formal)",
+      "answer": "1. how many? (tsu counter) 2. how old? (formal)",
       "choices": [
-        "1. how many? (tsu counter)2. how old? (formal)",
+        "1. how many? (tsu counter) 2. how old? (formal)",
         "to kill (verb)",
         "to face, head for (verb)",
         "to sleep"
       ],
       "reading": "ikutsu",
-      "meaning": "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+      "meaning": "1. how many? (tsu counter) 2. how old? (formal) ex. toshi wa ____ desu ka",
       "tags": [
         "imported",
         "phrases"
@@ -1700,15 +1700,15 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "1. 付ける2. 点ける",
-      "answer": "1. To attach (direct or no direct object)2. To turn on",
+      "answer": "1. To attach (direct or no direct object) 2. To turn on",
       "choices": [
-        "1. To attach (direct or no direct object)2. To turn on",
+        "1. To attach (direct or no direct object) 2. To turn on",
         "to watch / to see",
         "black (adj)",
         "she (neutral) (pronoun), one’s girlfriend"
       ],
       "reading": "tsukeru",
-      "meaning": "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+      "meaning": "1. To attach (direct or no direct object) 2. To turn on (direct object = electrical or flame-based device)",
       "tags": [
         "imported",
         "phrases"
@@ -1881,15 +1881,15 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "起きる(2-4)",
-      "answer": "1. to wake up, to get up2. to occur, happen (spontaneously)",
+      "answer": "1. to wake up, to get up 2. to occur, happen (spontaneously)",
       "choices": [
-        "1. to wake up, to get up2. to occur, happen (spontaneously)",
+        "1. to wake up, to get up 2. to occur, happen (spontaneously)",
         "to do, wear accessories like earrings",
         "to descend / to go down / to get off bus or train, land",
         "to be drunk, get drunk, feel dizzy"
       ],
       "reading": "Okiru",
-      "meaning": "1. to wake up, to get up2. to occur, happen (spontaneously)",
+      "meaning": "1. to wake up, to get up 2. to occur, happen (spontaneously)",
       "tags": [
         "imported",
         "phrases"
@@ -1924,7 +1924,7 @@
       "answer": "to smell",
       "choices": [
         "to smell",
-        "1. To attach (direct or no direct object)2. To turn on",
+        "1. To attach (direct or no direct object) 2. To turn on",
         "to smoke a cigarette",
         "slowly, leisurely (adverb)"
       ],
@@ -2504,15 +2504,15 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "1. 切る2. 着る",
-      "answer": "1. to cut2. to put on clothes (above the waist)",
+      "answer": "1. to cut 2. to put on clothes (above the waist)",
       "choices": [
-        "1. to cut2. to put on clothes (above the waist)",
+        "1. to cut 2. to put on clothes (above the waist)",
         "to take (an inanimate object away from speaker)",
         "to drive",
         "to forget, leave behind"
       ],
       "reading": "Kiru",
-      "meaning": "1. to cut2. to put on clothes (above the waist)",
+      "meaning": "1. to cut 2. to put on clothes (above the waist)",
       "tags": [
         "imported",
         "phrases"
@@ -3189,7 +3189,7 @@
       "answer": "to be drunk, get drunk, feel dizzy",
       "choices": [
         "to be drunk, get drunk, feel dizzy",
-        "1. how many? (tsu counter)2. how old? (formal)",
+        "1. how many? (tsu counter) 2. how old? (formal)",
         "to borrow, rent",
         "to write"
       ],
@@ -3310,7 +3310,7 @@
       "answer": "to meet",
       "choices": [
         "to meet",
-        "1. to cut2. to put on clothes (above the waist)",
+        "1. to cut 2. to put on clothes (above the waist)",
         "to pay",
         "to get tired, to become tired"
       ],
@@ -3471,7 +3471,7 @@
       "answer": "to make a phone call",
       "choices": [
         "to make a phone call",
-        "1. To attach (direct or no direct object)2. To turn on",
+        "1. To attach (direct or no direct object) 2. To turn on",
         "person (noun)",
         "woman (noun)"
       ],
@@ -3532,7 +3532,7 @@
       "choices": [
         "to laugh, smile",
         "to drive",
-        "1. To attach (direct or no direct object)2. To turn on",
+        "1. To attach (direct or no direct object) 2. To turn on",
         "slowly, leisurely (adverb)"
       ],
       "reading": "Warau",
@@ -3713,7 +3713,7 @@
         "wall, partition",
         "to return home",
         "to give, offer (from speaker to someone else)",
-        "1. to cut2. to put on clothes (above the waist)"
+        "1. to cut 2. to put on clothes (above the waist)"
       ],
       "reading": "kabe",
       "meaning": "wall, partition",
@@ -3772,7 +3772,7 @@
       "choices": [
         "rainbow",
         "to hurry",
-        "1. to cut2. to put on clothes (above the waist)",
+        "1. to cut 2. to put on clothes (above the waist)",
         "to be drunk, get drunk, feel dizzy"
       ],
       "reading": "niji",

@@ -66,6 +66,23 @@ only ever runs on answers that are already over the limit, so the ~1,300 healthy
 cards cannot be touched. It rescued 20 and reports the one it will not guess at
 (`...-type-69`, a 63-character synonym list with no clause to trim).
 
+`tools/clean_import_residue.py` fixes the third: Anki notes are HTML, and the
+import that flattened them to plain text stopped half way. 73 entities were never
+decoded, so a rune button read `I don&#x27;t have it` — 36 of the Travel
+Vocabulary deck's 100 cards showed it, in their own answer or as a distractor
+copied onto another card. Five more cards lost the spacing that a dropped `<br>`
+carried (`1. to cut2. to put on clothes`). 55 cards cleaned, verified as decoding
+and spacing only: no card, field, or wording changed.
+
+**Pronunciation coverage is a sourcing limit, not a bug.** 279 of the 425
+travel/phrase cards are silent, and only 4 of them have a written form Kanji alive
+even has a recording for — all 4 blocked because the deck's reading is romaji
+(`chuushajo`) against the catalogue's kana (`ちゅうしゃじょう`, which that romaji does
+not actually spell). Kanji alive is a per-kanji example database; it has nothing
+for `すみません`. Voicing the phrasebook needs a new licensed source, not a looser
+matcher — `import_kanji_alive_audio.py` refuses fuzzy matches on purpose, because
+a confidently wrong recording teaches wrong pronunciation.
+
 Known remaining import defects:
 
 - **Tae Kim's Grammar Guide**: the import mapped fields to the wrong roles —

@@ -30,6 +30,7 @@ func _initialize() -> void:
 	_every_travel_phrase_card_can_hint()
 	_no_travel_phrase_card_is_unreachable()
 	_no_travel_phrase_lesson_is_hollowed_out()
+	_no_card_shows_undecoded_markup()
 
 	db.free()
 	_finish()
@@ -130,6 +131,30 @@ func _no_travel_phrase_lesson_is_hollowed_out() -> void:
 			thin.append(lid)
 	check_true("no travel/phrase lesson is left without usable cards (%s)" % str(thin),
 		thin.is_empty())
+
+
+## Anki notes are HTML, and the import that flattened them stopped half way: 73
+## undecoded entities reached the player as "I don&#x27;t have it" on a rune
+## button. This covers every deck, since the next import can leak any of them.
+func _no_card_shows_undecoded_markup() -> void:
+	var entity := RegEx.create_from_string("&(#x?[0-9a-fA-F]+|[a-zA-Z]+);")
+	var tag := RegEx.create_from_string("<[a-zA-Z/][^>]*>")
+	var with_entity: Array[String] = []
+	var with_tag: Array[String] = []
+	for card in db.cards.values():
+		var texts: Array = []
+		for field in ["prompt", "reading", "answer", "meaning", "note"]:
+			texts.append(String(card.get(field, "")))
+		for choice in card.get("choices", []):
+			texts.append(String(choice))
+		for text in texts:
+			var cid := String(card.get("id", ""))
+			if entity.search(text) != null and not with_entity.has(cid):
+				with_entity.append(cid)
+			if tag.search(text) != null and not with_tag.has(cid):
+				with_tag.append(cid)
+	check_eq("no card text carries an undecoded HTML entity", with_entity.size(), 0)
+	check_eq("no card text carries a leftover HTML tag", with_tag.size(), 0)
 
 
 func _travel_phrase_card_ids() -> Array:

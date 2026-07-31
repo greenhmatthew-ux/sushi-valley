@@ -123,7 +123,7 @@
       "choices": [
         "See you / Goodbye.",
         "Good",
-        "It&#x27;s no good / It&#x27;s not allowed",
+        "It's no good / It's not allowed",
         "A little / A moment / A bit"
       ],
       "reading": "またね",
@@ -206,7 +206,7 @@
       "answer": "Sorry.",
       "choices": [
         "Sorry.",
-        "No good / It&#x27;s no use",
+        "No good / It's no use",
         "Um… / Excuse me.",
         "Good morning."
       ],
@@ -355,7 +355,7 @@
         "I understand / Understood.",
         "Of course, I will help.",
         "I can speak English",
-        "No, I don&#x27;t have it"
+        "No, I don't have it"
       ],
       "reading": "わかりました",
       "meaning": "I understand / Understood.",
@@ -374,7 +374,7 @@
       "answer": "Yes.",
       "choices": [
         "Yes.",
-        "I don&#x27;t understand Japanese",
+        "I don't understand Japanese",
         "I’m sorry, it’s not possible right now.",
         "Hello. Nice to meet you."
       ],
@@ -438,7 +438,7 @@
       "choices": [
         "Thank you.",
         "A little / A few",
-        "No, it&#x27;s okay",
+        "No, it's okay",
         "I’m sorry."
       ],
       "reading": "ありがとう",
@@ -563,7 +563,7 @@
       "answer": "That.",
       "choices": [
         "That.",
-        "No good / It&#x27;s no use",
+        "No good / It's no use",
         "Hello. Nice to meet you.",
         "What is that?"
       ],
@@ -689,7 +689,7 @@
       "answer": "This (noun).",
       "choices": [
         "This (noun).",
-        "No, it&#x27;s okay",
+        "No, it's okay",
         "This.",
         "What is your name?"
       ],
@@ -775,7 +775,7 @@
         "That’s right.",
         "Good",
         "How many.",
-        "No good / It&#x27;s no use"
+        "No good / It's no use"
       ],
       "reading": "そうだ",
       "meaning": "That’s right.",
@@ -794,9 +794,9 @@
       "answer": "Um…",
       "choices": [
         "Um…",
-        "No good / It&#x27;s no use",
+        "No good / It's no use",
         "English",
-        "It&#x27;s no good / It&#x27;s not allowed"
+        "It's no good / It's not allowed"
       ],
       "reading": "えっと",
       "meaning": "Um…",
@@ -857,7 +857,7 @@
       "answer": "I / Me.",
       "choices": [
         "I / Me.",
-        "No, it&#x27;s okay",
+        "No, it's okay",
         "Mr. / Ms.",
         "See you / Goodbye."
       ],
@@ -922,7 +922,7 @@
         "I am ___.",
         "Hello. Nice to meet you.",
         "No.",
-        "I don&#x27;t like (casual)"
+        "I don't like (casual)"
       ],
       "reading": "＿です",
       "meaning": "I am ___.",
@@ -1131,7 +1131,7 @@
       "choices": [
         "Why.",
         "Good evening.",
-        "I don&#x27;t like (polite)",
+        "I don't like (polite)",
         "That (over there)."
       ],
       "reading": "なぜ",
@@ -1173,7 +1173,7 @@
       "choices": [
         "How many.",
         "A little / A few",
-        "I don&#x27;t like (polite)",
+        "I don't like (polite)",
         "Of course, I will help."
       ],
       "reading": "いくつ",
@@ -1194,8 +1194,8 @@
       "choices": [
         "How much (price)?",
         "Can you help me?",
-        "No, I don&#x27;t have it",
-        "I don&#x27;t understand Japanese"
+        "No, I don't have it",
+        "I don't understand Japanese"
       ],
       "reading": "いくら",
       "meaning": "How much (price)?",
@@ -1214,9 +1214,9 @@
       "answer": "Good",
       "choices": [
         "Good",
-        "I don&#x27;t like (casual)",
+        "I don't like (casual)",
         "How about? / How is it?",
-        "No good / It&#x27;s no use"
+        "No good / It's no use"
       ],
       "reading": "いい",
       "meaning": "Good",
@@ -1232,15 +1232,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "いいです",
-      "answer": "It&#x27;s good / It&#x27;s fine",
+      "answer": "It's good / It's fine",
       "choices": [
-        "It&#x27;s good / It&#x27;s fine",
-        "I don&#x27;t like (polite)",
+        "It's good / It's fine",
+        "I don't like (polite)",
         "Why.",
         "One more time / Again"
       ],
       "reading": "いいです",
-      "meaning": "It&#x27;s good / It&#x27;s fine",
+      "meaning": "It's good / It's fine",
       "tags": [
         "Personal",
         "imported",
@@ -1253,15 +1253,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "ダメだ",
-      "answer": "No good / It&#x27;s no use",
+      "answer": "No good / It's no use",
       "choices": [
-        "No good / It&#x27;s no use",
+        "No good / It's no use",
         "Please say it one more time",
         "Why.",
         "How about? / How is it?"
       ],
       "reading": "だめだ",
-      "meaning": "No good / It&#x27;s no use",
+      "meaning": "No good / It's no use",
       "tags": [
         "Personal",
         "imported",
@@ -1274,15 +1274,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "ダメです",
-      "answer": "It&#x27;s no good / It&#x27;s not allowed",
+      "answer": "It's no good / It's not allowed",
       "choices": [
-        "It&#x27;s no good / It&#x27;s not allowed",
+        "It's no good / It's not allowed",
         "Um… / Excuse me.",
         "This (noun).",
         "Good morning."
       ],
       "reading": "だめです",
-      "meaning": "It&#x27;s no good / It&#x27;s not allowed",
+      "meaning": "It's no good / It's not allowed",
       "tags": [
         "Personal",
         "imported",
@@ -1337,15 +1337,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "vocab",
       "prompt": "好きじゃない",
-      "answer": "I don&#x27;t like (casual)",
+      "answer": "I don't like (casual)",
       "choices": [
-        "I don&#x27;t like (casual)",
+        "I don't like (casual)",
         "I understand / Understood.",
         "Excuse me / I’m sorry for interrupting.",
         "How are you?"
       ],
       "reading": "すきじゃない",
-      "meaning": "I don&#x27;t like (casual)",
+      "meaning": "I don't like (casual)",
       "tags": [
         "Personal",
         "imported",
@@ -1358,15 +1358,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "好きじゃないです",
-      "answer": "I don&#x27;t like (polite)",
+      "answer": "I don't like (polite)",
       "choices": [
-        "I don&#x27;t like (polite)",
+        "I don't like (polite)",
         "Japanese",
         "Thank you (polite).",
         "I understand."
       ],
       "reading": "すきじゃないです",
-      "meaning": "I don&#x27;t like (polite)",
+      "meaning": "I don't like (polite)",
       "tags": [
         "Personal",
         "imported",
@@ -1445,7 +1445,7 @@
       "answer": "I can speak English",
       "choices": [
         "I can speak English",
-        "I can&#x27;t speak Japanese very well",
+        "I can't speak Japanese very well",
         "This.",
         "Excuse me / I’m sorry for interrupting."
       ],
@@ -1526,15 +1526,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "日本語がわかりません",
-      "answer": "I don&#x27;t understand Japanese",
+      "answer": "I don't understand Japanese",
       "choices": [
-        "I don&#x27;t understand Japanese",
+        "I don't understand Japanese",
         "I cannot speak Japanese",
         "Can you speak English?",
         "I understand a little Japanese"
       ],
       "reading": "にほんごがわかりません",
-      "meaning": "I don&#x27;t understand Japanese",
+      "meaning": "I don't understand Japanese",
       "tags": [
         "Personal",
         "imported",
@@ -1571,8 +1571,8 @@
       "answer": "A little / A few",
       "choices": [
         "A little / A few",
-        "It&#x27;s no good / It&#x27;s not allowed",
-        "Sorry, not right now…, Sorry, I can&#x27;t",
+        "It's no good / It's not allowed",
+        "Sorry, not right now…, Sorry, I can't",
         "How much / How long."
       ],
       "reading": "すこし",
@@ -1652,15 +1652,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "あまり日本語が話せません",
-      "answer": "I can&#x27;t speak Japanese very well",
+      "answer": "I can't speak Japanese very well",
       "choices": [
-        "I can&#x27;t speak Japanese very well",
+        "I can't speak Japanese very well",
         "How much / How long.",
         "Please speak slowly",
         "I can speak a little Japanese"
       ],
       "reading": "あまりにほんごがはなせません",
-      "meaning": "I can&#x27;t speak Japanese very well",
+      "meaning": "I can't speak Japanese very well",
       "tags": [
         "Personal",
         "imported",
@@ -1699,7 +1699,7 @@
         "Please (request)",
         "What is this?",
         "I like (polite)",
-        "It&#x27;s no good / It&#x27;s not allowed"
+        "It's no good / It's not allowed"
       ],
       "reading": "ください",
       "meaning": "Please (request)",
@@ -1761,7 +1761,7 @@
       "choices": [
         "Please speak slowly",
         "Who.",
-        "It&#x27;s good / It&#x27;s fine",
+        "It's good / It's fine",
         "I can speak Japanese"
       ],
       "reading": "ゆっくりはなしてください",
@@ -1802,7 +1802,7 @@
       "answer": "Your Japanese is good",
       "choices": [
         "Your Japanese is good",
-        "No, I don&#x27;t have it",
+        "No, I don't have it",
         "Hello. Nice to meet you.",
         "That (noun)."
       ],
@@ -1845,7 +1845,7 @@
       "choices": [
         "Can I use Google Translate?",
         "What is it?",
-        "No good / It&#x27;s no use",
+        "No good / It's no use",
         "Good"
       ],
       "reading": "グーグルほんやくをつかってもいいですか？",
@@ -1865,7 +1865,7 @@
       "answer": "Do you have (something)?",
       "choices": [
         "Do you have (something)?",
-        "It&#x27;s good / It&#x27;s fine",
+        "It's good / It's fine",
         "Please say it one more time",
         "I’m sorry, I can’t help."
       ],
@@ -1883,15 +1883,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "いいえ、持っていません",
-      "answer": "No, I don&#x27;t have it",
+      "answer": "No, I don't have it",
       "choices": [
-        "No, I don&#x27;t have it",
+        "No, I don't have it",
         "That’s fine.",
         "Please say it one more time",
         "Fine / Enough."
       ],
       "reading": "いいえ、もっていません",
-      "meaning": "No, I don&#x27;t have it",
+      "meaning": "No, I don't have it",
       "tags": [
         "Personal",
         "imported",
@@ -1946,15 +1946,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "いいえ、いいです",
-      "answer": "No, it&#x27;s okay",
+      "answer": "No, it's okay",
       "choices": [
-        "No, it&#x27;s okay",
+        "No, it's okay",
         "What is your name?",
         "How much (price)?",
         "I can speak English"
       ],
       "reading": "いいえ、いいです",
-      "meaning": "No, it&#x27;s okay",
+      "meaning": "No, it's okay",
       "tags": [
         "Personal",
         "imported",
@@ -1970,7 +1970,7 @@
       "answer": "To help, to save",
       "choices": [
         "To help, to save",
-        "I don&#x27;t understand Japanese",
+        "I don't understand Japanese",
         "Sorry.",
         "No, not yet"
       ],
@@ -1993,7 +1993,7 @@
         "Can you help me?",
         "Who.",
         "A little / A few",
-        "I don&#x27;t like (casual)"
+        "I don't like (casual)"
       ],
       "reading": "たすけてもらえますか",
       "meaning": "Can you help me?",
@@ -2054,7 +2054,7 @@
       "answer": "I’m sorry, it’s not possible right now.",
       "choices": [
         "I’m sorry, it’s not possible right now.",
-        "No, I don&#x27;t have it",
+        "No, I don't have it",
         "Where (polite).",
         "Um… / Excuse me."
       ],
@@ -2075,7 +2075,7 @@
       "answer": "I’m sorry, I can’t help.",
       "choices": [
         "I’m sorry, I can’t help.",
-        "No, it&#x27;s okay",
+        "No, it's okay",
         "Hello. Nice to meet you.",
         "That’s right."
       ],
@@ -2093,15 +2093,15 @@
       "lessonId": "japanese-travel-vocabulary-1",
       "type": "phrase",
       "prompt": "すみません、今はちょっと。。。",
-      "answer": "Sorry, not right now…, Sorry, I can&#x27;t",
+      "answer": "Sorry, not right now…, Sorry, I can't",
       "choices": [
-        "Sorry, not right now…, Sorry, I can&#x27;t",
+        "Sorry, not right now…, Sorry, I can't",
         "My name is ___.",
         "Good evening.",
         "Please say it one more time"
       ],
       "reading": "すみません、いまはちょっと。。。",
-      "meaning": "Sorry, not right now…, Sorry, I can&#x27;t",
+      "meaning": "Sorry, not right now…, Sorry, I can't",
       "tags": [
         "Personal",
         "imported",
