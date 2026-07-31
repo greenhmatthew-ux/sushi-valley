@@ -218,10 +218,10 @@ func _recall_eligibility() -> void:
 				LearningProgression.choice_plausible(String(choice)))
 	check_true("mixed pool still builds prompts", saw_prompt)
 
-	# Mastery: a lesson with junk cards completes from its real cards alone, and
-	# the imported deck drives the same auto-progression chain as native lessons.
+	# The imported deck drives the same auto-progression chain as native lessons.
 	check_eq("imported cards resolve to their curriculum lesson",
-		String(db.card(junk_id).get("lessonId", "")), "tae-kim-1")
+		String(db.card("japanese-course-based-on-tae-kims-grammar-guide-anime-1")
+			.get("lessonId", "")), "tae-kim-1")
 	var p2 := LearningProfile.new({}, db)
 	var prog2 := LearningProgression.new(p2, db)
 	var first: Dictionary = db.lesson("tae-kim-1")
@@ -229,21 +229,57 @@ func _recall_eligibility() -> void:
 	check_true("grammar chain exists for the mastery check",
 		not first.is_empty() and not second.is_empty())
 	prog2.profile.unlock_lesson("tae-kim-1")
-	var eligible_count := 0
 	for cid in first["cardIds"]:
-		var c: Dictionary = p2.card(cid)
-		if LearningProgression.recall_eligible(c):
-			eligible_count += 1
-			prog2.grade(c, "good")
-	check_true("tae-kim-1 mixes real and junk cards",
-		eligible_count > 0 and eligible_count < first["cardIds"].size())
-	check_true("junk cards do not block lesson mastery",
-		bool(prog2.call("_is_lesson_mastered", first)))
+		prog2.grade(p2.card(cid), "good")
 	check_true("mastering an imported lesson unlocks the next one",
 		p2.card(second["cardIds"][0]).get("unlocked", false))
 
+	# Mastery must still complete from the real cards alone when a lesson mixes
+	# them with junk. Built as a fixture rather than pinned to whichever imported
+	# deck is currently broken — the decks get repaired, the rule has to hold.
+	var mixed := _inject_mixed_lesson("fixture-mixed")
+	var p3 := LearningProfile.new({}, db)
+	var prog3 := LearningProgression.new(p3, db)
+	p3.unlock_lesson("fixture-mixed")
+	var graded := 0
+	for cid in mixed["cardIds"]:
+		var c: Dictionary = p3.card(cid)
+		if LearningProgression.recall_eligible(c):
+			graded += 1
+			prog3.grade(c, "good")
+	check_true("the fixture really does mix real and junk cards",
+		graded > 0 and graded < mixed["cardIds"].size())
+	check_true("junk cards do not block lesson mastery",
+		bool(prog3.call("_is_lesson_mastered", mixed)))
+
 
 # --- helpers ---------------------------------------------------------------
+
+## A lesson holding two reviewable cards and two imported page-number remarks,
+## added to the loaded content so the eligibility rules can be tested without
+## depending on a real deck staying broken. Prompts stay ASCII: authored Japanese
+## is not allowed anywhere in this project, fixtures included.
+func _inject_mixed_lesson(lesson_id: String) -> Dictionary:
+	var ids: Array = []
+	for i in 4:
+		var cid := "%s-card-%d" % [lesson_id, i]
+		var junk := i >= 2
+		db.cards[cid] = {
+			"id": cid, "lessonId": lesson_id, "type": "vocab",
+			"prompt": "fixture prompt %d" % i,
+			"answer": "14" if junk else "fixture answer %d" % i,
+			"meaning": "fixture", "reading": "fixture", "choices": [],
+		}
+		db.card_order.append(cid)
+		ids.append(cid)
+	var lesson := {
+		"id": lesson_id, "title": "Mixed fixture",
+		"category": "fixture", "cardIds": ids,
+	}
+	db.lessons[lesson_id] = lesson
+	db.lesson_order.append(lesson_id)
+	return lesson
+
 
 func _first_category_pair() -> Array:
 	var by_category := {}

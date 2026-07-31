@@ -84,26 +84,30 @@ func _required_level_threshold() -> void:
 		LessonGateLogic.evaluate(p, db, "kana-vowels", 3)["satisfied"])
 
 
-## tae-kim-1 mixes real cards with imported page-number remarks (answer "14").
+## A lesson that mixes real cards with imported page-number remarks (answer "14").
 ## The gate threshold must count only the reviewable cards, or it could never open.
+##
+## Built as a fixture rather than pinned to a real imported lesson: this used to
+## point at tae-kim-1, and repairing that deck silently invalidated the test's
+## premise. The rule outlives any particular broken deck.
 func _junk_cards_cannot_block_a_gate() -> void:
-	var lesson: Dictionary = db.lesson("tae-kim-1")
+	var lesson := _inject_mixed_lesson("fixture-gate")
 	var eligible: Array = []
 	for id in lesson["cardIds"]:
 		if LearningProgression.recall_eligible(db.card(id)):
 			eligible.append(id)
-	check_true("tae-kim-1 mixes real and junk cards",
+	check_true("the fixture really does mix real and junk cards",
 		eligible.size() > 0 and eligible.size() < lesson["cardIds"].size())
 
 	var p := LearningProfile.new({}, db)
 	var prog := LearningProgression.new(p, db)
-	p.unlock_lesson("tae-kim-1")
-	var e := LessonGateLogic.evaluate(p, db, "tae-kim-1", 1)
+	p.unlock_lesson("fixture-gate")
+	var e := LessonGateLogic.evaluate(p, db, "fixture-gate", 1)
 	check_eq("gate total counts only reviewable cards", e["total"], eligible.size())
 
 	for id in eligible:
 		prog.grade(p.card(id), "good")
-	e = LessonGateLogic.evaluate(p, db, "tae-kim-1", 1)
+	e = LessonGateLogic.evaluate(p, db, "fixture-gate", 1)
 	check_true("gate opens once the reviewable cards are ready", e["satisfied"])
 
 	# An all-junk lesson reads as "no cards yet", never as a free pass.
@@ -121,6 +125,31 @@ func _flag_helpers() -> void:
 	check_true("gate starts uncleared", not LessonGateLogic.is_cleared(p, "north_path"))
 	p.set_flag(LessonGateLogic.cleared_flag("north_path"))
 	check_true("gate reads cleared after flag set", LessonGateLogic.is_cleared(p, "north_path"))
+
+
+## Two reviewable cards and two imported page-number remarks, added to the loaded
+## content. Prompts stay ASCII: authored Japanese is not allowed anywhere in this
+## project, fixtures included.
+func _inject_mixed_lesson(lesson_id: String) -> Dictionary:
+	var ids: Array = []
+	for i in 4:
+		var cid := "%s-card-%d" % [lesson_id, i]
+		var junk := i >= 2
+		db.cards[cid] = {
+			"id": cid, "lessonId": lesson_id, "type": "vocab",
+			"prompt": "fixture prompt %d" % i,
+			"answer": "14" if junk else "fixture answer %d" % i,
+			"meaning": "fixture", "reading": "fixture", "choices": [],
+		}
+		db.card_order.append(cid)
+		ids.append(cid)
+	var lesson := {
+		"id": lesson_id, "title": "Mixed fixture",
+		"category": "fixture", "cardIds": ids,
+	}
+	db.lessons[lesson_id] = lesson
+	db.lesson_order.append(lesson_id)
+	return lesson
 
 
 func _finish() -> void:

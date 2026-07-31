@@ -13,126 +13,126 @@
       "sourceNoteId": "1600420050000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Note that the Japanese \"ha\"-character (は) is pronounced \"wa\" in this case.",
-      "answer": "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
+      "prompt": "こんにちは",
+      "answer": "hello; good day; good afternoon",
       "choices": [
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "ohayou: good morning",
-        "Cause - what is it?gen'in: cause; origin; source",
-        "konbanha: good evening"
+        "good morning",
+        "Cause - what is it?",
+        "good evening"
       ],
-      "reading": "こんにちは",
-      "meaning": "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
+      "reading": "konnichiha",
+      "meaning": "hello; good day; good afternoon",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Note that the Japanese \"ha\"-character (は) is pronounced \"wa\" in this case. There are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry)."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-2",
       "sourceNoteId": "1600420080000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "The combination of \"o\" and \"u\" is usually pronounced as long \"o\". In Japanese, this can result from various character combinations (yo/よ + u/う in this example), don't worry about this for now.",
-      "answer": "ohayou: good morning",
+      "prompt": "おはよう",
+      "answer": "good morning",
       "choices": [
-        "ohayou: good morning",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry)."
+        "[I] wasn't able to notice [this].",
+        "[Something] wasn't a dream.",
+        "hello; good day; good afternoon"
       ],
-      "reading": "おはよう",
-      "meaning": "ohayou: good morning",
+      "reading": "ohayou",
+      "meaning": "good morning",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "The combination of \"o\" and \"u\" is usually pronounced as long \"o\". In Japanese, this can result from various character combinations (yo/よ + u/う in this example), don't worry about this for now."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-3",
       "sourceNoteId": "1600420090000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Again note that the Japanese \"ha\"-character (は) is pronounced \"wa\" in this case.",
-      "answer": "konbanha: good evening",
+      "prompt": "こんばんは",
+      "answer": "good evening",
       "choices": [
-        "konbanha: good evening",
-        "oishii: tasty",
+        "tasty",
         "14",
-        "Cause - what is it?gen'in: cause; origin; source"
+        "Cause - what is it?"
       ],
-      "reading": "こんばんは",
-      "meaning": "konbanha: good evening",
+      "reading": "konbanha",
+      "meaning": "good evening",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Again note that the Japanese \"ha\"-character (は) is pronounced \"wa\" in this case."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-4",
       "sourceNoteId": "1600420100000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Again note the combination of \"o\" and \"u\", which is pronounced as long \"o\". It's a result of to/と + u/う in this example), don't worry about this for now.",
-      "answer": "arigatou: thank you",
+      "prompt": "ありがとう",
+      "answer": "thank you",
       "choices": [
-        "arigatou: thank you",
         "14",
-        "oishii: tasty",
-        "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\"."
+        "tasty",
+        "negative past of kidzuku (to notice)"
       ],
-      "reading": "ありがとう",
-      "meaning": "arigatou: thank you",
+      "reading": "arigatou",
+      "meaning": "thank you",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Again note the combination of \"o\" and \"u\", which is pronounced as long \"o\". It's a result of to/と + u/う in this example), don't worry about this for now."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-5",
       "sourceNoteId": "1600420310000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Double consonantsNotice the \"tt\" in janakatta. Double consonants (tt in this case) prolong or stretch the pronunciation of the consonant (t in this case. press \"r\" to play the audio again). They only exist in the latin transcription, but always result from a \"small tsu\"-charcter in written Japanese:ka = か, ta = た, so:\"kata\" in Japanese looks like this: かた \"katta\" in Japanese looks like this: かったThe \"っ\" in the middle is the small tsu character (here it is next to the large one: つっ). This one is responsible for the prolonged \"t\". This can also happen for other consonant-based characters, I'll show you more examples.",
-      "answer": "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
+      "prompt": "ゆめ じゃなかった",
+      "answer": "[Something] wasn't a dream.",
       "choices": [
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
-        "Cause - what is it?gen'in: cause; origin; source",
-        "arigatou: thank you",
-        "konbanha: good evening"
+        "Cause - what is it?",
+        "thank you",
+        "good evening"
       ],
-      "reading": "ゆめ じゃなかった",
-      "meaning": "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
+      "reading": "",
+      "meaning": "[Something] wasn't a dream.",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Double consonantsNotice the \"tt\" in janakatta. Double consonants (tt in this case) prolong or stretch the pronunciation of the consonant (t in this case. press \"r\" to play the audio again). They only exist in the latin transcription, but always result from a \"small tsu\"-charcter in written Japanese:ka = か, ta = た, so:\"kata\" in Japanese looks like this: かた \"katta\" in Japanese looks like this: かったThe \"っ\" in the middle is the small tsu character (here it is next to the large one: つっ). This one is responsible for the prolonged \"t\". This can also happen for other consonant-based characters, I'll show you more examples. \"janakatta\" is the negative, past form of \"da\". (e.g. something on your mind or something nice that has happened)"
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-6",
       "sourceNoteId": "1600420380000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Note the long pronunciation of the \"o\"s.They result from yo/よ + u/う and to/と + u/う in this case.",
-      "answer": "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
+      "prompt": "きょう は ありがとう",
+      "answer": "As for today - thank you.",
       "choices": [
-        "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
-        "arigatou: thank you",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "ohayou: good morning"
+        "thank you",
+        "hello; good day; good afternoon",
+        "good morning"
       ],
-      "reading": "きょう は ありがとう",
-      "meaning": "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
+      "reading": "",
+      "meaning": "As for today - thank you.",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Note the long pronunciation of the \"o\"s.They result from yo/よ + u/う and to/と + u/う in this case. kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\". (or less literal: Thank you for today)"
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-7",
@@ -142,10 +142,9 @@
       "prompt": "For the sake of completeness regarding the writing systems: A single Japanese (kana) character is either represented by a vowel (a, i, u, e, o) or a combination of a consonant and a vowel (e.g. ki). Have a look at the table on Tae Kim's website. If a consonant-based character ending on an \"i\" (e.g. ki/き) is combined with a y-based character (e.g. yo/よ), the \"i\" is omitted in the latin transcription, because the \"i\" is not pronounced. Moreover, the y-based character is spelled small. You saw an example on the previous card, which will also be repeated on the next card (kyou). kyou is spelled きょう in Japanese (ki/き + small yo/ょ + u/う). Compare the large and small yo: よょ.Press \"@\" or \"!\" to suspend this remark.",
       "answer": "14",
       "choices": [
-        "14",
-        "arigatou: thank you",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\"."
+        "thank you",
+        "hello; good day; good afternoon",
+        "[Something] wasn't a dream."
       ],
       "meaning": "14",
       "tags": [
@@ -162,10 +161,9 @@
       "prompt": "ga/が vs. ha/はThe \"ga\" particle (が) and the \"ha\" particle (は) are related, but often cause headaches - especially for beginners. In fact they are very easy to distinguish, I like Jay Rubin's explanation very much (he's a famous Japanese translator). In a nutshell, he states: \"ha\" sets the preceding word as topic and makes the listener curious about what comes NEXT. \"ga\" however puts the listener's attention onto the PREVIOUS word.If the speaker would pause after the \"ha\", the listener's brain would whisper: \"yes, yes and then what?\", e.g.: boku ha...(yes, yes, yes? what?)...baka da (oh, you're an idiot).With \"boku ga baka da\" however, the speaker would say: \"It's ME, who's the idiot\".This explanation is taken from: \"Making sense of Japanese\", p. 34. Some more examples follow!",
       "answer": "14",
       "choices": [
-        "14",
-        "oishii: tasty",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "ohayou: good morning"
+        "tasty",
+        "[I] wasn't able to notice [this].",
+        "good morning"
       ],
       "meaning": "14",
       "tags": [
@@ -179,21 +177,21 @@
       "sourceNoteId": "1600421050000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Double vowels (ii in this case) are pronounced long. Note that the \"ii\" in this case results from two different Japanese characters: shi/し + i/い. If you're interested to see all of the kana characters, have a look at the table on Tae Kim's website",
-      "answer": "oishii: tasty",
+      "prompt": "おいしい",
+      "answer": "tasty",
       "choices": [
-        "oishii: tasty",
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
-        "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry)."
+        "[Something] wasn't a dream.",
+        "As for today - thank you.",
+        "hello; good day; good afternoon"
       ],
-      "reading": "おいしい",
-      "meaning": "oishii: tasty",
+      "reading": "oishii",
+      "meaning": "tasty",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Double vowels (ii in this case) are pronounced long. Note that the \"ii\" in this case results from two different Japanese characters: shi/し + i/い. If you're interested to see all of the kana characters, have a look at the table on Tae Kim's website"
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-10",
@@ -203,10 +201,9 @@
       "prompt": "The previous collection of verbs contained all possible verb endings: su/す, ku/く, gu/ぐ, mu/む, nu/ぬ, bu/ぶ, ru/る, tsu/つ and u/う. These endings in the end define how the verb is conjugated. Don't worry about this for now, here's the list of words again:hanasukakuisogutanomushinuasobutaberumatsukau / mukau / tatakau",
       "answer": "14",
       "choices": [
-        "14",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "arigatou: thank you"
+        "hello; good day; good afternoon",
+        "[I] wasn't able to notice [this].",
+        "thank you"
       ],
       "meaning": "14",
       "tags": [
@@ -223,10 +220,9 @@
       "prompt": "Another remark on verb conjugationsIn the following, I will cover the conjugations and forms of verbs in a very sloppy way. I will explain only what's necessary to understand a given sentence, but not go into detail about the precise grammar. The link to Tae Kim's respective chapters will be on the cards if you want to know more details. But please don't try to practice conjugation - or at least wait until the end of this course. Maybe the only thing to keep in mind for now is: Japanese verbs always end on \"u\" in the latin transcription, which results from the following Japanese characters: su/す, ku/く, gu/ぐ, mu/む, nu/ぬ, bu/ぶ, ru/る, tsu/つ and u/うPress \"@\" or \"!\" to suspend this remark.",
       "answer": "14",
       "choices": [
-        "14",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "ohayou: good morning"
+        "[I] wasn't able to notice [this].",
+        "hello; good day; good afternoon",
+        "good morning"
       ],
       "meaning": "14",
       "tags": [
@@ -243,10 +239,9 @@
       "prompt": "Past tense of verbsOn the next cards, you'll see some examples for the past tense of verbs. Here's the sloppy, minimalistic definition: In the past tense, verbs somehow end on some form of \"ta/た\". I will show you a few examples first and then a list with all possibilities.Press \"@\" or \"!\" to suspend this remark.",
       "answer": "14",
       "choices": [
-        "14",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "ohayou: good morning",
-        "oishii: tasty"
+        "hello; good day; good afternoon",
+        "good morning",
+        "tasty"
       ],
       "meaning": "14",
       "tags": [
@@ -263,10 +258,9 @@
       "prompt": "\"no/の\" as generic nounFrom the last cards you learned that the target noun of \"no\" can be omitted. In this case, \"no\" takes over the role of the noun itself (Tae Kim, p. 65). This means: We can treat verbs and adjectives as nouns by adding \"no/の\". The no-particle then becomes a generic noun, which can be treated just like a regular one. The use of this is a bit technical: It enables to apply noun-related particles (wo, ha, mo) to verbs and adjectives, some examples follow.",
       "answer": "14",
       "choices": [
-        "14",
-        "oishii: tasty",
-        "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\".",
-        "Cause - what is it?gen'in: cause; origin; source"
+        "tasty",
+        "negative past of kidzuku (to notice)",
+        "Cause - what is it?"
       ],
       "meaning": "14",
       "tags": [
@@ -283,10 +277,9 @@
       "prompt": "Don't be rude, part 2The Japanese we learned so far is very informal and only used among friends or people who know each other well. Tae Kim calls it \"well and good if you're 5 years old\". Fortunately, everything we learned so far can be easily conjugated to 丁寧語/teineigo, a politer form of the language, which will be introduced now. Use it whenever you talk to strangers or people of higher social rank.Press \"@\" or \"!\" to suspend this remark.",
       "answer": "14",
       "choices": [
-        "14",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
-        "konbanha: good evening"
+        "[I] wasn't able to notice [this].",
+        "As for today - thank you.",
+        "good evening"
       ],
       "meaning": "14",
       "tags": [
@@ -303,10 +296,9 @@
       "prompt": "Present tense teineigo wrapupBy now you saw a present tense teineigo example for each possible verb ending. Here's a summary:-su/す: hanasu -> hanashimasu-ku/く: kaku -> kakimasu-gu/ぐ: isogu -> isogimasu-mu/む: tanomu -> tanomimasu-nu/ぬ: shinu -> shinimasu-bu/ぶ: asobu -> asobimasu-ru/る: taberu -> tabemasu-tsu/つ matsu -> machimasu-u/う kau -> kaimasuAnd two irregulars:suru -> shimasukuru -> kimasu",
       "answer": "14",
       "choices": [
-        "14",
-        "ohayou: good morning",
-        "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\".",
-        "arigatou: thank you"
+        "good morning",
+        "negative past of kidzuku (to notice)",
+        "thank you"
       ],
       "meaning": "14",
       "tags": [
@@ -323,10 +315,9 @@
       "prompt": "A tiny differenceMaybe you already noticed a tiny difference or irregularity in the verb conjugation. We had two words ending on \"ru/る\", but the -masu form was constructed differently:ru verb: taberu -> tabemasu (the entire \"ru/る\"-character was replaced by -masu, there's no \"r\"-part left)-u verb: wakaru -> wakarimasu (there's an \"r\"-part left, i.e. instead of replacing \"ru/る\" with masu, the \"u\" turned into an \"imasu\"The reason for this is simple: Japanese has two different verb types, ru verbs and -u verbs. Every word not ending on \"ru\" automatically is an -u verb, e.g. hanasu, kaku, etc. Unfortunately, some verbs ending on \"ru\" are also \"u\"-verbs, just as in this example. It's just something to keep in mind. I worried about these differences a lot, but you'll easily learn this from context. Japanese people also won't kill you, if you mix this up and say \"taberimasu\" instead of \"tabemasu\".Press \"@\" or \"!\" to suspend this remark.",
       "answer": "14",
       "choices": [
-        "14",
-        "arigatou: thank you",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry).",
-        "Cause - what is it?gen'in: cause; origin; source"
+        "thank you",
+        "hello; good day; good afternoon",
+        "Cause - what is it?"
       ],
       "meaning": "14",
       "tags": [
@@ -340,63 +331,63 @@
       "sourceNoteId": "1600424590000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Notice the weird spelling of the first word: ki-dzu-ku. What the heck is \"dsu\" supposed to mean? It represents the Japanese \"voiced\" tsu-character. This is simply a \"tsu/つ\" with an additional small mark: づ. This changes the pronunciation a bit, press \"r\" to play the audio again. In Hepbun romanization, this is usually just spelled as it is pronounced: \"zu\". However, the pronunciation of the voiced \"su/す\"-character \"ず\" is the same, therefore it is also spelled \"zu\" in the Hepburn system. Jlab therefore spells these cases different in order to get a 1:1 mapping to Japanese without any ambiguities. Fortunately, there are only two of them. Have a look at the romanization section of the jlab manual for more details.",
-      "answer": "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
+      "prompt": "きづく こと が できなかった ん だ",
+      "answer": "[I] wasn't able to notice [this].",
       "choices": [
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "arigatou: thank you",
-        "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry)."
+        "thank you",
+        "As for today - thank you.",
+        "hello; good day; good afternoon"
       ],
-      "reading": "きづく こと が できなかった ん だ",
-      "meaning": "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
+      "reading": "",
+      "meaning": "[I] wasn't able to notice [this].",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Notice the weird spelling of the first word: ki-dzu-ku. What the heck is \"dsu\" supposed to mean? It represents the Japanese \"voiced\" tsu-character. This is simply a \"tsu/つ\" with an additional small mark: づ. This changes the pronunciation a bit, press \"r\" to play the audio again. In Hepbun romanization, this is usually just spelled as it is pronounced: \"zu\". However, the pronunciation of the voiced \"su/す\"-character \"ず\" is the same, therefore it is also spelled \"zu\" in the Hepburn system. Jlab therefore spells these cases different in order to get a 1:1 mapping to Japanese without any ambiguities. Fortunately, there are only two of them. Have a look at the romanization section of the jlab manual for more details. kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\"."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-18",
       "sourceNoteId": "1600424600000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "Notice the weird spelling of the first word: ki-dzu-ku. What the heck is \"dsu\" supposed to mean? It represents the Japanese \"voiced\" tsu-character. This is simply a \"tsu/つ\" with an additional small mark: づ. This changes the pronunciation a bit, press \"r\" to play the audio again. In Hepbun romanization, this is usually just spelled as it is pronounced: \"zu\". However, the pronunciation of the voiced \"su/す\"-character \"ず\" is the same, therefore it is also spelled \"zu\" in the Hepburn system. Jlab therefore spells these cases different in order to get a 1:1 mapping to Japanese without any ambiguities. Fortunately, there are only two of them. Have a look at the romanization section of the jlab manual for more details.",
-      "answer": "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\".",
+      "prompt": "きづかなかった か",
+      "answer": "negative past of kidzuku (to notice)",
       "choices": [
-        "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\".",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
-        "konnichiha: hello; good day; good afternoonThere are many more greetings in Japanese, see next cards or the reference for a summary (I didn't find a shorter vid - sorry)."
+        "[I] wasn't able to notice [this].",
+        "[Something] wasn't a dream.",
+        "hello; good day; good afternoon"
       ],
-      "reading": "きづかなかった か",
-      "meaning": "kidzukanakatta: negative past of kidzuku (to notice)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\".",
+      "reading": "kidzukanakatta",
+      "meaning": "negative past of kidzuku (to notice)",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "Notice the weird spelling of the first word: ki-dzu-ku. What the heck is \"dsu\" supposed to mean? It represents the Japanese \"voiced\" tsu-character. This is simply a \"tsu/つ\" with an additional small mark: づ. This changes the pronunciation a bit, press \"r\" to play the audio again. In Hepbun romanization, this is usually just spelled as it is pronounced: \"zu\". However, the pronunciation of the voiced \"su/す\"-character \"ず\" is the same, therefore it is also spelled \"zu\" in the Hepburn system. Jlab therefore spells these cases different in order to get a 1:1 mapping to Japanese without any ambiguities. Fortunately, there are only two of them. Have a look at the romanization section of the jlab manual for more details. I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (kidzukanai) and replace the \"i\" with \"katta\"."
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-19",
       "sourceNoteId": "1600427050000",
       "lessonId": "japanese-course-based-on-tae-kims-grammar-guide-anime-1",
       "type": "phrase",
-      "prompt": "In case you're using the latin transcription on the cards, you might wonder what the weird spelling means here (gen'in). [n'] simply stands for the the Japanese \"syllabic n\" character (ん) in case of ambiguous spelling. Basically, Japanese has two spellings which end up in the latin character combination of \"n\" + \"i\". These are \"に\" and \"んい\". The first one is most common, but some words are also spelled the second way. Read more about the syllabic n on wikipedia.One common criticism of romanizing Japanese is that it does not accurately represent the spelling. Therefore, I adapted the jlab romanization to all corner cases. It can be mapped to real Japanese 1:1 without ambiguities, the weird [n'] is a consequence of this.",
-      "answer": "Cause - what is it?gen'in: cause; origin; source",
+      "prompt": "げんいん なに です",
+      "answer": "Cause - what is it?",
       "choices": [
-        "Cause - what is it?gen'in: cause; origin; source",
-        "As for today - thank you (or less literal: Thank you for today).kyou: today\"ha\" marks \"kyou\" as the topic you're talking about. Imagine someone did something big for you today. Just saying \"thank you\" may not make clear what you're thanking for, so adding \"kyou ha\" makes sense here. It points out that you're thanking for what happened throughout the day.\"ha\" (always spelled in Hiragana: は) is the \"topic particle\" and is always pronounced \"wa\". It's attached to a noun and identifies it as the topic of what you're talking about or as topic of the sentence. It's very important to keep in mind the entire \"xxx ha...\" is usually omitted, if the topic is clear from context.Remark: In most romanization systems, this particle is spelled \"wa\" - the way it is pronounced. However, I decided to stick to the way it is written, i.e. for all jlab materials, it is \"ha/は\".",
-        "[Something (e.g. something on your mind or something nice that has happened)] wasn't a dream.\"janakatta\" is the negative, past form of \"da\".",
-        "arigatou: thank you"
+        "As for today - thank you.",
+        "[Something] wasn't a dream.",
+        "thank you"
       ],
-      "reading": "げんいん なに です",
-      "meaning": "Cause - what is it?gen'in: cause; origin; source",
+      "reading": "",
+      "meaning": "Cause - what is it?",
       "tags": [
         "JLAB-B",
         "imported",
         "grammar"
-      ]
+      ],
+      "note": "In case you're using the latin transcription on the cards, you might wonder what the weird spelling means here (gen'in). [n'] simply stands for the the Japanese \"syllabic n\" character (ん) in case of ambiguous spelling. Basically, Japanese has two spellings which end up in the latin character combination of \"n\" + \"i\". These are \"に\" and \"んい\". The first one is most common, but some words are also spelled the second way. Read more about the syllabic n on wikipedia.One common criticism of romanizing Japanese is that it does not accurately represent the spelling. Therefore, I adapted the jlab romanization to all corner cases. It can be mapped to real Japanese 1:1 without ambiguities, the weird [n'] is a consequence of this. gen'in: cause; origin; source"
     },
     {
       "id": "japanese-course-based-on-tae-kims-grammar-guide-anime-20",
@@ -406,10 +397,9 @@
       "prompt": "Potential formNext, we'll have a look at how to express the ability to do or to perform a certain action. In Japanese, this is done by conjugating the verb. Quick recap: Japanese has two different verb types: -ru verbs:They always end on \"ru/る\", e.g. taberu.\"u\"-verbs:They end on any other u-vowel character: \"u/う (kau), ku/く (kaku), su/す (hanasu), tsu/つ (matsu), nu/ぬ (shinu), bu/ぶ (yobu), mu/む (sumu)\". Sometimes, they also end on \"ru/る\", e.g. wakaru.Keeping this in mind might help a bit on the following cards. Key message for now is: Don't worry about the -u verbs ending on ru!",
       "answer": "14",
       "choices": [
-        "14",
-        "[I] wasn't able to notice [this].kidsuku: to noticedekinakatta: past negative of dekiru (to be able to do)I added only few examples for the plain negative past tense so far, I'll add a few more in the following. Quick reminder: Build the negative form (dekinai) and replace the \"i\" with \"katta\".",
-        "oishii: tasty",
-        "ohayou: good morning"
+        "[I] wasn't able to notice [this].",
+        "tasty",
+        "good morning"
       ],
       "meaning": "14",
       "tags": [

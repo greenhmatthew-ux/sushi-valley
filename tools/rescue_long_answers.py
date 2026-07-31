@@ -35,8 +35,11 @@ SOURCES = Path(__file__).resolve().parent.parent / "data/learning/sources"
 ## Mirrors LearningProgression.MAX_CHOICE_LENGTH. Keep the two in step.
 MAX_ANSWER_LENGTH = 60
 
-## Field-mapping defect, not a length one — a trim would only hide it.
-SKIP_DECKS = {"japanese-course-based-on-tae-kims-grammar-guide-anime"}
+## Tae Kim's deck used to be skipped here: its fields were mapped to the wrong
+## roles, so trimming its answers would have hidden that rather than fixed it.
+## `tools/remap_tae_kim_deck.py` has since rebuilt it, and it now trims like any
+## other deck. If that deck is ever re-imported raw, run the remap first.
+SKIP_DECKS = set()
 
 ## A trailing parenthetical qualifier or aside: "..., glitter (no direct object)".
 TRAILING_PAREN = re.compile(r"^(?P<body>.*?)\s*\((?P<note>[^()]*)\)$")

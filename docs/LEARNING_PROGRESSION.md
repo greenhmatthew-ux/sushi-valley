@@ -55,8 +55,7 @@ Nothing is authored — every character written back was already in the deck, in
 wrong field. `tests/test_card_content.gd` asserts the result, since data fixes are
 exactly what a silent re-import undoes.
 
-`tools/rescue_long_answers.py` fixes the second import defect, across every deck
-except Tae Kim's. An answer over `LearningProgression.MAX_CHOICE_LENGTH` (60) is
+`tools/rescue_long_answers.py` fixes the second import defect. An answer over `LearningProgression.MAX_CHOICE_LENGTH` (60) is
 skipped in prompts, distractors, due counts, and mastery, so 21 cards were
 unreachable content rather than a visible failure — 13 phrase cards with an
 explanation glued onto the gloss, and 8 vocab cards pushed just over the limit by
@@ -83,12 +82,25 @@ for `すみません`. Voicing the phrasebook needs a new licensed source, not a
 matcher — `import_kanji_alive_audio.py` refuses fuzzy matches on purpose, because
 a confidently wrong recording teaches wrong pronunciation.
 
-Known remaining import defects:
+`tools/remap_tae_kim_deck.py` fixes the fourth and worst: that import mapped every
+field to the wrong role. The Japanese landed in `reading`, an English study note
+landed in `prompt`, and `answer` held the romaji glued to more study notes. Both
+grammar lessons showed the player an English paragraph and asked them to pick a
+paragraph — the Japanese was never on screen. The tool rebuilds each card as
+prompt = Japanese, reading = romaji, answer = short gloss, note = study note,
+moving text between fields and never rewriting it.
 
-- **Tae Kim's Grammar Guide**: the import mapped fields to the wrong roles —
-  `prompt` holds an English study note, `reading` holds the Japanese, and `answer`
-  holds `romaji: meaning`. The two grammar lessons ask the player to read a
-  paragraph and pick a gloss. Needs a field remap, not a split.
+Ten of that deck's twenty cards are not flashcards at all: they are the author's
+prose remarks, with no Japanese and `answer` set to the page number `14`. Nothing
+can rebuild them, so they were dropped from the two lessons in `lessons.json`
+(`tae-kim-1` 10 → 7 cards, `tae-kim-2` 10 → 3) and left in the pack with their
+attribution intact. Run the remap before `rescue_long_answers.py` if this deck is
+ever re-imported raw, or the trim will hide the mapping fault instead of fixing it.
+
+Both `test_learning.gd` and `test_lesson_gate.gd` used to pin their "junk cards
+cannot block progress" checks to `tae-kim-1` as a real mixed lesson. Repairing the
+deck invalidated that premise, so those checks now build their own mixed fixture:
+the rule has to outlive any particular broken deck.
 
 ## Reviewed Source Queue
 - **Asking for Directions - Japanese language islands**, AnkiWeb deck `374921815`:

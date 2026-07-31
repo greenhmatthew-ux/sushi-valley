@@ -31,6 +31,7 @@ func _initialize() -> void:
 	_no_travel_phrase_card_is_unreachable()
 	_no_travel_phrase_lesson_is_hollowed_out()
 	_no_card_shows_undecoded_markup()
+	_grammar_lessons_ask_in_japanese()
 
 	db.free()
 	_finish()
@@ -155,6 +156,39 @@ func _no_card_shows_undecoded_markup() -> void:
 				with_tag.append(cid)
 	check_eq("no card text carries an undecoded HTML entity", with_entity.size(), 0)
 	check_eq("no card text carries a leftover HTML tag", with_tag.size(), 0)
+
+
+## Tae Kim's import mapped every field to the wrong role: the Japanese sat in
+## `reading`, an English study note sat in `prompt`, and `answer` held the romaji
+## glued to more study notes. The two grammar lessons showed the player an English
+## paragraph and asked them to pick a paragraph — the Japanese never appeared.
+func _grammar_lessons_ask_in_japanese() -> void:
+	var asked := 0
+	var english_prompts: Array[String] = []
+	var unusable: Array[String] = []
+	for lid in db.lesson_order:
+		if String(db.lessons[lid].get("category", "")) != "grammar":
+			continue
+		for cid in db.lessons[lid].get("cardIds", []):
+			var card: Dictionary = db.card(cid)
+			asked += 1
+			if not _has_japanese(String(card.get("prompt", ""))):
+				english_prompts.append(cid)
+			if not LearningProgression.recall_eligible(card):
+				unusable.append(cid)
+	check_true("the grammar lessons still have cards to ask", asked >= 6)
+	check_true("every grammar card asks in Japanese (%s)" % str(english_prompts),
+		english_prompts.is_empty())
+	check_true("every grammar card has an answer that fits a button (%s)" % str(unusable),
+		unusable.is_empty())
+
+
+func _has_japanese(text: String) -> bool:
+	for ch in text:
+		var cp := ch.unicode_at(0)
+		if (cp >= 0x3040 and cp <= 0x30FF) or (cp >= 0x4E00 and cp <= 0x9FFF):
+			return true
+	return false
 
 
 func _travel_phrase_card_ids() -> Array:
