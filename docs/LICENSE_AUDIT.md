@@ -85,8 +85,10 @@ This music audit does not cover or make a provenance claim for
   pipeline. It is.
 - Never ship ripped or fan assets, excluded commercial IP, CC BY-NC/BY-ND, personal-use-only,
   or license-ambiguous content without written clearance.
-- Imported Anki deck media remains excluded. A deck file containing audio does not grant
-  redistribution rights; approved pronunciation is sourced and attributed independently.
+- ~~Imported Anki deck media remains excluded.~~ **Superseded 2026-07-30.** Deck audio is
+  now in use by project decision (see the table above and `CLAUDE.md` → Licensing). A deck
+  file containing audio still grants no redistribution rights, and that is recorded rather
+  than resolved. Kanji alive remains separately sourced, validated, and attributed.
 
 ## Before a commercial release
 

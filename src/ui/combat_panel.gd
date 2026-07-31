@@ -46,6 +46,7 @@ var _selected_ability: Dictionary = {}
 var _choices_box: GridContainer
 var _continue_btn: Button
 var _end_turn_btn: Button
+var _listen_btn: Button
 var _flee_btn: Button
 
 
@@ -117,6 +118,7 @@ func _next_round() -> void:
 	_answered = false
 	_continue_btn.hide()
 	_end_turn_btn.show()
+	_listen_btn.hide()   # the answer is hidden again, so its recording must be too
 	_feedback.text = ""
 	_challenge = {}
 	_build_actions()
@@ -212,7 +214,9 @@ func _on_rune(rune: String, btn: Button) -> void:
 	# this cannot play before the answer without giving it away — but the reveal is
 	# where pronunciation actually sticks, win or lose, and it is the same beat the
 	# notebook's recall panel uses.
-	Audio.play_pronunciation(String(_current_card.get("id", "")))
+	var card_id := String(_current_card.get("id", ""))
+	Audio.play_pronunciation(card_id)
+	_listen_btn.visible = Audio.has_pronunciation(card_id)
 
 	_render_bars()
 	_feedback.add_theme_color_override("font_color", COL_GOOD if result.correct else COL_BAD)
@@ -280,6 +284,11 @@ func _on_flee() -> void:
 	if not _active or _encounter == null or _encounter.is_over():
 		return
 	_finish(false, "You fled the fight.")
+
+
+func _on_listen() -> void:
+	Audio.stop_pronunciation()
+	Audio.play_pronunciation(String(_current_card.get("id", "")))
 
 
 func _resolve_end_turn() -> void:
@@ -613,6 +622,19 @@ func _build() -> void:
 	_end_turn_btn.focus_mode = Control.FOCUS_ALL
 	_end_turn_btn.pressed.connect(_on_end_turn)
 	turn_controls.add_child(_end_turn_btn)
+	# Hearing the word once, mid-fight, is not enough to learn it. Sits with the turn
+	# controls so it is reachable by keyboard and controller like every other action,
+	# and only appears once the answer is on screen — before that it would be a hint
+	# button that reads out the answer.
+	_listen_btn = Button.new()
+	_listen_btn.name = "Listen"
+	_listen_btn.text = "Listen"
+	_listen_btn.custom_minimum_size = Vector2(84, 30)
+	_listen_btn.focus_mode = Control.FOCUS_ALL
+	_listen_btn.tooltip_text = "Play the word's recording again"
+	_listen_btn.pressed.connect(_on_listen)
+	_listen_btn.hide()
+	turn_controls.add_child(_listen_btn)
 	_continue_btn = Button.new()
 	_continue_btn.text = "Next"
 	_continue_btn.custom_minimum_size = Vector2(0, 30)

@@ -252,6 +252,20 @@ func _initialize() -> void:
 			bool(audio_node.call("has_pronunciation", card_id)))
 		check_true("combat plays the card's recording on the reveal",
 			(audio_node.get("_player") as AudioStreamPlayer).stream != null)
+		# Once heard is rarely enough, and the replay must not exist before the
+		# answer is shown or it would simply read the answer out.
+		var listen: Button = panel.find_child("Listen", true, false)
+		check_true("a voiced card offers a replay after the reveal",
+			listen != null and listen.visible)
+		check_true("replay is reachable by keyboard and controller",
+			listen != null and listen.focus_mode == Control.FOCUS_ALL)
+		listen.pressed.emit()
+		await process_frame
+		check_true("replay plays the recording again",
+			(audio_node.get("_player") as AudioStreamPlayer).stream != null)
+		panel.call("_next_round")
+		await process_frame
+		check_true("replay disappears once the next answer is hidden", not listen.visible)
 	inv.reset()
 	panel.queue_free()
 	await process_frame
