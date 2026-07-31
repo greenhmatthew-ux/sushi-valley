@@ -55,12 +55,19 @@ Nothing is authored — every character written back was already in the deck, in
 wrong field. `tests/test_card_content.gd` asserts the result, since data fixes are
 exactly what a silent re-import undoes.
 
-Known remaining import defects, both out of scope for that script:
+`tools/rescue_long_answers.py` fixes the second import defect, across every deck
+except Tae Kim's. An answer over `LearningProgression.MAX_CHOICE_LENGTH` (60) is
+skipped in prompts, distractors, due counts, and mastery, so 21 cards were
+unreachable content rather than a visible failure — 13 phrase cards with an
+explanation glued onto the gloss, and 8 vocab cards pushed just over the limit by
+a trailing qualifier (`to shine, sparkle, glow, emit light, glitter (no direct
+object)`). The tool trims trailing clauses onto `note` until the answer fits, and
+only ever runs on answers that are already over the limit, so the ~1,300 healthy
+cards cannot be touched. It rescued 20 and reports the one it will not guess at
+(`...-type-69`, a 63-character synonym list with no clause to trim).
 
-- **Japanese Common Words and Phrases**: 13 cards glue an explanation onto the
-  answer (`to think, believe— believe in the sense of...`). They exceed the recall
-  length limit, so they are filtered out of prompts and distractors and are
-  currently unreachable content.
+Known remaining import defects:
+
 - **Tae Kim's Grammar Guide**: the import mapped fields to the wrong roles —
   `prompt` holds an English study note, `reading` holds the Japanese, and `answer`
   holds `romaji: meaning`. The two grammar lessons ask the player to read a

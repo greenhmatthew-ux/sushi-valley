@@ -17,7 +17,7 @@
       "answer": "you (pronoun)",
       "choices": [
         "you (pronoun)",
-        "I get hungry (present form, casual)Literal: My stomach empties",
+        "I get hungry (present form, casual)",
         "kind, gentle",
         "wall, partition"
       ],
@@ -178,7 +178,7 @@
       "choices": [
         "cold (adj for weather or feeling cold)",
         "to choose (verb)",
-        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "to stop (direct object) (verb)",
         "true (adj), really"
       ],
       "reading": "samui",
@@ -199,7 +199,7 @@
         "to search (for) (verb)",
         "far, distant (adj)",
         "cloud (noun)",
-        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)"
+        "1. To attach (direct or no direct object)2. To turn on"
       ],
       "reading": "sagasu",
       "meaning": "to search (for) (verb)",
@@ -234,9 +234,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "止める",
-      "answer": "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+      "answer": "to stop (direct object) (verb)",
       "choices": [
-        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "to stop (direct object) (verb)",
         "to study",
         "to lend, loan",
         "to pay"
@@ -246,7 +246,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-13",
@@ -254,9 +255,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "助ける",
-      "answer": "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+      "answer": "To rescue, to help",
       "choices": [
-        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "To rescue, to help",
         "to begin (direct object)",
         "food, food item (noun)",
         "blue (adj)"
@@ -266,7 +267,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "usually used in a crisis, not for chores like tetsudau"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-14",
@@ -314,9 +316,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "お母さん",
-      "answer": "mother (polite noun)— use this one to refer to other people's moms",
+      "answer": "mother (polite noun)",
       "choices": [
-        "mother (polite noun)— use this one to refer to other people's moms",
+        "mother (polite noun)",
         "to begin (direct object)",
         "to dance",
         "to return home"
@@ -326,7 +328,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "use this one to refer to other people's moms"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-17",
@@ -338,7 +341,7 @@
       "choices": [
         "everyone",
         "easy",
-        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "To rescue, to help",
         "cloud (noun)"
       ],
       "reading": "minna",
@@ -679,7 +682,7 @@
         "train (noun)",
         "when?",
         "to pay",
-        "I get hungry (present form, casual)Literal: My stomach empties"
+        "I get hungry (present form, casual)"
       ],
       "reading": "densha",
       "meaning": "train (noun)",
@@ -698,7 +701,7 @@
       "choices": [
         "always (adverb)",
         "to put on glasses",
-        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car",
+        "to stop (direct object) (verb)",
         "to teach, tell"
       ],
       "reading": "itsumo",
@@ -757,7 +760,7 @@
       "answer": "shadow (noun)",
       "choices": [
         "shadow (noun)",
-        "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+        "to think, believe",
         "to search (for) (verb)",
         "you (rude) (pronoun)"
       ],
@@ -837,7 +840,7 @@
       "answer": "where? (interrogative)",
       "choices": [
         "where? (interrogative)",
-        "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+        "to jump up, to fly up",
         "TV (noun)",
         "such a thing as (particle)"
       ],
@@ -879,7 +882,7 @@
         "computer (noun)",
         "to take a walk (for leisure or exercise)",
         "to push, press (verb)",
-        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car"
+        "to stop (direct object) (verb)"
       ],
       "reading": "pasokon",
       "meaning": "computer (noun)",
@@ -934,9 +937,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "幾つ(2)",
-      "answer": "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+      "answer": "1. how many? (tsu counter)2. how old? (formal)",
       "choices": [
-        "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+        "1. how many? (tsu counter)2. how old? (formal)",
         "to kill (verb)",
         "to face, head for (verb)",
         "to sleep"
@@ -946,7 +949,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "toshi wa ____ desu ka"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-48",
@@ -1179,7 +1183,7 @@
         "never (adverb)",
         "to take a bath",
         "such a thing as (particle)",
-        "mother (polite noun)— use this one to refer to other people's moms"
+        "mother (polite noun)"
       ],
       "reading": "kesshite",
       "meaning": "never (adverb)",
@@ -1374,9 +1378,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "それ",
-      "answer": "that (independent) (close to listener) (demonstrative pronoun)",
+      "answer": "that (independent) (close to listener)",
       "choices": [
-        "that (independent) (close to listener) (demonstrative pronoun)",
+        "that (independent) (close to listener)",
         "when?",
         "to drive",
         "thing, object (concrete) (noun)"
@@ -1386,7 +1390,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "demonstrative pronoun"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-70",
@@ -1420,7 +1425,7 @@
         "hot to the touch (adj)",
         "to hurry",
         "blood (noun)",
-        "to stop (direct object) (verb)🔴 requires を (wo)Ex. 車を止めるkuruma wo ______I stop the car"
+        "to stop (direct object) (verb)"
       ],
       "reading": "atsui",
       "meaning": "hot to the touch (adj)",
@@ -1478,7 +1483,7 @@
       "answer": "such a thing as (particle)",
       "choices": [
         "such a thing as (particle)",
-        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to shut, close",
         "to take, get (verb)",
         "heart (noun)"
       ],
@@ -1618,7 +1623,7 @@
       "answer": "to hit, tap (verb)",
       "choices": [
         "to hit, tap (verb)",
-        "mother (polite noun)— use this one to refer to other people's moms",
+        "mother (polite noun)",
         "to read",
         "to do (physical action)"
       ],
@@ -1695,9 +1700,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "1. 付ける2. 点ける",
-      "answer": "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+      "answer": "1. To attach (direct or no direct object)2. To turn on",
       "choices": [
-        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "1. To attach (direct or no direct object)2. To turn on",
         "to watch / to see",
         "black (adj)",
         "she (neutral) (pronoun), one’s girlfriend"
@@ -1707,7 +1712,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "direct object = electrical or flame-based device"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-86",
@@ -1719,7 +1725,7 @@
       "choices": [
         "to walk, go on foot (verb)",
         "heart (noun)",
-        "that (independent) (close to listener) (demonstrative pronoun)",
+        "that (independent) (close to listener)",
         "to continue, follow (direct object) (verb)"
       ],
       "reading": "aruku",
@@ -1780,7 +1786,7 @@
         "long (adj)",
         "to lose weight / to become thin/skinny",
         "room",
-        "to think, believe— believe in the sense of personal opinion rather than a strong belief"
+        "to think, believe"
       ],
       "reading": "nagai",
       "meaning": "long (adj)",
@@ -1918,7 +1924,7 @@
       "answer": "to smell",
       "choices": [
         "to smell",
-        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "1. To attach (direct or no direct object)2. To turn on",
         "to smoke a cigarette",
         "slowly, leisurely (adverb)"
       ],
@@ -1940,7 +1946,7 @@
         "to touch, feel",
         "to count (numbers, things, etc)",
         "to borrow, rent",
-        "to think, believe— believe in the sense of personal opinion rather than a strong belief"
+        "to think, believe"
       ],
       "reading": "Sawaru",
       "meaning": "to touch, feel",
@@ -2058,7 +2064,7 @@
       "answer": "to go out, to leave",
       "choices": [
         "to go out, to leave",
-        "mother (polite noun)— use this one to refer to other people's moms",
+        "mother (polite noun)",
         "such a thing as (particle)",
         "to open (direct object を)Ex. Mouths, eyes, doors, etc"
       ],
@@ -2119,7 +2125,7 @@
       "choices": [
         "to do (physical action)",
         "to do, wear accessories like earrings",
-        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to shut, close",
         "to work"
       ],
       "reading": "Yaru",
@@ -2235,9 +2241,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "飛び上がる",
-      "answer": "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+      "answer": "to jump up, to fly up",
       "choices": [
-        "to jump up, to fly up (more energetic and sudden than tobu to jump/fly)",
+        "to jump up, to fly up",
         "always (adverb)",
         "to face, head for (verb)",
         "to live, to reside, to inhabit"
@@ -2247,7 +2253,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "more energetic and sudden than tobu to jump/fly"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-113",
@@ -2300,7 +2307,7 @@
         "to exercise",
         "to skip, jump",
         "you bastard (pronoun, extremely disrespectful)",
-        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)"
+        "To rescue, to help"
       ],
       "reading": "Undousuru",
       "meaning": "to exercise",
@@ -2375,9 +2382,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "お腹がすく",
-      "answer": "I get hungry (present form, casual)Literal: My stomach empties",
+      "answer": "I get hungry (present form, casual)",
       "choices": [
-        "I get hungry (present form, casual)Literal: My stomach empties",
+        "I get hungry (present form, casual)",
         "to exist/ to be (inanimate objects)",
         "far, distant (adj)",
         "cloud (noun)"
@@ -2387,7 +2394,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "My stomach empties"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-120",
@@ -2395,9 +2403,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "喉が乾く",
-      "answer": "I get thirsty (present tense, casual)Literal: my throat gets dry",
+      "answer": "I get thirsty (present tense, casual)",
       "choices": [
-        "I get thirsty (present tense, casual)Literal: my throat gets dry",
+        "I get thirsty (present tense, casual)",
         "to return (an item), repay",
         "human (noun)",
         "white (adj)"
@@ -2407,7 +2415,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "my throat gets dry"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-121",
@@ -2438,7 +2447,7 @@
       "answer": "to clean (something)",
       "choices": [
         "to clean (something)",
-        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to shut, close",
         "far, distant (adj)",
         "to descend / to go down / to get off bus or train, land"
       ],
@@ -2615,9 +2624,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "思う",
-      "answer": "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+      "answer": "to think, believe",
       "choices": [
-        "to think, believe— believe in the sense of personal opinion rather than a strong belief",
+        "to think, believe",
         "to continue, follow (direct object) (verb)",
         "to go",
         "to receive, get (direct object)"
@@ -2627,7 +2636,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "believe in the sense of personal opinion rather than a strong belief"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-132",
@@ -2719,7 +2729,7 @@
       "choices": [
         "to read",
         "to do laundry",
-        "To rescue, to help (usually used in a crisis, not for chores like tetsudau)",
+        "To rescue, to help",
         "To hear, be heard (verb)"
       ],
       "reading": "Yomu",
@@ -2760,7 +2770,7 @@
         "to know, to get to know someone",
         "person (noun)",
         "cold (adj for weather or feeling cold)",
-        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)"
+        "to help"
       ],
       "reading": "Shiru",
       "meaning": "to know, to get to know someone",
@@ -2780,7 +2790,7 @@
         "to forget, leave behind",
         "when?",
         "to study",
-        "mother (polite noun)— use this one to refer to other people's moms"
+        "mother (polite noun)"
       ],
       "reading": "Wasureru",
       "meaning": "to forget, leave behind",
@@ -2819,7 +2829,7 @@
       "choices": [
         "to study",
         "to wait",
-        "that (independent) (close to listener) (demonstrative pronoun)",
+        "that (independent) (close to listener)",
         "white (adj)"
       ],
       "reading": "Benkyou suru",
@@ -2838,7 +2848,7 @@
       "answer": "to rest, take a day off",
       "choices": [
         "to rest, take a day off",
-        "mother (polite noun)— use this one to refer to other people's moms",
+        "mother (polite noun)",
         "to be drunk, get drunk, feel dizzy",
         "always (adverb)"
       ],
@@ -2958,7 +2968,7 @@
       "answer": "to buy",
       "choices": [
         "to buy",
-        "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+        "to take (amount of time/ money)",
         "he (pronoun), boyfriend",
         "to push, press (verb)"
       ],
@@ -3135,9 +3145,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "閉める",
-      "answer": "to shut, close (requires a direct object ex. doors, windows, etc.)",
+      "answer": "to shut, close",
       "choices": [
-        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to shut, close",
         "head (noun)",
         "never (adverb)",
         "heart (noun)"
@@ -3147,7 +3157,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "requires a direct object ex. doors, windows, etc."
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-158",
@@ -3178,7 +3189,7 @@
       "answer": "to be drunk, get drunk, feel dizzy",
       "choices": [
         "to be drunk, get drunk, feel dizzy",
-        "1. how many? (tsu counter)2. how old? (formal) ex. toshi wa ____ desu ka",
+        "1. how many? (tsu counter)2. how old? (formal)",
         "to borrow, rent",
         "to write"
       ],
@@ -3215,9 +3226,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "かかる",
-      "answer": "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+      "answer": "to take (amount of time/ money)",
       "choices": [
-        "to take (amount of time/ money)eg. It takes me 2 hours OR It took 4000 yen",
+        "to take (amount of time/ money)",
         "red (adj)",
         "to give, offer (from speaker to someone else)",
         "human (noun)"
@@ -3227,7 +3238,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "It takes me 2 hours OR It took 4000 yen"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-162",
@@ -3278,7 +3290,7 @@
       "answer": "to hurry",
       "choices": [
         "to hurry",
-        "that (independent) (close to listener) (demonstrative pronoun)",
+        "that (independent) (close to listener)",
         "you bastard (pronoun, extremely disrespectful)",
         "hopeless, impossible (na adj)"
       ],
@@ -3320,7 +3332,7 @@
         "to pay",
         "mouth (noun)",
         "rainbow",
-        "I get thirsty (present tense, casual)Literal: my throat gets dry"
+        "I get thirsty (present tense, casual)"
       ],
       "reading": "Harau",
       "meaning": "to pay",
@@ -3395,9 +3407,9 @@
       "lessonId": "japanese-common-words-and-phrases-with-audio-kanji-romaji-1",
       "type": "phrase",
       "prompt": "手伝う",
-      "answer": "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+      "answer": "to help",
       "choices": [
-        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+        "to help",
         "to search (for) (verb)",
         "spring",
         "TV (noun)"
@@ -3407,7 +3419,8 @@
       "tags": [
         "imported",
         "phrases"
-      ]
+      ],
+      "note": "eg. lending a hand. Tasukeru is helping when someone is in crisis/danger"
     },
     {
       "id": "japanese-common-words-and-phrases-with-audio-kanji-romaji-171",
@@ -3458,7 +3471,7 @@
       "answer": "to make a phone call",
       "choices": [
         "to make a phone call",
-        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "1. To attach (direct or no direct object)2. To turn on",
         "person (noun)",
         "woman (noun)"
       ],
@@ -3519,7 +3532,7 @@
       "choices": [
         "to laugh, smile",
         "to drive",
-        "1. To attach (direct or no direct object)2. To turn on (direct object = electrical or flame-based device)",
+        "1. To attach (direct or no direct object)2. To turn on",
         "slowly, leisurely (adverb)"
       ],
       "reading": "Warau",
@@ -3658,7 +3671,7 @@
       "answer": "to descend / to go down / to get off bus or train, land",
       "choices": [
         "to descend / to go down / to get off bus or train, land",
-        "to help (eg. lending a hand. Tasukeru is helping when someone is in crisis/danger)",
+        "to help",
         "car (noun)",
         "food, food item (noun)"
       ],
@@ -3839,7 +3852,7 @@
       "choices": [
         "fall/autumn",
         "you (pronoun)",
-        "to shut, close (requires a direct object ex. doors, windows, etc.)",
+        "to shut, close",
         "to kill (verb)"
       ],
       "reading": "aki",

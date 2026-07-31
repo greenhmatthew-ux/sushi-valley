@@ -56,9 +56,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "絶対",
-      "answer": "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+      "answer": "➕ definitely, totally, absolutely (more common usage)➖ never",
       "choices": [
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never",
         "traditional Japanese inn",
         "sofa, couch",
         "rent (for a place to live)"
@@ -69,7 +69,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "neg sentences only and stronger than zenzen casual"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-4",
@@ -186,7 +187,7 @@
       "choices": [
         "New Year",
         "cafeteria, dining hall, canteen",
-        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "goods, merchandise, items",
         "card"
       ],
       "reading": "しょうがつ",
@@ -542,7 +543,7 @@
       "answer": "contact, communication, notification",
       "choices": [
         "contact, communication, notification",
-        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "goods, merchandise, items",
         "roof",
         "winter break / vacation / holiday"
       ],
@@ -581,9 +582,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "預ける",
-      "answer": "to leave (something in someone’s care), entrust (direct object)",
+      "answer": "to leave (something in someone’s care), entrust",
       "choices": [
-        "to leave (something in someone’s care), entrust (direct object)",
+        "to leave (something in someone’s care), entrust",
         "(assigned) number",
         "coat, jacket (loan word)",
         "summer vacation/break"
@@ -594,7 +595,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "direct object"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-29",
@@ -628,7 +630,7 @@
         "to swim",
         "strange, weird, odd, peculiar",
         "amazing, incredible, great, intense",
-        "to shake (back and forth), sway, tremble (no direct object が)"
+        "to shake (back and forth), sway, tremble"
       ],
       "reading": "およぐ",
       "meaning": "to swim",
@@ -648,7 +650,7 @@
       "choices": [
         "part-time job",
         "to roll up, wrap (direct object を)",
-        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "goods, merchandise, items",
         "sometimes, occasionally, rarely, once in a while"
       ],
       "reading": "あるばいと",
@@ -731,7 +733,7 @@
       "answer": "happiness (casual) (な adj)",
       "choices": [
         "happiness (casual) (な adj)",
-        "to encounter (something bad), get caught in (no direct object)",
+        "to encounter (something bad), get caught in",
         "shoes",
         "to give birth, produce (direct object を)"
       ],
@@ -1232,9 +1234,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "品物",
-      "answer": "goods, merchandise, items (usually in the context of shopping or inventory)",
+      "answer": "goods, merchandise, items",
       "choices": [
-        "goods, merchandise, items (usually in the context of shopping or inventory)",
+        "goods, merchandise, items",
         "repair, fixing",
         "bread",
         "a moment, a short period of time"
@@ -1245,7 +1247,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "usually in the context of shopping or inventory"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-60",
@@ -1340,7 +1343,7 @@
       "answer": "to inquire, ask (direct object)(formal)",
       "choices": [
         "to inquire, ask (direct object)(formal)",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never",
         "to sting, stab, pierce (direct object)",
         "happiness (casual) (な adj)"
       ],
@@ -1384,7 +1387,7 @@
         "returning home, going home (noun form)",
         "material, ingredient",
         "piano",
-        "to shine, sparkle, glow, emit light, glitter (no direct object)"
+        "to shine, sparkle, glow, emit light, glitter"
       ],
       "reading": "かえり",
       "meaning": "returning home, going home (noun form)",
@@ -1487,7 +1490,7 @@
       "answer": "dentist",
       "choices": [
         "dentist",
-        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to shake (back and forth), sway, tremble",
         "way, method, how to do something",
         "New Year"
       ],
@@ -1589,9 +1592,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "遭う",
-      "answer": "to encounter (something bad), get caught in (no direct object)",
+      "answer": "to encounter (something bad), get caught in",
       "choices": [
-        "to encounter (something bad), get caught in (no direct object)",
+        "to encounter (something bad), get caught in",
         "sofa, couch",
         "toilet, bathroom, restroom, lavatory",
         "cat"
@@ -1602,7 +1605,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "no direct object"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-77",
@@ -1803,7 +1807,7 @@
       "choices": [
         "graduate school",
         "relation, relationship, connection",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never",
         "way of speaking, expression"
       ],
       "reading": "だいがくいん",
@@ -1823,7 +1827,7 @@
       "answer": "kitchen",
       "choices": [
         "kitchen",
-        "to leave (something in someone’s care), entrust (direct object)",
+        "to leave (something in someone’s care), entrust",
         "copy, photocopy",
         "every week"
       ],
@@ -1888,7 +1892,7 @@
         "camping, camp",
         "to pick up (direct object を)",
         "earlier, recently, just now, a little while ago",
-        "not easily, just not, not readily, hardly (➖ negative sentence)"
+        "not easily, just not, not readily, hardly"
       ],
       "reading": "きゃんぷ",
       "meaning": "camping, camp",
@@ -1951,7 +1955,7 @@
         "to sting, stab, pierce (direct object)",
         "gram (of weight)",
         "transportation fare/fee (for train, taxi, etc)",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)"
+        "➕ definitely, totally, absolutely (more common usage)➖ never"
       ],
       "reading": "さす",
       "meaning": "to sting, stab, pierce (direct object)",
@@ -2177,9 +2181,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "なかなか",
-      "answer": "not easily, just not, not readily, hardly (➖ negative sentence)",
+      "answer": "not easily, just not, not readily, hardly",
       "choices": [
-        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "not easily, just not, not readily, hardly",
         "to move, relocate (home or office)",
         "sofa, couch",
         "to tear, break, breach, defeat, violate"
@@ -2190,7 +2194,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "➖ negative sentence"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-105",
@@ -2287,7 +2292,7 @@
         "that much, so much, such",
         "air temperature",
         "day off, holiday, break, short vacation",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)"
+        "➕ definitely, totally, absolutely (more common usage)➖ never"
       ],
       "reading": "そんなに",
       "meaning": "that much, so much, such",
@@ -2307,7 +2312,7 @@
       "choices": [
         "to be surprised, be startled (casual) (no direct object)",
         "luggage, baggage, package, load",
-        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to shake (back and forth), sway, tremble",
         "to burn, catch on fire (no direct object)"
       ],
       "reading": "びっくりする",
@@ -2432,7 +2437,7 @@
       "answer": "department store",
       "choices": [
         "department store",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never",
         "winter break / vacation / holiday",
         "to inquire, ask (direct object)(formal)"
       ],
@@ -2770,7 +2775,7 @@
         "material, ingredient",
         "piano",
         "to cook, burn, bake, grill (direct object)",
-        "not easily, just not, not readily, hardly (➖ negative sentence)"
+        "not easily, just not, not readily, hardly"
       ],
       "reading": "ざいりょう",
       "meaning": "material, ingredient",
@@ -2938,7 +2943,7 @@
         "to turn (toward), face (no direct object)",
         "shallow, superficial",
         "greeting, salutation",
-        "to leave (something in someone’s care), entrust (direct object)"
+        "to leave (something in someone’s care), entrust"
       ],
       "reading": "むく",
       "meaning": "to turn (toward), face (no direct object)",
@@ -3042,7 +3047,7 @@
       "choices": [
         "to learn, take lessons",
         "way of speaking, expression",
-        "➕ definitely, totally, absolutely (more common usage)➖ never (neg sentences only and stronger than zenzen)(casual)",
+        "➕ definitely, totally, absolutely (more common usage)➖ never",
         "summer vacation/break"
       ],
       "reading": "ならう",
@@ -3063,7 +3068,7 @@
       "choices": [
         "attention, notice, focus",
         "color (loan word)",
-        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "not easily, just not, not readily, hardly",
         "shallow, superficial"
       ],
       "reading": "ちゅうもく",
@@ -3206,9 +3211,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "光る",
-      "answer": "to shine, sparkle, glow, emit light, glitter (no direct object)",
+      "answer": "to shine, sparkle, glow, emit light, glitter",
       "choices": [
-        "to shine, sparkle, glow, emit light, glitter (no direct object)",
+        "to shine, sparkle, glow, emit light, glitter",
         "way of speaking, expression",
         "every year (formal)",
         "left hand"
@@ -3219,7 +3224,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "no direct object"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-154",
@@ -3316,7 +3322,7 @@
         "deep red, bright red, vivid red (な adj noun)",
         "to move, relocate (home or office)",
         "bullet train",
-        "to encounter (something bad), get caught in (no direct object)"
+        "to encounter (something bad), get caught in"
       ],
       "reading": "まっか",
       "meaning": "deep red, bright red, vivid red (な adj noun)",
@@ -3416,9 +3422,9 @@
       "lessonId": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-1",
       "type": "phrase",
       "prompt": "揺れる",
-      "answer": "to shake (back and forth), sway, tremble (no direct object が)",
+      "answer": "to shake (back and forth), sway, tremble",
       "choices": [
-        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to shake (back and forth), sway, tremble",
         "weight",
         "1. how many times2. how many degrees",
         "department store"
@@ -3429,7 +3435,8 @@
         "core2000",
         "imported",
         "vocab-core"
-      ]
+      ],
+      "note": "no direct object が"
     },
     {
       "id": "japanese-core-2k-vocab-natural-audio-mnemonics-and-type-164",
@@ -3588,7 +3595,7 @@
       "choices": [
         "to become dirty, become stained, get soiled",
         "normally, usually, generally, ordinarily, habitually",
-        "not easily, just not, not readily, hardly (➖ negative sentence)",
+        "not easily, just not, not readily, hardly",
         "to be built, be erected, stand (no direct object が)"
       ],
       "reading": "よごれる",
@@ -3945,7 +3952,7 @@
       "choices": [
         "roof",
         "divorce",
-        "to encounter (something bad), get caught in (no direct object)",
+        "to encounter (something bad), get caught in",
         "to smoke, inhale, suck (straw, etc)"
       ],
       "reading": "やね",
@@ -4112,7 +4119,7 @@
       "answer": "to visit (a place)(no direct object)",
       "choices": [
         "to visit (a place)(no direct object)",
-        "to leave (something in someone’s care), entrust (direct object)",
+        "to leave (something in someone’s care), entrust",
         "to burn, catch on fire (no direct object)",
         "future"
       ],
@@ -4134,7 +4141,7 @@
       "choices": [
         "to tear, break, breach, defeat, violate",
         "to go down, drop (in height) (no direct object が)",
-        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to shake (back and forth), sway, tremble",
         "trouble, inconvenience, annoyance (な adj/noun)"
       ],
       "reading": "やぶる",
@@ -4196,7 +4203,7 @@
       "answer": "(sound) recording",
       "choices": [
         "(sound) recording",
-        "to shake (back and forth), sway, tremble (no direct object が)",
+        "to shake (back and forth), sway, tremble",
         "traffic accident",
         "sudden, urgent, steep (な adj)"
       ],

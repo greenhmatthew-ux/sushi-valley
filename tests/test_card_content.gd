@@ -28,6 +28,7 @@ func _initialize() -> void:
 	_travel_deck_is_split()
 	_usage_notes_are_kept_not_deleted()
 	_every_travel_phrase_card_can_hint()
+	_no_travel_phrase_card_is_unreachable()
 	_no_travel_phrase_lesson_is_hollowed_out()
 
 	db.free()
@@ -98,6 +99,18 @@ func _every_travel_phrase_card_can_hint() -> void:
 		if String(db.card(cid).get("reading", "")).strip_edges().is_empty():
 			missing += 1
 	check_eq("every travel/phrase card can show a reading hint", missing, 0)
+
+
+## An answer too long for a rune button is dropped from prompts, distractors, due
+## counts, and mastery alike — unreachable content rather than a visible failure.
+## 13 phrase cards were stuck that way behind glued-on explanations.
+func _no_travel_phrase_card_is_unreachable() -> void:
+	var unreachable: Array[String] = []
+	for cid in _travel_phrase_card_ids():
+		if not LearningProgression.recall_eligible(db.card(cid)):
+			unreachable.append(cid)
+	check_true("no travel/phrase card is too long to ever be asked (%s)" % str(unreachable),
+		unreachable.is_empty())
 
 
 ## Ineligible imported cards are skipped everywhere, so a lesson made mostly of
