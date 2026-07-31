@@ -22,6 +22,7 @@ func _initialize() -> void:
 	_save_round_trip()
 	_lesson_auto_progression()
 	_prompt_shape()
+	_recall_eligibility()
 
 	db.free()
 	_finish()
@@ -179,6 +180,60 @@ func _prompt_shape() -> void:
 	var focused := prog.build_prompt({}, false, "kana-vowels")
 	check_true("focused prompt draws from the focus lesson",
 		focused.is_empty() or focused["card"]["lessonId"] == "kana-vowels")
+
+
+## Imported decks contain remark/page-number cards (answer "14", essay-long
+## choices). They must never reach a rune button, the due count, or block mastery.
+func _recall_eligibility() -> void:
+	var junk_id := "japanese-course-based-on-tae-kims-grammar-guide-anime-7"
+	check_eq("the imported remark card is real test data",
+		String(db.card(junk_id).get("answer", "")), "14")
+	check_true("page-number answers are not recallable",
+		not LearningProgression.recall_eligible(db.card(junk_id)))
+	check_true("essay answers are not recallable",
+		not LearningProgression.choice_plausible("x".repeat(61)))
+	check_true("short Japanese answers stay recallable",
+		LearningProgression.recall_eligible(db.card("kana-a")))
+
+	# The junk card never becomes a prompt, even when it is the only unlocked card.
+	var p := LearningProfile.new({}, db)
+	var prog := LearningProgression.new(p, db)
+	p.unlock_card(junk_id)
+	check_true("junk-only pool builds no prompt", prog.build_prompt().is_empty())
+	check_true("junk-only pool offers no practice either",
+		prog.build_prompt({}, true).is_empty())
+	check_eq("junk cards do not count as due", prog.due_count(), 0)
+
+	# With real cards unlocked too, choices stay plausible on every draw.
+	p.unlock_lesson("kana-vowels")
+	var saw_prompt := false
+	for i in 12:
+		var prompt := prog.build_prompt({}, true)
+		if prompt.is_empty():
+			continue
+		saw_prompt = true
+		for choice in prompt["choices"]:
+			check_true("choice fits a rune button: '%s'" %
+				String(choice).substr(0, 24),
+				LearningProgression.choice_plausible(String(choice)))
+	check_true("mixed pool still builds prompts", saw_prompt)
+
+	# Mastery: a lesson with junk cards completes from its real cards alone.
+	var p2 := LearningProfile.new({}, db)
+	var prog2 := LearningProgression.new(p2, db)
+	var first: Dictionary = db.lesson("tae-kim-1")
+	check_true("tae-kim-1 exists for the mastery check", not first.is_empty())
+	prog2.profile.unlock_lesson("tae-kim-1")
+	var eligible_count := 0
+	for cid in first["cardIds"]:
+		var c: Dictionary = p2.card(cid)
+		if LearningProgression.recall_eligible(c):
+			eligible_count += 1
+			prog2.grade(c, "good")
+	check_true("tae-kim-1 mixes real and junk cards",
+		eligible_count > 0 and eligible_count < first["cardIds"].size())
+	check_true("junk cards do not block lesson mastery",
+		bool(prog2.call("_is_lesson_mastered", first)))
 
 
 # --- helpers ---------------------------------------------------------------

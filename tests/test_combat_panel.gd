@@ -20,8 +20,24 @@ func _initialize() -> void:
 	panel.set_script(load("res://src/ui/combat_panel.gd"))
 	root.add_child(panel)
 	await process_frame
+	# The always-on HUD layers must get out of the fight panel's way: they sit under its
+	# dim backdrop and read as overlap when hearts/coins/objectives bleed through.
+	var hud := CanvasLayer.new()
+	hud.set_script(load("res://src/ui/hud_layer.gd"))
+	root.add_child(hud)
+	var objective := CanvasLayer.new()
+	objective.set_script(load("res://src/ui/objective_hud.gd"))
+	root.add_child(objective)
+	var prompt := CanvasLayer.new()
+	prompt.set_script(load("res://src/ui/context_prompt.gd"))
+	root.add_child(prompt)
+	await process_frame
+	check_true("world HUD layers start visible",
+		hud.visible and objective.visible and prompt.visible)
 	bus.combat_started.emit(String(db.enemy_order[0]))
 	await process_frame
+	check_true("world HUD steps out of combat",
+		not hud.visible and not objective.visible and not prompt.visible)
 
 	var shell: Control = panel.find_child("CombatShell", true, false)
 	var actions: Control = panel.find_child("CombatActions", true, false)
@@ -75,6 +91,8 @@ func _initialize() -> void:
 	await process_frame
 	check_true("Flee closes combat and resumes the world",
 		not bool(panel.get("_active")) and not paused)
+	check_true("world HUD returns after combat",
+		hud.visible and objective.visible and prompt.visible)
 	check_eq("Flee reports no victory rewards", outcomes, [false])
 	inv.add("wooden_katana", 1)
 	check_true("test weapon equips", inv.equip("wooden_katana"))

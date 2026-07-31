@@ -462,6 +462,10 @@ func _rune_button(rune: String) -> Button:
 	var b := Button.new()
 	b.text = rune
 	b.custom_minimum_size = Vector2(190, 44)
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# A choice longer than the button clips instead of stretching the panel past
+	# the viewport; imported decks hold a few long phrase answers.
+	b.clip_text = true
 	b.focus_mode = Control.FOCUS_ALL
 	b.add_theme_font_size_override("font_size", 30)
 	b.add_theme_stylebox_override("normal", _button_style(COL_BTN, COL_BTN_BORDER))
@@ -486,7 +490,7 @@ func _build() -> void:
 	panel.name = "CombatShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
 	panel.anchor_left = 0.14; panel.anchor_right = 0.86
-	panel.anchor_top = 0.5; panel.anchor_bottom = 0.5
+	panel.anchor_top = 0.04; panel.anchor_bottom = 0.96
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.add_child(panel)
 
@@ -495,9 +499,14 @@ func _build() -> void:
 		margin.add_theme_constant_override("margin_" + side, 10)
 	panel.add_child(margin)
 
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	margin.add_child(scroll)
+
 	var vbox := VBoxContainer.new()
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_theme_constant_override("separation", 4)
-	margin.add_child(vbox)
+	scroll.add_child(vbox)
 
 	# enemy
 	var enemy_row := HBoxContainer.new()
@@ -520,6 +529,7 @@ func _build() -> void:
 	# the guard word the player must answer
 	_guard_label = _label(28, COL_TEXT)
 	_guard_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_guard_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(_guard_label)
 
 	_guard_hint = _label(12, COL_EN)

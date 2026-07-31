@@ -25,6 +25,9 @@ func _ready() -> void:
 	Bus.inventory_changed.connect(_refresh)
 	Bus.hud_refresh.connect(_refresh)
 	Bus.card_reviewed.connect(func(_i, _g, _c): _refresh())
+	# The fight panel owns the screen; a quest line bleeding through its dim reads as overlap.
+	Bus.combat_started.connect(func(_id): hide())
+	Bus.combat_ended.connect(func(_v): show())
 	# Scenes swap on travel, so re-read once the new tree is settled.
 	get_tree().node_added.connect(_on_node_added)
 	_refresh.call_deferred()

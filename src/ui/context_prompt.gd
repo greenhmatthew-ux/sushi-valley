@@ -23,6 +23,9 @@ func _ready() -> void:
 	layer = 18   # above the world, below dialogue (19) and every modal
 	_build()
 	_panel.hide()
+	# The fight panel owns the screen; a stale prompt bleeding through its dim reads as overlap.
+	Bus.combat_started.connect(func(_id): hide())
+	Bus.combat_ended.connect(func(_v): show())
 
 
 func _process(delta: float) -> void:

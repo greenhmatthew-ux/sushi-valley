@@ -66,6 +66,7 @@ func _initialize() -> void:
 	_validate_assets(audio)
 	_validate_scene_requests()
 	_validate_public_state(audio)
+	_validate_volume_settings(audio)
 	var bus := root.get_node_or_null("Bus")
 	check_true("Bus autoload is present", bus != null)
 	if bus != null:
@@ -140,6 +141,47 @@ func _validate_public_state(audio: Node) -> void:
 	check_true("non-faded stop halts the player", not audio.is_music_playing())
 
 
+## The Settings autoload owns music/pronunciation volume; Audio must scale its live
+## players by it, floor at silence instead of -inf dB, and retune immediately on change.
+func _validate_volume_settings(audio: Node) -> void:
+	var settings: Node = root.get_node("Settings")
+	# Mirrors audio.gd's MUSIC_VOLUME_LINEAR / MUSIC_SILENCE_DB constants, which are not
+	# reachable as members through a Node-typed reference.
+	var base_linear := 0.35
+	var silence_db := -80.0
+	var music_player := audio.get("_music_player") as AudioStreamPlayer
+	var voice_player := audio.get("_player") as AudioStreamPlayer
+	check_true("both audio players exist", music_player != null and voice_player != null)
+
+	settings.music_volume = 0.5
+	settings.voice_volume = 0.25
+	check_close("music target scales the base mix by the setting",
+		float(audio.call("_music_target_db")), linear_to_db(base_linear * 0.5))
+	check_close("pronunciation player retunes live",
+		voice_player.volume_db, linear_to_db(0.25))
+
+	var cfg := ConfigFile.new()
+	check_eq("volumes persist to settings.cfg", cfg.load("user://settings.cfg"), OK)
+	check_eq("persisted music volume round-trips",
+		float(cfg.get_value("audio", "music_volume", -1.0)), 0.5)
+	check_eq("persisted pronunciation volume round-trips",
+		float(cfg.get_value("audio", "voice_volume", -1.0)), 0.25)
+
+	check_true("music starts for the live-retune check", audio.play_music("village"))
+	settings.music_volume = 0.75
+	check_close("playing music retunes to the setting immediately",
+		music_player.volume_db, linear_to_db(base_linear * 0.75))
+	settings.music_volume = 0.0
+	check_close("zero music volume floors at silence, not -inf",
+		music_player.volume_db, silence_db)
+	audio.stop_music(false)
+
+	settings.music_volume = 1.0
+	settings.voice_volume = 1.0
+	check_close("full music volume restores the base mix",
+		float(audio.call("_music_target_db")), linear_to_db(base_linear))
+
+
 func _validate_combat_resume(audio: Node, bus: Node) -> void:
 	check_true("forest setup starts", audio.play_music("forest"))
 	bus.emit_signal("combat_started", "snake")
@@ -188,6 +230,15 @@ func _finish() -> void:
 
 func check_true(label: String, ok: bool) -> void:
 	print(("  ok   " if ok else "  FAIL ") + label)
+	if not ok:
+		failures += 1
+
+
+## Decibel values pick up sub-decimal noise from snappedf volume steps; compare loosely.
+func check_close(label: String, got: float, want: float) -> void:
+	var ok: bool = absf(got - want) < 0.001
+	print(("  ok   " if ok else "  FAIL ") + label
+		+ ("" if ok else " (got %s, want %s)" % [got, want]))
 	if not ok:
 		failures += 1
 

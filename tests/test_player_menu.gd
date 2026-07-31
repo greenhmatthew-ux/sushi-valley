@@ -206,6 +206,30 @@ func _initialize() -> void:
 
 	panel.queue_free()
 	await process_frame
+
+	var settings: Node = root.get_node("Settings")
+	var settings_panel := CanvasLayer.new()
+	settings_panel.set_script(load("res://src/ui/settings_panel.gd"))
+	root.add_child(settings_panel)
+	await process_frame
+	settings_panel.call("_set_open", true)
+	await process_frame
+	var settings_shell: Control = settings_panel.find_child("SettingsShell", true, false)
+	check_true("settings shell stays inside the 640x360 viewport",
+		settings_shell != null and viewport_rect.encloses(settings_shell.get_global_rect()))
+	var music_slider := settings_panel.find_child("MusicVolumeSlider", true, false) as HSlider
+	var voice_slider := settings_panel.find_child("VoiceVolumeSlider", true, false) as HSlider
+	check_true("settings expose music and pronunciation volume",
+		music_slider != null and voice_slider != null)
+	music_slider.value = 0.5
+	check_eq("music slider writes the setting", settings.music_volume, 0.5)
+	voice_slider.value = 0.25
+	check_eq("pronunciation slider writes the setting", settings.voice_volume, 0.25)
+	settings.music_volume = 1.0
+	settings.voice_volume = 1.0
+	settings_panel.call("_set_open", false)
+	settings_panel.queue_free()
+	await process_frame
 	check_true("Notebook also rejects paused modal stacking",
 		await _panel_rejects_paused_open(
 			"res://src/ui/notebook_panel.gd", "open_notebook"))

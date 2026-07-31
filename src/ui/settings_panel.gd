@@ -20,6 +20,10 @@ var _root: Control
 var _zoom_label: Label
 var _zoom_slider: HSlider
 var _english_check: CheckButton
+var _music_label: Label
+var _music_slider: HSlider
+var _voice_label: Label
+var _voice_slider: HSlider
 
 
 func _ready() -> void:
@@ -55,7 +59,10 @@ func _set_open(open: bool) -> void:
 func _sync_from_settings() -> void:
 	_zoom_slider.set_value_no_signal(Settings.zoom)
 	_english_check.set_pressed_no_signal(Settings.show_english)
+	_music_slider.set_value_no_signal(Settings.music_volume)
+	_voice_slider.set_value_no_signal(Settings.voice_volume)
 	_update_zoom_label()
+	_update_volume_labels()
 
 
 func _update_zoom_label() -> void:
@@ -68,6 +75,21 @@ func _update_zoom_label() -> void:
 func _on_zoom_changed(value: float) -> void:
 	Settings.zoom = value
 	_update_zoom_label()
+
+
+func _update_volume_labels() -> void:
+	_music_label.text = "Music:  %d%%" % int(round(Settings.music_volume * 100.0))
+	_voice_label.text = "Pronunciation:  %d%%" % int(round(Settings.voice_volume * 100.0))
+
+
+func _on_music_volume_changed(value: float) -> void:
+	Settings.music_volume = value
+	_update_volume_labels()
+
+
+func _on_voice_volume_changed(value: float) -> void:
+	Settings.voice_volume = value
+	_update_volume_labels()
 
 
 func _on_english_toggled(pressed: bool) -> void:
@@ -88,11 +110,13 @@ func _build() -> void:
 	_root.add_child(dim)
 
 	# Inset from the screen edges so the panel can never grow past the viewport on a short
-	# window (a content-sized panel clipped its title and Close button at 720p).
+	# window (a content-sized panel clipped its title and Close button at 720p). The audio
+	# sliders made the content taller than a 640x360 viewport, so overflow now scrolls.
 	var panel := PanelContainer.new()
+	panel.name = "SettingsShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
 	panel.anchor_left = 0.20; panel.anchor_right = 0.80
-	panel.anchor_top = 0.5; panel.anchor_bottom = 0.5
+	panel.anchor_top = 0.06; panel.anchor_bottom = 0.94
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.add_child(panel)
 
@@ -101,9 +125,14 @@ func _build() -> void:
 		margin.add_theme_constant_override("margin_" + side, 18)
 	panel.add_child(margin)
 
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	margin.add_child(scroll)
+
 	var vbox := VBoxContainer.new()
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_theme_constant_override("separation", 8)
-	margin.add_child(vbox)
+	scroll.add_child(vbox)
 
 	vbox.add_child(_heading("Settings"))
 
@@ -121,6 +150,24 @@ func _build() -> void:
 	vbox.add_child(_zoom_slider)
 
 	vbox.add_child(_hint("Lower = see more of the map."))
+
+	# --- audio ---
+	vbox.add_child(_heading("Audio"))
+	_music_label = _label(15, COL_TEXT)
+	vbox.add_child(_music_label)
+	_music_slider = _volume_slider()
+	_music_slider.name = "MusicVolumeSlider"
+	_music_slider.value_changed.connect(_on_music_volume_changed)
+	vbox.add_child(_music_slider)
+
+	_voice_label = _label(15, COL_TEXT)
+	vbox.add_child(_voice_label)
+	_voice_slider = _volume_slider()
+	_voice_slider.name = "VoiceVolumeSlider"
+	_voice_slider.value_changed.connect(_on_voice_volume_changed)
+	vbox.add_child(_voice_slider)
+
+	vbox.add_child(_hint("Pronunciation covers the recorded Japanese voices."))
 
 	# --- language ---
 	vbox.add_child(_heading("Language"))
@@ -165,6 +212,16 @@ func _label(size: int, color: Color) -> Label:
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
 	return l
+
+
+func _volume_slider() -> HSlider:
+	var s := HSlider.new()
+	s.min_value = Settings.VOLUME_MIN
+	s.max_value = Settings.VOLUME_MAX
+	s.step = Settings.VOLUME_STEP
+	s.custom_minimum_size = Vector2(0, 24)
+	s.focus_mode = Control.FOCUS_ALL
+	return s
 
 
 func _panel_style() -> StyleBoxFlat:

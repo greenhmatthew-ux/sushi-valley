@@ -138,6 +138,7 @@ func _render(prompt: Dictionary) -> void:
 func _make_choice_button(choice: String) -> Button:
 	var btn := Button.new()
 	btn.text = choice
+	btn.clip_text = true
 	btn.custom_minimum_size = Vector2(200, 46)
 	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
 	# is no longer mouse-only (the project requires keyboard AND controller to work).

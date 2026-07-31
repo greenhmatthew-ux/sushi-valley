@@ -15,6 +15,9 @@ extends CanvasLayer
 ##
 ## Bus-driven throughout: no polling, and nothing here holds a reference to Inv or Learning
 ## state beyond reading it on a signal.
+##
+## Hidden wholesale during combat: the fight panel has its own dim backdrop, player HP bar,
+## and reward flow, so hearts/coins bleeding through the dim read as overlap, not context.
 
 const HEART_TEX := preload("res://assets/ui/hearts.png")
 ## A FIXED row of hearts, each worth a fifth of max HP and filled in quarters from the
@@ -48,6 +51,8 @@ func _ready() -> void:
 	# Learning progress moves the due count, so refresh on any review or unlock.
 	Bus.card_reviewed.connect(func(_id, _g, _c): _refresh())
 	Bus.xp_gained.connect(func(_a): _refresh())
+	Bus.combat_started.connect(func(_id): hide())
+	Bus.combat_ended.connect(func(_v): show())
 	_refresh()
 
 

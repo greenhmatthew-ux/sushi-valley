@@ -48,6 +48,9 @@ signal zoom_changed(zoom: float)
 ## English visibility changed — either pinned in settings or peeked with the hold key.
 ## Bilingual surfaces (dialogue, signs) listen and re-render in place.
 signal language_changed(english_visible: bool)
+## Music/pronunciation volume preference changed. The Audio autoload listens and retunes
+## live players, so panels never poke the audio players directly.
+signal audio_settings_changed(music: float, voice: float)
 
 # --- shop ---
 ## A vendor was interacted with — the ShopPanel opens on this, keyed by shop_id (a

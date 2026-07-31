@@ -27,6 +27,30 @@ var zoom: float = ZOOM_DEFAULT:
 		Bus.zoom_changed.emit(zoom)
 		save()
 
+## Linear volumes, 0.0 (silent) to 1.0 (full), in 5% steps. Music layers on top of the
+## Audio autoload's own base mix level; pronunciation plays at the set level directly.
+const VOLUME_MIN := 0.0
+const VOLUME_MAX := 1.0
+const VOLUME_STEP := 0.05
+
+var music_volume: float = VOLUME_MAX:
+	set(value):
+		var snapped_value := clampf(snappedf(value, VOLUME_STEP), VOLUME_MIN, VOLUME_MAX)
+		if is_equal_approx(snapped_value, music_volume):
+			return
+		music_volume = snapped_value
+		Bus.audio_settings_changed.emit(music_volume, voice_volume)
+		save()
+
+var voice_volume: float = VOLUME_MAX:
+	set(value):
+		var snapped_value := clampf(snappedf(value, VOLUME_STEP), VOLUME_MIN, VOLUME_MAX)
+		if is_equal_approx(snapped_value, voice_volume):
+			return
+		voice_volume = snapped_value
+		Bus.audio_settings_changed.emit(music_volume, voice_volume)
+		save()
+
 ## The game speaks Japanese first — that is the whole point. English is a safety net you
 ## can pin on permanently here, or peek at any time by holding the `peek_english` key.
 ## Off by default so the Japanese is what you actually read.
@@ -79,12 +103,20 @@ func load_settings() -> void:
 	var loaded := float(cfg.get_value("display", "zoom", ZOOM_DEFAULT))
 	zoom = clampf(snappedf(loaded, ZOOM_STEP), ZOOM_MIN, ZOOM_MAX)
 	show_english = bool(cfg.get_value("language", "show_english", false))
+	music_volume = clampf(snappedf(
+		float(cfg.get_value("audio", "music_volume", VOLUME_MAX)), VOLUME_STEP),
+		VOLUME_MIN, VOLUME_MAX)
+	voice_volume = clampf(snappedf(
+		float(cfg.get_value("audio", "voice_volume", VOLUME_MAX)), VOLUME_STEP),
+		VOLUME_MIN, VOLUME_MAX)
 
 
 func save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("display", "zoom", zoom)
 	cfg.set_value("language", "show_english", show_english)
+	cfg.set_value("audio", "music_volume", music_volume)
+	cfg.set_value("audio", "voice_volume", voice_volume)
 	cfg.save(PATH)
 
 

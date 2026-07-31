@@ -33,6 +33,7 @@ func _ready() -> void:
 	_ensure_music_player()
 	Bus.combat_started.connect(_on_combat_started)
 	Bus.combat_ended.connect(_on_combat_ended)
+	Bus.audio_settings_changed.connect(_on_audio_settings_changed)
 
 
 func has_pronunciation(card_id: String) -> bool:
@@ -78,7 +79,7 @@ func play_music(track_id: String) -> bool:
 
 	_kill_music_tween()
 	_current_music_track_id = track_id
-	var target_db := linear_to_db(MUSIC_VOLUME_LINEAR)
+	var target_db := _music_target_db()
 	if not is_inside_tree():
 		_start_music_stream(stream)
 		_music_player.volume_db = target_db
@@ -135,6 +136,7 @@ func _ensure_player() -> void:
 	_player = AudioStreamPlayer.new()
 	_player.name = "PronunciationPlayer"
 	_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	_player.volume_db = _voice_db()
 	add_child(_player)
 
 
@@ -144,7 +146,7 @@ func _ensure_music_player() -> void:
 	_music_player = AudioStreamPlayer.new()
 	_music_player.name = "MusicPlayer"
 	_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
-	_music_player.volume_db = linear_to_db(MUSIC_VOLUME_LINEAR)
+	_music_player.volume_db = _music_target_db()
 	add_child(_music_player)
 
 
@@ -176,7 +178,31 @@ func _finish_music_stop() -> void:
 		return
 	_music_player.stop()
 	_music_player.stream = null
-	_music_player.volume_db = linear_to_db(MUSIC_VOLUME_LINEAR)
+	_music_player.volume_db = _music_target_db()
+
+
+## Effective music loudness: the pack's base mix level scaled by the player's setting.
+## linear_to_db(0) is -inf, so silence floors at the same -80 dB the fades already use.
+func _music_target_db() -> float:
+	return _linear_to_db_safe(MUSIC_VOLUME_LINEAR * Settings.music_volume)
+
+
+func _voice_db() -> float:
+	return _linear_to_db_safe(Settings.voice_volume)
+
+
+func _linear_to_db_safe(linear: float) -> float:
+	return MUSIC_SILENCE_DB if linear <= 0.0 else linear_to_db(linear)
+
+
+## Live retune: the settings panel announces on the Bus; only the players change. A fade
+## already in flight owns the music volume, so it is killed rather than fought.
+func _on_audio_settings_changed(_music: float, _voice: float) -> void:
+	if is_instance_valid(_player):
+		_player.volume_db = _voice_db()
+	if is_instance_valid(_music_player) and _music_player.playing:
+		_kill_music_tween()
+		_music_player.volume_db = _music_target_db()
 
 
 func _kill_music_tween() -> void:

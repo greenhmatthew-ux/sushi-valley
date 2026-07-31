@@ -11,6 +11,14 @@ extends RefCounted
 ## XP awarded per correct grade. "again" (wrong) earns nothing.
 const XP_BY_GRADE := {"easy": 12, "good": 10, "hard": 6}
 
+## Recall eligibility. Several imported Anki decks map the answer field to page
+## numbers, stroke counts, or whole explanation paragraphs (282 of 1330 source
+## cards). Those can never be a sane rune or choice in a four-option recall UI —
+## as prompts they ask gibberish, and as distractors one paragraph of English
+## blows the combat/recall panels past the viewport. They are filtered out of
+## every selection path here; the imported data itself stays untouched.
+const MAX_CHOICE_LENGTH := 60
+
 var profile: LearningProfile
 var _content
 ## Fired with a lesson title when auto-progression unlocks a new lesson. The game
@@ -45,7 +53,7 @@ func build_prompt(card: Dictionary = {}, allow_practice: bool = false,
 		var pool: Array = []
 		for id in lesson.get("cardIds", []):
 			var lc: Dictionary = profile.card(id)
-			if not lc.is_empty() and lc.get("unlocked", false):
+			if not lc.is_empty() and lc.get("unlocked", false) and recall_eligible(lc):
 				pool.append(lc)
 		var due_pool := Srs.due(pool)
 		due_pool.shuffle()
@@ -89,7 +97,9 @@ func next_due(focus_category: String = "") -> Dictionary:
 
 
 func due_count() -> int:
-	return Srs.due(profile.unlocked_cards()).size()
+	var eligible := profile.unlocked_cards().filter(
+		func(c): return recall_eligible(c))
+	return Srs.due(eligible).size()
 
 
 ## Least-recently reviewed unlocked card, for low-pressure practice when nothing
@@ -102,7 +112,8 @@ func next_practice(focus_category: String = "") -> Dictionary:
 ## (e.g. "travel" matches "travel", "travel-arrival", ...). All unlocked cards
 ## when no filter is given.
 func _category_pool(focus_category: String) -> Array:
-	var cards := profile.unlocked_cards()
+	var cards := profile.unlocked_cards().filter(
+		func(c): return recall_eligible(c))
 	if focus_category.is_empty():
 		return cards
 	var matching := {}
@@ -153,7 +164,11 @@ func _announce_xp(amount: int, total: int) -> void:
 func _is_lesson_mastered(lesson: Dictionary) -> bool:
 	for id in lesson.get("cardIds", []):
 		var c: Dictionary = profile.card(id)
-		if c.is_empty() or not c.get("unlocked", false) or int(c.get("correctCount", 0)) < 1:
+		if c.is_empty():
+			return false
+		if not recall_eligible(c):
+			continue   # imported remark/page-number cards can never be reviewed
+		if not c.get("unlocked", false) or int(c.get("correctCount", 0)) < 1:
 			return false
 		var reviews := int(c.get("correctCount", 0)) + int(c.get("incorrectCount", 0))
 		if reviews == 0:
@@ -206,7 +221,7 @@ func _pick_distractors(card: Dictionary, n: int) -> Array:
 	var answer_norm := _normalize(String(card.get("answer", "")))
 	var own: Array = []
 	for choice in card.get("choices", []):
-		if _normalize(String(choice)) != answer_norm:
+		if _normalize(String(choice)) != answer_norm and choice_plausible(String(choice)):
 			own.append(choice)
 
 	var lesson: Dictionary = _content.lesson(String(card.get("lessonId", "")))
@@ -216,7 +231,8 @@ func _pick_distractors(card: Dictionary, n: int) -> Array:
 
 	var fallback: Array = []
 	for c in profile.all_cards():
-		if String(c.get("id", "")) == card_id or not c.get("unlocked", false):
+		if String(c.get("id", "")) == card_id or not c.get("unlocked", false) \
+				or not recall_eligible(c):
 			continue
 		var matches: bool
 		if category.is_empty():
@@ -251,6 +267,17 @@ func _least_recently_reviewed(pool: Array) -> Dictionary:
 		var bv: float = b.get("lastReviewedAt") if b.get("lastReviewedAt") != null else 0.0
 		return av < bv)
 	return shuffled[0]
+
+
+## A card is reviewable only when its answer could actually sit on a rune button:
+## non-empty, short, and not a bare number (page refs / stroke counts from import).
+static func recall_eligible(card: Dictionary) -> bool:
+	return choice_plausible(String(card.get("answer", "")))
+
+
+static func choice_plausible(text: String) -> bool:
+	var t := text.strip_edges()
+	return not t.is_empty() and t.length() <= MAX_CHOICE_LENGTH and not t.is_valid_int()
 
 
 static func _normalize(s: String) -> String:
