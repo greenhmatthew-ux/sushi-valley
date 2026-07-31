@@ -44,6 +44,7 @@ const VERIFIED_ABILITY_ICONS := [
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"
+const TAB_QUESTS := "quests"
 
 var _open := false
 var _active_tab := TAB_BAG
@@ -64,6 +65,10 @@ var _attribute_minus_buttons: Dictionary = {}
 var _character_tab: Button
 var _skills_tab: Button
 var _bag_tab: Button
+var _quests_tab: Button
+var _quests_view: VBoxContainer
+var _quests_box: VBoxContainer
+var _quests_summary: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
@@ -129,6 +134,10 @@ func _refresh() -> void:
 	for child in _skills_box.get_children():
 		_skills_box.remove_child(child)
 		child.queue_free()
+	for child in _quests_box.get_children():
+		_quests_box.remove_child(child)
+		child.queue_free()
+	_refresh_quests()
 
 	var equipped: Dictionary = Inv.equipment()
 	for slot in InventoryLogic.EQUIPMENT_SLOTS:
@@ -191,15 +200,103 @@ func _refresh() -> void:
 
 
 func _set_tab(tab: String) -> void:
-	_active_tab = tab if tab in [TAB_CHARACTER, TAB_SKILLS, TAB_BAG] else TAB_BAG
+	_active_tab = tab if tab in [TAB_CHARACTER, TAB_SKILLS, TAB_BAG, TAB_QUESTS] else TAB_BAG
 	_character_scroll.visible = _active_tab == TAB_CHARACTER
 	_character_view.visible = _active_tab == TAB_CHARACTER
 	_skills_view.visible = _active_tab == TAB_SKILLS
 	_bag_view.visible = _active_tab == TAB_BAG
+	_quests_view.visible = _active_tab == TAB_QUESTS
 	_character_tab.disabled = _active_tab == TAB_CHARACTER
 	_skills_tab.disabled = _active_tab == TAB_SKILLS
 	_bag_tab.disabled = _active_tab == TAB_BAG
+	_quests_tab.disabled = _active_tab == TAB_QUESTS
 	_refresh_footer()
+
+
+## The quest log. Until now a quest existed only as the one objective line, read
+## off whichever giver stood in the current scene: finish it and it vanished,
+## walk to another map and it vanished. This is the record of the whole run.
+func _refresh_quests() -> void:
+	var entries: Array = QuestJournal.all_entries(Learning.profile, DB, Inv)
+	var counts: Dictionary = QuestJournal.counts(entries)
+	var known: int = int(counts["ready"]) + int(counts["active"]) + int(counts["done"])
+	if known == 0:
+		_quests_summary.text = "No quests yet — the villagers have work to offer."
+	else:
+		_quests_summary.text = "%d done   ·   %d in progress   ·   %d ready to turn in" % [
+			counts["done"], counts["active"], counts["ready"]]
+
+	var shown := 0
+	for entry in entries:
+		if QuestJournal.is_spoiler(entry):
+			continue
+		_quests_box.add_child(_make_quest_card(entry))
+		shown += 1
+	# Say that there is more out there without naming it — a journal is a record of
+	# the player's own run, not a table of contents for content they have not found.
+	if int(counts["unmet"]) > 0:
+		var more := Label.new()
+		more.name = "QuestsUndiscovered"
+		more.text = "%d more waiting to be found in the world." % counts["unmet"]
+		more.add_theme_font_size_override("font_size", 11)
+		more.add_theme_color_override("font_color", COL_HEADING)
+		_quests_box.add_child(more)
+
+
+func _make_quest_card(entry: Dictionary) -> Control:
+	var card := PanelContainer.new()
+	card.name = "QuestCard_" + String(entry["id"])
+	var stage: int = int(entry["stage"])
+	var accent := COL_HEADING
+	if stage == QuestJournal.Stage.READY:
+		accent = UiTheme.STATE_SUCCESS
+	elif stage == QuestJournal.Stage.DONE:
+		accent = UiTheme.TEXT_MUTED
+	card.add_theme_stylebox_override("panel", _card_style(accent))
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+	card.add_child(box)
+
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 8)
+	box.add_child(header)
+
+	var title := Label.new()
+	title.name = "QuestTitle_" + String(entry["id"])
+	title.text = String(entry["title"])
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", accent)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(title)
+
+	var state := Label.new()
+	state.name = "QuestStage_" + String(entry["id"])
+	state.text = QuestJournal.stage_label(stage)
+	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_color_override("font_color", accent)
+	header.add_child(state)
+
+	# What to actually do next, which the title alone never says.
+	var detail := Label.new()
+	detail.name = "QuestDetail_" + String(entry["id"])
+	detail.add_theme_font_size_override("font_size", 11)
+	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var giver := String(entry["giver"])
+	match stage:
+		QuestJournal.Stage.READY:
+			detail.text = "Return to %s to claim the reward." % giver
+		QuestJournal.Stage.ACTIVE:
+			var item_name := String(DB.item(String(entry["item"])).get("name", entry["item"]))
+			detail.text = "%s  %d/%d   ·   for %s" % [
+				item_name, entry["progress"], entry["goal"], giver]
+		QuestJournal.Stage.DONE:
+			detail.text = "Finished for %s." % giver
+		_:
+			detail.text = String(entry["desc"])
+	box.add_child(detail)
+	return card
 
 
 func _refresh_footer() -> void:
@@ -210,6 +307,9 @@ func _refresh_footer() -> void:
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_SKILLS:
 		_capacity_label.text = "Choose an action in combat, then answer with the matching rune."
+		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
+	elif _active_tab == TAB_QUESTS:
+		_capacity_label.text = "Quest items are counted from your bag as you collect them."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	else:
 		var enc: Dictionary = Inv.encumbrance()
@@ -694,6 +794,14 @@ func _build_scaffold() -> void:
 	_bag_tab.pressed.connect(_set_tab.bind(TAB_BAG))
 	tabs.add_child(_bag_tab)
 
+	_quests_tab = Button.new()
+	_quests_tab.name = "QuestsTab"
+	_quests_tab.text = "Quests"
+	_quests_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_quests_tab.focus_mode = Control.FOCUS_ALL
+	_quests_tab.pressed.connect(_set_tab.bind(TAB_QUESTS))
+	tabs.add_child(_quests_tab)
+
 	_character_scroll = ScrollContainer.new()
 	_character_scroll.name = "CharacterScroll"
 	_character_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -811,6 +919,30 @@ func _build_scaffold() -> void:
 	_skills_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	skills_scroll.add_child(_skills_box)
 
+	_quests_view = VBoxContainer.new()
+	_quests_view.name = "QuestsView"
+	_quests_view.add_theme_constant_override("separation", 8)
+	_quests_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_quests_view)
+
+	_quests_summary = Label.new()
+	_quests_summary.name = "QuestsSummary"
+	_quests_summary.add_theme_font_size_override("font_size", 12)
+	_quests_summary.add_theme_color_override("font_color", COL_HEADING)
+	_quests_view.add_child(_quests_summary)
+
+	var quests_scroll := ScrollContainer.new()
+	quests_scroll.name = "QuestsScroll"
+	quests_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	quests_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_quests_view.add_child(quests_scroll)
+
+	_quests_box = VBoxContainer.new()
+	_quests_box.name = "QuestCards"
+	_quests_box.add_theme_constant_override("separation", 6)
+	_quests_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	quests_scroll.add_child(_quests_box)
+
 	_bag_view = VBoxContainer.new()
 	_bag_view.name = "BagView"
 	_bag_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -873,10 +1005,12 @@ func _panel_style() -> StyleBoxFlat:
 	return s
 
 
-func _card_style() -> StyleBoxFlat:
+## `border` lets the quest log tint a card by its state — ready to turn in, still
+## running, already done — without every other card having to care.
+func _card_style(border: Color = COL_CARD_BORDER) -> StyleBoxFlat:
 	var s := StyleBoxFlat.new()
 	s.bg_color = COL_CARD
 	s.set_corner_radius_all(10)
 	s.set_border_width_all(2)
-	s.border_color = COL_CARD_BORDER
+	s.border_color = border
 	return s

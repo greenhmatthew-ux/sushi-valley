@@ -183,6 +183,54 @@ func _initialize() -> void:
 		panel.find_child("AbilityIcon_iaido", true, false) != null)
 	check_true("audited Talent art remains visible after learning the action",
 		panel.find_child("AbilityIcon_sweep", true, false) != null)
+	# The quest log. A quest used to exist only as the objective line read off the
+	# giver in the current scene, so finishing one erased it from the game entirely.
+	var inv: Node = root.get_node("Inv")
+	var quest_id := "stock_the_stall"
+	# Flags are written through to the saved profile, so a previous run would leave
+	# this quest already finished and the "not yet met" case would never be tested.
+	learning.profile.set_flag(QuestJournal.started_flag(quest_id), false)
+	learning.profile.set_flag(QuestJournal.done_flag(quest_id), false)
+	inv.reset()
+	var quest: Dictionary = db.quest(quest_id)
+	var goal_item := String(quest["goal"]["item"])
+	panel.call("_set_tab", "quests")
+	panel.call("_refresh")
+	check_true("the menu has a quests tab",
+		panel.find_child("QuestsTab", true, false) != null)
+	check_true("an unmet quest is not listed by name",
+		panel.find_child("QuestCard_" + quest_id, true, false) == null)
+	check_true("but the player is told there is more out there",
+		panel.find_child("QuestsUndiscovered", true, false) != null)
+
+	learning.profile.set_flag(QuestJournal.started_flag(quest_id))
+	inv.add(goal_item, 1)
+	panel.call("_refresh")
+	var detail: Label = panel.find_child("QuestDetail_" + quest_id, true, false)
+	var stage_label: Label = panel.find_child("QuestStage_" + quest_id, true, false)
+	check_true("an accepted quest appears in the log", detail != null)
+	check_true("it shows collected against the goal",
+		detail != null and detail.text.contains("1/%d" % int(quest["goal"]["qty"])))
+	check_eq("it reads as in progress", stage_label.text, "In progress")
+
+	inv.add(goal_item, int(quest["goal"]["qty"]) - 1)
+	panel.call("_refresh")
+	stage_label = panel.find_child("QuestStage_" + quest_id, true, false)
+	detail = panel.find_child("QuestDetail_" + quest_id, true, false)
+	check_eq("meeting the goal reads as ready", stage_label.text, "Ready to turn in")
+	check_true("and says who to return to",
+		detail != null and detail.text.contains(String(quest["giver"])))
+
+	# The point of the whole tab: it survives turning the quest in.
+	learning.profile.set_flag(QuestJournal.done_flag(quest_id))
+	inv.remove(goal_item, int(quest["goal"]["qty"]))
+	panel.call("_refresh")
+	stage_label = panel.find_child("QuestStage_" + quest_id, true, false)
+	check_true("a completed quest is still in the log", stage_label != null)
+	check_eq("and is recorded as completed", stage_label.text, "Completed")
+	inv.reset()
+	panel.call("_set_tab", "bag")
+
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
 	check_true("Talent unlock is written to disk",
 		"sweep" in talent_saved["build"]["unlockedAbilities"])

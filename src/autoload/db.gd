@@ -22,6 +22,8 @@ var enemies: Dictionary = {}
 var abilities: Dictionary = {}
 var recipes: Dictionary = {}
 var quests: Dictionary = {}
+## Authored order, so the quest journal can read in the order the game presents.
+var quest_order: Array[String] = []
 var crops: Dictionary = {}
 var expeditions: Dictionary = {}
 var raids: Dictionary = {}
@@ -98,7 +100,8 @@ func _load_game_content() -> void:
 	abilities = r[0]; ability_order = r[1]
 
 	recipes = _index(_read_array(GAME_DIR + "recipes.json"))[0]
-	quests = _index(_read_array(GAME_DIR + "quests.json"))[0]
+	var quest_index := _index(_read_array(GAME_DIR + "quests.json"))
+	quests = quest_index[0]; quest_order = quest_index[1]
 	crops = _index(_read_array(GAME_DIR + "crops.json"))[0]
 	expeditions = _index(_read_array(GAME_DIR + "expeditions.json"))[0]
 	raids = _index(_read_array(GAME_DIR + "raids.json"))[0]
