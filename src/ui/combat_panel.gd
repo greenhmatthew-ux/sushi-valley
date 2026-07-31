@@ -499,9 +499,17 @@ func _build() -> void:
 		margin.add_theme_constant_override("margin_" + side, 10)
 	panel.add_child(margin)
 
+	# Round content scrolls; the player's own Energy/HP and the turn buttons are
+	# pinned below the scroll so the green HP bar and the answer grid's result
+	# never end up cut off below the fold.
+	var outer := VBoxContainer.new()
+	outer.add_theme_constant_override("separation", 4)
+	margin.add_child(outer)
+
 	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	margin.add_child(scroll)
+	outer.add_child(scroll)
 
 	var vbox := VBoxContainer.new()
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -564,19 +572,19 @@ func _build() -> void:
 	_feedback.custom_minimum_size = Vector2(0, 28)
 	vbox.add_child(_feedback)
 
-	# player
+	# player footer — pinned outside the scroll area, always on screen
 	_energy_label = _label(12, COL_EN)
 	_energy_label.name = "CombatEnergy"
 	_energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(_energy_label)
+	outer.add_child(_energy_label)
 
 	_player_hp_bar = _bar(Color(0.38, 0.66, 0.42))
-	vbox.add_child(_player_hp_bar)
+	outer.add_child(_player_hp_bar)
 
 	var turn_controls := HBoxContainer.new()
 	turn_controls.name = "TurnControls"
 	turn_controls.add_theme_constant_override("separation", 8)
-	vbox.add_child(turn_controls)
+	outer.add_child(turn_controls)
 	_flee_btn = Button.new()
 	_flee_btn.name = "Flee"
 	_flee_btn.text = "Flee"

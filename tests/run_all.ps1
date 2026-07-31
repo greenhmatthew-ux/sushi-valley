@@ -9,7 +9,28 @@
 # exe PowerShell 5.1 turns each stderr line into a terminating error. Pass/fail is
 # read from $LASTEXITCODE (each suite quits non-zero on failure) instead.
 $ErrorActionPreference = "Continue"
-$godot = "C:\Users\curby\Godot\Godot_v4.7.1-stable_win64_console.exe"
+# Godot binary: honour GODOT_EXE, then PATH, then common install spots, so the
+# runner works on any machine without editing the script.
+$godot = $env:GODOT_EXE
+if (-not $godot) {
+	$onPath = Get-Command "Godot*_console.exe", "godot.exe" -ErrorAction SilentlyContinue |
+		Select-Object -First 1 -ExpandProperty Source
+	$godot = $onPath
+}
+if (-not $godot) {
+	$candidates = @(
+		"$env:USERPROFILE\Godot\Godot_*_console.exe",
+		"D:\Godot*\Godot_*_console.exe",
+		"C:\Godot*\Godot_*_console.exe"
+	)
+	$godot = $candidates |
+		ForEach-Object { Get-Item $_ -ErrorAction SilentlyContinue } |
+		Sort-Object Name -Descending |
+		Select-Object -First 1 -ExpandProperty FullName
+}
+if (-not $godot -or -not (Test-Path -LiteralPath $godot)) {
+	throw "Godot console exe not found. Set GODOT_EXE to its full path."
+}
 $project = Split-Path -Parent $PSScriptRoot
 $suites = @(
 	"smoke_db", "test_pronunciation_audio", "test_audio_music", "smoke_world", "test_srs", "test_learning",

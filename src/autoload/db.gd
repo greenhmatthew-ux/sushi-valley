@@ -112,6 +112,7 @@ func _load_learning_content() -> void:
 
 	r = _index(_read_array(LEARNING_DIR + "lessons.json"))
 	lessons = r[0]; lesson_order = r[1]
+	_relink_source_cards()
 	learning_content = _index(_read_array(LEARNING_DIR + "learning-content.json"))[0]
 	_load_pronunciation_audio()
 
@@ -149,6 +150,18 @@ func _merge_source_pack(pack_id: String) -> void:
 		if not cards.has(id):
 			card_order.append(id)
 		cards[id] = entry
+
+
+## Source-pack cards carry the deck's own lesson ids (e.g.
+## "japanese-travel-vocabulary-1"), but the curriculum in lessons.json owns the
+## same cards under its own lesson ids (e.g. "tae-kim-1"). Point each card at
+## the curriculum lesson that lists it, so mastery progression and
+## category-matched distractors resolve instead of warning about unknown ids.
+func _relink_source_cards() -> void:
+	for lid in lesson_order:
+		for cid in lessons[lid].get("cardIds", []):
+			if cards.has(cid):
+				cards[cid]["lessonId"] = lid
 
 
 # --- lookups ---------------------------------------------------------------

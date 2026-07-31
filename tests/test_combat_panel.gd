@@ -52,6 +52,16 @@ func _initialize() -> void:
 	var shell_rect := shell.get_global_rect()
 	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
+	# The reported cut-off: the green HP bar and turn buttons must be pinned below
+	# the scroll area, fully on screen — never scrolled below the fold.
+	var hp_bar: ProgressBar = panel.get("_player_hp_bar")
+	var end_turn_control: Button = end_turn
+	check_true("player HP bar is pinned outside the scroll area",
+		hp_bar != null and not _inside_scroll(hp_bar))
+	check_true("player HP bar is fully visible (%s)" % hp_bar.get_global_rect(),
+		viewport_rect.encloses(hp_bar.get_global_rect()))
+	check_true("turn controls are fully visible",
+		viewport_rect.encloses(end_turn_control.get_global_rect()))
 	check_eq("combat groups item stacks behind one compact action", actions.get_child_count(), 4)
 	check_eq("Basic Attack exposes its real Energy cost",
 		(actions.get_child(0) as Button).text, "Basic · 1E")
@@ -227,6 +237,15 @@ func _popup_item_id(popup: PopupMenu, label: String) -> int:
 		if popup.get_item_text(index) == label:
 			return popup.get_item_id(index)
 	return -1
+
+
+func _inside_scroll(c: Control) -> bool:
+	var n := c.get_parent()
+	while n != null:
+		if n is ScrollContainer:
+			return true
+		n = n.get_parent()
+	return false
 
 
 func _finish() -> void:

@@ -218,11 +218,16 @@ func _recall_eligibility() -> void:
 				LearningProgression.choice_plausible(String(choice)))
 	check_true("mixed pool still builds prompts", saw_prompt)
 
-	# Mastery: a lesson with junk cards completes from its real cards alone.
+	# Mastery: a lesson with junk cards completes from its real cards alone, and
+	# the imported deck drives the same auto-progression chain as native lessons.
+	check_eq("imported cards resolve to their curriculum lesson",
+		String(db.card(junk_id).get("lessonId", "")), "tae-kim-1")
 	var p2 := LearningProfile.new({}, db)
 	var prog2 := LearningProgression.new(p2, db)
 	var first: Dictionary = db.lesson("tae-kim-1")
-	check_true("tae-kim-1 exists for the mastery check", not first.is_empty())
+	var second: Dictionary = db.lesson("tae-kim-2")
+	check_true("grammar chain exists for the mastery check",
+		not first.is_empty() and not second.is_empty())
 	prog2.profile.unlock_lesson("tae-kim-1")
 	var eligible_count := 0
 	for cid in first["cardIds"]:
@@ -234,6 +239,8 @@ func _recall_eligibility() -> void:
 		eligible_count > 0 and eligible_count < first["cardIds"].size())
 	check_true("junk cards do not block lesson mastery",
 		bool(prog2.call("_is_lesson_mastered", first)))
+	check_true("mastering an imported lesson unlocks the next one",
+		p2.card(second["cardIds"][0]).get("unlocked", false))
 
 
 # --- helpers ---------------------------------------------------------------
