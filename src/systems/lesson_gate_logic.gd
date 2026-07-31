@@ -17,8 +17,19 @@ enum Reason { OK, UNKNOWN_LESSON, LOCKED, NEEDS_PRACTICE }
 static func evaluate(profile: LearningProfile, content, lesson_id: String,
 		required_level: int = 1) -> Dictionary:
 	var lesson: Dictionary = content.lesson(lesson_id)
-	var card_ids: Array = lesson.get("cardIds", [])
-	if lesson.is_empty() or card_ids.is_empty():
+	var authored: Array = lesson.get("cardIds", [])
+	if lesson.is_empty() or authored.is_empty():
+		return {"satisfied": false, "reason": Reason.UNKNOWN_LESSON, "total": 0, "ready": 0}
+
+	# Only recall-eligible cards can ever be answered; imported page-number/essay
+	# cards must not make a gate structurally unclearable. A lesson with no
+	# reviewable cards at all reads as "no cards yet".
+	var card_ids: Array = []
+	for id in authored:
+		var def: Dictionary = content.card(id)
+		if not def.is_empty() and LearningProgression.recall_eligible(def):
+			card_ids.append(id)
+	if card_ids.is_empty():
 		return {"satisfied": false, "reason": Reason.UNKNOWN_LESSON, "total": 0, "ready": 0}
 
 	var ready := 0

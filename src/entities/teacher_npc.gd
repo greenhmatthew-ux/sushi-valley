@@ -68,7 +68,7 @@ func current_lesson() -> String:
 	var first := ""
 	for lid in DB.lesson_order:
 		var l: Dictionary = DB.lessons[lid]
-		if String(l.get("category", "")) != teaches_category:
+		if not _category_matches(String(l.get("category", ""))):
 			continue
 		if first.is_empty():
 			first = lid
@@ -78,18 +78,30 @@ func current_lesson() -> String:
 	return first
 
 
-## "Finished" = every card unlocked and answered correctly at least once. Deliberately
-## looser than LearningProgression's mastery check: this only decides when a teacher moves
-## on to the next rung, not when the SRS considers a card learned.
+## "Finished" = every reviewable card unlocked and answered correctly at least once.
+## Deliberately looser than LearningProgression's mastery check: this only decides when
+## a teacher moves on to the next rung, not when the SRS considers a card learned.
+## Non-recallable imported cards (page numbers, essays) can never be answered, so they
+## must not hold the ladder hostage.
 func _lesson_finished(lesson_id: String) -> bool:
 	var ids: Array = DB.lesson(lesson_id).get("cardIds", [])
 	if ids.is_empty():
 		return true
 	for id in ids:
 		var c: Dictionary = Learning.profile.card(id)
+		if not c.is_empty() and not LearningProgression.recall_eligible(c):
+			continue
 		if c.is_empty() or not c.get("unlocked", false) or int(c.get("correctCount", 0)) < 1:
 			return false
 	return true
+
+
+## Prefix rule, mirroring LearningProgression's category pools: a "travel" teacher
+## covers "travel" and every "travel-*" subcategory, so singleton travel lessons
+## (Arrival, Dining, Transit, Stay & Payment) ride the same ladder instead of
+## needing a dedicated NPC each.
+func _category_matches(category: String) -> bool:
+	return category == teaches_category or category.begins_with(teaches_category + "-")
 
 
 func _run_interaction() -> void:

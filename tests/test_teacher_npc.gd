@@ -52,6 +52,7 @@ func _initialize() -> void:
 	await _return_visit_with_nothing_due_does_not_review()
 	await _return_visit_reviews_when_due_again()
 	await _category_teacher_walks_the_ladder()
+	await _junk_cards_do_not_stall_a_teacher()
 
 	save_game.clear()
 	_finish()
@@ -139,6 +140,41 @@ func _return_visit_reviews_when_due_again() -> void:
 	learn_opens.clear()
 	await teacher.interact(null)
 	check_eq("return visit reviews when cards are due", learn_opens.size(), 1)
+
+
+## tae-kim-1 mixes real cards with imported remark cards (answer "14") that can
+## never be answered. The grammar hermit's ladder must advance once the
+## reviewable cards are done, and a "travel" teacher must cover travel-*
+## singleton lessons (Arrival, Dining, Transit, Stay & Payment) by prefix.
+func _junk_cards_do_not_stall_a_teacher() -> void:
+	save_game.clear()
+	learning.reload()
+
+	var hermit: Node = load("res://src/entities/teacher_npc.tscn").instantiate()
+	hermit.teaches_category = "grammar"
+	root.add_child(hermit)
+	await process_frame
+	check_eq("grammar teacher starts on tae-kim-1", hermit.current_lesson(), "tae-kim-1")
+
+	learning.profile.unlock_lesson("tae-kim-1")
+	for id in db.lesson("tae-kim-1")["cardIds"]:
+		var c: Dictionary = learning.profile.card(id)
+		if LearningProgression.recall_eligible(c):
+			learning.progression.grade(c, "good")
+	check_eq("teacher advances once the reviewable cards are done",
+		hermit.current_lesson(), "tae-kim-2")
+	hermit.queue_free()
+
+	var guide: Node = load("res://src/entities/teacher_npc.tscn").instantiate()
+	guide.teaches_category = "travel"
+	root.add_child(guide)
+	await process_frame
+	check_true("a travel teacher covers travel-* singletons",
+		bool(guide.call("_category_matches", "travel-dining")))
+	check_true("but not unrelated categories",
+		not bool(guide.call("_category_matches", "phrases")))
+	guide.queue_free()
+	await process_frame
 
 
 # --- fakes ------------------------------------------------------------------

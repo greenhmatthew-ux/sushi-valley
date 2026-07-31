@@ -19,6 +19,7 @@ func _initialize() -> void:
 	_locked_until_unlocked()
 	_needs_practice_then_satisfied()
 	_required_level_threshold()
+	_junk_cards_cannot_block_a_gate()
 	_flag_helpers()
 
 	db.free()
@@ -81,6 +82,37 @@ func _required_level_threshold() -> void:
 		prog.grade(p.card(id), "good")
 	check_true("3 correct satisfies level 3",
 		LessonGateLogic.evaluate(p, db, "kana-vowels", 3)["satisfied"])
+
+
+## tae-kim-1 mixes real cards with imported page-number remarks (answer "14").
+## The gate threshold must count only the reviewable cards, or it could never open.
+func _junk_cards_cannot_block_a_gate() -> void:
+	var lesson: Dictionary = db.lesson("tae-kim-1")
+	var eligible: Array = []
+	for id in lesson["cardIds"]:
+		if LearningProgression.recall_eligible(db.card(id)):
+			eligible.append(id)
+	check_true("tae-kim-1 mixes real and junk cards",
+		eligible.size() > 0 and eligible.size() < lesson["cardIds"].size())
+
+	var p := LearningProfile.new({}, db)
+	var prog := LearningProgression.new(p, db)
+	p.unlock_lesson("tae-kim-1")
+	var e := LessonGateLogic.evaluate(p, db, "tae-kim-1", 1)
+	check_eq("gate total counts only reviewable cards", e["total"], eligible.size())
+
+	for id in eligible:
+		prog.grade(p.card(id), "good")
+	e = LessonGateLogic.evaluate(p, db, "tae-kim-1", 1)
+	check_true("gate opens once the reviewable cards are ready", e["satisfied"])
+
+	# An all-junk lesson reads as "no cards yet", never as a free pass.
+	var junk_lesson := "anki-kana-full-1"
+	p.unlock_lesson(junk_lesson)
+	e = LessonGateLogic.evaluate(p, db, junk_lesson, 1)
+	check_eq("all-junk lesson -> UNKNOWN_LESSON", e["reason"],
+		LessonGateLogic.Reason.UNKNOWN_LESSON)
+	check_true("all-junk lesson is not satisfied", not e["satisfied"])
 
 
 func _flag_helpers() -> void:
