@@ -130,6 +130,22 @@ func _borrowed_clips_cannot_teach_the_wrong_sound() -> void:
 	check_eq("a kanji card never borrows across a different reading",
 		mismatched.size(), 0)
 
+	# The second rule deliberately crosses written forms: the curriculum writes
+	# みず where a deck writes 水. What must hold there is the opposite — the two
+	# have to read the same aloud, both sides in kana, or the borrowed recording
+	# is simply a different word.
+	var by_reading: Dictionary = manifest.get("linkedByReadingCards", {})
+	var not_heard_alike: Array[String] = []
+	for card_id in by_reading:
+		var card: Dictionary = db.card(card_id)
+		var twin: Dictionary = db.card(String(by_reading[card_id]))
+		var spelled := String(card.get("prompt", "")).strip_edges()
+		var sounded := _kana_reading(String(twin.get("reading", "")))
+		if not _is_all_kana(spelled) or spelled != sounded:
+			not_heard_alike.append(card_id)
+	check_eq("a card borrowed by ear reads exactly the same aloud",
+		not_heard_alike.size(), 0)
+
 
 ## Kana is the first thing a new player studies, and every one of those cards was
 ## silent while the imported kana decks held a recording of the same character.
@@ -148,6 +164,15 @@ func _the_kana_ladder_speaks() -> void:
 	print("  ..   reviewable kana cards with audio: %d / %d" % [voiced, total])
 	check_true("the kana ladder can be heard (%d of %d)" % [voiced, total],
 		total > 0 and voiced == total)
+
+
+## Strip Anki furigana (水[みず] -> みず) and spacing, then keep it only if what is
+## left is kana — the same normalisation the importer applies.
+func _kana_reading(raw: String) -> String:
+	var furigana := RegEx.create_from_string("[㐀-鿿々]+\\[([^\\]]+)\\]")
+	var value := furigana.sub(raw.strip_edges(), "$1", true)
+	value = value.replace(" ", "").replace("　", "")
+	return value if _is_all_kana(value) else ""
 
 
 func _is_all_kana(text: String) -> bool:

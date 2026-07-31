@@ -6,10 +6,11 @@
     "note": "Native-speaker audio shipped inside the .apkg files these cards were imported from, matched to cards by the Anki note id kept on each card. The decks declare no license; used by project decision (see CLAUDE.md, Licensing)."
   },
   "stats": {
-    "cardsMapped": 1365,
+    "cardsMapped": 1368,
     "uniqueClips": 1087,
-    "newlyVoiced": 906,
+    "newlyVoiced": 909,
     "linkedByWrittenForm": 54,
+    "linkedByReading": 3,
     "bytes": 17337412
   },
   "decks": [
@@ -135,6 +136,11 @@
     "phrase-hai": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-2",
     "phrase-iie": "travel-japanese-w-audio-nihongo-fun-easy-2nd-edition-3",
     "phrase-ikura": "japanese-travel-vocabulary-57"
+  },
+  "linkedByReadingCards": {
+    "food-gohan": "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-76",
+    "food-mizu": "kaishi-15k-basic-japanese-vocabulary-198",
+    "phrase-nani": "japanese-travel-vocabulary-47"
   },
   "clips": {
     "deck-9dd749917015717c": {
@@ -9035,6 +9041,8 @@
     "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-97": "deck-ddfcb41bd5d60f94",
     "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-98": "deck-cd24d51433efd47b",
     "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-99": "deck-eac09ad53eef1c45",
+    "food-gohan": "deck-2e8fcab6cb06cb54",
+    "food-mizu": "deck-faf27bba25e4f67d",
     "greet-arigatou": "deck-249f9881719cc032",
     "greet-konnichiwa": "deck-e0cf65f7f9e0e8b2",
     "greet-ohayou": "deck-6d34cdca0db882f9",
@@ -10089,6 +10097,7 @@
     "phrase-hai": "deck-bc18413a21b62710",
     "phrase-iie": "deck-cc5e13346adc871a",
     "phrase-ikura": "deck-7e3319bed82ba88e",
+    "phrase-nani": "deck-cb55cb4576fe919b",
     "travel-arrival-bathroom": "deck-a063c599f0653a96",
     "travel-arrival-repeat": "deck-ada93ac3b8d92d9d",
     "travel-arrival-sumimasen": "deck-c4bdbfd8fdbbff0e",

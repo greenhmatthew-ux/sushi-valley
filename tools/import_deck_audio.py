@@ -121,6 +121,58 @@ def link_twins(all_cards: dict, card_clips: dict) -> int:
     return linked
 
 
+## Anki furigana: 水[みず] / お 願[ねが]い. Only the kana inside the brackets is
+## the reading; the kanji before it is the written form.
+FURIGANA = re.compile(r"[㐀-鿿々]+\[([^\]]+)\]")
+
+
+def kana_reading(card: dict) -> str:
+    """A card's reading reduced to bare kana, or "" when it is not kana at all."""
+    reading = FURIGANA.sub(r"\1", str(card.get("reading", "")).strip())
+    reading = reading.replace(" ", "").replace("　", "")
+    return reading if is_kana(reading) else ""
+
+
+def link_by_reading(all_cards: dict, card_clips: dict) -> dict:
+    """Voice a kana-spelled card from a voiced card that reads the same aloud.
+
+    The authored curriculum writes its words in kana (すし, みず, ごはん) while the
+    imported decks write the same words in kanji (水, ご飯), so matching on the
+    written form finds nothing. What determines pronunciation is the reading, so
+    a card whose kana spelling *is* another card's kana reading is the same
+    spoken word and can share its recording.
+
+    Both sides must be kana for this to mean anything: a romaji reading like
+    `mizu` is not comparable to `みず` without transliterating, and guessing at
+    that is how a card ends up teaching the wrong sound. Homophones (はし for
+    bridge and for chopsticks) share a segmental pronunciation and differ only in
+    pitch accent, which is a limit worth accepting for a beginner curriculum.
+    """
+    voiced_by_reading = {}
+    for card_id, digest in card_clips.items():
+        card = all_cards.get(card_id)
+        if not card:
+            continue
+        reading = kana_reading(card)
+        if reading:
+            voiced_by_reading.setdefault(reading, (digest, card_id))
+
+    linked = {}
+    for card_id, card in all_cards.items():
+        if card_id in card_clips:
+            continue
+        prompt = str(card.get("prompt", "")).strip()
+        if not is_kana(prompt):
+            continue
+        twin = voiced_by_reading.get(prompt)
+        if twin is None:
+            continue
+        digest, twin_id = twin
+        card_clips[card_id] = digest
+        linked[card_id] = twin_id
+    return linked
+
+
 def read_deck(apkg: Path):
     """Return (note id -> [media filenames], media filename -> zip entry name)."""
     with zipfile.ZipFile(apkg) as archive:
@@ -220,6 +272,8 @@ def main() -> int:
             all_cards.setdefault(card["id"], card)
     linked = link_twins(all_cards, card_clips)
     print(f"\n{len(linked)} silent cards linked to an identically-written voiced card")
+    heard_alike = link_by_reading(all_cards, card_clips)
+    print(f"{len(heard_alike)} more linked to a card that reads the same aloud")
 
     clip_ids = {digest: f"deck-{digest[:16]}" for digest in clips}
     manifest = {
@@ -237,12 +291,16 @@ def main() -> int:
             "uniqueClips": len(clips),
             "newlyVoiced": len([c for c in card_clips if c not in audited]),
             "linkedByWrittenForm": len(linked),
+            "linkedByReading": len(heard_alike),
             "bytes": sum(c["bytes"] for c in clips.values()),
         },
         "decks": decks_used,
         # Which card borrowed which card's recording, so the rule that allowed it
         # can be re-checked instead of taken on trust.
         "linkedCards": dict(sorted(linked.items())),
+        # Linked because they read the same aloud, not because they look alike,
+        # so the two rules can be checked separately.
+        "linkedByReadingCards": dict(sorted(heard_alike.items())),
         "clips": {clip_ids[d]: clips[d] for d in clips},
         "cards": {cid: clip_ids[d] for cid, d in sorted(card_clips.items())},
     }
