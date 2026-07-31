@@ -26,6 +26,8 @@ func _initialize() -> void:
 	_manifest_is_consistent()
 	_clips_are_real_loadable_audio()
 	_the_travel_phrasebook_speaks()
+	_borrowed_clips_cannot_teach_the_wrong_sound()
+	_the_kana_ladder_speaks()
 	_audited_clips_still_win()
 
 	db.free()
@@ -96,6 +98,66 @@ func _the_travel_phrasebook_speaks() -> void:
 	print("  ..   travel/phrase cards with audio: %d / %d" % [voiced, total])
 	check_true("nearly every travel/phrase card can be heard (%d of %d)" % [voiced, total],
 		total > 0 and float(voiced) / float(total) >= 0.95)
+
+
+## The authored curriculum was never part of a deck, so it borrows the recording of
+## an identically-written imported card. That is only sound when the written form
+## determines the pronunciation: kana is phonetic, kanji is not (十分 is じゅうぶん
+## or じゅっぷん). A borrowed clip on an ambiguous form would teach the wrong word
+## with total confidence, so the rule is re-checked here rather than trusted.
+func _borrowed_clips_cannot_teach_the_wrong_sound() -> void:
+	var manifest: Dictionary = JSON.parse_string(
+		FileAccess.get_file_as_string(MANIFEST_PATH))
+	var linked: Dictionary = manifest.get("linkedCards", {})
+	check_true("the manifest records what borrowed from what", linked.size() > 0)
+
+	var mismatched: Array[String] = []
+	var different_word: Array[String] = []
+	for card_id in linked:
+		var card: Dictionary = db.card(card_id)
+		var twin: Dictionary = db.card(String(linked[card_id]))
+		var prompt := String(card.get("prompt", "")).strip_edges()
+		if prompt != String(twin.get("prompt", "")).strip_edges():
+			different_word.append(card_id)
+		elif not _is_all_kana(prompt):
+			# Non-phonetic form: the readings themselves have to agree.
+			var mine := String(card.get("reading", "")).strip_edges().to_lower()
+			var theirs := String(twin.get("reading", "")).strip_edges().to_lower()
+			if mine.is_empty() or mine != theirs:
+				mismatched.append(card_id)
+	check_eq("a borrowed clip always comes from the same written word",
+		different_word.size(), 0)
+	check_eq("a kanji card never borrows across a different reading",
+		mismatched.size(), 0)
+
+
+## Kana is the first thing a new player studies, and every one of those cards was
+## silent while the imported kana decks held a recording of the same character.
+func _the_kana_ladder_speaks() -> void:
+	var total := 0
+	var voiced := 0
+	for lid in db.lesson_order:
+		if not String(db.lessons[lid].get("category", "")).begins_with("kana"):
+			continue
+		for cid in db.lessons[lid].get("cardIds", []):
+			if not LearningProgression.recall_eligible(db.card(cid)):
+				continue   # the all-junk duplicate kana deck is not curriculum
+			total += 1
+			if not db.pronunciation_for_card(cid).is_empty():
+				voiced += 1
+	print("  ..   reviewable kana cards with audio: %d / %d" % [voiced, total])
+	check_true("the kana ladder can be heard (%d of %d)" % [voiced, total],
+		total > 0 and voiced == total)
+
+
+func _is_all_kana(text: String) -> bool:
+	if text.is_empty():
+		return false
+	for ch in text:
+		var cp := ch.unicode_at(0)
+		if not ((cp >= 0x3040 and cp <= 0x30FF) or ch == "・" or ch == "ー"):
+			return false
+	return true
 
 
 ## Kanji alive is verified against both the written form and the reading, so it

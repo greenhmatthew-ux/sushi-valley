@@ -87,8 +87,14 @@ func _initialize() -> void:
 	check_true("pronunciation lookup resolves a known card", not pronunciation.is_empty())
 	check_true("pronunciation lookup has a shipped OGG",
 		String(pronunciation.get("path", "")).ends_with(".ogg"))
-	check_true("pronunciation lookup leaves kana silent",
-		db.pronunciation_for_card("kana-a").is_empty())
+	# Kana used to be silent because Kanji alive is a word-level source with no
+	# coverage for a bare あ. It now speaks, using a recording of the same character
+	# from an imported kana deck — but the word-level source still must not be the
+	# one claiming that coverage.
+	var kana_audio: Dictionary = db.pronunciation_for_card("kana-a")
+	check_true("kana is no longer silent", not kana_audio.is_empty())
+	check_true("kana is not voiced by the word-level licensed source",
+		not db.pronunciation_cards.has("kana-a"))
 	check_true("lesson kana-vowels exists", db.lessons.has("kana-vowels"))
 	check_true("lesson kana-vowels has cards",
 		(db.lesson("kana-vowels").get("cardIds", []) as Array).size() > 0)

@@ -88,8 +88,10 @@ for the separate files under `assets/audio/sfx/`.
     `data/learning/pronunciation-audio.json`
 
 - **Imported Anki deck audio** — native-speaker recordings that shipped inside the
-  `.apkg` files these cards were imported from. 1,087 unmodified clips voice 1,311
-  cards, matched to each card by the Anki note id kept at import, and stored under
+  `.apkg` files these cards were imported from. 1,087 unmodified clips voice 1,365
+  cards: 1,311 matched to their own card by the Anki note id kept at import, and 54
+  authored curriculum cards (the kana ladder and the greetings) sharing the recording
+  of an identically written imported card, and stored under
   `assets/audio/japanese/decks/` with per-file checksums in
   `data/learning/deck-audio.json`.
   - **License: unstated.** None of the source decks declares one, and the recordings

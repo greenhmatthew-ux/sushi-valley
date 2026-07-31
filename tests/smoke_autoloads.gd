@@ -40,8 +40,13 @@ func _initialize() -> void:
 			check_true("Audio reports a known pronunciation",
 				audio.has_pronunciation(
 					"core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-2"))
-			check_true("Audio reports unavailable kana as silent",
-				not audio.has_pronunciation("kana-a"))
+			# Kana is voiced now that the imported kana decks supply a recording of
+			# the same character; it was only ever silent because the licensed
+			# word-level source has no entry for a bare あ.
+			check_true("Audio reports kana as playable",
+				audio.has_pronunciation("kana-a"))
+			check_true("Audio reports a card with no recording anywhere as silent",
+				not audio.has_pronunciation("no-such-card-id"))
 
 	if learning == null:
 		_restore_real_save(save)

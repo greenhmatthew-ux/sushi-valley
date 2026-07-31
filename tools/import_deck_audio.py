@@ -71,6 +71,56 @@ SOUND_REF = re.compile(r"\[sound:([^\]]+)\]")
 AUDIO_SUFFIXES = {".mp3", ".ogg", ".wav", ".m4a", ".opus"}
 
 
+def is_kana(text: str) -> bool:
+    """True when every character is kana, so the prompt spells its own sound."""
+    stripped = text.strip()
+    if not stripped:
+        return False
+    return all(0x3040 <= ord(c) <= 0x30FF or c in "・ー" for c in stripped)
+
+
+def link_twins(all_cards: dict, card_clips: dict) -> int:
+    """Give a silent card the clip of an identically-written voiced card.
+
+    The authored kana curriculum — the first thing a new player studies — is
+    silent while the imported kana decks hold a recording of the very same
+    character, because the authored cards were never part of a deck.
+
+    Matching on the written form alone is only safe when that form determines
+    the sound. Kana is phonetic, so あ is always "a" whether the card spells its
+    reading `a` or `あ`. Kanji is not: 十分 is じゅうぶん or じゅっぷん, and handing
+    one card the other's recording would teach the wrong word. So kanji prompts
+    must also agree on a normalised reading, and refuse the link when they do not.
+    """
+    voiced_by_prompt = {}
+    for card_id, digest in card_clips.items():
+        card = all_cards.get(card_id)
+        if not card:
+            continue
+        prompt = str(card.get("prompt", "")).strip()
+        if prompt:
+            voiced_by_prompt.setdefault(
+                prompt, (digest, str(card.get("reading", "")), card_id))
+
+    linked = {}
+    for card_id, card in all_cards.items():
+        if card_id in card_clips:
+            continue
+        prompt = str(card.get("prompt", "")).strip()
+        twin = voiced_by_prompt.get(prompt)
+        if twin is None:
+            continue
+        digest, twin_reading, twin_id = twin
+        if not is_kana(prompt):
+            mine = str(card.get("reading", "")).strip().lower()
+            theirs = twin_reading.strip().lower()
+            if not mine or not theirs or mine != theirs:
+                continue
+        card_clips[card_id] = digest
+        linked[card_id] = twin_id
+    return linked
+
+
 def read_deck(apkg: Path):
     """Return (note id -> [media filenames], media filename -> zip entry name)."""
     with zipfile.ZipFile(apkg) as archive:
@@ -161,6 +211,16 @@ def main() -> int:
                            "archive": filename, "cardsMapped": mapped})
         print(f"  {pack_id[:52]:<54}{mapped:>5} cards")
 
+    # Every card in the project, so the authored curriculum can borrow a recording
+    # of a word an imported deck already voices.
+    all_cards = {c["id"]: c for c in
+                 json.loads((ROOT / "data/learning/cards.json").read_text(encoding="utf-8"))}
+    for pack_path in sorted(SOURCES.glob("*.json")):
+        for card in json.loads(pack_path.read_text(encoding="utf-8"))["cards"]:
+            all_cards.setdefault(card["id"], card)
+    linked = link_twins(all_cards, card_clips)
+    print(f"\n{len(linked)} silent cards linked to an identically-written voiced card")
+
     clip_ids = {digest: f"deck-{digest[:16]}" for digest in clips}
     manifest = {
         "version": MANIFEST_VERSION,
@@ -176,9 +236,13 @@ def main() -> int:
             "cardsMapped": len(card_clips),
             "uniqueClips": len(clips),
             "newlyVoiced": len([c for c in card_clips if c not in audited]),
+            "linkedByWrittenForm": len(linked),
             "bytes": sum(c["bytes"] for c in clips.values()),
         },
         "decks": decks_used,
+        # Which card borrowed which card's recording, so the rule that allowed it
+        # can be re-checked instead of taken on trust.
+        "linkedCards": dict(sorted(linked.items())),
         "clips": {clip_ids[d]: clips[d] for d in clips},
         "cards": {cid: clip_ids[d] for cid, d in sorted(card_clips.items())},
     }
