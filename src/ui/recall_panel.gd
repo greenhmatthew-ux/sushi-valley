@@ -187,6 +187,12 @@ func _on_choice(choice: String, btn: Button) -> void:
 		_feedback.add_theme_color_override("font_color", COL_HINT_STRONG)
 		_feedback.text = "%s = %s%s" % [card.get("prompt", ""), answer_txt,
 			("   (%s)" % meaning) if meaning != "" else ""]
+	# Imported decks glue their usage notes onto the end of the answer, where they
+	# are too long to sit on a rune button. Normalization moves them to `note`, and
+	# the reveal is the one moment the player has room to read them.
+	var note := String(card.get("note", ""))
+	if not note.is_empty():
+		_feedback.text += "\n%s" % note
 
 	# Replay the card's sourced recording after any answer, win or miss.
 	Audio.play_pronunciation(String(card.get("id", "")))

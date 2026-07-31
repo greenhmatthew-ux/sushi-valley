@@ -38,6 +38,34 @@ Future: katakana signs, numbers/prices, directions/places, nature/verbs, signs/w
   The Tall House library is the first study point for Arrival Essentials. Run
   `npm.cmd run learning:validate` whenever its source data or lesson assignments change.
 
+## Import normalization (2026-07)
+
+An Anki export is not automatically usable card data, and a badly mapped field is
+invisible until a player hits it. **Travel Japanese w Audio (Nihongo Fun & Easy 2nd
+Edition)** arrived with the romaji glued onto the end of every Japanese prompt
+(`はいhai`, `英語は話せますか。Eigo wa hanasemasu ka.`) and `reading` unset on all 100
+cards, which broke two things at once: prompts rendered as broken Japanese, and
+`recall_panel`'s hint scaffolding — reading after two misses, reading + meaning
+after three — had nothing to show for the whole travel phrasebook.
+
+`tools/normalize_travel_deck.py` splits those fields apart in place (idempotent;
+re-run it after any re-import) and moves the deck's glued usage notes to a `note`
+field rather than deleting them; the recall reveal shows `note` when present.
+Nothing is authored — every character written back was already in the deck, in the
+wrong field. `tests/test_card_content.gd` asserts the result, since data fixes are
+exactly what a silent re-import undoes.
+
+Known remaining import defects, both out of scope for that script:
+
+- **Japanese Common Words and Phrases**: 13 cards glue an explanation onto the
+  answer (`to think, believe— believe in the sense of...`). They exceed the recall
+  length limit, so they are filtered out of prompts and distractors and are
+  currently unreachable content.
+- **Tae Kim's Grammar Guide**: the import mapped fields to the wrong roles —
+  `prompt` holds an English study note, `reading` holds the Japanese, and `answer`
+  holds `romaji: meaning`. The two grammar lessons ask the player to read a
+  paragraph and pick a gloss. Needs a field remap, not a split.
+
 ## Reviewed Source Queue
 - **Asking for Directions - Japanese language islands**, AnkiWeb deck `374921815`:
   127 direction and transit production cards. Candidate for the route/gate slice after its actual
