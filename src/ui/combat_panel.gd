@@ -485,14 +485,20 @@ func _rune_button(rune: String) -> Button:
 	b.text = rune
 	b.custom_minimum_size = Vector2(190, 44)
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	# A choice longer than the button clips instead of stretching the panel past
-	# the viewport; imported decks hold a few long phrase answers.
-	b.clip_text = true
+	# This used to clip, so a long answer was shown with its end cut off — the
+	# player had to choose between runes they could not fully read. It now wraps
+	# and steps its size down instead, which keeps the whole answer on screen
+	# without stretching the panel past the viewport.
+	b.clip_text = false
+	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	b.focus_mode = Control.FOCUS_ALL
-	b.add_theme_font_size_override("font_size", 30)
+	b.add_theme_font_size_override("font_size", UiTheme.fit_font_size(rune, 30))
 	b.add_theme_stylebox_override("normal", _button_style(COL_BTN, COL_BTN_BORDER))
 	b.add_theme_stylebox_override("hover", _button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	b.add_theme_stylebox_override("pressed", _button_style(COL_BTN, COL_BORDER))
+	# Styleboxes are set above, so the button can now measure how tall it has to be
+	# to show the whole answer wrapped into its own width.
+	b.custom_minimum_size.y = maxf(44.0, UiTheme.wrapped_height(b, rune, 190.0))
 	b.pressed.connect(_on_rune.bind(rune, b))
 	return b
 
@@ -543,7 +549,9 @@ func _build() -> void:
 	enemy_row.add_theme_constant_override("separation", 10)
 	_enemy_label = _label(17, COL_BORDER)
 	_enemy_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_enemy_label.clip_text = true
+	# An enemy's name and its active effects are information the player is meant to
+	# act on, so let the line wrap rather than truncating whatever runs long.
+	_enemy_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	enemy_row.add_child(_enemy_label)
 	_flow_label = _label(13, COL_GOOD)
 	enemy_row.add_child(_flow_label)

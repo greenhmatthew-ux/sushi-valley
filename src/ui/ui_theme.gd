@@ -53,6 +53,46 @@ const FONT_META := 12
 ## Japanese needs to be bigger than body text to stay legible at 16px-art scale.
 const FONT_JAPANESE := 30
 
+## Answer text is content, not layout: a single kana rune and a nine-word English
+## phrase both have to be fully readable in the same button. Rather than clipping
+## the long one — which hides the very thing the player is being asked to choose —
+## step the size down as the text grows, so it wraps into the same box instead of
+## being cut off. Only the size changes; nothing is ever truncated.
+## Height `control` needs to show `text` wrapped into `width`, including whatever
+## padding its own stylebox adds.
+##
+## A wrapped Label or Button reports a *single* line as its minimum size, because
+## it cannot know the width a container will finally give it. The container then
+## hands it one line of space and everything after the first line is cut off. So
+## anything that wraps has to measure itself up front and ask for the room.
+static func wrapped_height(control: Control, text: String, width: float) -> float:
+	var font := control.get_theme_font("font")
+	if font == null or text.strip_edges().is_empty():
+		return 0.0
+	var pad_x := 0.0
+	var pad_y := 0.0
+	var box := control.get_theme_stylebox("normal")
+	if box != null:
+		pad_x = box.get_margin(SIDE_LEFT) + box.get_margin(SIDE_RIGHT)
+		pad_y = box.get_margin(SIDE_TOP) + box.get_margin(SIDE_BOTTOM)
+	var size := control.get_theme_font_size("font_size")
+	var inner := maxf(width - pad_x, 1.0)
+	return font.get_multiline_string_size(
+		text, HORIZONTAL_ALIGNMENT_CENTER, inner, size).y + pad_y
+
+
+static func fit_font_size(text: String, base: int) -> int:
+	var length := text.strip_edges().length()
+	if length <= 4:
+		return base
+	if length <= 8:
+		return maxi(FONT_SECTION, int(round(base * 0.78)))
+	if length <= 14:
+		return maxi(FONT_BODY, int(round(base * 0.62)))
+	if length <= 24:
+		return maxi(FONT_META, int(round(base * 0.5)))
+	return maxi(FONT_META - 1, int(round(base * 0.42)))
+
 # --- motion (seconds) -----------------------------------------------------
 const MOTION_PRESS := 0.07
 const MOTION_FOCUS := 0.08

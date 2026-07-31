@@ -156,7 +156,10 @@ func _render(prompt: Dictionary) -> void:
 func _make_choice_button(choice: String) -> Button:
 	var btn := Button.new()
 	btn.text = choice
-	btn.clip_text = true
+	# Never clip an answer: the player cannot choose between options they can only
+	# half read. Long choices wrap and step down a size instead.
+	btn.clip_text = false
+	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	btn.custom_minimum_size = Vector2(200, 46)
 	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
 	# is no longer mouse-only (the project requires keyboard AND controller to work).
@@ -164,7 +167,8 @@ func _make_choice_button(choice: String) -> Button:
 	btn.add_theme_stylebox_override("normal", _button_style(COL_BTN, COL_BTN_BORDER))
 	btn.add_theme_stylebox_override("hover", _button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	btn.add_theme_stylebox_override("pressed", _button_style(COL_BTN, COL_BORDER))
-	btn.add_theme_font_size_override("font_size", 18)
+	btn.add_theme_font_size_override("font_size", UiTheme.fit_font_size(choice, 18))
+	btn.custom_minimum_size.y = maxf(46.0, UiTheme.wrapped_height(btn, choice, 200.0))
 	btn.pressed.connect(_on_choice.bind(choice, btn))
 	return btn
 

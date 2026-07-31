@@ -61,6 +61,10 @@ func _initialize() -> void:
 
 	# End-to-end persistence through the real autoloads.
 	save.clear()
+	# Clearing the file does not clear the profile already in memory, and the exact
+	# XP total below only means anything from a known start. This used to pass only
+	# because whichever suite ran before happened to leave XP at zero.
+	learning.profile.data["stats"]["xp"] = 0
 	learning.profile.unlock_lesson("kana-vowels")
 	learning.set_flag("autoload_smoke_flag")
 	learning.progression.answer(learning.profile.card("kana-a"), "a")

@@ -128,13 +128,29 @@ func _lesson_header(lesson: Dictionary, learned: int, total: int, due: int) -> C
 
 ## One word: the Japanese, plus its meaning when English is showing. A card the schedule
 ## wants back is tinted so "what should I go practise" is answerable at a glance.
+## Chip width. Three of these plus separators must fit inside the notebook panel,
+## which is anchored to 80% of a 640px viewport less its margins.
+const CHIP_WIDTH := 138
+
+
 func _card_chip(card: Dictionary, show_en: bool) -> Control:
 	var box := VBoxContainer.new()
-	box.custom_minimum_size = Vector2(150, 0)
+	# Three of these plus separators have to fit the panel's own width. At 150 they
+	# did not, so the grid forced the whole notebook 200px wider than the screen and
+	# the right-hand column ran off the edge.
+	box.custom_minimum_size = Vector2(CHIP_WIDTH, 0)
 	var card_id := String(card.get("id", ""))
 
 	var ja := _label(17, COL_DUE if Srs.is_due(card) else COL_JA)
 	ja.text = String(card.get("prompt", ""))
+	# A full sentence card (英語が話せる人はいますか。) is far wider than a chip. Wrapping
+	# keeps it whole and stops one long entry from stretching the entire panel.
+	ja.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	# A wrapped label reports the height of a *single* line as its minimum, because it
+	# does not know its final width while the grid is still deciding one. The grid then
+	# hands it one line of space and the rest of the word is cut off, so measure the
+	# wrap at the width this chip is guaranteed and ask for that height outright.
+	ja.custom_minimum_size.y = UiTheme.wrapped_height(ja, ja.text, float(CHIP_WIDTH))
 	box.add_child(ja)
 
 	if show_en:
