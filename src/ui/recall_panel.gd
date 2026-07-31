@@ -40,6 +40,13 @@ var _focus_lesson := ""
 var _allow_practice := false
 var _answered := false
 var _current: Dictionary = {}
+## How often a card that has already been answered correctly is asked by ear
+## instead of by sight. Kept well below half: the written form is still the
+## primary thing being taught, and a session that is mostly audio would stop
+## training recognition of the script.
+const LISTENING_CHANCE := 0.35
+var _listening := false
+var _rng := RandomNumberGenerator.new()
 
 var _root: Control
 var _heading: Label
@@ -100,7 +107,6 @@ func _render(prompt: Dictionary) -> void:
 		_heading.text = "Quick recall" if prompt["mode"] == "due" else "Notebook practice"
 	_heading.add_theme_color_override("font_color", COL_HEADING)
 
-	_question.text = String(prompt["question"])
 	_hint.text = ""
 	_feedback.text = ""
 	_continue_btn.hide()
@@ -111,6 +117,18 @@ func _render(prompt: Dictionary) -> void:
 	Audio.stop_pronunciation()
 	if has_audio:
 		Audio.play_pronunciation(card_id)
+
+	# Listening round: the written form is withheld and only the recording is given.
+	# Reading a word and catching it spoken are different skills, and the game only
+	# ever trained the first. Withheld only after the card has been answered
+	# correctly at least once, so a word is always seen before it is heard blind.
+	_listening = has_audio \
+		and int(prompt["card"].get("correctCount", 0)) >= 1 \
+		and _rng.randf() < LISTENING_CHANCE
+	_question.text = "Listen" if _listening else String(prompt["question"])
+	if _listening:
+		_hint.text = "Which word did you hear?"
+		_hint.add_theme_color_override("font_color", COL_HINT)
 
 	# Adaptive scaffolding: struggling players get more context up front.
 	var scaffold := _scaffold_level()
@@ -176,6 +194,11 @@ func _on_choice(choice: String, btn: Button) -> void:
 		for other in _choices_box.get_children():
 			if other is Button and (other as Button).text == String(_current["answer"]):
 				other.add_theme_stylebox_override("normal", _button_style(COL_CORRECT, COL_BORDER))
+
+	# A listening round withheld the writing; show it now, while the sound is still
+	# in the player's head. That pairing is the whole point of asking by ear.
+	if _listening:
+		_question.text = String(card.get("prompt", ""))
 
 	var reading := String(card.get("reading", ""))
 	var answer_txt := reading if reading != "" else String(card.get("answer", ""))
