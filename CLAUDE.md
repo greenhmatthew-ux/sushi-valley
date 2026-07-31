@@ -59,11 +59,21 @@ Always provide: files changed · what changed · how to test manually · risks o
   scene tree, so it stays headless-testable.
 - Use `TileMapLayer` (not the removed `TileMap`) and terrain sets for autotiling.
 
+## Licensing (Matthew's call, 2026-07-30)
+**Any license may be used for any aspect of this project.** Licensing is Matthew's
+decision, not the assistant's. Do not ask for permission, stall a slice, or decline
+work on licensing grounds — that includes art, audio, fonts, and imported deck media
+whose rights are unclear, unstated, or restrictive.
+
+`CREDITS.md` and `docs/LICENSE_AUDIT.md` stay accurate, but they are a *record of what
+was used and where it came from*, not a gate on using it. State provenance honestly,
+including "unstated" or "unknown", and move on.
+
 ## Art And Map Rules
 - 16px native tile art, rendered at zoom 2. Texture filter is Nearest project-wide;
   never override it per-texture.
 - The candidate art pool is the entire `D:\Asset Library` tree. Search broadly, then
-  inspect, license, and import only the best-fitting asset. See `docs/ASSET_LIBRARY_GUIDE.md`
+  inspect and import the best-fitting asset. See `docs/ASSET_LIBRARY_GUIDE.md`
   and keep `CREDITS.md` / `docs/LICENSE_AUDIT.md` current.
 - Never use full transparent texture bounds as prop collision. Render the full sprite and
   set the collision shape to the absolute solid footprint.

@@ -87,8 +87,21 @@ for the separate files under `assets/audio/sfx/`.
     `assets/audio/japanese/kanji_alive/NOTICE.md` and
     `data/learning/pronunciation-audio.json`
 
-Every imported Anki deck remains `mediaPolicy: excluded`. Its audio was not copied into
-this project: availability inside an `.apkg` is not evidence of redistribution rights.
+- **Imported Anki deck audio** — native-speaker recordings that shipped inside the
+  `.apkg` files these cards were imported from. 1,087 unmodified clips voice 1,311
+  cards, matched to each card by the Anki note id kept at import, and stored under
+  `assets/audio/japanese/decks/` with per-file checksums in
+  `data/learning/deck-audio.json`.
+  - **License: unstated.** None of the source decks declares one, and the recordings
+    are believed to originate from published courses (for example, Nihongo Fun & Easy
+    for the travel phrasebook, and JapanesePod101 for the Core 2k/6k vocabulary).
+    No permission has been granted or verified. They are used by project decision —
+    see the Licensing section of `CLAUDE.md`.
+  - Decks used, with their card counts, are listed in `data/learning/deck-audio.json`.
+  - Re-importable from the original `.apkg` files with `tools/import_deck_audio.py`.
+
+The packs' card *text* stays `mediaPolicy: excluded` in its metadata, which now records
+only that the media is not part of the JSON pack itself.
 Kanji alive is an independently licensed pronunciation source joined to approved cards
 only after written-form and reading validation. A card stays silent when that validation
 is ambiguous or fails.

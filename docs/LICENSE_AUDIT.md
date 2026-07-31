@@ -20,6 +20,7 @@ doing that.
 | Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | **Removed 2026-07.** No current runtime references remain. |
 | Kyrise's 16x16 RPG Icon Pack V1.3 | CC BY 4.0 | In use (item icons). Attribution required. |
 | Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
+| Imported Anki deck audio | **Unstated by every source deck** | In use by project decision (see `CLAUDE.md` → Licensing). 1,087 clips voicing 1,311 cards, lifted from the `.apkg` files the cards came from and matched by Anki note id. Believed to originate from published courses (Nihongo Fun & Easy, JapanesePod101); no permission granted or verified. Recorded here for accuracy, not as a gate. |
 | Mana Seed RPG Starter Pack | Free, but explicitly **forbids any use alongside generative AI** (including AI-assisted code) | **Removed 2026-07** — incompatible with an AI-assisted dev workflow. Do not reimport. |
 
 The Bamboo Breeze Tonic icon is the unmodified 16x16 source

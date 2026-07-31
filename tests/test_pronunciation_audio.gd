@@ -231,10 +231,16 @@ func _validate_db_contract() -> void:
 		String(pronunciation.get("prompt", "")), String(KNOWN_MATCHED[matched_id]))
 	check_true("DB lookup returns an approved path",
 		String(pronunciation.get("path", "")).begins_with(APPROVED_AUDIO_DIR))
-	check_true("DB lookup leaves intentional mismatch empty",
-		_db.pronunciation_for_card(
-			"core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-142"
-		).is_empty())
+	# 十分 reads じゅうぶん on the card and じゅっぷん on the Kanji alive clip, so the
+	# matcher refuses it. That refusal still has to hold now that deck audio exists
+	# as a fallback: the card may be voiced by its own deck recording, but it must
+	# never be handed the licensed clip that says the other reading.
+	var mismatch_id := "core-2k6k-optimized-japanese-vocabulary-with-sound-part-01-142"
+	check_true("intentional mismatch stays out of the audited mapping",
+		not _db.pronunciation_cards.has(mismatch_id))
+	var fallback: Dictionary = _db.pronunciation_for_card(mismatch_id)
+	check_true("intentional mismatch is never given the licensed clip",
+		not String(fallback.get("path", "")).begins_with(APPROVED_AUDIO_DIR))
 
 
 func _normalise_reading(raw: String) -> String:

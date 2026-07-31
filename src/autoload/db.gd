@@ -12,6 +12,9 @@ extends Node
 const GAME_DIR := "res://data/game/"
 const LEARNING_DIR := "res://data/learning/"
 const PRONUNCIATION_AUDIO_FILE := LEARNING_DIR + "pronunciation-audio.json"
+## Native-speaker audio lifted from the .apkg files the cards were imported from,
+## kept in its own manifest so the separately audited Kanji alive one stays pinned.
+const DECK_AUDIO_FILE := LEARNING_DIR + "deck-audio.json"
 
 # --- game content: id -> Dictionary ---
 var items: Dictionary = {}
@@ -45,6 +48,8 @@ var pronunciation_clips: Dictionary = {}   # clip id -> licensed audio definitio
 var pronunciation_cards: Dictionary = {}   # card id -> clip id
 var pronunciation_source: Dictionary = {}
 var pronunciation_stats: Dictionary = {}
+var deck_audio_clips: Dictionary = {}   # clip id -> deck audio definition
+var deck_audio_cards: Dictionary = {}   # card id -> clip id
 
 ## Anki decks imported into the card pool. Each pack carries a `source` block that
 ## is stamped onto every card for attribution — the TS `extractSourceCards()` rule.
@@ -125,6 +130,10 @@ func _load_pronunciation_audio() -> void:
 	pronunciation_source = pronunciation_audio.get("source", {})
 	pronunciation_stats = pronunciation_audio.get("stats", {})
 
+	var deck_audio := _read_dict(DECK_AUDIO_FILE)
+	deck_audio_clips = deck_audio.get("clips", {})
+	deck_audio_cards = deck_audio.get("cards", {})
+
 
 ## Flatten one Anki source pack into the card pool, stamping deck attribution onto
 ## each card. `sourceNoteId` becomes `source.noteId`, matching the TS shape so the
@@ -191,12 +200,18 @@ func lesson(id: String) -> Dictionary:
 
 
 ## Licensed recorded audio is optional per card, so a miss is expected and silent.
+## The audited Kanji alive recording for a card, or the card's own deck recording
+## when there is none. Kanji alive wins because its match is verified against both
+## the written form and the reading; the deck clip is whatever shipped on that
+## exact Anki note, which is the only audio most phrase cards will ever have.
 func pronunciation_for_card(card_id: String) -> Dictionary:
 	var clip_id := String(pronunciation_cards.get(card_id, ""))
-	if clip_id.is_empty():
+	if not clip_id.is_empty():
+		return pronunciation_clips.get(clip_id, {})
+	var deck_clip_id := String(deck_audio_cards.get(card_id, ""))
+	if deck_clip_id.is_empty():
 		return {}
-	var clip: Dictionary = pronunciation_clips.get(clip_id, {})
-	return clip
+	return deck_audio_clips.get(deck_clip_id, {})
 
 
 func _lookup(table: Dictionary, id: String, kind: String) -> Dictionary:
