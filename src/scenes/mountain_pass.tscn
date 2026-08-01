@@ -1,0 +1,269 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/mountain_pass.gd" id="1_pass"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/ninja_relief.png" id="2_relief"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="6_prop"]
+[ext_resource type="Texture2D" path="res://assets/props/rock.png" id="7_rock"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_green.png" id="8_tree"]
+[ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="9_enemy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_lizard.png" id="10_lizard"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_bat.png" id="11_bat"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_mole.png" id="12_mole"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_bear.png" id="13_bear"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_tengu.png" id="14_tengu"]
+[ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="15_quest"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager2.png" id="16_vil2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="17_woman"]
+[ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="18_pickup"]
+[ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="19_study"]
+[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="20_ui"]
+
+[sub_resource type="TileSetAtlasSource" id="atlas_relief"]
+texture = ExtResource("2_relief")
+2:6/0 = 0
+
+[sub_resource type="TileSet" id="ts_relief"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("atlas_relief")
+
+[node name="MountainPass" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_pass")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("ts_relief")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(352, 456)
+
+[node name="PassEntry" type="Marker2D" parent="Entities"]
+position = Vector2(352, 456)
+script = ExtResource("5_spawn")
+spawn_id = "pass_entry"
+
+[node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(352, 476)
+target_scene = "res://src/scenes/wilds.tscn"
+target_spawn = "wilds_north"
+auto_enter = true
+
+[node name="RockA" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(120, 360)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockB" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(232, 296)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockC" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(456, 408)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockD" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(568, 328)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockE" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(632, 200)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockF" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(88, 264)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="RockG" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(408, 168)
+texture = ExtResource("7_rock")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
+
+[node name="PineA" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(56, 424)
+texture = ExtResource("8_tree")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="PineB" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(184, 448)
+texture = ExtResource("8_tree")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="PineC" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(536, 456)
+texture = ExtResource("8_tree")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="Lizard1" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(296, 400)
+behavior = 2
+enemy_id = "lizard"
+max_hp = 34
+enemy_def = 5
+enemy_atk = 12
+sprite_sheet = ExtResource("10_lizard")
+coin_reward = 12
+coin_variance = 4
+
+[node name="Lizard2" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(392, 320)
+behavior = 2
+enemy_id = "lizard"
+max_hp = 34
+enemy_def = 5
+enemy_atk = 12
+sprite_sheet = ExtResource("10_lizard")
+coin_reward = 12
+coin_variance = 4
+
+[node name="Lizard3" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(216, 232)
+behavior = 2
+enemy_id = "lizard"
+max_hp = 34
+enemy_def = 5
+enemy_atk = 12
+sprite_sheet = ExtResource("10_lizard")
+coin_reward = 12
+coin_variance = 4
+
+[node name="Bat1" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(480, 344)
+behavior = 2
+enemy_id = "bat"
+max_hp = 22
+enemy_def = 3
+enemy_atk = 9
+move_speed = 54.0
+sprite_sheet = ExtResource("11_bat")
+coin_reward = 8
+coin_variance = 3
+
+[node name="Bat2" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(600, 264)
+behavior = 2
+enemy_id = "bat"
+max_hp = 22
+enemy_def = 3
+enemy_atk = 9
+move_speed = 54.0
+sprite_sheet = ExtResource("11_bat")
+coin_reward = 8
+coin_variance = 3
+
+[node name="Mole1" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(160, 328)
+behavior = 2
+enemy_id = "mole"
+max_hp = 38
+enemy_def = 6
+enemy_atk = 13
+sprite_sheet = ExtResource("12_mole")
+coin_reward = 14
+coin_variance = 5
+
+[node name="Mole2" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(344, 200)
+behavior = 2
+enemy_id = "mole"
+max_hp = 38
+enemy_def = 6
+enemy_atk = 13
+sprite_sheet = ExtResource("12_mole")
+coin_reward = 14
+coin_variance = 5
+
+[node name="Bear1" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(504, 200)
+behavior = 2
+enemy_id = "bear"
+max_hp = 56
+enemy_def = 8
+enemy_atk = 20
+detect_radius = 112.0
+sprite_sheet = ExtResource("13_bear")
+coin_reward = 24
+coin_variance = 8
+
+[node name="Tengu1" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(464, 120)
+behavior = 2
+enemy_id = "tengu"
+max_hp = 48
+enemy_def = 7
+enemy_atk = 17
+detect_radius = 112.0
+move_speed = 50.0
+sprite_sheet = ExtResource("14_tengu")
+coin_reward = 20
+coin_variance = 6
+
+[node name="Tengu2" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(584, 104)
+behavior = 2
+enemy_id = "tengu"
+max_hp = 48
+enemy_def = 7
+enemy_atk = 17
+detect_radius = 112.0
+move_speed = 50.0
+sprite_sheet = ExtResource("14_tengu")
+coin_reward = 20
+coin_variance = 6
+
+[node name="LookoutKeeper" parent="Entities" instance=ExtResource("15_quest")]
+position = Vector2(104, 216)
+quest_id = "pass_scree_hides"
+speaker = "Tomas"
+greeting_card = "greet-konnichiwa"
+sprite_sheet = ExtResource("16_vil2")
+
+[node name="Windwatcher" parent="Entities" instance=ExtResource("15_quest")]
+position = Vector2(152, 240)
+quest_id = "pass_tengu_fan"
+speaker = "Rin"
+greeting_card = "greet-ohayou"
+sprite_sheet = ExtResource("17_woman")
+
+[node name="LookoutStudy" parent="Entities" instance=ExtResource("19_study")]
+position = Vector2(120, 256)
+
+[node name="MoonwoodCache" parent="Entities" instance=ExtResource("18_pickup")]
+position = Vector2(72, 184)
+item_id = "moonwood"
+qty = 1
+pickup_id = "pass_moonwood"
+
+[node name="SilkCache" parent="Entities" instance=ExtResource("18_pickup")]
+position = Vector2(624, 152)
+item_id = "spider_silk"
+qty = 2
+pickup_id = "pass_spider_silk"
+
+[node name="ShootCache" parent="Entities" instance=ExtResource("18_pickup")]
+position = Vector2(264, 440)
+item_id = "bamboo_shoot"
+qty = 2
+pickup_id = "pass_bamboo_shoot"
+
+[node name="UILayer" parent="." instance=ExtResource("20_ui")]

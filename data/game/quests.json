@@ -207,5 +207,41 @@
     "offerLines": ["The woods punish heavy feet. I can fix that.", "Bring me one striped tail from the Sly Raccoon east of the outpost. It always leaves one behind."],
     "progressLines": ["One raccoon tail — {progress} of {goal}. Follow the east trail from the outpost; the Sly Raccoon always drops one."],
     "turnInLines": ["Strong fibers, and clean. These sandals are yours — step lightly."]
+  },
+  {
+    "id": "pass_scree_hides",
+    "title": "Footing on Scree",
+    "giver": "Tomas",
+    "desc": "Tomas keeps the Mountain Pass lookout. Loose stone shreds a climber's boots, and Rock Lizards shed hide tough enough to patch them. Three should do.",
+    "goal": { "item": "lizard_hide", "qty": 3 },
+    "reward": { "coins": 70, "items": [{ "id": "iron_ingot", "qty": 2 }] },
+    "offerLines": [
+      "You came up the pass in those boots? Brave.",
+      "Rock Lizards sun themselves on the scree. Bring me three hides and I will patch you properly — and pay for the trouble."
+    ],
+    "progressLines": [
+      "Lizard hide — {progress} of {goal}. They bask on the open stone, off the trail."
+    ],
+    "turnInLines": [
+      "Thick, dry, no rot. That is the stuff. Here — iron for your trouble, and go see what the forge makes of it."
+    ]
+  },
+  {
+    "id": "pass_tengu_fan",
+    "title": "What the Wind Carries",
+    "giver": "Rin",
+    "desc": "A Mountain Tengu works the high switchbacks, and its fan is what stirs the gales through the pass. Rin, who watches the wind from the lookout, wants one — partly for the quiet, partly because a smith upriver pays well for them.",
+    "goal": { "item": "tengu_fan", "qty": 1 },
+    "reward": { "coins": 160, "items": [{ "id": "tempered_iron", "qty": 1 }] },
+    "offerLines": [
+      "Hear that? That is not weather. That is a tengu, up past the bend.",
+      "Take its fan and the pass goes quiet again. One is all I ask — and I would not ask it of a beginner."
+    ],
+    "progressLines": [
+      "The tengu still has its fan — {progress} of {goal}. It keeps to the high stone, north of the lookout."
+    ],
+    "turnInLines": [
+      "You actually got it. Listen — nothing but wind now. Take the iron; you have earned better gear than you are wearing."
+    ]
   }
 ]

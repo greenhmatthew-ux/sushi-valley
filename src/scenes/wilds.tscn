@@ -64,6 +64,17 @@ target_scene = "res://src/scenes/world.tscn"
 uses_return_spawn = true
 auto_enter = true
 
+[node name="WildsNorth" type="Marker2D" parent="Entities"]
+position = Vector2(320, 56)
+script = ExtResource("5_spawn")
+spawn_id = "wilds_north"
+
+[node name="PassDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(320, 24)
+target_scene = "res://src/scenes/mountain_pass.tscn"
+target_spawn = "pass_entry"
+auto_enter = true
+
 [node name="Tree0" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(56, 72)
 texture = ExtResource("7_tg")

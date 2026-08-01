@@ -52,6 +52,17 @@ The first follow-up Talent tier uses four more unmodified Ninja Adventure source
 | Glyph Storm | `assets/icons/abilities/glyph_storm.png` | `Ui/Skill Icon/Spell/BookThunder.png` |
 | Fortress Wall | `assets/icons/abilities/fortress.png` | `Ui/Skill Icon/Items & Weapon/Guard.png` |
 
+The Mountain Pass region uses six more unmodified Ninja Adventure sources, all CC0 1.0:
+
+| Runtime asset | Original source |
+| --- | --- |
+| `assets/tilesets/ninja_relief.png` | `Backgrounds/Tilesets/TilesetRelief.png` |
+| `assets/sprites/enemy_lizard.png` | `Actor/Monster/Lizard/Lizard.png` |
+| `assets/sprites/enemy_mole.png` | `Actor/Monster/Mole/Mole.png` |
+| `assets/sprites/enemy_bear.png` | `Actor/Monster/Bear/SpriteSheet.png` |
+| `assets/sprites/enemy_bat.png` | `Actor/Monster/BlueBat/SpriteSheet.png` |
+| `assets/sprites/enemy_tengu.png` | `Actor/Character/Tengu/SpriteSheet.png` |
+
 The ingredient-cache sprite is the unmodified two-frame Ninja Adventure source
 `Items/Treasure/LittleTreasureChest.png`, copied to
 `assets/objects/ninja_little_treasure_chest.png`. Runtime uses its closed 16x16 frame.

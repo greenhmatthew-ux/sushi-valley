@@ -60,6 +60,7 @@ func _check_combat(bus: Node, db: Node) -> void:
 	await process_frame
 	await process_frame
 	_audit(panel, "combat")
+	_choices_are_all_on_screen(panel, "combat")
 
 	# The name row still has to survive the wordiest enemy in the game plus a full
 	# status suffix, so drive it there directly rather than hoping a fight picks it.
@@ -90,6 +91,7 @@ func _check_recall(bus: Node) -> void:
 	await process_frame
 	await process_frame
 	_audit(panel, "recall")
+	_choices_are_all_on_screen(panel, "recall")
 	var choices: Control = panel.get("_choices_box")
 	if choices != null and choices.get_child_count() > 0:
 		(choices.get_child(0) as Button).pressed.emit()
@@ -133,6 +135,42 @@ func _longest_enemy_name(db: Node) -> String:
 		if enemy_name.length() > best.length():
 			best = enemy_name
 	return best
+
+
+## An answer you cannot see is one you cannot pick. `_audit` deliberately excuses
+## anything inside a ScrollContainer, since scrolled content legitimately extends
+## past its viewport — but that excuse must not cover the choices themselves. This
+## caught the combat rune grid, whose bottom row sat below the scroll fold.
+func _choices_are_all_on_screen(panel: Node, where: String) -> void:
+	var box := panel.get("_choices_box") as Control
+	if box == null or box.get_child_count() == 0:
+		check_true("%s: has choices to check" % where, false)
+		return
+	var viewport := root.get_viewport().get_visible_rect()
+	var hidden: Array[String] = []
+	for child in box.get_children():
+		var button := child as Button
+		if button == null:
+			continue
+		var rect := button.get_global_rect()
+		# Clipped by a scroll region, or off the screen entirely.
+		var scroll := _scroll_ancestor(button)
+		var clipped_away := scroll != null and not scroll.get_global_rect().encloses(rect)
+		if clipped_away or not viewport.encloses(rect):
+			hidden.append("%s %s" % [button.text.substr(0, 12), rect])
+	check_true("%s: every answer is fully visible without scrolling (%s)"
+		% [where, _sample(hidden)], hidden.is_empty())
+
+
+## The nearest scroll ancestor, whose visible window is what actually clips a
+## button, or null when nothing scrolls above it.
+func _scroll_ancestor(control: Control) -> ScrollContainer:
+	var node := control.get_parent()
+	while node != null:
+		if node is ScrollContainer:
+			return node as ScrollContainer
+		node = node.get_parent()
+	return null
 
 
 ## Walk everything currently on screen and measure it.

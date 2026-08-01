@@ -594,13 +594,18 @@ func _build() -> void:
 	_choices_box.add_theme_constant_override("h_separation", 10)
 	_choices_box.add_theme_constant_override("v_separation", 8)
 	_choices_box.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	vbox.add_child(_choices_box)
+	# Pinned outside the scroll, alongside the HP bar and turn buttons. These four
+	# runes are the question itself: inside the scroll area the bottom row fell below
+	# the fold on a full-height round, so the player was choosing between answers
+	# they could only see half of. Everything above them may scroll; these may not.
+	outer.add_child(_choices_box)
 
 	_feedback = _label(14, COL_GOOD)
+	_feedback.name = "CombatFeedback"
 	_feedback.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_feedback.custom_minimum_size = Vector2(0, 28)
-	vbox.add_child(_feedback)
+	outer.add_child(_feedback)
 
 	# player footer — pinned outside the scroll area, always on screen
 	_energy_label = _label(12, COL_EN)

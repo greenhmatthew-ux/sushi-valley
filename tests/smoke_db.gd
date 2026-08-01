@@ -18,7 +18,7 @@ func _initialize() -> void:
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
 	check("recipes", db.recipes.size(), 81)
-	check("quests", db.quests.size(), 19)
+	check("quests", db.quests.size(), 21)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
 	check("raids", db.raids.size(), 1)
@@ -43,10 +43,29 @@ func _initialize() -> void:
 			planned_regions.append(region_id)
 	playable_regions.sort()
 	planned_regions.sort()
-	check_true("only the village and Whispering Woods are playable",
-		playable_regions == ["valley_crossroads", "whispering_woods"])
-	check_true("all ten inaccessible regions are marked planned",
-		planned_regions.size() == 10)
+	# Checked against the scene files rather than a fixed list of names: a region
+	# added later cannot advertise itself as playable without one, and this does not
+	# have to be edited every time the world grows.
+	var region_scenes := {
+		"valley_crossroads": "res://src/scenes/world.tscn",
+		"whispering_woods": "res://src/scenes/wilds.tscn",
+		"mountain_pass": "res://src/scenes/mountain_pass.tscn",
+	}
+	var unbuilt: Array[String] = []
+	for region_id in playable_regions:
+		var scene_path := String(region_scenes.get(region_id, ""))
+		if scene_path.is_empty() or not ResourceLoader.exists(scene_path):
+			unbuilt.append(region_id)
+	check_true("every playable region has a scene to enter (%s)" % str(unbuilt),
+		unbuilt.is_empty())
+	var advertised: Array[String] = []
+	for region_id in planned_regions:
+		if region_scenes.has(region_id):
+			advertised.append(region_id)
+	check_true("a region with a scene is not still called planned (%s)" % str(advertised),
+		advertised.is_empty())
+	check("regions accounted for as playable or planned",
+		playable_regions.size() + planned_regions.size(), db.regions.size())
 
 	# 62 hand-authored cards + 1330 deck rows across 11 packs, with zero id
 	# collisions (verified against the source JSON). An exact number here catches
