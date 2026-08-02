@@ -50,6 +50,7 @@ var _rng := RandomNumberGenerator.new()
 
 var _root: Control
 var _heading: Label
+var _furigana: Label
 var _question: Label
 var _listen_spacer: Control
 var _listen_btn: Button
@@ -126,6 +127,19 @@ func _render(prompt: Dictionary) -> void:
 		and int(prompt["card"].get("correctCount", 0)) >= 1 \
 		and _rng.randf() < LISTENING_CHANCE
 	_question.text = "Listen" if _listening else String(prompt["question"])
+
+	# Furigana: the reading printed above the Japanese, per UI_UX_GUIDE section 15.
+	# Withheld during a listening round — the whole point there is to identify the
+	# word by ear, and spelling it out on screen would answer the question.
+	var reading := String(prompt.get("reading", "")).strip_edges()
+	var correct_count := int(prompt["card"].get("correctCount", 0))
+	# A kana card's reading is its own prompt, so printing it above would just repeat
+	# the same characters — the aid is only an aid when it says something new.
+	var show_reading := not _listening and not reading.is_empty() \
+		and reading != String(prompt["question"]) \
+		and Settings.furigana_visible(correct_count)
+	_furigana.text = reading if show_reading else ""
+	_furigana.visible = show_reading
 	if _listening:
 		_hint.text = "Which word did you hear?"
 		_hint.add_theme_color_override("font_color", COL_HINT)
@@ -160,7 +174,7 @@ func _make_choice_button(choice: String) -> Button:
 	# half read. Long choices wrap and step down a size instead.
 	btn.clip_text = false
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	btn.custom_minimum_size = Vector2(200, 46)
+	btn.custom_minimum_size = Vector2(200, 42)
 	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
 	# is no longer mouse-only (the project requires keyboard AND controller to work).
 	btn.focus_mode = Control.FOCUS_ALL
@@ -168,7 +182,9 @@ func _make_choice_button(choice: String) -> Button:
 	btn.add_theme_stylebox_override("hover", _button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	btn.add_theme_stylebox_override("pressed", _button_style(COL_BTN, COL_BORDER))
 	btn.add_theme_font_size_override("font_size", UiTheme.fit_font_size(choice, 18))
-	btn.custom_minimum_size.y = maxf(46.0, UiTheme.wrapped_height(btn, choice, 200.0))
+	# 42, down from 46: the furigana row above needs the height, and the button is
+	# still taller than the text it holds — wrapped_height keeps long answers whole.
+	btn.custom_minimum_size.y = maxf(42.0, UiTheme.wrapped_height(btn, choice, 200.0))
 	btn.pressed.connect(_on_choice.bind(choice, btn))
 	return btn
 
@@ -323,7 +339,9 @@ func _build_scaffold() -> void:
 	panel.add_child(margin)
 
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 12)
+	# 10 rather than 12: the furigana row costs height, and six gaps at two pixels
+	# each is exactly what keeps the reveal state inside a 360px viewport.
+	vbox.add_theme_constant_override("separation", 10)
 	margin.add_child(vbox)
 
 	var heading_row := HBoxContainer.new()
@@ -350,7 +368,16 @@ func _build_scaffold() -> void:
 	_listen_btn.pressed.connect(_on_listen_pressed)
 	heading_row.add_child(_listen_btn)
 
-	_question = _label(48, Color.WHITE)
+	# Above the prompt, small and quiet: it is a reading aid, not the question.
+	_furigana = _label(13, COL_HINT)
+	_furigana.name = "Furigana"
+	_furigana.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_furigana.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	vbox.add_child(_furigana)
+
+	# 40 rather than 48: the furigana row above needs the height, and the prompt is
+	# still far larger than body text, which is what section 16 asks for.
+	_question = _label(40, Color.WHITE)
 	_question.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_question.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(_question)
@@ -367,7 +394,7 @@ func _build_scaffold() -> void:
 	_choices_box = GridContainer.new()
 	_choices_box.columns = 2
 	_choices_box.add_theme_constant_override("h_separation", 16)
-	_choices_box.add_theme_constant_override("v_separation", 12)
+	_choices_box.add_theme_constant_override("v_separation", 10)
 	vbox.add_child(_choices_box)
 
 	_continue_btn = Button.new()

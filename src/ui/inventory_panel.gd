@@ -516,14 +516,19 @@ func _refresh_system() -> void:
 			return "x%.1f  (%s)" % [value, "closer in" if value > Settings.ZOOM_DEFAULT
 				else "further out"]))
 
-	var english := CheckBox.new()
-	english.name = "ShowEnglishCheck"
-	english.text = "Always show English meanings"
-	english.tooltip_text = "Hold the peek key to reveal them temporarily instead."
-	english.focus_mode = Control.FOCUS_ALL
-	english.set_pressed_no_signal(Settings.show_english)
-	english.toggled.connect(func(pressed: bool) -> void: Settings.show_english = pressed)
-	_system_box.add_child(english)
+	_system_box.add_child(_make_setting_choice(
+		"TranslationMode", "English meanings",
+		Settings.TRANSLATION_LABELS, Settings.translation_mode,
+		"Hidden keeps English off entirely. On request reveals it while you hold the "
+		+ "peek key. After attempt shows it once you have answered. Always keeps it on.",
+		func(index: int) -> void: Settings.translation_mode = index))
+
+	_system_box.add_child(_make_setting_choice(
+		"FuriganaMode", "Reading over Japanese",
+		Settings.FURIGANA_LABELS, Settings.furigana_mode,
+		"While learning shows the reading only until a word is answered correctly "
+		+ "%d times, so the help fades as you learn it." % Settings.FURIGANA_NEW_THRESHOLD,
+		func(index: int) -> void: Settings.furigana_mode = index))
 
 	_system_box.add_child(_make_setting_slider(
 		"MusicVolumeSlider", "Music", Settings.music_volume, 0.0, 1.0, 0.05,
@@ -541,6 +546,36 @@ func _refresh_system() -> void:
 	save_now.custom_minimum_size = Vector2(0, 28)
 	save_now.pressed.connect(_on_save_now)
 	_system_box.add_child(save_now)
+
+
+## One cycling option row: a label and a button that steps through named choices.
+## A cycler rather than a dropdown because it is one control to reach on a pad and
+## the option lists here are short.
+func _make_setting_choice(control_name: String, label: String, labels: Array,
+		value: int, tooltip: String, apply: Callable) -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+
+	var caption := Label.new()
+	caption.text = label
+	caption.add_theme_font_size_override("font_size", 12)
+	caption.add_theme_color_override("font_color", COL_TEXT)
+	caption.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(caption)
+
+	var button := Button.new()
+	button.name = control_name
+	button.text = String(labels[clampi(value, 0, labels.size() - 1)])
+	button.tooltip_text = tooltip
+	button.focus_mode = Control.FOCUS_ALL
+	button.custom_minimum_size = Vector2(120, 24)
+	var index := {"value": clampi(value, 0, labels.size() - 1)}
+	button.pressed.connect(func() -> void:
+		index["value"] = (int(index["value"]) + 1) % labels.size()
+		button.text = String(labels[index["value"]])
+		apply.call(int(index["value"])))
+	row.add_child(button)
+	return row
 
 
 func _on_save_now() -> void:

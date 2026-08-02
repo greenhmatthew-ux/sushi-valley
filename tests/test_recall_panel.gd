@@ -101,9 +101,89 @@ func _initialize() -> void:
 	check_true("the reveal explains the answer",
 		not (panel.get("_feedback") as Label).text.is_empty())
 
+	# Language display modes, UI_UX_GUIDE section 15.
+	var settings: Node = root.get_node("Settings")
+	var furigana: Label = panel.get("_furigana")
+	var seen_card: Dictionary = current.get("card", {})
+
+	settings.furigana_mode = settings.Furigana.OFF
+	bus.learn_open.emit("travel-vocab-1", 1, true)
+	await process_frame
+	check_true("furigana off shows no reading", not furigana.visible)
+	(panel.get("_choices_box") as GridContainer).get_child(0).pressed.emit()
+	await process_frame
+	(panel.get("_continue_btn") as Button).pressed.emit()
+	await process_frame
+
+	# Draw until a card turns up whose reading differs from its prompt. Most of this
+	# lesson is kana, where the reading *is* the prompt and the aid is deliberately
+	# suppressed, so a single draw proves nothing either way.
+	settings.furigana_mode = settings.Furigana.ALL
+	var showed_reading := false
+	var suppressed_as_duplicate := false
+	for attempt in 10:
+		panel.set("_rng", _rng_that_rolls_at_least(0.9))   # sighted round, not listening
+		bus.learn_open.emit("travel-vocab-1", 1, true)
+		await process_frame
+		var drawn: Dictionary = panel.get("_current")
+		var drawn_reading := String(drawn.get("reading", "")).strip_edges()
+		var drawn_question := String(drawn.get("question", ""))
+		if drawn_reading == drawn_question:
+			suppressed_as_duplicate = suppressed_as_duplicate or not furigana.visible
+		elif not drawn_reading.is_empty():
+			showed_reading = furigana.visible and furigana.text == drawn_reading
+		(panel.get("_choices_box") as GridContainer).get_child(0).pressed.emit()
+		await process_frame
+		(panel.get("_continue_btn") as Button).pressed.emit()
+		await process_frame
+		if showed_reading and suppressed_as_duplicate:
+			break
+	check_true("furigana on Always prints the reading above the word", showed_reading)
+	check_true("but never repeats a prompt that is already its own reading",
+		suppressed_as_duplicate)
+	settings.furigana_mode = settings.Furigana.NEW
+
+	# Translation modes decide whether English is reachable at all.
+	settings.translation_mode = settings.TranslationMode.HIDDEN
+	settings.set_peeking(true)
+	check_true("hidden means hidden, even while peeking", not settings.english_visible())
+	settings.set_peeking(false)
+	settings.translation_mode = settings.TranslationMode.ON_REQUEST
+	settings.set_peeking(true)
+	check_true("on request reveals English while the key is held",
+		settings.english_visible())
+	settings.set_peeking(false)
+	check_true("and hides it again on release", not settings.english_visible())
+	settings.translation_mode = settings.TranslationMode.AFTER_ATTEMPT
+	check_true("after attempt keeps English off until an answer is in",
+		not settings.english_visible() and settings.translation_on_reveal())
+	settings.translation_mode = settings.TranslationMode.ALWAYS
+	check_true("always shows English with no key held", settings.english_visible())
+	settings.translation_mode = settings.TranslationMode.ON_REQUEST
+
+	# The reading aid is meant to fade as a word is learned.
+	check_true("a new word gets furigana while learning",
+		settings.furigana_visible(0))
+	check_true("a practised word stops getting it",
+		not settings.furigana_visible(settings.FURIGANA_NEW_THRESHOLD))
+
 	panel.queue_free()
 	await process_frame
 	_finish()
+
+
+## An RNG whose next randf() lands at or above `floor_value`, for forcing a sighted
+## round rather than a listening one.
+func _rng_that_rolls_at_least(floor_value: float) -> RandomNumberGenerator:
+	for seed_value in 500:
+		var probe := RandomNumberGenerator.new()
+		probe.seed = seed_value
+		if probe.randf() >= floor_value:
+			var rng := RandomNumberGenerator.new()
+			rng.seed = seed_value
+			return rng
+	push_error("no seed produced a roll at or above %f" % floor_value)
+	return RandomNumberGenerator.new()
 
 
 ## An RNG whose next randf() lands under `ceiling`, so the listening branch is a

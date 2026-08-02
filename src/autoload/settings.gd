@@ -52,18 +52,43 @@ var voice_volume: float = VOLUME_MAX:
 		save()
 
 ## The game speaks Japanese first — that is the whole point. English is a safety net you
-## can pin on permanently here, or peek at any time by holding the `peek_english` key.
-## Off by default so the Japanese is what you actually read.
-var show_english: bool = false:
+## True while the peek key is held, independent of the sticky preference above.
+var _peeking: bool = false
+
+## How much English the player wants, per UI_UX_GUIDE section 15. The old setting was
+## a single "show English" switch, which could only say always or never; the middle
+## two are the ones that actually teach. AFTER_ATTEMPT keeps the meaning hidden while
+## you are answering and reveals it once you have committed, so the recall is real but
+## the answer is never withheld.
+## Named TranslationMode, not Translation: that shadows Godot's own class.
+enum TranslationMode { HIDDEN, ON_REQUEST, AFTER_ATTEMPT, ALWAYS }
+const TRANSLATION_LABELS := ["Hidden", "On request", "After attempt", "Always"]
+
+var translation_mode: int = TranslationMode.ON_REQUEST:
 	set(value):
-		if value == show_english:
+		var next := clampi(value, 0, TranslationMode.size() - 1)
+		if next == translation_mode:
 			return
-		show_english = value
+		translation_mode = next
 		Bus.language_changed.emit(english_visible())
 		save()
 
-## True while the peek key is held, independent of the sticky preference above.
-var _peeking: bool = false
+## Furigana over Japanese, section 15's Off/New/All. NEW shows the reading only while
+## a word is still being learned, so the crutch falls away on its own rather than the
+## player having to notice and turn it off.
+enum Furigana { OFF, NEW, ALL }
+const FURIGANA_LABELS := ["Off", "While learning", "Always"]
+## Correct answers after which a word stops counting as new, for Furigana.NEW.
+const FURIGANA_NEW_THRESHOLD := 3
+
+var furigana_mode: int = Furigana.NEW:
+	set(value):
+		var next := clampi(value, 0, Furigana.size() - 1)
+		if next == furigana_mode:
+			return
+		furigana_mode = next
+		Bus.language_changed.emit(english_visible())
+		save()
 
 
 func _ready() -> void:
@@ -82,11 +107,32 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 ## Whether English should be on screen right now — either pinned in settings or peeked.
+## Peeking is deliberately ignored in HIDDEN: a player who asked for no English at all
+## should not get it by leaning on a key.
 func english_visible() -> bool:
-	return show_english or _peeking
+	if translation_mode == TranslationMode.ALWAYS:
+		return true
+	return _peeking and translation_mode != TranslationMode.HIDDEN
 
 
-## Held-key peek. Kept separate from `show_english` so releasing the key returns to
+## Whether a surface should reveal the meaning once the player has answered.
+func translation_on_reveal() -> bool:
+	return translation_mode >= TranslationMode.AFTER_ATTEMPT
+
+
+## Whether to print the reading above a prompt for a card with this many correct
+## answers behind it.
+func furigana_visible(correct_count: int) -> bool:
+	match furigana_mode:
+		Furigana.ALL:
+			return true
+		Furigana.NEW:
+			return correct_count < FURIGANA_NEW_THRESHOLD
+		_:
+			return false
+
+
+## Held-key peek. Kept separate from `translation_mode` so releasing the key returns to
 ## whatever the player actually chose in settings.
 func set_peeking(active: bool) -> void:
 	if active == _peeking:
@@ -102,7 +148,12 @@ func load_settings() -> void:
 	# Assign through the backing field so loading doesn't re-save what we just read.
 	var loaded := float(cfg.get_value("display", "zoom", ZOOM_DEFAULT))
 	zoom = clampf(snappedf(loaded, ZOOM_STEP), ZOOM_MIN, ZOOM_MAX)
-	show_english = bool(cfg.get_value("language", "show_english", false))
+	# Migrate the old boolean: someone who pinned English wanted it always, and the
+	# default off state is really "on request", since peek already existed.
+	var legacy_english := bool(cfg.get_value("language", "show_english", false))
+	translation_mode = int(cfg.get_value("language", "translation_mode",
+		TranslationMode.ALWAYS if legacy_english else TranslationMode.ON_REQUEST))
+	furigana_mode = int(cfg.get_value("language", "furigana_mode", Furigana.NEW))
 	music_volume = clampf(snappedf(
 		float(cfg.get_value("audio", "music_volume", VOLUME_MAX)), VOLUME_STEP),
 		VOLUME_MIN, VOLUME_MAX)
@@ -114,7 +165,9 @@ func load_settings() -> void:
 func save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("display", "zoom", zoom)
-	cfg.set_value("language", "show_english", show_english)
+	cfg.set_value("language", "show_english", translation_mode == TranslationMode.ALWAYS)
+	cfg.set_value("language", "translation_mode", translation_mode)
+	cfg.set_value("language", "furigana_mode", furigana_mode)
 	cfg.set_value("audio", "music_volume", music_volume)
 	cfg.set_value("audio", "voice_volume", voice_volume)
 	cfg.save(PATH)
