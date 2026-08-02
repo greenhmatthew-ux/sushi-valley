@@ -20,6 +20,7 @@ func _initialize() -> void:
 	_equipment_swaps()
 	_full_stack_cannot_delete_displaced_gear()
 	_round_trip()
+	_favorites()
 	_finish()
 
 
@@ -164,6 +165,47 @@ func _round_trip() -> void:
 	check_eq("negative-qty entry is dropped on load", dirty.count("wild_herb"), 0)
 	check_eq("valid entry survives load", dirty.count("honey"), 2)
 	check_eq("negative coins clamp to zero on load", dirty.coins, 0)
+
+
+## A player preference, deliberately independent of whether the item is still
+## held — UI_UX_GUIDE section 9 lists Favorite alongside Use/Equip/Sell as one
+## of the bag's standard actions.
+func _favorites() -> void:
+	var inv := InventoryLogic.new()
+	inv.add("rice_ball", 3)
+	check_true("nothing starts favorited", not inv.is_favorite("rice_ball"))
+
+	var now_favorited := inv.toggle_favorite("rice_ball")
+	check_true("toggling reports the new state", now_favorited)
+	check_true("and the item reads as favorited", inv.is_favorite("rice_ball"))
+
+	var now_unfavorited := inv.toggle_favorite("rice_ball")
+	check_true("toggling again reports unfavorited", not now_unfavorited)
+	check_true("and it no longer reads as favorited", not inv.is_favorite("rice_ball"))
+
+	# The mark survives using the last one and picking up a fresh one — it is not
+	# gated on possession.
+	inv.toggle_favorite("wild_herb")
+	inv.remove("wild_herb", inv.count("wild_herb"))
+	check_eq("the item is gone from the bag", inv.count("wild_herb"), 0)
+	check_true("but the favorite mark remains", inv.is_favorite("wild_herb"))
+
+	var saved := inv.to_dict()
+	check_true("favorites are part of the save payload",
+		saved.get("favorites", []).has("wild_herb"))
+
+	var loaded := InventoryLogic.new()
+	loaded.load_dict(saved)
+	check_true("favorites round-trip through save/load",
+		loaded.is_favorite("wild_herb"))
+	check_true("a never-favorited item still reads false after load",
+		not loaded.is_favorite("rice_ball"))
+
+	# A save written before this slice existed simply has no "favorites" key.
+	var legacy := InventoryLogic.new()
+	legacy.load_dict({"inventory": {"rice_ball": 1}, "coins": 0})
+	check_true("a save with no favorites key loads as no favorites",
+		not legacy.is_favorite("rice_ball"))
 
 
 # --- harness ---------------------------------------------------------------

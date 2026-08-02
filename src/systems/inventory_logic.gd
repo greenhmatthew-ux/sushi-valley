@@ -26,6 +26,7 @@ const EQUIPMENT_SLOTS: Array[String] = [
 var bag: Dictionary = {}       # item_id -> qty (>0); empty stacks are deleted
 var coins: int = 0
 var equipment: Dictionary = {} # slot -> item_id; equipped items are not also in the bag
+var favorites: Dictionary = {} # item_id -> true; absence means not favorited
 
 
 # --- items -----------------------------------------------------------------
@@ -163,6 +164,26 @@ func set_coins(n: int) -> void:
 	coins = maxi(0, n)
 
 
+# --- favorites ---------------------------------------------------------------
+# A player preference, not gameplay state — deliberately independent of whether
+# the item is currently held. Favoriting a spare, using the last one, then
+# picking up a fresh one should not silently lose the mark.
+
+func is_favorite(id: String) -> bool:
+	return bool(favorites.get(id, false))
+
+
+## Returns the new state, so a caller does not need a second is_favorite() call
+## to know what just happened.
+func toggle_favorite(id: String) -> bool:
+	var next := not is_favorite(id)
+	if next:
+		favorites[id] = true
+	else:
+		favorites.erase(id)
+	return next
+
+
 # --- persistence hooks (the save slice wires these to SaveGame) --------------
 
 ## Serialize the bag, coin purse, and equipped slot map. Old saves omit equipment;
@@ -172,6 +193,7 @@ func to_dict() -> Dictionary:
 		"inventory": bag.duplicate(true),
 		"coins": coins,
 		"equipment": equipment.duplicate(true),
+		"favorites": favorites.keys(),
 	}
 
 
@@ -181,6 +203,7 @@ func to_dict() -> Dictionary:
 func load_dict(data: Dictionary) -> void:
 	bag.clear()
 	equipment.clear()
+	favorites.clear()
 	var raw: Dictionary = data.get("inventory", {})
 	for id in raw:
 		var qty := int(raw[id])
@@ -193,12 +216,18 @@ func load_dict(data: Dictionary) -> void:
 		if EQUIPMENT_SLOTS.has(slot) and not item_id.is_empty():
 			equipment[slot] = item_id
 	coins = maxi(0, int(data.get("coins", 0)))
+	# Absent on any save written before this slice; that reads as no favorites,
+	# not an error.
+	for id in data.get("favorites", []):
+		if not String(id).is_empty():
+			favorites[String(id)] = true
 
 
 ## Drop everything — used by a "new game" reset.
 func clear() -> void:
 	bag.clear()
 	equipment.clear()
+	favorites.clear()
 	coins = 0
 
 

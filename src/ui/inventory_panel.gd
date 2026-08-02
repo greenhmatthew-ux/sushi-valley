@@ -33,6 +33,16 @@ const KIND_COLORS := {
 	"seed": UiTheme.STATE_SUCCESS,
 }
 
+## Bag category filters. The first four are the real `kind` values every item
+## actually has (UI_UX_GUIDE section 9's fuller list — Tools, Fish/Food, Quest
+## Items — has no matching data in this game yet, so it is not offered as a
+## filter that would always come back empty). "favorites" is synthetic, backed
+## by InventoryLogic's own favorites set rather than an item field.
+const BAG_CATEGORIES := [
+	["all", "All"], ["gear", "Equipment"], ["consumable", "Consumables"],
+	["material", "Materials"], ["seed", "Seeds"], ["favorites", "Favorites"],
+]
+
 const ICON_DIR := "res://assets/icons/items/"
 const ABILITY_ICON_DIR := "res://assets/icons/abilities/"
 ## These files were replaced with traced Ninja Adventure CC0 originals in the
@@ -71,6 +81,10 @@ var _skills_view: VBoxContainer
 var _skills_box: VBoxContainer
 var _skills_summary: Label
 var _bag_view: VBoxContainer
+var _bag_category := "all"
+var _bag_search := ""
+var _bag_category_buttons: Dictionary = {}   # category key -> Button
+var _bag_search_box: LineEdit
 var _stats_label: Label
 var _attribute_points_label: Label
 var _attribute_value_labels: Dictionary = {}
@@ -283,12 +297,15 @@ func _refresh() -> void:
 		for ability in talents:
 			_skills_box.add_child(_make_talent_card(ability))
 
-	var items: Array = Inv.entries()
+	var all_items: Array = Inv.entries()
+	var items: Array = all_items.filter(_matches_bag_filter)
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
 	items.sort_custom(func(a, b): return _name_of(a["id"]).naturalnocasecmp_to(_name_of(b["id"])) < 0)
 
 	_empty_label.visible = items.is_empty()
 	_grid.visible = not items.is_empty()
+	if items.is_empty():
+		_empty_label.text = _bag_empty_message(all_items.is_empty())
 	for entry in items:
 		_grid.add_child(_make_card(String(entry["id"]), int(entry["qty"])))
 
@@ -847,6 +864,7 @@ func _refresh_footer() -> void:
 func _make_card(id: String, qty: int) -> Control:
 	var def: Dictionary = DB.item(id)
 	var card := PanelContainer.new()
+	card.name = "ItemCard_" + id
 	card.add_theme_stylebox_override("panel", _card_style())
 	card.custom_minimum_size = Vector2(104, 116)
 
@@ -872,12 +890,35 @@ func _make_card(id: String, qty: int) -> Control:
 	name_label.custom_minimum_size = Vector2(88, 0)
 	vbox.add_child(name_label)
 
+	# Quantity and the favorite toggle share one row: every card here is already
+	# tight on vertical space (gear cards also carry stats, a comparison line, and
+	# an Equip button), and this is the one row with room to spare next to it.
+	var qty_row := HBoxContainer.new()
+	qty_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	qty_row.add_theme_constant_override("separation", 4)
+	vbox.add_child(qty_row)
+
 	var qty_label := Label.new()
 	qty_label.text = "x%d" % qty
 	qty_label.add_theme_font_size_override("font_size", 12)
 	qty_label.add_theme_color_override("font_color", COL_HEADING)
-	qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(qty_label)
+	qty_row.add_child(qty_label)
+
+	var favorited := Inv.is_favorite(id)
+	var favorite_btn := Button.new()
+	favorite_btn.name = "FavoriteToggle_" + id
+	favorite_btn.text = "Unfav" if favorited else "Fav"
+	favorite_btn.tooltip_text = "Remove from Favorites" if favorited \
+		else "Add to Favorites — always easy to find, even filtered out."
+	favorite_btn.toggle_mode = true
+	favorite_btn.button_pressed = favorited
+	favorite_btn.focus_mode = Control.FOCUS_ALL
+	favorite_btn.add_theme_font_size_override("font_size", 9)
+	favorite_btn.custom_minimum_size = Vector2(0, 18)
+	if favorited:
+		favorite_btn.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
+	favorite_btn.pressed.connect(_on_toggle_favorite.bind(id))
+	qty_row.add_child(favorite_btn)
 
 	if def.get("kind", "") == "gear":
 		var stats_label := Label.new()
@@ -1259,6 +1300,24 @@ func _on_attribute_change(attribute: String, delta: int) -> void:
 		Bus.toast.emit("That attribute cannot change right now.")
 
 
+func _on_toggle_favorite(id: String) -> void:
+	Inv.toggle_favorite(id)
+
+
+func _on_bag_category_selected(key: String) -> void:
+	_bag_category = key
+	# toggle_mode buttons don't behave like a radio group on their own; keep
+	# exactly one pressed, matching the tab bar's single-active-domain feel.
+	for other_key in _bag_category_buttons:
+		(_bag_category_buttons[other_key] as Button).button_pressed = other_key == key
+	_refresh()
+
+
+func _on_bag_search_changed(text: String) -> void:
+	_bag_search = text
+	_refresh()
+
+
 func _on_use_healing(item_id: String) -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -1323,6 +1382,33 @@ func _icon_node(id: String) -> Control:
 
 func _name_of(id: String) -> String:
 	return String(DB.item(id).get("name", id))
+
+
+## Whether one bag entry ({id, qty}) passes the current category + search state.
+func _matches_bag_filter(entry: Dictionary) -> bool:
+	var id := String(entry["id"])
+	if _bag_category == "favorites":
+		if not Inv.is_favorite(id):
+			return false
+	elif _bag_category != "all":
+		if String(DB.item(id).get("kind", "")) != _bag_category:
+			return false
+	if not _bag_search.is_empty():
+		if not _name_of(id).to_lower().contains(_bag_search.to_lower()):
+			return false
+	return true
+
+
+## The empty-grid message has to distinguish three different situations, or a
+## player who filters to nothing owned would think their bag itself was empty.
+func _bag_empty_message(bag_is_truly_empty: bool) -> String:
+	if bag_is_truly_empty:
+		return "Your bag is empty."
+	if not _bag_search.is_empty():
+		return "No items match \"%s\"." % _bag_search
+	if _bag_category == "favorites":
+		return "Nothing favorited yet. Press Fav on any item to pin it here."
+	return "Nothing in this category yet."
 
 
 # --- static scaffold, built once ------------------------------------------
@@ -1695,6 +1781,44 @@ func _build_scaffold() -> void:
 	_bag_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(_bag_view)
 
+	# Category filter + search, one compact row so it costs the Bag tab's tight
+	# fixed (non-scrolling) height budget only once. 168 items with no way to
+	# narrow them was the largest remaining gap against UI_UX_GUIDE section 9's
+	# bag model. Categories are the real `kind` values every item actually has,
+	# plus the synthetic Favorites — not the guide's fuller list, most of which
+	# (Tools, Fish/Food, Quest Items) has no matching data in this game and would
+	# always read empty.
+	var filter_row := HBoxContainer.new()
+	filter_row.name = "BagFilterRow"
+	filter_row.add_theme_constant_override("separation", 3)
+	_bag_view.add_child(filter_row)
+	var category_labels := {
+		"all": "All", "gear": "Gear", "consumable": "Use",
+		"material": "Mats", "seed": "Seeds", "favorites": "Fav",
+	}
+	for pair in BAG_CATEGORIES:
+		var key := String(pair[0])
+		var btn := Button.new()
+		btn.name = "BagCategory_" + key
+		btn.text = String(category_labels.get(key, pair[1]))
+		btn.tooltip_text = String(pair[1])
+		btn.toggle_mode = true
+		btn.button_pressed = key == _bag_category
+		btn.focus_mode = Control.FOCUS_ALL
+		btn.add_theme_font_size_override("font_size", 11)
+		btn.custom_minimum_size = Vector2(0, 22)
+		btn.pressed.connect(_on_bag_category_selected.bind(key))
+		filter_row.add_child(btn)
+		_bag_category_buttons[key] = btn
+
+	_bag_search_box = LineEdit.new()
+	_bag_search_box.name = "BagSearch"
+	_bag_search_box.placeholder_text = "Search..."
+	_bag_search_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_bag_search_box.custom_minimum_size = Vector2(60, 22)
+	_bag_search_box.text_changed.connect(_on_bag_search_changed)
+	filter_row.add_child(_bag_search_box)
+
 	var bag_hint := Label.new()
 	bag_hint.name = "BagHint"
 	bag_hint.text = "Equip gear, use healing food, or inspect labeled combat-only items."
@@ -1721,6 +1845,12 @@ func _build_scaffold() -> void:
 	_empty_label.add_theme_font_size_override("font_size", 14)
 	_empty_label.add_theme_color_override("font_color", COL_HEADING)
 	_empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# A search message can run longer than the static default text ever did.
+	# autowrap alone (no forced minimum width) lets it wrap within whatever width
+	# the scroll area actually has — a fixed width here is what pushed the whole
+	# shell wider than the 640px viewport the one time this was tried.
+	_empty_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_empty_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bag_scroll.add_child(_empty_label)
 
 	# Footer: capacity + how to close.

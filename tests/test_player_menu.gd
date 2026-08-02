@@ -12,6 +12,7 @@ func _initialize() -> void:
 	var learning: Node = root.get_node("Learning")
 	var db: Node = root.get_node("DB")
 	var bus: Node = root.get_node("Bus")
+	var inv: Node = root.get_node("Inv")
 	learning.profile.data["stats"]["xp"] = 0
 	learning.profile.build()["allocations"] = {"vitality": 0, "power": 0, "agility": 0}
 	var panel := CanvasLayer.new()
@@ -52,6 +53,59 @@ func _initialize() -> void:
 	check_eq("Garden Compost uses its audited sack art",
 		compost_icon.texture.resource_path, "res://assets/icons/items/compost.png")
 	compost_icon.free()
+
+	# Bag categories, search, and favorites — UI_UX_GUIDE section 9's bag model.
+	# 168 items with no way to narrow them was the largest remaining gap.
+	inv.reset()
+	inv.add("rice_ball", 1)
+	inv.add("wooden_katana", 1)
+	inv.add("wild_herb", 1)
+	panel.call("_refresh")
+	var all_btn: Button = panel.find_child("BagCategory_all", true, false)
+	var gear_btn: Button = panel.find_child("BagCategory_gear", true, false)
+	var fav_btn: Button = panel.find_child("BagCategory_favorites", true, false)
+	var search_box: LineEdit = panel.find_child("BagSearch", true, false)
+	check_true("the bag offers a category filter and a search box",
+		all_btn != null and gear_btn != null and fav_btn != null and search_box != null)
+	check_true("All is the default active category", all_btn.button_pressed)
+
+	gear_btn.pressed.emit()
+	panel.call("_refresh")
+	check_true("Gear shows the equipment item",
+		panel.find_child("ItemCard_wooden_katana", true, false) != null)
+	check_true("Gear hides a non-gear item",
+		panel.find_child("ItemCard_rice_ball", true, false) == null)
+	check_true("selecting a category deselects the others",
+		gear_btn.button_pressed and not all_btn.button_pressed)
+
+	all_btn.pressed.emit()
+	search_box.text = "rice"
+	search_box.text_changed.emit("rice")
+	panel.call("_refresh")
+	check_true("search narrows to a matching name",
+		panel.find_child("ItemCard_rice_ball", true, false) != null
+		and panel.find_child("ItemCard_wooden_katana", true, false) == null)
+	search_box.text = ""
+	search_box.text_changed.emit("")
+
+	var herb_favorite: Button = panel.find_child("FavoriteToggle_wild_herb", true, false)
+	check_true("an unfavorited item offers a Fav control",
+		herb_favorite != null and herb_favorite.text == "Fav")
+	herb_favorite.pressed.emit()
+	check_true("pressing it marks the item favorited",
+		inv.is_favorite("wild_herb"))
+
+	fav_btn.pressed.emit()
+	panel.call("_refresh")
+	check_true("Favorites shows only the favorited item",
+		panel.find_child("ItemCard_wild_herb", true, false) != null
+		and panel.find_child("ItemCard_rice_ball", true, false) == null)
+	var herb_favorite_now: Button = panel.find_child("FavoriteToggle_wild_herb", true, false)
+	check_eq("and its control now reads Unfav", herb_favorite_now.text, "Unfav")
+
+	all_btn.pressed.emit()
+	panel.call("_refresh")
+	inv.reset()
 
 	panel.call("_set_tab", "character")
 	check_true("character tab replaces bag content", character.visible and not bag.visible)
@@ -196,7 +250,6 @@ func _initialize() -> void:
 		panel.find_child("AbilityIcon_sweep", true, false) != null)
 	# The quest log. A quest used to exist only as the objective line read off the
 	# giver in the current scene, so finishing one erased it from the game entirely.
-	var inv: Node = root.get_node("Inv")
 	var quest_id := "stock_the_stall"
 	# Flags are written through to the saved profile, so a previous run would leave
 	# this quest already finished and the "not yet met" case would never be tested.

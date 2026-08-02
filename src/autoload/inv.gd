@@ -145,6 +145,18 @@ func unequip(slot: String) -> bool:
 	return true
 
 
+# --- favorites ---------------------------------------------------------------
+
+func is_favorite(id: String) -> bool:
+	return logic.is_favorite(id)
+
+
+func toggle_favorite(id: String) -> bool:
+	var next := logic.toggle_favorite(id)
+	Bus.inventory_changed.emit()
+	return next
+
+
 func _player_level() -> int:
 	var xp := 0
 	if Learning.profile != null:
