@@ -32,6 +32,14 @@ func _initialize() -> void:
 	inv.reset()
 	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat"]:
 		inv.add(item_id, 2)
+	# Bestiary: defeat the worst-case enemy (longest name, most drops to list) and
+	# merely encounter a second, so both card branches render under real load.
+	var worst_enemy_id := _worst_case_enemy_id(db)
+	learning.profile.record_enemy_seen(worst_enemy_id)
+	learning.profile.record_enemy_defeated(worst_enemy_id)
+	if db.enemy_order.size() > 1:
+		learning.profile.record_enemy_seen(String(db.enemy_order[1]))
+
 	# Measuring the panels means answering questions, which earns XP and writes it
 	# to the shared profile. This is a layout test; it should not move progress.
 	var xp_before: int = int(learning.profile.data["stats"]["xp"])
@@ -45,6 +53,7 @@ func _initialize() -> void:
 	print("  ..   measured %d text controls across four panels" % _checked)
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
+	learning.profile.data.erase("bestiary")
 	learning.profile.save()
 	_finish()
 
@@ -106,7 +115,7 @@ func _check_menu() -> void:
 	panel.set_script(load("res://src/ui/inventory_panel.gd"))
 	root.add_child(panel)
 	await process_frame
-	for tab in ["character", "skills", "bag", "quests", "map", "learning"]:
+	for tab in ["character", "skills", "bag", "quests", "map", "learning", "system", "bestiary"]:
 		panel.call("_set_tab", tab)
 		panel.call("_refresh")
 		await process_frame
@@ -126,6 +135,22 @@ func _check_notebook() -> void:
 	panel.call("_set_open", false)
 	panel.queue_free()
 	await process_frame
+
+
+## The enemy whose Bestiary card has the most text to fit: name length plus drop
+## count, since a defeated card prints both the full name/level header and the
+## complete drop table.
+func _worst_case_enemy_id(db: Node) -> String:
+	var best_id := String(db.enemy_order[0])
+	var best_score := -1
+	for id in db.enemy_order:
+		var enemy: Dictionary = db.enemy(String(id))
+		var score := String(enemy.get("name", "")).length() \
+			+ int(enemy.get("drops", []).size()) * 8
+		if score > best_score:
+			best_score = score
+			best_id = String(id)
+	return best_id
 
 
 func _longest_enemy_name(db: Node) -> String:

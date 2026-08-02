@@ -18,6 +18,25 @@ var progression: LearningProgression
 
 func _ready() -> void:
 	reload()
+	# Bus-driven per the project's own rule: combat owns no reference back here, it
+	# only announces. Both the overworld spar win (enemy.gd) and the recall-combat
+	# win (combat_panel.gd) emit enemy_died, and combat_started fires from either
+	# path the instant a fight opens — so a single pair of listeners here covers
+	# both the "was this ever fought" and "was this ever beaten" questions.
+	Bus.combat_started.connect(_on_combat_started)
+	Bus.enemy_died.connect(_on_enemy_died)
+
+
+func _on_combat_started(enemy_id: String) -> void:
+	if profile != null:
+		profile.record_enemy_seen(enemy_id)
+		profile.save()
+
+
+func _on_enemy_died(enemy_id: String) -> void:
+	if profile != null:
+		profile.record_enemy_defeated(enemy_id)
+		profile.save()
 
 
 ## (Re)load the profile from disk and rebuild the progression facade. Called on

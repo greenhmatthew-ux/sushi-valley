@@ -25,7 +25,6 @@ func _initialize() -> void:
 	var skills: Control = panel.find_child("SkillsView", true, false)
 	var bag: Control = panel.find_child("BagView", true, false)
 	var stats: Label = panel.find_child("StatsSummary", true, false)
-	var slots: Control = panel.find_child("EquipmentSlots", true, false)
 	check_true("player menu builds", menu != null)
 	check_true("menu starts closed", menu != null and not menu.visible)
 
@@ -58,8 +57,19 @@ func _initialize() -> void:
 	check_true("character tab replaces bag content", character.visible and not bag.visible)
 	check_true("character explains learning-derived stats",
 		stats.text.contains("Japanese study raises your base stats"))
-	check_eq("all authored equipment slots are visible",
-		slots.get_child_count(), InventoryLogic.EQUIPMENT_SLOTS.size())
+	# Equipment is grouped by type (Weapon / Armor / Accessories) rather than one
+	# flat wrapping row, so "all slots are visible" is checked by name, not by
+	# counting one container's children.
+	var missing_slots: Array[String] = []
+	for slot in InventoryLogic.EQUIPMENT_SLOTS:
+		if panel.find_child("EquipSlot_" + String(slot), true, false) == null:
+			missing_slots.append(String(slot))
+	check_true("every authored equipment slot is visible (%s)" % str(missing_slots),
+		missing_slots.is_empty())
+	check_true("equipment reads in named type groups",
+		panel.find_child("EquipmentGroup_Weapon", true, false) != null
+		and panel.find_child("EquipmentGroup_Armor", true, false) != null
+		and panel.find_child("EquipmentGroup_Accessories", true, false) != null)
 	var points: Label = panel.find_child("AttributePoints", true, false)
 	var vitality_plus: Button = panel.find_child("VitalityPlus", true, false)
 	var agility_plus: Button = panel.find_child("AgilityPlus", true, false)
@@ -359,6 +369,46 @@ func _initialize() -> void:
 	check_eq("pronunciation slider writes the setting", settings.voice_volume, 0.25)
 	settings.music_volume = 1.0
 	settings.voice_volume = 1.0
+
+	# The Bestiary. PORT_NOTES.md and COMBAT_DESIGN.md both mention a Compendium
+	# tab and "bestiary flags" from the legacy build that never made it into this
+	# port — there was no way to answer "what have I fought" at all.
+	learning.profile.data.erase("bestiary")
+	var bestiary_enemy_id := "mushroom"
+	hub.call("open_at", "bestiary")
+	hub.call("_refresh")
+	await process_frame
+	check_true("the hub has a bestiary domain",
+		hub.find_child("BestiaryTab", true, false) != null)
+	check_true("an unfought enemy is not named",
+		hub.find_child("BestiaryCard_" + bestiary_enemy_id, true, false) == null)
+	check_true("but the player is told there is more out there",
+		hub.find_child("BestiaryUndiscovered", true, false) != null)
+
+	bus.combat_started.emit(bestiary_enemy_id)
+	hub.call("_refresh")
+	await process_frame
+	var bestiary_stage: Label = hub.find_child(
+		"BestiaryStage_" + bestiary_enemy_id, true, false)
+	check_true("fighting it reveals the card", bestiary_stage != null)
+	check_eq("and reads as encountered, not defeated",
+		bestiary_stage.text, "Encountered")
+
+	bus.enemy_died.emit(bestiary_enemy_id)
+	hub.call("_refresh")
+	await process_frame
+	bestiary_stage = hub.find_child("BestiaryStage_" + bestiary_enemy_id, true, false)
+	var drops_label: Label = hub.find_child(
+		"BestiaryDrops_" + bestiary_enemy_id, true, false)
+	check_true("winning reads as defeated (%s)"
+		% (bestiary_stage.text if bestiary_stage != null else "missing"),
+		bestiary_stage != null and bestiary_stage.text.begins_with("Defeated"))
+	check_true("and the card now lists what it actually drops",
+		drops_label != null and drops_label.text.contains(
+			String(db.item("spore_cap").get("name", "spore_cap"))))
+	learning.profile.data.erase("bestiary")
+	learning.profile.save()
+
 	hub.call("_set_open", false)
 	hub.queue_free()
 	await process_frame

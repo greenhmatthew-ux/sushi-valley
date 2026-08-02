@@ -41,6 +41,16 @@ const VERIFIED_ABILITY_ICONS := [
 	"sweep", "kunai", "kana_bolt", "brace", "ki_focus", "rune_ward", "riposte",
 	"blood_blade", "iaido", "pinning_shot", "glyph_storm", "fortress",
 ]
+## The 12 equipment slots grouped by type, so the Character tab reads as a real
+## gear layout instead of one flat wrapping row. Every slot in
+## InventoryLogic.EQUIPMENT_SLOTS must appear exactly once across these groups —
+## test_player_menu.gd checks that, so a new slot added there cannot go missing here.
+const EQUIPMENT_GROUPS := [
+	["Weapon", ["weapon", "offhand"]],
+	["Armor", ["head", "shoulders", "body", "cape", "belt", "hands", "legs", "feet"]],
+	["Accessories", ["ring", "amulet"]],
+]
+
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"
@@ -48,12 +58,13 @@ const TAB_QUESTS := "quests"
 const TAB_MAP := "map"
 const TAB_LEARNING := "learning"
 const TAB_SYSTEM := "system"
+const TAB_BESTIARY := "bestiary"
 
 var _open := false
 var _active_tab := TAB_BAG
 var _root: Control
 var _coins_label: Label
-var _equipment_box: HFlowContainer
+var _equipment_group_boxes: Dictionary = {}   # group name -> HFlowContainer
 var _character_scroll: ScrollContainer
 var _character_view: VBoxContainer
 var _skills_view: VBoxContainer
@@ -84,6 +95,10 @@ var _system_tab: Button
 var _system_view: VBoxContainer
 var _system_box: VBoxContainer
 var _system_summary: Label
+var _bestiary_tab: Button
+var _bestiary_view: VBoxContainer
+var _bestiary_box: VBoxContainer
+var _bestiary_summary: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
@@ -159,6 +174,7 @@ func _tab_button(tab: String) -> Button:
 		TAB_MAP: return _map_tab
 		TAB_LEARNING: return _learning_tab
 		TAB_SYSTEM: return _system_tab
+		TAB_BESTIARY: return _bestiary_tab
 		_: return _character_tab
 
 
@@ -189,9 +205,10 @@ func _refresh() -> void:
 	for child in _grid.get_children():
 		_grid.remove_child(child)
 		child.queue_free()
-	for child in _equipment_box.get_children():
-		_equipment_box.remove_child(child)
-		child.queue_free()
+	for group_box in _equipment_group_boxes.values():
+		for child in (group_box as Control).get_children():
+			(group_box as Control).remove_child(child)
+			child.queue_free()
 	for child in _skills_box.get_children():
 		_skills_box.remove_child(child)
 		child.queue_free()
@@ -207,15 +224,21 @@ func _refresh() -> void:
 	for child in _system_box.get_children():
 		_system_box.remove_child(child)
 		child.queue_free()
+	for child in _bestiary_box.get_children():
+		_bestiary_box.remove_child(child)
+		child.queue_free()
 	_refresh_quests()
 	_refresh_map()
 	_refresh_learning()
 	_refresh_system()
+	_refresh_bestiary()
 
 	var equipped: Dictionary = Inv.equipment()
-	for slot in InventoryLogic.EQUIPMENT_SLOTS:
-		_equipment_box.add_child(_make_equipment_slot_button(
-			slot, String(equipped.get(slot, ""))))
+	for group in EQUIPMENT_GROUPS:
+		var group_box: Control = _equipment_group_boxes[String(group[0])]
+		for slot in group[1]:
+			group_box.add_child(_make_equipment_slot_button(
+				String(slot), String(equipped.get(slot, ""))))
 
 	var xp := 0
 	if Learning.profile != null:
@@ -274,7 +297,7 @@ func _refresh() -> void:
 
 func _set_tab(tab: String) -> void:
 	_active_tab = tab if tab in [TAB_CHARACTER, TAB_SKILLS, TAB_BAG, TAB_QUESTS,
-		TAB_MAP, TAB_LEARNING, TAB_SYSTEM] else TAB_BAG
+		TAB_MAP, TAB_LEARNING, TAB_SYSTEM, TAB_BESTIARY] else TAB_BAG
 	_character_scroll.visible = _active_tab == TAB_CHARACTER
 	_character_view.visible = _active_tab == TAB_CHARACTER
 	_skills_view.visible = _active_tab == TAB_SKILLS
@@ -283,6 +306,7 @@ func _set_tab(tab: String) -> void:
 	_map_view.visible = _active_tab == TAB_MAP
 	_learning_view.visible = _active_tab == TAB_LEARNING
 	_system_view.visible = _active_tab == TAB_SYSTEM
+	_bestiary_view.visible = _active_tab == TAB_BESTIARY
 	_character_tab.disabled = _active_tab == TAB_CHARACTER
 	_skills_tab.disabled = _active_tab == TAB_SKILLS
 	_bag_tab.disabled = _active_tab == TAB_BAG
@@ -290,6 +314,7 @@ func _set_tab(tab: String) -> void:
 	_map_tab.disabled = _active_tab == TAB_MAP
 	_learning_tab.disabled = _active_tab == TAB_LEARNING
 	_system_tab.disabled = _active_tab == TAB_SYSTEM
+	_bestiary_tab.disabled = _active_tab == TAB_BESTIARY
 	_refresh_footer()
 
 
@@ -614,6 +639,124 @@ func _make_setting_slider(slider_name: String, label: String, value: float,
 	return row
 
 
+## The Bestiary. Mentioned in PORT_NOTES.md and COMBAT_DESIGN.md as a Compendium
+## tab and "bestiary flags" from the legacy build, but neither ever made it into
+## this port — there was no way to answer "what have I fought" at all. A foe
+## appears the instant you fight it, win or lose; the rest of the 76-strong roster
+## stays "???" rather than spoiling regions that are not built yet.
+func _refresh_bestiary() -> void:
+	var entries: Array = Bestiary.all_entries(Learning.profile, DB)
+	var counts: Dictionary = Bestiary.counts(entries)
+	var known: int = int(counts["seen"]) + int(counts["defeated"])
+	if known == 0:
+		_bestiary_summary.text = "Nothing fought yet. The world will not stay quiet."
+	else:
+		_bestiary_summary.text = "%d defeated   ·   %d encountered   ·   %d still unknown" % [
+			counts["defeated"], counts["seen"], counts["unseen"]]
+
+	for entry in entries:
+		if Bestiary.is_spoiler(entry):
+			continue
+		_bestiary_box.add_child(_make_bestiary_card(entry))
+	if int(counts["unseen"]) > 0:
+		var more := Label.new()
+		more.name = "BestiaryUndiscovered"
+		more.text = "%d more creature%s out there, unfought." % [
+			counts["unseen"], "" if int(counts["unseen"]) == 1 else "s"]
+		more.add_theme_font_size_override("font_size", 11)
+		more.add_theme_color_override("font_color", COL_HEADING)
+		_bestiary_box.add_child(more)
+
+
+func _make_bestiary_card(entry: Dictionary) -> Control:
+	var stage: int = int(entry["stage"])
+	var accent := UiTheme.STATE_SUCCESS if stage == Bestiary.Stage.DEFEATED else COL_HEADING
+
+	var card := PanelContainer.new()
+	card.name = "BestiaryCard_" + String(entry["id"])
+	card.add_theme_stylebox_override("panel", _card_style(accent))
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	card.add_child(row)
+
+	var portrait := _bestiary_portrait(String(entry["id"]))
+	if portrait != null:
+		row.add_child(portrait)
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(box)
+
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 8)
+	box.add_child(header)
+	var title := Label.new()
+	title.name = "BestiaryName_" + String(entry["id"])
+	title.text = "%s  ·  Lv %d" % [String(entry["name"]), int(entry["level"])]
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", accent)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(title)
+	var state := Label.new()
+	state.name = "BestiaryStage_" + String(entry["id"])
+	var kills := int(entry["kills"])
+	state.text = "%s x%d" % [Bestiary.stage_label(stage), kills] if kills > 0 \
+		else Bestiary.stage_label(stage)
+	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_color_override("font_color", accent)
+	header.add_child(state)
+
+	# Drops are only listed once beaten. Combat already reveals what actually
+	# rolled via a toast; this is the full authored table, which is real data —
+	# not more than the player has effectively already been shown one roll of.
+	if stage == Bestiary.Stage.DEFEATED:
+		var names: Array[String] = []
+		for drop in entry["drops"]:
+			names.append(_name_of(String(drop.get("item", ""))))
+		if not names.is_empty():
+			var drops := Label.new()
+			drops.name = "BestiaryDrops_" + String(entry["id"])
+			drops.text = "Drops: " + ", ".join(names)
+			drops.add_theme_font_size_override("font_size", 10)
+			drops.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+			drops.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			box.add_child(drops)
+	else:
+		var stats := Label.new()
+		stats.text = "HP %d   ATK %d   DEF %d" % [
+			int(entry["max_hp"]), int(entry["atk"]), int(entry["def"])]
+		stats.add_theme_font_size_override("font_size", 10)
+		stats.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+		box.add_child(stats)
+	return card
+
+
+## A still portrait from the enemy's own walk sheet, honoring `spriteAlias` the
+## same way item icons honor `iconAlias` — the JSON `sprite` field is inherited
+## from the source asset pack's naming and does not resolve for most entries.
+## Returns null rather than a placeholder when no real art exists for this foe,
+## since most of the 76-strong roster belongs to a region that is not built yet.
+func _bestiary_portrait(enemy_id: String) -> Control:
+	var enemy: Dictionary = DB.enemy(enemy_id)
+	var sprite_id := String(enemy.get("spriteAlias", enemy.get("sprite", "")))
+	var path := "res://assets/sprites/%s.png" % sprite_id
+	if sprite_id.is_empty() or not ResourceLoader.exists(path):
+		return null
+	var texture := load(path) as Texture2D
+	if texture == null:
+		return null
+	var portrait := TextureRect.new()
+	portrait.name = "BestiaryPortrait_" + enemy_id
+	portrait.texture = SpriteSheets.portrait(texture)
+	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	portrait.custom_minimum_size = Vector2(40, 40)
+	return portrait
+
+
 func _make_quest_card(entry: Dictionary) -> Control:
 	var card := PanelContainer.new()
 	card.name = "QuestCard_" + String(entry["id"])
@@ -690,6 +833,9 @@ func _refresh_footer() -> void:
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_SYSTEM:
 		_capacity_label.text = "Settings save as you change them. Progress saves on its own."
+		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
+	elif _active_tab == TAB_BESTIARY:
+		_capacity_label.text = "A foe appears here the moment you fight it, win or lose."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	else:
 		var enc: Dictionary = Inv.encumbrance()
@@ -866,6 +1012,7 @@ func _comparison_tooltip(def: Dictionary) -> String:
 
 func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	var button := Button.new()
+	button.name = "EquipSlot_" + slot
 	button.custom_minimum_size = Vector2(150, 34)
 	button.focus_mode = Control.FOCUS_ALL
 	if item_id.is_empty():
@@ -875,7 +1022,20 @@ func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	else:
 		var item: Dictionary = DB.item(item_id)
 		button.text = "%s: %s" % [slot.capitalize(), item.get("name", item_id)]
-		button.tooltip_text = "%s\n%s\nPress to unequip." % [
+		# Weapon type/handedness is real, complete data for every one of the 36
+		# weapons (it already gates which Talents work) — unlike armorType, which
+		# only six pieces across the whole game bother to set, so showing it for
+		# the rest would look like a broken field rather than an absent one.
+		var kind_line := ""
+		if slot == "weapon":
+			var weapon_type := String(item.get("weaponType", ""))
+			var handedness := String(item.get("handedness", ""))
+			if not weapon_type.is_empty():
+				kind_line = "%s · %s\n" % [
+					weapon_type.capitalize(),
+					"2-handed" if handedness == "2h" else "1-handed"]
+		button.tooltip_text = "%s%s\n%s\nPress to unequip." % [
+			kind_line,
 			_stats_line(PlayerStats.scaled_item_stats(item, _player_level())),
 			item.get("desc", "")]
 		button.pressed.connect(_on_unequip.bind(slot, item_id))
@@ -1273,6 +1433,14 @@ func _build_scaffold() -> void:
 	_system_tab.pressed.connect(_set_tab.bind(TAB_SYSTEM))
 	tabs.add_child(_system_tab)
 
+	_bestiary_tab = Button.new()
+	_bestiary_tab.name = "BestiaryTab"
+	_bestiary_tab.text = "Bestiary"
+	_bestiary_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_bestiary_tab.focus_mode = Control.FOCUS_ALL
+	_bestiary_tab.pressed.connect(_set_tab.bind(TAB_BESTIARY))
+	tabs.add_child(_bestiary_tab)
+
 	_character_scroll = ScrollContainer.new()
 	_character_scroll.name = "CharacterScroll"
 	_character_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -1360,11 +1528,23 @@ func _build_scaffold() -> void:
 	equipment_heading.add_theme_color_override("font_color", COL_HEADING)
 	_character_view.add_child(equipment_heading)
 
-	_equipment_box = HFlowContainer.new()
-	_equipment_box.name = "EquipmentSlots"
-	_equipment_box.add_theme_constant_override("h_separation", 6)
-	_equipment_box.add_theme_constant_override("v_separation", 4)
-	_character_view.add_child(_equipment_box)
+	# Grouped by type (Weapon / Armor / Accessories) rather than one flat wrapping
+	# row: "gear slots and types" is only readable if the types are visible.
+	for group in EQUIPMENT_GROUPS:
+		var group_name := String(group[0])
+		var group_header := Label.new()
+		group_header.name = "EquipmentGroup_" + group_name
+		group_header.text = group_name
+		group_header.add_theme_font_size_override("font_size", 11)
+		group_header.add_theme_color_override("font_color", COL_BORDER)
+		_character_view.add_child(group_header)
+
+		var group_box := HFlowContainer.new()
+		group_box.name = "EquipmentSlots_" + group_name
+		group_box.add_theme_constant_override("h_separation", 6)
+		group_box.add_theme_constant_override("v_separation", 4)
+		_character_view.add_child(group_box)
+		_equipment_group_boxes[group_name] = group_box
 
 	_skills_view = VBoxContainer.new()
 	_skills_view.name = "SkillsView"
@@ -1485,6 +1665,30 @@ func _build_scaffold() -> void:
 	_system_box.add_theme_constant_override("separation", 6)
 	_system_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	system_scroll.add_child(_system_box)
+
+	_bestiary_view = VBoxContainer.new()
+	_bestiary_view.name = "BestiaryView"
+	_bestiary_view.add_theme_constant_override("separation", 8)
+	_bestiary_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_bestiary_view)
+
+	_bestiary_summary = Label.new()
+	_bestiary_summary.name = "BestiarySummary"
+	_bestiary_summary.add_theme_font_size_override("font_size", 12)
+	_bestiary_summary.add_theme_color_override("font_color", COL_HEADING)
+	_bestiary_view.add_child(_bestiary_summary)
+
+	var bestiary_scroll := ScrollContainer.new()
+	bestiary_scroll.name = "BestiaryScroll"
+	bestiary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	bestiary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_bestiary_view.add_child(bestiary_scroll)
+
+	_bestiary_box = VBoxContainer.new()
+	_bestiary_box.name = "BestiaryCards"
+	_bestiary_box.add_theme_constant_override("separation", 6)
+	_bestiary_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	bestiary_scroll.add_child(_bestiary_box)
 
 	_bag_view = VBoxContainer.new()
 	_bag_view.name = "BagView"

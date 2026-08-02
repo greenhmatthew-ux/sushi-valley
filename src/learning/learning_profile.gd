@@ -165,6 +165,37 @@ func set_flag(flag: String, value: bool = true) -> void:
 	data["flags"][flag] = value
 
 
+# --- bestiary tracking -------------------------------------------------------
+# Additive, like flags: `data["bestiary"]` only exists once the first enemy is
+# encountered, and to_save_dict() persists it verbatim since it duplicates
+# `data` wholesale and only cards get slimmed.
+
+func bestiary_entry(enemy_id: String) -> Dictionary:
+	return data.get("bestiary", {}).get(enemy_id, {})
+
+
+## Record a fight started against this enemy, win or lose. Idempotent.
+func record_enemy_seen(enemy_id: String) -> void:
+	if not data.has("bestiary"): data["bestiary"] = {}
+	if not data["bestiary"].has(enemy_id):
+		data["bestiary"][enemy_id] = {"seen": true, "defeated": false, "kills": 0}
+	else:
+		data["bestiary"][enemy_id]["seen"] = true
+
+
+## Record a win against this enemy. Implies seen, so a save that somehow only
+## recorded a kill (future migration, hand edit) still reads as encountered.
+func record_enemy_defeated(enemy_id: String) -> void:
+	if not data.has("bestiary"): data["bestiary"] = {}
+	if not data["bestiary"].has(enemy_id):
+		data["bestiary"][enemy_id] = {"seen": true, "defeated": true, "kills": 1}
+	else:
+		var entry: Dictionary = data["bestiary"][enemy_id]
+		entry["seen"] = true
+		entry["defeated"] = true
+		entry["kills"] = int(entry.get("kills", 0)) + 1
+
+
 # --- reading-material tracking ---------------------------------------------
 
 func has_read_content(content_id: String) -> bool:

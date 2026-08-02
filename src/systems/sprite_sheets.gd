@@ -69,3 +69,10 @@ static func _atlas(texture: Texture2D, column: int, row: int) -> AtlasTexture:
 ## sheet being swapped for a differently-sized one without the caller noticing.
 static func row_count(texture: Texture2D) -> int:
 	return texture.get_height() / FRAME_SIZE.y
+
+
+## A single stable portrait crop: idle_down's frame, column 0 row 0. For anywhere
+## that wants one still image from a walk sheet — the Bestiary card, currently —
+## rather than the full SpriteFrames animation set.
+static func portrait(texture: Texture2D) -> AtlasTexture:
+	return _atlas(texture, DIR_COLUMN["down"], 0)
