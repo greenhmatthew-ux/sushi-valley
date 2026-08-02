@@ -13,7 +13,7 @@ verified against the running scenes — not an aspirational or inherited list.
   Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade, Iaido Cut, Pinning Shot,
   Glyph Storm, Fortress Wall), plus the 16px treasure
   chest used for authored ingredient caches and the tied sack used for Garden Compost. The
-  Mountain Pass is built from the pack's `TilesetRelief` rock terrain, and its foes use the
+  Mountain Pass is built from the pack's `TilesetRelief` rock terrain and `TilesetReliefDetail` scree, and its foes use the
   pack's Lizard, Mole, Bear, BlueBat and Tengu sheets.
   Ki Focus, Rune Ward,
   Riposte, and Blood Blade are the unmodified

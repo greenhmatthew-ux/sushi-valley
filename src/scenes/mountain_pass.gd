@@ -17,23 +17,30 @@ const W := 44   # tiles wide
 const H := 30   # tiles tall
 const GEN_SEED := 20260731   # fixed, so the scatter is identical run to run
 
-# --- ninja_relief atlas coords (source 0) ---------------------------------
-# The tan/rock family. Picked by sampling the sheet: STONE_FLOOR is the only fully
-# flat tile in it, the rest carry enough grain to break up a large area.
+# --- ninja_relief atlas coords (source 0) -------------------------------
+# The tan/rock family. Every coordinate here was checked by rendering the tile on
+# its own at high zoom first, because this sheet is mostly autotile edge pieces and
+# a flat-looking average colour hides a corner nub or a rim bar — scattered as floor
+# those read as debris strewn over the whole region. Exactly two tiles in the family
+# are genuinely flat, and these are they.
 const STONE_FLOOR := Vector2i(2, 6)
-const GRAVEL: Array[Vector2i] = [
-	Vector2i(0, 9), Vector2i(1, 9), Vector2i(2, 9), Vector2i(3, 9),
-	Vector2i(4, 9), Vector2i(5, 9),
-]
-## Worn route stone, a shade darker than the surrounding gravel.
+## Worn route stone, a shade darker. Used only for the trail: scattering it as
+## mottling as well made the route unreadable, since the path and the noise were
+## then the same tile. The open ground stays one colour and the scree gives it
+## texture, which also means the darker stone always means "this is the way".
 const TRAIL := Vector2i(7, 6)
-const TRAIL_EDGE: Array[Vector2i] = [Vector2i(7, 5), Vector2i(7, 7)]
-## Cliff wall: a rim course on top, then the striated faces below it.
+## Cliff wall: a rim course on top, then the striated faces, then a shadowed base.
 const CLIFF_RIM := Vector2i(2, 5)
 const CLIFF_FACE: Array[Vector2i] = [
 	Vector2i(5, 6), Vector2i(8, 6), Vector2i(4, 6), Vector2i(9, 6),
 ]
 const CLIFF_BASE := Vector2i(2, 7)
+
+# --- ninja_relief_detail atlas coords (source 1) ------------------------
+## Loose scree and boulders that actually read as objects on the ground, rather
+## than the cliff fragments an earlier pass mistook for gravel.
+const SCREE: Array[Vector2i] = [Vector2i(0, 3), Vector2i(4, 5)]
+const BOULDERS: Array[Vector2i] = [Vector2i(4, 3), Vector2i(4, 4)]
 
 ## How many tiles of cliff wall to run along the north edge. The pass reads as a
 ## corridor, so the climb is walled rather than fading into empty space.
@@ -83,12 +90,20 @@ func _build_tileset() -> void:
 	source.texture = preload("res://assets/tilesets/ninja_relief.png")
 	source.texture_region_size = Vector2i(TILE, TILE)
 	var coords: Array[Vector2i] = [STONE_FLOOR, TRAIL, CLIFF_RIM, CLIFF_BASE]
-	coords.append_array(GRAVEL)
-	coords.append_array(TRAIL_EDGE)
 	coords.append_array(CLIFF_FACE)
 	for c in coords:
 		source.create_tile(c)
 	ts.add_source(source, 0)
+
+	var detail_source := TileSetAtlasSource.new()
+	detail_source.texture = preload("res://assets/tilesets/ninja_relief_detail.png")
+	detail_source.texture_region_size = Vector2i(TILE, TILE)
+	var detail_coords: Array[Vector2i] = []
+	detail_coords.append_array(SCREE)
+	detail_coords.append_array(BOULDERS)
+	for c in detail_coords:
+		detail_source.create_tile(c)
+	ts.add_source(detail_source, 1)
 
 	ground.tile_set = ts
 	detail = TileMapLayer.new()
@@ -99,36 +114,27 @@ func _build_tileset() -> void:
 	move_child(detail, 1)   # Ground(0) < Detail(1) < Entities(2)
 
 
-## Bare stone with gravel mixed through it. A single repeated floor tile reads as a
-## flat void at this scale, so most cells draw one of the grained variants instead.
+## Bare stone. Texture comes from the scree and boulders scattered on top rather
+## than from a tile mix: this family has exactly two flat tiles, and the second one
+## is spoken for by the trail.
 func _build_ground() -> void:
 	for x in W:
 		for y in H:
-			var cell := Vector2i(x, y)
-			var tile := STONE_FLOOR if _rng.randf() < 0.28 \
-				else GRAVEL[_rng.randi_range(0, GRAVEL.size() - 1)]
-			ground.set_cell(cell, 0, tile)
+			ground.set_cell(Vector2i(x, y), 0, STONE_FLOOR)
 	_build_route()
 
 
-## Rasterise the route waypoints with a three-tile brush and lay worn stone over them,
-## with a lighter edge course so the path has a border rather than a hard seam.
+## Rasterise the route waypoints with a three-tile brush and lay worn stone over them.
 func _build_route() -> void:
 	_route_cells.clear()
 	_add_route(ROUTE)
 	_add_route(LOOKOUT_SPUR)
+	# No edge course: every "edge" tile in this sheet carries a notch or rim bar that
+	# reads as debris in open ground. The trail is legible from its darker stone alone.
 	for raw_cell in _route_cells:
 		var cell: Vector2i = raw_cell
 		ground.set_cell(cell, 0, TRAIL)
 		_blocked[cell] = true
-	# Edge course: any cell touching the route but not on it.
-	for raw_cell in _route_cells:
-		var cell: Vector2i = raw_cell
-		for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
-			var edge: Vector2i = cell + offset
-			if _route_cells.has(edge) or not _in_bounds(edge):
-				continue
-			ground.set_cell(edge, 0, TRAIL_EDGE[(edge.x + edge.y) % TRAIL_EDGE.size()])
 
 
 func _add_route(waypoints: Array) -> void:
@@ -201,15 +207,19 @@ func _mark_occupied() -> void:
 				_blocked[t + Vector2i(dx, dy)] = true
 
 
-## Loose scree away from the route. Sparse on purpose: the pass should read as bare,
-## and this is texture rather than decoration.
+## Loose scree and the odd boulder, away from the route. Sparse on purpose: the pass
+## should read as bare stone with things lying on it, not as a textured carpet.
 func _build_detail() -> void:
 	for x in W:
 		for y in range(CLIFF_ROWS + 1, H):
 			var cell := Vector2i(x, y)
-			if _blocked.has(cell) or _rng.randf() > 0.06:
+			if _blocked.has(cell):
 				continue
-			detail.set_cell(cell, 0, GRAVEL[_rng.randi_range(0, GRAVEL.size() - 1)])
+			var roll := _rng.randf()
+			if roll < 0.11:
+				detail.set_cell(cell, 1, SCREE[_rng.randi_range(0, SCREE.size() - 1)])
+			elif roll < 0.13:
+				detail.set_cell(cell, 1, BOULDERS[_rng.randi_range(0, BOULDERS.size() - 1)])
 
 
 func _place_player() -> void:

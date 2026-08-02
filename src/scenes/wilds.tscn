@@ -65,7 +65,7 @@ uses_return_spawn = true
 auto_enter = true
 
 [node name="WildsNorth" type="Marker2D" parent="Entities"]
-position = Vector2(320, 56)
+position = Vector2(320, 72)
 script = ExtResource("5_spawn")
 spawn_id = "wilds_north"
 

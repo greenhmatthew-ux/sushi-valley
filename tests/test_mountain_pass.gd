@@ -105,7 +105,44 @@ func _route_runs_both_ways() -> void:
 		check_true("that entry marker exists in the pass", entry != null)
 	check_eq("coming back aims at the wilds marker",
 		String(exit_door.target_spawn), "wilds_north")
+
+	# Arriving inside an auto-entering door's radius bounces the player straight back
+	# out again. The pass shipped exactly that way at first — its entry marker sat
+	# 20px from the exit door, which is the door's own radius, so walking in put you
+	# back in the wilds before a frame had drawn.
+	_arrivals_are_clear_of_doors(scene, "the pass")
+	_arrivals_are_clear_of_doors(wilds, "the wilds")
 	wilds.queue_free()
+
+
+func _arrivals_are_clear_of_doors(region: Node, where: String) -> void:
+	var doors: Array = []
+	var markers: Array = []
+	for child in region.get_node("Entities").get_children():
+		if child.get("auto_enter") != null and bool(child.get("auto_enter")):
+			doors.append(child)
+		elif child.get("spawn_id") != null:
+			markers.append(child)
+
+	var trapped: Array[String] = []
+	for door in doors:
+		var radius := _door_radius(door)
+		for marker in markers:
+			var gap: float = (marker.position - door.position).length()
+			if gap <= radius:
+				trapped.append("%s is %.0fpx from %s (radius %.0f)"
+					% [marker.name, gap, door.name, radius])
+	check_true("%s: no arrival point sits inside a door that fires on touch (%s)"
+		% [where, str(trapped)], trapped.is_empty())
+
+
+## The door's real trigger size, read off its shape rather than assumed.
+func _door_radius(door: Node) -> float:
+	for child in door.get_children():
+		var shape := child as CollisionShape2D
+		if shape != null and shape.shape is CircleShape2D:
+			return (shape.shape as CircleShape2D).radius
+	return 20.0
 
 
 func _enemies_are_real_and_hostile() -> void:

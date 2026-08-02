@@ -41,10 +41,10 @@ tile_set = SubResource("ts_relief")
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("3_player")]
-position = Vector2(352, 456)
+position = Vector2(352, 424)
 
 [node name="PassEntry" type="Marker2D" parent="Entities"]
-position = Vector2(352, 456)
+position = Vector2(352, 424)
 script = ExtResource("5_spawn")
 spawn_id = "pass_entry"
 

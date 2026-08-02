@@ -57,6 +57,7 @@ The Mountain Pass region uses six more unmodified Ninja Adventure sources, all C
 | Runtime asset | Original source |
 | --- | --- |
 | `assets/tilesets/ninja_relief.png` | `Backgrounds/Tilesets/TilesetRelief.png` |
+| `assets/tilesets/ninja_relief_detail.png` | `Backgrounds/Tilesets/TilesetReliefDetail.png` |
 | `assets/sprites/enemy_lizard.png` | `Actor/Monster/Lizard/Lizard.png` |
 | `assets/sprites/enemy_mole.png` | `Actor/Monster/Mole/Mole.png` |
 | `assets/sprites/enemy_bear.png` | `Actor/Monster/Bear/SpriteSheet.png` |
