@@ -303,17 +303,23 @@ func _initialize() -> void:
 	await process_frame
 
 	var settings: Node = root.get_node("Settings")
-	var settings_panel := CanvasLayer.new()
-	settings_panel.set_script(load("res://src/ui/settings_panel.gd"))
-	root.add_child(settings_panel)
+	# Settings live in the hub's System domain now. They used to have their own
+	# panel, which meant two places to look for the same four controls.
+	var hub := CanvasLayer.new()
+	hub.set_script(load("res://src/ui/inventory_panel.gd"))
+	root.add_child(hub)
 	await process_frame
-	settings_panel.call("_set_open", true)
+	hub.call("open_at", "system")
 	await process_frame
-	var settings_shell: Control = settings_panel.find_child("SettingsShell", true, false)
-	check_true("settings shell stays inside the 640x360 viewport",
-		settings_shell != null and viewport_rect.encloses(settings_shell.get_global_rect()))
-	var music_slider := settings_panel.find_child("MusicVolumeSlider", true, false) as HSlider
-	var voice_slider := settings_panel.find_child("VoiceVolumeSlider", true, false) as HSlider
+	check_true("the hub has a system domain",
+		hub.find_child("SystemTab", true, false) != null)
+	var hub_shell: Control = hub.find_child("MenuShell", true, false)
+	if hub_shell == null:
+		hub_shell = hub.get("_root") as Control
+	check_true("the system domain stays inside the 640x360 viewport",
+		hub_shell != null and viewport_rect.encloses(hub_shell.get_global_rect()))
+	var music_slider := hub.find_child("MusicVolumeSlider", true, false) as HSlider
+	var voice_slider := hub.find_child("VoiceVolumeSlider", true, false) as HSlider
 	check_true("settings expose music and pronunciation volume",
 		music_slider != null and voice_slider != null)
 	music_slider.value = 0.5
@@ -322,15 +328,17 @@ func _initialize() -> void:
 	check_eq("pronunciation slider writes the setting", settings.voice_volume, 0.25)
 	settings.music_volume = 1.0
 	settings.voice_volume = 1.0
-	settings_panel.call("_set_open", false)
-	settings_panel.queue_free()
+	hub.call("_set_open", false)
+	hub.queue_free()
 	await process_frame
 	check_true("Notebook also rejects paused modal stacking",
 		await _panel_rejects_paused_open(
 			"res://src/ui/notebook_panel.gd", "open_notebook"))
-	check_true("Settings also rejects paused modal stacking",
+	# open_settings now routes into the hub, so the hub's own modal guard is what
+	# has to hold for it — the separate settings panel no longer exists.
+	check_true("the settings key also rejects paused modal stacking",
 		await _panel_rejects_paused_open(
-			"res://src/ui/settings_panel.gd", "open_settings"))
+			"res://src/ui/inventory_panel.gd", "open_settings"))
 	_finish()
 
 

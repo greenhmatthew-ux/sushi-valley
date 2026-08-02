@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
 [ext_resource type="Script" path="res://src/ui/toast_layer.gd" id="3_toast"]
-[ext_resource type="Script" path="res://src/ui/settings_panel.gd" id="6_settings"]
 [ext_resource type="Script" path="res://src/ui/notebook_panel.gd" id="7_notebook"]
 [ext_resource type="Script" path="res://src/ui/combat_panel.gd" id="8_combat"]
 [ext_resource type="Script" path="res://src/ui/context_prompt.gd" id="9_prompt"]
@@ -35,9 +34,6 @@ script = ExtResource("12_crafting")
 
 [node name="ToastLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_toast")
-
-[node name="SettingsPanel" type="CanvasLayer" parent="."]
-script = ExtResource("6_settings")
 
 [node name="NotebookPanel" type="CanvasLayer" parent="."]
 script = ExtResource("7_notebook")

@@ -47,6 +47,7 @@ const TAB_BAG := "bag"
 const TAB_QUESTS := "quests"
 const TAB_MAP := "map"
 const TAB_LEARNING := "learning"
+const TAB_SYSTEM := "system"
 
 var _open := false
 var _active_tab := TAB_BAG
@@ -79,6 +80,10 @@ var _learning_tab: Button
 var _learning_view: VBoxContainer
 var _learning_box: VBoxContainer
 var _learning_summary: Label
+var _system_tab: Button
+var _system_view: VBoxContainer
+var _system_box: VBoxContainer
+var _system_summary: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
@@ -128,6 +133,8 @@ func _domain_shortcut(event: InputEvent) -> String:
 		return TAB_MAP
 	if event.is_action_pressed("open_skills"):
 		return TAB_SKILLS
+	if event.is_action_pressed("open_settings"):
+		return TAB_SYSTEM
 	return ""
 
 
@@ -151,6 +158,7 @@ func _tab_button(tab: String) -> Button:
 		TAB_QUESTS: return _quests_tab
 		TAB_MAP: return _map_tab
 		TAB_LEARNING: return _learning_tab
+		TAB_SYSTEM: return _system_tab
 		_: return _character_tab
 
 
@@ -196,9 +204,13 @@ func _refresh() -> void:
 	for child in _learning_box.get_children():
 		_learning_box.remove_child(child)
 		child.queue_free()
+	for child in _system_box.get_children():
+		_system_box.remove_child(child)
+		child.queue_free()
 	_refresh_quests()
 	_refresh_map()
 	_refresh_learning()
+	_refresh_system()
 
 	var equipped: Dictionary = Inv.equipment()
 	for slot in InventoryLogic.EQUIPMENT_SLOTS:
@@ -262,7 +274,7 @@ func _refresh() -> void:
 
 func _set_tab(tab: String) -> void:
 	_active_tab = tab if tab in [TAB_CHARACTER, TAB_SKILLS, TAB_BAG, TAB_QUESTS,
-		TAB_MAP, TAB_LEARNING] else TAB_BAG
+		TAB_MAP, TAB_LEARNING, TAB_SYSTEM] else TAB_BAG
 	_character_scroll.visible = _active_tab == TAB_CHARACTER
 	_character_view.visible = _active_tab == TAB_CHARACTER
 	_skills_view.visible = _active_tab == TAB_SKILLS
@@ -270,12 +282,14 @@ func _set_tab(tab: String) -> void:
 	_quests_view.visible = _active_tab == TAB_QUESTS
 	_map_view.visible = _active_tab == TAB_MAP
 	_learning_view.visible = _active_tab == TAB_LEARNING
+	_system_view.visible = _active_tab == TAB_SYSTEM
 	_character_tab.disabled = _active_tab == TAB_CHARACTER
 	_skills_tab.disabled = _active_tab == TAB_SKILLS
 	_bag_tab.disabled = _active_tab == TAB_BAG
 	_quests_tab.disabled = _active_tab == TAB_QUESTS
 	_map_tab.disabled = _active_tab == TAB_MAP
 	_learning_tab.disabled = _active_tab == TAB_LEARNING
+	_system_tab.disabled = _active_tab == TAB_SYSTEM
 	_refresh_footer()
 
 
@@ -484,6 +498,87 @@ func _make_category_row(category: String, counts: Dictionary) -> Control:
 	return row
 
 
+## The System domain. UI_UX_GUIDE section 4 puts settings, help and save under
+## System inside the hub; they used to live in a separate panel, which meant two
+## places to look for the same four controls. Only settings that actually do
+## something are shown here — the accessibility set in section 15 is real work,
+## not a row of switches that lie.
+func _refresh_system() -> void:
+	_system_summary.text = "Display, language help, and sound"
+
+	_system_box.add_child(_make_setting_slider(
+		"ZoomSlider", "Camera zoom", Settings.zoom,
+		Settings.ZOOM_MIN, Settings.ZOOM_MAX, Settings.ZOOM_STEP,
+		func(value: float) -> void: Settings.zoom = value,
+		func(value: float) -> String:
+			if is_equal_approx(value, Settings.ZOOM_DEFAULT):
+				return "x%.1f  (default)" % value
+			return "x%.1f  (%s)" % [value, "closer in" if value > Settings.ZOOM_DEFAULT
+				else "further out"]))
+
+	var english := CheckBox.new()
+	english.name = "ShowEnglishCheck"
+	english.text = "Always show English meanings"
+	english.tooltip_text = "Hold the peek key to reveal them temporarily instead."
+	english.focus_mode = Control.FOCUS_ALL
+	english.set_pressed_no_signal(Settings.show_english)
+	english.toggled.connect(func(pressed: bool) -> void: Settings.show_english = pressed)
+	_system_box.add_child(english)
+
+	_system_box.add_child(_make_setting_slider(
+		"MusicVolumeSlider", "Music", Settings.music_volume, 0.0, 1.0, 0.05,
+		func(value: float) -> void: Settings.music_volume = value,
+		func(value: float) -> String: return "%d%%" % int(round(value * 100.0))))
+	_system_box.add_child(_make_setting_slider(
+		"VoiceVolumeSlider", "Pronunciation", Settings.voice_volume, 0.0, 1.0, 0.05,
+		func(value: float) -> void: Settings.voice_volume = value,
+		func(value: float) -> String: return "%d%%" % int(round(value * 100.0))))
+
+	var save_now := Button.new()
+	save_now.name = "SaveNow"
+	save_now.text = "Save progress now"
+	save_now.focus_mode = Control.FOCUS_ALL
+	save_now.custom_minimum_size = Vector2(0, 28)
+	save_now.pressed.connect(_on_save_now)
+	_system_box.add_child(save_now)
+
+
+func _on_save_now() -> void:
+	if Learning.profile != null:
+		Learning.profile.save()
+	Bus.toast.emit("Progress saved.")
+
+
+## One labelled slider row. `format` turns the value into the text beside the label,
+## so a percentage and a zoom factor can share the same control.
+func _make_setting_slider(slider_name: String, label: String, value: float,
+		minimum: float, maximum: float, step: float,
+		apply: Callable, format: Callable) -> Control:
+	var row := VBoxContainer.new()
+	row.add_theme_constant_override("separation", 2)
+
+	var caption := Label.new()
+	caption.name = slider_name + "Label"
+	caption.add_theme_font_size_override("font_size", 12)
+	caption.add_theme_color_override("font_color", COL_TEXT)
+	caption.text = "%s:  %s" % [label, format.call(value)]
+	row.add_child(caption)
+
+	var slider := HSlider.new()
+	slider.name = slider_name
+	slider.min_value = minimum
+	slider.max_value = maximum
+	slider.step = step
+	slider.custom_minimum_size = Vector2(0, 18)
+	slider.focus_mode = Control.FOCUS_ALL
+	slider.set_value_no_signal(value)
+	slider.value_changed.connect(func(changed: float) -> void:
+		apply.call(changed)
+		caption.text = "%s:  %s" % [label, format.call(changed)])
+	row.add_child(slider)
+	return row
+
+
 func _make_quest_card(entry: Dictionary) -> Control:
 	var card := PanelContainer.new()
 	card.name = "QuestCard_" + String(entry["id"])
@@ -557,6 +652,9 @@ func _refresh_footer() -> void:
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_LEARNING:
 		_capacity_label.text = "Your notebook (N) lists every word; this is what to study next."
+		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
+	elif _active_tab == TAB_SYSTEM:
+		_capacity_label.text = "Settings save as you change them. Progress saves on its own."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	else:
 		var enc: Dictionary = Inv.encumbrance()
@@ -1065,6 +1163,14 @@ func _build_scaffold() -> void:
 	_learning_tab.pressed.connect(_set_tab.bind(TAB_LEARNING))
 	tabs.add_child(_learning_tab)
 
+	_system_tab = Button.new()
+	_system_tab.name = "SystemTab"
+	_system_tab.text = "System"
+	_system_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_system_tab.focus_mode = Control.FOCUS_ALL
+	_system_tab.pressed.connect(_set_tab.bind(TAB_SYSTEM))
+	tabs.add_child(_system_tab)
+
 	_character_scroll = ScrollContainer.new()
 	_character_scroll.name = "CharacterScroll"
 	_character_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -1253,6 +1359,30 @@ func _build_scaffold() -> void:
 	_learning_box.add_theme_constant_override("separation", 6)
 	_learning_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	learning_scroll.add_child(_learning_box)
+
+	_system_view = VBoxContainer.new()
+	_system_view.name = "SystemView"
+	_system_view.add_theme_constant_override("separation", 8)
+	_system_view.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_system_view)
+
+	_system_summary = Label.new()
+	_system_summary.name = "SystemSummary"
+	_system_summary.add_theme_font_size_override("font_size", 12)
+	_system_summary.add_theme_color_override("font_color", COL_HEADING)
+	_system_view.add_child(_system_summary)
+
+	var system_scroll := ScrollContainer.new()
+	system_scroll.name = "SystemScroll"
+	system_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	system_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_system_view.add_child(system_scroll)
+
+	_system_box = VBoxContainer.new()
+	_system_box.name = "SystemControls"
+	_system_box.add_theme_constant_override("separation", 6)
+	_system_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	system_scroll.add_child(_system_box)
 
 	_bag_view = VBoxContainer.new()
 	_bag_view.name = "BagView"
