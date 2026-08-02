@@ -11,6 +11,7 @@ func _initialize() -> void:
 	# Pin this UI contract to an actual fresh build instead of inheriting their XP.
 	var learning: Node = root.get_node("Learning")
 	var db: Node = root.get_node("DB")
+	var bus: Node = root.get_node("Bus")
 	learning.profile.data["stats"]["xp"] = 0
 	learning.profile.build()["allocations"] = {"vitality": 0, "power": 0, "agility": 0}
 	var panel := CanvasLayer.new()
@@ -230,6 +231,52 @@ func _initialize() -> void:
 	check_eq("and is recorded as completed", stage_label.text, "Completed")
 	inv.reset()
 	panel.call("_set_tab", "bag")
+
+	# The Map and Learning domains, added so the hub matches the six-domain shape in
+	# UI_UX_GUIDE section 4 instead of being a bag with extras bolted on.
+	panel.call("_set_tab", "map")
+	panel.call("_refresh")
+	check_true("the hub has a map domain",
+		panel.find_child("MapTab", true, false) != null)
+	var map_summary: Label = panel.find_child("MapSummary", true, false)
+	check_true("the map says how much of the world is open",
+		map_summary != null and map_summary.text.contains("regions open"))
+	check_true("a built region is listed",
+		panel.find_child("RegionCard_mountain_pass", true, false) != null)
+	var planned_state: Label = panel.find_child("RegionState_north_reach", true, false)
+	check_true("a region with no scene says so rather than pretending",
+		planned_state != null and planned_state.text == "Not built yet")
+	var built_state: Label = panel.find_child("RegionState_whispering_woods", true, false)
+	check_true("a region you can walk to reads as open",
+		built_state != null and built_state.text != "Not built yet")
+	var link_detail: Label = panel.find_child("RegionDetail_mountain_pass", true, false)
+	check_true("regions show what they connect to",
+		link_detail != null and link_detail.text.contains("Whispering Woods"))
+
+	panel.call("_set_tab", "learning")
+	panel.call("_refresh")
+	check_true("the hub has a learning domain",
+		panel.find_child("LearningTab", true, false) != null)
+	var review_btn: Button = panel.find_child("ReviewNow", true, false)
+	check_true("review can be started from the hub, not only from a teacher",
+		review_btn != null and review_btn.focus_mode == Control.FOCUS_ALL)
+	var learn_summary: Label = panel.find_child("LearningSummary", true, false)
+	check_true("the learning domain reports what is due",
+		learn_summary != null and learn_summary.text.contains("ready to review"))
+
+	# Pressing Review has to actually open a session, or the button is decoration.
+	var opened := {"count": 0}
+	bus.learn_open.connect(func(_l, _n, _p): opened["count"] += 1)
+	review_btn.pressed.emit()
+	await process_frame
+	check_eq("Review opens a prepared session", int(opened["count"]), 1)
+	check_true("and closes the hub so the session is not behind it",
+		not bool(panel.get("_open")))
+
+	# A domain key opens the hub straight onto that domain.
+	panel.call("open_at", "map")
+	check_eq("a domain shortcut lands on that domain",
+		String(panel.get("_active_tab")), "map")
 
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
 	check_true("Talent unlock is written to disk",

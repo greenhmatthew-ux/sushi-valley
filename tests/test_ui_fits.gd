@@ -106,7 +106,7 @@ func _check_menu() -> void:
 	panel.set_script(load("res://src/ui/inventory_panel.gd"))
 	root.add_child(panel)
 	await process_frame
-	for tab in ["character", "skills", "bag", "quests"]:
+	for tab in ["character", "skills", "bag", "quests", "map", "learning"]:
 		panel.call("_set_tab", tab)
 		panel.call("_refresh")
 		await process_frame
