@@ -700,11 +700,32 @@ func _make_card(id: String, qty: int) -> Control:
 
 	if def.get("kind", "") == "gear":
 		var stats_label := Label.new()
+		stats_label.name = "ItemStats_" + id
 		stats_label.text = _stats_line(PlayerStats.scaled_item_stats(def, _player_level()))
 		stats_label.add_theme_font_size_override("font_size", 10)
 		stats_label.add_theme_color_override("font_color", COL_TEXT)
 		stats_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		vbox.add_child(stats_label)
+
+		# What equipping this would actually change, against whatever is in that slot
+		# now. UI_UX_GUIDE section 9: show the changed stats first, and never let
+		# comparing alter state. Absent when nothing would change, so the card does
+		# not carry a row that says nothing.
+		var change_label := Label.new()
+		change_label.name = "ItemCompare_" + id
+		change_label.text = _comparison_line(def)
+		# With an empty slot the delta is just the item's own stats, so the card would
+		# print the same numbers twice. Cards are 88px wide and every row costs the
+		# Equip button screen space; say it once.
+		if change_label.text == stats_label.text:
+			change_label.text = ""
+		change_label.visible = not change_label.text.is_empty()
+		change_label.add_theme_font_size_override("font_size", 10)
+		change_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		change_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		change_label.add_theme_color_override("font_color", UiTheme.STATE_INFO)
+		change_label.tooltip_text = _comparison_tooltip(def)
+		vbox.add_child(change_label)
 
 		var equip_button := Button.new()
 		var required_level := int(def.get("requiredLevel", 1))
@@ -760,6 +781,52 @@ func _make_card(id: String, qty: int) -> Control:
 		vbox.add_child(later_label)
 
 	return card
+
+
+## The stat delta from equipping `def` over whatever occupies its slot right now,
+## written as "+2 ATK, -1 SPD". Empty when nothing would change or the item is
+## already equipped, so a card only carries the line when it has something to say.
+##
+## Compared at the player's current level, because gear stats scale — an unscaled
+## comparison would quietly promise the wrong numbers.
+func _comparison_line(def: Dictionary) -> String:
+	var slot := String(def.get("slot", ""))
+	if slot.is_empty():
+		return ""
+	var equipped_id := String(Inv.equipment().get(slot, ""))
+	if equipped_id == String(def.get("id", "")):
+		return "Equipped"
+	var level := _player_level()
+	var incoming: Dictionary = PlayerStats.scaled_item_stats(def, level)
+	var current: Dictionary = {}
+	if not equipped_id.is_empty():
+		current = PlayerStats.scaled_item_stats(DB.item(equipped_id), level)
+
+	var parts: Array[String] = []
+	for stat in ["hp", "atk", "def", "spd"]:
+		var delta := int(incoming.get(stat, 0)) - int(current.get(stat, 0))
+		if delta != 0:
+			parts.append("%+d %s" % [delta, stat.to_upper()])
+	if parts.is_empty():
+		return "No change" if not equipped_id.is_empty() else ""
+	# Deltas only. A bag card is 88px wide and "vs Wooden Katana" ran straight off
+	# the edge; what is being compared against goes in the tooltip instead.
+	return ", ".join(parts)
+
+
+## The long form of the comparison, for the card's tooltip: which item the deltas
+## are measured against, spelled out.
+func _comparison_tooltip(def: Dictionary) -> String:
+	var slot := String(def.get("slot", ""))
+	if slot.is_empty():
+		return ""
+	var equipped_id := String(Inv.equipment().get(slot, ""))
+	if equipped_id.is_empty():
+		return "Nothing equipped in the %s slot." % slot
+	if equipped_id == String(def.get("id", "")):
+		return "You are already wearing one of these."
+	return "Compared with %s, currently equipped." % String(
+		DB.item(equipped_id).get("name", equipped_id))
 
 
 func _make_equipment_slot_button(slot: String, item_id: String) -> Button:

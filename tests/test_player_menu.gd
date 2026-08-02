@@ -232,6 +232,37 @@ func _initialize() -> void:
 	inv.reset()
 	panel.call("_set_tab", "bag")
 
+	# Gear comparison, UI_UX_GUIDE section 9: selecting gear shows what would change
+	# against the slot's current occupant, and comparing never changes state.
+	inv.reset()
+	# Two katanas: equipping one leaves a spare in the bag, which is the only way a
+	# bag card can be for gear you are already wearing — equipping moves the item
+	# out of the bag, so a single copy simply disappears from the grid.
+	inv.add("wooden_katana", 2)
+	inv.add("bamboo_spear", 1)
+	panel.call("_set_tab", "bag")
+	panel.call("_refresh")
+	var unequipped: Label = panel.find_child("ItemCompare_wooden_katana", true, false)
+	var own_stats: Label = panel.find_child("ItemStats_wooden_katana", true, false)
+	check_true("gear with an empty slot states its gain once, not twice",
+		unequipped != null and own_stats != null
+		and own_stats.text.contains("ATK") and not unequipped.visible)
+
+	inv.equip("wooden_katana")
+	panel.call("_refresh")
+	var equipped_note: Label = panel.find_child("ItemCompare_wooden_katana", true, false)
+	check_true("a spare of what you are wearing says so instead of comparing with itself",
+		equipped_note != null and equipped_note.text == "Equipped")
+	var rival: Label = panel.find_child("ItemCompare_bamboo_spear", true, false)
+	check_true("a rival weapon names what it is compared against (%s)"
+		% (rival.tooltip_text if rival != null else "missing"),
+		rival != null and rival.tooltip_text.contains("Wooden Katana"))
+	check_true("the comparison reports the real trade, not just the upside",
+		rival != null and rival.text.contains("+1 ATK") and rival.text.contains("-1 SPD"))
+	check_eq("comparing never equips anything",
+		String(inv.equipment().get("weapon", "")), "wooden_katana")
+	inv.reset()
+
 	# The Map and Learning domains, added so the hub matches the six-domain shape in
 	# UI_UX_GUIDE section 4 instead of being a bag with extras bolted on.
 	panel.call("_set_tab", "map")
