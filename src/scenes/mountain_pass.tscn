@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/mountain_pass.gd" id="1_pass"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/ninja_relief.png" id="2_relief"]
@@ -19,7 +19,9 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="17_woman"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="18_pickup"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="19_study"]
-[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="20_ui"]
+[ext_resource type="PackedScene" path="res://src/entities/crafting_station.tscn" id="20_station"]
+[ext_resource type="Texture2D" path="res://assets/props/crafting_anvil.png" id="21_anvil"]
+[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="22_ui"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_relief"]
 texture = ExtResource("2_relief")
@@ -232,24 +234,24 @@ coin_reward = 20
 coin_variance = 6
 
 [node name="LookoutKeeper" parent="Entities" instance=ExtResource("15_quest")]
-position = Vector2(104, 216)
+position = Vector2(128, 192)
 quest_id = "pass_scree_hides"
 speaker = "Tomas"
 greeting_card = "greet-konnichiwa"
 sprite_sheet = ExtResource("16_vil2")
 
 [node name="Windwatcher" parent="Entities" instance=ExtResource("15_quest")]
-position = Vector2(152, 240)
+position = Vector2(168, 248)
 quest_id = "pass_tengu_fan"
 speaker = "Rin"
 greeting_card = "greet-ohayou"
 sprite_sheet = ExtResource("17_woman")
 
 [node name="LookoutStudy" parent="Entities" instance=ExtResource("19_study")]
-position = Vector2(120, 256)
+position = Vector2(112, 288)
 
 [node name="MoonwoodCache" parent="Entities" instance=ExtResource("18_pickup")]
-position = Vector2(72, 184)
+position = Vector2(40, 168)
 item_id = "moonwood"
 qty = 1
 pickup_id = "pass_moonwood"
@@ -266,4 +268,10 @@ item_id = "bamboo_shoot"
 qty = 2
 pickup_id = "pass_bamboo_shoot"
 
-[node name="UILayer" parent="." instance=ExtResource("20_ui")]
+[node name="PassForge" parent="Entities" instance=ExtResource("20_station")]
+position = Vector2(56, 216)
+station = "forge"
+station_name = "Pass Camp Forge"
+sprite = ExtResource("21_anvil")
+
+[node name="UILayer" parent="." instance=ExtResource("22_ui")]

@@ -30,6 +30,7 @@ func _initialize() -> void:
 	_enemies_are_real_and_hostile()
 	_quests_and_pickups_resolve()
 	_drops_feed_the_crafting_tree()
+	_authored_things_do_not_overlap()
 
 	scene.queue_free()
 	await process_frame
@@ -214,6 +215,45 @@ func _drops_feed_the_crafting_tree() -> void:
 	print("  ..   recipes fed by pass drops: %s" % str(unlocked))
 	check_true("the pass supplies the mid-tier crafting tree (%d recipes)" % unlocked.size(),
 		unlocked.size() >= 5)
+
+	# Materials with no station within reach are a round trip, not a loop. The camp
+	# forge is what lets the climb pay off where the climbing happened.
+	var stations: Array[String] = []
+	for child in scene.get_node("Entities").get_children():
+		var station: Variant = child.get("station")
+		if station != null and not String(station).is_empty():
+			stations.append(String(station))
+	check_true("the pass has somewhere to use what it drops (%s)" % str(stations),
+		not stations.is_empty())
+
+	var reachable := 0
+	for recipe_id in unlocked:
+		if stations.has(String(db.recipes[recipe_id].get("station", ""))):
+			reachable += 1
+	check_true("some of those recipes can be made on the spot (%d of %d)"
+		% [reachable, unlocked.size()], reachable >= 3)
+
+
+## Two things standing on the same tile means one is drawn behind the other and its
+## label sits on top of its neighbour's. The camp forge shipped tucked behind a rock
+## that way. Markers are exempt: an arrival point is meant to sit under the player.
+func _authored_things_do_not_overlap() -> void:
+	var placed: Array = []
+	for child in scene.get_node("Entities").get_children():
+		if child is Marker2D or String(child.name) == "Player":
+			continue
+		if child is Node2D:
+			placed.append(child)
+	var collisions: Array[String] = []
+	for i in placed.size():
+		for j in range(i + 1, placed.size()):
+			var a: Node2D = placed[i]
+			var b: Node2D = placed[j]
+			var gap: float = (a.position - b.position).length()
+			if gap < 24.0:
+				collisions.append("%s/%s %.0fpx" % [a.name, b.name, gap])
+	check_true("nothing is placed on top of anything else (%s)" % str(collisions),
+		collisions.is_empty())
 
 
 func _pass_drop_ids() -> Dictionary:
