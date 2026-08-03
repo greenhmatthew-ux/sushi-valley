@@ -58,6 +58,7 @@ func _ready() -> void:
 	_root.hide()
 	Bus.combat_started.connect(_on_combat_started)
 	Bus.language_changed.connect(func(_v): if _active: _refresh_guard_hint())
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _on_combat_started(enemy_id: String) -> void:
@@ -505,9 +506,9 @@ func _rune_button(rune: String) -> Button:
 
 func _build() -> void:
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM

@@ -16,6 +16,19 @@ extends SceneTree
 
 var failures: int = 0
 var _checked := 0
+## Appended to every check name so a failure says which UI scale broke it.
+var _scale_label := ""
+
+
+## The canvas panels actually lay out in. UI scale shrinks it (the layer is scaled
+## up by the same factor), and a Control's rect is in that unscaled layer space —
+## so this, not the raw 640x360 viewport, is what "on screen" means here.
+func _logical_rect() -> Rect2:
+	var settings: Node = root.get_node("Settings")
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return Rect2(Vector2.ZERO, (base / maxf(settings.ui_scale, 0.1)).floor())
 
 
 func _initialize() -> void:
@@ -44,13 +57,25 @@ func _initialize() -> void:
 	# to the shared profile. This is a layout test; it should not move progress.
 	var xp_before: int = int(learning.profile.data["stats"]["xp"])
 
-	await _check_combat(bus, db)
-	await _check_recall(bus)
-	await _check_menu()
-	await _check_notebook()
+	# Every UI scale, not just 100%. Turning the scale up shrinks the logical
+	# canvas panels lay out in, so a panel that fits at 100% can genuinely
+	# overflow at 160% — which is exactly the regression this suite exists to
+	# catch, and the reason the setting cannot ship untested.
+	var settings: Node = root.get_node("Settings")
+	var original_scale: float = settings.ui_scale
+	for scale in settings.UI_SCALES:
+		settings.ui_scale = scale
+		_scale_label = " @%d%%" % int(round(scale * 100.0))
+		await _check_combat(bus, db)
+		await _check_recall(bus)
+		await _check_menu()
+		await _check_notebook()
+	settings.ui_scale = original_scale
+	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across four panels" % _checked)
+	print("  ..   measured %d text controls across four panels at %d UI scales"
+		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
 	learning.profile.data.erase("bestiary")
@@ -169,9 +194,9 @@ func _longest_enemy_name(db: Node) -> String:
 func _choices_are_all_on_screen(panel: Node, where: String) -> void:
 	var box := panel.get("_choices_box") as Control
 	if box == null or box.get_child_count() == 0:
-		check_true("%s: has choices to check" % where, false)
+		check_true("%s%s: has choices to check" % [where, _scale_label], false)
 		return
-	var viewport := root.get_viewport().get_visible_rect()
+	var viewport := _logical_rect()
 	var hidden: Array[String] = []
 	for child in box.get_children():
 		var button := child as Button
@@ -183,8 +208,8 @@ func _choices_are_all_on_screen(panel: Node, where: String) -> void:
 		var clipped_away := scroll != null and not scroll.get_global_rect().encloses(rect)
 		if clipped_away or not viewport.encloses(rect):
 			hidden.append("%s %s" % [button.text.substr(0, 12), rect])
-	check_true("%s: every answer is fully visible without scrolling (%s)"
-		% [where, _sample(hidden)], hidden.is_empty())
+	check_true("%s%s: every answer is fully visible without scrolling (%s)"
+		% [where, _scale_label, _sample(hidden)], hidden.is_empty())
 
 
 ## The nearest scroll ancestor, whose visible window is what actually clips a
@@ -200,18 +225,18 @@ func _scroll_ancestor(control: Control) -> ScrollContainer:
 
 ## Walk everything currently on screen and measure it.
 func _audit(node: Node, where: String) -> void:
-	var viewport := root.get_viewport().get_visible_rect()
+	var viewport := _logical_rect()
 	var clipped: Array[String] = []
 	var cramped: Array[String] = []
 	var outside: Array[String] = []
 	_walk(node, viewport, clipped, cramped, outside)
 
-	check_true("%s: no control truncates its text (%s)" % [where, _sample(clipped)],
+	check_true("%s%s: no control truncates its text (%s)" % [where, _scale_label, _sample(clipped)],
 		clipped.is_empty())
-	check_true("%s: every label and button is tall enough for its text (%s)"
-		% [where, _sample(cramped)], cramped.is_empty())
-	check_true("%s: nothing is pushed outside the 640x360 viewport (%s)"
-		% [where, _sample(outside)], outside.is_empty())
+	check_true("%s%s: every label and button is tall enough for its text (%s)"
+		% [where, _scale_label, _sample(cramped)], cramped.is_empty())
+	check_true("%s%s: nothing is pushed outside the %s canvas (%s)"
+		% [where, _scale_label, viewport.size, _sample(outside)], outside.is_empty())
 
 
 func _walk(node: Node, viewport: Rect2, clipped: Array[String],
@@ -226,6 +251,24 @@ func _walk(node: Node, viewport: Rect2, clipped: Array[String],
 
 func _measure(control: Control, viewport: Rect2, clipped: Array[String],
 		cramped: Array[String], outside: Array[String]) -> void:
+	# Panel shells carry no text, so the text checks below skip them — but a shell
+	# that outgrows the canvas takes its whole panel off screen, which is exactly
+	# what a screenshot caught after UI scale shrank the canvas under a fixed-width
+	# tab row.
+	#
+	# WIDTH ONLY, deliberately. Adding this check also surfaced that the recall
+	# panel's reveal state has always been taller than the viewport (a 395px frame
+	# in 360px at 100%): its text stays on screen but the gold border is clipped
+	# top and bottom. That is a pre-existing layout bug, not something UI scale
+	# introduced, and fixing it means redesigning that panel's reveal state — its
+	# own slice. Checking height here would fail the build on it every run.
+	if control is PanelContainer and not _inside_scroll(control):
+		var frame := control.get_global_rect()
+		if frame.size.x > 0.0 \
+				and (frame.position.x < viewport.position.x - 1.0
+					or frame.end.x > viewport.end.x + 1.0):
+			outside.append("%s (frame width) %s" % [control.name, frame])
+
 	var text := ""
 	if control is Label:
 		text = (control as Label).text

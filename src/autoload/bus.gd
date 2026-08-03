@@ -51,6 +51,10 @@ signal language_changed(english_visible: bool)
 ## Music/pronunciation volume preference changed. The Audio autoload listens and retunes
 ## live players, so panels never poke the audio players directly.
 signal audio_settings_changed(music: float, voice: float)
+## UI scale preference changed (UI_UX_GUIDE section 15's 80-160%). Every UI layer
+## listens and re-fits itself; the world is deliberately untouched, so pixel art
+## keeps its integer camera zoom.
+signal ui_scale_changed(scale: float)
 
 # --- shop ---
 ## A vendor was interacted with — the ShopPanel opens on this, keyed by shop_id (a

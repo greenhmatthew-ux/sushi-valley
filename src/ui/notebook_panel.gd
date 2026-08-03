@@ -33,6 +33,7 @@ func _ready() -> void:
 	_root.hide()
 	# Re-render live so peeking English (TAB) reveals the meanings in here too.
 	Bus.language_changed.connect(func(_v): if _open: _refresh())
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -183,9 +184,9 @@ func _card_chip(card: Dictionary, show_en: bool) -> Control:
 
 func _build() -> void:
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM

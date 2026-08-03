@@ -12,6 +12,8 @@ extends CanvasLayer
 ## quest registry, so the HUD can never disagree with the giver you are standing in front of.
 
 var _panel: PanelContainer
+## Scaling root — the tracker anchors inside this, not the raw viewport.
+var _root: Control
 var _title: Label
 var _detail: Label
 
@@ -20,6 +22,7 @@ func _ready() -> void:
 	layer = 17   # same band as the HUD, under the context prompt
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build()
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 	Bus.quest_accepted.connect(func(_id): _refresh())
 	Bus.quest_completed.connect(func(_id): _refresh())
 	Bus.inventory_changed.connect(_refresh)
@@ -88,6 +91,11 @@ func _active_giver() -> Node:
 
 
 func _build() -> void:
+	_root = Control.new()
+	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_root)
+	UiTheme.fit_layer(self, _root)
+
 	_panel = PanelContainer.new()
 	var style := UiTheme.panel_style(UiTheme.BORDER_STRONG)
 	style.bg_color = Color(UiTheme.SURFACE_DEEP, 0.88)
@@ -104,7 +112,7 @@ func _build() -> void:
 	_panel.grow_vertical = Control.GROW_DIRECTION_END
 	_panel.offset_right = -UiTheme.UNIT
 	_panel.offset_top = 84.0
-	add_child(_panel)
+	_root.add_child(_panel)
 
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 1)

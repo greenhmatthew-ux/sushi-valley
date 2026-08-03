@@ -36,6 +36,7 @@ func _ready() -> void:
 	# Deferred past the owning scene's _ready: quest progress is measured from
 	# what the player is carrying, and world.gd restores the bag in _load_game.
 	_maybe_show.call_deferred()
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _maybe_show() -> void:
@@ -84,9 +85,9 @@ func _build(model: Dictionary) -> void:
 	if _root != null:
 		_root.queue_free()
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM

@@ -131,9 +131,9 @@ func _input_glyph() -> String:
 
 func _build() -> void:
 	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
+	UiTheme.fit_layer(self, root)
 
 	_panel = PanelContainer.new()
 	_panel.add_theme_stylebox_override("panel", UiTheme.panel_style(UiTheme.BORDER_STRONG))

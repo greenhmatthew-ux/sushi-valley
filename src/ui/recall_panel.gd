@@ -49,6 +49,11 @@ var _listening := false
 var _rng := RandomNumberGenerator.new()
 
 var _root: Control
+## Held so _apply_metrics can retune row spacing and padding when the scale changes.
+var _vbox: VBoxContainer
+var _margin: MarginContainer
+## Answer-row height for the current canvas; see _apply_metrics.
+var _choice_height := 42.0
 var _heading: Label
 var _furigana: Label
 var _question: Label
@@ -66,6 +71,9 @@ func _ready() -> void:
 	_build_scaffold()
 	_root.hide()
 	Bus.learn_open.connect(_on_learn_open)
+	Bus.ui_scale_changed.connect(func(_s):
+		UiTheme.fit_layer(self, _root)
+		_apply_metrics())
 
 
 func _on_learn_open(focus_lesson: String, session_size: int, allow_practice: bool) -> void:
@@ -174,7 +182,7 @@ func _make_choice_button(choice: String) -> Button:
 	# half read. Long choices wrap and step down a size instead.
 	btn.clip_text = false
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	btn.custom_minimum_size = Vector2(200, 42)
+	btn.custom_minimum_size = Vector2(200, _choice_height)
 	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
 	# is no longer mouse-only (the project requires keyboard AND controller to work).
 	btn.focus_mode = Control.FOCUS_ALL
@@ -184,7 +192,7 @@ func _make_choice_button(choice: String) -> Button:
 	btn.add_theme_font_size_override("font_size", UiTheme.fit_font_size(choice, 18))
 	# 42, down from 46: the furigana row above needs the height, and the button is
 	# still taller than the text it holds — wrapped_height keeps long answers whole.
-	btn.custom_minimum_size.y = maxf(42.0, UiTheme.wrapped_height(btn, choice, 200.0))
+	btn.custom_minimum_size.y = maxf(_choice_height, UiTheme.wrapped_height(btn, choice, 200.0))
 	btn.pressed.connect(_on_choice.bind(choice, btn))
 	return btn
 
@@ -313,9 +321,9 @@ func _scaffold_level() -> int:
 
 func _build_scaffold() -> void:
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM
@@ -333,16 +341,13 @@ func _build_scaffold() -> void:
 	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 
-	var margin := MarginContainer.new()
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
-	panel.add_child(margin)
+	_margin = MarginContainer.new()
+	panel.add_child(_margin)
+	var margin := _margin
 
-	var vbox := VBoxContainer.new()
-	# 10 rather than 12: the furigana row costs height, and six gaps at two pixels
-	# each is exactly what keeps the reveal state inside a 360px viewport.
-	vbox.add_theme_constant_override("separation", 10)
-	margin.add_child(vbox)
+	_vbox = VBoxContainer.new()
+	margin.add_child(_vbox)
+	var vbox := _vbox
 
 	var heading_row := HBoxContainer.new()
 	vbox.add_child(heading_row)
@@ -375,8 +380,8 @@ func _build_scaffold() -> void:
 	_furigana.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(_furigana)
 
-	# 40 rather than 48: the furigana row above needs the height, and the prompt is
-	# still far larger than body text, which is what section 16 asks for.
+	# Size set by _apply_metrics: 40 at the full canvas (48 would crowd the furigana
+	# row), stepped down when UI scale shrinks the canvas.
 	_question = _label(40, Color.WHITE)
 	_question.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_question.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -404,6 +409,42 @@ func _build_scaffold() -> void:
 	_continue_btn.add_theme_stylebox_override("hover", _button_style(COL_CORRECT.lightened(0.1), COL_BORDER))
 	_continue_btn.pressed.connect(_on_continue)
 	vbox.add_child(_continue_btn)
+	_apply_metrics()
+
+
+## This panel is the tightest in the game: at 100% its reveal state (furigana +
+## prompt + hint + feedback + two answer rows + Continue) fills a 360px canvas
+## almost exactly. Raising the UI scale shrinks that canvas, so the prompt — the
+## tallest single element — steps down with it, and the row gaps close by two.
+## Nothing else gives: shrinking the answer buttons instead would hide the very
+## text the player is being asked to choose between.
+##
+## At the full canvas this restores the authored 40px prompt and 10px gaps
+## exactly, so the default look is untouched.
+func _apply_metrics() -> void:
+	if _question == null or _vbox == null or _margin == null:
+		return
+	var height := UiTheme.logical_size().y
+	var prompt_size := 40
+	var separation := 10
+	var pad := 24
+	# Two answer rows, so every pixel here counts double. 36 still clears the 24px
+	# minimum touch/-focus target and the text inside is measured, never clipped.
+	_choice_height = 42.0
+	if height < 310.0:
+		prompt_size = 30
+		separation = 6
+		pad = 14
+		_choice_height = 36.0
+	elif height < 340.0:
+		prompt_size = 34
+		separation = 8
+		pad = 18
+		_choice_height = 40.0
+	_question.add_theme_font_size_override("font_size", prompt_size)
+	_vbox.add_theme_constant_override("separation", separation)
+	for side in ["left", "right", "top", "bottom"]:
+		_margin.add_theme_constant_override("margin_" + side, pad)
 
 
 func _on_listen_pressed() -> void:

@@ -24,6 +24,7 @@ func _ready() -> void:
 	_root.hide()
 	Bus.crafting_open.connect(_on_open)
 	Bus.crafting_changed.connect(func(station): if _open and station == _station: _refresh())
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _on_open(station: String) -> void:
@@ -149,9 +150,9 @@ func _item_detail(def: Dictionary) -> String:
 func _build() -> void:
 	_root = Control.new()
 	_root.name = "CraftingRoot"
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 	var dim := ColorRect.new()
 	dim.color = COL_DIM
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)

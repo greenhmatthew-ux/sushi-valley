@@ -27,6 +27,31 @@ var zoom: float = ZOOM_DEFAULT:
 		Bus.zoom_changed.emit(zoom)
 		save()
 
+## UI scale. Deliberately separate from `zoom`: zoom moves the world camera and
+## must stay on integer-friendly steps for 16px art, while this only resizes UI.
+## Turning it up does not make panels bigger on screen — it makes their TEXT
+## bigger, so panels hold less. That is the accessibility trade the guide asks for.
+##
+## The range stops at 110%, not the guide's 160%. The game lays UI out in a fixed
+## 640x360 canvas, and raising the scale divides that canvas by the same factor —
+## at 160% panels get 400x225, which the denser ones cannot hold. The recall panel
+## is the binding constraint: its reveal state (furigana, prompt, hint, feedback,
+## two answer rows, Continue) fills the full-size canvas almost exactly, and at
+## 120% it overflows by a few pixels for the longest cards. Going higher needs
+## those panels redesigned to reflow, not a bigger number here — every step in
+## this list is swept by tests/test_ui_fits.gd on every run.
+const UI_SCALES: Array[float] = [0.8, 0.9, 1.0, 1.1]
+const UI_SCALE_DEFAULT := 1.0
+
+var ui_scale: float = UI_SCALE_DEFAULT:
+	set(value):
+		var next := _nearest_ui_scale(value)
+		if is_equal_approx(next, ui_scale):
+			return
+		ui_scale = next
+		Bus.ui_scale_changed.emit(ui_scale)
+		save()
+
 ## Linear volumes, 0.0 (silent) to 1.0 (full), in 5% steps. Music layers on top of the
 ## Audio autoload's own base mix level; pronunciation plays at the set level directly.
 const VOLUME_MIN := 0.0
@@ -160,11 +185,14 @@ func load_settings() -> void:
 	voice_volume = clampf(snappedf(
 		float(cfg.get_value("audio", "voice_volume", VOLUME_MAX)), VOLUME_STEP),
 		VOLUME_MIN, VOLUME_MAX)
+	ui_scale = _nearest_ui_scale(
+		float(cfg.get_value("display", "ui_scale", UI_SCALE_DEFAULT)))
 
 
 func save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("display", "zoom", zoom)
+	cfg.set_value("display", "ui_scale", ui_scale)
 	cfg.set_value("language", "show_english", translation_mode == TranslationMode.ALWAYS)
 	cfg.set_value("language", "translation_mode", translation_mode)
 	cfg.set_value("language", "furigana_mode", furigana_mode)
@@ -176,6 +204,33 @@ func save() -> void:
 ## Step the zoom one notch. `direction` is +1 (closer) or -1 (further out).
 func nudge_zoom(direction: int) -> void:
 	zoom = zoom + ZOOM_STEP * signf(direction)
+
+
+## Snap to an authored UI step. A free float would let a config edit (or a future
+## slider) land on a scale no panel was ever measured at.
+func _nearest_ui_scale(value: float) -> float:
+	var best := UI_SCALE_DEFAULT
+	for step in UI_SCALES:
+		if absf(step - value) < absf(best - value):
+			best = step
+	return best
+
+
+## Step the UI scale one notch through UI_SCALES. Returns false at either end, so
+## a caller can grey out the control rather than silently doing nothing.
+func nudge_ui_scale(direction: int) -> bool:
+	var index := UI_SCALES.find(ui_scale)
+	if index < 0:
+		index = UI_SCALES.find(UI_SCALE_DEFAULT)
+	var next := index + signi(direction)
+	if next < 0 or next >= UI_SCALES.size():
+		return false
+	ui_scale = UI_SCALES[next]
+	return true
+
+
+func ui_scale_label() -> String:
+	return "%d%%" % int(round(ui_scale * 100.0))
 
 
 func reset() -> void:

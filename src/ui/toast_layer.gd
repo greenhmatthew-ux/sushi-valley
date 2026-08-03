@@ -29,6 +29,8 @@ var _tween: Tween
 ## harmless where a counter would drift.
 var _dialogue_up := false
 var _combat_up := false
+## Scaling root — the strip anchors inside this, not the raw viewport.
+var _root: Control
 
 
 func _ready() -> void:
@@ -36,6 +38,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build()
 	Bus.toast.connect(_on_toast)
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 	Bus.dialogue_open.connect(func(_speaker, _lines): _set_lift(true, _combat_up))
 	Bus.dialogue_closed.connect(func(): _set_lift(false, _combat_up))
 	Bus.combat_started.connect(func(_id): _set_lift(_dialogue_up, true))
@@ -85,6 +88,11 @@ func _now() -> float:
 
 
 func _build() -> void:
+	_root = Control.new()
+	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_root)
+	UiTheme.fit_layer(self, _root)
+
 	_panel = PanelContainer.new()
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.05, 0.07, 0.1, 0.92)
@@ -100,7 +108,7 @@ func _build() -> void:
 	_panel.anchor_top = ANCHOR_NORMAL; _panel.anchor_bottom = ANCHOR_NORMAL
 	_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	add_child(_panel)
+	_root.add_child(_panel)
 
 	_label = Label.new()
 	_label.add_theme_font_size_override("font_size", 14)

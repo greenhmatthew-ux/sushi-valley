@@ -71,7 +71,16 @@ func _layer_behavior() -> void:
 	root.add_child(layer)
 	await process_frame
 
-	var panel := layer.get_child(0) as PanelContainer
+	# Found by type, not by index: the layer's first child is the scaling root that
+	# UI scale hangs everything off, and the strip lives inside it.
+	var panel: PanelContainer = null
+	for node in _all_descendants(layer):
+		if node is PanelContainer:
+			panel = node
+			break
+	check_true("the toast strip exists", panel != null)
+	if panel == null:
+		return
 	var label := panel.get_child(0) as Label
 	check_true("strip starts hidden", not panel.visible)
 
@@ -99,6 +108,14 @@ func _layer_behavior() -> void:
 
 	layer.queue_free()
 	await process_frame
+
+
+func _all_descendants(node: Node) -> Array:
+	var out: Array = []
+	for child in node.get_children():
+		out.append(child)
+		out.append_array(_all_descendants(child))
+	return out
 
 
 func _finish() -> void:

@@ -126,6 +126,7 @@ func _ready() -> void:
 	Bus.inventory_changed.connect(_refresh)
 	Bus.ability_loadout_changed.connect(_refresh)
 	Bus.player_build_changed.connect(_refresh)
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -551,6 +552,16 @@ func _make_category_row(category: String, counts: Dictionary) -> Control:
 ## not a row of switches that lie.
 func _refresh_system() -> void:
 	_system_summary.text = "Display, language help, and sound"
+
+	# Sits above camera zoom because the two are easy to confuse: this one resizes
+	# text and menus only, that one moves the world camera.
+	_system_box.add_child(_make_setting_choice(
+		"UiScale", "UI size",
+		Settings.UI_SCALES.map(func(s: float) -> String: return "%d%%" % int(round(s * 100.0))),
+		maxi(0, Settings.UI_SCALES.find(Settings.ui_scale)),
+		"Scales menus, HUD, and text. Larger sizes make text easier to read but fit "
+		+ "less on screen at once. The world view is unaffected — use Camera zoom for that.",
+		func(index: int) -> void: Settings.ui_scale = Settings.UI_SCALES[index]))
 
 	_system_box.add_child(_make_setting_slider(
 		"ZoomSlider", "Camera zoom", Settings.zoom,
@@ -1420,9 +1431,9 @@ func _bag_empty_message(bag_is_truly_empty: bool) -> String:
 func _build_scaffold() -> void:
 	_root = Control.new()
 	_root.name = "PlayerMenuRoot"
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM
@@ -1462,9 +1473,17 @@ func _build_scaffold() -> void:
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(_coins_label)
 
-	var tabs := HBoxContainer.new()
+	# Flow, not a fixed row: eight domain tabs are wider than the shell once UI
+	# scale shrinks the canvas, and an HBoxContainer would push the whole panel
+	# past its anchors and off screen. Wrapping to a second row is the guide's
+	# "narrow screens reflow instead of shrinking".
+	var tabs := HFlowContainer.new()
 	tabs.name = "DomainTabs"
-	tabs.add_theme_constant_override("separation", 8)
+	# A wrapped tab lines up under the first tab rather than floating centred,
+	# so the second row reads as a continuation of the same list.
+	tabs.alignment = FlowContainer.ALIGNMENT_BEGIN
+	tabs.add_theme_constant_override("h_separation", 8)
+	tabs.add_theme_constant_override("v_separation", 4)
 	vbox.add_child(tabs)
 
 	_character_tab = Button.new()

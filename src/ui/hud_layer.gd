@@ -37,11 +37,20 @@ var _vitals: Control
 var _hearts_box: HBoxContainer
 var _hearts: Array[TextureRect] = []
 var _hp_full := true
+## Everything hangs off this so the whole HUD scales as one (UiTheme.fit_layer).
+## Without it the groups would anchor to the untouched viewport and drift off the
+## corners as soon as the layer was scaled.
+var _root: Control
 
 
 func _ready() -> void:
 	layer = 17   # under the context prompt (18), dialogue (19) and every modal
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_root = Control.new()
+	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_root)
+	UiTheme.fit_layer(self, _root)
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 	_build_vitals()
 	_build_status()
 	Bus.coins_changed.connect(func(_c): _refresh())
@@ -62,7 +71,7 @@ func _build_vitals() -> void:
 	_vitals = VBoxContainer.new()
 	_vitals.position = Vector2(UiTheme.UNIT + 2, UiTheme.UNIT)
 	_vitals.add_theme_constant_override("separation", 2)
-	add_child(_vitals)
+	_root.add_child(_vitals)
 
 	_hearts_box = HBoxContainer.new()
 	_hearts_box.add_theme_constant_override("separation", 1)
@@ -135,7 +144,7 @@ func _build_status() -> void:
 	panel.grow_vertical = Control.GROW_DIRECTION_END
 	panel.offset_right = -UiTheme.UNIT
 	panel.offset_top = UiTheme.UNIT
-	add_child(panel)
+	_root.add_child(panel)
 
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 2)

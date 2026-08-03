@@ -93,6 +93,45 @@ static func fit_font_size(text: String, base: int) -> int:
 		return maxi(FONT_META, int(round(base * 0.5)))
 	return maxi(FONT_META - 1, int(round(base * 0.42)))
 
+# --- UI scale (UI_UX_GUIDE section 15) ------------------------------------
+##
+## The game renders UI into a fixed 640x360 logical viewport, so "bigger UI"
+## cannot mean bigger panels — it means bigger text inside the same panels, and
+## therefore a smaller logical canvas to lay them out in.
+##
+## That is what these two do together: the CanvasLayer is scaled up, and its
+## root Control is shrunk by the same factor. A panel anchored at 8%-92% of the
+## root keeps the exact screen footprint it had at 100%, while its absolute font
+## sizes now cover more of it. Scaling the layer (rather than every font size)
+## also means padding, borders, and min-sizes scale in lockstep, so nothing can
+## clip from a font growing inside a box that did not.
+##
+## The world is deliberately untouched: Settings.zoom stays on integer-friendly
+## steps for the 16px art, per the project art rules.
+
+## The logical UI canvas at the current scale — what a root Control must be
+## sized to so that, once its layer is scaled, it covers exactly the screen.
+static func logical_size() -> Vector2:
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return (base / maxf(Settings.ui_scale, 0.1)).floor()
+
+
+## Fit one UI layer to the player's scale. Call right after building `root`, and
+## again whenever `Bus.ui_scale_changed` fires. Anchors are dropped in favour of
+## an explicit size because full-rect anchors resolve against the untouched
+## viewport rect, which is exactly the thing that must no longer be the canvas.
+static func fit_layer(layer: CanvasLayer, root: Control) -> void:
+	if layer == null or root == null:
+		return
+	var scale := maxf(Settings.ui_scale, 0.1)
+	layer.scale = Vector2(scale, scale)
+	root.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	root.position = Vector2.ZERO
+	root.size = logical_size()
+
+
 # --- motion (seconds) -----------------------------------------------------
 const MOTION_PRESS := 0.07
 const MOTION_FOCUS := 0.08

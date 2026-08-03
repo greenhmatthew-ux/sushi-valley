@@ -55,6 +55,7 @@ func _ready() -> void:
 	_build_scaffold()
 	_root.hide()
 	Bus.shop_open.connect(_on_shop_open)
+	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
 func _on_shop_open(shop_id: String) -> void:
@@ -269,9 +270,9 @@ func _item_detail(def: Dictionary) -> String:
 
 func _build_scaffold() -> void:
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(_root)
+	UiTheme.fit_layer(self, _root)
 
 	var dim := ColorRect.new()
 	dim.color = COL_DIM
