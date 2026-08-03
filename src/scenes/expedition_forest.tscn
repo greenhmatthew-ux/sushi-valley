@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/expedition_forest.gd" id="1_room"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="9_enemy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_bear.png" id="10_bear"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_tengu.png" id="11_tengu"]
+[ext_resource type="Script" path="res://src/entities/expedition_objective.gd" id="12_objective"]
+[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="13_ui"]
+
+[sub_resource type="TileSetAtlasSource" id="atlas_g"]
+texture = ExtResource("2_sv")
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="ts_g"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("atlas_g")
+
+[sub_resource type="CircleShape2D" id="reach"]
+radius = 26.0
+
+[node name="ExpeditionForest" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_room")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("ts_g")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(64, 224)
+
+[node name="ExpeditionEntry" type="Marker2D" parent="Entities"]
+position = Vector2(64, 224)
+script = ExtResource("5_spawn")
+spawn_id = "expedition_entry"
+
+[node name="RetreatDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(20, 224)
+target_scene = "res://src/scenes/wilds.tscn"
+target_spawn = "expedition_return"
+auto_enter = true
+
+[node name="TrailGuard" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(240, 224)
+behavior = 2
+max_hp = 76
+enemy_def = 8
+enemy_atk = 16
+sprite_sheet = ExtResource("10_bear")
+enemy_id = "thornback"
+coin_reward = 18
+coin_variance = 4
+
+[node name="Lunchbox" type="Area2D" parent="Entities"]
+position = Vector2(400, 144)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+y_sort_enabled = true
+script = ExtResource("12_objective")
+expedition_id = "forest_lunchbox"
+
+[node name="Reach" type="CollisionShape2D" parent="Entities/Lunchbox"]
+shape = SubResource("reach")
+
+[node name="ForestWraith" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(624, 224)
+behavior = 2
+max_hp = 220
+enemy_def = 10
+enemy_atk = 22
+sprite_sheet = ExtResource("11_tengu")
+enemy_id = "forest_wraith"
+coin_reward = 60
+coin_variance = 10
+
+[node name="UILayer" parent="." instance=ExtResource("13_ui")]

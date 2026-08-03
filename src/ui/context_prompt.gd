@@ -99,6 +99,13 @@ func _verb_for(target: Node) -> String:
 		return "Talk to %s" % named
 	if target.get("shows_card") != null:
 		return "Read the sign"
+	# An expedition trailhead carries the room it leads to; the objective inside
+	# carries only the run id. Both are checked before the generic fallbacks so
+	# neither ever offers a bare "Examine" for a major piece of content.
+	if target.get("room_scene") != null:
+		return "Enter the Expedition"
+	if target.get("expedition_id") != null:
+		return "Inspect the lunchbox"
 	if target.get("target_scene") != null:
 		return "Enter"
 	if target.get("required_lesson") != null:

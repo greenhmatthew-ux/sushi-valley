@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/wilds.gd" id="1_wilds"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
@@ -30,6 +30,10 @@
 [ext_resource type="PackedScene" path="res://src/entities/vendor.tscn" id="19_vendor"]
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="23_quest"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="28_pickup"]
+[ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="29_expgate"]
+
+[sub_resource type="CircleShape2D" id="exp_reach"]
+radius = 28.0
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -278,6 +282,26 @@ speaker = "Guide"
 teaches_category = "travel"
 intro_lines = PackedStringArray("The road teaches you words faster than any book.", "Stations, tickets, platforms, transfers. Learn the travel set and no journey will strand you.")
 sprite_sheet = ExtResource("23_vil3")
+
+[node name="ExpeditionGate" type="Area2D" parent="Entities"]
+position = Vector2(496, 296)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+y_sort_enabled = true
+script = ExtResource("29_expgate")
+expedition_id = "forest_lunchbox"
+room_scene = "res://src/scenes/expedition_forest.tscn"
+locked_lines = PackedStringArray("This forest route is sealed.", "Complete Hana's Sushi Prep Raid to unlock the Expedition.")
+
+[node name="Reach" type="CollisionShape2D" parent="Entities/ExpeditionGate"]
+shape = SubResource("exp_reach")
+
+[node name="ExpeditionReturn" type="Marker2D" parent="Entities"]
+position = Vector2(496, 320)
+script = ExtResource("5_spawn")
+spawn_id = "expedition_return"
 
 [node name="TeacherHermit" parent="Entities" instance=ExtResource("20_teacher")]
 position = Vector2(448, 368)
