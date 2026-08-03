@@ -195,6 +195,9 @@ func recipe(id: String) -> Dictionary:
 func quest(id: String) -> Dictionary:
 	return _lookup(quests, id, "quest")
 
+func raid(id: String) -> Dictionary:
+	return _lookup(raids, id, "raid")
+
 func card(id: String) -> Dictionary:
 	return _lookup(cards, id, "card")
 

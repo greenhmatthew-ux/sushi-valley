@@ -46,6 +46,19 @@ static func is_known(recipe: Dictionary, profile_data: Dictionary) -> bool:
 	return String(recipe.get("id", "")) in ensure_state(profile_data)["discovered"]
 
 
+## Resolve a data-authored source ("raid:sushi_prep", "boss:forest_wraith",
+## "chest:...") to one newly learned recipe, or {} when every match is already
+## known. Port of discoverRecipeFromSource in CraftingSystem.ts. Mutates
+## profile_data only; the caller owns saving and announcing the discovery.
+static func discover_from_source(profile_data: Dictionary, recipes: Array, source: String) -> Dictionary:
+	for recipe in recipes:
+		if String(recipe.get("discoverySource", "")) == source \
+				and not is_known(recipe, profile_data):
+			ensure_state(profile_data)["discovered"].append(String(recipe.get("id", "")))
+			return recipe
+	return {}
+
+
 static func status(recipe: Dictionary, station: String, profile_data: Dictionary,
 		inventory: InventoryLogic) -> Dictionary:
 	if recipe.is_empty() or String(recipe.get("station", "")) != station:

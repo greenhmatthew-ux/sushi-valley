@@ -171,13 +171,16 @@ func _return_visit(lesson: String) -> void:
 
 ## One micro-review against this teacher's lesson. Practice is allowed so a first meeting
 ## always has something to show, even before anything is scheduled as due.
-func _run_session(lesson: String) -> void:
+## Returns the [attempted, correct, cancelled] result so subclasses (raid_teacher)
+## can react to how the session went; this base class only reports the score.
+func _run_session(lesson: String) -> Array:
 	Bus.learn_open.emit(lesson, session_size, true)
 	var res: Array = await Bus.learn_closed   # [attempted, correct, cancelled]
 	var attempted: int = res[0]
 	var correct: int = res[1]
 	if attempted > 0 and not bool(res[2]):
 		Bus.toast.emit("%s: %d/%d" % [speaker, correct, attempted])
+	return res
 
 
 ## A greeting drawn from this teacher's OWN lesson, as "japanese|meaning". Prefers a

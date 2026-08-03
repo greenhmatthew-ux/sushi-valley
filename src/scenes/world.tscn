@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="8_qrxgn"]
 [ext_resource type="PackedScene" path="res://src/entities/npc.tscn" id="9_npc"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="33_teacher"]
+[ext_resource type="Script" path="res://src/entities/raid_teacher.gd" id="33_raid_teacher"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="37_study"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="34_woman"]
@@ -1422,6 +1423,9 @@ shape = SubResource("RectangleShape2D_axmu7")
 
 [node name="TeacherHana" parent="Props" instance=ExtResource("33_teacher")]
 position = Vector2(208, 344)
+script = ExtResource("33_raid_teacher")
+raid_id = "sushi_prep"
+first_lesson_flag = "hana_first_lesson"
 npc_id = "hana"
 speaker = "Hana"
 teaches_lesson = "greetings"
