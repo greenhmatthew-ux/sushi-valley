@@ -198,6 +198,9 @@ func quest(id: String) -> Dictionary:
 func raid(id: String) -> Dictionary:
 	return _lookup(raids, id, "raid")
 
+func expedition(id: String) -> Dictionary:
+	return _lookup(expeditions, id, "expedition")
+
 func card(id: String) -> Dictionary:
 	return _lookup(cards, id, "card")
 
