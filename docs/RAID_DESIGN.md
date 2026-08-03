@@ -20,14 +20,16 @@ Lunchbox Raid, Forest Gate Raid, Market Delivery Raid, Shrine Cleanup Raid, **Su
 - Unlocks: saved Raid completion plus the Forest Lunchbox Expedition.
 
 ## Structure
-`src/game/systems/RaidSystem.ts` owns the small state machine and types; authored definitions live
-in `src/game/data/raids.json`. Do not split speculative Raid classes before another mission proves
-the boundary.
+`src/systems/raid_logic.gd` owns the small state machine (ported from the archived
+`RaidSystem.ts`); authored definitions live in `data/game/raids.json`. Do not split speculative
+Raid classes before another mission proves the boundary.
 
-The first implementation keeps the types/tracker together in `RaidSystem.ts` until a second Raid
-proves a split is useful. Sushi Prep is live: Hana entry, focused Food & Drink recall, Pantry Oni boss,
-Recipe Stamp/coins/food reward, Raid recipe discovery, Forest Expedition unlock, saved completion,
-automatic Valley return, reload coverage, and touch coverage.
+Sushi Prep is live in the Godot build: Hana (`src/entities/raid_teacher.gd`, a teacher_npc that
+also runs a Raid) briefs it once her first lesson has been passed, then a focused Food & Drink
+recall, the Pantry Oni through the ordinary combat panel, and the Recipe Stamp/coins/food reward
+with Raid recipe discovery, Forest Expedition unlock, and saved completion. Stages persist as
+`profile.data.raids` in the TS-compatible shape, so an archived save still loads. Covered by
+`tests/test_raid.gd`.
 
 **RaidDef:** id, displayName, description, npcId, requiredFlags, learningFocus, encounterId,
 reward `{ coins?, items? }`, unlockFlags, unlockExpeditionIds, repeatable.
