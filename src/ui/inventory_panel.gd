@@ -287,10 +287,14 @@ func _refresh() -> void:
 		+ "Basic Attack is always available. Talent unlocks are permanent."
 	) % [equipped_skills.size(), AbilityRules.MAX_SKILLS, Learning.unspent_talent_points()]
 	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
-	_skills_box.add_child(_section_label("Known Actions"))
-	for ability in Learning.known_ability_defs():
-		_skills_box.add_child(_make_skill_card(ability, weapon_type,
-			String(ability.get("id", "")) in equipped_skills))
+	# Grouped by role so a grown collection reads as four styles, not one long
+	# list — and so the tag a talent was bought under stays visible afterward.
+	for group in Learning.known_ability_defs_by_role():
+		_skills_box.add_child(_section_label(
+			"%s Actions" % String(group["role"]).capitalize()))
+		for ability in group["defs"]:
+			_skills_box.add_child(_make_skill_card(ability, weapon_type,
+				String(ability.get("id", "")) in equipped_skills))
 	var talents := Learning.next_talent_defs()
 	if not talents.is_empty():
 		_skills_box.add_child(_section_label("Next Talents — one honest action per style"))

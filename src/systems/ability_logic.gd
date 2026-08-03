@@ -169,6 +169,29 @@ static func known_defs(build: Dictionary, abilities: Dictionary,
 	return out
 
 
+## The fallback matches next_talent_defs: an ability the table gives no role tag
+## is a general "adventurer" action, not an error.
+static func role_of(ability: Dictionary) -> String:
+	return String(ability.get("role", "adventurer"))
+
+
+## Known actions bucketed by role for display, as [{role, defs}] with roles in the
+## order the authored table first uses them. Data-driven so a fifth style added to
+## abilities.json shows up without touching UI code.
+static func known_defs_by_role(build: Dictionary, abilities: Dictionary,
+		authored_order: Array = []) -> Array[Dictionary]:
+	var groups: Array[Dictionary] = []
+	var by_role := {}
+	for ability in known_defs(build, abilities, authored_order):
+		var role := role_of(ability)
+		if not by_role.has(role):
+			var group := {"role": role, "defs": []}
+			by_role[role] = group
+			groups.append(group)
+		(by_role[role]["defs"] as Array).append(ability)
+	return groups
+
+
 ## Equipped and currently weapon-compatible definitions for combat. Invalid or stale
 ## ids are skipped rather than making a fight unusable; Basic Attack remains separate.
 static func usable_defs(build: Dictionary, abilities: Dictionary,

@@ -52,6 +52,7 @@ func _initialize() -> void:
 	_weapon_and_runtime_gates()
 	_six_slot_mutation()
 	_talent_unlocks()
+	_role_grouping()
 	_finish()
 
 
@@ -150,6 +151,22 @@ func _talent_unlocks() -> void:
 	check_true("visible level-locked Talent still cannot be purchased",
 		not AbilityRules.can_unlock_talent(abilities["iaido"], 3,
 			{"skills": [], "unlockedAbilities": ["sweep"]}, abilities))
+
+
+func _role_grouping() -> void:
+	var build := {"skills": [],
+		"unlockedAbilities": ["sweep", "kunai", "rune_ward", "storm_draw"]}
+	var order := ["strike", "guard", "sweep", "kunai", "rune_ward", "storm_draw", "iaido"]
+	var groups := AbilityRules.known_defs_by_role(build, abilities, order)
+	check_eq("roles appear in authored first-appearance order",
+		groups.map(func(g): return g["role"]),
+		["adventurer", "samurai", "ranger", "scholar"])
+	check_eq("role-less starters fall back to the adventurer group",
+		groups[0]["defs"].map(func(a): return a["id"]), ["strike", "guard"])
+	check_eq("a role keeps its actions in authored order",
+		groups[1]["defs"].map(func(a): return a["id"]), ["sweep", "storm_draw"])
+	check_true("locked iaido is not listed in any group",
+		groups.all(func(g): return not g["defs"].map(func(a): return a["id"]).has("iaido")))
 
 
 func _finish() -> void:

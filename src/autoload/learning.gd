@@ -90,6 +90,10 @@ func known_ability_defs() -> Array[Dictionary]:
 	return AbilityRules.known_defs(profile.build(), DB.abilities, DB.ability_order)
 
 
+func known_ability_defs_by_role() -> Array[Dictionary]:
+	return AbilityRules.known_defs_by_role(profile.build(), DB.abilities, DB.ability_order)
+
+
 func usable_ability_defs(weapon_type: String) -> Array[Dictionary]:
 	return AbilityRules.usable_defs(profile.build(), DB.abilities, weapon_type)
 
