@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/ui/shop_panel.gd" id="5_shop"]
 [ext_resource type="Script" path="res://src/ui/inventory_panel.gd" id="11_inventory"]
 [ext_resource type="Script" path="res://src/ui/crafting_panel.gd" id="12_crafting"]
+[ext_resource type="Script" path="res://src/ui/welcome_back_panel.gd" id="13_welcome"]
 
 [node name="UILayer" type="Node"]
 
@@ -46,3 +47,6 @@ script = ExtResource("9_prompt")
 
 [node name="ObjectiveHud" type="CanvasLayer" parent="."]
 script = ExtResource("10_objective")
+
+[node name="WelcomeBackPanel" type="CanvasLayer" parent="."]
+script = ExtResource("13_welcome")

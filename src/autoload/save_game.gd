@@ -38,6 +38,16 @@ extends Node
 const SAVE_SCHEMA_VERSION := 3
 const PROFILE_PATH := "user://profile.json"
 
+## Whether a save existed when the game booted — i.e. there was a previous session.
+## Distinct from has_save(): the bag autosaves on every change, so a profile.json
+## appears within the first frames of a brand-new game. Anything asking "is this a
+## returning player?" (the welcome-back card) must read this, not has_save().
+var had_save_at_boot := false
+
+
+func _ready() -> void:
+	had_save_at_boot = has_save()
+
 
 # --- learning-facing IO (the Learning autoload calls these) ----------------
 
