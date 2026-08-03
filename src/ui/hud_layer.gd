@@ -30,7 +30,7 @@ const QUARTERS_PER_HEART := 4
 const DIM_WHEN_SAFE := 0.55   ## alpha for the vitals group at full HP
 
 var _coins_label: Label
-var _due_label: Label
+var _due_button: Button
 var _level_label: Label
 var _hp_label: Label
 var _vitals: Control
@@ -146,10 +146,23 @@ func _build_status() -> void:
 	rows.add_child(_coins_label)
 
 	# Learning identity colour, so "words waiting" reads as a different kind of thing
-	# from money at a glance.
-	_due_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.LEARNING_VIOLET)
-	_due_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	rows.add_child(_due_label)
+	# from money at a glance. A button, not a label: the guide's depth target for
+	# "review due Japanese" is one layer — the cue itself starts the session.
+	_due_button = Button.new()
+	_due_button.name = "HudDueReview"
+	_due_button.flat = true
+	for state in ["normal", "hover", "pressed", "focus"]:
+		_due_button.add_theme_stylebox_override(state, StyleBoxEmpty.new())
+	_due_button.add_theme_font_size_override("font_size", UiTheme.FONT_META)
+	_due_button.add_theme_color_override("font_color", UiTheme.LEARNING_VIOLET)
+	_due_button.add_theme_color_override("font_hover_color", UiTheme.TEXT_PRIMARY)
+	_due_button.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	# No keyboard/controller focus: arrows double as movement, so the HUD must
+	# never join the focus loop. Those inputs reach review via `open_review`.
+	_due_button.focus_mode = Control.FOCUS_NONE
+	_due_button.tooltip_text = "Start a review session (R)"
+	_due_button.pressed.connect(_open_review)
+	rows.add_child(_due_button)
 
 
 func _refresh() -> void:
@@ -161,10 +174,26 @@ func _refresh() -> void:
 	var due := 0
 	if Learning.progression != null:
 		due = Learning.due_count()
-	_due_label.text = "%d word%s to review" % [due, "" if due == 1 else "s"]
-	_due_label.visible = due > 0
+	_due_button.text = "%d word%s to review ▸" % [due, "" if due == 1 else "s"]
+	_due_button.visible = due > 0
 
 	if _level_label != null and Learning.profile != null:
 		var xp := int(Learning.profile.data.get("stats", {}).get("xp", 0))
 		_level_label.text = "Lv %d" % PlayerStats.level_from_xp(xp)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_review"):
+		_open_review()
+		get_viewport().set_input_as_handled()
+
+
+## The prepared session behind the cue — the same one the Pause Hub's Learning
+## tab starts, so the shortcut is a faster route to a known place, not a new mode.
+func _open_review() -> void:
+	# Anything that pauses (dialogue, menus, an open session) owns the screen, and
+	# combat hides this HUD entirely; the cue must not fire under either.
+	if not visible or get_tree().paused or Learning.progression == null:
+		return
+	Bus.learn_open.emit("", 5, true)
 
