@@ -43,8 +43,9 @@ func _initialize() -> void:
 	learning.profile.unlock_lesson("travel-vocab-1")
 	learning.profile.unlock_lesson("common-words-1")
 	inv.reset()
-	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat"]:
+	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat", "herb_seed"]:
 		inv.add(item_id, 2)
+	root.get_node("Farm").reset(false)
 	# Journal: one ordinary request plus both structured mission card shapes, all
 	# actionable, so Track buttons and reward rows are measured at every scale.
 	var layout_quest_id := "stock_the_stall"
@@ -82,11 +83,12 @@ func _initialize() -> void:
 		await _check_recall(bus)
 		await _check_menu()
 		await _check_notebook()
+		await _check_farm(bus)
 	settings.ui_scale = original_scale
 	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across four panels at %d UI scales"
+	print("  ..   measured %d text controls across six panels at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
@@ -176,6 +178,30 @@ func _check_notebook() -> void:
 	_audit(panel, "notebook")
 	panel.call("_set_open", false)
 	panel.queue_free()
+	await process_frame
+
+
+func _check_farm(bus: Node) -> void:
+	var picker := CanvasLayer.new()
+	picker.set_script(load("res://src/ui/crop_picker_panel.gd"))
+	root.add_child(picker)
+	await process_frame
+	bus.farm_plot_open.emit("layout_plot")
+	await process_frame
+	_audit(picker, "farm/seed picker")
+	picker.call("_close")
+	picker.queue_free()
+	await process_frame
+
+	var day_end := CanvasLayer.new()
+	day_end.set_script(load("res://src/ui/day_end_panel.gd"))
+	root.add_child(day_end)
+	await process_frame
+	bus.sleep_requested.emit()
+	await process_frame
+	_audit(day_end, "farm/day end")
+	day_end.call("_close")
+	day_end.queue_free()
 	await process_frame
 
 

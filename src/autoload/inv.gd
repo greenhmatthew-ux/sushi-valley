@@ -63,6 +63,12 @@ func has(id: String, qty: int = 1) -> bool:
 	return logic.has(id, qty)
 
 
+## How many more of this item fit without mutating the bag. Transactional
+## systems use this before awarding an item so a full stack never loses loot.
+func max_addable(id: String) -> int:
+	return logic.max_addable(id)
+
+
 ## `[{ "id", "qty" }, ...]` — see InventoryLogic.entries.
 func entries() -> Array:
 	return logic.entries()

@@ -6,12 +6,10 @@ extends CanvasLayer
 ##
 ##   top-left   hearts + level      — dims to 55% while full and safe, per the contract's
 ##                                    "Always, but dim when full and safe"
-##   top-right  coins + due reviews — the learning cue the contract lists alongside the clock
+##   top-right  day/season + coins + due reviews
 ##
-## The due-review count is the one number that tells a player this is a learning game with
-## something waiting for them; it was missing entirely. Time/date/season/weather are also in
-## the contract but there is no day/season system yet, so that group is deliberately absent
-## rather than faked — the guide's "honest status" principle.
+## The day/season row is backed by the saved Farm calendar. The due-review count is the one
+## number that tells a player this is a learning game with something waiting for them.
 ##
 ## Bus-driven throughout: no polling, and nothing here holds a reference to Inv or Learning
 ## state beyond reading it on a signal.
@@ -30,6 +28,7 @@ const QUARTERS_PER_HEART := 4
 const DIM_WHEN_SAFE := 0.55   ## alpha for the vitals group at full HP
 
 var _coins_label: Label
+var _clock_label: Label
 var _due_button: Button
 var _level_label: Label
 var _hp_label: Label
@@ -55,6 +54,7 @@ func _ready() -> void:
 	_build_status()
 	Bus.coins_changed.connect(func(_c): _refresh())
 	Bus.inventory_changed.connect(_refresh)
+	Bus.farm_changed.connect(_refresh)
 	Bus.player_hp_changed.connect(_on_hp)
 	Bus.hud_refresh.connect(_refresh)
 	# Learning progress moves the due count, so refresh on any review or unlock.
@@ -150,6 +150,10 @@ func _build_status() -> void:
 	rows.add_theme_constant_override("separation", 2)
 	panel.add_child(rows)
 
+	_clock_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.TEXT_PRIMARY)
+	_clock_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	rows.add_child(_clock_label)
+
 	_coins_label = UiTheme.label("", UiTheme.FONT_SECTION, UiTheme.ACCENT_GOLD)
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	rows.add_child(_coins_label)
@@ -177,6 +181,7 @@ func _build_status() -> void:
 func _refresh() -> void:
 	if _coins_label == null:
 		return
+	_clock_label.text = Farm.clock_text()
 	_coins_label.text = "%d coins" % Inv.coins
 
 	# Hidden at zero rather than showing "0 due" — an empty queue is not information.
@@ -205,4 +210,3 @@ func _open_review() -> void:
 	if not visible or get_tree().paused or Learning.progression == null:
 		return
 	Bus.learn_open.emit("", 5, true)
-

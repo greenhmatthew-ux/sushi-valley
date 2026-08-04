@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/entities/farm_plot.gd" id="1_plot"]
+
+[sub_resource type="RectangleShape2D" id="reach"]
+size = Vector2(28, 18)
+
+[node name="FarmPlot" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+script = ExtResource("1_plot")
+
+[node name="Reach" type="CollisionShape2D" parent="."]
+shape = SubResource("reach")

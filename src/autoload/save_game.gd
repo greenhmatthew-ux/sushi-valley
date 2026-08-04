@@ -10,10 +10,12 @@ extends Node
 ## --- Save document shape (Slice: Persistence) ---
 ## The file is a single versioned document that wraps every persisted subsystem:
 ##
-##   { "version": 4,
+##   { "version": 5,
 ##     "learning":  { ...slim LearningProfile save dict (cards/flags/stats/build)... },
 ##     "inventory": { ...InventoryLogic.to_dict(): bag + coins + equipment... },
-##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" } } }
+##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" },
+##                    "calendar": { "day": 1, "season": "spring" },
+##                    "farm": { "plots": { ...stable plot states... } } } }
 ##
 ## MIGRATION v1 -> v2 (inventory). v1 never persisted the bag or the coin purse at all, so
 ## quitting lost every item and coin — and because quest progress is read FROM the bag while
@@ -30,6 +32,10 @@ extends Node
 ## InventoryLogic defaults that missing string to empty, preserving the entire bag,
 ## purse, equipment, and favorites while beginning with no reserved battle meal.
 ##
+## MIGRATION v4 -> v5 (calendar/farm). v4 world sections contain only `player`.
+## FarmLogic defaults absent `calendar` to Spring Day 1 and absent `farm.plots` to
+## empty, so old placement, learning, and inventory survive without reinterpretation.
+##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).
 ##
@@ -39,7 +45,7 @@ extends Node
 ## (flat) profile.json is migrated on the first read: a document with no "learning"
 ## key is treated as the legacy learning dict and wrapped on the next save.
 
-const SAVE_SCHEMA_VERSION := 4
+const SAVE_SCHEMA_VERSION := 5
 const PROFILE_PATH := "user://profile.json"
 
 ## Whether a save existed when the game booted — i.e. there was a previous session.
@@ -98,6 +104,27 @@ func save_inventory(inventory_data: Dictionary) -> void:
 	_write_document(doc)
 
 
+## The whole world section for feature-owned readers such as Farm. Returns an
+## empty dictionary for a legacy flat profile or malformed/missing world data.
+func load_world_state() -> Dictionary:
+	var doc := _read_document()
+	return doc.get("world", {}) if doc.get("world") is Dictionary else {}
+
+
+## Merge feature-owned world fields without touching placement, learning, or the
+## inventory. This keeps autosaved crop actions from erasing where the player was.
+func save_world_fields(fields: Dictionary) -> void:
+	var doc := _read_document()
+	if not doc.has("learning"):
+		doc = {"learning": doc, "inventory": {}, "world": {}}
+	var world: Dictionary = doc.get("world", {}) if doc.get("world") is Dictionary else {}
+	for key in fields:
+		world[key] = fields[key]
+	doc["version"] = SAVE_SCHEMA_VERSION
+	doc["world"] = world
+	_write_document(doc)
+
+
 func has_save() -> bool:
 	return FileAccess.file_exists(PROFILE_PATH)
 
@@ -114,14 +141,14 @@ func clear() -> void:
 ## autoloads or scene nodes — so it round-trips in a headless test. The in-game
 ## caller passes Learning.profile.to_save_dict() and the Player's live transform.
 func build_snapshot(learning_data: Dictionary, player_pos: Vector2, facing: String,
-		inventory_data: Dictionary = {}) -> Dictionary:
+		inventory_data: Dictionary = {}, world_data: Dictionary = {}) -> Dictionary:
+	var world := world_data.duplicate(true)
+	world["player"] = {"x": player_pos.x, "y": player_pos.y, "facing": facing}
 	return {
 		"version": SAVE_SCHEMA_VERSION,
 		"learning": learning_data,
 		"inventory": inventory_data,
-		"world": {
-			"player": {"x": player_pos.x, "y": player_pos.y, "facing": facing},
-		},
+		"world": world,
 	}
 
 
@@ -130,7 +157,9 @@ func build_snapshot(learning_data: Dictionary, player_pos: Vector2, facing: Stri
 ## does not reach for the Bus singleton.
 func save_snapshot(learning_data: Dictionary, player_pos: Vector2, facing: String,
 		inventory_data: Dictionary = {}) -> void:
-	_write_document(build_snapshot(learning_data, player_pos, facing, inventory_data))
+	var existing_world := load_world_state()
+	_write_document(build_snapshot(
+		learning_data, player_pos, facing, inventory_data, existing_world))
 	if is_inside_tree():
 		Bus.game_saved.emit()
 

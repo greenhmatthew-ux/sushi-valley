@@ -32,11 +32,15 @@ func _run() -> void:
 	var edge_ground: TileMapLayer = world.get_node_or_null("EdgeGround")
 	var meadow: TileMapLayer = world.get_node_or_null("Meadow")
 	var gate: Node = world.get_node_or_null("Props/LessonGate")
+	var farm_plot: Node = world.get_node_or_null("Props/FarmPlot1")
+	var starter_seeds: Node = world.get_node_or_null("Props/FarmStarterSeeds")
 	check_true("harness has a Player", player != null)
 	check_true("harness has a Ground layer", ground != null)
 	check_true("world has a textured edge underlay", edge_ground != null)
 	check_true("world has authored meadow detail", meadow != null)
 	check_true("harness has a recall gate", gate != null)
+	check_true("village has a discoverable farm plot", farm_plot != null)
+	check_true("farm has a one-time starter seed cache", starter_seeds != null)
 
 	if player == null or ground == null or gate == null:
 		_finish()
@@ -134,9 +138,11 @@ func _run() -> void:
 	await process_frame
 	var interior_floor: TileMapLayer = interior.get_node_or_null("Floor")
 	var interior_bed: Node = interior.get_node_or_null("Entities/Bed")
+	var sleep_spot: Node = interior.get_node_or_null("Entities/SleepSpot")
 	var door_sprite: Sprite2D = interior.get_node_or_null("FloorDecor/DoorSprite")
 	check_true("house interior has a real floor layer", interior_floor != null)
 	check_true("house interior has an authored bed", interior_bed != null)
+	check_true("house bed advances the saved day", sleep_spot != null)
 	check_true("house interior has an authored exit door", door_sprite != null)
 	if interior_floor != null:
 		var floor_source: TileSetAtlasSource = interior_floor.tile_set.get_source(0)

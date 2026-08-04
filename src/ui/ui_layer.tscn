@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/ui/recall_panel.gd" id="1_recall"]
 [ext_resource type="Script" path="res://src/ui/dialogue_box.gd" id="2_dialogue"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://src/ui/inventory_panel.gd" id="11_inventory"]
 [ext_resource type="Script" path="res://src/ui/crafting_panel.gd" id="12_crafting"]
 [ext_resource type="Script" path="res://src/ui/welcome_back_panel.gd" id="13_welcome"]
+[ext_resource type="Script" path="res://src/ui/crop_picker_panel.gd" id="14_crops"]
+[ext_resource type="Script" path="res://src/ui/day_end_panel.gd" id="15_day_end"]
 
 [node name="UILayer" type="Node"]
 
@@ -32,6 +34,12 @@ script = ExtResource("11_inventory")
 
 [node name="CraftingPanel" type="CanvasLayer" parent="."]
 script = ExtResource("12_crafting")
+
+[node name="CropPickerPanel" type="CanvasLayer" parent="."]
+script = ExtResource("14_crops")
+
+[node name="DayEndPanel" type="CanvasLayer" parent="."]
+script = ExtResource("15_day_end")
 
 [node name="ToastLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_toast")

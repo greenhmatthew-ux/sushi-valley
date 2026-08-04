@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="40_pickup"]
 [ext_resource type="Texture2D" path="res://assets/props/crafting_anvil.png" id="41_anvil"]
 [ext_resource type="Texture2D" path="res://assets/props/crafting_hammer.png" id="42_hammer"]
+[ext_resource type="PackedScene" path="res://src/entities/farm_plot.tscn" id="43_farm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1406,6 +1407,28 @@ position = Vector2(144, 300)
 item_id = "raw_iron_ore"
 qty = 3
 pickup_id = "village_forge_intro_ore"
+
+[node name="FarmPlot1" parent="Props" instance=ExtResource("43_farm")]
+position = Vector2(80, 340)
+plot_id = "valley_plot_1"
+
+[node name="FarmPlot2" parent="Props" instance=ExtResource("43_farm")]
+position = Vector2(110, 340)
+plot_id = "valley_plot_2"
+
+[node name="FarmPlot3" parent="Props" instance=ExtResource("43_farm")]
+position = Vector2(80, 364)
+plot_id = "valley_plot_3"
+
+[node name="FarmPlot4" parent="Props" instance=ExtResource("43_farm")]
+position = Vector2(110, 364)
+plot_id = "valley_plot_4"
+
+[node name="FarmStarterSeeds" parent="Props" instance=ExtResource("40_pickup")]
+position = Vector2(52, 352)
+item_id = "herb_seed"
+qty = 3
+pickup_id = "village_farm_starter_seeds"
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 

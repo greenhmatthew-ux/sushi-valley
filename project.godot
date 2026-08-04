@@ -28,6 +28,7 @@ Crafting="*res://src/autoload/crafting.gd"
 Transitions="*res://src/autoload/transitions.gd"
 Settings="*res://src/autoload/settings.gd"
 InputHints="*res://src/autoload/input_hints.gd"
+Farm="*res://src/autoload/farm.gd"
 
 [display]
 

@@ -80,6 +80,8 @@ func _nearest_interactable() -> Node:
 ## "Player-facing screens never expose entity IDs, internal flags... implementation
 ## terminology").
 func _verb_for(target: Node) -> String:
+	if target.has_method("interaction_label"):
+		return String(target.call("interaction_label"))
 	if target.has_method("begin_spar"):
 		return "Spar"
 

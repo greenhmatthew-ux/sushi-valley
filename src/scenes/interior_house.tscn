@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=20 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
 [ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="10_study"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="11_woman"]
 [ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="12_prop"]
+[ext_resource type="PackedScene" path="res://src/entities/sleep_spot.tscn" id="13_sleep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_door"]
 atlas = ExtResource("6_elements")
@@ -73,6 +74,9 @@ position = Vector2(44, 80)
 texture = SubResource("AtlasTexture_bed")
 foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
+
+[node name="SleepSpot" parent="Entities" instance=ExtResource("13_sleep")]
+position = Vector2(44, 80)
 
 [node name="Dresser" parent="Entities" instance=ExtResource("12_prop")]
 position = Vector2(160, 92)

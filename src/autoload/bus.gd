@@ -93,3 +93,8 @@ signal quest_accepted(quest_id: String)
 signal quest_completed(quest_id: String)
 ## The player chose which Quest, Raid, or Expedition should lead the objective HUD.
 signal activity_tracking_changed(activity_key: String)
+
+# --- farm / day ------------------------------------------------------------
+signal farm_plot_open(plot_id: String)
+signal sleep_requested()
+signal farm_changed()
