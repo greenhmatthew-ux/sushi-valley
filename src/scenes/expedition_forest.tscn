@@ -49,7 +49,9 @@ auto_enter = true
 destination = "the Woods"
 post_offset = Vector2(0, 20)
 sign_offset = Vector2(24, -26)
-label_offset = Vector2(28, -46)
+## Pushed well inside the room: this door sits on the west map edge, and a plate
+## centred over it runs off the map. See door.gd's label_offset note.
+label_offset = Vector2(62, -44)
 
 [node name="TrailGuard" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(240, 224)
