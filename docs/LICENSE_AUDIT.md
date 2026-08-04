@@ -71,6 +71,15 @@ The ingredient-cache sprite is the unmodified two-frame Ninja Adventure source
 The Garden Compost icon is the unmodified Ninja Adventure source `Items/Object/Bag.png`,
 copied to `assets/icons/items/compost.png` at its native 16x16 size.
 
+The permanent gathering tools use three more unmodified, native-size Ninja Adventure
+CC0 sources:
+
+| Runtime asset | Original source |
+| --- | --- |
+| `assets/icons/items/copper_pick.png` | `Items/Tool/Pickaxe.png` |
+| `assets/icons/items/trail_hatchet.png` | `Items/Tool/Axe.png` |
+| `assets/icons/items/herb_sickle.png` | `Items/Tool/Sickle.png` |
+
 ### Verified Ninja Adventure music mapping
 
 The following files are byte-identical copies from

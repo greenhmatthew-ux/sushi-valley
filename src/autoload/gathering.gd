@@ -13,11 +13,23 @@ func _ready() -> void:
 
 
 func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
-		skill_station: String, level_req: int, resource_kind: String) -> Dictionary:
+		skill_station: String, level_req: int, resource_kind: String,
+		required_tool_id: String = "") -> Dictionary:
 	if node_id.is_empty() or DB.item(item_id).is_empty():
 		return {"ok": false, "reason": "This resource is not authored."}
 	if skill_station not in CraftingLogic.STATIONS:
 		return {"ok": false, "reason": "This resource has no valid life skill."}
+	if not required_tool_id.is_empty():
+		var tool: Dictionary = DB.item(required_tool_id)
+		if tool.is_empty() or String(tool.get("kind", "")) != "tool":
+			return {"ok": false, "reason": "This resource has no valid tool requirement."}
+		if not Inv.has(required_tool_id):
+			return {
+				"ok": false,
+				"reason": "Need %s - craft it at the %s." % [
+					tool.get("name", required_tool_id), tool_source_label(required_tool_id)],
+				"missing_tool": required_tool_id,
+			}
 	var required := maxi(1, level_req)
 	var level := Crafting.station_level(skill_station)
 	if level < required:
@@ -42,9 +54,10 @@ func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 
 
 func gather(node_id: String, item_id: String, base_qty: int, reset_days: int,
-		skill_station: String, level_req: int, resource_kind: String) -> Dictionary:
+		skill_station: String, level_req: int, resource_kind: String,
+		required_tool_id: String = "") -> Dictionary:
 	var check := status(node_id, item_id, base_qty, reset_days, skill_station,
-		level_req, resource_kind)
+		level_req, resource_kind, required_tool_id)
 	if not bool(check.get("ok", false)):
 		return check
 	var quantity := int(check["qty"])
@@ -67,6 +80,15 @@ func is_ready(node_id: String, reset_days: int = 1) -> bool:
 
 func remaining_days(node_id: String, reset_days: int = 1) -> int:
 	return logic.remaining_days(node_id, Farm.day(), reset_days)
+
+
+func tool_source_label(tool_id: String) -> String:
+	for raw_recipe in DB.recipes.values():
+		var recipe: Dictionary = raw_recipe
+		var output: Dictionary = recipe.get("output", {})
+		if String(output.get("item", "")) == tool_id:
+			return String(recipe.get("station", "workshop")).capitalize()
+	return "Workshop"
 
 
 func reload_from_save() -> void:

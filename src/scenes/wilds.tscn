@@ -259,6 +259,7 @@ reset_days = 2
 skill_station = "forge"
 level_req = 3
 resource_kind = "ore"
+required_tool_id = "copper_pick"
 
 [node name="BambooThicket" parent="Entities" instance=ExtResource("31_gather")]
 position = Vector2(544, 352)
@@ -281,6 +282,32 @@ reset_days = 1
 skill_station = "kitchen"
 level_req = 1
 resource_kind = "herb"
+
+[node name="OldGrowthBamboo" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(528, 416)
+scale = Vector2(1.15, 1.15)
+node_id = "wilds_old_growth_bamboo"
+display_name = "Old-Growth Bamboo"
+item_id = "bamboo_shoot"
+base_qty = 5
+reset_days = 2
+skill_station = "workshop"
+level_req = 2
+resource_kind = "bamboo"
+required_tool_id = "trail_hatchet"
+
+[node name="DeepRainleafPatch" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(408, 128)
+scale = Vector2(1.15, 1.15)
+node_id = "wilds_deep_rainleaf"
+display_name = "Deep Rainleaf"
+item_id = "wild_herb"
+base_qty = 4
+reset_days = 2
+skill_station = "kitchen"
+level_req = 2
+resource_kind = "herb"
+required_tool_id = "herb_sickle"
 
 [node name="ForestTrader" parent="Entities" instance=ExtResource("19_vendor")]
 position = Vector2(160, 320)

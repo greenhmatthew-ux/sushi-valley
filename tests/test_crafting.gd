@@ -25,6 +25,7 @@ func _initialize() -> void:
 	_atomic_transaction()
 	_authored_station_access()
 	_starter_weapon_paths_are_reachable()
+	_tool_recipes_are_reachable_and_unique()
 	_energy_tonic_path_is_reachable()
 	await _one_time_ingredients()
 	await _panel_contract()
@@ -183,6 +184,47 @@ func _energy_tonic_path_is_reachable() -> void:
 		FileAccess.file_exists("res://assets/icons/items/bamboo_tonic.png"))
 
 
+func _tool_recipes_are_reachable_and_unique() -> void:
+	var db: Node = root.get_node("DB")
+	var expected := {
+		"craft_copper_pick": ["copper_pick", "forge", 1],
+		"craft_trail_hatchet": ["trail_hatchet", "workshop", 1],
+		"craft_herb_sickle": ["herb_sickle", "workshop", 2],
+	}
+	for recipe_id in expected:
+		var recipe: Dictionary = db.recipe(recipe_id)
+		var tool_id := String(expected[recipe_id][0])
+		var tool: Dictionary = db.item(tool_id)
+		check_eq("%s has its intended station" % recipe_id,
+			recipe.get("station", ""), expected[recipe_id][1])
+		check_eq("%s has its intended level" % recipe_id,
+			int(recipe.get("levelReq", 0)), expected[recipe_id][2])
+		check_true("%s is a permanent unique tool" % tool_id,
+			tool.get("kind", "") == "tool" and bool(tool.get("unique", false)))
+		check_true("%s ships audited native art" % tool_id,
+			ResourceLoader.exists("res://assets/icons/items/%s.png" % tool_id))
+
+	var inv: Node = root.get_node("Inv")
+	var crafting: Node = root.get_node("Crafting")
+	inv.reset()
+	inv.add("copper_ore", 2)
+	inv.add("bamboo_shoot", 1)
+	var crafted: Dictionary = crafting.craft("craft_copper_pick", "forge")
+	check_true("starter gathered materials craft the Copper Pick",
+		bool(crafted.get("ok", false)))
+	check_eq("the crafted permanent tool enters the Bag", inv.count("copper_pick"), 1)
+	inv.add("copper_ore", 2)
+	inv.add("bamboo_shoot", 1)
+	var copper_before: int = inv.count("copper_ore")
+	var duplicate: Dictionary = crafting.craft("craft_copper_pick", "forge")
+	check_true("a duplicate permanent tool is rejected",
+		not bool(duplicate.get("ok", true))
+		and String(duplicate.get("reason", "")) == "Already owned.")
+	check_eq("duplicate rejection preserves its materials",
+		inv.count("copper_ore"), copper_before)
+	inv.reset()
+
+
 func _one_time_ingredients() -> void:
 	await process_frame
 	var inv: Node = root.get_node("Inv")
@@ -230,13 +272,14 @@ func _panel_contract() -> void:
 	bus.toast.connect(_capture_toast)
 	inv.reset()
 	inv.add("rice", 2)
+	var kitchen_xp_before := int(Rules.ensure_state(learning.profile.data)["xp"]["kitchen"])
 	var crafted: Dictionary = crafting.craft("craft_rice_ball", "kitchen")
 	check_true("runtime coordinator crafts a valid recipe", crafted.get("ok", false))
 	check_eq("runtime craft consumes saved inventory", inv.count("rice"), 0)
 	check_eq("runtime craft produces the full output", inv.count("rice_ball"), 3)
 	check_eq("runtime craft awards station XP",
 		Rules.ensure_state(learning.profile.data)["xp"]["kitchen"],
-		Rules.earned_xp(db.recipe("craft_rice_ball")))
+		kitchen_xp_before + Rules.earned_xp(db.recipe("craft_rice_ball")))
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/crafting_panel.gd"))
 	root.add_child(panel)

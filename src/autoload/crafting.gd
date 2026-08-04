@@ -35,7 +35,10 @@ func award_xp(station: String, amount: int) -> int:
 
 
 func recipe_status(recipe: Dictionary, station: String) -> Dictionary:
-	return Rules.status(recipe, station, Learning.profile.data, Inv.logic)
+	var output: Dictionary = recipe.get("output", {})
+	var output_id := String(output.get("item", ""))
+	var unique_owned := bool(DB.item(output_id).get("unique", false)) and Inv.has(output_id)
+	return Rules.status(recipe, station, Learning.profile.data, Inv.logic, unique_owned)
 
 
 func craft(recipe_id: String, station: String) -> Dictionary:

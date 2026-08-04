@@ -66,18 +66,21 @@ func _initialize() -> void:
 	compost_icon.free()
 
 	# Bag categories, search, and favorites — UI_UX_GUIDE section 9's bag model.
-	# 168 items with no way to narrow them was the largest remaining gap.
+	# 171 items with no way to narrow them was the largest remaining gap.
 	inv.reset()
 	inv.add("rice_ball", 1)
 	inv.add("wooden_katana", 1)
 	inv.add("wild_herb", 1)
+	inv.add("copper_pick", 1)
 	panel.call("_refresh")
 	var all_btn: Button = panel.find_child("BagCategory_all", true, false)
 	var gear_btn: Button = panel.find_child("BagCategory_gear", true, false)
 	var fav_btn: Button = panel.find_child("BagCategory_favorites", true, false)
+	var tool_btn: Button = panel.find_child("BagCategory_tool", true, false)
 	var search_box: LineEdit = panel.find_child("BagSearch", true, false)
 	check_true("the bag offers a category filter and a search box",
-		all_btn != null and gear_btn != null and fav_btn != null and search_box != null)
+		all_btn != null and gear_btn != null and fav_btn != null
+		and tool_btn != null and search_box != null)
 	check_true("All is the default active category", all_btn.button_pressed)
 
 	gear_btn.pressed.emit()
@@ -88,6 +91,16 @@ func _initialize() -> void:
 		panel.find_child("ItemCard_rice_ball", true, false) == null)
 	check_true("selecting a category deselects the others",
 		gear_btn.button_pressed and not all_btn.button_pressed)
+
+	tool_btn.pressed.emit()
+	panel.call("_refresh")
+	check_true("Tools isolates the permanent gathering tool",
+		panel.find_child("ItemCard_copper_pick", true, false) != null
+		and panel.find_child("ItemCard_wooden_katana", true, false) == null)
+	var pick_icon := panel.call("_icon_node", "copper_pick") as TextureRect
+	check_eq("Copper Pick uses its audited native icon",
+		pick_icon.texture.resource_path, "res://assets/icons/items/copper_pick.png")
+	pick_icon.free()
 
 	all_btn.pressed.emit()
 	search_box.text = "rice"

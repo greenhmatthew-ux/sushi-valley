@@ -1971,5 +1971,32 @@
         "value":  85,
         "icon":  true,
         "desc":  "A broad metal belt that braces the core."
+    },
+    {
+        "id":  "copper_pick",
+        "name":  "Copper Pick",
+        "kind":  "tool",
+        "unique":  true,
+        "value":  45,
+        "icon":  true,
+        "desc":  "A permanent mining tool. Opens rich ore seams; it never wears out."
+    },
+    {
+        "id":  "trail_hatchet",
+        "name":  "Trail Hatchet",
+        "kind":  "tool",
+        "unique":  true,
+        "value":  48,
+        "icon":  true,
+        "desc":  "A permanent woodcutting tool. Harvests old-growth bamboo without durability."
+    },
+    {
+        "id":  "herb_sickle",
+        "name":  "Herb Sickle",
+        "kind":  "tool",
+        "unique":  true,
+        "value":  55,
+        "icon":  true,
+        "desc":  "A permanent foraging tool. Cuts dense rainleaf cleanly and is never consumed."
     }
 ]

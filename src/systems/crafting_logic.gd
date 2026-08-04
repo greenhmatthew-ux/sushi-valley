@@ -60,7 +60,7 @@ static func discover_from_source(profile_data: Dictionary, recipes: Array, sourc
 
 
 static func status(recipe: Dictionary, station: String, profile_data: Dictionary,
-		inventory: InventoryLogic) -> Dictionary:
+		inventory: InventoryLogic, unique_output_owned: bool = false) -> Dictionary:
 	if recipe.is_empty() or String(recipe.get("station", "")) != station:
 		return {"ok": false, "reason": "Wrong station."}
 	if not is_known(recipe, profile_data):
@@ -69,6 +69,8 @@ static func status(recipe: Dictionary, station: String, profile_data: Dictionary
 	var required := int(recipe.get("levelReq", 1))
 	if level < required:
 		return {"ok": false, "reason": "Requires %s Lv %d." % [station.capitalize(), required]}
+	if unique_output_owned:
+		return {"ok": false, "reason": "Already owned."}
 	var output: Dictionary = recipe.get("output", {})
 	if not inventory.can_craft_transaction(recipe.get("inputs", []),
 			String(output.get("item", "")), int(output.get("qty", 0))):

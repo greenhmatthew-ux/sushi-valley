@@ -12,7 +12,8 @@ verified against the running scenes — not an aspirational or inherited list.
   furniture and exit door, and the twelve rendered Talent icons (Blade Sweep, Kunai Toss,
   Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade, Iaido Cut, Pinning Shot,
   Glyph Storm, Fortress Wall), plus the 16px treasure
-  chest used for authored ingredient caches and the tied sack used for Garden Compost. The
+  chest used for authored ingredient caches, the tied sack used for Garden Compost, and the
+  native 16px Pickaxe, Axe, and Sickle icons used by the three permanent gathering tools. The
   Mountain Pass is built from the pack's `TilesetRelief` rock terrain and `TilesetReliefDetail` scree, and its foes use the
   pack's Lizard, Mole, Bear, BlueBat and Tengu sheets.
   Ki Focus, Rune Ward,

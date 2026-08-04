@@ -101,6 +101,22 @@ func _runtime_transaction_contract() -> void:
 	check_eq("a skill-gated node grants no XP",
 		int(CraftingLogic.ensure_state(learning.profile.data)["xp"]["forge"]), forge_xp_before)
 
+	var tool_locked: Dictionary = gathering.gather("tool_ore", "copper_ore", 2, 1,
+		"forge", 1, "ore", "copper_pick")
+	check_true("a rich node is blocked without its permanent tool",
+		not bool(tool_locked.get("ok", true)))
+	check_true("the tool gate names the item and where to craft it",
+		"Copper Pick" in String(tool_locked.get("reason", ""))
+		and "Forge" in String(tool_locked.get("reason", "")))
+	check_true("a missing tool does not deplete the node",
+		gathering.is_ready("tool_ore", 1))
+	inv.add("copper_pick", 1)
+	var tool_gathered: Dictionary = gathering.gather("tool_ore", "copper_ore", 2, 1,
+		"forge", 1, "ore", "copper_pick")
+	check_true("owning the permanent tool unlocks the same node",
+		bool(tool_gathered.get("ok", false)))
+	check_eq("gathering never consumes the permanent tool", inv.count("copper_pick"), 1)
+
 	inv.add("wild_herb", 99 - inv.count("wild_herb"))
 	var kitchen_xp_before := int(CraftingLogic.ensure_state(learning.profile.data)["xp"]["kitchen"])
 	var full: Dictionary = gathering.gather("full_patch", "wild_herb", 2, 1,

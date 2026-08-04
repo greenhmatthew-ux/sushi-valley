@@ -33,16 +33,17 @@ const KIND_COLORS := {
 	"consumable": UiTheme.STATE_SUCCESS,
 	"material": Color(0.788, 0.639, 0.42),
 	"seed": UiTheme.STATE_SUCCESS,
+	"tool": UiTheme.STATE_INFO,
 }
 
-## Bag category filters. The first four are the real `kind` values every item
-## actually has (UI_UX_GUIDE section 9's fuller list — Tools, Fish/Food, Quest
-## Items — has no matching data in this game yet, so it is not offered as a
-## filter that would always come back empty). "favorites" is synthetic, backed
+## Bag category filters. The first six are real `kind` values the item table now
+## uses. Fish/Food and Quest Items still have no dedicated data kind, so they are
+## not offered as filters that would always come back empty. "favorites" is synthetic, backed
 ## by InventoryLogic's own favorites set rather than an item field.
 const BAG_CATEGORIES := [
 	["all", "All"], ["gear", "Equipment"], ["consumable", "Consumables"],
-	["material", "Materials"], ["seed", "Seeds"], ["favorites", "Favorites"],
+	["material", "Materials"], ["seed", "Seeds"], ["tool", "Tools"],
+	["favorites", "Favorites"],
 ]
 
 const ICON_DIR := "res://assets/icons/items/"
@@ -2063,19 +2064,18 @@ func _build_scaffold() -> void:
 	vbox.add_child(_bag_view)
 
 	# Category filter + search, one compact row so it costs the Bag tab's tight
-	# fixed (non-scrolling) height budget only once. 168 items with no way to
+	# fixed (non-scrolling) height budget only once. 171 items with no way to
 	# narrow them was the largest remaining gap against UI_UX_GUIDE section 9's
 	# bag model. Categories are the real `kind` values every item actually has,
-	# plus the synthetic Favorites — not the guide's fuller list, most of which
-	# (Tools, Fish/Food, Quest Items) has no matching data in this game and would
-	# always read empty.
+	# plus the synthetic Favorites. Fish/Food and Quest Items remain future data
+	# kinds rather than empty controls.
 	var filter_row := HBoxContainer.new()
 	filter_row.name = "BagFilterRow"
 	filter_row.add_theme_constant_override("separation", 3)
 	_bag_view.add_child(filter_row)
 	var category_labels := {
 		"all": "All", "gear": "Gear", "consumable": "Use",
-		"material": "Mats", "seed": "Seeds", "favorites": "Fav",
+		"material": "Mats", "seed": "Seeds", "tool": "Tools", "favorites": "Fav",
 	}
 	for pair in BAG_CATEGORIES:
 		var key := String(pair[0])

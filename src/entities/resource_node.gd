@@ -11,6 +11,7 @@ extends Area2D
 @export var skill_station := "kitchen"
 @export var level_req := 1
 @export_enum("herb", "ore", "bamboo") var resource_kind := "herb"
+@export var required_tool_id := ""
 
 var _phase := 0.0
 
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 
 func interact(_player: Node = null) -> void:
 	var result := Gathering.gather(node_id, item_id, base_qty, reset_days,
-		skill_station, level_req, resource_kind)
+		skill_station, level_req, resource_kind, required_tool_id)
 	if not bool(result.get("ok", false)):
 		Bus.toast.emit(String(result.get("reason", "Nothing is ready to gather.")))
 		return
@@ -51,6 +52,10 @@ func interaction_label() -> String:
 		return "%s returns tomorrow" % display_name
 	if remaining > 1:
 		return "%s returns in %d days" % [display_name, remaining]
+	if not required_tool_id.is_empty() and not Inv.has(required_tool_id):
+		return "Craft %s at %s" % [
+			DB.item(required_tool_id).get("name", required_tool_id),
+			Gathering.tool_source_label(required_tool_id)]
 	var level := Crafting.station_level(skill_station)
 	if level < level_req:
 		return "Requires %s Lv %d" % [skill_station.capitalize(), level_req]
@@ -86,6 +91,8 @@ func _draw() -> void:
 	else:
 		draw_arc(Vector2(0, -4), 8.0, -PI * 0.2, PI * 1.35, 16,
 			Color(0.75, 0.82, 0.88, 0.42), 1.0)
+	if not required_tool_id.is_empty():
+		_draw_tool_badge(Inv.has(required_tool_id))
 
 
 func _draw_herb(alpha: float) -> void:
@@ -129,6 +136,24 @@ func _draw_bamboo(alpha: float) -> void:
 		draw_colored_polygon(PackedVector2Array([
 			Vector2(x, -height + 4), Vector2(x + 8, -height), Vector2(x + 3, -height + 7)]), dark)
 	draw_rect(Rect2(-12, 1, 24, 3), Color(0.22, 0.34, 0.16, alpha))
+
+
+func _draw_tool_badge(owned: bool) -> void:
+	var color := UiTheme.STATE_SUCCESS if owned else UiTheme.ACCENT_GOLD
+	draw_circle(Vector2(-13, -16), 5.0, Color(UiTheme.SURFACE_DEEP, 0.92))
+	draw_arc(Vector2(-13, -16), 5.0, 0.0, TAU, 12, color, 1.0)
+	# Tiny readable silhouettes: pick, axe, and sickle respectively. The full CC0
+	# item art stays in recipes/Bag; this badge only says "a tool matters here."
+	match resource_kind:
+		"ore":
+			draw_line(Vector2(-15, -19), Vector2(-10, -14), color, 1.2)
+			draw_line(Vector2(-17, -18), Vector2(-12, -20), color, 1.2)
+		"bamboo":
+			draw_line(Vector2(-16, -13), Vector2(-11, -19), color, 1.2)
+			draw_rect(Rect2(-14, -20, 5, 2), color)
+		_:
+			draw_arc(Vector2(-13, -16), 3.0, -PI * 0.45, PI * 0.55, 8, color, 1.2)
+			draw_line(Vector2(-15, -14), Vector2(-11, -18), color, 1.2)
 
 
 func _draw_leaf_ellipse(center: Vector2, radius: Vector2, color: Color) -> void:

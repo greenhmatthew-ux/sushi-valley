@@ -139,8 +139,17 @@ func _run() -> void:
 	var wilds_detail: TileMapLayer = wilds.get_node_or_null("Detail")
 	var wilds_copper: Node = wilds.get_node_or_null("Entities/CopperSeam")
 	var wilds_bamboo: Node = wilds.get_node_or_null("Entities/BambooThicket")
+	var rich_copper: Node = wilds.get_node_or_null("Entities/RichCopperSeam")
+	var old_bamboo: Node = wilds.get_node_or_null("Entities/OldGrowthBamboo")
+	var deep_rainleaf: Node = wilds.get_node_or_null("Entities/DeepRainleafPatch")
 	check_true("Wilds has a renewable copper seam", wilds_copper != null)
 	check_true("Wilds has a renewable bamboo thicket", wilds_bamboo != null)
+	check_true("rich copper visibly requires the Copper Pick",
+		rich_copper != null and rich_copper.get("required_tool_id") == "copper_pick")
+	check_true("old-growth bamboo visibly requires the Trail Hatchet",
+		old_bamboo != null and old_bamboo.get("required_tool_id") == "trail_hatchet")
+	check_true("deep rainleaf visibly requires the Herb Sickle",
+		deep_rainleaf != null and deep_rainleaf.get("required_tool_id") == "herb_sickle")
 	var wilds_player: CharacterBody2D = wilds.get_node_or_null("Entities/Player")
 	if wilds_player != null and wilds_copper != null:
 		wilds_player.position = wilds_copper.position + Vector2(28, 0)
@@ -148,6 +157,10 @@ func _run() -> void:
 		var wilds_probe: Area2D = wilds_player.get_node("InteractProbe")
 		check_true("the Wilds copper seam is within the real interaction probe",
 			wilds_copper in wilds_probe.get_overlapping_areas())
+		wilds_player.position = old_bamboo.position + Vector2(28, 0)
+		await _physics_frames(2)
+		check_true("the advanced bamboo node is within the real interaction probe",
+			old_bamboo in wilds_probe.get_overlapping_areas())
 	check_true("Wilds has authored meadow detail", wilds_detail != null)
 	if wilds_detail != null:
 		var wilds_source: TileSetAtlasSource = wilds_detail.tile_set.get_source(1)

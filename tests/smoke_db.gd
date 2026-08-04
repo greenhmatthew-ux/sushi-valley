@@ -14,10 +14,10 @@ func _initialize() -> void:
 	var db: Node = load("res://src/autoload/db.gd").new()
 	db.load_all()   # not add_child(): _ready() is deferred and would run too late
 
-	check("items", db.items.size(), 168)
+	check("items", db.items.size(), 171)
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
-	check("recipes", db.recipes.size(), 81)
+	check("recipes", db.recipes.size(), 84)
 	check("quests", db.quests.size(), 21)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
