@@ -70,6 +70,10 @@ func _initialize() -> void:
 	# actionable, so Track buttons and reward rows are measured at every scale.
 	var layout_quest_id := "tools_of_the_trail"
 	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id))
+	var activity_quest_id := "valley_morning"
+	learning.profile.set_flag(QuestJournal.started_flag(activity_quest_id), false)
+	QuestJournal.begin(learning.profile, db.quest(activity_quest_id))
+	learning.profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
 	learning.profile.set_flag("hana_first_lesson")
 	learning.profile.data["raids"] = {
 		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
@@ -121,6 +125,7 @@ func _initialize() -> void:
 	learning.profile.data["stats"]["xp"] = xp_before
 	learning.profile.data.erase("bestiary")
 	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id), false)
+	learning.profile.set_flag(QuestJournal.started_flag(activity_quest_id), false)
 	learning.profile.set_flag("hana_first_lesson", false)
 	learning.profile.data.erase("raids")
 	learning.profile.data.erase("expeditions")

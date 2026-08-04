@@ -85,6 +85,7 @@ func complete(site_id: String, base_qty: int, quality: String, cooldown_seconds:
 			or Learning.profile.data["resourceNodes"] is not Dictionary:
 		Learning.profile.data["resourceNodes"] = {}
 	Learning.profile.data["resourceNodes"][site_id] = now
+	Learning.profile.record_activity(LearningProfile.ACTIVITY_FISH_CATCH)
 	Learning.profile.save()
 	Bus.fishing_changed.emit(site_id)
 	Bus.hud_refresh.emit()

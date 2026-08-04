@@ -11,6 +11,28 @@
     "turnInLines": ["Three spore caps! Fresh ones, too — the shelves thank you."]
   },
   {
+    "id": "valley_morning",
+    "title": "A Valley Morning",
+    "giver": "Aiko",
+    "desc": "Aiko wants you to learn the village rhythm: harvest one crop, gather one renewable resource, and land one fish. Only work done after accepting counts.",
+    "objectives": [
+      { "type": "activity", "activity": "farm_harvest", "qty": 1, "label": "Harvest a crop" },
+      { "type": "activity", "activity": "resource_gather", "qty": 1, "label": "Gather a resource node" },
+      { "type": "activity", "activity": "fish_catch", "qty": 1, "label": "Land a fish" }
+    ],
+    "reward": { "coins": 60, "items": [{ "id": "herb_seed", "qty": 2 }] },
+    "offerLines": [
+      "A good morning here has a rhythm: field, trail, then water.",
+      "Harvest one crop, gather from a renewable patch, and land one fish at the Village Pond. Start now and the Journal will keep the three checks for you."
+    ],
+    "progressLines": [
+      "Keep to the morning circuit. The Journal shows which of the field, resource patch, and pond still needs your attention."
+    ],
+    "turnInLines": [
+      "Soil on your hands, leaves in your bag, and pond water on your boots. That is a proper Valley morning."
+    ]
+  },
+  {
     "id": "river_guard",
     "title": "River Guard",
     "giver": "Mako",

@@ -90,10 +90,15 @@ func _runtime_reward_and_cooldown() -> void:
 	root.get_node("Farm").reset(false)
 	learning.profile.data.erase("crafting")
 	learning.profile.data.erase("resourceNodes")
+	var catches_before: int = learning.profile.activity_count(
+		LearningProfile.ACTIVITY_FISH_CATCH)
 	fishing.register_site("test_pond", "Test Pond", 120,
 		["spring", "summer", "autumn"])
 	var result: Dictionary = fishing.complete("test_pond", 2, "gold", 120, 0.1, 1000.0)
 	check_true("a successful catch transaction commits", bool(result.get("ok", false)))
+	check_eq("a successful catch records one authored activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_FISH_CATCH),
+		catches_before + 1)
 	check_eq("gold quality adds two bonus fish", inv.count("river_fish"), 4)
 	check_eq("starter fishing grants five Kitchen XP",
 		int(CraftingLogic.ensure_state(learning.profile.data)["xp"]["kitchen"]), 5)

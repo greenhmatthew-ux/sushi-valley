@@ -317,6 +317,8 @@ func _initialize() -> void:
 	# this quest already finished and the "not yet met" case would never be tested.
 	learning.profile.set_flag(QuestJournal.started_flag(quest_id), false)
 	learning.profile.set_flag(QuestJournal.done_flag(quest_id), false)
+	learning.profile.set_flag(QuestJournal.started_flag("valley_morning"), false)
+	learning.profile.set_flag(QuestJournal.done_flag("valley_morning"), false)
 	learning.profile.set_flag("hana_first_lesson", false)
 	learning.profile.set_flag("expedition_forest_unlocked", false)
 	learning.profile.data.erase("raids")
@@ -390,6 +392,22 @@ func _initialize() -> void:
 		and tool_detail.text.contains("[ ] Herb Sickle 0/1"))
 	learning.profile.set_flag(QuestJournal.started_flag(tool_quest_id), false)
 	inv.remove("copper_pick", 1)
+	panel.call("_refresh")
+
+	# Typed activity rows use the same checklist UI without pretending they are
+	# Bag items. The label must remain the authored world action.
+	var morning_quest: Dictionary = db.quest("valley_morning")
+	QuestJournal.begin(learning.profile, morning_quest)
+	learning.profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
+	panel.call("_refresh")
+	var morning_detail: Label = panel.find_child(
+		"QuestDetail_valley_morning", true, false)
+	check_true("the Journal renders typed daily actions as one checklist",
+		morning_detail != null
+		and morning_detail.text.contains("[x] Harvest a crop 1/1")
+		and morning_detail.text.contains("[ ] Gather a resource node 0/1")
+		and morning_detail.text.contains("[ ] Land a fish 0/1"))
+	learning.profile.set_flag(QuestJournal.started_flag("valley_morning"), false)
 	panel.call("_refresh")
 
 	# Structured missions share this Journal, but only after the player has met

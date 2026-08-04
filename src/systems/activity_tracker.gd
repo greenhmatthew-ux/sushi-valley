@@ -134,8 +134,13 @@ static func _quest_entry(raw: Dictionary, content) -> Dictionary:
 			summary_kind = "ready"
 			summary_text = "Ready to turn in: %s — see %s" % [raw["title"], giver]
 		Journal.Stage.ACTIVE:
-			var item_name := String(content.item(String(raw.get("item", ""))).get(
-				"name", raw.get("item", "")))
+			var item_id := String(raw.get("item", ""))
+			var item_name := ""
+			if not item_id.is_empty():
+				item_name = String(content.item(item_id).get("name", item_id))
+			var objective_label := String(raw.get("objective_label", item_name))
+			if objective_label.is_empty():
+				objective_label = item_name
 			var objectives: Array = raw.get("objectives", [])
 			if objectives.size() > 1:
 				var checks: Array[String] = []
@@ -153,9 +158,9 @@ static func _quest_entry(raw: Dictionary, content) -> Dictionary:
 					raw["title"], completed, objectives.size()]
 			else:
 				detail = "%s  %d/%d   ·   for %s" % [
-					item_name, raw.get("progress", 0), raw.get("goal", 0), giver]
+					objective_label, raw.get("progress", 0), raw.get("goal", 0), giver]
 			hud_detail = "%s  %d/%d" % [
-				item_name, raw.get("progress", 0), raw.get("goal", 0)]
+				objective_label, raw.get("progress", 0), raw.get("goal", 0)]
 			trackable = true
 			priority = 2
 			summary_kind = "active"

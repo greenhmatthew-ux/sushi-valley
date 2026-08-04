@@ -36,6 +36,16 @@ func _initialize() -> void:
 	check_true("the objective carries live bag progress",
 		detail != null and detail.text.contains("1/"))
 
+	learning.profile.set_flag(QuestJournal.done_flag(quest_id))
+	QuestJournal.begin(learning.profile, db.quest("valley_morning"))
+	learning.profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
+	Activities.track(learning.profile, db, inv, "quest:valley_morning")
+	hud.call("_refresh")
+	check_true("the HUD names a tracked typed activity Quest",
+		title.text.contains("Quest · A Valley Morning"))
+	check_true("the HUD shows the next world action rather than an empty item",
+		detail.text.contains("Gather a resource node  0/1"))
+
 	learning.profile.set_flag("hana_first_lesson")
 	learning.profile.data["raids"] = {
 		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
@@ -47,7 +57,7 @@ func _initialize() -> void:
 	check_true("the Raid objective names its real boss",
 		detail.text.contains("Pantry Oni"))
 
-	learning.profile.set_flag(QuestJournal.done_flag(quest_id))
+	learning.profile.set_flag(QuestJournal.done_flag("valley_morning"))
 	learning.profile.set_flag("expedition_forest_unlocked")
 	learning.profile.data["raids"] = {
 		"sushi_prep": {"stage": "complete", "completions": 1},

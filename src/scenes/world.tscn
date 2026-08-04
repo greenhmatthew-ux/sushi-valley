@@ -1458,6 +1458,12 @@ skill_station = "kitchen"
 level_req = 1
 resource_kind = "herb"
 
+[node name="QuestGiverAiko" parent="Props" instance=ExtResource("14_quest")]
+position = Vector2(184, 400)
+quest_id = "valley_morning"
+greeting_card = "greet-ohayou"
+sprite_sheet = ExtResource("34_woman")
+
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 
 [node name="@CollisionShape2D@327" type="CollisionShape2D" parent="Bounds" unique_id=952650325]

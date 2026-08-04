@@ -48,6 +48,10 @@ func goal_qty() -> int:
 	return int(_current_objective().get("goal", 1))
 
 
+func goal_label() -> String:
+	return String(_current_objective().get("label", goal_item()))
+
+
 ## How many of the goal item the player is carrying, capped at the goal so progress text
 ## never reads "5 of 3".
 func progress() -> int:
@@ -55,7 +59,7 @@ func progress() -> int:
 
 
 func objectives() -> Array:
-	return Journal.objectives(quest(), DB, Inv)
+	return Journal.objectives(quest(), DB, Inv, Learning.profile)
 
 
 func _current_objective() -> Dictionary:
@@ -98,7 +102,8 @@ func _run() -> void:
 		Bus.shop_open.emit(shop_id)
 		return
 	if stage == "intro":
-		_set_flag("started")
+		Journal.begin(Learning.profile, q)
+		Learning.profile.save()
 		Bus.quest_accepted.emit(quest_id)
 	await _say(QuestLogic.lines_for(q, stage))
 
@@ -108,13 +113,13 @@ func _run() -> void:
 	Bus.hud_refresh.emit()
 
 
-## Take the consumable objective items, pay out, and remember it. Ordinary fetch
-## quests still consume their goal. A checklist row can opt out for permanent
-## tools/gear a commissioner only needs to inspect.
+## Take only consumable item objectives, pay out, and remember it. Activity
+## objectives are evidence in the profile, never inventory to remove.
 func _complete(q: Dictionary) -> void:
 	for raw_objective in objectives():
 		var objective: Dictionary = raw_objective
-		if bool(objective.get("consume", true)):
+		if String(objective.get("type", "item")) == "item" \
+				and bool(objective.get("consume", true)):
 			Inv.remove(String(objective.get("item", "")), int(objective.get("goal", 1)))
 
 	var reward: Dictionary = q.get("reward", {})

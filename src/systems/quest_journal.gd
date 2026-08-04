@@ -7,10 +7,10 @@ extends RefCounted
 ## dialogue stage; this answers the different question of what the whole run
 ## looks like, which nothing could previously see.
 ##
-## Quest progress is persisted as two profile flags per quest —
-## `quest_<id>_started` and `quest_<id>_done` — written by the giver. Reading
-## them back is what lets a finished quest still exist somewhere, instead of
-## disappearing the moment its giver stops offering it.
+## Quest stage is persisted as two profile flags per quest —
+## `quest_<id>_started` and `quest_<id>_done`. Typed activity quests additionally
+## snapshot lifetime counters under `questProgress`, so only post-acceptance work
+## advances them. Finished quests remain visible after their giver stops offering.
 
 enum Stage { UNMET, ACTIVE, READY, DONE }
 
@@ -28,12 +28,34 @@ static func done_flag(quest_id: String) -> String:
 	return "quest_%s_done" % quest_id
 
 
+## Accept once and snapshot lifetime activity totals. Activity objectives then
+## count only work performed after this conversation, while item objectives keep
+## their live Bag semantics.
+static func begin(profile, quest: Dictionary) -> bool:
+	var quest_id := String(quest.get("id", ""))
+	if profile == null or quest_id.is_empty() or profile.get_flag(started_flag(quest_id)):
+		return false
+	profile.set_flag(started_flag(quest_id))
+	var baselines := {}
+	var authored: Variant = quest.get("objectives", [])
+	if authored is Array:
+		for raw in authored:
+			if raw is Dictionary and String(raw.get("type", "item")) == "activity":
+				var activity_id := String(raw.get("activity", ""))
+				if activity_id in LearningProfile.ACTIVITY_IDS:
+					baselines[activity_id] = profile.activity_count(activity_id)
+	if not baselines.is_empty():
+		if not profile.data.has("questProgress") \
+				or profile.data["questProgress"] is not Dictionary:
+			profile.data["questProgress"] = {}
+		profile.data["questProgress"][quest_id] = {"activityBaselines": baselines}
+	return true
+
+
 ## Normalize both quest shapes into one checklist. Existing authored quests keep
-## their single `goal` block; new quests can opt into an `objectives` array. This
-## first objective-list slice deliberately supports held items only, which is the
-## behavior the live quest giver can prove atomically today. `consume: false`
-## lets a commission inspect permanent gear/tools without taking them away.
-static func objectives(quest: Dictionary, content, inventory) -> Array:
+## their single item `goal`; objective lists may mix held-item checks with saved
+## activity counters. `consume: false` lets a commission inspect permanent gear.
+static func objectives(quest: Dictionary, content, inventory, profile = null) -> Array:
 	var authored: Array = []
 	var raw_objectives: Variant = quest.get("objectives", [])
 	if raw_objectives is Array:
@@ -50,6 +72,29 @@ static func objectives(quest: Dictionary, content, inventory) -> Array:
 		if not (raw is Dictionary):
 			continue
 		var objective: Dictionary = raw
+		var objective_type := String(objective.get("type", "item"))
+		if objective_type == "activity":
+			var activity_id := String(objective.get("activity", ""))
+			if activity_id not in LearningProfile.ACTIVITY_IDS:
+				continue
+			var target := maxi(1, int(objective.get("qty", 1)))
+			var current: int = profile.activity_count(activity_id) if profile != null else 0
+			var baseline: int = _activity_baseline(profile,
+				String(quest.get("id", "")), activity_id)
+			var progress: int = mini(target, maxi(0, current - baseline))
+			rows.append({
+				"type": "activity",
+				"activity": activity_id,
+				"item": "",
+				"label": String(objective.get("label", activity_id.replace("_", " ").capitalize())),
+				"goal": target,
+				"progress": progress,
+				"complete": progress >= target,
+				"consume": false,
+			})
+			continue
+		if objective_type != "item":
+			continue
 		var item_id := String(objective.get("item", ""))
 		var target := maxi(1, int(objective.get("qty", 1)))
 		if item_id.is_empty():
@@ -61,6 +106,7 @@ static func objectives(quest: Dictionary, content, inventory) -> Array:
 		if content != null:
 			item_name = String(content.item(item_id).get("name", item_id))
 		rows.append({
+			"type": "item",
 			"item": item_id,
 			"label": String(objective.get("label", item_name)),
 			"goal": target,
@@ -69,6 +115,15 @@ static func objectives(quest: Dictionary, content, inventory) -> Array:
 			"consume": bool(objective.get("consume", true)),
 		})
 	return rows
+
+
+static func _activity_baseline(profile, quest_id: String, activity_id: String) -> int:
+	if profile == null:
+		return 0
+	var quest_progress: Dictionary = profile.data.get("questProgress", {})
+	var progress: Dictionary = quest_progress.get(quest_id, {})
+	var baselines: Dictionary = progress.get("activityBaselines", {})
+	return maxi(0, int(baselines.get(activity_id, 0)))
 
 
 static func objectives_met(rows: Array) -> bool:
@@ -98,7 +153,7 @@ static func entry(profile, content, inventory, quest_id: String) -> Dictionary:
 		return {}
 	var started: bool = profile != null and profile.get_flag(started_flag(quest_id))
 	var done: bool = profile != null and profile.get_flag(done_flag(quest_id))
-	var objective_rows := objectives(quest, content, inventory)
+	var objective_rows := objectives(quest, content, inventory, profile)
 	var current := next_objective(objective_rows)
 	var item := String(current.get("item", ""))
 	var target := int(current.get("goal", 0))
@@ -117,6 +172,8 @@ static func entry(profile, content, inventory, quest_id: String) -> Dictionary:
 		"desc": String(quest.get("desc", "")),
 		"stage": stage,
 		"item": item,
+		"objective_type": String(current.get("type", "item")),
+		"objective_label": String(current.get("label", item)),
 		"goal": target,
 		"progress": carried if stage == Stage.ACTIVE or stage == Stage.READY else 0,
 		"objectives": objective_rows,

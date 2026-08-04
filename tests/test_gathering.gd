@@ -91,11 +91,16 @@ func _runtime_transaction_contract() -> void:
 	farm.reset(false)
 	gathering.reset(false)
 	learning.profile.data.erase("crafting")
+	var gathers_before: int = learning.profile.activity_count(
+		LearningProfile.ACTIVITY_RESOURCE_GATHER)
 
 	var expected_bonus := Rules.weather_bonus("herb", root.get_node("WeatherSystem").is_raining())
 	var gathered: Dictionary = gathering.gather("test_herb", "wild_herb", 2, 1,
 		"kitchen", 1, "herb")
 	check_true("an eligible runtime gather commits", bool(gathered.get("ok", false)))
+	check_eq("a successful node records one authored activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_RESOURCE_GATHER),
+		gathers_before + 1)
 	check_eq("the exact weather-adjusted yield enters the bag",
 		inv.count("wild_herb"), 2 + expected_bonus)
 	check_eq("gathering grants Kitchen XP through shared progression",
@@ -110,6 +115,9 @@ func _runtime_transaction_contract() -> void:
 		"kitchen", 1, "herb")
 	check_true("the same node cannot reward twice in one day",
 		not bool(repeated.get("ok", true)))
+	check_eq("a blocked repeat records no extra activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_RESOURCE_GATHER),
+		gathers_before + 1)
 	check_eq("a blocked repeat adds no items", inv.count("wild_herb"), 2 + expected_bonus)
 
 	var forge_xp_before := int(CraftingLogic.ensure_state(learning.profile.data)["xp"]["forge"])

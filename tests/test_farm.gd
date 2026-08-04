@@ -12,6 +12,7 @@ var _had_backup := false
 var inv: Node
 var farm: Node
 var save: Node
+var learning: Node
 
 
 func _initialize() -> void:
@@ -20,6 +21,7 @@ func _initialize() -> void:
 	inv = root.get_node("Inv")
 	farm = root.get_node("Farm")
 	save = root.get_node("SaveGame")
+	learning = root.get_node("Learning")
 
 	_pure_calendar_and_growth_rules()
 	_saved_inventory_transaction()
@@ -107,12 +109,17 @@ func _saved_inventory_transaction() -> void:
 	check_eq("position saves still update player placement",
 		float(world["player"]["x"]), 72.0)
 
+	var harvests_before: int = learning.profile.activity_count(
+		LearningProfile.ACTIVITY_FARM_HARVEST)
 	farm.advance_day()
 	check_true("the watered herb is ready tomorrow", farm.is_ready("test_plot"))
 	check_eq("daily farm status calls out the ready harvest",
 		farm.daily_status()["ready"], 1)
 	var harvested: Dictionary = farm.harvest("test_plot")
 	check_true("ready produce harvests", bool(harvested.get("ok", false)))
+	check_eq("a successful harvest records one authored activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_FARM_HARVEST),
+		harvests_before + 1)
 	check_eq("harvest awards exactly one authored produce", inv.count("wild_herb"), 1)
 	check_eq("harvest clears the saved plot", farm.plot("test_plot")["cropId"], "")
 	check_true("the cleared plot is absent from disk",

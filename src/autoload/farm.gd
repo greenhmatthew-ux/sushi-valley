@@ -149,6 +149,8 @@ func harvest(plot_id: String) -> Dictionary:
 	if Inv.add(produce_id, 1) != 0:
 		return {"ok": false, "reason": "The harvest would not fit in your Bag."}
 	logic.clear_plot(plot_id)
+	Learning.profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
+	Learning.profile.save()
 	_commit()
 	return {"ok": true, "crop": crop, "produce": produce_id}
 

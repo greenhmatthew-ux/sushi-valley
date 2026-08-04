@@ -69,6 +69,8 @@ func gather(node_id: String, item_id: String, base_qty: int, reset_days: int,
 	logic.mark_gathered(node_id, Farm.day(), reset_days)
 	var previous_level := int(check["level"])
 	var new_level := Crafting.award_xp(skill_station, int(check["xp"]))
+	Learning.profile.record_activity(LearningProfile.ACTIVITY_RESOURCE_GATHER)
+	Learning.profile.save()
 	_commit(node_id)
 	check["level"] = new_level
 	check["leveled_up"] = new_level > previous_level

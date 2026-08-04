@@ -53,6 +53,7 @@ func _initialize() -> void:
 	await _reward_is_paid_only_once()
 	await _woods_quiet_steps_pays_once()
 	await _tool_commission_preserves_the_field_kit()
+	await _valley_morning_counts_real_daily_actions()
 
 	save_game.clear()
 	_finish()
@@ -244,9 +245,76 @@ func _tool_commission_preserves_the_field_kit() -> void:
 	kaji.queue_free()
 
 
+## The first typed activity quest proves the actual farm, resource, and fishing
+## coordinators advance persisted rows only after acceptance. Nothing is faked by
+## adding goal items directly to the Bag.
+func _valley_morning_counts_real_daily_actions() -> void:
+	var aiko: Node = load("res://src/entities/quest_giver.tscn").instantiate()
+	aiko.quest_id = "valley_morning"
+	root.add_child(aiko)
+	await process_frame
+
+	# Old lifetime activity must be excluded by the acceptance baseline.
+	for activity_id in LearningProfile.ACTIVITY_IDS:
+		learning.profile.record_activity(String(activity_id), 2)
+	learning.profile.save()
+	await aiko.interact(null)
+	check_true("Aiko accepts the daily activity quest", aiko.is_accepted())
+	check_eq("all pre-acceptance activity is excluded",
+		aiko.objectives().map(func(row): return row["progress"]), [0, 0, 0])
+
+	var farm: Node = root.get_node("Farm")
+	var gathering: Node = root.get_node("Gathering")
+	var fishing: Node = root.get_node("Fishing")
+	farm.reset(false)
+	gathering.reset(false)
+	fishing.reset_site("quest_test_pond", false)
+	inv.add("herb_seed", 1)
+	check_true("the quest crop plants through the real farm transaction",
+		bool(farm.plant("quest_test_plot", "herb").get("ok", false)))
+	farm.advance_day()
+	check_true("the real harvest advances the first activity row",
+		bool(farm.harvest("quest_test_plot").get("ok", false)))
+	check_eq("harvest advances to the resource objective",
+		aiko.goal_label(), "Gather a resource node")
+
+	var gathered: Dictionary = gathering.gather(
+		"quest_test_patch", "wild_herb", 1, 1, "kitchen", 1, "herb")
+	check_true("the real renewable node advances the second row",
+		bool(gathered.get("ok", false)))
+	check_eq("gathering advances to the fishing objective",
+		aiko.goal_label(), "Land a fish")
+
+	var caught: Dictionary = fishing.complete(
+		"quest_test_pond", 2, "normal", 120, 0.1, 1000.0)
+	check_true("the real fishing reward advances the final row",
+		bool(caught.get("ok", false)))
+	check_eq("all three daily actions ready Aiko's turn-in",
+		aiko.current_stage(), "turnin")
+
+	var coins_before: int = inv.coins
+	var seeds_before: int = inv.count("herb_seed")
+	var fish_before: int = inv.count("river_fish")
+	await aiko.interact(null)
+	check_true("Aiko marks the activity quest complete", aiko.is_complete())
+	check_eq("the activity quest pays its exact 60 coins", inv.coins, coins_before + 60)
+	check_eq("the activity quest grants two repeatable seeds",
+		inv.count("herb_seed"), seeds_before + 2)
+	check_eq("turn-in never consumes evidence from an activity objective",
+		inv.count("river_fish"), fish_before)
+	var paid_coins: int = inv.coins
+	await aiko.interact(null)
+	check_eq("the completed activity quest cannot pay twice", inv.coins, paid_coins)
+
+	farm.reset(false)
+	gathering.reset(false)
+	fishing.reset_site("quest_test_pond", false)
+	aiko.queue_free()
+
+
 func _finish() -> void:
 	print("")
-	print(("PASS — quests accept, track from the bag, consume, and pay once."
+	print(("PASS — quests track items and actions, then pay exactly once."
 		if failures == 0 else "FAIL — %d quest check(s) failed." % failures))
 	quit(1 if failures > 0 else 0)
 

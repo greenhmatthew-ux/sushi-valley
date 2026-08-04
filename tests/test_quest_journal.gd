@@ -24,6 +24,7 @@ func _initialize() -> void:
 
 	_stages_follow_flags_and_bag()
 	_multi_objective_checklist_advances()
+	_activity_objectives_start_at_acceptance()
 	_reading_order_puts_actionable_first()
 	_unfound_quests_are_not_spoiled()
 
@@ -98,6 +99,43 @@ func _multi_objective_checklist_advances() -> void:
 		(entry["objectives"] as Array).all(
 			func(row): return not bool((row as Dictionary).get("consume", true))))
 	inv.reset()
+
+
+func _activity_objectives_start_at_acceptance() -> void:
+	var profile := LearningProfile.new({}, db)
+	var quest: Dictionary = db.quest("valley_morning")
+	# Lifetime history exists, but a newly accepted teaching quest must ask for
+	# three fresh actions rather than completing from old play.
+	profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST, 4)
+	profile.record_activity(LearningProfile.ACTIVITY_RESOURCE_GATHER, 3)
+	profile.record_activity(LearningProfile.ACTIVITY_FISH_CATCH, 2)
+	check_true("accepting the activity quest snapshots its baselines",
+		QuestJournal.begin(profile, quest))
+	var entry := QuestJournal.entry(profile, db, inv, "valley_morning")
+	check_eq("old activity never completes a newly accepted quest",
+		(entry["objectives"] as Array).map(func(row): return row["progress"]), [0, 0, 0])
+	check_eq("the first live action leads the compact HUD",
+		entry["objective_label"], "Harvest a crop")
+
+	profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
+	entry = QuestJournal.entry(profile, db, inv, "valley_morning")
+	check_true("a post-acceptance harvest checks only its own row",
+		bool((entry["objectives"] as Array)[0]["complete"])
+		and not bool((entry["objectives"] as Array)[1]["complete"]))
+	check_eq("the next activity advances into the HUD",
+		entry["objective_label"], "Gather a resource node")
+
+	var restored := LearningProfile.new(profile.to_save_dict(), db)
+	entry = QuestJournal.entry(restored, db, inv, "valley_morning")
+	check_eq("activity counts and acceptance baselines survive reload",
+		(entry["objectives"] as Array).map(func(row): return row["progress"]), [1, 0, 0])
+	restored.record_activity(LearningProfile.ACTIVITY_RESOURCE_GATHER)
+	restored.record_activity(LearningProfile.ACTIVITY_FISH_CATCH)
+	entry = QuestJournal.entry(restored, db, inv, "valley_morning")
+	check_eq("all three daily actions ready the quest",
+		entry["stage"], QuestJournal.Stage.READY)
+	check_true("re-accepting cannot move the saved baseline",
+		not QuestJournal.begin(restored, quest))
 
 
 func _reading_order_puts_actionable_first() -> void:

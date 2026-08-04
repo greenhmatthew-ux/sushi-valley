@@ -26,6 +26,18 @@ const SCHEDULING_FIELDS := [
 
 const DEFAULT_SKILLS := ["strike", "guard", "focus"]
 
+## Cross-surface actions that authored quests may count. These are lifetime
+## totals; QuestJournal snapshots a baseline on acceptance so old play never
+## completes a new commission retroactively.
+const ACTIVITY_FARM_HARVEST := "farm_harvest"
+const ACTIVITY_RESOURCE_GATHER := "resource_gather"
+const ACTIVITY_FISH_CATCH := "fish_catch"
+const ACTIVITY_IDS := [
+	ACTIVITY_FARM_HARVEST,
+	ACTIVITY_RESOURCE_GATHER,
+	ACTIVITY_FISH_CATCH,
+]
+
 var data: Dictionary
 ## Optional persistence sink, set by the Learning autoload to SaveGame.save_profile.
 ## Left unset in tests, where save() is a no-op — the pure model does no file IO.
@@ -163,6 +175,24 @@ func get_flag(flag: String) -> bool:
 
 func set_flag(flag: String, value: bool = true) -> void:
 	data["flags"][flag] = value
+
+
+# --- authored activity tracking --------------------------------------------
+
+func activity_count(activity_id: String) -> int:
+	if activity_id not in ACTIVITY_IDS:
+		return 0
+	return maxi(0, int(data.get("activityCounts", {}).get(activity_id, 0)))
+
+
+func record_activity(activity_id: String, amount: int = 1) -> int:
+	if activity_id not in ACTIVITY_IDS or amount <= 0:
+		return activity_count(activity_id)
+	if not data.has("activityCounts") or data["activityCounts"] is not Dictionary:
+		data["activityCounts"] = {}
+	var next := activity_count(activity_id) + amount
+	data["activityCounts"][activity_id] = next
+	return next
 
 
 # --- bestiary tracking -------------------------------------------------------

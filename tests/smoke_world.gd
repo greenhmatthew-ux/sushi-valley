@@ -137,6 +137,14 @@ func _run() -> void:
 		await _physics_frames(2)
 		check_true("Kaji is reachable by the real interaction probe",
 			kaji in interact_probe.get_overlapping_areas())
+	var aiko: Node = world.get_node_or_null("Props/QuestGiverAiko")
+	check_true("Aiko offers the typed daily-loop quest beside the farm",
+		aiko != null and aiko.get("quest_id") == "valley_morning")
+	if aiko != null:
+		player.position = aiko.position + Vector2(28, 0)
+		await _physics_frames(2)
+		check_true("Aiko is reachable by the real interaction probe",
+			aiko in interact_probe.get_overlapping_areas())
 
 	# The connected frontier must use the same real terrain vocabulary, not placeholder decals.
 	world.queue_free()

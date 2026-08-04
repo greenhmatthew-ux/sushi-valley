@@ -95,6 +95,19 @@ func _initialize() -> void:
 		String(current["summary_text"]).contains("1/3 objectives"))
 	inv.reset()
 
+	var routine_profile := LearningProfile.new({}, db)
+	QuestJournal.begin(routine_profile, db.quest("valley_morning"))
+	routine_profile.record_activity(LearningProfile.ACTIVITY_FARM_HARVEST)
+	current = Activities.current(routine_profile, db, inv)
+	check_eq("a typed daily quest joins the unified activity tracker",
+		current["key"], "quest:valley_morning")
+	check_true("the Journal checklist mixes completed and pending activities",
+		String(current["detail"]).contains("[x] Harvest a crop 1/1")
+		and String(current["detail"]).contains("[ ] Gather a resource node 0/1")
+		and String(current["detail"]).contains("[ ] Land a fish 0/1"))
+	check_true("the compact HUD names the next activity instead of a blank item",
+		String(current["hud_detail"]).contains("Gather a resource node  0/1"))
+
 	inv.free()
 	db.free()
 	_finish()
