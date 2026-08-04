@@ -34,12 +34,14 @@ var zoom: float = ZOOM_DEFAULT:
 ##
 ## The range stops at 110%, not the guide's 160%. The game lays UI out in a fixed
 ## 640x360 canvas, and raising the scale divides that canvas by the same factor —
-## at 160% panels get 400x225, which the denser ones cannot hold. The recall panel
-## is the binding constraint: its reveal state (furigana, prompt, hint, feedback,
-## two answer rows, Continue) fills the full-size canvas almost exactly, and at
-## 120% it overflows by a few pixels for the longest cards. Going higher needs
-## those panels redesigned to reflow, not a bigger number here — every step in
-## this list is swept by tests/test_ui_fits.gd on every run.
+## at 160% panels get 400x225, which the denser ones cannot hold.
+##
+## The recall panel used to be the binding constraint; its adaptive density ladder
+## now leaves real slack at every step here. What binds instead is CONTENT: a
+## handful of imported cards carry 700-900 character usage notes in the feedback
+## line, and no layout ladder absorbs those. Raising this ceiling means normalising
+## that deck text first, then re-measuring — not editing this number. Every step
+## listed here is swept by tests/test_ui_fits.gd on every run.
 const UI_SCALES: Array[float] = [0.8, 0.9, 1.0, 1.1]
 const UI_SCALE_DEFAULT := 1.0
 
