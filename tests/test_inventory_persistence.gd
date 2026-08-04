@@ -57,7 +57,8 @@ func _round_trips_items_and_coins() -> void:
 	check_true("test meal prepares", inv.prepare_meal("forest_lunchbox"))
 
 	var snapshot: Dictionary = save_game.build_snapshot({}, Vector2(10, 20), "left", inv.to_dict())
-	check_eq("snapshot records the new schema version", int(snapshot["version"]), 5)
+	check_eq("snapshot records the current schema version", int(snapshot["version"]),
+		save_game.SAVE_SCHEMA_VERSION)
 	check_true("snapshot carries an inventory section", snapshot.has("inventory"))
 
 	# Wipe the live bag, then restore from the snapshot the way world.gd does.

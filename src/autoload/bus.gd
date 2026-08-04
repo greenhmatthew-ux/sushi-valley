@@ -103,3 +103,8 @@ signal farm_changed()
 signal fishing_open(site_id: String, display_name: String, base_qty: int,
 	cooldown_seconds: int, difficulty: float)
 signal fishing_changed(site_id: String)
+
+# --- regional gathering ---------------------------------------------------
+## A stable renewable node changed state. Empty means every visible node should
+## refresh, used after loading or resetting a profile.
+signal gathering_changed(node_id: String)

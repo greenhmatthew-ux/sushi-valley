@@ -31,6 +31,7 @@ InputHints="*res://src/autoload/input_hints.gd"
 Farm="*res://src/autoload/farm.gd"
 WeatherSystem="*res://src/autoload/weather.gd"
 Fishing="*res://src/autoload/fishing.gd"
+Gathering="*res://src/autoload/gathering.gd"
 
 [display]
 

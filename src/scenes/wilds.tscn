@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="28_pickup"]
 [ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="29_expgate"]
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="30_weather"]
+[ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="31_gather"]
 
 [sub_resource type="CircleShape2D" id="exp_reach"]
 radius = 28.0
@@ -236,6 +237,50 @@ position = Vector2(272, 360)
 item_id = "bamboo_shoot"
 qty = 2
 pickup_id = "wilds_workshop_intro_bamboo"
+
+[node name="CopperSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(544, 176)
+node_id = "wilds_copper_seam"
+display_name = "Copper Seam"
+item_id = "copper_ore"
+base_qty = 2
+reset_days = 1
+skill_station = "forge"
+level_req = 1
+resource_kind = "ore"
+
+[node name="RichCopperSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(208, 232)
+node_id = "wilds_rich_copper_seam"
+display_name = "Rich Copper Seam"
+item_id = "copper_ore"
+base_qty = 4
+reset_days = 2
+skill_station = "forge"
+level_req = 3
+resource_kind = "ore"
+
+[node name="BambooThicket" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(544, 352)
+node_id = "wilds_bamboo_thicket"
+display_name = "Bamboo Thicket"
+item_id = "bamboo_shoot"
+base_qty = 3
+reset_days = 1
+skill_station = "workshop"
+level_req = 1
+resource_kind = "bamboo"
+
+[node name="WildHerbPatch" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(392, 336)
+node_id = "wilds_herb_patch"
+display_name = "Rainleaf Patch"
+item_id = "wild_herb"
+base_qty = 2
+reset_days = 1
+skill_station = "kitchen"
+level_req = 1
+resource_kind = "herb"
 
 [node name="ForestTrader" parent="Entities" instance=ExtResource("19_vendor")]
 position = Vector2(160, 320)

@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/farm_plot.tscn" id="43_farm"]
 [ext_resource type="PackedScene" path="res://src/entities/fishing_spot.tscn" id="44_fishing"]
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="45_weather"]
+[ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="46_gather"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1439,6 +1440,17 @@ display_name = "Village Pond"
 base_qty = 2
 cooldown_seconds = 120
 difficulty = 0.1
+
+[node name="VillageHerbPatch" parent="Props" instance=ExtResource("46_gather")]
+position = Vector2(152, 360)
+node_id = "village_herb_patch"
+display_name = "Garden Herb Patch"
+item_id = "wild_herb"
+base_qty = 2
+reset_days = 1
+skill_station = "kitchen"
+level_req = 1
+resource_kind = "herb"
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 

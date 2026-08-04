@@ -35,6 +35,7 @@ func _run() -> void:
 	var farm_plot: Node = world.get_node_or_null("Props/FarmPlot1")
 	var starter_seeds: Node = world.get_node_or_null("Props/FarmStarterSeeds")
 	var fishing_spot: Node = world.get_node_or_null("Props/VillageFishingSpot")
+	var herb_patch: Node = world.get_node_or_null("Props/VillageHerbPatch")
 	var weather_overlay: Node = world.get_node_or_null("WeatherOverlay")
 	check_true("harness has a Player", player != null)
 	check_true("harness has a Ground layer", ground != null)
@@ -44,6 +45,7 @@ func _run() -> void:
 	check_true("village has a discoverable farm plot", farm_plot != null)
 	check_true("farm has a one-time starter seed cache", starter_seeds != null)
 	check_true("pond has one authored fishing destination", fishing_spot != null)
+	check_true("village has a renewable herb patch", herb_patch != null)
 	check_true("outdoor village shows today's weather", weather_overlay != null)
 
 	if player == null or ground == null or gate == null:
@@ -123,6 +125,10 @@ func _run() -> void:
 	var interact_probe: Area2D = player.get_node("InteractProbe")
 	check_true("the dry shore reaches the authored fishing destination",
 		fishing_spot in interact_probe.get_overlapping_areas())
+	player.position = herb_patch.position + Vector2(28, 0)
+	await _physics_frames(2)
+	check_true("the village herb patch is within the real interaction probe",
+		herb_patch in interact_probe.get_overlapping_areas())
 
 	# The connected frontier must use the same real terrain vocabulary, not placeholder decals.
 	world.queue_free()
@@ -131,6 +137,17 @@ func _run() -> void:
 	root.add_child(wilds)
 	await process_frame
 	var wilds_detail: TileMapLayer = wilds.get_node_or_null("Detail")
+	var wilds_copper: Node = wilds.get_node_or_null("Entities/CopperSeam")
+	var wilds_bamboo: Node = wilds.get_node_or_null("Entities/BambooThicket")
+	check_true("Wilds has a renewable copper seam", wilds_copper != null)
+	check_true("Wilds has a renewable bamboo thicket", wilds_bamboo != null)
+	var wilds_player: CharacterBody2D = wilds.get_node_or_null("Entities/Player")
+	if wilds_player != null and wilds_copper != null:
+		wilds_player.position = wilds_copper.position + Vector2(28, 0)
+		await _physics_frames(2)
+		var wilds_probe: Area2D = wilds_player.get_node("InteractProbe")
+		check_true("the Wilds copper seam is within the real interaction probe",
+			wilds_copper in wilds_probe.get_overlapping_areas())
 	check_true("Wilds has authored meadow detail", wilds_detail != null)
 	if wilds_detail != null:
 		var wilds_source: TileSetAtlasSource = wilds_detail.tile_set.get_source(1)

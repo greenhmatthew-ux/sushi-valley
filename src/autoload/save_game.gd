@@ -10,12 +10,13 @@ extends Node
 ## --- Save document shape (Slice: Persistence) ---
 ## The file is a single versioned document that wraps every persisted subsystem:
 ##
-##   { "version": 5,
+##   { "version": 6,
 ##     "learning":  { ...slim LearningProfile save dict (cards/flags/stats/build)... },
 ##     "inventory": { ...InventoryLogic.to_dict(): bag + coins + equipment... },
 ##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" },
 ##                    "calendar": { "day": 1, "season": "spring" },
-##                    "farm": { "plots": { ...stable plot states... } } } }
+##                    "farm": { "plots": { ...stable plot states... } },
+##                    "gathering": { "nodes": { "stable_node_id": <day> } } } }
 ##
 ## MIGRATION v1 -> v2 (inventory). v1 never persisted the bag or the coin purse at all, so
 ## quitting lost every item and coin — and because quest progress is read FROM the bag while
@@ -38,6 +39,11 @@ extends Node
 ## Weather is deliberately not another saved field: it is deterministic from this
 ## persisted calendar, so the same day always reloads with the same forecast.
 ##
+## MIGRATION v5 -> v6 (renewable gathering). v5 world sections have no
+## `gathering.nodes`. GatheringLogic defaults that field to an empty map, so all
+## existing placement, calendar, crops, learning, and inventory remain unchanged;
+## every authored resource simply begins ready on the old save's current day.
+##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).
 ##
@@ -47,7 +53,7 @@ extends Node
 ## (flat) profile.json is migrated on the first read: a document with no "learning"
 ## key is treated as the legacy learning dict and wrapped on the next save.
 
-const SAVE_SCHEMA_VERSION := 5
+const SAVE_SCHEMA_VERSION := 6
 const PROFILE_PATH := "user://profile.json"
 
 ## Whether a save existed when the game booted — i.e. there was a previous session.
