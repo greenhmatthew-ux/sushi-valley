@@ -13,6 +13,8 @@ extends CanvasLayer
 
 const AbilityRules = preload("res://src/systems/ability_logic.gd")
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
+const RaidLogic = preload("res://src/systems/raid_logic.gd")
+const ExpeditionLogic = preload("res://src/systems/expedition_logic.gd")
 
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
@@ -346,12 +348,19 @@ func _set_tab(tab: String) -> void:
 func _refresh_quests() -> void:
 	var entries: Array = QuestJournal.all_entries(Learning.profile, DB, Inv)
 	var counts: Dictionary = QuestJournal.counts(entries)
+	var activities := _structured_activity_entries()
 	var known: int = int(counts["ready"]) + int(counts["active"]) + int(counts["done"])
-	if known == 0:
+	if known == 0 and activities.is_empty():
 		_quests_summary.text = "No quests yet — the villagers have work to offer."
+	elif known == 0:
+		_quests_summary.text = "%d structured mission%s available" % [
+			activities.size(), "" if activities.size() == 1 else "s"]
 	else:
 		_quests_summary.text = "%d done   ·   %d in progress   ·   %d ready to turn in" % [
 			counts["done"], counts["active"], counts["ready"]]
+		if not activities.is_empty():
+			_quests_summary.text += "   ·   %d mission%s" % [
+				activities.size(), "" if activities.size() == 1 else "s"]
 
 	var shown := 0
 	for entry in entries:
@@ -368,6 +377,98 @@ func _refresh_quests() -> void:
 		more.add_theme_font_size_override("font_size", 11)
 		more.add_theme_color_override("font_color", COL_HEADING)
 		_quests_box.add_child(more)
+
+	if not activities.is_empty():
+		var heading := Label.new()
+		heading.name = "StructuredMissionsHeading"
+		heading.text = "Raids & Expeditions"
+		heading.add_theme_font_size_override("font_size", 13)
+		heading.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
+		_quests_box.add_child(heading)
+		for activity in activities:
+			_quests_box.add_child(_make_activity_card(activity))
+
+
+## Structured missions stay in the one Journal. They only appear once their real
+## requirements are met or a saved attempt exists, so the list never spoils future
+## content. Every detail line answers one question: what should I do next?
+func _structured_activity_entries() -> Array:
+	var entries: Array = []
+	for raw_id in DB.raids:
+		var raid: Dictionary = DB.raids[raw_id]
+		var raid_entry := _raid_activity_entry(raid)
+		if not raid_entry.is_empty():
+			entries.append(raid_entry)
+	for raw_id in DB.expeditions:
+		var expedition: Dictionary = DB.expeditions[raw_id]
+		var expedition_entry := _expedition_activity_entry(expedition)
+		if not expedition_entry.is_empty():
+			entries.append(expedition_entry)
+	return entries
+
+
+func _raid_activity_entry(raid: Dictionary) -> Dictionary:
+	var id := String(raid.get("id", ""))
+	var progress := RaidLogic.progress(Learning.profile, id)
+	if progress.is_empty() and not RaidLogic.can_start(Learning.profile, raid):
+		return {}
+	var stage := String(progress.get("stage", "available"))
+	var giver := String(raid.get("npcId", "the mission giver")).capitalize()
+	var state := "Available"
+	var detail := "%s Talk to %s to begin." % [String(raid.get("description", "")), giver]
+	match stage:
+		"active":
+			state = "Recall"
+			detail = "Complete the focused recall with %s." % giver
+		"recall-cleared":
+			state = "Boss ready"
+			var enemy := DB.enemy(String(raid.get("encounterId", "")))
+			detail = "Defeat %s to finish the mission." % String(
+				enemy.get("name", raid.get("encounterId", "the boss")))
+		"complete":
+			state = "Complete"
+			detail = "Finished %d time%s. The Forest Expedition is unlocked." % [
+				int(progress.get("completions", 1)),
+				"" if int(progress.get("completions", 1)) == 1 else "s"]
+	return {"id": "raid_" + id, "kind": "Raid",
+		"title": String(raid.get("displayName", id)), "state": state,
+		"stage": stage, "detail": detail}
+
+
+func _expedition_activity_entry(expedition: Dictionary) -> Dictionary:
+	var id := String(expedition.get("id", ""))
+	var progress := ExpeditionLogic.progress(Learning.profile, id)
+	if progress.is_empty() and not ExpeditionLogic.unlock_ready(Learning.profile, expedition):
+		return {}
+	var stage := String(progress.get("stage", "available"))
+	var state := "Available"
+	var detail := "%s Start at its marked gate." % String(
+		expedition.get("description", "A structured field mission."))
+	match stage:
+		"active":
+			state = "In progress"
+			detail = "Clear the expedition's opening encounter."
+		"encounter-cleared":
+			state = "Objective"
+			detail = "Recover the expedition objective."
+		"objective-recovered":
+			state = "Recall"
+			detail = "Complete the focused recall at the recovered objective."
+		"recall-cleared":
+			state = "Boss ready"
+			var enemy := DB.enemy(String(expedition.get("bossEncounterId", "")))
+			detail = "Defeat %s and bank the rewards." % String(
+				enemy.get("name", expedition.get("bossEncounterId", "the boss")))
+		"complete":
+			state = "Repeatable" if bool(expedition.get("repeatable", false)) else "Complete"
+			detail = "Finished %d time%s.%s" % [
+				int(progress.get("completions", 1)),
+				"" if int(progress.get("completions", 1)) == 1 else "s",
+				" Return to its gate to run it again." if bool(
+					expedition.get("repeatable", false)) else ""]
+	return {"id": "expedition_" + id, "kind": "Expedition",
+		"title": String(expedition.get("displayName", id)), "state": state,
+		"stage": stage, "detail": detail}
 
 
 ## The Map domain. UI_UX_GUIDE section 6 wants literal local maps over LDtk truth
@@ -845,6 +946,49 @@ func _make_quest_card(entry: Dictionary) -> Control:
 	return card
 
 
+func _make_activity_card(entry: Dictionary) -> Control:
+	var card := PanelContainer.new()
+	card.name = "ActivityCard_" + String(entry["id"])
+	var stage := String(entry["stage"])
+	var accent := UiTheme.ACCENT_GOLD
+	if stage == "available" or stage == "recall-cleared":
+		accent = UiTheme.STATE_SUCCESS
+	elif stage == "complete":
+		accent = UiTheme.TEXT_MUTED
+	card.add_theme_stylebox_override("panel", _card_style(accent))
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+	card.add_child(box)
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 8)
+	box.add_child(header)
+
+	var title := Label.new()
+	title.name = "ActivityTitle_" + String(entry["id"])
+	title.text = "%s · %s" % [entry["kind"], entry["title"]]
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", accent)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(title)
+
+	var state := Label.new()
+	state.name = "ActivityStage_" + String(entry["id"])
+	state.text = String(entry["state"])
+	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_color_override("font_color", accent)
+	header.add_child(state)
+
+	var detail := Label.new()
+	detail.name = "ActivityDetail_" + String(entry["id"])
+	detail.text = String(entry["detail"])
+	detail.add_theme_font_size_override("font_size", 11)
+	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(detail)
+	return card
+
+
 func _refresh_footer() -> void:
 	if _capacity_label == null:
 		return
@@ -855,7 +999,7 @@ func _refresh_footer() -> void:
 		_capacity_label.text = "Choose an action in combat, then answer with the matching rune."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_QUESTS:
-		_capacity_label.text = "Quest items are counted from your bag as you collect them."
+		_capacity_label.text = "Quests and structured missions share one saved Journal."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_MAP:
 		_capacity_label.text = "Regions you have not reached yet are named but not detailed."

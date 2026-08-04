@@ -266,6 +266,10 @@ func _initialize() -> void:
 	# this quest already finished and the "not yet met" case would never be tested.
 	learning.profile.set_flag(QuestJournal.started_flag(quest_id), false)
 	learning.profile.set_flag(QuestJournal.done_flag(quest_id), false)
+	learning.profile.set_flag("hana_first_lesson", false)
+	learning.profile.set_flag("expedition_forest_unlocked", false)
+	learning.profile.data.erase("raids")
+	learning.profile.data.erase("expeditions")
 	inv.reset()
 	var quest: Dictionary = db.quest(quest_id)
 	var goal_item := String(quest["goal"]["item"])
@@ -277,6 +281,10 @@ func _initialize() -> void:
 		panel.find_child("QuestCard_" + quest_id, true, false) == null)
 	check_true("but the player is told there is more out there",
 		panel.find_child("QuestsUndiscovered", true, false) != null)
+	check_true("locked raids stay out of the Journal",
+		panel.find_child("ActivityCard_raid_sushi_prep", true, false) == null)
+	check_true("locked expeditions stay out of the Journal",
+		panel.find_child("ActivityCard_expedition_forest_lunchbox", true, false) == null)
 
 	learning.profile.set_flag(QuestJournal.started_flag(quest_id))
 	inv.add(goal_item, 1)
@@ -303,6 +311,57 @@ func _initialize() -> void:
 	stage_label = panel.find_child("QuestStage_" + quest_id, true, false)
 	check_true("a completed quest is still in the log", stage_label != null)
 	check_eq("and is recorded as completed", stage_label.text, "Completed")
+
+	# Structured missions share this Journal, but only after the player has met
+	# their real unlock requirements. The card then gives one clear next action.
+	learning.profile.set_flag("hana_first_lesson")
+	panel.call("_refresh")
+	var raid_stage: Label = panel.find_child(
+		"ActivityStage_raid_sushi_prep", true, false)
+	var raid_detail: Label = panel.find_child(
+		"ActivityDetail_raid_sushi_prep", true, false)
+	check_true("an unlocked raid appears in the Journal", raid_stage != null)
+	check_eq("a new raid is marked available", raid_stage.text, "Available")
+	check_true("the raid card directs the player to its giver",
+		raid_detail != null and raid_detail.text.contains("Hana"))
+
+	learning.profile.data["raids"] = {
+		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
+	}
+	panel.call("_refresh")
+	raid_stage = panel.find_child("ActivityStage_raid_sushi_prep", true, false)
+	raid_detail = panel.find_child("ActivityDetail_raid_sushi_prep", true, false)
+	check_eq("a recall-cleared raid exposes its boss step", raid_stage.text, "Boss ready")
+	check_true("the raid card names the real boss",
+		raid_detail != null and raid_detail.text.contains("Pantry Oni"))
+
+	learning.profile.data["raids"] = {
+		"sushi_prep": {"stage": "complete", "completions": 1},
+	}
+	learning.profile.set_flag("expedition_forest_unlocked")
+	panel.call("_refresh")
+	var expedition_stage: Label = panel.find_child(
+		"ActivityStage_expedition_forest_lunchbox", true, false)
+	check_true("an unlocked expedition appears in the same Journal",
+		expedition_stage != null)
+	check_eq("a new expedition is marked available", expedition_stage.text, "Available")
+
+	learning.profile.data["expeditions"] = {
+		"forest_lunchbox": {"stage": "objective-recovered", "completions": 0},
+	}
+	panel.call("_refresh")
+	expedition_stage = panel.find_child(
+		"ActivityStage_expedition_forest_lunchbox", true, false)
+	var expedition_detail: Label = panel.find_child(
+		"ActivityDetail_expedition_forest_lunchbox", true, false)
+	check_eq("the recovered objective points to recall", expedition_stage.text, "Recall")
+	check_true("the expedition card states the next action",
+		expedition_detail != null and expedition_detail.text.contains("focused recall"))
+
+	learning.profile.data.erase("raids")
+	learning.profile.data.erase("expeditions")
+	learning.profile.set_flag("hana_first_lesson", false)
+	learning.profile.set_flag("expedition_forest_unlocked", false)
 	inv.reset()
 	panel.call("_set_tab", "bag")
 
