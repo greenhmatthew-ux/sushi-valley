@@ -446,17 +446,28 @@ func _initialize() -> void:
 	var map_summary: Label = panel.find_child("MapSummary", true, false)
 	check_true("the map says how much of the world is open",
 		map_summary != null and map_summary.text.contains("regions open"))
-	check_true("a built region is listed",
-		panel.find_child("RegionCard_mountain_pass", true, false) != null)
-	var planned_state: Label = panel.find_child("RegionState_north_reach", true, false)
-	check_true("a region with no scene says so rather than pretending",
-		planned_state != null and planned_state.text == "Not built yet")
-	var built_state: Label = panel.find_child("RegionState_whispering_woods", true, false)
-	check_true("a region you can walk to reads as open",
-		built_state != null and built_state.text != "Not built yet")
-	var link_detail: Label = panel.find_child("RegionDetail_mountain_pass", true, false)
-	check_true("regions show what they connect to",
-		link_detail != null and link_detail.text.contains("Whispering Woods"))
+	var world_graph: Control = panel.find_child("WorldMapGraph", true, false)
+	check_true("the Map domain is a focusable route graph", world_graph != null)
+	check_eq("a Valley interior keeps its world-map anchor",
+		panel.call("_region_for_scene", "res://src/scenes/interior_house.tscn"),
+		"valley_crossroads")
+	check_eq("the Expedition keeps its Woods world-map anchor",
+		panel.call("_region_for_scene", "res://src/scenes/expedition_forest.tscn"),
+		"whispering_woods")
+	var built_node: Button = panel.find_child("RegionNode_mountain_pass", true, false)
+	check_true("a built region is a playable route node",
+		built_node != null and built_node.get_meta("status") == "playable")
+	var planned_node: Button = panel.find_child("RegionNode_north_reach", true, false)
+	check_true("a region with no scene stays visibly unbuilt",
+		planned_node != null and planned_node.text == "?"
+		and planned_node.tooltip_text.contains("Not built yet"))
+	world_graph.call("focus_region", "mountain_pass", false)
+	await process_frame
+	var map_detail: Label = panel.find_child("MapRegionDetail", true, false)
+	check_true("focused routes show authored level, note, and connection truth",
+		map_detail != null and map_detail.text.contains("Lv 10-36")
+		and map_detail.text.contains("Rocky climb")
+		and map_detail.text.contains("Whispering Woods"))
 
 	panel.call("_set_tab", "learning")
 	panel.call("_refresh")

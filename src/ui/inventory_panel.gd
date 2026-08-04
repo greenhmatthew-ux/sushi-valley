@@ -14,6 +14,7 @@ extends CanvasLayer
 const AbilityRules = preload("res://src/systems/ability_logic.gd")
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
 const Activities = preload("res://src/systems/activity_tracker.gd")
+const WorldMapGraph = preload("res://src/ui/world_map_graph.gd")
 
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
@@ -102,8 +103,9 @@ var _quests_box: VBoxContainer
 var _quests_summary: Label
 var _map_tab: Button
 var _map_view: VBoxContainer
-var _map_box: VBoxContainer
+var _map_box: Control
 var _map_summary: Label
+var _map_detail: Label
 var _learning_tab: Button
 var _learning_view: VBoxContainer
 var _learning_box: VBoxContainer
@@ -426,73 +428,44 @@ func _refresh_map() -> void:
 	for region_id in DB.regions:
 		if String(DB.regions[region_id].get("status", "")) == "playable":
 			open_count += 1
-	_map_summary.text = "%d regions open   ·   %d charted in the plan" % [
-		open_count, DB.regions.size()]
-
-	for raw_id in DB.regions:
-		var region: Dictionary = DB.regions[raw_id]
-		_map_box.add_child(_make_region_card(String(raw_id), region, here))
+	_map_summary.text = "%d regions open · Gold: here · Green: playable · ?: charted, not built" % open_count
+	_map_box.call("configure", DB.regions, here)
 
 
-func _make_region_card(region_id: String, region: Dictionary, here: String) -> Control:
-	var playable := String(region.get("status", "")) == "playable"
-	var current := region_id == here
-	var accent := COL_HEADING
-	if current:
-		accent = UiTheme.ACCENT_GOLD
-	elif playable:
-		accent = UiTheme.STATE_SUCCESS
-
-	var card := PanelContainer.new()
-	card.name = "RegionCard_" + region_id
-	card.add_theme_stylebox_override("panel", _card_style(accent))
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
-	card.add_child(box)
-
-	var header := HBoxContainer.new()
-	header.add_theme_constant_override("separation", 8)
-	box.add_child(header)
-	var title := Label.new()
-	title.name = "RegionName_" + region_id
-	title.text = String(region.get("name", region_id))
-	title.add_theme_font_size_override("font_size", 13)
-	title.add_theme_color_override("font_color", accent)
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	header.add_child(title)
-
-	var state := Label.new()
-	state.name = "RegionState_" + region_id
-	state.text = "You are here" if current else ("Open" if playable else "Not built yet")
-	state.add_theme_font_size_override("font_size", 11)
-	state.add_theme_color_override("font_color", accent)
-	header.add_child(state)
-
-	var detail := Label.new()
-	detail.name = "RegionDetail_" + region_id
-	detail.add_theme_font_size_override("font_size", 11)
-	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
-	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+func _on_map_region_focused(region_id: String) -> void:
+	var region: Dictionary = DB.regions.get(region_id, {})
+	if region.is_empty() or _map_detail == null:
+		return
 	var links: Array[String] = []
 	for connected in region.get("connects", []):
 		var other: Dictionary = DB.regions.get(String(connected), {})
 		links.append(String(other.get("name", connected)))
-	detail.text = "Levels %d-%d   ·   connects to %s" % [
+	var state := "Open route" if String(region.get("status", "")) == "playable" \
+		else "Charted · not built yet"
+	if region_id == _current_region_id():
+		state = "You are here"
+	_map_detail.text = "%s · %s · Lv %d-%d\n%s · Connects to %s" % [
+		region.get("name", region_id), state,
 		int(region.get("minLevel", 1)), int(region.get("maxLevel", 1)),
+		region.get("note", "No field notes yet."),
 		", ".join(links) if not links.is_empty() else "nowhere yet"]
-	box.add_child(detail)
-	return card
 
 
 ## Which region the player is standing in, matched by the running scene rather than
 ## stored state, so it cannot drift out of sync with where they actually are.
 func _current_region_id() -> String:
 	var scene := get_tree().current_scene
-	if scene == null:
-		return ""
-	match scene.scene_file_path:
+	return _region_for_scene(scene.scene_file_path) if scene != null else ""
+
+
+## Interiors and structured instances inherit the region whose route contains
+## them, so opening the world map indoors never loses the "you are here" anchor.
+func _region_for_scene(scene_path: String) -> String:
+	match scene_path:
 		"res://src/scenes/world.tscn": return "valley_crossroads"
+		"res://src/scenes/interior_house.tscn": return "valley_crossroads"
 		"res://src/scenes/wilds.tscn": return "whispering_woods"
+		"res://src/scenes/expedition_forest.tscn": return "whispering_woods"
 		"res://src/scenes/mountain_pass.tscn": return "mountain_pass"
 	return ""
 
@@ -1839,17 +1812,18 @@ func _build_scaffold() -> void:
 	_map_summary.add_theme_color_override("font_color", COL_HEADING)
 	_map_view.add_child(_map_summary)
 
-	var map_scroll := ScrollContainer.new()
-	map_scroll.name = "MapScroll"
-	map_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	map_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_map_view.add_child(map_scroll)
+	_map_box = WorldMapGraph.new()
+	_map_box.name = "WorldMapGraph"
+	_map_box.region_focused.connect(_on_map_region_focused)
+	_map_view.add_child(_map_box)
 
-	_map_box = VBoxContainer.new()
-	_map_box.name = "MapCards"
-	_map_box.add_theme_constant_override("separation", 6)
-	_map_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	map_scroll.add_child(_map_box)
+	_map_detail = Label.new()
+	_map_detail.name = "MapRegionDetail"
+	_map_detail.add_theme_font_size_override("font_size", 10)
+	_map_detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+	_map_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_map_detail.custom_minimum_size = Vector2(0, 34)
+	_map_view.add_child(_map_detail)
 
 	_learning_view = VBoxContainer.new()
 	_learning_view.name = "LearningView"
