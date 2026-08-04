@@ -226,7 +226,10 @@ func _tool_commission_preserves_the_field_kit() -> void:
 	var coins_before: int = inv.coins
 	var charm_before: int = inv.count("trailblazer_charm")
 	await kaji.interact(null)
-	check_true("Kaji marks the tool commission complete", kaji.is_complete())
+	# Kaji now heads a chain, so `is_complete()` reports on whatever he offers *next*.
+	# The finished quest is asserted by its own flag, the same way Aiko's chain is below.
+	check_true("Kaji marks the tool commission complete",
+		learning.profile.get_flag(QuestJournal.done_flag("tools_of_the_trail")))
 	for tool_id in ["copper_pick", "trail_hatchet", "herb_sickle"]:
 		check_eq("inspection preserves %s" % tool_id, inv.count(tool_id), 1)
 	check_eq("the commission pays its exact coin reward", inv.coins, coins_before + 75)
@@ -237,11 +240,31 @@ func _tool_commission_preserves_the_field_kit() -> void:
 		charm.get("slot", "") == "amulet"
 		and int(charm.get("stats", {}).get("spd", 0)) == 1)
 
+	# The field kit is the apprenticeship; the smithing commissions follow from it. Both
+	# were authored long ago and unreachable until this chain pointed at them.
+	check_eq("the same Kaji now leads with his smithing commission",
+		kaji.active_quest_id(), "smiths_first_order")
+	check_eq("the commission waits for a new acceptance", kaji.current_stage(), "intro")
+
 	var paid_coins: int = inv.coins
 	await kaji.interact(null)
-	check_eq("the completed checklist pays no second coins", inv.coins, paid_coins)
+	check_eq("accepting the commission cannot repay the field kit", inv.coins, paid_coins)
 	check_eq("the completed checklist pays no second charm",
 		inv.count("trailblazer_charm"), charm_before + 1)
+	check_true("Kaji accepts A Smith's First Order", kaji.is_accepted())
+	check_eq("the commission asks for the refined ingot, not raw ore",
+		kaji.goal_item(), "iron_ingot")
+
+	# Iron ore was unobtainable more than once before this slice, so this step could be
+	# accepted and never finished. Renewable seams now back it — see test_smithing_chain.
+	inv.add("iron_ingot", 1)
+	check_eq("a smelted ingot readies the commission", kaji.current_stage(), "turnin")
+	await kaji.interact(null)
+	check_true("Kaji marks the smithing commission complete",
+		learning.profile.get_flag(QuestJournal.done_flag("smiths_first_order")))
+	check_eq("turn-in consumes the delivered ingot", inv.count("iron_ingot"), 0)
+	check_eq("the line continues to the alloy test",
+		kaji.active_quest_id(), "kaji_copper_testing")
 	kaji.queue_free()
 
 

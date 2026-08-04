@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3]
+[gd_scene load_steps=24 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/mountain_pass.gd" id="1_pass"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/ninja_relief.png" id="2_relief"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" path="res://assets/props/crafting_anvil.png" id="21_anvil"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="22_ui"]
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="23_weather"]
+[ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="24_gather"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_relief"]
 texture = ExtResource("2_relief")
@@ -277,6 +278,17 @@ position = Vector2(56, 216)
 station = "forge"
 station_name = "Pass Camp Forge"
 sprite = ExtResource("21_anvil")
+
+[node name="IronSeam" parent="Entities" instance=ExtResource("24_gather")]
+position = Vector2(240, 176)
+node_id = "pass_iron_seam"
+display_name = "Iron Seam"
+item_id = "raw_iron_ore"
+base_qty = 3
+reset_days = 1
+skill_station = "forge"
+level_req = 1
+resource_kind = "ore"
 
 [node name="UILayer" parent="." instance=ExtResource("22_ui")]
 

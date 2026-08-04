@@ -261,6 +261,17 @@ level_req = 3
 resource_kind = "ore"
 required_tool_id = "copper_pick"
 
+[node name="IronSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(480, 176)
+node_id = "wilds_iron_seam"
+display_name = "Iron Seam"
+item_id = "raw_iron_ore"
+base_qty = 2
+reset_days = 2
+skill_station = "forge"
+level_req = 1
+resource_kind = "ore"
+
 [node name="BambooThicket" parent="Entities" instance=ExtResource("31_gather")]
 position = Vector2(544, 352)
 node_id = "wilds_bamboo_thicket"

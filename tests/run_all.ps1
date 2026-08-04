@@ -36,7 +36,7 @@ $suites = @(
 	"smoke_db", "test_pronunciation_audio", "test_deck_audio", "test_audio_music", "smoke_world", "test_mountain_pass", "test_srs", "test_learning",
 	"test_lesson_gate", "test_recall_loop", "test_recall_panel", "test_notebook_panel", "test_inventory", "test_combat",
 	"test_save", "test_inventory_persistence", "test_farm", "test_weather", "test_fishing", "test_gathering", "test_transitions", "test_quest", "test_quest_journal", "test_activity_tracker", "test_quest_giver", "test_teacher_npc", "test_raid", "test_expedition", "test_expedition_room", "test_sign_post", "test_study_spot", "test_combat_encounter", "test_player_stats", "test_shop_haggle", "test_japanese_sourcing", "test_card_content", "test_bestiary",
-	"test_ability_logic", "test_consumables", "test_crafting", "test_combat_panel", "test_input_hints", "test_world_map_graph", "test_player_menu", "test_session_summary", "test_toast_feed", "test_hud_review_cue", "test_objective_hud", "test_ui_fits", "test_door_signage",
+	"test_ability_logic", "test_consumables", "test_crafting", "test_smithing_chain", "test_combat_panel", "test_input_hints", "test_world_map_graph", "test_player_menu", "test_session_summary", "test_toast_feed", "test_hud_review_cue", "test_objective_hud", "test_ui_fits", "test_door_signage",
 	"smoke_autoloads"
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"

@@ -75,7 +75,8 @@
     "reward": { "coins": 65, "items": [{ "id": "raw_iron_ore", "qty": 3 }] },
     "offerLines": ["A forge is only as good as its anvil.", "Bring me one iron ingot. Ore from Mountain Pass must be refined here first."],
     "progressLines": ["I still need that iron ingot. Mine three raw ore, then use the forge's refining recipe."],
-    "turnInLines": ["Clean grain, even heat. This ingot will hold. You have the hands for this work."]
+    "turnInLines": ["Clean grain, even heat. This ingot will hold. You have the hands for this work."],
+    "followUpQuest": "kaji_copper_testing"
   },
   {
     "id": "east_spirit_gather",
@@ -273,7 +274,8 @@
     ],
     "turnInLines": [
       "Balanced heads, clean bindings, and no brittle edges. Keep every tool. This trailblazer knot marks you as someone who can work beyond the easy path."
-    ]
+    ],
+    "followUpQuest": "smiths_first_order"
   },
   {
     "id": "pass_scree_hides",
