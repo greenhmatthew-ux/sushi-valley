@@ -15,6 +15,7 @@ func _ready() -> void:
 func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 		skill_station: String, level_req: int, resource_kind: String,
 		required_tool_id: String = "") -> Dictionary:
+	logic.register_node(node_id, reset_days)
 	if node_id.is_empty() or DB.item(item_id).is_empty():
 		return {"ok": false, "reason": "This resource is not authored."}
 	if skill_station not in CraftingLogic.STATIONS:
@@ -65,7 +66,7 @@ func gather(node_id: String, item_id: String, base_qty: int, reset_days: int,
 		return {"ok": false, "reason": "The resource would not fit in your Bag."}
 	# Every validation happened before the first mutation. From here all three
 	# owned states commit exactly once: bag, station XP, then saved node day.
-	logic.mark_gathered(node_id, Farm.day())
+	logic.mark_gathered(node_id, Farm.day(), reset_days)
 	var previous_level := int(check["level"])
 	var new_level := Crafting.award_xp(skill_station, int(check["xp"]))
 	_commit(node_id)
@@ -80,6 +81,14 @@ func is_ready(node_id: String, reset_days: int = 1) -> bool:
 
 func remaining_days(node_id: String, reset_days: int = 1) -> int:
 	return logic.remaining_days(node_id, Farm.day(), reset_days)
+
+
+func register_node(node_id: String, reset_days: int = 1) -> bool:
+	return logic.register_node(node_id, reset_days)
+
+
+func preview_next_day() -> Dictionary:
+	return logic.preview_advance(Farm.day(), 1)
 
 
 func tool_source_label(tool_id: String) -> String:

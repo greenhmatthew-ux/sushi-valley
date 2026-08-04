@@ -26,8 +26,10 @@ func _on_open() -> void:
 	var crop_note := "Rain or snow is watering every planted crop today." \
 		if WeatherSystem.is_precipitation(current_weather) \
 		else "Watered crops advance today; dry crops pause without withering."
-	_detail.text = "You wake fully healed. %s Tomorrow: %s." % [
-		crop_note, WeatherSystem.display_name(WeatherSystem.tomorrow())]
+	var resource_note := _resource_preview_text(Gathering.preview_next_day())
+	_detail.text = "You wake fully healed. %s%s Tomorrow: %s." % [
+		crop_note, (" " + resource_note) if not resource_note.is_empty() else "",
+		WeatherSystem.display_name(WeatherSystem.tomorrow())]
 	_root.show()
 	get_tree().paused = true
 	(_root.find_child("ConfirmSleep", true, false) as Button).grab_focus.call_deferred()
@@ -40,6 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_sleep() -> void:
+	var resource_preview := Gathering.preview_next_day()
 	var result := Farm.advance_day()
 	var player := get_tree().get_first_node_in_group("player")
 	if player != null and player.has_method("set_hp"):
@@ -49,9 +52,29 @@ func _on_sleep() -> void:
 	var crop_note := " Precipitation watered every planted crop." \
 		if WeatherSystem.is_precipitation(String(result.get("previous_weather", ""))) \
 		else " Watered crops grew; dry crops paused."
-	Bus.toast.emit("%s begins - %s.%s%s" % [Farm.clock_text(),
+	var resource_note := ""
+	var returning := int(resource_preview.get("returning", 0))
+	if returning > 0:
+		resource_note = " %d resource node%s renewed." % [
+			returning, "" if returning == 1 else "s"]
+	Bus.toast.emit("%s begins - %s.%s%s%s" % [Farm.clock_text(),
 		WeatherSystem.display_name(String(result.get("weather", WeatherSystem.current()))),
-		season_note, crop_note])
+		season_note, crop_note, resource_note])
+
+
+func _resource_preview_text(preview: Dictionary) -> String:
+	var returning := int(preview.get("returning", 0))
+	var waiting := int(preview.get("waiting", 0))
+	if returning <= 0 and waiting <= 0:
+		return ""
+	var parts: Array[String] = []
+	if returning > 0:
+		parts.append("%d gathered resource node%s return tomorrow" % [
+			returning, "" if returning == 1 else "s"])
+	if waiting > 0:
+		parts.append("%d rare node%s need more time" % [
+			waiting, "" if waiting == 1 else "s"])
+	return "%s." % "; ".join(parts)
 
 
 func _close() -> void:
@@ -88,6 +111,7 @@ func _build() -> void:
 	_detail = UiTheme.label(
 		"You wake fully healed. Watered crops advance one day; dry crops pause without withering.",
 		UiTheme.FONT_SECTION, UiTheme.TEXT_PRIMARY)
+	_detail.name = "DayEndDetail"
 	_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(_detail)
 	var buttons := HBoxContainer.new()

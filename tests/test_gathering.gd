@@ -43,7 +43,7 @@ func _pure_reset_and_weather_contract() -> void:
 		rules.remaining_days("herb_a", 1, 1), 1)
 	check_true("a common node returns on the next day", rules.is_ready("herb_a", 2, 1))
 
-	rules.mark_gathered("rare_ore", 7)
+	rules.mark_gathered("rare_ore", 7, 3)
 	check_eq("a rare three-day node reports its explicit reset",
 		rules.remaining_days("rare_ore", 8, 3), 2)
 	check_true("a rare node remains depleted before its reset",
@@ -55,6 +55,24 @@ func _pure_reset_and_weather_contract() -> void:
 	restored.load_world_dict(saved)
 	check_eq("node days round-trip through world state",
 		int(restored.nodes["rare_ore"]), 7)
+	check_eq("authored reset days round-trip for honest sleep previews",
+		int(restored.reset_days_by_node["rare_ore"]), 3)
+
+	var preview_rules: RefCounted = Rules.new()
+	preview_rules.mark_gathered("common", 4, 1)
+	preview_rules.mark_gathered("rare", 4, 3)
+	var preview: Dictionary = preview_rules.preview_advance(4, 1)
+	check_eq("tomorrow renews the common depleted node", preview["returning"], 1)
+	check_eq("tomorrow leaves the rare depleted node waiting", preview["waiting"], 1)
+	check_eq("the preview counts only currently depleted nodes", preview["depleted"], 2)
+
+	restored.load_world_dict({"gathering": {"nodes": {"legacy_v6": 6}}})
+	check_eq("a v6 cooldown safely defaults to the old one-day behavior",
+		int(restored.reset_days_by_node["legacy_v6"]), 1)
+	restored.load_world_dict({"gathering": {
+		"nodes": {"wilds_rich_copper_seam": 6}}})
+	check_eq("v6 rich copper keeps its authored two-day cooldown",
+		int(restored.reset_days_by_node["wilds_rich_copper_seam"]), 2)
 	restored.load_world_dict({"calendar": {"day": 22, "season": "autumn"}})
 	check_eq("a v5 save defaults absent gathering state safely", restored.nodes.size(), 0)
 
@@ -85,6 +103,8 @@ func _runtime_transaction_contract() -> void:
 	var world: Dictionary = save.load_world_state()
 	check_eq("the gathered stable id saves the global calendar day",
 		int(world["gathering"]["nodes"]["test_herb"]), farm.day())
+	check_eq("the gathered node saves its authored cooldown",
+		int(world["gathering"]["resetDays"]["test_herb"]), 1)
 
 	var repeated: Dictionary = gathering.gather("test_herb", "wild_herb", 2, 1,
 		"kitchen", 1, "herb")
@@ -116,6 +136,10 @@ func _runtime_transaction_contract() -> void:
 	check_true("owning the permanent tool unlocks the same node",
 		bool(tool_gathered.get("ok", false)))
 	check_eq("gathering never consumes the permanent tool", inv.count("copper_pick"), 1)
+	var rare_gathered: Dictionary = gathering.gather(
+		"preview_rare", "copper_ore", 1, 2, "forge", 1, "ore", "copper_pick")
+	check_true("a two-day tool node joins the saved reset preview",
+		bool(rare_gathered.get("ok", false)))
 
 	inv.add("wild_herb", 99 - inv.count("wild_herb"))
 	var kitchen_xp_before := int(CraftingLogic.ensure_state(learning.profile.data)["xp"]["kitchen"])
@@ -141,18 +165,44 @@ func _runtime_transaction_contract() -> void:
 	visual.node_id = "saved_bamboo"
 	visual.display_name = "Test Bamboo"
 	visual.item_id = "bamboo_shoot"
+	visual.base_qty = 3
 	visual.skill_station = "workshop"
 	visual.resource_kind = "bamboo"
 	root.add_child(visual)
 	await process_frame
 	check_true("a depleted node label explains the daily reset",
 		"tomorrow" in String(visual.interaction_label()).to_lower())
+	var sleep_preview: Dictionary = gathering.preview_next_day()
+	check_true("sleep truth separates tomorrow's common nodes from the rare cooldown",
+		int(sleep_preview.get("returning", 0)) >= 3
+		and int(sleep_preview.get("waiting", 0)) == 1)
+	var day_end := CanvasLayer.new()
+	day_end.set_script(load("res://src/ui/day_end_panel.gd"))
+	root.add_child(day_end)
+	await process_frame
+	bus.sleep_requested.emit()
+	await process_frame
+	var day_detail: Label = day_end.find_child("DayEndDetail", true, false)
+	check_true("the sleep panel previews both reset outcomes before committing",
+		day_detail != null and day_detail.text.contains("return tomorrow")
+		and day_detail.text.contains("rare node")
+		and day_detail.text.contains("need more time"))
+	day_end.call("_close")
+	day_end.queue_free()
+	await process_frame
 	farm.advance_day()
 	await process_frame
 	check_eq("the same visible node becomes actionable after sleep",
 		visual.interaction_label(), "Gather Test Bamboo")
 	check_true("the next day makes every common node ready again",
 		gathering.is_ready("test_herb", 1))
+	var bamboo_before: int = inv.count("bamboo_shoot")
+	visual.interact()
+	var feedback: Label = visual.get_node_or_null("GatherFeedback")
+	check_true("a successful gather starts visible world feedback",
+		float(visual.get("_burst_time")) > 0.0 and feedback != null)
+	check_eq("the floating quantity matches the committed Bag gain",
+		feedback.text if feedback != null else "", "+%d" % (inv.count("bamboo_shoot") - bamboo_before))
 	visual.queue_free()
 	await process_frame
 

@@ -10,13 +10,14 @@ extends Node
 ## --- Save document shape (Slice: Persistence) ---
 ## The file is a single versioned document that wraps every persisted subsystem:
 ##
-##   { "version": 6,
+##   { "version": 7,
 ##     "learning":  { ...slim LearningProfile save dict (cards/flags/stats/build)... },
 ##     "inventory": { ...InventoryLogic.to_dict(): bag + coins + equipment... },
 ##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" },
 ##                    "calendar": { "day": 1, "season": "spring" },
 ##                    "farm": { "plots": { ...stable plot states... } },
-##                    "gathering": { "nodes": { "stable_node_id": <day> } } } }
+##                    "gathering": { "nodes": { "stable_node_id": <day> },
+##                                   "resetDays": { "stable_node_id": <days> } } } }
 ##
 ## MIGRATION v1 -> v2 (inventory). v1 never persisted the bag or the coin purse at all, so
 ## quitting lost every item and coin — and because quest progress is read FROM the bag while
@@ -44,6 +45,11 @@ extends Node
 ## existing placement, calendar, crops, learning, and inventory remain unchanged;
 ## every authored resource simply begins ready on the old save's current day.
 ##
+## MIGRATION v6 -> v7 (resource reset preview). v6 gathering sections have the
+## last-gathered day but no `resetDays` metadata. GatheringLogic preserves every
+## node day, restores the three stable multi-day IDs from an exact migration
+## table, and treats every other v6 node as its authored one-day cooldown.
+##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).
 ##
@@ -53,7 +59,7 @@ extends Node
 ## (flat) profile.json is migrated on the first read: a document with no "learning"
 ## key is treated as the legacy learning dict and wrapped on the next save.
 
-const SAVE_SCHEMA_VERSION := 6
+const SAVE_SCHEMA_VERSION := 7
 const PROFILE_PATH := "user://profile.json"
 
 ## Whether a save existed when the game booted — i.e. there was a previous session.

@@ -47,6 +47,10 @@ func _initialize() -> void:
 		inv.add(item_id, 2)
 	inv.add("copper_pick", 1)
 	root.get_node("Farm").reset(false)
+	var gathering: Node = root.get_node("Gathering")
+	gathering.reset(false)
+	gathering.logic.mark_gathered("layout_common", root.get_node("Farm").day(), 1)
+	gathering.logic.mark_gathered("layout_rare", root.get_node("Farm").day(), 3)
 	# Journal: one ordinary request plus both structured mission card shapes, all
 	# actionable, so Track buttons and reward rows are measured at every scale.
 	var layout_quest_id := "tools_of_the_trail"
@@ -95,6 +99,7 @@ func _initialize() -> void:
 	print("  ..   measured %d text controls across nine surfaces at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
+	gathering.reset(false)
 	learning.profile.data["stats"]["xp"] = xp_before
 	learning.profile.data.erase("bestiary")
 	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id), false)

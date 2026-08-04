@@ -13,12 +13,17 @@ extends Area2D
 @export_enum("herb", "ore", "bamboo") var resource_kind := "herb"
 @export var required_tool_id := ""
 
+const FEEDBACK_SECONDS := 0.8
+
 var _phase := 0.0
+var _burst_time := 0.0
+var _burst_qty := 0
 
 
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	Gathering.register_node(node_id, reset_days)
 	Bus.gathering_changed.connect(_on_gathering_changed)
 	Bus.farm_changed.connect(_refresh)
 	queue_redraw()
@@ -26,6 +31,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_phase = fmod(_phase + delta, TAU)
+	_burst_time = maxf(0.0, _burst_time - delta)
 	queue_redraw()
 
 
@@ -41,6 +47,7 @@ func interact(_player: Node = null) -> void:
 		bonus_text = " +1 weather bonus."
 	var level_text := " %s reached Lv %d!" % [skill_station.capitalize(),
 		int(result.get("level", 1))] if bool(result.get("leveled_up", false)) else ""
+	_start_feedback(int(result.get("qty", 0)))
 	Bus.toast.emit("Gathered %d %s. +%d %s XP.%s%s" % [
 		int(result.get("qty", 0)), item_name, int(result.get("xp", 0)),
 		skill_station.capitalize(), bonus_text, level_text])
@@ -93,6 +100,8 @@ func _draw() -> void:
 			Color(0.75, 0.82, 0.88, 0.42), 1.0)
 	if not required_tool_id.is_empty():
 		_draw_tool_badge(Inv.has(required_tool_id))
+	if _burst_time > 0.0:
+		_draw_gather_burst()
 
 
 func _draw_herb(alpha: float) -> void:
@@ -154,6 +163,53 @@ func _draw_tool_badge(owned: bool) -> void:
 		_:
 			draw_arc(Vector2(-13, -16), 3.0, -PI * 0.45, PI * 0.55, 8, color, 1.2)
 			draw_line(Vector2(-15, -14), Vector2(-11, -18), color, 1.2)
+
+
+func _start_feedback(quantity: int) -> void:
+	_burst_time = FEEDBACK_SECONDS
+	_burst_qty = maxi(1, quantity)
+	var previous := get_node_or_null("GatherFeedback")
+	if previous != null:
+		previous.queue_free()
+	var label := Label.new()
+	label.name = "GatherFeedback"
+	label.text = "+%d" % _burst_qty
+	label.position = Vector2(-18, -35)
+	label.size = Vector2(36, 14)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.z_index = 8
+	label.add_theme_font_size_override("font_size", 10)
+	label.add_theme_color_override("font_color", _resource_feedback_color())
+	label.add_theme_color_override("font_outline_color", UiTheme.SURFACE_DEEP)
+	label.add_theme_constant_override("outline_size", 3)
+	add_child(label)
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(label, "position:y", -47.0, FEEDBACK_SECONDS) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "modulate:a", 0.0, FEEDBACK_SECONDS * 0.55) \
+		.set_delay(FEEDBACK_SECONDS * 0.45)
+	tween.chain().tween_callback(label.queue_free)
+
+
+func _draw_gather_burst() -> void:
+	var progress := 1.0 - (_burst_time / FEEDBACK_SECONDS)
+	var color := _resource_feedback_color()
+	color.a = _burst_time / FEEDBACK_SECONDS
+	for i in 8:
+		var direction := Vector2.RIGHT.rotated(TAU * float(i) / 8.0)
+		var start := Vector2(0, -7) + direction * (4.0 + progress * 5.0)
+		var finish := Vector2(0, -7) + direction * (8.0 + progress * 10.0)
+		draw_line(start, finish, color, 1.5)
+	draw_circle(Vector2(0, -7), maxf(1.0, 4.0 - progress * 3.0), color)
+
+
+func _resource_feedback_color() -> Color:
+	match resource_kind:
+		"ore": return Color(0.96, 0.58, 0.3)
+		"bamboo": return Color(0.7, 0.9, 0.38)
+		_: return Color(0.5, 0.92, 0.52)
 
 
 func _draw_leaf_ellipse(center: Vector2, radius: Vector2, color: Color) -> void:
