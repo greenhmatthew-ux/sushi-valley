@@ -1098,6 +1098,8 @@ position = Vector2(176, 272)
 target_scene = "res://src/scenes/interior_house.tscn"
 target_spawn = "interior_entry"
 return_spawn = "house1_door"
+destination = "the House"
+sign_offset = Vector2(-40, 8)
 
 [node name="House1Spawn" type="Marker2D" parent="Props" unique_id=660754842]
 position = Vector2(176, 292)
@@ -1109,6 +1111,8 @@ position = Vector2(529, 273)
 target_scene = "res://src/scenes/interior_house.tscn"
 target_spawn = "interior_entry"
 return_spawn = "house2_door"
+destination = "the House"
+sign_offset = Vector2(-48, 8)
 
 [node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
 position = Vector2(529, 295)
@@ -1121,6 +1125,10 @@ target_scene = "res://src/scenes/wilds.tscn"
 target_spawn = "wilds_entry"
 return_spawn = "village_south"
 auto_enter = true
+destination = "the Whispering Woods"
+post_offset = Vector2(20, 0)
+sign_offset = Vector2(-44, 0)
+label_offset = Vector2(0, 22)
 
 [node name="VillageSouthSpawn" type="Marker2D" parent="Props" unique_id=1735813699]
 position = Vector2(304, 408)
@@ -1245,7 +1253,7 @@ foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree16" parent="Props" unique_id=1117674040 instance=ExtResource("20_prop")]
-position = Vector2(296, 464)
+position = Vector2(216, 472)
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)

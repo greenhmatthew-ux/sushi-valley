@@ -106,7 +106,13 @@ func _verb_for(target: Node) -> String:
 		return "Enter the Expedition"
 	if target.get("expedition_id") != null:
 		return "Inspect the lunchbox"
+	# A door knows where it goes; a bare "Enter" made the player press the key to find
+	# out. Doors that are walked into carry the same phrase on a world nameplate, so
+	# both surfaces name the destination the same way.
 	if target.get("target_scene") != null:
+		var where := String(target.get("destination"))
+		if not where.is_empty():
+			return "Enter %s" % where
 		return "Enter"
 	if target.get("required_lesson") != null:
 		return "Study at the gate"

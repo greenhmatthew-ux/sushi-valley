@@ -15,6 +15,18 @@ const MEADOW_FLOWERS: Array[Vector2i] = [
 	Vector2i(2, 13), Vector2i(17, 24), Vector2i(17, 25), Vector2i(18, 25)]
 const FLOWER_BEDS: Array[Vector2i] = [Vector2i(2, 14), Vector2i(18, 24)]
 
+# Dirt trail frames from the same Serene Village sheet the Wilds trail uses, so the
+# road out of the village and the road it becomes are literally the same road.
+const TRAIL_CENTER := Vector2i(10, 2)
+const TRAIL_LEFT := Vector2i(9, 2)
+const TRAIL_RIGHT := Vector2i(6, 2)
+const TRAIL_TOP: Array[Vector2i] = [Vector2i(7, 3), Vector2i(8, 3)]
+const TRAIL_BOTTOM: Array[Vector2i] = [Vector2i(7, 1), Vector2i(8, 1)]
+const TRAIL_TOP_LEFT := Vector2i(5, 2)
+const TRAIL_TOP_RIGHT := Vector2i(3, 2)
+const TRAIL_BOTTOM_LEFT := Vector2i(5, 1)
+const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
+
 @onready var ground: TileMapLayer = $Ground
 
 
@@ -23,6 +35,7 @@ func _ready() -> void:
 	_build_edge_underlay()
 	_clamp_camera_to_map()
 	_build_meadow()
+	_build_south_spur()
 	_load_game()
 
 
@@ -143,6 +156,141 @@ func _build_house_yards(detail: TileMapLayer, blocked: Dictionary, rng: RandomNu
 							and detail.get_cell_source_id(c) == -1:
 						detail.set_cell(c, 0, FLOWER_BEDS[rng.randi() % FLOWER_BEDS.size()])
 						planted += 1
+
+
+## The south transition stood four tiles clear of the authored road, out on open grass —
+## the way out of the village looked exactly like the field beside it, and an auto-enter
+## door gives no warning before it fires. Lay a short spur from the road down through
+## the gate to the map edge so the road visibly leaves town and the eye follows it out.
+##
+## Its own layer, sitting directly above Ground: the hand-authored Ground data is never
+## rewritten, and the road is not mixed into the decorative Meadow layer, whose own
+## placement is a separate matter. It shares Ground's transform because the authored
+## Ground is deliberately offset from world origin — a layer left at (0, 0) lands most
+## of a screen away from the tiles it was computed against.
+##
+## Only plain grass (or a hole in the authored map, where the grass underlay shows
+## through) is painted, so this can never blot out an authored path, the pond, or a
+## building. Anchored to the door, so moving the door moves the road. Waypoints, not a
+## rectangle: the spur bends a tile west on the way down and the edge/corner art is
+## chosen per cell, per the map rules on stamped paths.
+func _build_south_spur() -> void:
+	var door := get_node_or_null("Props/WildsPath") as Node2D
+	if door == null or ground.tile_set == null:
+		return
+	var tile: Vector2i = ground.tile_set.tile_size
+	var gate := Vector2i(
+		floori((door.position.x - ground.position.x) / tile.x),
+		floori((door.position.y - ground.position.y) / tile.y))
+	# The bend sits above the gate, never on it: the posts flank the door, so the road
+	# has to run straight through that row or the gap ends up half off the road.
+	var waypoints: Array[Vector2i] = [
+		gate + Vector2i(0, -7), gate + Vector2i(-1, -4),
+		gate + Vector2i(0, -1), gate + Vector2i(0, 4),
+	]
+
+	# The stretch that overlaps the authored road stays in the cell set but is never
+	# painted: it is what makes the topmost painted row pick a joining tile instead of
+	# a grass-fringed edge, so the spur reads as the road continuing, not a new strip.
+	var cells: Dictionary = {}
+	for i in waypoints.size() - 1:
+		for center in _raster_line(waypoints[i], waypoints[i + 1]):
+			for dx in range(-1, 2):
+				for dy in range(-1, 2):
+					cells[center + Vector2i(dx, dy)] = true
+
+	var road := TileMapLayer.new()
+	road.name = "SouthRoad"
+	road.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	road.position = ground.position
+	var src := TileSetAtlasSource.new()
+	src.texture = preload("res://assets/tilesets/serene_village.png")
+	src.texture_region_size = tile
+	for c in _trail_coords():
+		src.create_tile(c)
+	var ts := TileSet.new()
+	ts.tile_size = tile
+	ts.add_source(src, 0)
+	road.tile_set = ts
+	add_child(road)
+	move_child(road, ground.get_index() + 1)
+
+	var used := ground.get_used_rect()
+	for raw_cell in cells:
+		var cell: Vector2i = raw_cell
+		if not used.has_point(cell):
+			continue
+		var source := ground.get_cell_source_id(cell)
+		if source != -1 and ground.get_cell_atlas_coords(cell) != GRASS_ATLAS:
+			continue
+		road.set_cell(cell, 0, _trail_tile(cells, cell))
+
+
+func _trail_coords() -> Array[Vector2i]:
+	var coords: Array[Vector2i] = [
+		TRAIL_CENTER, TRAIL_LEFT, TRAIL_RIGHT,
+		TRAIL_TOP_LEFT, TRAIL_TOP_RIGHT, TRAIL_BOTTOM_LEFT, TRAIL_BOTTOM_RIGHT,
+	]
+	coords.append_array(TRAIL_TOP)
+	coords.append_array(TRAIL_BOTTOM)
+	return coords
+
+
+## Integer Bresenham, so a diagonal segment stays connected without float rounding.
+func _raster_line(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+	var x := from_cell.x
+	var y := from_cell.y
+	var dx := absi(to_cell.x - from_cell.x)
+	var sx := 1 if from_cell.x < to_cell.x else -1
+	var dy := -absi(to_cell.y - from_cell.y)
+	var sy := 1 if from_cell.y < to_cell.y else -1
+	var error := dx + dy
+	while true:
+		cells.append(Vector2i(x, y))
+		if x == to_cell.x and y == to_cell.y:
+			break
+		var twice_error := 2 * error
+		if twice_error >= dy:
+			error += dy
+			x += sx
+		if twice_error <= dx:
+			error += dx
+			y += sy
+	return cells
+
+
+## Bit flags mean the route is open (missing) on that side: top=1, right=2, bottom=4,
+## left=8 — the same selection the Wilds trail uses, so both roads bend identically.
+func _trail_tile(cells: Dictionary, cell: Vector2i) -> Vector2i:
+	var open_mask := 0
+	if not cells.has(cell + Vector2i.UP):
+		open_mask |= 1
+	if not cells.has(cell + Vector2i.RIGHT):
+		open_mask |= 2
+	if not cells.has(cell + Vector2i.DOWN):
+		open_mask |= 4
+	if not cells.has(cell + Vector2i.LEFT):
+		open_mask |= 8
+	match open_mask:
+		1:
+			return TRAIL_TOP[(cell.x + cell.y) & 1]
+		2:
+			return TRAIL_RIGHT
+		3:
+			return TRAIL_TOP_RIGHT
+		4:
+			return TRAIL_BOTTOM[(cell.x + cell.y) & 1]
+		6:
+			return TRAIL_BOTTOM_RIGHT
+		8:
+			return TRAIL_LEFT
+		9:
+			return TRAIL_TOP_LEFT
+		12:
+			return TRAIL_BOTTOM_LEFT
+		_:
+			return TRAIL_CENTER
 
 
 ## Tiles sitting under a prop/building, kept clear of scattered detail. Buildings, doors and

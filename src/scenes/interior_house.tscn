@@ -16,6 +16,10 @@
 atlas = ExtResource("6_elements")
 region = Rect2(128, 208, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_entry_mat"]
+atlas = ExtResource("6_elements")
+region = Rect2(208, 64, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bed"]
 atlas = ExtResource("7_beds")
 region = Rect2(192, 0, 16, 48)
@@ -54,6 +58,12 @@ texture_filter = 1
 position = Vector2(104, 144)
 texture = SubResource("AtlasTexture_door")
 offset = Vector2(0, -8)
+
+[node name="EntryMat" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(104, 120)
+texture = SubResource("AtlasTexture_entry_mat")
+offset = Vector2(0, -24)
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -100,6 +110,8 @@ position = Vector2(104, 136)
 target_scene = "res://src/scenes/world.tscn"
 uses_return_spawn = true
 auto_enter = true
+destination = "the Village"
+label_offset = Vector2(0, -18)
 
 [node name="EntryMarker" type="Marker2D" parent="Entities"]
 position = Vector2(104, 108)

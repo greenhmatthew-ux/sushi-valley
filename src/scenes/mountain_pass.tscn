@@ -55,6 +55,9 @@ position = Vector2(352, 476)
 target_scene = "res://src/scenes/wilds.tscn"
 target_spawn = "wilds_north"
 auto_enter = true
+destination = "the Whispering Woods"
+post_offset = Vector2(20, 0)
+sign_offset = Vector2(-44, 0)
 
 [node name="RockA" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(120, 360)

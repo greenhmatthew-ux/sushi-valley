@@ -51,8 +51,12 @@ const TREE_ART: Array[Texture2D] = [
 ## 64,224 · encounter 240,224 · objective 400,144 · boss 624,224) at 16px per
 ## tile. Waypoints are close together on purpose: long diagonal segments
 ## rasterize into a hard staircase, and short ones bend.
+## Starts at (1, 14) rather than (3, 14) so the brush reaches the west map edge,
+## through the RetreatDoor's own tile: the way back out has to be visible from
+## inside the room, and a trail that stops two tiles short of it reads as a
+## dead end rather than as the way you came in.
 const ROUTE: Array[Vector2i] = [
-	Vector2i(3, 14), Vector2i(7, 14), Vector2i(10, 15), Vector2i(13, 14),
+	Vector2i(1, 14), Vector2i(7, 14), Vector2i(10, 15), Vector2i(13, 14),
 	Vector2i(15, 14), Vector2i(18, 14), Vector2i(20, 13), Vector2i(22, 12),
 	Vector2i(23, 11), Vector2i(24, 10), Vector2i(25, 9), Vector2i(28, 9),
 	Vector2i(31, 10), Vector2i(33, 11), Vector2i(35, 12), Vector2i(37, 13),

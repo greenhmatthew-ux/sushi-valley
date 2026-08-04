@@ -30,9 +30,13 @@ const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
 
 # Fixed route waypoints, in tile coordinates. A three-tile brush turns each centreline into
 # a readable trail: the main north road, the outpost spur, and an east-side hunt loop.
+## The north end runs all the way to the map edge — past the PassDoor's own tile — so
+## the trail visibly leaves the region instead of petering out four tiles short of it,
+## which read as "the road ends here" rather than "the road continues north".
 const MAIN_ROUTE: Array[Vector2i] = [
 	Vector2i(21, 27), Vector2i(21, 23), Vector2i(20, 20),
 	Vector2i(18, 15), Vector2i(19, 11), Vector2i(20, 5),
+	Vector2i(20, 1),
 ]
 const OUTPOST_SPUR: Array[Vector2i] = [
 	Vector2i(20, 20), Vector2i(16, 20), Vector2i(12, 20),

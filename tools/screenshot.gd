@@ -42,16 +42,25 @@ func _run() -> void:
 		var player := node as Node2D
 		if args.size() > 4:
 			player.global_position = Vector2(float(args[3]) * 16.0, float(args[4]) * 16.0)
+		# The player's camera node is named "Camera", not "Camera2D" — looking only for
+		# the latter silently ignored every zoom argument ever passed to this tool.
+		var camera := player.get_node_or_null("Camera") as Camera2D
+		if camera == null:
+			camera = player.get_node_or_null("Camera2D") as Camera2D
+		if camera == null:
+			continue
+		# Position smoothing was still gliding toward the teleported player when the
+		# frame was grabbed, so a framed spot came out tens of pixels off — enough to
+		# push the thing being inspected out of shot.
+		camera.reset_smoothing()
 		if zoom <= 0.0:
 			continue
-		var camera := player.get_node_or_null("Camera2D") as Camera2D
-		if camera != null:
-			camera.zoom = Vector2(zoom, zoom)
-			# Limits would clamp a pulled-back camera back into the map.
-			camera.limit_left = -100000
-			camera.limit_top = -100000
-			camera.limit_right = 100000
-			camera.limit_bottom = 100000
+		camera.zoom = Vector2(zoom, zoom)
+		# Limits would clamp a pulled-back camera back into the map.
+		camera.limit_left = -100000
+		camera.limit_top = -100000
+		camera.limit_right = 100000
+		camera.limit_bottom = 100000
 
 	# Let physics settle and animations reach a real frame before capturing.
 	for i in 25:

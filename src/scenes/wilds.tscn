@@ -67,6 +67,9 @@ position = Vector2(336, 440)
 target_scene = "res://src/scenes/world.tscn"
 uses_return_spawn = true
 auto_enter = true
+destination = "the Village"
+post_offset = Vector2(20, 0)
+sign_offset = Vector2(-44, 0)
 
 [node name="WildsNorth" type="Marker2D" parent="Entities"]
 position = Vector2(320, 72)
@@ -78,6 +81,10 @@ position = Vector2(320, 24)
 target_scene = "res://src/scenes/mountain_pass.tscn"
 target_spawn = "pass_entry"
 auto_enter = true
+destination = "the Mountain Pass"
+post_offset = Vector2(20, 0)
+sign_offset = Vector2(44, 0)
+label_offset = Vector2(0, 26)
 
 [node name="Tree0" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(56, 72)

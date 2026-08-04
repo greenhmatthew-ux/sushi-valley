@@ -42,10 +42,14 @@ script = ExtResource("5_spawn")
 spawn_id = "expedition_entry"
 
 [node name="RetreatDoor" parent="Entities" instance=ExtResource("4_door")]
-position = Vector2(20, 224)
+position = Vector2(20, 232)
 target_scene = "res://src/scenes/wilds.tscn"
 target_spawn = "expedition_return"
 auto_enter = true
+destination = "the Woods"
+post_offset = Vector2(0, 20)
+sign_offset = Vector2(24, -26)
+label_offset = Vector2(28, -46)
 
 [node name="TrailGuard" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(240, 224)
