@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" path="res://assets/props/crafting_anvil.png" id="41_anvil"]
 [ext_resource type="Texture2D" path="res://assets/props/crafting_hammer.png" id="42_hammer"]
 [ext_resource type="PackedScene" path="res://src/entities/farm_plot.tscn" id="43_farm"]
+[ext_resource type="PackedScene" path="res://src/entities/fishing_spot.tscn" id="44_fishing"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1429,6 +1430,14 @@ position = Vector2(52, 352)
 item_id = "herb_seed"
 qty = 3
 pickup_id = "village_farm_starter_seeds"
+
+[node name="VillageFishingSpot" parent="Props" instance=ExtResource("44_fishing")]
+position = Vector2(560, 190)
+site_id = "valley_pond"
+display_name = "Village Pond"
+base_qty = 2
+cooldown_seconds = 120
+difficulty = 0.1
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=1335424622]
 

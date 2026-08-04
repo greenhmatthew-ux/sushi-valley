@@ -34,6 +34,7 @@ func _run() -> void:
 	var gate: Node = world.get_node_or_null("Props/LessonGate")
 	var farm_plot: Node = world.get_node_or_null("Props/FarmPlot1")
 	var starter_seeds: Node = world.get_node_or_null("Props/FarmStarterSeeds")
+	var fishing_spot: Node = world.get_node_or_null("Props/VillageFishingSpot")
 	check_true("harness has a Player", player != null)
 	check_true("harness has a Ground layer", ground != null)
 	check_true("world has a textured edge underlay", edge_ground != null)
@@ -41,6 +42,7 @@ func _run() -> void:
 	check_true("harness has a recall gate", gate != null)
 	check_true("village has a discoverable farm plot", farm_plot != null)
 	check_true("farm has a one-time starter seed cache", starter_seeds != null)
+	check_true("pond has one authored fishing destination", fishing_spot != null)
 
 	if player == null or ground == null or gate == null:
 		_finish()
@@ -116,6 +118,9 @@ func _run() -> void:
 	Input.action_release("move_up")
 	check_true("pond stops the player short of its interior (y=%.1f)" % player.position.y,
 		player.position.y > 150.0)
+	var interact_probe: Area2D = player.get_node("InteractProbe")
+	check_true("the dry shore reaches the authored fishing destination",
+		fishing_spot in interact_probe.get_overlapping_areas())
 
 	# The connected frontier must use the same real terrain vocabulary, not placeholder decals.
 	world.queue_free()

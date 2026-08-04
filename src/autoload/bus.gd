@@ -98,3 +98,8 @@ signal activity_tracking_changed(activity_key: String)
 signal farm_plot_open(plot_id: String)
 signal sleep_requested()
 signal farm_changed()
+
+# --- fishing --------------------------------------------------------------
+signal fishing_open(site_id: String, display_name: String, base_qty: int,
+	cooldown_seconds: int, difficulty: float)
+signal fishing_changed(site_id: String)

@@ -22,6 +22,18 @@ func station_level(station: String) -> int:
 	return Rules.station_level(Learning.profile.data, station)
 
 
+## Life-skill actions such as fishing feed the same station progression as the
+## recipes they supply. Returns the new station level.
+func award_xp(station: String, amount: int) -> int:
+	if station not in Rules.STATIONS or amount <= 0:
+		return station_level(station)
+	var state := Rules.ensure_state(Learning.profile.data)
+	state["xp"][station] = int(state["xp"].get(station, 0)) + amount
+	Learning.profile.save()
+	Bus.crafting_changed.emit(station)
+	return Rules.station_level(Learning.profile.data, station)
+
+
 func recipe_status(recipe: Dictionary, station: String) -> Dictionary:
 	return Rules.status(recipe, station, Learning.profile.data, Inv.logic)
 

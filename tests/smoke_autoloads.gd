@@ -25,10 +25,12 @@ func _initialize() -> void:
 	var save := root.get_node_or_null("SaveGame")
 	var learning := root.get_node_or_null("Learning")
 	var audio := root.get_node_or_null("Audio")
+	var fishing := root.get_node_or_null("Fishing")
 	check_true("DB autoload present", db != null)
 	check_true("SaveGame autoload present", save != null)
 	check_true("Learning autoload present", learning != null)
 	check_true("Audio autoload present", audio != null)
+	check_true("Fishing autoload present", fishing != null)
 	if audio != null:
 		check_true("Audio exposes has_pronunciation",
 			audio.has_method("has_pronunciation"))

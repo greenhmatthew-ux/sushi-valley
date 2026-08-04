@@ -85,11 +85,12 @@ func _initialize() -> void:
 		await _check_notebook()
 		await _check_farm(bus)
 		await _check_shop(bus)
+		await _check_fishing(bus)
 	settings.ui_scale = original_scale
 	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across seven panels at %d UI scales"
+	print("  ..   measured %d text controls across eight panels at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
@@ -215,6 +216,19 @@ func _check_shop(bus: Node) -> void:
 	await process_frame
 	_audit(panel, "shop/starter stall")
 	panel.call("_close")
+	panel.queue_free()
+	await process_frame
+
+
+func _check_fishing(bus: Node) -> void:
+	var panel := CanvasLayer.new()
+	panel.set_script(load("res://src/ui/fishing_panel.gd"))
+	root.add_child(panel)
+	await process_frame
+	bus.fishing_open.emit("layout_pond", "Long-Named Village Fishing Pond", 2, 120, 0.1)
+	await process_frame
+	_audit(panel, "fishing/minigame")
+	panel.call("_cancel")
 	panel.queue_free()
 	await process_frame
 
