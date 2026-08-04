@@ -35,6 +35,8 @@ extends Node
 ## MIGRATION v4 -> v5 (calendar/farm). v4 world sections contain only `player`.
 ## FarmLogic defaults absent `calendar` to Spring Day 1 and absent `farm.plots` to
 ## empty, so old placement, learning, and inventory survive without reinterpretation.
+## Weather is deliberately not another saved field: it is deterministic from this
+## persisted calendar, so the same day always reloads with the same forecast.
 ##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).

@@ -79,6 +79,7 @@ func _initialize() -> void:
 	for scale in settings.UI_SCALES:
 		settings.ui_scale = scale
 		_scale_label = " @%d%%" % int(round(scale * 100.0))
+		await _check_hud()
 		await _check_combat(bus, db)
 		await _check_recall(bus)
 		await _check_menu()
@@ -90,7 +91,7 @@ func _initialize() -> void:
 	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across eight panels at %d UI scales"
+	print("  ..   measured %d text controls across nine surfaces at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
@@ -102,6 +103,16 @@ func _initialize() -> void:
 	learning.profile.data.erase("trackedActivity")
 	learning.profile.save()
 	_finish()
+
+
+func _check_hud() -> void:
+	var hud := CanvasLayer.new()
+	hud.set_script(load("res://src/ui/hud_layer.gd"))
+	root.add_child(hud)
+	await process_frame
+	_audit(hud, "hud/weather")
+	hud.queue_free()
+	await process_frame
 
 
 func _check_combat(bus: Node, db: Node) -> void:

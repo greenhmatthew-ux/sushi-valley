@@ -5,6 +5,7 @@ extends CanvasLayer
 var _open := false
 var _root: Control
 var _title: Label
+var _detail: Label
 
 
 func _ready() -> void:
@@ -21,6 +22,12 @@ func _on_open() -> void:
 		return
 	_open = true
 	_title.text = "Rest until %s?" % Farm.next_clock_text()
+	var current_weather := WeatherSystem.current()
+	var crop_note := "Rain or snow is watering every planted crop today." \
+		if WeatherSystem.is_precipitation(current_weather) \
+		else "Watered crops advance today; dry crops pause without withering."
+	_detail.text = "You wake fully healed. %s Tomorrow: %s." % [
+		crop_note, WeatherSystem.display_name(WeatherSystem.tomorrow())]
 	_root.show()
 	get_tree().paused = true
 	(_root.find_child("ConfirmSleep", true, false) as Button).grab_focus.call_deferred()
@@ -39,8 +46,12 @@ func _on_sleep() -> void:
 		player.set_hp(int(player.MAX_HP))
 	_close()
 	var season_note := " A new season begins." if result.get("new_season", false) else ""
-	Bus.toast.emit("%s begins.%s Watered crops grew; dry crops paused." % [
-		Farm.clock_text(), season_note])
+	var crop_note := " Precipitation watered every planted crop." \
+		if WeatherSystem.is_precipitation(String(result.get("previous_weather", ""))) \
+		else " Watered crops grew; dry crops paused."
+	Bus.toast.emit("%s begins - %s.%s%s" % [Farm.clock_text(),
+		WeatherSystem.display_name(String(result.get("weather", WeatherSystem.current()))),
+		season_note, crop_note])
 
 
 func _close() -> void:
@@ -72,12 +83,13 @@ func _build() -> void:
 	box.add_theme_constant_override("separation", 12)
 	margin.add_child(box)
 	_title = UiTheme.label("", UiTheme.FONT_TITLE, UiTheme.ACCENT_GOLD)
+	_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(_title)
-	var detail := UiTheme.label(
+	_detail = UiTheme.label(
 		"You wake fully healed. Watered crops advance one day; dry crops pause without withering.",
 		UiTheme.FONT_SECTION, UiTheme.TEXT_PRIMARY)
-	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	box.add_child(detail)
+	_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(_detail)
 	var buttons := HBoxContainer.new()
 	buttons.add_theme_constant_override("separation", 8)
 	box.add_child(buttons)

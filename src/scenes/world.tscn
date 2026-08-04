@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" path="res://assets/props/crafting_hammer.png" id="42_hammer"]
 [ext_resource type="PackedScene" path="res://src/entities/farm_plot.tscn" id="43_farm"]
 [ext_resource type="PackedScene" path="res://src/entities/fishing_spot.tscn" id="44_fishing"]
+[ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="45_weather"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
 texture = ExtResource("2_qxjwa")
@@ -1458,6 +1459,8 @@ position = Vector2(708, 240)
 shape = SubResource("RectangleShape2D_axmu7")
 
 [node name="UILayer" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]
+
+[node name="WeatherOverlay" parent="." instance=ExtResource("45_weather")]
 
 [node name="DetailLayer" type="TileMapLayer" parent="." unique_id=130664770]
 

@@ -8,6 +8,7 @@ const MeterView = preload("res://src/ui/fishing_meter.gd")
 var _open := false
 var _resolving := false
 var _pointer_reeling := false
+var _stormy := false
 var _site_id := ""
 var _base_qty := 1
 var _cooldown_seconds := 120
@@ -35,7 +36,7 @@ func _process(delta: float) -> void:
 	if not _open or _logic == null or _resolving:
 		return
 	var reeling := Input.is_action_pressed("interact") or _pointer_reeling
-	var state: Dictionary = _logic.step(delta, reeling)
+	var state: Dictionary = _logic.step(delta, reeling, _stormy)
 	_meter.queue_redraw()
 	if bool(state.get("in_grace", true)):
 		_status.text = "Cast! Get ready..."
@@ -55,9 +56,10 @@ func _on_open(site_id: String, display_name: String, base_qty: int,
 	_base_qty = maxi(1, base_qty)
 	_cooldown_seconds = maxi(1, cooldown_seconds)
 	_difficulty = maxf(0.1, difficulty)
+	_stormy = WeatherSystem.is_raining()
 	_logic = Rules.new(_difficulty)
 	_meter.set_logic(_logic)
-	_title.text = "Fishing - %s" % display_name
+	_title.text = "%s - %s" % ["Storm Fishing" if _stormy else "Fishing", display_name]
 	_status.text = "Cast! Get ready..."
 	_pointer_reeling = false
 	_resolving = false
@@ -112,6 +114,7 @@ func _close() -> void:
 	_open = false
 	_resolving = false
 	_pointer_reeling = false
+	_stormy = false
 	_logic = null
 	_meter.set_logic(null)
 	_root.hide()

@@ -29,6 +29,7 @@ const DIM_WHEN_SAFE := 0.55   ## alpha for the vitals group at full HP
 
 var _coins_label: Label
 var _clock_label: Label
+var _weather_label: Label
 var _due_button: Button
 var _level_label: Label
 var _hp_label: Label
@@ -154,6 +155,11 @@ func _build_status() -> void:
 	_clock_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	rows.add_child(_clock_label)
 
+	_weather_label = UiTheme.label("", UiTheme.FONT_META, UiTheme.STATE_INFO)
+	_weather_label.name = "HudWeather"
+	_weather_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	rows.add_child(_weather_label)
+
 	_coins_label = UiTheme.label("", UiTheme.FONT_SECTION, UiTheme.ACCENT_GOLD)
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	rows.add_child(_coins_label)
@@ -182,6 +188,7 @@ func _refresh() -> void:
 	if _coins_label == null:
 		return
 	_clock_label.text = Farm.clock_text()
+	_weather_label.text = WeatherSystem.hud_text()
 	_coins_label.text = "%d coins" % Inv.coins
 
 	# Hidden at zero rather than showing "0 due" — an empty queue is not information.

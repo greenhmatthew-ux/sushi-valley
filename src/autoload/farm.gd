@@ -28,6 +28,10 @@ func next_clock_text() -> String:
 	return logic.next_clock_text()
 
 
+func next_clock() -> Dictionary:
+	return logic.next_clock()
+
+
 func plot(plot_id: String) -> Dictionary:
 	return logic.plot(plot_id)
 
@@ -106,9 +110,12 @@ func harvest(plot_id: String) -> Dictionary:
 
 func advance_day() -> Dictionary:
 	var before_season: String = logic.season
-	var next: Dictionary = logic.advance_day()
+	var previous_weather := WeatherSystem.current()
+	var next: Dictionary = logic.advance_day(WeatherSystem.is_precipitation(previous_weather))
 	_commit()
 	next["new_season"] = String(next["season"]) != before_season
+	next["previous_weather"] = previous_weather
+	next["weather"] = WeatherSystem.current()
 	return next
 
 

@@ -99,7 +99,7 @@ func clear_plot(plot_id: String) -> void:
 	plots.erase(plot_id)
 
 
-func advance_day() -> Dictionary:
+func advance_day(precipitation: bool = false) -> Dictionary:
 	# Process today's water before the clock moves. A dry crop increments its
 	# planted day, keeping age unchanged after the global day increments.
 	for raw_id in plots.keys():
@@ -108,8 +108,10 @@ func advance_day() -> Dictionary:
 		if String(current.get("cropId", "")).is_empty():
 			plots.erase(plot_id)
 			continue
-		if bool(current.get("watered", false)):
-			current["watered"] = false
+		if bool(current.get("watered", false)) or precipitation:
+			# Rain/snow grows the crop today and leaves the new day watered,
+			# matching the archived farm loop's free watering benefit.
+			current["watered"] = precipitation
 		else:
 			current["plantedDay"] = int(current.get("plantedDay", day)) + 1
 		plots[plot_id] = current

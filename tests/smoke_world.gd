@@ -35,6 +35,7 @@ func _run() -> void:
 	var farm_plot: Node = world.get_node_or_null("Props/FarmPlot1")
 	var starter_seeds: Node = world.get_node_or_null("Props/FarmStarterSeeds")
 	var fishing_spot: Node = world.get_node_or_null("Props/VillageFishingSpot")
+	var weather_overlay: Node = world.get_node_or_null("WeatherOverlay")
 	check_true("harness has a Player", player != null)
 	check_true("harness has a Ground layer", ground != null)
 	check_true("world has a textured edge underlay", edge_ground != null)
@@ -43,6 +44,7 @@ func _run() -> void:
 	check_true("village has a discoverable farm plot", farm_plot != null)
 	check_true("farm has a one-time starter seed cache", starter_seeds != null)
 	check_true("pond has one authored fishing destination", fishing_spot != null)
+	check_true("outdoor village shows today's weather", weather_overlay != null)
 
 	if player == null or ground == null or gate == null:
 		_finish()

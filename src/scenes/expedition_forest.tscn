@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/expedition_forest.gd" id="1_room"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_tengu.png" id="11_tengu"]
 [ext_resource type="Script" path="res://src/entities/expedition_objective.gd" id="12_objective"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="13_ui"]
+[ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="14_weather"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_g"]
 texture = ExtResource("2_sv")
@@ -89,3 +90,5 @@ coin_reward = 60
 coin_variance = 10
 
 [node name="UILayer" parent="." instance=ExtResource("13_ui")]
+
+[node name="WeatherOverlay" parent="." instance=ExtResource("14_weather")]

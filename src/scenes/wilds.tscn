@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/wilds.gd" id="1_wilds"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/serene_village.png" id="2_sv"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="23_quest"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="28_pickup"]
 [ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="29_expgate"]
+[ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="30_weather"]
 
 [sub_resource type="CircleShape2D" id="exp_reach"]
 radius = 28.0
@@ -248,6 +249,8 @@ greeting_card = "greet-sumimasen"
 sprite_sheet = ExtResource("23_vil3")
 
 [node name="UILayer" parent="." instance=ExtResource("18_ui")]
+
+[node name="WeatherOverlay" parent="." instance=ExtResource("30_weather")]
 
 [node name="TeacherTransit" parent="Entities" instance=ExtResource("20_teacher")]
 position = Vector2(200, 296)

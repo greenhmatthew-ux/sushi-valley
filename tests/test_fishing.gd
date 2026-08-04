@@ -69,6 +69,19 @@ func _pure_control_contract() -> void:
 	loser.step(1.0 / 60.0, true)
 	check_true("empty progress outside the bar loses", loser.finished and not loser.success)
 
+	var calm: RefCounted = Rules.new(0.1, 11)
+	var storm: RefCounted = Rules.new(0.1, 11)
+	for model in [calm, storm]:
+		model.in_grace = false
+		model.elapsed = 2.0
+		model.progress = 50.0
+		model.fish_y = 68.0
+		model.bar_y = -56.0
+	calm.step(1.0 / 60.0, true, false)
+	storm.step(1.0 / 60.0, true, true)
+	check_true("storm misses drain progress faster than calm water",
+		storm.progress < calm.progress)
+
 
 func _runtime_reward_and_cooldown() -> void:
 	save.clear()

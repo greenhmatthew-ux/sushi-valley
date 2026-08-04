@@ -31,6 +31,9 @@ func interact(_player: Node = null) -> void:
 			Bus.toast.emit("Harvested %s." % crop.get("name", "crop"))
 		else:
 			Bus.toast.emit(String(result.get("reason", "Could not harvest.")))
+	elif not bool(state.get("watered", false)) and WeatherSystem.is_precipitation():
+		Bus.toast.emit("%s is being watered by the %s. Rest when ready." % [
+			crop.get("name", "Crop"), WeatherSystem.display_name().to_lower()])
 	elif not bool(state.get("watered", false)):
 		if Farm.water(plot_id):
 			Bus.toast.emit("Watered the %s." % crop.get("name", "crop"))
@@ -48,6 +51,8 @@ func interaction_label() -> String:
 	var name := String(crop.get("name", "crop"))
 	if Farm.is_ready(plot_id):
 		return "Harvest %s" % name
+	if not bool(state.get("watered", false)) and WeatherSystem.is_precipitation():
+		return "%s waters %s" % [WeatherSystem.display_name(), name]
 	if not bool(state.get("watered", false)):
 		return "Water %s" % name
 	return "Check %s" % name
@@ -59,7 +64,7 @@ func _refresh() -> void:
 
 func _draw() -> void:
 	var state := Farm.plot(plot_id)
-	var watered := bool(state.get("watered", false))
+	var watered := bool(state.get("watered", false)) or WeatherSystem.is_precipitation()
 	draw_rect(Rect2(-13, -6, 26, 12), BORDER)
 	draw_rect(Rect2(-11, -5, 22, 10), WET_SOIL if watered else SOIL)
 	draw_line(Vector2(-8, -2), Vector2(8, -2), Color(BORDER, 0.8), 1.0)
