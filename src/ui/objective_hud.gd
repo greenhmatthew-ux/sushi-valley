@@ -3,13 +3,13 @@ extends CanvasLayer
 ##
 ## UI_UX_GUIDE section 5 lists "Tracked objective/navigation cue — One objective,
 ## distance/region cue; no full checklist", and section 2 principle 9 wants a player returning
-## after a break to be told where they were. This is the smallest honest version: the active
-## quest's title and its live progress, or a nudge toward learning when no quest is running.
+## after a break to be told where they were. The saved Journal selection wins
+## across scene changes; when it completes, the strongest remaining activity is
+## the fallback.
 ##
 ## Deliberately ONE line and no checklist — the guide explicitly rejects "a screen of pins".
 ##
-## It reads quest state from the QuestGiver nodes in the scene rather than keeping a parallel
-## quest registry, so the HUD can never disagree with the giver you are standing in front of.
+const Activities = preload("res://src/systems/activity_tracker.gd")
 
 var _panel: PanelContainer
 ## Scaling root — the tracker anchors inside this, not the raw viewport.
@@ -25,37 +25,26 @@ func _ready() -> void:
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 	Bus.quest_accepted.connect(func(_id): _refresh())
 	Bus.quest_completed.connect(func(_id): _refresh())
+	Bus.activity_tracking_changed.connect(func(_key): _refresh())
+	Bus.flag_set.connect(func(_flag, _value): _refresh())
 	Bus.inventory_changed.connect(_refresh)
 	Bus.hud_refresh.connect(_refresh)
 	Bus.card_reviewed.connect(func(_i, _g, _c): _refresh())
 	# The fight panel owns the screen; a quest line bleeding through its dim reads as overlap.
 	Bus.combat_started.connect(func(_id): hide())
 	Bus.combat_ended.connect(func(_v): show())
-	# Scenes swap on travel, so re-read once the new tree is settled.
-	get_tree().node_added.connect(_on_node_added)
 	_refresh.call_deferred()
-
-
-func _on_node_added(node: Node) -> void:
-	if node.has_method("current_stage"):
-		_refresh.call_deferred()
 
 
 func _refresh() -> void:
 	if _title == null:
 		return
-	var giver := _active_giver()
-	if giver != null:
-		var q: Dictionary = giver.quest()
-		_title.text = String(q.get("title", "Quest"))
-		var item := String(giver.goal_item())
-		var item_name := String(DB.item(item).get("name", item))
-		if giver.current_stage() == "turnin":
-			_detail.text = "Return to %s" % String(q.get("giver", "the giver"))
-			_detail.add_theme_color_override("font_color", UiTheme.STATE_SUCCESS)
-		else:
-			_detail.text = "%s  %d/%d" % [item_name, giver.progress(), giver.goal_qty()]
-			_detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
+	var activity := Activities.reconcile(Learning.profile, DB, Inv)
+	if not activity.is_empty():
+		_title.text = "%s · %s" % [activity["kind"], activity["title"]]
+		_detail.text = String(activity["hud_detail"])
+		_detail.add_theme_color_override("font_color", UiTheme.STATE_SUCCESS \
+			if int(activity.get("priority", 99)) == 0 else UiTheme.TEXT_MUTED)
 		_panel.show()
 		return
 
@@ -75,21 +64,6 @@ func _refresh() -> void:
 	_panel.hide()
 
 
-## The one quest to show: accepted, not yet turned in. Ready-to-hand-in wins over in-progress
-## so a finished goal surfaces immediately.
-func _active_giver() -> Node:
-	var best: Node = null
-	for node in get_tree().get_nodes_in_group("interactable"):
-		if not node.has_method("current_stage") or not node.has_method("quest"):
-			continue
-		var stage: String = node.current_stage()
-		if stage == "turnin":
-			return node
-		if stage == "active" and best == null:
-			best = node
-	return best
-
-
 func _build() -> void:
 	_root = Control.new()
 	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -97,6 +71,7 @@ func _build() -> void:
 	UiTheme.fit_layer(self, _root)
 
 	_panel = PanelContainer.new()
+	_panel.name = "ObjectivePanel"
 	var style := UiTheme.panel_style(UiTheme.BORDER_STRONG)
 	style.bg_color = Color(UiTheme.SURFACE_DEEP, 0.88)
 	style.content_margin_left = UiTheme.UNIT + 2
@@ -119,10 +94,12 @@ func _build() -> void:
 	_panel.add_child(rows)
 
 	_title = UiTheme.label("", UiTheme.FONT_META, UiTheme.ACCENT_GOLD)
+	_title.name = "ObjectiveTitle"
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	rows.add_child(_title)
 
 	_detail = UiTheme.label("", UiTheme.FONT_META, UiTheme.TEXT_MUTED)
+	_detail.name = "ObjectiveDetail"
 	_detail.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	rows.add_child(_detail)
 

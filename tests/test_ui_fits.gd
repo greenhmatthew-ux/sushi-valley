@@ -45,6 +45,18 @@ func _initialize() -> void:
 	inv.reset()
 	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat"]:
 		inv.add(item_id, 2)
+	# Journal: one ordinary request plus both structured mission card shapes, all
+	# actionable, so Track buttons and reward rows are measured at every scale.
+	var layout_quest_id := "stock_the_stall"
+	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id))
+	learning.profile.set_flag("hana_first_lesson")
+	learning.profile.data["raids"] = {
+		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
+	}
+	learning.profile.data["expeditions"] = {
+		"forest_lunchbox": {"stage": "objective-recovered", "completions": 0},
+	}
+	learning.profile.data.erase("trackedActivity")
 	# Bestiary: defeat the worst-case enemy (longest name, most drops to list) and
 	# merely encounter a second, so both card branches render under real load.
 	var worst_enemy_id := _worst_case_enemy_id(db)
@@ -79,6 +91,11 @@ func _initialize() -> void:
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
 	learning.profile.data.erase("bestiary")
+	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id), false)
+	learning.profile.set_flag("hana_first_lesson", false)
+	learning.profile.data.erase("raids")
+	learning.profile.data.erase("expeditions")
+	learning.profile.data.erase("trackedActivity")
 	learning.profile.save()
 	_finish()
 

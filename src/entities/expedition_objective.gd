@@ -74,6 +74,7 @@ func _run() -> void:
 			ExpeditionLogic.recover_objective(Learning.profile, expedition_id)
 			refresh()
 			stage_advanced.emit()
+			Bus.hud_refresh.emit()
 			Bus.dialogue_open.emit(objective_name, [
 				"Inside is a cedar bento card from the kitchen trial.",
 				"Recall the food kana correctly to break the seal on the wraith grove.",

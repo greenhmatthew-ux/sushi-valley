@@ -2,40 +2,40 @@ class_name SessionSummary
 extends RefCounted
 ## The returning player's "Previously" card: what is actionable right now.
 ##
-## UI_UX_GUIDE section 6 asks that a solo player coming back after days away see
-## ready activities and one Continue action instead of rereading every log. This
-## assembles that card's lines from QuestJournal entries and live counts; deciding
-## what deserves attention is game logic, so it lives here where a headless test
-## can pin it, and the panel that renders it stays dumb.
-
-const Journal = preload("res://src/systems/quest_journal.gd")
+## ActivityTracker normalizes Quests, Raids, and Expeditions. This model chooses
+## the few lines worth showing after a break while the rendering panel stays dumb.
 
 ## The card must stay a glance, not a report: the 640x360 shell fits about eight
-## short lines before the panel needs a scrollbar, which would defeat the point.
-const MAX_QUEST_LINES := 3
+## short lines before a scrollbar would defeat the point.
+const MAX_ACTIVITY_LINES := 3
 
-## `entries` is QuestJournal.all_entries() output. Returns
+
+## `entries` is ActivityTracker.actionable_entries() output. Returns
 ##   {"show": bool, "lines": [{"kind": String, "text": String}]}
-## kinds: "ready" | "active" | "more" | "review" | "points".
-## Ready quests lead because they are finished work awaiting a reward — the
-## strongest possible "pick up where you left off" hook.
+## kinds: "ready" | "active" | "mission" | "more" | "review" | "points".
+## The saved selection leads; otherwise tracker priority puts ready rewards and
+## bosses before ordinary work in progress.
 static func build(entries: Array, due: int, talent_points: int,
-		attribute_points: int) -> Dictionary:
+		attribute_points: int, tracked_key: String = "") -> Dictionary:
 	var lines: Array = []
-	var ready: Array = entries.filter(
-		func(e): return int(e.get("stage", -1)) == Journal.Stage.READY)
-	var active: Array = entries.filter(
-		func(e): return int(e.get("stage", -1)) == Journal.Stage.ACTIVE)
+	var actionable: Array = entries.filter(
+		func(entry): return bool(entry.get("trackable", false)) \
+			and not String(entry.get("summary_text", "")).is_empty())
+	actionable.sort_custom(func(a, b):
+		var a_tracked := String(a.get("key", "")) == tracked_key
+		var b_tracked := String(b.get("key", "")) == tracked_key
+		if a_tracked != b_tracked:
+			return a_tracked
+		var priority_a := int(a.get("priority", 99))
+		var priority_b := int(b.get("priority", 99))
+		if priority_a != priority_b:
+			return priority_a < priority_b
+		return String(a.get("key", "")) < String(b.get("key", "")))
 
-	for e in ready.slice(0, MAX_QUEST_LINES):
-		lines.append({"kind": "ready",
-			"text": "Ready to turn in: %s — see %s" % [e["title"], e["giver"]]})
-	var active_room := maxi(0, MAX_QUEST_LINES - ready.size())
-	for e in active.slice(0, active_room):
-		lines.append({"kind": "active",
-			"text": "In progress: %s — %d/%d" % [e["title"], int(e["progress"]), int(e["goal"])]})
-	var overflow := ready.size() + active.size() - mini(ready.size(), MAX_QUEST_LINES) \
-		- mini(active.size(), active_room)
+	for entry in actionable.slice(0, MAX_ACTIVITY_LINES):
+		lines.append({"kind": String(entry.get("summary_kind", "active")),
+			"text": String(entry.get("summary_text", ""))})
+	var overflow := maxi(0, actionable.size() - MAX_ACTIVITY_LINES)
 	if overflow > 0:
 		lines.append({"kind": "more",
 			"text": "…and %d more in the Journal" % overflow})
@@ -43,8 +43,8 @@ static func build(entries: Array, due: int, talent_points: int,
 	if due > 0:
 		lines.append({"kind": "review", "text": "%d words due for review" % due})
 
-	# One combined line: two separate "points" rows would crowd out a quest line,
-	# and both spend in the same place (the Pause Hub).
+	# One combined line: two separate points rows would crowd out an activity,
+	# and both pools spend in the same Pause Hub.
 	if talent_points > 0 or attribute_points > 0:
 		var parts: Array[String] = []
 		if talent_points > 0:

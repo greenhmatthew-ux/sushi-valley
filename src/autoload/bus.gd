@@ -88,3 +88,5 @@ signal npc_talked(npc_id: String)
 signal quest_accepted(quest_id: String)
 ## A quest was turned in and paid out.
 signal quest_completed(quest_id: String)
+## The player chose which Quest, Raid, or Expedition should lead the objective HUD.
+signal activity_tracking_changed(activity_key: String)

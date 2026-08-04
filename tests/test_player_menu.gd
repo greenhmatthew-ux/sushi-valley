@@ -270,6 +270,7 @@ func _initialize() -> void:
 	learning.profile.set_flag("expedition_forest_unlocked", false)
 	learning.profile.data.erase("raids")
 	learning.profile.data.erase("expeditions")
+	learning.profile.data.erase("trackedActivity")
 	inv.reset()
 	var quest: Dictionary = db.quest(quest_id)
 	var goal_item := String(quest["goal"]["item"])
@@ -291,10 +292,21 @@ func _initialize() -> void:
 	panel.call("_refresh")
 	var detail: Label = panel.find_child("QuestDetail_" + quest_id, true, false)
 	var stage_label: Label = panel.find_child("QuestStage_" + quest_id, true, false)
+	var quest_reward: Label = panel.find_child("QuestReward_" + quest_id, true, false)
+	var quest_track: Button = panel.find_child(
+		"TrackActivity_quest_" + quest_id, true, false)
 	check_true("an accepted quest appears in the log", detail != null)
 	check_true("it shows collected against the goal",
 		detail != null and detail.text.contains("1/%d" % int(quest["goal"]["qty"])))
 	check_eq("it reads as in progress", stage_label.text, "In progress")
+	check_true("ordinary quests preview their authored reward", quest_reward != null)
+	check_true("an active quest can lead the world objective HUD", quest_track != null)
+	quest_track.pressed.emit()
+	check_eq("tracking a quest persists its typed activity key",
+		learning.profile.data.get("trackedActivity"), "quest:" + quest_id)
+	quest_track = panel.find_child("TrackActivity_quest_" + quest_id, true, false)
+	check_true("the selected Journal action reads as tracked",
+		quest_track != null and quest_track.text == "Tracked" and quest_track.disabled)
 
 	inv.add(goal_item, int(quest["goal"]["qty"]) - 1)
 	panel.call("_refresh")
@@ -332,6 +344,12 @@ func _initialize() -> void:
 		and raid_reward.text.contains("2x Rice Ball"))
 	check_true("the raid previews its discovered recipe",
 		raid_reward != null and raid_reward.text.contains("Hana's Raid Platter recipe"))
+	var raid_track: Button = panel.find_child(
+		"TrackActivity_raid_sushi_prep", true, false)
+	check_true("an available Raid can replace the tracked quest", raid_track != null)
+	raid_track.pressed.emit()
+	check_eq("the Raid selection persists with its activity type",
+		learning.profile.data.get("trackedActivity"), "raid:sushi_prep")
 
 	learning.profile.data["raids"] = {
 		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
@@ -360,6 +378,13 @@ func _initialize() -> void:
 		and expedition_reward.text.contains("3x Moonwood"))
 	check_true("the expedition previews its discovered recipe",
 		expedition_reward != null and expedition_reward.text.contains("Forest Lunchbox recipe"))
+	var expedition_track: Button = panel.find_child(
+		"TrackActivity_expedition_forest_lunchbox", true, false)
+	check_eq("finishing a tracked Raid falls forward to its unlocked Expedition",
+		learning.profile.data.get("trackedActivity"), "expedition:forest_lunchbox")
+	check_true("the replacement is visibly selected in the Journal",
+		expedition_track != null and expedition_track.text == "Tracked"
+		and expedition_track.disabled)
 
 	learning.profile.data["expeditions"] = {
 		"forest_lunchbox": {"stage": "objective-recovered", "completions": 0},
@@ -377,6 +402,7 @@ func _initialize() -> void:
 	learning.profile.data.erase("expeditions")
 	learning.profile.set_flag("hana_first_lesson", false)
 	learning.profile.set_flag("expedition_forest_unlocked", false)
+	learning.profile.data.erase("trackedActivity")
 	inv.reset()
 	panel.call("_set_tab", "bag")
 

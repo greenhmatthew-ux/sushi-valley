@@ -13,8 +13,7 @@ extends CanvasLayer
 
 const AbilityRules = preload("res://src/systems/ability_logic.gd")
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
-const RaidLogic = preload("res://src/systems/raid_logic.gd")
-const ExpeditionLogic = preload("res://src/systems/expedition_logic.gd")
+const Activities = preload("res://src/systems/activity_tracker.gd")
 
 # Palette shared with recall_panel for a consistent feel.
 const COL_DIM := UiTheme.SURFACE_BACKDROP
@@ -346,9 +345,11 @@ func _set_tab(tab: String) -> void:
 ## off whichever giver stood in the current scene: finish it and it vanished,
 ## walk to another map and it vanished. This is the record of the whole run.
 func _refresh_quests() -> void:
-	var entries: Array = QuestJournal.all_entries(Learning.profile, DB, Inv)
-	var counts: Dictionary = QuestJournal.counts(entries)
-	var activities := _structured_activity_entries()
+	Activities.reconcile(Learning.profile, DB, Inv)
+	var raw_entries: Array = QuestJournal.all_entries(Learning.profile, DB, Inv)
+	var entries: Array = Activities.quest_entries(Learning.profile, DB, Inv)
+	var counts: Dictionary = QuestJournal.counts(raw_entries)
+	var activities := Activities.structured_entries(Learning.profile, DB)
 	var known: int = int(counts["ready"]) + int(counts["active"]) + int(counts["done"])
 	if known == 0 and activities.is_empty():
 		_quests_summary.text = "No quests yet — the villagers have work to offer."
@@ -362,12 +363,8 @@ func _refresh_quests() -> void:
 			_quests_summary.text += "   ·   %d mission%s" % [
 				activities.size(), "" if activities.size() == 1 else "s"]
 
-	var shown := 0
 	for entry in entries:
-		if QuestJournal.is_spoiler(entry):
-			continue
 		_quests_box.add_child(_make_quest_card(entry))
-		shown += 1
 	# Say that there is more out there without naming it — a journal is a record of
 	# the player's own run, not a table of contents for content they have not found.
 	if int(counts["unmet"]) > 0:
@@ -387,107 +384,6 @@ func _refresh_quests() -> void:
 		_quests_box.add_child(heading)
 		for activity in activities:
 			_quests_box.add_child(_make_activity_card(activity))
-
-
-## Structured missions stay in the one Journal. They only appear once their real
-## requirements are met or a saved attempt exists, so the list never spoils future
-## content. Every detail line answers one question: what should I do next?
-func _structured_activity_entries() -> Array:
-	var entries: Array = []
-	for raw_id in DB.raids:
-		var raid: Dictionary = DB.raids[raw_id]
-		var raid_entry := _raid_activity_entry(raid)
-		if not raid_entry.is_empty():
-			entries.append(raid_entry)
-	for raw_id in DB.expeditions:
-		var expedition: Dictionary = DB.expeditions[raw_id]
-		var expedition_entry := _expedition_activity_entry(expedition)
-		if not expedition_entry.is_empty():
-			entries.append(expedition_entry)
-	return entries
-
-
-func _raid_activity_entry(raid: Dictionary) -> Dictionary:
-	var id := String(raid.get("id", ""))
-	var progress := RaidLogic.progress(Learning.profile, id)
-	if progress.is_empty() and not RaidLogic.can_start(Learning.profile, raid):
-		return {}
-	var stage := String(progress.get("stage", "available"))
-	var giver := String(raid.get("npcId", "the mission giver")).capitalize()
-	var state := "Available"
-	var detail := "%s Talk to %s to begin." % [String(raid.get("description", "")), giver]
-	match stage:
-		"active":
-			state = "Recall"
-			detail = "Complete the focused recall with %s." % giver
-		"recall-cleared":
-			state = "Boss ready"
-			var enemy := DB.enemy(String(raid.get("encounterId", "")))
-			detail = "Defeat %s to finish the mission." % String(
-				enemy.get("name", raid.get("encounterId", "the boss")))
-		"complete":
-			state = "Complete"
-			detail = "Finished %d time%s. The Forest Expedition is unlocked." % [
-				int(progress.get("completions", 1)),
-				"" if int(progress.get("completions", 1)) == 1 else "s"]
-	return {"id": "raid_" + id, "kind": "Raid",
-		"title": String(raid.get("displayName", id)), "state": state,
-		"stage": stage, "detail": detail,
-		"reward": _structured_reward_summary("raid:" + id, raid.get("reward", {}))}
-
-
-func _expedition_activity_entry(expedition: Dictionary) -> Dictionary:
-	var id := String(expedition.get("id", ""))
-	var progress := ExpeditionLogic.progress(Learning.profile, id)
-	if progress.is_empty() and not ExpeditionLogic.unlock_ready(Learning.profile, expedition):
-		return {}
-	var stage := String(progress.get("stage", "available"))
-	var state := "Available"
-	var detail := "%s Start at its marked gate." % String(
-		expedition.get("description", "A structured field mission."))
-	match stage:
-		"active":
-			state = "In progress"
-			detail = "Clear the expedition's opening encounter."
-		"encounter-cleared":
-			state = "Objective"
-			detail = "Recover the expedition objective."
-		"objective-recovered":
-			state = "Recall"
-			detail = "Complete the focused recall at the recovered objective."
-		"recall-cleared":
-			state = "Boss ready"
-			var enemy := DB.enemy(String(expedition.get("bossEncounterId", "")))
-			detail = "Defeat %s and bank the rewards." % String(
-				enemy.get("name", expedition.get("bossEncounterId", "the boss")))
-		"complete":
-			state = "Repeatable" if bool(expedition.get("repeatable", false)) else "Complete"
-			detail = "Finished %d time%s.%s" % [
-				int(progress.get("completions", 1)),
-				"" if int(progress.get("completions", 1)) == 1 else "s",
-				" Return to its gate to run it again." if bool(
-					expedition.get("repeatable", false)) else ""]
-	return {"id": "expedition_" + id, "kind": "Expedition",
-		"title": String(expedition.get("displayName", id)), "state": state,
-		"stage": stage, "detail": detail,
-		"reward": _structured_reward_summary(
-			"expedition:" + id, expedition.get("reward", {}))}
-
-
-## The mission definition owns coins/items while the discovered recipe is linked
-## by source in recipes.json. Resolve both here so the Journal previews the same
-## payoff the completion systems actually grant without duplicating reward data.
-func _structured_reward_summary(source: String, reward: Dictionary) -> String:
-	var parts: Array[String] = []
-	var tangible := QuestLogic.describe_reward(
-		reward, func(item_id): return DB.item(item_id).get("name", item_id))
-	if not tangible.is_empty():
-		parts.append(tangible)
-	for raw_id in DB.recipes:
-		var recipe: Dictionary = DB.recipes[raw_id]
-		if String(recipe.get("discoverySource", "")) == source:
-			parts.append("%s recipe" % String(recipe.get("name", raw_id)))
-	return "Rewards: %s" % " · ".join(parts) if not parts.is_empty() else "Rewards: None"
 
 
 ## The Map domain. UI_UX_GUIDE section 6 wants literal local maps over LDtk truth
@@ -912,7 +808,7 @@ func _bestiary_portrait(enemy_id: String) -> Control:
 func _make_quest_card(entry: Dictionary) -> Control:
 	var card := PanelContainer.new()
 	card.name = "QuestCard_" + String(entry["id"])
-	var stage: int = int(entry["stage"])
+	var stage: int = int(entry["stage_code"])
 	var accent := COL_HEADING
 	if stage == QuestJournal.Stage.READY:
 		accent = UiTheme.STATE_SUCCESS
@@ -938,30 +834,30 @@ func _make_quest_card(entry: Dictionary) -> Control:
 
 	var state := Label.new()
 	state.name = "QuestStage_" + String(entry["id"])
-	state.text = QuestJournal.stage_label(stage)
+	state.text = String(entry["state"])
 	state.add_theme_font_size_override("font_size", 11)
 	state.add_theme_color_override("font_color", accent)
 	header.add_child(state)
+	var track_button := _make_track_button(entry)
+	if track_button != null:
+		header.add_child(track_button)
 
 	# What to actually do next, which the title alone never says.
 	var detail := Label.new()
 	detail.name = "QuestDetail_" + String(entry["id"])
+	detail.text = String(entry["detail"])
 	detail.add_theme_font_size_override("font_size", 11)
 	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	var giver := String(entry["giver"])
-	match stage:
-		QuestJournal.Stage.READY:
-			detail.text = "Return to %s to claim the reward." % giver
-		QuestJournal.Stage.ACTIVE:
-			var item_name := String(DB.item(String(entry["item"])).get("name", entry["item"]))
-			detail.text = "%s  %d/%d   ·   for %s" % [
-				item_name, entry["progress"], entry["goal"], giver]
-		QuestJournal.Stage.DONE:
-			detail.text = "Finished for %s." % giver
-		_:
-			detail.text = String(entry["desc"])
 	box.add_child(detail)
+	if not String(entry["reward"]).is_empty():
+		var reward := Label.new()
+		reward.name = "QuestReward_" + String(entry["id"])
+		reward.text = String(entry["reward"])
+		reward.add_theme_font_size_override("font_size", 11)
+		reward.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
+		reward.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(reward)
 	return card
 
 
@@ -997,6 +893,9 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	state.add_theme_font_size_override("font_size", 11)
 	state.add_theme_color_override("font_color", accent)
 	header.add_child(state)
+	var track_button := _make_track_button(entry)
+	if track_button != null:
+		header.add_child(track_button)
 
 	var detail := Label.new()
 	detail.name = "ActivityDetail_" + String(entry["id"])
@@ -1016,6 +915,32 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	return card
 
 
+func _make_track_button(entry: Dictionary) -> Button:
+	if not bool(entry.get("trackable", false)):
+		return null
+	var key := String(entry.get("key", ""))
+	var selected := Activities.tracked_key(Learning.profile) == key
+	var button := Button.new()
+	button.name = "TrackActivity_" + key.replace(":", "_")
+	button.text = "Tracked" if selected else "Track"
+	button.tooltip_text = "This activity leads the world HUD." if selected \
+		else "Show this activity on the world HUD."
+	button.disabled = selected
+	button.focus_mode = Control.FOCUS_ALL
+	button.custom_minimum_size = Vector2(58, 24)
+	button.add_theme_font_size_override("font_size", 10)
+	if not selected:
+		button.pressed.connect(_track_activity.bind(key))
+	return button
+
+
+func _track_activity(key: String) -> void:
+	if Activities.track(Learning.profile, DB, Inv, key):
+		Bus.activity_tracking_changed.emit(key)
+		Bus.hud_refresh.emit()
+		_refresh()
+
+
 func _refresh_footer() -> void:
 	if _capacity_label == null:
 		return
@@ -1026,7 +951,7 @@ func _refresh_footer() -> void:
 		_capacity_label.text = "Choose an action in combat, then answer with the matching rune."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_QUESTS:
-		_capacity_label.text = "Quests and structured missions share one saved Journal."
+		_capacity_label.text = "Choose Track to lead the world HUD. All activity progress saves here."
 		_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	elif _active_tab == TAB_MAP:
 		_capacity_label.text = "Regions you have not reached yet are named but not detailed."

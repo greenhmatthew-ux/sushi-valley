@@ -8,7 +8,7 @@ extends CanvasLayer
 ## this is a hook back into the loop, not a report to read.
 
 const Summary = preload("res://src/systems/session_summary.gd")
-const Journal = preload("res://src/systems/quest_journal.gd")
+const Activities = preload("res://src/systems/activity_tracker.gd")
 
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
@@ -18,6 +18,7 @@ const COL_HEADING := UiTheme.TEXT_MUTED
 const KIND_COLORS := {
 	"ready": UiTheme.ACCENT_GOLD,
 	"active": UiTheme.TEXT_PRIMARY,
+	"mission": UiTheme.STATE_SUCCESS,
 	"more": UiTheme.TEXT_MUTED,
 	"review": UiTheme.STATE_INFO,
 	"points": UiTheme.STATE_SUCCESS,
@@ -54,10 +55,11 @@ func _maybe_show() -> void:
 	if not SaveGame.had_save_at_boot:
 		return
 	var model: Dictionary = Summary.build(
-		Journal.all_entries(Learning.profile, DB, Inv),
+		Activities.actionable_entries(Learning.profile, DB, Inv),
 		Learning.due_count(),
 		Learning.unspent_talent_points(),
-		Learning.unspent_attribute_points())
+		Learning.unspent_attribute_points(),
+		Activities.tracked_key(Learning.profile))
 	if not model["show"]:
 		return
 	_show_model(model)

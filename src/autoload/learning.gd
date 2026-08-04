@@ -78,6 +78,7 @@ func get_flag(flag: String) -> bool:
 func set_flag(flag: String, value: bool = true) -> void:
 	profile.set_flag(flag, value)
 	profile.save()
+	Bus.flag_set.emit(flag, value)
 
 
 # --- combat abilities ------------------------------------------------------

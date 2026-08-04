@@ -1,22 +1,16 @@
 extends SceneTree
-## The returning-player card: what it chooses to say, and that it yields control.
-##
-##   godot --headless --path . --script res://tests/test_session_summary.gd
-##
-## The card exists so a player coming back after days sees what is actionable
-## without rereading logs. These checks pin the selection rules (ready work
-## first, capped to a glance, silent when nothing waits) and that the panel
-## pauses the game, is keyboard/controller-reachable, and hands control back.
+## The returning-player card prioritizes the saved selection, includes structured
+## missions, stays glance-sized, and yields control.
 
 const Summary = preload("res://src/systems/session_summary.gd")
-const Journal = preload("res://src/systems/quest_journal.gd")
 
-var failures: int = 0
+var failures := 0
 
 
-func _quest(title: String, stage: int, progress: int = 0, goal: int = 0) -> Dictionary:
-	return {"title": title, "giver": "Mako", "stage": stage,
-		"progress": progress, "goal": goal}
+func _activity(key: String, kind: String, text: String, priority: int,
+		trackable: bool = true) -> Dictionary:
+	return {"key": key, "summary_kind": kind, "summary_text": text,
+		"priority": priority, "trackable": trackable}
 
 
 func _initialize() -> void:
@@ -30,19 +24,19 @@ func _selection_rules() -> void:
 	check_true("nothing waiting means no card", not quiet["show"])
 	check_eq("a quiet save produces no lines", quiet["lines"].size(), 0)
 
-	var done_only := Summary.build(
-		[_quest("Old Errand", Journal.Stage.DONE), _quest("Hidden", Journal.Stage.UNMET)],
-		0, 0, 0)
-	check_true("finished and unmet quests alone do not reopen the card",
+	var done_only := Summary.build([
+		_activity("quest:old", "active", "Old Errand", 2, false),
+	], 0, 0, 0)
+	check_true("completed activities alone do not reopen the card",
 		not done_only["show"])
 
 	var model := Summary.build([
-		_quest("Stock the Stall", Journal.Stage.READY),
-		_quest("River Guard", Journal.Stage.ACTIVE, 1, 2),
+		_activity("quest:stock", "ready", "Ready to turn in: Stock the Stall — see Mako", 0),
+		_activity("quest:river", "active", "In progress: River Guard — 1/2", 2),
 	], 4, 2, 1)
 	check_true("actionable state shows the card", model["show"])
 	check_eq("ready work leads, then progress, reviews, points",
-		model["lines"].map(func(l): return l["kind"]),
+		model["lines"].map(func(line): return line["kind"]),
 		["ready", "active", "review", "points"])
 	check_true("a ready line names the quest and who pays out",
 		String(model["lines"][0]["text"]).contains("Stock the Stall")
@@ -53,13 +47,22 @@ func _selection_rules() -> void:
 		String(model["lines"][3]["text"]).contains("2 Talent")
 		and String(model["lines"][3]["text"]).contains("1 Attribute"))
 
+	var mixed := Summary.build([
+		_activity("raid:sushi", "mission", "Raid: Sushi Prep — Defeat Pantry Oni", 0),
+		_activity("quest:river", "active", "In progress: River Guard — 1/2", 2),
+	], 0, 0, 0, "quest:river")
+	check_eq("the saved selection leads even when a boss has automatic priority",
+		mixed["lines"].map(func(line): return line["kind"]), ["active", "mission"])
+	check_true("structured missions appear in the returning-player card",
+		String(mixed["lines"][1]["text"]).contains("Pantry Oni"))
+
 	var crowded_entries: Array = []
-	for i in 4:
-		crowded_entries.append(_quest("Ready %d" % i, Journal.Stage.READY))
-	crowded_entries.append(_quest("Busy", Journal.Stage.ACTIVE, 0, 3))
+	for i in 5:
+		crowded_entries.append(_activity(
+			"quest:%d" % i, "ready", "Ready %d" % i, 0))
 	var crowded := Summary.build(crowded_entries, 0, 0, 0)
-	var kinds: Array = crowded["lines"].map(func(l): return l["kind"])
-	check_eq("quest lines stay a glance: three plus an overflow count",
+	var kinds: Array = crowded["lines"].map(func(line): return line["kind"])
+	check_eq("activity lines stay a glance: three plus an overflow count",
 		kinds, ["ready", "ready", "ready", "more"])
 	check_true("the overflow line counts everything it hid",
 		String(crowded["lines"][3]["text"]).contains("2 more"))
@@ -72,13 +75,10 @@ func _panel_behavior() -> void:
 	root.add_child(panel)
 	await process_frame
 
-	# A --script harness has no current_scene, so auto-show must decline no matter
-	# what saves earlier suites left behind. This is what keeps every other scene
-	# test (smoke_world, crafting, quest givers, ...) free of surprise pauses.
 	check_true("embedded outside a real launch, the card never auto-opens", not paused)
-
-	panel.call("_show_model", Summary.build(
-		[_quest("Stock the Stall", Journal.Stage.READY)], 3, 0, 0))
+	panel.call("_show_model", Summary.build([
+		_activity("quest:stock", "ready", "Ready to turn in: Stock the Stall", 0),
+	], 3, 0, 0))
 	await process_frame
 	check_true("the card pauses the world while it is up", paused)
 	var button: Button = panel.find_child("ContinueButton", true, false)
@@ -96,8 +96,8 @@ func _panel_behavior() -> void:
 
 func _finish() -> void:
 	print("")
-	print(("PASS — the returning-player card says what waits and yields control."
-		if failures == 0 else "FAIL — %d session summary check(s) failed." % failures))
+	print(("PASS — the returning-player card unifies activities and yields control."
+		if failures == 0 else "FAIL — %d session-summary check(s) failed." % failures))
 	quit(1 if failures > 0 else 0)
 
 

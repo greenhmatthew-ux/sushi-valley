@@ -137,6 +137,7 @@ func _on_enemy_died(enemy_id: String) -> void:
 	if enemy_id in expedition.get("encounterIds", []):
 		if ExpeditionLogic.mark_encounter_cleared(Learning.profile, EXPEDITION_ID):
 			Bus.toast.emit("Trail guard cleared — recover the lunchbox.")
+			Bus.hud_refresh.emit()
 			_refresh_stage()
 		return
 	if enemy_id == String(expedition.get("bossEncounterId", "")):

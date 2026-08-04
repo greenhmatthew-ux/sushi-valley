@@ -68,6 +68,7 @@ func _run() -> void:
 	await Bus.dialogue_closed
 
 	ExpeditionLogic.start(Learning.profile, expedition)
+	Bus.hud_refresh.emit()
 	Transitions.travel(room_scene, "expedition_entry")
 
 
