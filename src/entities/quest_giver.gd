@@ -7,10 +7,12 @@ extends Area2D
 ## learning profile's flag store (persisting accept/turn-in), then speaks the AUTHORED lines
 ## through the shared dialogue box.
 ##
-## Previously this was a hardcoded "clear 3 slimes" quest that never read the DB, so all 18
-## authored quests — with their goals, rewards, and offer/progress/turn-in dialogue — were
-## dead data. Item-collection is the shape the data actually uses: a goal names an item and a
-## quantity, and turn-in CONSUMES those items, which is what makes enemy drops matter.
+## Previously this was a hardcoded "clear 3 slimes" quest that never read the DB, so authored
+## quests — with their goals, rewards, and offer/progress/turn-in dialogue — were dead data.
+## Existing item quests consume their goal at turn-in. An objective-list quest can instead mark
+## a permanent item non-consumable when the giver only needs to inspect it.
+
+const Journal = preload("res://src/systems/quest_journal.gd")
 
 ## Quest id from data/game/quests.json.
 @export var quest_id: String = "stock_the_stall"
@@ -39,18 +41,25 @@ func quest() -> Dictionary:
 
 
 func goal_item() -> String:
-	return String(quest().get("goal", {}).get("item", ""))
+	return String(_current_objective().get("item", ""))
 
 
 func goal_qty() -> int:
-	return int(quest().get("goal", {}).get("qty", 1))
+	return int(_current_objective().get("goal", 1))
 
 
 ## How many of the goal item the player is carrying, capped at the goal so progress text
 ## never reads "5 of 3".
 func progress() -> int:
-	var item := goal_item()
-	return 0 if item.is_empty() else mini(Inv.count(item), goal_qty())
+	return int(_current_objective().get("progress", 0))
+
+
+func objectives() -> Array:
+	return Journal.objectives(quest(), DB, Inv)
+
+
+func _current_objective() -> Dictionary:
+	return Journal.next_objective(objectives())
 
 
 func is_accepted() -> bool:
@@ -63,7 +72,8 @@ func is_complete() -> bool:
 
 ## Current stage, reusing the pure resolver with item count standing in for kills.
 func current_stage() -> String:
-	return QuestLogic.stage(_flag("started"), _flag("done"), progress(), goal_qty())
+	return QuestLogic.stage(_flag("started"), _flag("done"),
+		1 if Journal.objectives_met(objectives()) else 0, 1)
 
 
 func interact(player: Node = null) -> void:
@@ -98,12 +108,14 @@ func _run() -> void:
 	Bus.hud_refresh.emit()
 
 
-## Take the goal items, pay out, and remember it. Consuming the items is what stops a single
-## stack from turning in several quests, and what makes the drop table meaningful.
+## Take the consumable objective items, pay out, and remember it. Ordinary fetch
+## quests still consume their goal. A checklist row can opt out for permanent
+## tools/gear a commissioner only needs to inspect.
 func _complete(q: Dictionary) -> void:
-	var item := goal_item()
-	if not item.is_empty():
-		Inv.remove(item, goal_qty())
+	for raw_objective in objectives():
+		var objective: Dictionary = raw_objective
+		if bool(objective.get("consume", true)):
+			Inv.remove(String(objective.get("item", "")), int(objective.get("goal", 1)))
 
 	var reward: Dictionary = q.get("reward", {})
 	var coins := int(reward.get("coins", 0))

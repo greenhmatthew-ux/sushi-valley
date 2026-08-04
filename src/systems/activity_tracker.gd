@@ -136,15 +136,32 @@ static func _quest_entry(raw: Dictionary, content) -> Dictionary:
 		Journal.Stage.ACTIVE:
 			var item_name := String(content.item(String(raw.get("item", ""))).get(
 				"name", raw.get("item", "")))
-			detail = "%s  %d/%d   ·   for %s" % [
-				item_name, raw.get("progress", 0), raw.get("goal", 0), giver]
+			var objectives: Array = raw.get("objectives", [])
+			if objectives.size() > 1:
+				var checks: Array[String] = []
+				var completed := 0
+				for objective in objectives:
+					var row: Dictionary = objective
+					var is_complete := bool(row.get("complete", false))
+					if is_complete:
+						completed += 1
+					checks.append("[%s] %s %d/%d" % [
+						"x" if is_complete else " ", row.get("label", row.get("item", "")),
+						row.get("progress", 0), row.get("goal", 0)])
+				detail = "   |   ".join(checks)
+				summary_text = "In progress: %s - %d/%d objectives" % [
+					raw["title"], completed, objectives.size()]
+			else:
+				detail = "%s  %d/%d   ·   for %s" % [
+					item_name, raw.get("progress", 0), raw.get("goal", 0), giver]
 			hud_detail = "%s  %d/%d" % [
 				item_name, raw.get("progress", 0), raw.get("goal", 0)]
 			trackable = true
 			priority = 2
 			summary_kind = "active"
-			summary_text = "In progress: %s — %d/%d" % [
-				raw["title"], int(raw.get("progress", 0)), int(raw.get("goal", 0))]
+			if summary_text.is_empty():
+				summary_text = "In progress: %s — %d/%d" % [
+					raw["title"], int(raw.get("progress", 0)), int(raw.get("goal", 0))]
 		Journal.Stage.DONE:
 			detail = "Finished for %s." % giver
 	return {

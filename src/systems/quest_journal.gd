@@ -28,26 +28,87 @@ static func done_flag(quest_id: String) -> String:
 	return "quest_%s_done" % quest_id
 
 
-## One quest's state. `progress` is how many of the goal item are carried right
-## now, which is only meaningful while the quest is active.
+## Normalize both quest shapes into one checklist. Existing authored quests keep
+## their single `goal` block; new quests can opt into an `objectives` array. This
+## first objective-list slice deliberately supports held items only, which is the
+## behavior the live quest giver can prove atomically today. `consume: false`
+## lets a commission inspect permanent gear/tools without taking them away.
+static func objectives(quest: Dictionary, content, inventory) -> Array:
+	var authored: Array = []
+	var raw_objectives: Variant = quest.get("objectives", [])
+	if raw_objectives is Array:
+		authored.assign(raw_objectives)
+	if authored.is_empty():
+		var legacy_goal: Variant = quest.get("goal", {})
+		if legacy_goal is Dictionary and not (legacy_goal as Dictionary).is_empty():
+			var legacy: Dictionary = (legacy_goal as Dictionary).duplicate(true)
+			legacy["consume"] = bool(quest.get("consumeGoal", true))
+			authored.append(legacy)
+
+	var rows: Array = []
+	for raw in authored:
+		if not (raw is Dictionary):
+			continue
+		var objective: Dictionary = raw
+		var item_id := String(objective.get("item", ""))
+		var target := maxi(1, int(objective.get("qty", 1)))
+		if item_id.is_empty():
+			continue
+		var carried := 0
+		if inventory != null:
+			carried = int(inventory.count(item_id))
+		var item_name := item_id
+		if content != null:
+			item_name = String(content.item(item_id).get("name", item_id))
+		rows.append({
+			"item": item_id,
+			"label": String(objective.get("label", item_name)),
+			"goal": target,
+			"progress": mini(carried, target),
+			"complete": carried >= target,
+			"consume": bool(objective.get("consume", true)),
+		})
+	return rows
+
+
+static func objectives_met(rows: Array) -> bool:
+	if rows.is_empty():
+		return false
+	for row in rows:
+		if not bool((row as Dictionary).get("complete", false)):
+			return false
+	return true
+
+
+## The HUD remains one clear next action even when the Journal owns a checklist.
+## Once every row is complete, retain the final row for stable ready-state copy.
+static func next_objective(rows: Array) -> Dictionary:
+	for row in rows:
+		if not bool((row as Dictionary).get("complete", false)):
+			return row
+	return rows[-1] if not rows.is_empty() else {}
+
+
+## One quest's state. The top-level item/progress fields always describe the next
+## unfinished row for compact HUD compatibility; `objectives` retains the full
+## checklist for the Journal.
 static func entry(profile, content, inventory, quest_id: String) -> Dictionary:
 	var quest: Dictionary = content.quest(quest_id)
 	if quest.is_empty():
 		return {}
 	var started: bool = profile != null and profile.get_flag(started_flag(quest_id))
 	var done: bool = profile != null and profile.get_flag(done_flag(quest_id))
-	var goal: Dictionary = quest.get("goal", {})
-	var item := String(goal.get("item", ""))
-	var target := int(goal.get("qty", 0))
-	var carried := 0
-	if inventory != null and not item.is_empty():
-		carried = int(inventory.count(item))
+	var objective_rows := objectives(quest, content, inventory)
+	var current := next_objective(objective_rows)
+	var item := String(current.get("item", ""))
+	var target := int(current.get("goal", 0))
+	var carried := int(current.get("progress", 0))
 
 	var stage := Stage.UNMET
 	if done:
 		stage = Stage.DONE
 	elif started:
-		stage = Stage.READY if carried >= target and target > 0 else Stage.ACTIVE
+		stage = Stage.READY if objectives_met(objective_rows) else Stage.ACTIVE
 
 	return {
 		"id": quest_id,
@@ -58,6 +119,7 @@ static func entry(profile, content, inventory, quest_id: String) -> Dictionary:
 		"item": item,
 		"goal": target,
 		"progress": carried if stage == Stage.ACTIVE or stage == Stage.READY else 0,
+		"objectives": objective_rows,
 		"reward": quest.get("reward", {}),
 	}
 

@@ -52,6 +52,7 @@ func _initialize() -> void:
 	await _accept_then_gather_then_turn_in()
 	await _reward_is_paid_only_once()
 	await _woods_quiet_steps_pays_once()
+	await _tool_commission_preserves_the_field_kit()
 
 	save_game.clear()
 	_finish()
@@ -195,6 +196,52 @@ func _woods_quiet_steps_pays_once() -> void:
 	check_eq("completed Woods quest does not consume another tail",
 		inv.count("raccoon_tail"), 1)
 	ranger.queue_free()
+
+
+## Kaji's commission is the first objective-list quest. All three permanent
+## tools must be present at once, but inspection never consumes them.
+func _tool_commission_preserves_the_field_kit() -> void:
+	var kaji: Node = load("res://src/entities/quest_giver.tscn").instantiate()
+	kaji.quest_id = "tools_of_the_trail"
+	root.add_child(kaji)
+	await process_frame
+
+	check_eq("Kaji's tool commission starts unaccepted", kaji.current_stage(), "intro")
+	await kaji.interact(null)
+	check_true("talking to Kaji accepts the checklist", kaji.is_accepted())
+	check_eq("the checklist begins with the Copper Pick", kaji.goal_item(), "copper_pick")
+	check_eq("Kaji exposes three live objective rows", kaji.objectives().size(), 3)
+
+	inv.add("copper_pick", 1)
+	check_eq("finishing the pick advances to the Trail Hatchet",
+		kaji.goal_item(), "trail_hatchet")
+	inv.add("trail_hatchet", 1)
+	check_eq("finishing the hatchet advances to the Herb Sickle",
+		kaji.goal_item(), "herb_sickle")
+	inv.add("herb_sickle", 1)
+	check_eq("the complete field kit is ready for inspection",
+		kaji.current_stage(), "turnin")
+
+	var coins_before: int = inv.coins
+	var charm_before: int = inv.count("trailblazer_charm")
+	await kaji.interact(null)
+	check_true("Kaji marks the tool commission complete", kaji.is_complete())
+	for tool_id in ["copper_pick", "trail_hatchet", "herb_sickle"]:
+		check_eq("inspection preserves %s" % tool_id, inv.count(tool_id), 1)
+	check_eq("the commission pays its exact coin reward", inv.coins, coins_before + 75)
+	check_eq("the commission grants its unique Trailblazer Charm",
+		inv.count("trailblazer_charm"), charm_before + 1)
+	var charm: Dictionary = db.item("trailblazer_charm")
+	check_true("the signature reward is useful immediately",
+		charm.get("slot", "") == "amulet"
+		and int(charm.get("stats", {}).get("spd", 0)) == 1)
+
+	var paid_coins: int = inv.coins
+	await kaji.interact(null)
+	check_eq("the completed checklist pays no second coins", inv.coins, paid_coins)
+	check_eq("the completed checklist pays no second charm",
+		inv.count("trailblazer_charm"), charm_before + 1)
+	kaji.queue_free()
 
 
 func _finish() -> void:

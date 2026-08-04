@@ -45,10 +45,11 @@ func _initialize() -> void:
 	inv.reset()
 	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat", "herb_seed"]:
 		inv.add(item_id, 2)
+	inv.add("copper_pick", 1)
 	root.get_node("Farm").reset(false)
 	# Journal: one ordinary request plus both structured mission card shapes, all
 	# actionable, so Track buttons and reward rows are measured at every scale.
-	var layout_quest_id := "stock_the_stall"
+	var layout_quest_id := "tools_of_the_trail"
 	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id))
 	learning.profile.set_flag("hana_first_lesson")
 	learning.profile.data["raids"] = {

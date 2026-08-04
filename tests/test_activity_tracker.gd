@@ -79,6 +79,22 @@ func _initialize() -> void:
 	check_true("clearing the selection removes only the optional field",
 		Activities.clear(profile) and not profile.data.has(Activities.TRACKED_KEY))
 
+	var checklist_profile := LearningProfile.new({}, db)
+	checklist_profile.set_flag(QuestJournal.started_flag("tools_of_the_trail"))
+	inv.add("copper_pick", 1)
+	current = Activities.current(checklist_profile, db, inv)
+	check_eq("the multi-objective commission is a trackable Quest",
+		current["key"], "quest:tools_of_the_trail")
+	check_true("the Journal shows the complete three-tool checklist",
+		String(current["detail"]).contains("[x] Copper Pick 1/1")
+		and String(current["detail"]).contains("[ ] Trail Hatchet 0/1")
+		and String(current["detail"]).contains("[ ] Herb Sickle 0/1"))
+	check_true("the compact HUD advances to the next unfinished tool",
+		String(current["hud_detail"]).contains("Trail Hatchet  0/1"))
+	check_true("returning-player copy summarizes checklist completion",
+		String(current["summary_text"]).contains("1/3 objectives"))
+	inv.reset()
+
 	inv.free()
 	db.free()
 	_finish()

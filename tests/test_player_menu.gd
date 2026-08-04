@@ -375,6 +375,23 @@ func _initialize() -> void:
 	check_true("a completed quest is still in the log", stage_label != null)
 	check_eq("and is recorded as completed", stage_label.text, "Completed")
 
+	# Objective-list quests render a real checklist while the compact HUD keeps
+	# one next step. This is the new permanent-tool commission's player-facing proof.
+	var tool_quest_id := "tools_of_the_trail"
+	learning.profile.set_flag(QuestJournal.started_flag(tool_quest_id))
+	inv.add("copper_pick", 1)
+	panel.call("_refresh")
+	var tool_detail: Label = panel.find_child(
+		"QuestDetail_" + tool_quest_id, true, false)
+	check_true("the Journal renders all three tool objectives together",
+		tool_detail != null
+		and tool_detail.text.contains("[x] Copper Pick 1/1")
+		and tool_detail.text.contains("[ ] Trail Hatchet 0/1")
+		and tool_detail.text.contains("[ ] Herb Sickle 0/1"))
+	learning.profile.set_flag(QuestJournal.started_flag(tool_quest_id), false)
+	inv.remove("copper_pick", 1)
+	panel.call("_refresh")
+
 	# Structured missions share this Journal, but only after the player has met
 	# their real unlock requirements. The card then gives one clear next action.
 	learning.profile.set_flag("hana_first_lesson")

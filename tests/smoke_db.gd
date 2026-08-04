@@ -14,17 +14,25 @@ func _initialize() -> void:
 	var db: Node = load("res://src/autoload/db.gd").new()
 	db.load_all()   # not add_child(): _ready() is deferred and would run too late
 
-	check("items", db.items.size(), 171)
+	check("items", db.items.size(), 172)
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
 	check("recipes", db.recipes.size(), 84)
-	check("quests", db.quests.size(), 21)
+	check("quests", db.quests.size(), 22)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
 	check("raids", db.raids.size(), 1)
 	check("regions", db.regions.size(), 12)
 	check("lessons", db.lessons.size(), 138)
 	check("learning_content", db.learning_content.size(), 17)
+	var tool_quest: Dictionary = db.quest("tools_of_the_trail")
+	check("tool quest objectives", tool_quest.get("objectives", []).size(), 3)
+	check_true("tool commission rewards the Trailblazer Charm",
+		tool_quest.get("reward", {}).get("items", []).any(
+			func(entry): return entry.get("id", "") == "trailblazer_charm"))
+	check_true("Trailblazer Charm is a unique amulet",
+		db.item("trailblazer_charm").get("slot", "") == "amulet"
+		and bool(db.item("trailblazer_charm").get("unique", false)))
 
 	# Keyed-object tables keep their authored shape rather than being indexed.
 	check_true("shops has mako_stall", db.shops.has("mako_stall"))

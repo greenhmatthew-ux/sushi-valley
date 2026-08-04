@@ -1392,6 +1392,12 @@ station = "forge"
 station_name = "Village Forge"
 sprite = ExtResource("41_anvil")
 
+[node name="QuestGiverKaji" parent="Props" instance=ExtResource("14_quest")]
+position = Vector2(88, 272)
+quest_id = "tools_of_the_trail"
+greeting_card = "greet-konnichiwa"
+sprite_sheet = ExtResource("35_vil3")
+
 [node name="KitchenPot" parent="Props" unique_id=1753053792 instance=ExtResource("39_crafting")]
 position = Vector2(232, 300)
 station = "kitchen"

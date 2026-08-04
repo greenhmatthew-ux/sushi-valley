@@ -3,7 +3,7 @@ extends SceneTree
 ##
 ##   godot --headless --path . --script res://tests/test_quest_journal.gd
 ##
-## 19 quests are authored, but the only place a quest was ever visible was the
+## The only place a quest was once visible was the
 ## one-line objective HUD, which reads the giver standing in the current scene.
 ## Finish a quest and it vanished; walk to another map and it vanished. Nothing
 ## in the game could answer "what have I done" or "what am I carrying this for".
@@ -23,6 +23,7 @@ func _initialize() -> void:
 	inv.reset()
 
 	_stages_follow_flags_and_bag()
+	_multi_objective_checklist_advances()
 	_reading_order_puts_actionable_first()
 	_unfound_quests_are_not_spoiled()
 
@@ -65,6 +66,37 @@ func _stages_follow_flags_and_bag() -> void:
 		e["stage"], QuestJournal.Stage.DONE)
 	check_true("a finished quest keeps its description",
 		not String(e["desc"]).is_empty())
+	inv.reset()
+
+
+func _multi_objective_checklist_advances() -> void:
+	var profile := LearningProfile.new({}, db)
+	var quest_id := "tools_of_the_trail"
+	profile.set_flag(QuestJournal.started_flag(quest_id))
+	var entry := QuestJournal.entry(profile, db, inv, quest_id)
+	check_eq("the tool commission exposes all three objectives",
+		(entry["objectives"] as Array).size(), 3)
+	check_eq("the first missing tool leads the objective",
+		entry["item"], "copper_pick")
+	check_eq("a fresh checklist is active", entry["stage"], QuestJournal.Stage.ACTIVE)
+
+	inv.add("copper_pick", 1)
+	entry = QuestJournal.entry(profile, db, inv, quest_id)
+	check_true("the completed Copper Pick row stays checked",
+		bool((entry["objectives"] as Array)[0]["complete"]))
+	check_eq("the next missing tool takes over the HUD",
+		entry["item"], "trail_hatchet")
+	check_eq("one of three tools is not ready to turn in",
+		entry["stage"], QuestJournal.Stage.ACTIVE)
+
+	inv.add("trail_hatchet", 1)
+	inv.add("herb_sickle", 1)
+	entry = QuestJournal.entry(profile, db, inv, quest_id)
+	check_eq("all three permanent tools ready the commission",
+		entry["stage"], QuestJournal.Stage.READY)
+	check_true("every checklist row records non-consumption",
+		(entry["objectives"] as Array).all(
+			func(row): return not bool((row as Dictionary).get("consume", true))))
 	inv.reset()
 
 

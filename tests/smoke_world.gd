@@ -129,6 +129,14 @@ func _run() -> void:
 	await _physics_frames(2)
 	check_true("the village herb patch is within the real interaction probe",
 		herb_patch in interact_probe.get_overlapping_areas())
+	var kaji: Node = world.get_node_or_null("Props/QuestGiverKaji")
+	check_true("Kaji offers the permanent-tool commission beside the Forge",
+		kaji != null and kaji.get("quest_id") == "tools_of_the_trail")
+	if kaji != null:
+		player.position = kaji.position + Vector2(28, 0)
+		await _physics_frames(2)
+		check_true("Kaji is reachable by the real interaction probe",
+			kaji in interact_probe.get_overlapping_areas())
 
 	# The connected frontier must use the same real terrain vocabulary, not placeholder decals.
 	world.queue_free()

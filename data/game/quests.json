@@ -209,6 +209,28 @@
     "turnInLines": ["Strong fibers, and clean. These sandals are yours — step lightly."]
   },
   {
+    "id": "tools_of_the_trail",
+    "title": "Tools of the Trail",
+    "giver": "Kaji",
+    "desc": "Kaji wants to see a complete permanent field kit: a Copper Pick, Trail Hatchet, and Herb Sickle. Craft all three; he only inspects them, so every tool stays yours.",
+    "objectives": [
+      { "item": "copper_pick", "qty": 1, "consume": false },
+      { "item": "trail_hatchet", "qty": 1, "consume": false },
+      { "item": "herb_sickle", "qty": 1, "consume": false }
+    ],
+    "reward": { "coins": 75, "items": [{ "id": "trailblazer_charm", "qty": 1 }] },
+    "offerLines": [
+      "A gatherer with bare hands only sees the easy harvest. Build a field kit and the woods open up.",
+      "Forge a Copper Pick, then use the Workshop for a Trail Hatchet and Herb Sickle. Bring all three back; I only need to inspect your work."
+    ],
+    "progressLines": [
+      "Your field kit is not complete yet. The Journal keeps the checklist. The Herb Sickle needs an Iron Ingot and Workshop Lv 2, so train there on a few starter crafts."
+    ],
+    "turnInLines": [
+      "Balanced heads, clean bindings, and no brittle edges. Keep every tool. This trailblazer knot marks you as someone who can work beyond the easy path."
+    ]
+  },
+  {
     "id": "pass_scree_hides",
     "title": "Footing on Scree",
     "giver": "Tomas",

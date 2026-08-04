@@ -1973,6 +1973,22 @@
         "desc":  "A broad metal belt that braces the core."
     },
     {
+        "id":  "trailblazer_charm",
+        "name":  "Trailblazer Charm",
+        "kind":  "gear",
+        "slot":  "amulet",
+        "unique":  true,
+        "stats":  {
+                      "hp":  6,
+                      "spd":  1
+                  },
+        "value":  110,
+        "rarity":  "uncommon",
+        "iconAlias":  "omamori_charm",
+        "icon":  true,
+        "desc":  "Kaji's knot for a proven field artisan. Light enough for long gathering routes."
+    },
+    {
         "id":  "copper_pick",
         "name":  "Copper Pick",
         "kind":  "tool",
