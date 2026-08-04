@@ -47,6 +47,7 @@ func _initialize() -> void:
 
 	_drop_table_can_supply_the_goal()
 	_mako_stocks_each_starter_weapon_style()
+	_mako_stocks_every_authored_crop_seed()
 	_village_mako_is_linked_to_the_stall()
 	await _accept_then_gather_then_turn_in()
 	await _reward_is_paid_only_once()
@@ -86,6 +87,23 @@ func _mako_stocks_each_starter_weapon_style() -> void:
 		styles.size(), 4)
 	for style in ["blade", "heavy", "ranged", "kana"]:
 		check_true("Mako stocks a %s starter" % style, styles.has(style))
+
+
+## Once Stock the Stall is complete, farming must remain a repeatable economy
+## rather than ending when the one-time starter cache is empty. The archived
+## Valley store priced staple stock at 2x item value; keep that balance contract.
+func _mako_stocks_every_authored_crop_seed() -> void:
+	var seed_prices := {}
+	for entry in db.shops.get("mako_stall", {}).get("stock", []):
+		var item_id := String(entry.get("item", ""))
+		if String(db.item(item_id).get("kind", "")) == "seed":
+			seed_prices[item_id] = int(entry.get("price", 0))
+	check_eq("Mako stocks one seed for every crop", seed_prices.size(), db.crops.size())
+	for crop in db.crops.values():
+		var seed_id := String((crop as Dictionary).get("seedItem", ""))
+		check_true("Mako stocks %s" % seed_id, seed_prices.has(seed_id))
+		check_eq("%s keeps the archived 2x-value markup" % seed_id,
+			int(seed_prices.get(seed_id, 0)), int(db.item(seed_id).get("value", 0)) * 2)
 
 
 func _village_mako_is_linked_to_the_stall() -> void:

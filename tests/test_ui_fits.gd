@@ -84,11 +84,12 @@ func _initialize() -> void:
 		await _check_menu()
 		await _check_notebook()
 		await _check_farm(bus)
+		await _check_shop(bus)
 	settings.ui_scale = original_scale
 	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across six panels at %d UI scales"
+	print("  ..   measured %d text controls across seven panels at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
 	learning.profile.data["stats"]["xp"] = xp_before
@@ -202,6 +203,19 @@ func _check_farm(bus: Node) -> void:
 	_audit(day_end, "farm/day end")
 	day_end.call("_close")
 	day_end.queue_free()
+	await process_frame
+
+
+func _check_shop(bus: Node) -> void:
+	var panel := CanvasLayer.new()
+	panel.set_script(load("res://src/ui/shop_panel.gd"))
+	root.add_child(panel)
+	await process_frame
+	bus.shop_open.emit("mako_stall")
+	await process_frame
+	_audit(panel, "shop/starter stall")
+	panel.call("_close")
+	panel.queue_free()
 	await process_frame
 
 
