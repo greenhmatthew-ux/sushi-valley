@@ -132,6 +132,9 @@ func _on_hp(hp: int, max_hp: int) -> void:
 
 func _build_status() -> void:
 	var panel := PanelContainer.new()
+	# The objective tracker stacks directly under this panel and measures it through
+	# this group, so its offset is never a hardcoded height that can drift into overlap.
+	panel.add_to_group("hud_status_panel")
 	var style := UiTheme.panel_style(Color(UiTheme.ACCENT_GOLD, 0.75))
 	style.bg_color = Color(UiTheme.SURFACE_DEEP, 0.9)
 	style.content_margin_left = UiTheme.UNIT + 4

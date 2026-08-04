@@ -129,8 +129,12 @@ func _runtime_and_ui_contract() -> void:
 
 
 func _scene_has_root_child(scene_path: String, child_name: String) -> bool:
+	# Godot 4.7 writes the node's type into the header (`name="X" type="Y" parent=`),
+	# so match the name, then a root parent anywhere later in the same header.
 	var source := FileAccess.get_file_as_string(scene_path)
-	return ("[node name=\"%s\" parent=\".\"" % child_name) in source
+	var pattern := RegEx.new()
+	pattern.compile("\\[node name=\"%s\"[^\\]]* parent=\"\\.\"" % child_name)
+	return pattern.search(source) != null
 
 
 func _stash_real_save() -> void:

@@ -86,8 +86,9 @@ func _build() -> void:
 	_panel.grow_horizontal = Control.GROW_DIRECTION_BEGIN
 	_panel.grow_vertical = Control.GROW_DIRECTION_END
 	_panel.offset_right = -UiTheme.UNIT
-	_panel.offset_top = 84.0
+	_panel.offset_top = 84.0   # provisional; _track_status_panel replaces it with the real edge
 	_root.add_child(_panel)
+	_track_status_panel.call_deferred()
 
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 1)
@@ -104,3 +105,23 @@ func _build() -> void:
 	rows.add_child(_detail)
 
 	_panel.hide()
+
+
+## Stack directly under the HUD's coins/review panel, whatever height that panel
+## settles at — a fixed offset overlapped it whenever the review cue was visible or
+## the UI scale grew the fonts past the hardcoded 84px. Deferred so the HUD (a
+## sibling layer built in the same frame) has its panel in the group first.
+func _track_status_panel() -> void:
+	var status := get_tree().get_first_node_in_group("hud_status_panel") as Control
+	if status == null or _panel == null:
+		return
+	if not status.resized.is_connected(_dock_below_status):
+		status.resized.connect(_dock_below_status)
+	_dock_below_status()
+
+
+func _dock_below_status() -> void:
+	var status := get_tree().get_first_node_in_group("hud_status_panel") as Control
+	if status == null or _panel == null:
+		return
+	_panel.offset_top = status.position.y + status.size.y + 4.0
