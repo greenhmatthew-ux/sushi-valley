@@ -32,10 +32,16 @@ const DEFAULT_SKILLS := ["strike", "guard", "focus"]
 const ACTIVITY_FARM_HARVEST := "farm_harvest"
 const ACTIVITY_RESOURCE_GATHER := "resource_gather"
 const ACTIVITY_FISH_CATCH := "fish_catch"
+const ACTIVITY_REVIEW_CORRECT := "review_correct"
+const ACTIVITY_CRAFT_COMPLETE := "craft_complete"
+const ACTIVITY_ENEMY_DEFEAT := "enemy_defeat"
 const ACTIVITY_IDS := [
 	ACTIVITY_FARM_HARVEST,
 	ACTIVITY_RESOURCE_GATHER,
 	ACTIVITY_FISH_CATCH,
+	ACTIVITY_REVIEW_CORRECT,
+	ACTIVITY_CRAFT_COMPLETE,
+	ACTIVITY_ENEMY_DEFEAT,
 ]
 
 var data: Dictionary

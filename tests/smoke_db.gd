@@ -18,7 +18,7 @@ func _initialize() -> void:
 	check("enemies", db.enemies.size(), 76)
 	check("abilities", db.abilities.size(), 68)
 	check("recipes", db.recipes.size(), 84)
-	check("quests", db.quests.size(), 23)
+	check("quests", db.quests.size(), 24)
 	check("crops", db.crops.size(), 4)
 	check("expeditions", db.expeditions.size(), 1)
 	check("raids", db.raids.size(), 1)
@@ -38,7 +38,20 @@ func _initialize() -> void:
 	check_true("Valley Morning uses the three authored daily activity counters",
 		morning_quest.get("objectives", []).map(
 			func(row): return String(row.get("activity", ""))) \
-			== LearningProfile.ACTIVITY_IDS)
+			== [LearningProfile.ACTIVITY_FARM_HARVEST,
+				LearningProfile.ACTIVITY_RESOURCE_GATHER,
+				LearningProfile.ACTIVITY_FISH_CATCH])
+	check_true("Valley Morning links to one real follow-up quest",
+		String(morning_quest.get("followUpQuest", "")) == "ready_for_the_road"
+		and not db.quest("ready_for_the_road").is_empty())
+	var road_quest: Dictionary = db.quest("ready_for_the_road")
+	check("Ready for the Road objectives", road_quest.get("objectives", []).size(), 3)
+	check_true("the follow-up joins learning, crafting, and combat",
+		road_quest.get("objectives", []).map(
+			func(row): return String(row.get("activity", ""))) \
+			== [LearningProfile.ACTIVITY_REVIEW_CORRECT,
+				LearningProfile.ACTIVITY_CRAFT_COMPLETE,
+				LearningProfile.ACTIVITY_ENEMY_DEFEAT])
 
 	# Keyed-object tables keep their authored shape rather than being indexed.
 	check_true("shops has mako_stall", db.shops.has("mako_stall"))

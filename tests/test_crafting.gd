@@ -273,6 +273,8 @@ func _panel_contract() -> void:
 	inv.reset()
 	inv.add("rice", 2)
 	var kitchen_xp_before := int(Rules.ensure_state(learning.profile.data)["xp"]["kitchen"])
+	var crafts_before: int = learning.profile.activity_count(
+		LearningProfile.ACTIVITY_CRAFT_COMPLETE)
 	var crafted: Dictionary = crafting.craft("craft_rice_ball", "kitchen")
 	check_true("runtime coordinator crafts a valid recipe", crafted.get("ok", false))
 	check_eq("runtime craft consumes saved inventory", inv.count("rice"), 0)
@@ -280,6 +282,14 @@ func _panel_contract() -> void:
 	check_eq("runtime craft awards station XP",
 		Rules.ensure_state(learning.profile.data)["xp"]["kitchen"],
 		kitchen_xp_before + Rules.earned_xp(db.recipe("craft_rice_ball")))
+	check_eq("a committed recipe records one authored craft activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_CRAFT_COMPLETE),
+		crafts_before + 1)
+	var rejected: Dictionary = crafting.craft("craft_rice_ball", "kitchen")
+	check_true("a recipe without materials is rejected", not bool(rejected.get("ok", true)))
+	check_eq("a rejected recipe records no craft activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_CRAFT_COMPLETE),
+		crafts_before + 1)
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/crafting_panel.gd"))
 	root.add_child(panel)

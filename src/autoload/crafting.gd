@@ -54,6 +54,7 @@ func craft(recipe_id: String, station: String) -> Dictionary:
 	var xp := Rules.earned_xp(recipe)
 	state["xp"][station] = int(state["xp"].get(station, 0)) + xp
 	state["counts"][recipe_id] = int(state["counts"].get(recipe_id, 0)) + 1
+	Learning.profile.record_activity(LearningProfile.ACTIVITY_CRAFT_COMPLETE)
 	Learning.profile.save()
 	Bus.crafting_changed.emit(station)
 	return {"ok": true, "xp": xp, "output": output.duplicate(true)}

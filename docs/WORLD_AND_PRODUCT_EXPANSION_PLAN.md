@@ -444,6 +444,8 @@ actions exist, and static panel/minigame copy remains a named follow-up rather t
 
 - Evolve quests from one fetch goal to an objective list supporting talk, visit, defeat, gather, craft,
   study/recall, and return.
+- Implemented objective evidence now covers held items plus post-acceptance harvest, gather, fish,
+  correct-review, craft, and enemy-defeat counters. Talk, visit, and explicit return rows remain.
 - Author chains region-by-region; every quest should teach a route/system or change a world state.
 - Tie local vocabulary to signs, NPCs, items, travel, and recipes with attributable source cards.
 - Use recall for optional shortcuts/bonuses and a few major gates; show exact progress and a cancel path.

@@ -36,6 +36,7 @@ func _on_combat_started(enemy_id: String) -> void:
 func _on_enemy_died(enemy_id: String) -> void:
 	if profile != null:
 		profile.record_enemy_defeated(enemy_id)
+		profile.record_activity(LearningProfile.ACTIVITY_ENEMY_DEFEAT)
 		profile.save()
 
 

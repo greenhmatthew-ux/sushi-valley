@@ -102,11 +102,16 @@ func _bus_wiring_records_real_fights() -> void:
 	check_true("but not yet defeated",
 		not learning.profile.bestiary_entry(enemy_id).get("defeated", false))
 
+	var defeats_before: int = learning.profile.activity_count(
+		LearningProfile.ACTIVITY_ENEMY_DEFEAT)
 	bus.enemy_died.emit(enemy_id)
 	check_true("enemy_died records the win",
 		learning.profile.bestiary_entry(enemy_id).get("defeated", false))
 	check_eq("and counts the kill",
 		int(learning.profile.bestiary_entry(enemy_id).get("kills", 0)), 1)
+	check_eq("a real victory records one authored defeat activity",
+		learning.profile.activity_count(LearningProfile.ACTIVITY_ENEMY_DEFEAT),
+		defeats_before + 1)
 
 	learning.profile.data.erase("bestiary")
 	learning.profile.save()

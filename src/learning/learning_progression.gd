@@ -139,6 +139,7 @@ func grade(card: Dictionary, grade_str: String) -> void:
 	s["totalReviews"] = int(s.get("totalReviews", 0)) + 1
 	if grade_str != "again":
 		s["totalCorrect"] = int(s.get("totalCorrect", 0)) + 1
+		profile.record_activity(LearningProfile.ACTIVITY_REVIEW_CORRECT)
 		var gain := int(XP_BY_GRADE.get(grade_str, 6))
 		s["xp"] = int(s.get("xp", 0)) + gain
 		_announce_xp(gain, int(s["xp"]))

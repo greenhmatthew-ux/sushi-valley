@@ -65,6 +65,8 @@ func _unlock_and_answer() -> void:
 	check_eq("totalReviews incremented", p.data["stats"]["totalReviews"], 1)
 	check_eq("totalCorrect incremented", p.data["stats"]["totalCorrect"], 1)
 	check_eq("good grade awards 10 xp", p.data["stats"]["xp"], 10)
+	check_eq("a correct review records one authored quest activity",
+		p.activity_count(LearningProfile.ACTIVITY_REVIEW_CORRECT), 1)
 	check_eq("answered card no longer due now", prog.due_count(), before_due - 1)
 	check_eq("correctCount on the card", p.card("kana-a")["correctCount"], 1)
 
@@ -75,10 +77,14 @@ func _unlock_and_answer() -> void:
 	check_eq("wrong grade awards no xp", p.data["stats"]["xp"], 10)
 	check_eq("wrong answer still counts a review", p.data["stats"]["totalReviews"], 2)
 	check_eq("incorrectCount on the card", p.card("kana-i")["incorrectCount"], 1)
+	check_eq("a wrong review never advances a correct-review objective",
+		p.activity_count(LearningProfile.ACTIVITY_REVIEW_CORRECT), 1)
 
 	# Answer comparison is trim + lowercase.
 	var card3: Dictionary = p.card("kana-u")
 	check_true("answer matching is case/space-insensitive", prog.answer(card3, "  U "))
+	check_eq("a second correct review advances the same activity once",
+		p.activity_count(LearningProfile.ACTIVITY_REVIEW_CORRECT), 2)
 
 
 func _build_defaults_and_migration() -> void:

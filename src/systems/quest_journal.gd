@@ -28,6 +28,28 @@ static func done_flag(quest_id: String) -> String:
 	return "quest_%s_done" % quest_id
 
 
+## Resolve the first unfinished quest in a data-authored chain. A giver keeps one
+## stable root id in the scene, while completed quests can point to a follow-up.
+## Missing links and accidental cycles stop safely at the last valid row.
+static func current_in_chain(profile, content, root_quest_id: String) -> Dictionary:
+	var current_id := root_quest_id
+	var current: Dictionary = {}
+	var visited := {}
+	while not current_id.is_empty() and not visited.has(current_id):
+		var candidate: Dictionary = content.quest(current_id)
+		if candidate.is_empty():
+			return current
+		current = candidate
+		visited[current_id] = true
+		if profile == null or not profile.get_flag(done_flag(current_id)):
+			return current
+		var next_id := String(current.get("followUpQuest", ""))
+		if next_id.is_empty():
+			return current
+		current_id = next_id
+	return current
+
+
 ## Accept once and snapshot lifetime activity totals. Activity objectives then
 ## count only work performed after this conversation, while item objectives keep
 ## their live Bag semantics.

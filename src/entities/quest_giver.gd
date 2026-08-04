@@ -37,7 +37,11 @@ func _ready() -> void:
 
 
 func quest() -> Dictionary:
-	return DB.quest(quest_id)
+	return Journal.current_in_chain(Learning.profile, DB, quest_id)
+
+
+func active_quest_id() -> String:
+	return String(quest().get("id", quest_id))
 
 
 func goal_item() -> String:
@@ -98,13 +102,14 @@ func _run() -> void:
 		return
 
 	var stage := current_stage()
+	var current_id := String(q.get("id", quest_id))
 	if stage == "done" and not shop_id.is_empty():
 		Bus.shop_open.emit(shop_id)
 		return
 	if stage == "intro":
 		Journal.begin(Learning.profile, q)
 		Learning.profile.save()
-		Bus.quest_accepted.emit(quest_id)
+		Bus.quest_accepted.emit(current_id)
 	await _say(QuestLogic.lines_for(q, stage))
 
 	# Reward only after the turn-in dialogue, so the lines read as cause then effect.
@@ -130,28 +135,30 @@ func _complete(q: Dictionary) -> void:
 		if entry is Dictionary and not String(entry.get("id", "")).is_empty():
 			Inv.add(String(entry["id"]), int(entry.get("qty", 1)))
 
-	_set_flag("done")
+	var completed_id := String(q.get("id", quest_id))
+	_set_quest_flag(completed_id, "done")
 	var summary := QuestLogic.describe_reward(reward, func(id): return DB.item(id).get("name", id))
 	Bus.toast.emit("Quest complete: %s%s" % [
-		String(q.get("title", quest_id)),
+		String(q.get("title", completed_id)),
 		("  +" + summary) if not summary.is_empty() else ""])
-	Bus.quest_completed.emit(quest_id)
+	Bus.quest_completed.emit(completed_id)
 
 
 # --- persistence via the learning profile's flag store -----------------------
 
 func _flag(suffix: String) -> bool:
-	return Learning.profile != null and Learning.profile.get_flag(_flag_name(suffix))
+	return Learning.profile != null \
+		and Learning.profile.get_flag(_flag_name(active_quest_id(), suffix))
 
 
-func _set_flag(suffix: String) -> void:
+func _set_quest_flag(target_quest_id: String, suffix: String) -> void:
 	if Learning.profile != null:
-		Learning.profile.set_flag(_flag_name(suffix))
+		Learning.profile.set_flag(_flag_name(target_quest_id, suffix))
 		Learning.profile.save()
 
 
-func _flag_name(suffix: String) -> String:
-	return "quest_%s_%s" % [quest_id, suffix]
+func _flag_name(target_quest_id: String, suffix: String) -> String:
+	return "quest_%s_%s" % [target_quest_id, suffix]
 
 
 # --- presentation ------------------------------------------------------------
@@ -163,7 +170,7 @@ func _name() -> String:
 func _say(lines: Array) -> void:
 	if lines.is_empty():
 		return
-	Bus.npc_talked.emit(quest_id)
+	Bus.npc_talked.emit(active_quest_id())
 	var typed: Array[String] = []
 	var opener := _greeting_line()
 	if not opener.is_empty():

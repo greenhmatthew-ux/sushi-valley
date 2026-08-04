@@ -296,15 +296,57 @@ func _valley_morning_counts_real_daily_actions() -> void:
 	var seeds_before: int = inv.count("herb_seed")
 	var fish_before: int = inv.count("river_fish")
 	await aiko.interact(null)
-	check_true("Aiko marks the activity quest complete", aiko.is_complete())
+	check_true("Aiko marks the morning quest complete",
+		learning.profile.get_flag(QuestJournal.done_flag("valley_morning")))
 	check_eq("the activity quest pays its exact 60 coins", inv.coins, coins_before + 60)
 	check_eq("the activity quest grants two repeatable seeds",
 		inv.count("herb_seed"), seeds_before + 2)
 	check_eq("turn-in never consumes evidence from an activity objective",
 		inv.count("river_fish"), fish_before)
 	var paid_coins: int = inv.coins
+	check_eq("the same Aiko now leads with the authored follow-up",
+		aiko.active_quest_id(), "ready_for_the_road")
+	check_eq("the follow-up waits for a new acceptance", aiko.current_stage(), "intro")
 	await aiko.interact(null)
-	check_eq("the completed activity quest cannot pay twice", inv.coins, paid_coins)
+	check_eq("accepting the follow-up cannot repay Valley Morning", inv.coins, paid_coins)
+	check_true("Aiko accepts Ready for the Road", aiko.is_accepted())
+	check_eq("pre-acceptance study, craft, and combat history is excluded",
+		aiko.objectives().map(func(row): return row["progress"]), [0, 0, 0])
+
+	learning.profile.unlock_lesson("kana-vowels")
+	for card_id in ["kana-a", "kana-i", "kana-u"]:
+		var card: Dictionary = learning.profile.card(card_id)
+		check_true("a real correct review advances preparation: %s" % card_id,
+			learning.progression.answer(card, String(card.get("answer", ""))))
+	check_eq("three correct reviews advance to the craft proof",
+		aiko.goal_label(), "Craft any recipe")
+
+	inv.add("rice", 2)
+	var crafted: Dictionary = root.get_node("Crafting").craft(
+		"craft_rice_ball", "kitchen")
+	check_true("a real recipe transaction advances the craft proof",
+		bool(crafted.get("ok", false)))
+	check_eq("crafting advances to the combat proof",
+		aiko.goal_label(), "Defeat an enemy")
+
+	bus.enemy_died.emit("mushroom")
+	check_eq("a real victory readies the chained quest",
+		aiko.current_stage(), "turnin")
+	var road_coins_before: int = inv.coins
+	var charm_before: int = inv.count("omamori_charm")
+	var rice_balls_before: int = inv.count("rice_ball")
+	await aiko.interact(null)
+	check_true("Aiko completes the full two-quest chain", aiko.is_complete())
+	check_eq("Ready for the Road pays exactly 90 coins",
+		inv.coins, road_coins_before + 90)
+	check_eq("the preparation reward grants one protective omamori",
+		inv.count("omamori_charm"), charm_before + 1)
+	check_eq("turn-in never consumes the crafted proof",
+		inv.count("rice_ball"), rice_balls_before)
+	var chain_paid_coins: int = inv.coins
+	await aiko.interact(null)
+	check_eq("the completed chain cannot pay either reward twice",
+		inv.coins, chain_paid_coins)
 
 	farm.reset(false)
 	gathering.reset(false)

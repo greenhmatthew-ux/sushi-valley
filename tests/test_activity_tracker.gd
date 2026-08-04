@@ -107,6 +107,18 @@ func _initialize() -> void:
 		and String(current["detail"]).contains("[ ] Land a fish 0/1"))
 	check_true("the compact HUD names the next activity instead of a blank item",
 		String(current["hud_detail"]).contains("Gather a resource node  0/1"))
+	routine_profile.set_flag(QuestJournal.done_flag("valley_morning"))
+	QuestJournal.begin(routine_profile, db.quest("ready_for_the_road"))
+	routine_profile.record_activity(LearningProfile.ACTIVITY_REVIEW_CORRECT, 3)
+	current = Activities.current(routine_profile, db, inv)
+	check_eq("the chained preparation quest replaces its completed parent",
+		current["key"], "quest:ready_for_the_road")
+	check_true("the preparation checklist carries study, craft, and combat",
+		String(current["detail"]).contains("[x] Answer reviews correctly 3/3")
+		and String(current["detail"]).contains("[ ] Craft any recipe 0/1")
+		and String(current["detail"]).contains("[ ] Defeat an enemy 0/1"))
+	check_true("the compact HUD advances from study into crafting",
+		String(current["hud_detail"]).contains("Craft any recipe  0/1"))
 
 	inv.free()
 	db.free()

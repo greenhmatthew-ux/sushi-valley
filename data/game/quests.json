@@ -14,6 +14,7 @@
     "id": "valley_morning",
     "title": "A Valley Morning",
     "giver": "Aiko",
+    "followUpQuest": "ready_for_the_road",
     "desc": "Aiko wants you to learn the village rhythm: harvest one crop, gather one renewable resource, and land one fish. Only work done after accepting counts.",
     "objectives": [
       { "type": "activity", "activity": "farm_harvest", "qty": 1, "label": "Harvest a crop" },
@@ -30,6 +31,28 @@
     ],
     "turnInLines": [
       "Soil on your hands, leaves in your bag, and pond water on your boots. That is a proper Valley morning."
+    ]
+  },
+  {
+    "id": "ready_for_the_road",
+    "title": "Ready for the Road",
+    "giver": "Aiko",
+    "desc": "Aiko's next lesson joins knowledge with action: answer three reviews correctly, craft any recipe, and defeat one enemy. Only work done after accepting counts.",
+    "objectives": [
+      { "type": "activity", "activity": "review_correct", "qty": 3, "label": "Answer reviews correctly" },
+      { "type": "activity", "activity": "craft_complete", "qty": 1, "label": "Craft any recipe" },
+      { "type": "activity", "activity": "enemy_defeat", "qty": 1, "label": "Defeat an enemy" }
+    ],
+    "reward": { "coins": 90, "items": [{ "id": "omamori_charm", "qty": 1 }] },
+    "offerLines": [
+      "You know the village rhythm. Now prepare for the road beyond it.",
+      "Study three words, make something useful, and win one real fight. Knowledge, hands, courage — bring all three back."
+    ],
+    "progressLines": [
+      "The Journal has your three proofs. Study, craft, and fight in any order; none of them replaces the others."
+    ],
+    "turnInLines": [
+      "You remembered, made, and defended. Take this omamori — preparation should travel with you."
     ]
   },
   {

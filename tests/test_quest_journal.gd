@@ -25,6 +25,7 @@ func _initialize() -> void:
 	_stages_follow_flags_and_bag()
 	_multi_objective_checklist_advances()
 	_activity_objectives_start_at_acceptance()
+	_followup_chain_joins_study_craft_and_combat()
 	_reading_order_puts_actionable_first()
 	_unfound_quests_are_not_spoiled()
 
@@ -136,6 +137,45 @@ func _activity_objectives_start_at_acceptance() -> void:
 		entry["stage"], QuestJournal.Stage.READY)
 	check_true("re-accepting cannot move the saved baseline",
 		not QuestJournal.begin(restored, quest))
+
+
+func _followup_chain_joins_study_craft_and_combat() -> void:
+	var profile := LearningProfile.new({}, db)
+	var current := QuestJournal.current_in_chain(profile, db, "valley_morning")
+	check_eq("a fresh Aiko chain starts with the morning lesson",
+		current.get("id", ""), "valley_morning")
+	profile.set_flag(QuestJournal.done_flag("valley_morning"))
+	current = QuestJournal.current_in_chain(profile, db, "valley_morning")
+	check_eq("turning in the morning lesson reveals its authored follow-up",
+		current.get("id", ""), "ready_for_the_road")
+
+	for activity_id in [LearningProfile.ACTIVITY_REVIEW_CORRECT,
+			LearningProfile.ACTIVITY_CRAFT_COMPLETE,
+			LearningProfile.ACTIVITY_ENEMY_DEFEAT]:
+		profile.record_activity(String(activity_id), 4)
+	check_true("accepting the follow-up snapshots all three new baselines",
+		QuestJournal.begin(profile, current))
+	var entry := QuestJournal.entry(profile, db, inv, "ready_for_the_road")
+	check_eq("old study, craft, and combat history is excluded",
+		(entry["objectives"] as Array).map(func(row): return row["progress"]), [0, 0, 0])
+
+	profile.record_activity(LearningProfile.ACTIVITY_REVIEW_CORRECT, 3)
+	profile.record_activity(LearningProfile.ACTIVITY_CRAFT_COMPLETE)
+	entry = QuestJournal.entry(profile, db, inv, "ready_for_the_road")
+	check_eq("the final missing proof leads the compact HUD",
+		entry["objective_label"], "Defeat an enemy")
+	check_eq("partial follow-up progress survives as a mixed checklist",
+		(entry["objectives"] as Array).map(func(row): return row["progress"]), [3, 1, 0])
+
+	profile.record_activity(LearningProfile.ACTIVITY_ENEMY_DEFEAT)
+	var restored := LearningProfile.new(profile.to_save_dict(), db)
+	entry = QuestJournal.entry(restored, db, inv, "ready_for_the_road")
+	check_eq("all three preparation proofs survive reload and ready the quest",
+		entry["stage"], QuestJournal.Stage.READY)
+	restored.set_flag(QuestJournal.done_flag("ready_for_the_road"))
+	check_eq("a fully completed chain rests on its final authored quest",
+		QuestJournal.current_in_chain(restored, db, "valley_morning").get("id", ""),
+		"ready_for_the_road")
 
 
 func _reading_order_puts_actionable_first() -> void:
