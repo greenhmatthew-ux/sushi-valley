@@ -1117,7 +1117,7 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("10_s5gw1")
 npc_id = "villager_greeter"
-speaker = "Aiko"
+speaker = "Emi"
 lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Hold TAB any time to see the English for what you are reading.")
 greeting_card = "greet-konnichiwa"
 
@@ -1580,7 +1580,7 @@ pickup_id = "village_forge_intro_ore"
 
 [node name="FarmPlot1" type="Area2D" parent="Props" unique_id=1094059374 instance=ExtResource("43_farm")]
 y_sort_enabled = true
-position = Vector2(80, 340)
+position = Vector2(88, 344)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -1588,7 +1588,7 @@ script = ExtResource("35_dmov6")
 
 [node name="FarmPlot2" type="Area2D" parent="Props" unique_id=762037773 instance=ExtResource("43_farm")]
 y_sort_enabled = true
-position = Vector2(110, 340)
+position = Vector2(104, 344)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -1597,7 +1597,7 @@ plot_id = "valley_plot_2"
 
 [node name="FarmPlot3" type="Area2D" parent="Props" unique_id=225962674 instance=ExtResource("43_farm")]
 y_sort_enabled = true
-position = Vector2(80, 364)
+position = Vector2(88, 360)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -1606,7 +1606,7 @@ plot_id = "valley_plot_3"
 
 [node name="FarmPlot4" type="Area2D" parent="Props" unique_id=1158315202 instance=ExtResource("43_farm")]
 y_sort_enabled = true
-position = Vector2(110, 364)
+position = Vector2(104, 360)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -1769,6 +1769,7 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("21_f3ebj")
 quest_id = "river_guard"
+sprite_sheet = ExtResource("34_woman")
 greeting_card = "greet-ohayou"
 
 [node name="TeacherArrival" type="Area2D" parent="Props" unique_id=256618223 instance=ExtResource("33_teacher")]

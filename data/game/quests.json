@@ -58,11 +58,11 @@
   {
     "id": "river_guard",
     "title": "River Guard",
-    "giver": "Mako",
-    "desc": "Mako heard the Whispering Woods kappa leaves behind scales tough enough to plate a bracer. Bring her two.",
+    "giver": "Sora",
+    "desc": "Sora watches the village pond and hears every trail rumour. The Whispering Woods kappa leave behind scales tough enough to plate a bracer. Bring her two.",
     "goal": { "item": "kappa_scale", "qty": 2 },
     "reward": { "coins": 20, "items": [{ "id": "kappa_scale_guard", "qty": 1 }] },
-    "offerLines": ["Since you're headed into the Whispering Woods anyway — the kappa there leave behind scales, slick and tough.", "Bring me two and I'll have a bracer plated for you. Better than anything I stock."],
+    "offerLines": ["Since you're headed into the Whispering Woods anyway — the kappa there leave behind scales, slick and tough.", "Bring me two and I'll have a bracer plated for you. Better than anything on Mako's shelves."],
     "progressLines": ["Kappa scales — {progress} of {goal}. The river kappa east in the woods always drops one."],
     "turnInLines": ["Two scales, and good ones. Here, I had this plated while you were out."]
   },

@@ -1,7 +1,29 @@
 extends Area2D
-## A readable renewable resource in the world. Visuals are intentionally sparse
-## and code-drawn so resource state is legible without turning the map into an
-## icon grid; the real item icon and name appear in the Bag after gathering.
+## A readable renewable resource in the world.
+##
+## The node itself used to be `draw_colored_polygon` shapes — a grey blob for ore, green
+## ellipses for a herb. Next to the tiled world those read as placeholder geometry. The
+## object is now real Ninja Adventure nature art (CC0, the project's character/prop canon).
+##
+## What stays drawn in code is only *state*, because none of it exists as art: the ready
+## glint, the depleted arc, the permanent-tool badge, and the gather burst. Those are the
+## affordances that tell the player whether walking over is worth it, so they are kept.
+##
+## Ore art is chosen by the item, not just the kind. Copper and iron seams were previously
+## the same grey blob with the same orange flecks, so the only way to tell a Copper Seam
+## from an Iron Seam was to walk up and read the prompt. Tan rock is copper, grey rock is
+## iron, which is what the ores themselves look like.
+
+## Ninja Adventure `Backgrounds/Tilesets/TilesetNature.png`, 24x21 tiles of 16px.
+const NATURE_SHEET := preload("res://assets/tilesets/ninja_nature.png")
+## Isolated single-tile boulders, not slices of the big multi-tile clusters beside them.
+const ROCK_TAN := Rect2(18 * 16, 13 * 16, 16, 16)
+const ROCK_GREY := Rect2(18 * 16, 17 * 16, 16, 16)
+## Leafy plant and tall blades from the same sheet's plant rows.
+const PLANT_HERB := Rect2(4 * 16, 11 * 16, 16, 16)
+const PLANT_BAMBOO := Rect2(7 * 16, 11 * 16, 16, 16)
+## Ores that read as grey stone. Anything else falls back to the tan rock.
+const GREY_ORES := ["raw_iron_ore", "iron_ore", "stone"]
 
 @export var node_id := "wilds_herb_1"
 @export var display_name := "Wild Herb Patch"
@@ -18,15 +40,42 @@ const FEEDBACK_SECONDS := 0.8
 var _phase := 0.0
 var _burst_time := 0.0
 var _burst_qty := 0
+var _body: Sprite2D
 
 
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	_build_body()
 	Gathering.register_node(node_id, reset_days)
 	Bus.gathering_changed.connect(_on_gathering_changed)
 	Bus.farm_changed.connect(_refresh)
-	queue_redraw()
+	_refresh()
+
+
+## Feet on the node origin, matching every other standing thing in the world so Y-sort
+## and placement behave the same way they do for props.
+func _build_body() -> void:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = NATURE_SHEET
+	atlas.region = _body_region()
+	atlas.filter_clip = true
+	_body = Sprite2D.new()
+	_body.name = "Body"
+	_body.texture = atlas
+	_body.offset = Vector2(0, -8)
+	_body.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(_body)
+
+
+func _body_region() -> Rect2:
+	match resource_kind:
+		"ore":
+			return ROCK_GREY if item_id in GREY_ORES else ROCK_TAN
+		"bamboo":
+			return PLANT_BAMBOO
+		_:
+			return PLANT_HERB
 
 
 func _process(delta: float) -> void:
@@ -75,19 +124,14 @@ func _on_gathering_changed(changed_id: String) -> void:
 
 
 func _refresh() -> void:
+	if _body != null:
+		# A depleted node stays visible but fades: the rock did not leave, it is spent.
+		_body.modulate.a = 1.0 if Gathering.is_ready(node_id, reset_days) else 0.36
 	queue_redraw()
 
 
 func _draw() -> void:
 	var ready := Gathering.is_ready(node_id, reset_days)
-	var alpha := 1.0 if ready else 0.36
-	match resource_kind:
-		"ore":
-			_draw_ore(alpha)
-		"bamboo":
-			_draw_bamboo(alpha)
-		_:
-			_draw_herb(alpha)
 	if ready:
 		var glint_alpha := 0.35 + (sin(_phase * 2.0) + 1.0) * 0.18
 		draw_circle(Vector2(11, -15), 1.5, Color(1.0, 0.9, 0.48, glint_alpha))
@@ -102,49 +146,6 @@ func _draw() -> void:
 		_draw_tool_badge(Inv.has(required_tool_id))
 	if _burst_time > 0.0:
 		_draw_gather_burst()
-
-
-func _draw_herb(alpha: float) -> void:
-	var dark := Color(0.18, 0.42, 0.24, alpha)
-	var leaf := Color(0.35, 0.68, 0.35, alpha)
-	var light := Color(0.55, 0.82, 0.44, alpha)
-	_draw_leaf_ellipse(Vector2(-6, -5), Vector2(5, 3), leaf)
-	_draw_leaf_ellipse(Vector2(6, -6), Vector2(5, 3), light)
-	_draw_leaf_ellipse(Vector2(0, -12), Vector2(4, 6), leaf)
-	for x in [-7.0, 0.0, 7.0]:
-		draw_line(Vector2(x, 1), Vector2(x * 0.55, -10), dark, 2.0)
-	draw_rect(Rect2(-12, 0, 24, 3), Color(0.24, 0.36, 0.19, alpha))
-
-
-func _draw_ore(alpha: float) -> void:
-	var shadow := Color(0.16, 0.18, 0.2, alpha)
-	var stone := Color(0.42, 0.46, 0.5, alpha)
-	var face := Color(0.58, 0.63, 0.67, alpha)
-	var copper := Color(0.78, 0.45, 0.25, alpha)
-	draw_colored_polygon(PackedVector2Array([
-		Vector2(-15, 2), Vector2(-11, -9), Vector2(-2, -14),
-		Vector2(7, -11), Vector2(15, -1), Vector2(10, 5), Vector2(-9, 6)]), shadow)
-	draw_colored_polygon(PackedVector2Array([
-		Vector2(-11, 0), Vector2(-8, -8), Vector2(-1, -11),
-		Vector2(6, -8), Vector2(11, -1), Vector2(7, 2), Vector2(-7, 3)]), stone)
-	draw_colored_polygon(PackedVector2Array([
-		Vector2(-8, -8), Vector2(-1, -11), Vector2(1, -5), Vector2(-4, -1)]), face)
-	for fleck in [Vector2(-5, -5), Vector2(4, -4), Vector2(7, 0)]:
-		draw_circle(fleck, 1.7, copper)
-
-
-func _draw_bamboo(alpha: float) -> void:
-	var dark := Color(0.16, 0.38, 0.2, alpha)
-	var stalk := Color(0.42, 0.68, 0.3, alpha)
-	var light := Color(0.64, 0.82, 0.34, alpha)
-	for x in [-7.0, 0.0, 7.0]:
-		var height := 24.0 - absf(x) * 0.45
-		draw_rect(Rect2(x - 2, -height, 4, height + 3), stalk if x != 0 else light)
-		for y in [-18.0, -11.0, -4.0]:
-			draw_line(Vector2(x - 2, y), Vector2(x + 2, y), dark, 1.0)
-		draw_colored_polygon(PackedVector2Array([
-			Vector2(x, -height + 4), Vector2(x + 8, -height), Vector2(x + 3, -height + 7)]), dark)
-	draw_rect(Rect2(-12, 1, 24, 3), Color(0.22, 0.34, 0.16, alpha))
 
 
 func _draw_tool_badge(owned: bool) -> void:
@@ -210,11 +211,3 @@ func _resource_feedback_color() -> Color:
 		"ore": return Color(0.96, 0.58, 0.3)
 		"bamboo": return Color(0.7, 0.9, 0.38)
 		_: return Color(0.5, 0.92, 0.52)
-
-
-func _draw_leaf_ellipse(center: Vector2, radius: Vector2, color: Color) -> void:
-	var points := PackedVector2Array()
-	for i in 16:
-		var angle := TAU * float(i) / 16.0
-		points.append(center + Vector2(cos(angle) * radius.x, sin(angle) * radius.y))
-	draw_colored_polygon(points, color)

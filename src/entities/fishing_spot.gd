@@ -1,6 +1,16 @@
 extends Area2D
-## One authored casting destination in visible water. Sparse code-drawn ripples
-## identify the interaction without stamping a row of resource icons on the pond.
+## One authored casting destination in visible water.
+##
+## The ripple used to be drawn with `draw_arc` — coloured primitives rather than art,
+## which read as a placeholder next to the tiled pond around it. It is now the Ninja
+## Adventure water-ripple animation (CC0, the same pack as the player and enemies), so
+## the casting spot is made of the world's own art. Only the *state* is still drawn in
+## code: a spot on cooldown dims, because that is information, not decoration.
+
+## Ninja Adventure `Backgrounds/Animated/Water Ripples` — 4 frames of 16px on one row.
+const RIPPLE_SHEET := preload("res://assets/tilesets/water_ripple.png")
+const RIPPLE_FRAMES := 4
+const RIPPLE_FPS := 6.0
 
 @export var site_id := "valley_pond"
 @export var display_name := "Village Pond"
@@ -10,21 +20,47 @@ extends Area2D
 @export var seasons: Array[String] = ["spring", "summer", "autumn"]
 
 var _phase := 0.0
+var _ripple: Sprite2D
 
 
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	_build_ripple()
 	Fishing.register_site(site_id, display_name, cooldown_seconds, seasons)
 	Bus.fishing_changed.connect(func(changed_id):
 		if changed_id == site_id:
-			queue_redraw())
-	queue_redraw()
+			_refresh())
+	_refresh()
 
 
 func _process(delta: float) -> void:
-	_phase = fmod(_phase + delta, TAU)
-	queue_redraw()
+	_phase = fmod(_phase + delta * RIPPLE_FPS, float(RIPPLE_FRAMES))
+	if _ripple != null:
+		var frame := int(_phase)
+		(_ripple.texture as AtlasTexture).region = Rect2(frame * 16, 0, 16, 16)
+
+
+## Sits flat on the water rather than standing on it, so no feet offset and no Y-sort
+## fight with the player casting from the bank.
+func _build_ripple() -> void:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = RIPPLE_SHEET
+	atlas.region = Rect2(0, 0, 16, 16)
+	atlas.filter_clip = true
+	_ripple = Sprite2D.new()
+	_ripple.name = "Ripple"
+	_ripple.texture = atlas
+	_ripple.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(_ripple)
+
+
+## A spot still on cooldown is faded: the art says "water", the alpha says "not yet".
+func _refresh() -> void:
+	if _ripple == null:
+		return
+	var ready := Fishing.remaining_seconds(site_id, cooldown_seconds) <= 0
+	_ripple.modulate.a = 1.0 if ready else 0.4
 
 
 func interact(_player: Node = null) -> void:
@@ -44,15 +80,3 @@ func interaction_label() -> String:
 	return "Fish at %s" % display_name
 
 
-func _draw() -> void:
-	var fade := 0.35 + (sin(_phase * 1.4) + 1.0) * 0.18
-	var ripple := Color(0.63, 0.86, 0.96, fade)
-	for radius in [7.0, 12.0, 17.0]:
-		draw_arc(Vector2.ZERO, radius, PI * 0.12, PI * 0.88, 14, ripple, 1.0)
-		draw_arc(Vector2.ZERO, radius, PI * 1.12, PI * 1.88, 14, ripple, 1.0)
-	var fish_color := Color(0.35, 0.72, 0.82, 0.78)
-	var fish_y := sin(_phase) * 2.0
-	draw_circle(Vector2(1, fish_y), 3.0, fish_color)
-	draw_colored_polygon(PackedVector2Array([
-		Vector2(-2, fish_y), Vector2(-7, fish_y - 3), Vector2(-7, fish_y + 3)]), fish_color)
-	draw_circle(Vector2(2.2, fish_y - 0.8), 0.6, Color.WHITE)

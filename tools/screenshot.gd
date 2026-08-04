@@ -62,6 +62,16 @@ func _run() -> void:
 		camera.limit_right = 100000
 		camera.limit_bottom = 100000
 
+	# The daily briefing opens over the middle of the screen on load, so every framed
+	# capture of the village came back with the thing being inspected behind a panel.
+	# Dismiss it the same way the player would rather than hiding the whole UI layer,
+	# which would also take the HUD a screenshot is often meant to show.
+	for node in root.find_children("*", "CanvasLayer", true, false):
+		if node.has_method("_close") and node.get_script() != null \
+				and String(node.get_script().resource_path).ends_with("welcome_back_panel.gd"):
+			node.call("_close")
+	await process_frame
+
 	# Let physics settle and animations reach a real frame before capturing.
 	for i in 25:
 		await process_frame

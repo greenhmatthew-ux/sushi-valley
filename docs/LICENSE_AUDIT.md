@@ -17,7 +17,8 @@ doing that.
 | --- | --- | --- |
 | Ninja Adventure - Asset Pack | CC0 1.0 | In use for art and six verified music tracks. No restrictions. |
 | Serene Village Revamped (LimeZu) | Owner-confirmed commercial, no license file in the pack | In use. Re-confirm before commercial release. |
-| Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | **Removed 2026-07.** No current runtime references remain. |
+| Sprout Lands - Sprites - Basic pack (Cup Nooble) | **Non-commercial only** per the pack's own `read_me.txt`; no AI-training use; credit required | **Reimported 2026-08-04** for `assets/tilesets/tilled_dirt.png` (farm plot soil), by project decision (see `CLAUDE.md` -> Licensing). Non-commercial terms unchanged and unresolved; recorded for accuracy, not as a gate. |
+| Farm RPG FREE 16x16 - Tiny Asset Pack | **Unstated in the pack** | In use 2026-08-04 for `assets/props/crop_stages.png` (four crops x five growth stages on the farm plots). No license file ships with the pack; recorded as unknown. |
 | Kyrise's 16x16 RPG Icon Pack V1.3 | CC BY 4.0 | In use (item icons). Attribution required. |
 | Kanji alive pronunciation audio | CC BY 4.0 | In use. 366 unmodified human-recorded Ogg clips mapped to 459 cards; attribution required. |
 | Imported Anki deck audio | **Unstated by every source deck** | In use by project decision (see `CLAUDE.md` → Licensing). 1,087 clips voicing 1,365 cards, lifted from the `.apkg` files the cards came from and matched by Anki note id. Believed to originate from published courses (Nihongo Fun & Easy, JapanesePod101); no permission granted or verified. Recorded here for accuracy, not as a gate. |

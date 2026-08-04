@@ -1,20 +1,56 @@
 extends Area2D
 ## One visible, saved crop plot. Interaction stays context-first: empty plots
 ## open the seed picker, dry crops water, and mature crops harvest.
+##
+## Soil and crops used to be `draw_rect`/`draw_circle` primitives: a brown bar with a
+## green blob on it, which is what a placeholder looks like. Both are now real 16px
+## farm art, one tile per plot on the tile grid, so a field reads as tilled ground with
+## a recognisable plant growing out of it instead of coloured boxes.
+##
+## Watering is a tint on the soil rather than a second sprite. The sheet has no authored
+## wet variant, and darkening damp earth is what wet earth actually does — this is a
+## state cue on real art, not art invented in code.
 
 @export var plot_id := "valley_plot_1"
 
-const SOIL := Color("#8a5d3d")
-const WET_SOIL := Color("#654331")
-const BORDER := Color("#5c4433")
-const WATER := Color("#81d4fa")
-const LEAF := Color("#66bb6a")
-const LEAF_LIGHT := Color("#9be7a3")
+## Sprout Lands tilled dirt, tile (0,5): the sheet's solid fill. Plots are laid on the
+## 16px grid one beside another, so four of them read as a single worked field rather
+## than four separate spots — which is what the sheet's isolated single-tile patch gave,
+## and at plot spacing it looked like scattered brown dots on the grass.
+const SOIL_SHEET := preload("res://assets/tilesets/tilled_dirt.png")
+## Tile (1,5) rather than the plain fill beside it: it carries the sheet's clod texture,
+## and four plain tiles together read as one flat painted rectangle.
+const SOIL_REGION := Rect2(16, 80, 16, 16)
+const SOIL_DRY := Color(1, 1, 1, 1)
+## Damp earth stays brown. An even grey multiply desaturated it to concrete, which is
+## the one thing wet soil never looks like.
+const SOIL_WET := Color(0.74, 0.63, 0.55, 1)
+
+## Farm RPG "Spring Crops": each crop is a row, columns 1..5 are its growth stages.
+## The game has four stages, so the four most distinct columns are used and the mature
+## column is always last — a plot that looks finished must be harvestable.
+const CROP_SHEET := preload("res://assets/props/crop_stages.png")
+const CROP_STAGE_COLUMNS := [1, 2, 4, 5]
+## Chosen by silhouette, since the sheet's crops are not the valley's crops: stalks for
+## rice, a fruiting vine for cucumber, a low earthy tuber for mushroom, leaf clusters
+## for herb. One sheet keeps the field coherent.
+const CROP_ROWS := {
+	"rice": 3,
+	"cucumber": 1,
+	"mushroom": 5,
+	"herb": 7,
+}
+const CROP_FALLBACK_ROW := 5
+
+
+var _soil: Sprite2D
+var _crop: Sprite2D
 
 
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	_build_sprites()
 	Farm.register_plot(plot_id)
 	Bus.farm_changed.connect(_refresh)
 	_refresh()
@@ -59,45 +95,41 @@ func interaction_label() -> String:
 	return "Check %s" % name
 
 
+## Soil is flat ground, so it takes no feet offset; the crop stands on that soil and
+## does, which keeps a tall mature plant Y-sorting against the player like any prop.
+func _build_sprites() -> void:
+	_soil = _make_sprite("Soil", SOIL_SHEET, SOIL_REGION, Vector2.ZERO)
+	_crop = _make_sprite("Crop", CROP_SHEET, Rect2(0, 0, 16, 16), Vector2(0, -8))
+	_crop.visible = false
+
+
+func _make_sprite(sprite_name: String, sheet: Texture2D, region: Rect2,
+		offset: Vector2) -> Sprite2D:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = sheet
+	atlas.region = region
+	atlas.filter_clip = true
+	var sprite := Sprite2D.new()
+	sprite.name = sprite_name
+	sprite.texture = atlas
+	sprite.offset = offset
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(sprite)
+	return sprite
+
+
 func _refresh() -> void:
-	queue_redraw()
-
-
-func _draw() -> void:
+	if _soil == null:
+		return
 	var state := Farm.plot(plot_id)
 	var watered := bool(state.get("watered", false)) or WeatherSystem.is_precipitation()
-	draw_rect(Rect2(-13, -6, 26, 12), BORDER)
-	draw_rect(Rect2(-11, -5, 22, 10), WET_SOIL if watered else SOIL)
-	draw_line(Vector2(-8, -2), Vector2(8, -2), Color(BORDER, 0.8), 1.0)
-	draw_line(Vector2(-8, 2), Vector2(8, 2), Color(BORDER, 0.8), 1.0)
-	if watered:
-		draw_rect(Rect2(-9, 4, 18, 2), WATER)
+	_soil.modulate = SOIL_WET if watered else SOIL_DRY
+
 	var crop_id := String(state.get("cropId", ""))
-	if crop_id.is_empty():
+	_crop.visible = not crop_id.is_empty()
+	if not _crop.visible:
 		return
-	_draw_crop(crop_id, Farm.stage(plot_id))
-
-
-func _draw_crop(crop_id: String, stage: int) -> void:
-	var height := 5 if stage <= 1 else (9 if stage == 2 else 14)
-	match crop_id:
-		"rice":
-			for x in [-5, 0, 5]:
-				draw_rect(Rect2(x - 1, -height - 3, 2, height), LEAF)
-				if stage == 3:
-					draw_rect(Rect2(x - 1, -height - 4, 3, 3), Color("#ffd54f"))
-		"cucumber":
-			draw_circle(Vector2(0, -6), float(height) * 0.45, LEAF)
-			if stage == 3:
-				draw_rect(Rect2(2, -6, 8, 4), LEAF_LIGHT)
-		"mushroom":
-			draw_rect(Rect2(-2, -height, 4, height - 3), Color("#d7ccc8"))
-			draw_circle(Vector2(0, -height), float(height) * 0.42, Color("#8d6e63"))
-		"herb":
-			var radius := 2.0 if stage <= 1 else (4.0 if stage == 2 else 6.0)
-			for offset in [Vector2(-4, -5), Vector2(4, -5), Vector2(0, -9)]:
-				draw_circle(offset, radius, LEAF)
-			draw_circle(Vector2(0, -6), radius * 0.45, LEAF_LIGHT)
-		_:
-			draw_rect(Rect2(-1, -height, 2, height), LEAF)
-			draw_circle(Vector2(0, -height), 3.0, LEAF_LIGHT)
+	var row: int = int(CROP_ROWS.get(crop_id, CROP_FALLBACK_ROW))
+	var stage := clampi(Farm.stage(plot_id), 0, CROP_STAGE_COLUMNS.size() - 1)
+	var column: int = CROP_STAGE_COLUMNS[stage]
+	(_crop.texture as AtlasTexture).region = Rect2(column * 16, row * 16, 16, 16)

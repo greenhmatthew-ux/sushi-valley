@@ -38,12 +38,26 @@ verified against the running scenes — not an aspirational or inherited list.
   `fortress` remain unwired and
   provenance-unverified. Verify or replace each before rendering it in the Skills UI.
 
+## Farm and world-object art (2026-08-04)
+
+The farm plots, fishing spots and resource nodes were drawn with coloured `draw_rect` /
+`draw_circle` primitives and read as placeholders. They now use real 16px art:
+
+- **Ninja Adventure** (CC0) — `ninja_nature.png` (resource node rocks and plants) and
+  `water_ripple.png` (fishing spots). The ripple's flat background colour was made
+  transparent on import so it overlays the pond instead of stamping a cyan tile.
+- **Farm RPG FREE 16x16 - Tiny Asset Pack** — `crop_stages.png`, four crops with five
+  growth stages. No license file ships with the pack; terms are unstated.
+- **Sprout Lands - Sprites - Basic pack** (Cup Nooble) — `tilled_dirt.png` for plot soil.
+  Reimported after the 2026-07 removal below, by project decision. Its non-commercial
+  terms are unchanged; see `docs/LICENSE_AUDIT.md`.
+
 ## Removed for licensing (2026-07)
 
 - **Sprout Lands - Sprites - Basic pack** was removed from runtime use after its bundled
-  `read_me.txt` proved to be non-commercial-only. Serene Village now supplies outdoor meadow
-  details, while Ninja Adventure supplies the house interior and door. No Sprout texture is
-  referenced by a current `.tscn` or `.gd` file.
+  `read_me.txt` proved to be non-commercial-only. Serene Village supplied outdoor meadow
+  details and Ninja Adventure the house interior and door. **Partly reverted 2026-08-04** —
+  see the farm art section above; the pack is again referenced, deliberately.
 - **Mana Seed RPG Starter Pack** (`home_interiors_timber_roof.png`) was used for one
   interior room's floor/wall tiles. Its license explicitly states the art **must not be used
   alongside any generative AI content** — including AI-assisted code — and asks that the
