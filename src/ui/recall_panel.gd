@@ -48,12 +48,62 @@ const LISTENING_CHANCE := 0.35
 var _listening := false
 var _rng := RandomNumberGenerator.new()
 
+## Vertical density rungs, roomiest first. Rung 0 is the authored look.
+##
+## This is the tightest panel in the game: its reveal state stacks a heading row,
+## furigana, the prompt, a hint, the feedback line, two answer rows and Continue.
+## Every rung below 0 spends the cheapest-looking pixels first — panel padding and
+## row gaps go before the prompt font, because the Japanese has to stay clearly
+## larger than the body text around it (UI_UX_GUIDE section 16). The prompt floors
+## at 30, the guide's FONT_JAPANESE minimum; it is never taken down to body size
+## just to make the arithmetic work, which is why the last two rungs hold it there
+## and buy their pixels from spacing and width alone.
+##
+## `choice` is only the answer buttons' *minimum* height. Their real height still
+## comes from UiTheme.wrapped_height, so no answer is ever clipped or scrolled —
+## that is the one thing this panel exists to guarantee. 34 still clears the 24px
+## minimum focus target.
+##
+## `width` is the other half of the trade, and the cheaper half. The canvas is 640
+## wide and 360 tall: this panel has never had a width problem, only a height one,
+## and every extra pixel of width is a line the prompt, the feedback, and the two
+## answer columns each do not have to wrap onto. So the lower rungs spend width to
+## buy height back. Rung 0 is 470 — what the panel has always measured, since the
+## grid's two 200px columns plus 24px padding pushed it past its authored 460.
+const DENSITY: Array[Dictionary] = [
+	{"prompt": 40, "sep": 10, "pad": 24, "choice": 42.0, "grid": 10, "head": 26, "width": 470.0},
+	{"prompt": 38, "sep": 8, "pad": 18, "choice": 40.0, "grid": 8, "head": 26, "width": 470.0},
+	{"prompt": 36, "sep": 6, "pad": 14, "choice": 40.0, "grid": 8, "head": 26, "width": 470.0},
+	{"prompt": 34, "sep": 6, "pad": 12, "choice": 38.0, "grid": 6, "head": 24, "width": 520.0},
+	{"prompt": 32, "sep": 5, "pad": 10, "choice": 36.0, "grid": 5, "head": 22, "width": 545.0},
+	{"prompt": 30, "sep": 4, "pad": 8, "choice": 34.0, "grid": 4, "head": 22, "width": 570.0},
+	{"prompt": 30, "sep": 3, "pad": 6, "choice": 32.0, "grid": 3, "head": 22, "width": 620.0},
+]
+
+## Gap between the two answer columns. The columns never expand past their minimum,
+## so the width each answer wraps into is exact, not an estimate — see _choice_width.
+const CHOICE_GAP := 16.0
+## The border the panel stylebox draws on each of the four sides. It counts against
+## both budgets, so _content_height and _choice_width need it named.
+const PANEL_BORDER := 3.0
+## Breathing room kept between the panel and the edge of the canvas, so a wide rung
+## can never make the frame the thing that overflows sideways.
+const CANVAS_INSET := 8.0
+
 var _root: Control
-## Held so _apply_metrics can retune row spacing and padding when the scale changes.
+## Held so the density rungs can retune spacing, padding, and the frame check.
+var _panel: PanelContainer
 var _vbox: VBoxContainer
 var _margin: MarginContainer
-## Answer-row height for the current canvas; see _apply_metrics.
+## Current rung in DENSITY. Reset from the canvas on every render, then pushed
+## further by _fit_frame when the card in hand is taller than average.
+var _density := 0
+## Answer-row minimum height, and the exact width one answer wraps into, for the
+## current rung. Both are set by _set_density; see DENSITY.
 var _choice_height := 42.0
+var _choice_width := 200.0
+## The panel's width at the current rung, after the canvas clamp.
+var _panel_width := 470.0
 var _heading: Label
 var _furigana: Label
 var _question: Label
@@ -108,6 +158,9 @@ func _run_next() -> void:
 
 
 func _render(prompt: Dictionary) -> void:
+	# Back to the rung this canvas starts at; the card about to be laid out gets to
+	# push it down again from there, rather than inheriting the last card's squeeze.
+	_apply_metrics()
 	var is_session := _total > 1
 	if is_session:
 		_heading.text = "Focus session — %d/%d%s" % [
@@ -116,8 +169,8 @@ func _render(prompt: Dictionary) -> void:
 		_heading.text = "Quick recall" if prompt["mode"] == "due" else "Notebook practice"
 	_heading.add_theme_color_override("font_color", COL_HEADING)
 
-	_hint.text = ""
-	_feedback.text = ""
+	_set_line(_hint, "")
+	_set_line(_feedback, "")
 	_continue_btn.hide()
 	var card_id := String(prompt["card"].get("id", ""))
 	var has_audio := Audio.has_pronunciation(card_id)
@@ -149,19 +202,23 @@ func _render(prompt: Dictionary) -> void:
 	_furigana.text = reading if show_reading else ""
 	_furigana.visible = show_reading
 	if _listening:
-		_hint.text = "Which word did you hear?"
+		_set_line(_hint, "Which word did you hear?")
 		_hint.add_theme_color_override("font_color", COL_HINT)
 
 	# Adaptive scaffolding: struggling players get more context up front.
 	var scaffold := _scaffold_level()
 	if scaffold == 2 and prompt.get("reading", "") != "" and prompt.get("meaning", "") != "":
-		_hint.text = "%s — %s" % [prompt["reading"], prompt["meaning"]]
+		_set_line(_hint, "%s — %s" % [prompt["reading"], prompt["meaning"]])
 		_hint.add_theme_color_override("font_color", COL_HINT_STRONG)
 	elif scaffold >= 1 and prompt.get("reading", "") != "":
-		_hint.text = String(prompt["reading"])
+		_set_line(_hint, String(prompt["reading"]))
 		_hint.add_theme_color_override("font_color", COL_HINT)
 
+	# Removed as well as freed: a queue_free'd child stays listed for the rest of the
+	# frame, and the height measurement below would count the old card's answers on
+	# top of the new one's.
 	for child in _choices_box.get_children():
+		_choices_box.remove_child(child)
 		child.queue_free()
 	var first_choice: Button = null
 	for choice in prompt["choices"]:
@@ -173,6 +230,7 @@ func _render(prompt: Dictionary) -> void:
 	# d-pad can move between choices right away. Deferred so it runs after _root.show().
 	if first_choice != null:
 		first_choice.grab_focus.call_deferred()
+	_fit_frame()
 
 
 func _make_choice_button(choice: String) -> Button:
@@ -182,7 +240,7 @@ func _make_choice_button(choice: String) -> Button:
 	# half read. Long choices wrap and step down a size instead.
 	btn.clip_text = false
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	btn.custom_minimum_size = Vector2(200, _choice_height)
+	btn.custom_minimum_size = Vector2(_choice_width, _choice_height)
 	# Focusable so arrows / d-pad move between answers and ui_accept selects — the panel
 	# is no longer mouse-only (the project requires keyboard AND controller to work).
 	btn.focus_mode = Control.FOCUS_ALL
@@ -190,9 +248,10 @@ func _make_choice_button(choice: String) -> Button:
 	btn.add_theme_stylebox_override("hover", _button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	btn.add_theme_stylebox_override("pressed", _button_style(COL_BTN, COL_BORDER))
 	btn.add_theme_font_size_override("font_size", UiTheme.fit_font_size(choice, 18))
-	# 42, down from 46: the furigana row above needs the height, and the button is
-	# still taller than the text it holds — wrapped_height keeps long answers whole.
-	btn.custom_minimum_size.y = maxf(_choice_height, UiTheme.wrapped_height(btn, choice, 200.0))
+	# The rung sets a floor; the text sets the real height. wrapped_height is what
+	# keeps a two-line answer whole no matter how dense the panel has had to get.
+	btn.custom_minimum_size.y = maxf(
+		_choice_height, UiTheme.wrapped_height(btn, choice, _choice_width))
 	btn.pressed.connect(_on_choice.bind(choice, btn))
 	return btn
 
@@ -233,23 +292,26 @@ func _on_choice(choice: String, btn: Button) -> void:
 	var meaning := String(card.get("meaning", ""))
 	if correct:
 		_feedback.add_theme_color_override("font_color", COL_GOOD)
-		_feedback.text = "Correct!   %s = %s" % [card.get("prompt", ""), answer_txt]
+		_set_line(_feedback, "Correct!   %s = %s" % [card.get("prompt", ""), answer_txt])
 	else:
 		_feedback.add_theme_color_override("font_color", COL_HINT_STRONG)
-		_feedback.text = "%s = %s%s" % [card.get("prompt", ""), answer_txt,
-			("   (%s)" % meaning) if meaning != "" else ""]
+		_set_line(_feedback, "%s = %s%s" % [card.get("prompt", ""), answer_txt,
+			("   (%s)" % meaning) if meaning != "" else ""])
 	# Imported decks glue their usage notes onto the end of the answer, where they
 	# are too long to sit on a rune button. Normalization moves them to `note`, and
 	# the reveal is the one moment the player has room to read them.
 	var note := String(card.get("note", ""))
 	if not note.is_empty():
-		_feedback.text += "\n%s" % note
+		_set_line(_feedback, _feedback.text + "\n%s" % note)
 
 	# Replay the card's sourced recording after any answer, win or miss.
 	Audio.play_pronunciation(String(card.get("id", "")))
 
 	_continue_btn.show()
 	_continue_btn.grab_focus()
+	# The reveal is the tall state: Continue and the feedback line both arrive at
+	# once, and on a listening or scaffolded card the hint row is still standing.
+	_fit_frame()
 
 
 func _on_continue() -> void:
@@ -330,10 +392,11 @@ func _build_scaffold() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.add_child(dim)
 
-	var panel := PanelContainer.new()
+	_panel = PanelContainer.new()
+	var panel := _panel
 	panel.add_theme_stylebox_override("panel", _panel_style())
 	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.custom_minimum_size = Vector2(460, 0)
+	panel.custom_minimum_size = Vector2(DENSITY[0]["width"], 0)   # rung sets the real width
 	_root.add_child(panel)
 	# Center it.
 	panel.anchor_left = 0.5; panel.anchor_top = 0.5
@@ -380,8 +443,9 @@ func _build_scaffold() -> void:
 	_furigana.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(_furigana)
 
-	# Size set by _apply_metrics: 40 at the full canvas (48 would crowd the furigana
-	# row), stepped down when UI scale shrinks the canvas.
+	# Size comes from the density rung, never from here: see DENSITY. 40 is the
+	# roomiest rung (48 would crowd the furigana row) and only the two largest
+	# canvases actually get it.
 	_question = _label(40, Color.WHITE)
 	_question.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_question.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -398,7 +462,7 @@ func _build_scaffold() -> void:
 
 	_choices_box = GridContainer.new()
 	_choices_box.columns = 2
-	_choices_box.add_theme_constant_override("h_separation", 16)
+	_choices_box.add_theme_constant_override("h_separation", int(CHOICE_GAP))
 	_choices_box.add_theme_constant_override("v_separation", 10)
 	vbox.add_child(_choices_box)
 
@@ -412,39 +476,144 @@ func _build_scaffold() -> void:
 	_apply_metrics()
 
 
-## This panel is the tightest in the game: at 100% its reveal state (furigana +
-## prompt + hint + feedback + two answer rows + Continue) fills a 360px canvas
-## almost exactly. Raising the UI scale shrinks that canvas, so the prompt — the
-## tallest single element — steps down with it, and the row gaps close by two.
-## Nothing else gives: shrinking the answer buttons instead would hide the very
-## text the player is being asked to choose between.
-##
-## At the full canvas this restores the authored 40px prompt and 10px gaps
-## exactly, so the default look is untouched.
+## Reset to the rung this canvas starts at, then let the card in hand push it
+## further. Called on build and whenever the UI scale changes the canvas.
 func _apply_metrics() -> void:
-	if _question == null or _vbox == null or _margin == null:
+	if _panel == null or _question == null or _vbox == null or _margin == null:
 		return
-	var height := UiTheme.logical_size().y
-	var prompt_size := 40
-	var separation := 10
-	var pad := 24
-	# Two answer rows, so every pixel here counts double. 36 still clears the 24px
-	# minimum touch/-focus target and the text inside is measured, never clipped.
-	_choice_height = 42.0
-	if height < 310.0:
-		prompt_size = 30
-		separation = 6
-		pad = 14
-		_choice_height = 36.0
-	elif height < 340.0:
-		prompt_size = 34
-		separation = 8
-		pad = 18
-		_choice_height = 40.0
-	_question.add_theme_font_size_override("font_size", prompt_size)
-	_vbox.add_theme_constant_override("separation", separation)
+	_set_density(_base_density(UiTheme.logical_size().y))
+	_fit_frame()
+
+
+## The rung a canvas this tall starts at, sized so an *ordinary* card fits with room
+## to spare — _fit_frame only has to earn back the last few pixels on the long ones.
+## The bands are set by the shipped UI scales, whose canvases are 450 (80%), 400
+## (90%), 360 (100%) and 327 (110%). Bracketed numbers are the measured worst-case
+## reveal slack over a 30-card sweep at that scale; before this, the same sweep was
+## 43px *over* the canvas at 100% and 41px over at 110%.
+static func _base_density(height: float) -> int:
+	if height >= 430.0:
+		return 0   # 450: the authored look, untouched  [77px]
+	if height >= 380.0:
+		return 1   # 400  [46px]
+	if height >= 344.0:
+		return 2   # 360, the default  [37px]
+	if height >= 300.0:
+		# The smallest canvas deliberately skips rung 3: starting a rung lower is what
+		# keeps its headroom in the same range as every other scale, rather than
+		# leaving it to just scrape in. A layout that only just fits is a layout the
+		# next imported deck breaks. Rung 3 is still there for _fit_frame to land on.
+		return 4   # [31px]
+	return DENSITY.size() - 1
+
+
+func _set_density(rung: int) -> void:
+	_density = clampi(rung, 0, DENSITY.size() - 1)
+	var d: Dictionary = DENSITY[_density]
+	var canvas := UiTheme.logical_size()
+	# A rung can ask for more width than the canvas has once the UI scale shrinks it.
+	_panel_width = minf(float(d["width"]), canvas.x - 2.0 * CANVAS_INSET)
+	_choice_width = (_inner_width() - CHOICE_GAP) * 0.5
+
+	_panel.custom_minimum_size.x = _panel_width
+	_question.add_theme_font_size_override("font_size", int(d["prompt"]))
+	_vbox.add_theme_constant_override("separation", int(d["sep"]))
+	_choices_box.add_theme_constant_override("v_separation", int(d["grid"]))
+	_listen_btn.custom_minimum_size.y = float(d["head"])
+	_choice_height = float(d["choice"])
 	for side in ["left", "right", "top", "bottom"]:
-		_margin.add_theme_constant_override("margin_" + side, pad)
+		_margin.add_theme_constant_override("margin_" + side, int(d["pad"]))
+	# Answers already on screen are re-measured against the new column width, then
+	# floored. The floor only ever moves down; the measured text height is what
+	# actually holds, so no rung can cut an answer short.
+	for btn in _choice_buttons():
+		btn.custom_minimum_size = Vector2(_choice_width, maxf(
+			_choice_height, UiTheme.wrapped_height(btn, btn.text, _choice_width)))
+
+
+## Width inside the panel's padding and border — what a full-width row wraps into.
+func _inner_width() -> float:
+	return _panel_width - 2.0 * (float(DENSITY[_density]["pad"]) + PANEL_BORDER)
+
+
+## Last resort, run once the real card is in the panel. Roughly one eligible card
+## in a hundred carries a prompt that wraps to two lines, and a hundred more carry
+## an imported usage note that wraps the feedback line — no single fixed rung can
+## be sized for those *and* for the ordinary card without making every card look
+## cramped. So the ordinary card gets the roomy rung its canvas allows, and this
+## steps down until the frame, gold border included, is inside the canvas.
+##
+## Only ever steps down, never back up: the panel must not grow its prompt between
+## the question and the reveal of the same card.
+func _fit_frame() -> void:
+	if _panel == null:
+		return
+	var limit := UiTheme.logical_size().y
+	while _density < DENSITY.size() - 1 and _content_height() > limit:
+		_set_density(_density + 1)
+
+
+## How tall the frame needs to be for what is in the panel right now.
+##
+## Measured from the fonts, deliberately, rather than read back off the containers:
+## Godot settles container layout a frame later, and an autowrap control that has
+## not been laid out yet measures its text against a zero width — one character per
+## line. Asked in the same call that set the text, the PanelContainer reported 446px
+## for a panel that settled to 214px one frame on. _fit_frame believed it and
+## dropped every card to the tightest rung. Everything summed here is either font
+## maths or a leaf control's own minimum, and neither needs a layout pass to be true.
+func _content_height() -> float:
+	var d: Dictionary = DENSITY[_density]
+	var edge := float(d["pad"]) + PANEL_BORDER
+	var inner := _inner_width()
+
+	var rows: Array[float] = []
+	rows.append(maxf(_heading.get_combined_minimum_size().y,
+		_listen_btn.get_combined_minimum_size().y if _listen_btn.visible else 0.0))
+	for wrapping in [_furigana, _question, _feedback]:
+		if wrapping.visible:
+			rows.append(UiTheme.wrapped_height(wrapping, wrapping.text, inner))
+	if _hint.visible:
+		rows.append(_hint.get_combined_minimum_size().y)   # one line: never wraps
+	rows.append(_grid_height(float(d["grid"])))
+	if _continue_btn.visible:
+		rows.append(_continue_btn.get_combined_minimum_size().y)
+
+	var total := 2.0 * edge + float(d["sep"]) * float(rows.size() - 1)
+	for row in rows:
+		total += row
+	return total
+
+
+## Two columns, so each answer row is as tall as the taller of its two buttons.
+func _grid_height(gap: float) -> float:
+	var heights: Array[float] = []
+	var row := 0.0
+	var filled := 0
+	for btn in _choice_buttons():
+		row = maxf(row, btn.custom_minimum_size.y)
+		filled += 1
+		if filled % _choices_box.columns == 0:
+			heights.append(row)
+			row = 0.0
+	if row > 0.0:
+		heights.append(row)
+	var total := gap * maxf(0.0, float(heights.size() - 1))
+	for height in heights:
+		total += height
+	return total
+
+
+## The answers currently in the grid. Skips anything already freed: _render frees
+## the previous card's buttons, and a freed child is still listed for the rest of
+## the frame, which would double-count the grid.
+func _choice_buttons() -> Array[Button]:
+	var out: Array[Button] = []
+	for child in _choices_box.get_children():
+		var btn := child as Button
+		if btn != null and not btn.is_queued_for_deletion():
+			out.append(btn)
+	return out
 
 
 func _on_listen_pressed() -> void:
@@ -452,6 +621,17 @@ func _on_listen_pressed() -> void:
 		return
 	var card: Dictionary = _current.get("card", {})
 	Audio.play_pronunciation(String(card.get("id", "")))
+
+
+## Set a text row, and take it out of the layout when it has nothing to say.
+##
+## A blank Label still claims a full line of its font plus a row gap — 30px in the
+## reveal state, in a panel that was overflowing its canvas by 43. The hint row is
+## empty for most cards and the feedback row for the whole question state, so this
+## is the cheapest height in the panel: nothing visible changes.
+func _set_line(label: Label, text: String) -> void:
+	label.text = text
+	label.visible = not text.strip_edges().is_empty()
 
 
 func _label(size: int, color: Color) -> Label:

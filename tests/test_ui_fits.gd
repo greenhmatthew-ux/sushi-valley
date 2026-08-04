@@ -256,18 +256,18 @@ func _measure(control: Control, viewport: Rect2, clipped: Array[String],
 	# what a screenshot caught after UI scale shrank the canvas under a fixed-width
 	# tab row.
 	#
-	# WIDTH ONLY, deliberately. Adding this check also surfaced that the recall
-	# panel's reveal state has always been taller than the viewport (a 395px frame
-	# in 360px at 100%): its text stays on screen but the gold border is clipped
-	# top and bottom. That is a pre-existing layout bug, not something UI scale
-	# introduced, and fixing it means redesigning that panel's reveal state — its
-	# own slice. Checking height here would fail the build on it every run.
+	# Full rect, width AND height. This used to be width-only, because it also
+	# surfaced that the recall panel's reveal state had always been taller than the
+	# canvas (a 395px frame in 360px at 100%, 403 worst case): the text stayed on
+	# screen, so the only symptom was a gold border clipped off the top and bottom,
+	# and nobody noticed for months. recall_panel.gd now steps its own layout
+	# density down until the frame fits, and this check is what holds that — a
+	# clipped frame is a real defect, not an acceptable cost of a dense panel.
 	if control is PanelContainer and not _inside_scroll(control):
 		var frame := control.get_global_rect()
-		if frame.size.x > 0.0 \
-				and (frame.position.x < viewport.position.x - 1.0
-					or frame.end.x > viewport.end.x + 1.0):
-			outside.append("%s (frame width) %s" % [control.name, frame])
+		if frame.size.x > 0.0 and frame.size.y > 0.0 \
+				and not viewport.grow(1.0).encloses(frame):
+			outside.append("%s (frame) %s" % [control.name, frame])
 
 	var text := ""
 	if control is Label:
