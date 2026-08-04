@@ -197,8 +197,7 @@ func _build() -> void:
 	# bound as the player learns, and a content-sized panel would run off the viewport.
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.10; panel.anchor_right = 0.90
-	panel.anchor_top = 0.06; panel.anchor_bottom = 0.94
+	UiTheme.fit_modal_shell(panel, 0.15, 0.10)
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()

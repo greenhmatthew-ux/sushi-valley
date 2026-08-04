@@ -282,8 +282,9 @@ func _build_scaffold() -> void:
 	var panel := PanelContainer.new()
 	panel.name = "ShopShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.05; panel.anchor_top = 0.05
-	panel.anchor_right = 0.95; panel.anchor_bottom = 0.95
+	# The card grid needs a little more width than text-only modals, but no longer
+	# needs to consume 90% of both axes.
+	UiTheme.fit_modal_shell(panel, 0.10, 0.08)
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()

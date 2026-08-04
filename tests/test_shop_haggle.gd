@@ -24,6 +24,14 @@ var last_toast := ""
 var answer_mode := "correct"   # correct | wrong | cancel | nothing
 
 
+func _logical_ui_rect() -> Rect2:
+	var settings: Node = root.get_node("Settings")
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return Rect2(Vector2.ZERO, (base / maxf(settings.ui_scale, 0.1)).floor())
+
+
 func _initialize() -> void:
 	await process_frame
 	bus = root.get_node("Bus")
@@ -126,8 +134,8 @@ func _shop_shell_fits_the_game_viewport() -> void:
 	bus.shop_open.emit("mako_stall")
 	await process_frame
 	var shell: Control = shop.find_child("ShopShell", true, false)
-	check_true("shop shell fits the 640x360 viewport",
-		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
+	check_true("shop shell fits the scaled UI canvas",
+		_logical_ui_rect().encloses(shell.get_global_rect()))
 	var alias_icon := shop._icon_node("stone_soup") as TextureRect
 	check_eq("Shop resolves authored item icon aliases",
 		alias_icon.texture.resource_path, "res://assets/icons/items/mushroom_soup.png")

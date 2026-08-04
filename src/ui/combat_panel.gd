@@ -518,8 +518,10 @@ func _build() -> void:
 	var panel := PanelContainer.new()
 	panel.name = "CombatShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.14; panel.anchor_right = 0.86
-	panel.anchor_top = 0.04; panel.anchor_bottom = 0.96
+	# Combat used to cover 72%x92% of the screen. Its 2x2 answers lay out with
+	# more room at the comfortable scale now, so the shell can reveal more world
+	# without forcing the question back into the scroll region.
+	UiTheme.fit_modal_shell(panel, 0.17, 0.05)
 	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.add_child(panel)
 

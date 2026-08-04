@@ -5,6 +5,17 @@ extends SceneTree
 var failures: int = 0
 
 
+## Controls report positions in their unscaled CanvasLayer space. At 80% UI size
+## that canvas is 800x450, then the layer scales it back onto the 640x360 screen.
+## Bounds checks must use that authored canvas, not the raw viewport pixels.
+func _logical_ui_rect() -> Rect2:
+	var settings: Node = root.get_node("Settings")
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return Rect2(Vector2.ZERO, (base / maxf(settings.ui_scale, 0.1)).floor())
+
+
 func _initialize() -> void:
 	await process_frame
 	# Earlier suites deliberately exercise persistence in the same isolated APPDATA root.
@@ -37,8 +48,8 @@ func _initialize() -> void:
 		panel.find_child("CharacterTab", true, false) != null
 		and panel.find_child("SkillsTab", true, false) != null
 		and panel.find_child("BagTab", true, false) != null)
-	var viewport_rect := root.get_viewport().get_visible_rect()
-	check_true("menu shell stays inside the 640x360 viewport",
+	var viewport_rect := _logical_ui_rect()
+	check_true("menu shell stays inside the scaled UI canvas",
 		viewport_rect.encloses(shell.get_global_rect()))
 	var bag_hint: Label = panel.find_child("BagHint", true, false)
 	check_true("Bag help describes its mixed item actions",
@@ -397,6 +408,16 @@ func _initialize() -> void:
 	await process_frame
 
 	var settings: Node = root.get_node("Settings")
+	check_eq("legacy crowded UI sizes migrate to the comfortable default",
+		settings.call("_migrate_ui_scale", 1.1, 1), settings.UI_SCALE_DEFAULT)
+	check_eq("an explicitly compact legacy UI size is preserved",
+		settings.call("_migrate_ui_scale", 0.8, 1), 0.8)
+	check_eq("the current format keeps its largest accessibility size",
+		settings.call("_migrate_ui_scale", 1.0, settings.UI_SCALE_FORMAT), 1.0)
+	check_eq("UI size defaults to the measured comfortable step",
+		settings.UI_SCALE_DEFAULT, 0.8)
+	check_eq("UI size offers compact through large without the cramped 110% step",
+		settings.UI_SCALES, [0.7, 0.8, 0.9, 1.0])
 	# Settings live in the hub's System domain now. They used to have their own
 	# panel, which meant two places to look for the same four controls.
 	var hub := CanvasLayer.new()
@@ -410,7 +431,7 @@ func _initialize() -> void:
 	var hub_shell: Control = hub.find_child("MenuShell", true, false)
 	if hub_shell == null:
 		hub_shell = hub.get("_root") as Control
-	check_true("the system domain stays inside the 640x360 viewport",
+	check_true("the system domain stays inside the scaled UI canvas",
 		hub_shell != null and viewport_rect.encloses(hub_shell.get_global_rect()))
 	var music_slider := hub.find_child("MusicVolumeSlider", true, false) as HSlider
 	var voice_slider := hub.find_child("VoiceVolumeSlider", true, false) as HSlider

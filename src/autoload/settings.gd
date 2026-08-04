@@ -28,22 +28,18 @@ var zoom: float = ZOOM_DEFAULT:
 		save()
 
 ## UI scale. Deliberately separate from `zoom`: zoom moves the world camera and
-## must stay on integer-friendly steps for 16px art, while this only resizes UI.
-## Turning it up does not make panels bigger on screen — it makes their TEXT
-## bigger, so panels hold less. That is the accessibility trade the guide asks for.
+## must stay on integer-friendly steps for 16px art, while this resizes UI text,
+## controls, padding, and borders together.
 ##
-## The range stops at 110%, not the guide's 160%. The game lays UI out in a fixed
-## 640x360 canvas, and raising the scale divides that canvas by the same factor —
-## at 160% panels get 400x225, which the denser ones cannot hold.
-##
-## The recall panel used to be the binding constraint; its adaptive density ladder
-## now leaves real slack at every step here. What binds instead is CONTENT: a
-## handful of imported cards carry 700-900 character usage notes in the feedback
-## line, and no layout ladder absorbs those. Raising this ceiling means normalising
-## that deck text first, then re-measuring — not editing this number. Every step
-## listed here is swept by tests/test_ui_fits.gd on every run.
-const UI_SCALES: Array[float] = [0.8, 0.9, 1.0, 1.1]
-const UI_SCALE_DEFAULT := 1.0
+## The first version defaulted to 100% and offered 110%. The modal footprint did
+## not grow with those settings, so they packed larger controls into the same
+## shell: combat questions fell into a scroll region and every menu felt crowded.
+## 80% is the measured comfortable baseline on the authored 640x360 canvas; 70%
+## is the compact option and 100% remains available for players who need it.
+## Every listed step is swept by tests/test_ui_fits.gd on every run.
+const UI_SCALE_FORMAT := 2
+const UI_SCALES: Array[float] = [0.7, 0.8, 0.9, 1.0]
+const UI_SCALE_DEFAULT := 0.8
 
 var ui_scale: float = UI_SCALE_DEFAULT:
 	set(value):
@@ -187,14 +183,18 @@ func load_settings() -> void:
 	voice_volume = clampf(snappedf(
 		float(cfg.get_value("audio", "voice_volume", VOLUME_MAX)), VOLUME_STEP),
 		VOLUME_MIN, VOLUME_MAX)
-	ui_scale = _nearest_ui_scale(
-		float(cfg.get_value("display", "ui_scale", UI_SCALE_DEFAULT)))
+	var scale_format := int(cfg.get_value("display", "ui_scale_format", 1))
+	ui_scale = _migrate_ui_scale(
+		float(cfg.get_value("display", "ui_scale", UI_SCALE_DEFAULT)), scale_format)
+	if scale_format < UI_SCALE_FORMAT:
+		save()
 
 
 func save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("display", "zoom", zoom)
 	cfg.set_value("display", "ui_scale", ui_scale)
+	cfg.set_value("display", "ui_scale_format", UI_SCALE_FORMAT)
 	cfg.set_value("language", "show_english", translation_mode == TranslationMode.ALWAYS)
 	cfg.set_value("language", "translation_mode", translation_mode)
 	cfg.set_value("language", "furigana_mode", furigana_mode)
@@ -216,6 +216,15 @@ func _nearest_ui_scale(value: float) -> float:
 		if absf(step - value) < absf(best - value):
 			best = step
 	return best
+
+
+## UI scale format 1 kept every modal at the same large outer footprint while
+## enlarging its contents. Reset only its crowded 100/110% values to the new
+## measured default; preserve people who had already chosen 80/90% deliberately.
+func _migrate_ui_scale(value: float, format_version: int) -> float:
+	if format_version < UI_SCALE_FORMAT and value > 0.9:
+		return UI_SCALE_DEFAULT
+	return _nearest_ui_scale(value)
 
 
 ## Step the UI scale one notch through UI_SCALES. Returns false at either end, so

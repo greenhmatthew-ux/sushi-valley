@@ -1,8 +1,16 @@
 extends SceneTree
-## Combat action-bar UX at the base 640x360 viewport: an unarmed fresh player keeps
-## Basic Attack and the weapon-free starter skills without exposing unusable Strike.
+## Combat action-bar UX: an unarmed fresh player keeps Basic Attack and the
+## weapon-free starter skills without exposing unusable Strike.
 
 var failures := 0
+
+
+func _logical_ui_rect() -> Rect2:
+	var settings: Node = root.get_node("Settings")
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return Rect2(Vector2.ZERO, (base / maxf(settings.ui_scale, 0.1)).floor())
 
 
 func _initialize() -> void:
@@ -48,9 +56,9 @@ func _initialize() -> void:
 	var continue_btn: Button = panel.get("_continue_btn")
 	var flee: Button = panel.find_child("Flee", true, false)
 	check_true("combat opens", bool(panel.get("_active")))
-	var viewport_rect := root.get_viewport().get_visible_rect()
+	var viewport_rect := _logical_ui_rect()
 	var shell_rect := shell.get_global_rect()
-	check_true("combat shell stays inside the 640x360 viewport (%s)" % shell_rect,
+	check_true("combat shell stays inside the scaled UI canvas (%s)" % shell_rect,
 		viewport_rect.encloses(shell_rect))
 	# The reported cut-off: the green HP bar and turn buttons must be pinned below
 	# the scroll area, fully on screen — never scrolled below the fold.

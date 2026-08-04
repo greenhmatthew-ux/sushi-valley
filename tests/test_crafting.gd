@@ -11,6 +11,14 @@ var rice_recipe := {"id": "craft_rice_ball", "station": "kitchen", "levelReq": 1
 	"output": {"item": "rice_ball", "qty": 3}, "xp": 8}
 
 
+func _logical_ui_rect() -> Rect2:
+	var settings: Node = root.get_node("Settings")
+	var base := Vector2(
+		float(ProjectSettings.get_setting("display/window/size/viewport_width", 640)),
+		float(ProjectSettings.get_setting("display/window/size/viewport_height", 360)))
+	return Rect2(Vector2.ZERO, (base / maxf(settings.ui_scale, 0.1)).floor())
+
+
 func _initialize() -> void:
 	await process_frame
 	_progression_and_discovery()
@@ -238,8 +246,8 @@ func _panel_contract() -> void:
 	var shell: Control = panel.find_child("CraftingShell", true, false)
 	var list: Control = panel.find_child("RecipeList", true, false)
 	check_true("station interaction opens crafting", bool(panel.get("_open")))
-	check_true("crafting shell fits the 640x360 viewport",
-		root.get_viewport().get_visible_rect().encloses(shell.get_global_rect()))
+	check_true("crafting shell fits the scaled UI canvas",
+		_logical_ui_rect().encloses(shell.get_global_rect()))
 	check_eq("kitchen hides its three undiscovered recipes", list.get_child_count(), 24)
 	panel.call("_close")
 

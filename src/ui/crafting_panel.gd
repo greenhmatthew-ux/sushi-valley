@@ -159,8 +159,7 @@ func _build() -> void:
 	_root.add_child(dim)
 	var panel := PanelContainer.new()
 	panel.name = "CraftingShell"
-	panel.anchor_left = 0.08; panel.anchor_top = 0.06
-	panel.anchor_right = 0.92; panel.anchor_bottom = 0.94
+	UiTheme.fit_modal_shell(panel)
 	var shell_style := StyleBoxFlat.new()
 	shell_style.bg_color = COL_PANEL
 	shell_style.set_corner_radius_all(14)

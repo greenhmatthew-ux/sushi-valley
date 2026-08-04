@@ -1443,8 +1443,7 @@ func _build_scaffold() -> void:
 	var panel := PanelContainer.new()
 	panel.name = "PlayerMenuShell"
 	panel.add_theme_stylebox_override("panel", _panel_style())
-	panel.anchor_left = 0.08; panel.anchor_top = 0.06
-	panel.anchor_right = 0.92; panel.anchor_bottom = 0.94
+	UiTheme.fit_modal_shell(panel)
 	_root.add_child(panel)
 
 	var margin := MarginContainer.new()

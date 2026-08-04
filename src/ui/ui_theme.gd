@@ -132,6 +132,20 @@ static func fit_layer(layer: CanvasLayer, root: Control) -> void:
 	root.size = logical_size()
 
 
+## Keep a full-screen backdrop, but give the actual modal breathing room around
+## it. UI scale changes content density without changing anchor percentages, so
+## shells need an authored inset of their own or they dominate the whole screen
+## even at the compact setting.
+static func fit_modal_shell(shell: Control, inset_x: float = 0.12,
+		inset_y: float = 0.10) -> void:
+	if shell == null:
+		return
+	shell.anchor_left = inset_x
+	shell.anchor_right = 1.0 - inset_x
+	shell.anchor_top = inset_y
+	shell.anchor_bottom = 1.0 - inset_y
+
+
 # --- motion (seconds) -----------------------------------------------------
 const MOTION_PRESS := 0.07
 const MOTION_FOCUS := 0.08
