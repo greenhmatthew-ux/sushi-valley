@@ -320,10 +320,18 @@ func _initialize() -> void:
 		"ActivityStage_raid_sushi_prep", true, false)
 	var raid_detail: Label = panel.find_child(
 		"ActivityDetail_raid_sushi_prep", true, false)
+	var raid_reward: Label = panel.find_child(
+		"ActivityReward_raid_sushi_prep", true, false)
 	check_true("an unlocked raid appears in the Journal", raid_stage != null)
 	check_eq("a new raid is marked available", raid_stage.text, "Available")
 	check_true("the raid card directs the player to its giver",
 		raid_detail != null and raid_detail.text.contains("Hana"))
+	check_true("the raid previews its real coins and item rewards",
+		raid_reward != null and raid_reward.text.contains("80 coins")
+		and raid_reward.text.contains("Recipe Stamp")
+		and raid_reward.text.contains("2x Rice Ball"))
+	check_true("the raid previews its discovered recipe",
+		raid_reward != null and raid_reward.text.contains("Hana's Raid Platter recipe"))
 
 	learning.profile.data["raids"] = {
 		"sushi_prep": {"stage": "recall-cleared", "completions": 0},
@@ -342,9 +350,16 @@ func _initialize() -> void:
 	panel.call("_refresh")
 	var expedition_stage: Label = panel.find_child(
 		"ActivityStage_expedition_forest_lunchbox", true, false)
+	var expedition_reward: Label = panel.find_child(
+		"ActivityReward_expedition_forest_lunchbox", true, false)
 	check_true("an unlocked expedition appears in the same Journal",
 		expedition_stage != null)
 	check_eq("a new expedition is marked available", expedition_stage.text, "Available")
+	check_true("the expedition previews its real payout",
+		expedition_reward != null and expedition_reward.text.contains("80 coins")
+		and expedition_reward.text.contains("3x Moonwood"))
+	check_true("the expedition previews its discovered recipe",
+		expedition_reward != null and expedition_reward.text.contains("Forest Lunchbox recipe"))
 
 	learning.profile.data["expeditions"] = {
 		"forest_lunchbox": {"stage": "objective-recovered", "completions": 0},

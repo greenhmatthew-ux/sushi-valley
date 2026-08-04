@@ -432,7 +432,8 @@ func _raid_activity_entry(raid: Dictionary) -> Dictionary:
 				"" if int(progress.get("completions", 1)) == 1 else "s"]
 	return {"id": "raid_" + id, "kind": "Raid",
 		"title": String(raid.get("displayName", id)), "state": state,
-		"stage": stage, "detail": detail}
+		"stage": stage, "detail": detail,
+		"reward": _structured_reward_summary("raid:" + id, raid.get("reward", {}))}
 
 
 func _expedition_activity_entry(expedition: Dictionary) -> Dictionary:
@@ -468,7 +469,25 @@ func _expedition_activity_entry(expedition: Dictionary) -> Dictionary:
 					expedition.get("repeatable", false)) else ""]
 	return {"id": "expedition_" + id, "kind": "Expedition",
 		"title": String(expedition.get("displayName", id)), "state": state,
-		"stage": stage, "detail": detail}
+		"stage": stage, "detail": detail,
+		"reward": _structured_reward_summary(
+			"expedition:" + id, expedition.get("reward", {}))}
+
+
+## The mission definition owns coins/items while the discovered recipe is linked
+## by source in recipes.json. Resolve both here so the Journal previews the same
+## payoff the completion systems actually grant without duplicating reward data.
+func _structured_reward_summary(source: String, reward: Dictionary) -> String:
+	var parts: Array[String] = []
+	var tangible := QuestLogic.describe_reward(
+		reward, func(item_id): return DB.item(item_id).get("name", item_id))
+	if not tangible.is_empty():
+		parts.append(tangible)
+	for raw_id in DB.recipes:
+		var recipe: Dictionary = DB.recipes[raw_id]
+		if String(recipe.get("discoverySource", "")) == source:
+			parts.append("%s recipe" % String(recipe.get("name", raw_id)))
+	return "Rewards: %s" % " · ".join(parts) if not parts.is_empty() else "Rewards: None"
 
 
 ## The Map domain. UI_UX_GUIDE section 6 wants literal local maps over LDtk truth
@@ -986,6 +1005,14 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(detail)
+
+	var reward := Label.new()
+	reward.name = "ActivityReward_" + String(entry["id"])
+	reward.text = String(entry["reward"])
+	reward.add_theme_font_size_override("font_size", 11)
+	reward.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
+	reward.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(reward)
 	return card
 
 
