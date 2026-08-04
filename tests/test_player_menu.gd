@@ -199,6 +199,22 @@ func _initialize() -> void:
 	check_true("skills tab states the six-slot loadout", summary.text.contains("/ 6"))
 	check_true("skills tab shows the separate Talent Point budget",
 		summary.text.contains("Talent Points"))
+	for station in ["forge", "workshop", "kitchen"]:
+		var life_card: Control = panel.find_child("LifeSkill_" + station, true, false)
+		var life_detail: Label = panel.find_child(
+			"LifeSkillDetail_" + station, true, false)
+		check_true("%s life-skill progress is visible" % station.capitalize(),
+			life_card != null and life_detail != null and life_detail.text.contains("XP to Level"))
+	var forge_loop: Label = panel.find_child("LifeSkillLoop_forge", true, false)
+	var kitchen_loop: Label = panel.find_child("LifeSkillLoop_kitchen", true, false)
+	check_true("life skills explain their real weather yields",
+		forge_loop.text.contains("+1 ore") and kitchen_loop.text.contains("+1 herb"))
+	var crafting_state := CraftingLogic.ensure_state(learning.profile.data)
+	crafting_state["xp"]["forge"] = CraftingLogic.xp_for_level(2)
+	panel.call("_refresh")
+	var forge_title: Label = panel.find_child("LifeSkillTitle_forge", true, false)
+	check_true("saved station XP advances the visible life-skill level",
+		forge_title != null and forge_title.text.contains("Level 2"))
 	check_true("fresh profile exposes the three real starter skills",
 		learning.known_ability_defs().size() == 3)
 	var focus_detail: Label = panel.find_child("SkillDetail_focus", true, false)

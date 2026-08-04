@@ -63,6 +63,27 @@ const EQUIPMENT_GROUPS := [
 	["Accessories", ["ring", "amulet"]],
 ]
 
+## Gathering and crafting intentionally share these three progression tracks.
+## Keeping their player-facing loop copy here avoids inventing parallel Mining /
+## Foraging levels before those domains have authored tools and unlock tables.
+const LIFE_SKILLS := [
+	{
+		"station": "forge", "name": "Forge",
+		"loop": "Mine ore, refine metal, and craft weapons.",
+		"weather": "Non-rain days can yield +1 ore.",
+	},
+	{
+		"station": "workshop", "name": "Workshop",
+		"loop": "Gather bamboo and build field gear.",
+		"weather": "Bamboo yield is steady in any weather.",
+	},
+	{
+		"station": "kitchen", "name": "Kitchen",
+		"loop": "Forage herbs, fish, and cook recovery food.",
+		"weather": "Rain can yield +1 herb.",
+	},
+]
+
 const TAB_CHARACTER := "character"
 const TAB_SKILLS := "skills"
 const TAB_BAG := "bag"
@@ -133,6 +154,7 @@ func _ready() -> void:
 	Bus.inventory_changed.connect(_refresh)
 	Bus.ability_loadout_changed.connect(_refresh)
 	Bus.player_build_changed.connect(_refresh)
+	Bus.crafting_changed.connect(func(_station): if _open: _refresh())
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 	Bus.input_method_changed.connect(func(_method): _refresh_input_hint())
 
@@ -320,6 +342,9 @@ func _refresh() -> void:
 		"Active loadout  %d / %d  ·  Talent Points  %d\n"
 		+ "Basic Attack is always available. Talent unlocks are permanent."
 	) % [equipped_skills.size(), AbilityRules.MAX_SKILLS, Learning.unspent_talent_points()]
+	_skills_box.add_child(_section_label("Life Skills - gather, refine, and cook"))
+	for definition in LIFE_SKILLS:
+		_skills_box.add_child(_make_life_skill_card(definition))
 	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
 	# Grouped by role so a grown collection reads as four styles, not one long
 	# list — and so the tag a talent was bought under stays visible afterward.
@@ -1282,6 +1307,72 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 		button.text = "Equip"
 		button.pressed.connect(_on_skill_toggle.bind(String(ability.get("id", "")), true))
 	row.add_child(button)
+	return card
+
+
+func _make_life_skill_card(definition: Dictionary) -> Control:
+	var station := String(definition.get("station", ""))
+	var state := CraftingLogic.ensure_state(Learning.profile.data)
+	var total_xp := int(state["xp"].get(station, 0))
+	var level := CraftingLogic.level_from_xp(total_xp)
+	var at_cap := level >= CraftingLogic.MAX_LEVEL
+	var level_start := CraftingLogic.xp_for_level(level)
+	var next_total := CraftingLogic.xp_for_level(level + 1) if not at_cap else total_xp
+	var into_level := maxi(0, total_xp - level_start)
+	var level_span := maxi(1, next_total - level_start)
+
+	var card := PanelContainer.new()
+	card.name = "LifeSkill_" + station
+	card.add_theme_stylebox_override("panel", _card_style(UiTheme.STATE_SUCCESS))
+	card.custom_minimum_size = Vector2(0, 76)
+	var margin := MarginContainer.new()
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 7)
+	card.add_child(margin)
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 3)
+	margin.add_child(box)
+
+	var title := Label.new()
+	title.name = "LifeSkillTitle_" + station
+	title.text = "%s  ·  Level %d" % [definition.get("name", station.capitalize()), level]
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", UiTheme.STATE_SUCCESS)
+	box.add_child(title)
+
+	var progress_text := Label.new()
+	progress_text.name = "LifeSkillDetail_" + station
+	progress_text.text = "Mastery level reached." if at_cap else "%d / %d XP to Level %d" % [
+		into_level, level_span, level + 1]
+	progress_text.add_theme_font_size_override("font_size", 10)
+	progress_text.add_theme_color_override("font_color", COL_TEXT)
+	box.add_child(progress_text)
+
+	var progress := ProgressBar.new()
+	progress.name = "LifeSkillProgress_" + station
+	progress.min_value = 0.0
+	progress.max_value = float(level_span)
+	progress.value = float(level_span if at_cap else into_level)
+	progress.show_percentage = false
+	progress.custom_minimum_size = Vector2(0, 6)
+	progress.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var empty_style := StyleBoxFlat.new()
+	empty_style.bg_color = UiTheme.SURFACE_DEEP
+	empty_style.set_corner_radius_all(3)
+	var fill_style := StyleBoxFlat.new()
+	fill_style.bg_color = UiTheme.STATE_SUCCESS
+	fill_style.set_corner_radius_all(3)
+	progress.add_theme_stylebox_override("background", empty_style)
+	progress.add_theme_stylebox_override("fill", fill_style)
+	box.add_child(progress)
+
+	var loop := Label.new()
+	loop.name = "LifeSkillLoop_" + station
+	loop.text = "%s  %s" % [definition.get("loop", ""), definition.get("weather", "")]
+	loop.add_theme_font_size_override("font_size", 10)
+	loop.add_theme_color_override("font_color", COL_HEADING)
+	loop.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(loop)
 	return card
 
 
