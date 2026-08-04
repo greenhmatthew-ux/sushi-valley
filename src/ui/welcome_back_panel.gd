@@ -9,6 +9,7 @@ extends CanvasLayer
 
 const Summary = preload("res://src/systems/session_summary.gd")
 const Activities = preload("res://src/systems/activity_tracker.gd")
+const Planner = preload("res://src/systems/day_plan.gd")
 
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
@@ -22,6 +23,9 @@ const KIND_COLORS := {
 	"more": UiTheme.TEXT_MUTED,
 	"review": UiTheme.STATE_INFO,
 	"points": UiTheme.STATE_SUCCESS,
+	"farm": UiTheme.STATE_SUCCESS,
+	"gathering": Color("#9be15d"),
+	"fishing": UiTheme.STATE_INFO,
 }
 
 ## Survives scene changes (each level instances its own ui_layer), so walking
@@ -54,12 +58,15 @@ func _maybe_show() -> void:
 	# "Welcome back".
 	if not SaveGame.had_save_at_boot:
 		return
+	var daily := Planner.today(Farm.daily_status(), Gathering.daily_status(),
+		Fishing.daily_status())
 	var model: Dictionary = Summary.build(
 		Activities.actionable_entries(Learning.profile, DB, Inv),
 		Learning.due_count(),
 		Learning.unspent_talent_points(),
 		Learning.unspent_attribute_points(),
-		Activities.tracked_key(Learning.profile))
+		Activities.tracked_key(Learning.profile),
+		daily)
 	if not model["show"]:
 		return
 	_show_model(model)
@@ -101,6 +108,8 @@ func _build(model: Dictionary) -> void:
 	# Centered and content-sized: the line count is capped by SessionSummary,
 	# so unlike the notebook this can never outgrow the screen.
 	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
 	panel.custom_minimum_size = Vector2(400, 0)
 	_root.add_child(panel)
 
@@ -118,7 +127,7 @@ func _build(model: Dictionary) -> void:
 	vbox.add_child(title)
 
 	var subtitle := _label(11, COL_HEADING)
-	subtitle.text = "Waiting for you since last time:"
+	subtitle.text = "Your clearest next steps today:"
 	vbox.add_child(subtitle)
 
 	for line in model["lines"]:

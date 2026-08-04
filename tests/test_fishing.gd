@@ -90,6 +90,8 @@ func _runtime_reward_and_cooldown() -> void:
 	root.get_node("Farm").reset(false)
 	learning.profile.data.erase("crafting")
 	learning.profile.data.erase("resourceNodes")
+	fishing.register_site("test_pond", "Test Pond", 120,
+		["spring", "summer", "autumn"])
 	var result: Dictionary = fishing.complete("test_pond", 2, "gold", 120, 0.1, 1000.0)
 	check_true("a successful catch transaction commits", bool(result.get("ok", false)))
 	check_eq("gold quality adds two bonus fish", inv.count("river_fish"), 4)
@@ -101,6 +103,14 @@ func _runtime_reward_and_cooldown() -> void:
 		["spring", "summer", "autumn"], 1001.0)
 	check_true("the saved cooldown prevents an immediate repeat", not bool(blocked.get("ok", true)))
 	check_eq("one elapsed second leaves 119 seconds", int(blocked.get("remaining", 0)), 119)
+	var cooling: Dictionary = fishing.daily_status(1001.0)
+	check_eq("daily fishing status counts the cooling pond", cooling["cooling"], 1)
+	check_eq("daily fishing status exposes the shortest wait",
+		cooling["min_remaining"], 119)
+	var renewed: Dictionary = fishing.daily_status(1120.0)
+	check_eq("daily fishing status sees the pond ready again", renewed["ready"], 1)
+	check_eq("only a previously fished site becomes a returning-player alert",
+		renewed["renewed_names"], ["Test Pond"])
 
 
 func _cancellation_and_input_contract() -> void:

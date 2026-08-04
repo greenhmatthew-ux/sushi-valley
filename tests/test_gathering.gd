@@ -176,6 +176,10 @@ func _runtime_transaction_contract() -> void:
 	check_true("sleep truth separates tomorrow's common nodes from the rare cooldown",
 		int(sleep_preview.get("returning", 0)) >= 3
 		and int(sleep_preview.get("waiting", 0)) == 1)
+	var today_status: Dictionary = gathering.daily_status()
+	check_true("today's briefing counts depleted nodes as recovering",
+		int(today_status.get("recovering", 0)) >= 4
+		and int(today_status.get("renewed", 0)) == 0)
 	var day_end := CanvasLayer.new()
 	day_end.set_script(load("res://src/ui/day_end_panel.gd"))
 	root.add_child(day_end)
@@ -184,7 +188,7 @@ func _runtime_transaction_contract() -> void:
 	await process_frame
 	var day_detail: Label = day_end.find_child("DayEndDetail", true, false)
 	check_true("the sleep panel previews both reset outcomes before committing",
-		day_detail != null and day_detail.text.contains("return tomorrow")
+		day_detail != null and day_detail.text.contains("resource nodes return")
 		and day_detail.text.contains("rare node")
 		and day_detail.text.contains("need more time"))
 	day_end.call("_close")
@@ -196,6 +200,8 @@ func _runtime_transaction_contract() -> void:
 		visual.interaction_label(), "Gather Test Bamboo")
 	check_true("the next day makes every common node ready again",
 		gathering.is_ready("test_herb", 1))
+	check_true("the daily briefing now calls the common nodes renewed",
+		int(gathering.daily_status().get("renewed", 0)) >= 3)
 	var bamboo_before: int = inv.count("bamboo_shoot")
 	visual.interact()
 	var feedback: Label = visual.get_node_or_null("GatherFeedback")

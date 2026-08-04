@@ -38,14 +38,24 @@ func _pure_calendar_and_growth_rules() -> void:
 	check_true("planting an in-season seed succeeds", logic.plant("plot_a", crops["herb"]))
 	check_true("planting waters the plot for today", bool(logic.plot("plot_a")["watered"]))
 	check_eq("a one-day crop starts as a sprout", logic.stage("plot_a", crops), 1)
+	var one_day_preview: Dictionary = logic.preview_advance(crops)
+	check_eq("sleep preview counts one advancing crop", one_day_preview["advancing"], 1)
+	check_eq("sleep preview predicts the crop becoming ready",
+		one_day_preview["ready_tomorrow"], 1)
 	logic.advance_day()
 	check_eq("a watered one-day crop matures after sleep", logic.stage("plot_a", crops), 3)
 	check_true("mature crop is harvest-ready", logic.is_ready("plot_a", crops))
+	check_eq("a mature crop is promised to wait safely",
+		logic.preview_advance(crops)["ready_now"], 1)
 
 	logic.reset()
 	check_true("two-day cucumber plants", logic.plant("plot_b", crops["cucumber"]))
 	logic.advance_day()
 	check_eq("first watered day advances cucumber growth", logic.stage("plot_b", crops), 2)
+	var dry_preview: Dictionary = logic.preview_advance(crops)
+	check_eq("sleep preview counts a dry crop as paused", dry_preview["paused"], 1)
+	check_eq("a paused crop is not falsely promised ready",
+		dry_preview["ready_tomorrow"], 0)
 	logic.advance_day()
 	check_eq("a dry day pauses instead of withering", logic.stage("plot_b", crops), 2)
 	check_true("the paused crop can be watered", logic.water("plot_b"))
@@ -75,6 +85,7 @@ func _saved_inventory_transaction() -> void:
 	save.clear()
 	inv.reset()
 	farm.reset(false)
+	farm.register_plot("test_plot")
 	inv.add("herb_seed", 1)
 	check_eq("starter seed enters the bag", inv.count("herb_seed"), 1)
 
@@ -85,6 +96,8 @@ func _saved_inventory_transaction() -> void:
 	check_eq("plant autosave records the calendar", int(world["calendar"]["day"]), 1)
 	check_eq("plant autosave records the stable plot id",
 		String(world["farm"]["plots"]["test_plot"]["cropId"]), "herb")
+	check_eq("daily farm status sees the watered crop growing",
+		farm.daily_status()["growing"], 1)
 
 	# A normal world-position save must merge, not erase the feature-owned farm state.
 	save.save_snapshot({}, Vector2(72, 96), "left", inv.to_dict())
@@ -96,6 +109,8 @@ func _saved_inventory_transaction() -> void:
 
 	farm.advance_day()
 	check_true("the watered herb is ready tomorrow", farm.is_ready("test_plot"))
+	check_eq("daily farm status calls out the ready harvest",
+		farm.daily_status()["ready"], 1)
 	var harvested: Dictionary = farm.harvest("test_plot")
 	check_true("ready produce harvests", bool(harvested.get("ok", false)))
 	check_eq("harvest awards exactly one authored produce", inv.count("wild_herb"), 1)

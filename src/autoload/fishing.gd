@@ -4,6 +4,50 @@ extends Node
 
 const QUALITY_BONUS := {"normal": 0, "silver": 1, "gold": 2}
 
+var _sites: Dictionary = {}
+
+
+func register_site(site_id: String, display_name: String, cooldown_seconds: int,
+		seasons: Array) -> bool:
+	if site_id.is_empty():
+		return false
+	var first_registration := not _sites.has(site_id)
+	_sites[site_id] = {
+		"name": display_name,
+		"cooldown": maxi(0, cooldown_seconds),
+		"seasons": seasons.duplicate(),
+	}
+	return first_registration
+
+
+func daily_status(now_seconds: float = -1.0) -> Dictionary:
+	var result := {
+		"total": _sites.size(),
+		"ready": 0,
+		"cooling": 0,
+		"quiet": 0,
+		"min_remaining": 0,
+		"renewed_names": [],
+	}
+	var nodes: Dictionary = Learning.profile.data.get("resourceNodes", {})
+	for raw_id in _sites:
+		var site_id := String(raw_id)
+		var site: Dictionary = _sites[raw_id]
+		var seasons: Array = site.get("seasons", [])
+		if not seasons.is_empty() and Farm.season() not in seasons:
+			result["quiet"] += 1
+			continue
+		var remaining := remaining_seconds(site_id, int(site.get("cooldown", 0)), now_seconds)
+		if remaining > 0:
+			result["cooling"] += 1
+			var shortest := int(result["min_remaining"])
+			result["min_remaining"] = remaining if shortest == 0 else mini(shortest, remaining)
+		else:
+			result["ready"] += 1
+			if nodes.has(site_id):
+				(result["renewed_names"] as Array).append(String(site.get("name", site_id)))
+	return result
+
 
 func remaining_seconds(site_id: String, cooldown_seconds: int,
 		now_seconds: float = -1.0) -> int:

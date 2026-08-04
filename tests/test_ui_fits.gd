@@ -46,11 +46,26 @@ func _initialize() -> void:
 	for item_id in ["rice_ball", "bamboo_tonic", "stone_soup", "straw_hat", "herb_seed"]:
 		inv.add(item_id, 2)
 	inv.add("copper_pick", 1)
-	root.get_node("Farm").reset(false)
+	var farm: Node = root.get_node("Farm")
+	farm.reset(false)
+	# Worst honest sleep preview: one mature crop waits, one becomes ready,
+	# another keeps growing, and one dry crop pauses.
+	farm.logic.plots = {
+		"layout_ready": {"cropId": "herb", "plantedDay": 0, "watered": false},
+		"layout_soon": {"cropId": "herb", "plantedDay": 1, "watered": true},
+		"layout_growing": {"cropId": "cucumber", "plantedDay": 1, "watered": true},
+		"layout_dry": {"cropId": "cucumber", "plantedDay": 1, "watered": false},
+	}
 	var gathering: Node = root.get_node("Gathering")
 	gathering.reset(false)
 	gathering.logic.mark_gathered("layout_common", root.get_node("Farm").day(), 1)
 	gathering.logic.mark_gathered("layout_rare", root.get_node("Farm").day(), 3)
+	var fishing: Node = root.get_node("Fishing")
+	fishing.register_site("layout_pond", "Long-Named Village Fishing Pond", 120,
+		["spring", "summer", "autumn"])
+	if not learning.profile.data.has("resourceNodes"):
+		learning.profile.data["resourceNodes"] = {}
+	learning.profile.data["resourceNodes"]["layout_pond"] = Time.get_unix_time_from_system()
 	# Journal: one ordinary request plus both structured mission card shapes, all
 	# actionable, so Track buttons and reward rows are measured at every scale.
 	var layout_quest_id := "tools_of_the_trail"
@@ -85,6 +100,7 @@ func _initialize() -> void:
 		settings.ui_scale = scale
 		_scale_label = " @%d%%" % int(round(scale * 100.0))
 		await _check_hud()
+		await _check_welcome()
 		await _check_combat(bus, db)
 		await _check_recall(bus)
 		await _check_menu()
@@ -96,10 +112,12 @@ func _initialize() -> void:
 	_scale_label = ""
 
 	print("")
-	print("  ..   measured %d text controls across nine surfaces at %d UI scales"
+	print("  ..   measured %d text controls across ten surfaces at %d UI scales"
 		% [_checked, settings.UI_SCALES.size()])
 	inv.reset()
+	farm.reset(false)
 	gathering.reset(false)
+	learning.profile.data["resourceNodes"].erase("layout_pond")
 	learning.profile.data["stats"]["xp"] = xp_before
 	learning.profile.data.erase("bestiary")
 	learning.profile.set_flag(QuestJournal.started_flag(layout_quest_id), false)
@@ -118,6 +136,27 @@ func _check_hud() -> void:
 	await process_frame
 	_audit(hud, "hud/weather")
 	hud.queue_free()
+	await process_frame
+
+
+func _check_welcome() -> void:
+	var panel := CanvasLayer.new()
+	panel.set_script(load("res://src/ui/welcome_back_panel.gd"))
+	root.add_child(panel)
+	await process_frame
+	panel.call("_show_model", {"show": true, "lines": [
+		{"kind": "ready", "text": "Ready to turn in: Tools of the Trail - see Kaji"},
+		{"kind": "active", "text": "In progress: Whispering Woods - 2/3 objectives"},
+		{"kind": "mission", "text": "Expedition: Forest Lunchbox - Complete recall at the objective"},
+		{"kind": "more", "text": "…and 2 more in the Journal"},
+		{"kind": "farm", "text": "Farm: 2 crops ready to harvest"},
+		{"kind": "review", "text": "138 words due for review"},
+		{"kind": "points", "text": "Points to spend: 12 Talent · 9 Attribute"},
+	]})
+	await process_frame
+	_audit(panel, "welcome/daily briefing")
+	panel.call("_close")
+	panel.queue_free()
 	await process_frame
 
 

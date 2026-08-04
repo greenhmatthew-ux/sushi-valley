@@ -6,6 +6,7 @@ extends Node
 const FarmRules = preload("res://src/systems/farm_logic.gd")
 
 var logic = FarmRules.new()
+var _known_plots: Dictionary = {}
 
 
 func _ready() -> void:
@@ -34,6 +35,13 @@ func next_clock() -> Dictionary:
 
 func plot(plot_id: String) -> Dictionary:
 	return logic.plot(plot_id)
+
+
+func register_plot(plot_id: String) -> bool:
+	if plot_id.is_empty() or _known_plots.has(plot_id):
+		return false
+	_known_plots[plot_id] = true
+	return true
 
 
 func crop_def_for_plot(plot_id: String) -> Dictionary:
@@ -65,6 +73,43 @@ func available_crops() -> Array[Dictionary]:
 			available.append(typed)
 	available.sort_custom(func(a, b): return String(a.get("name", "")) < String(b.get("name", "")))
 	return available
+
+
+func daily_status() -> Dictionary:
+	var result := {
+		"total": 0,
+		"open": 0,
+		"planted": 0,
+		"ready": 0,
+		"needs_water": 0,
+		"weather_watered": 0,
+		"growing": 0,
+	}
+	var ids := _known_plots.duplicate()
+	for raw_id in logic.plots:
+		ids[String(raw_id)] = true
+	var precipitation := WeatherSystem.is_precipitation()
+	for raw_id in ids:
+		var plot_id := String(raw_id)
+		result["total"] += 1
+		var current := plot(plot_id)
+		if String(current.get("cropId", "")).is_empty():
+			result["open"] += 1
+			continue
+		result["planted"] += 1
+		if is_ready(plot_id):
+			result["ready"] += 1
+		elif bool(current.get("watered", false)):
+			result["growing"] += 1
+		elif precipitation:
+			result["weather_watered"] += 1
+		else:
+			result["needs_water"] += 1
+	return result
+
+
+func preview_next_day() -> Dictionary:
+	return logic.preview_advance(DB.crops, WeatherSystem.is_precipitation())
 
 
 func plant(plot_id: String, crop_id: String) -> Dictionary:

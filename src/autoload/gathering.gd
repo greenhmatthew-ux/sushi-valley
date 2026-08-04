@@ -91,6 +91,21 @@ func preview_next_day() -> Dictionary:
 	return logic.preview_advance(Farm.day(), 1)
 
 
+func daily_status() -> Dictionary:
+	var result := {"tracked": 0, "renewed": 0, "recovering": 0}
+	for raw_id in logic.reset_days_by_node:
+		var node_id := String(raw_id)
+		if not logic.nodes.has(node_id):
+			continue
+		result["tracked"] += 1
+		var reset_days := int(logic.reset_days_by_node.get(node_id, 1))
+		if logic.is_ready(node_id, Farm.day(), reset_days):
+			result["renewed"] += 1
+		else:
+			result["recovering"] += 1
+	return result
+
+
 func tool_source_label(tool_id: String) -> String:
 	for raw_recipe in DB.recipes.values():
 		var recipe: Dictionary = raw_recipe

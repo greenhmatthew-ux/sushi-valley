@@ -95,6 +95,39 @@ func days_remaining(plot_id: String, crops: Dictionary) -> int:
 		- (day - int(current.get("plantedDay", day))))
 
 
+## Exact, non-mutating consequences of sleeping once. Mature crops wait safely;
+## only watered/precipitated crops advance, and dry crops pause.
+func preview_advance(crops: Dictionary, precipitation: bool = false) -> Dictionary:
+	var result := {
+		"planted": 0,
+		"ready_now": 0,
+		"advancing": 0,
+		"paused": 0,
+		"ready_tomorrow": 0,
+	}
+	var future := FarmLogic.new()
+	future.day = day
+	future.season = season
+	future.plots = plots.duplicate(true)
+	future.advance_day(precipitation)
+	for raw_id in plots:
+		var plot_id := String(raw_id)
+		var current := plot(plot_id)
+		if String(current.get("cropId", "")).is_empty():
+			continue
+		result["planted"] += 1
+		if is_ready(plot_id, crops):
+			result["ready_now"] += 1
+			continue
+		if bool(current.get("watered", false)) or precipitation:
+			result["advancing"] += 1
+			if future.is_ready(plot_id, crops):
+				result["ready_tomorrow"] += 1
+		else:
+			result["paused"] += 1
+	return result
+
+
 func clear_plot(plot_id: String) -> void:
 	plots.erase(plot_id)
 

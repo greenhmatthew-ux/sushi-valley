@@ -3,6 +3,7 @@ extends SceneTree
 ## missions, stays glance-sized, and yields control.
 
 const Summary = preload("res://src/systems/session_summary.gd")
+const Planner = preload("res://src/systems/day_plan.gd")
 
 var failures := 0
 
@@ -15,6 +16,7 @@ func _activity(key: String, kind: String, text: String, priority: int,
 
 func _initialize() -> void:
 	_selection_rules()
+	_daily_briefing_rules()
 	await _panel_behavior()
 	_finish()
 
@@ -66,6 +68,47 @@ func _selection_rules() -> void:
 		kinds, ["ready", "ready", "ready", "more"])
 	check_true("the overflow line counts everything it hid",
 		String(crowded["lines"][3]["text"]).contains("2 more"))
+
+
+func _daily_briefing_rules() -> void:
+	var daily := Planner.today(
+		{"ready": 2, "needs_water": 1, "weather_watered": 0},
+		{"renewed": 1},
+		{"renewed_names": ["Village Pond"]})
+	check_eq("daily priorities cover farm, gathering, and fishing in order",
+		daily.map(func(line): return line["kind"]), ["farm", "gathering", "fishing"])
+	check_true("the farm alert chooses harvest over lower-priority watering",
+		String(daily[0]["text"]).contains("2 crops ready"))
+	check_true("the pond alert names the authored destination",
+		String(daily[2]["text"]).contains("Village Pond"))
+
+	var daily_only := Summary.build([], 0, 0, 0, "", daily)
+	check_true("actionable life skills can reopen an otherwise quiet return card",
+		bool(daily_only["show"]))
+	check_eq("all three daily alerts fit a quiet return card",
+		daily_only["lines"].size(), 3)
+
+	var busy_entries: Array = []
+	for i in 5:
+		busy_entries.append(_activity("quest:busy%d" % i, "ready", "Ready %d" % i, 0))
+	var busy := Summary.build(busy_entries, 8, 2, 1, "", daily)
+	check_eq("busy saves stay within the hard seven-line budget",
+		busy["lines"].size(), Summary.MAX_TOTAL_LINES)
+	check_eq("the highest daily priority gets the one remaining slot",
+		busy["lines"][4]["kind"], "farm")
+
+	var sleep := Planner.sleep_notes(
+		{"ready_now": 1, "ready_tomorrow": 1, "advancing": 2, "paused": 1},
+		{"returning": 2, "waiting": 1},
+		{"cooling": 1})
+	var sleep_text := ". ".join(sleep)
+	check_true("sleep copy names every distinct consequence",
+		"mature crop" in sleep_text and "become ready" in sleep_text
+		and "pause dry" in sleep_text and "resource nodes return" in sleep_text
+		and "rare node" in sleep_text and "real time" in sleep_text)
+	check_eq("morning copy reports only changes sleep actually caused",
+		Planner.morning_notes({"ready_tomorrow": 1}, {"returning": 2}),
+		["1 crop ready", "2 resource nodes renewed"])
 
 
 func _panel_behavior() -> void:

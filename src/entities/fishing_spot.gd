@@ -15,6 +15,7 @@ var _phase := 0.0
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	Fishing.register_site(site_id, display_name, cooldown_seconds, seasons)
 	Bus.fishing_changed.connect(func(changed_id):
 		if changed_id == site_id:
 			queue_redraw())

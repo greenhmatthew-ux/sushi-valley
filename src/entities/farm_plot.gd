@@ -15,6 +15,7 @@ const LEAF_LIGHT := Color("#9be7a3")
 func _ready() -> void:
 	add_to_group("interactable")
 	y_sort_enabled = true
+	Farm.register_plot(plot_id)
 	Bus.farm_changed.connect(_refresh)
 	_refresh()
 
