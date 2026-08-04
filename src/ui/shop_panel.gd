@@ -44,6 +44,7 @@ var _title_label: Label
 var _region_label: Label
 var _coins_label: Label
 var _hint_label: Label
+var _close_hint: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _haggling := false
@@ -56,6 +57,7 @@ func _ready() -> void:
 	_root.hide()
 	Bus.shop_open.connect(_on_shop_open)
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
+	Bus.input_method_changed.connect(func(_method): _refresh_close_hint())
 
 
 func _on_shop_open(shop_id: String) -> void:
@@ -346,12 +348,18 @@ func _build_scaffold() -> void:
 	_empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	scroll.add_child(_empty_label)
 
-	var hint := Label.new()
-	hint.text = "Esc to leave"
-	hint.add_theme_font_size_override("font_size", 12)
-	hint.add_theme_color_override("font_color", COL_HEADING)
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	vbox.add_child(hint)
+	_close_hint = Label.new()
+	_close_hint.name = "InputHint"
+	_close_hint.add_theme_font_size_override("font_size", 12)
+	_close_hint.add_theme_color_override("font_color", COL_HEADING)
+	_close_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	vbox.add_child(_close_hint)
+	_refresh_close_hint()
+
+
+func _refresh_close_hint() -> void:
+	if _close_hint != null:
+		_close_hint.text = "[%s] leave" % InputHints.primary_label("ui_cancel")
 
 
 func _panel_style() -> StyleBoxFlat:

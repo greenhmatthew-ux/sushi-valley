@@ -15,6 +15,7 @@ var _root: Control
 var _title: Label
 var _progress: Label
 var _list: VBoxContainer
+var _input_hint: Label
 
 
 func _ready() -> void:
@@ -25,6 +26,7 @@ func _ready() -> void:
 	Bus.crafting_open.connect(_on_open)
 	Bus.crafting_changed.connect(func(station): if _open and station == _station: _refresh())
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
+	Bus.input_method_changed.connect(func(_method): _refresh_input_hint())
 
 
 func _on_open(station: String) -> void:
@@ -191,8 +193,15 @@ func _build() -> void:
 	_list.add_theme_constant_override("separation", 6)
 	_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_list)
-	var hint := Label.new()
-	hint.text = "Esc closes · Crafting consumes materials only after every check passes."
-	hint.add_theme_font_size_override("font_size", 10)
-	hint.add_theme_color_override("font_color", COL_MUTED)
-	content.add_child(hint)
+	_input_hint = Label.new()
+	_input_hint.name = "InputHint"
+	_input_hint.add_theme_font_size_override("font_size", 10)
+	_input_hint.add_theme_color_override("font_color", COL_MUTED)
+	content.add_child(_input_hint)
+	_refresh_input_hint()
+
+
+func _refresh_input_hint() -> void:
+	if _input_hint != null:
+		_input_hint.text = "[%s] closes · Crafting consumes materials only after every check passes." \
+			% InputHints.primary_label("ui_cancel")

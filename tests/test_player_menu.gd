@@ -482,6 +482,28 @@ func _initialize() -> void:
 	panel.call("open_at", "map")
 	check_eq("a domain shortcut lands on that domain",
 		String(panel.get("_active_tab")), "map")
+	var input_hints: Node = root.get_node("InputHints")
+	input_hints.set_input_method(input_hints.GAMEPAD)
+	await process_frame
+	var input_hint: Label = panel.find_child("InputHint", true, false)
+	check_true("controller Hub copy names shoulder tabs and both close routes",
+		input_hint != null and input_hint.text.contains("LB")
+		and input_hint.text.contains("RB") and input_hint.text.contains("Menu")
+		and input_hint.text.contains("B"))
+	var next_tab := InputEventAction.new()
+	next_tab.action = "tab_next"
+	next_tab.pressed = true
+	panel.call("_unhandled_input", next_tab)
+	check_eq("RB advances one Hub domain", String(panel.get("_active_tab")), "learning")
+	var previous_tab := InputEventAction.new()
+	previous_tab.action = "tab_previous"
+	previous_tab.pressed = true
+	panel.call("_unhandled_input", previous_tab)
+	check_eq("LB returns one Hub domain", String(panel.get("_active_tab")), "map")
+	input_hints.set_input_method(input_hints.KEYBOARD_MOUSE)
+	await process_frame
+	check_true("keyboard Hub copy returns to the actual I and Esc bindings",
+		input_hint.text.contains("I") and input_hint.text.contains("Esc"))
 
 	var talent_saved: Dictionary = root.get_node("SaveGame").load_profile()
 	check_true("Talent unlock is written to disk",
@@ -503,6 +525,12 @@ func _initialize() -> void:
 	check_true("controller can open settings", _has_joy_button("open_settings", 4))
 	check_true("controller can open the player menu", _has_joy_button("open_menu", 6))
 	check_true("controller can open the notebook", _has_joy_button("open_notebook", 3))
+	check_true("controller shoulders cycle Hub domains",
+		_has_joy_button("tab_previous", 9) and _has_joy_button("tab_next", 10))
+	check_true("controller X attacks without also opening Journal",
+		_has_joy_button("attack", 2) and not _has_any_joy_button("open_journal"))
+	check_true("controller Menu opens the Hub without also opening Skills",
+		not _has_any_joy_button("open_skills"))
 
 	panel.queue_free()
 	await process_frame
@@ -601,6 +629,13 @@ func _has_joy_button(action: String, button_index: int) -> bool:
 	for event in InputMap.action_get_events(action):
 		if event is InputEventJoypadButton \
 				and (event as InputEventJoypadButton).button_index == button_index:
+			return true
+	return false
+
+
+func _has_any_joy_button(action: String) -> bool:
+	for event in InputMap.action_get_events(action):
+		if event is InputEventJoypadButton:
 			return true
 	return false
 

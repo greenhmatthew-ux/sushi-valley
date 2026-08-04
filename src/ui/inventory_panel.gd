@@ -70,6 +70,8 @@ const TAB_MAP := "map"
 const TAB_LEARNING := "learning"
 const TAB_SYSTEM := "system"
 const TAB_BESTIARY := "bestiary"
+const TAB_ORDER := [TAB_CHARACTER, TAB_SKILLS, TAB_BAG, TAB_QUESTS,
+	TAB_MAP, TAB_LEARNING, TAB_SYSTEM, TAB_BESTIARY]
 
 var _open := false
 var _active_tab := TAB_BAG
@@ -117,6 +119,7 @@ var _bestiary_summary: Label
 var _grid: GridContainer
 var _empty_label: Label
 var _capacity_label: Label
+var _input_hint: Label
 
 
 func _ready() -> void:
@@ -128,6 +131,7 @@ func _ready() -> void:
 	Bus.ability_loadout_changed.connect(_refresh)
 	Bus.player_build_changed.connect(_refresh)
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
+	Bus.input_method_changed.connect(func(_method): _refresh_input_hint())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -153,6 +157,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif _open and event.is_action_pressed("ui_cancel"):
 		_set_open(false)
 		get_viewport().set_input_as_handled()
+	elif _open and event.is_action_pressed("tab_previous"):
+		_cycle_tab(-1)
+		get_viewport().set_input_as_handled()
+	elif _open and event.is_action_pressed("tab_next"):
+		_cycle_tab(1)
+		get_viewport().set_input_as_handled()
 
 
 ## Which domain an input asks for, or "" when it is not a domain key. Journal is on
@@ -167,6 +177,25 @@ func _domain_shortcut(event: InputEvent) -> String:
 	if event.is_action_pressed("open_settings"):
 		return TAB_SYSTEM
 	return ""
+
+
+func _cycle_tab(direction: int) -> void:
+	var index := TAB_ORDER.find(_active_tab)
+	if index < 0:
+		index = TAB_ORDER.find(TAB_BAG)
+	_set_tab(String(TAB_ORDER[posmod(index + signi(direction), TAB_ORDER.size())]))
+	var button := _tab_button(_active_tab)
+	if button != null:
+		button.grab_focus()
+
+
+func _refresh_input_hint() -> void:
+	if _input_hint == null:
+		return
+	var close := InputHints.joined_labels(["open_menu", "ui_cancel"])
+	_input_hint.text = "[%s]/[%s] tabs · [%s] close" % [
+		InputHints.primary_label("tab_previous"), InputHints.primary_label("tab_next"), close] \
+		if InputHints.is_gamepad() else "[%s] close" % close
 
 
 ## Open the hub with a specific domain already selected.
@@ -1981,12 +2010,13 @@ func _build_scaffold() -> void:
 	_capacity_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(_capacity_label)
 
-	var hint := Label.new()
-	hint.text = "I / Esc close"
-	hint.add_theme_font_size_override("font_size", 12)
-	hint.add_theme_color_override("font_color", COL_HEADING)
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	footer.add_child(hint)
+	_input_hint = Label.new()
+	_input_hint.name = "InputHint"
+	_input_hint.add_theme_font_size_override("font_size", 12)
+	_input_hint.add_theme_color_override("font_color", COL_HEADING)
+	_input_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	footer.add_child(_input_hint)
+	_refresh_input_hint()
 
 	_set_tab(_active_tab)
 

@@ -24,6 +24,7 @@ var _open := false
 var _root: Control
 var _summary: Label
 var _list: VBoxContainer
+var _input_hint: Label
 
 
 func _ready() -> void:
@@ -34,6 +35,7 @@ func _ready() -> void:
 	# Re-render live so peeking English (TAB) reveals the meanings in here too.
 	Bus.language_changed.connect(func(_v): if _open: _refresh())
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
+	Bus.input_method_changed.connect(func(_method): _refresh_input_hint())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -216,9 +218,10 @@ func _build() -> void:
 	_summary = _label(13, COL_HEADING)
 	vbox.add_child(_summary)
 
-	var hint := _label(11, COL_EN)
-	hint.text = "Hold TAB to show meanings.  Highlighted words are due for review."
-	vbox.add_child(hint)
+	_input_hint = _label(11, COL_EN)
+	_input_hint.name = "InputHint"
+	vbox.add_child(_input_hint)
+	_refresh_input_hint()
 
 	# Only the word list scrolls — the header stays put (UX rule: avoid long page scrolls).
 	var scroll := ScrollContainer.new()
@@ -230,6 +233,12 @@ func _build() -> void:
 	_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_list.add_theme_constant_override("separation", 4)
 	scroll.add_child(_list)
+
+
+func _refresh_input_hint() -> void:
+	if _input_hint != null:
+		_input_hint.text = "Hold [%s] for meanings · [%s] closes · Highlighted words are due." % [
+			InputHints.primary_label("peek_english"), InputHints.primary_label("ui_cancel")]
 
 
 func _spacer(h: int) -> Control:

@@ -55,6 +55,9 @@ signal audio_settings_changed(music: float, voice: float)
 ## listens and re-fits itself; the world is deliberately untouched, so pixel art
 ## keeps its integer camera zoom.
 signal ui_scale_changed(scale: float)
+## Last-used input family changed. Visible prompts redraw from the real InputMap so
+## controller players never get keyboard-only instructions after touching the pad.
+signal input_method_changed(method: String)
 
 # --- shop ---
 ## A vendor was interacted with — the ShopPanel opens on this, keyed by shop_id (a

@@ -26,6 +26,7 @@ func _ready() -> void:
 	# The fight panel owns the screen; a stale prompt bleeding through its dim reads as overlap.
 	Bus.combat_started.connect(func(_id): hide())
 	Bus.combat_ended.connect(func(_v): show())
+	Bus.input_method_changed.connect(func(_method): _refresh_label())
 
 
 func _process(delta: float) -> void:
@@ -44,8 +45,14 @@ func _refresh() -> void:
 	if target == null:
 		_panel.hide()
 		return
-	_label.text = "%s   %s" % [_input_glyph(), _verb_for(target)]
+	_refresh_label()
 	_panel.show()
+
+
+func _refresh_label() -> void:
+	if _shown_target != null:
+		_label.text = "[%s]   %s" % [
+			InputHints.primary_label("interact"), _verb_for(_shown_target)]
 
 
 ## Mirror of Player._try_interact's selection: nearest overlapping interactable.
@@ -123,18 +130,6 @@ func _verb_for(target: Node) -> String:
 	return "Examine"
 
 
-## The key actually bound to `interact`, so the glyph can't drift from the InputMap.
-func _input_glyph() -> String:
-	for event in InputMap.action_get_events("interact"):
-		if event is InputEventKey:
-			var key := event as InputEventKey
-			var code := key.physical_keycode if key.physical_keycode != 0 else key.keycode
-			var text := OS.get_keycode_string(code)
-			if not text.is_empty():
-				return "[%s]" % text
-	return "[interact]"
-
-
 func _build() -> void:
 	var root := Control.new()
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -160,4 +155,5 @@ func _build() -> void:
 	_panel.add_child(margin)
 
 	_label = UiTheme.label("", UiTheme.FONT_SECTION, UiTheme.TEXT_PRIMARY)
+	_label.name = "InputHint"
 	margin.add_child(_label)

@@ -44,6 +44,7 @@ func _ready() -> void:
 	# Re-render in place when English is pinned/unpinned or peeked mid-sentence.
 	Bus.language_changed.connect(func(_visible): if _active: _refresh_english())
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
+	Bus.input_method_changed.connect(func(_method): if _active: _show_line())
 
 
 func _on_dialogue_open(speaker: String, lines: Array) -> void:
@@ -65,7 +66,8 @@ func _on_dialogue_open(speaker: String, lines: Array) -> void:
 func _show_line() -> void:
 	_line_label.text = _japanese_of(_line_index)
 	_refresh_english()
-	_hint_label.text = "▸" if _line_index < _lines.size() - 1 else "▸ close"
+	_hint_label.text = "[%s] %s" % [InputHints.primary_label("interact"),
+		"next" if _line_index < _lines.size() - 1 else "close"]
 
 
 ## Japanese half of the current line (or the whole line when it carries no translation).
@@ -161,6 +163,7 @@ func _build_scaffold() -> void:
 	vbox.add_child(_en_label)
 
 	_hint_label = Label.new()
+	_hint_label.name = "InputHint"
 	_hint_label.add_theme_font_size_override("font_size", 12)
 	_hint_label.add_theme_color_override("font_color", Color(0.6, 0.66, 0.75))
 	_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
