@@ -14,6 +14,21 @@ const INSTANT_HEAL_IDS := [
 	"elder_draught", "sovereign_elixir", "scroll_heal",
 ]
 
+## Large authored foods use the preparation slot instead of behaving like pocket
+## potions. Keeping the family explicit makes future data additions a reviewed
+## gameplay choice rather than silently changing every heal-only consumable.
+const PREPARATION_MEAL_IDS := [
+	"forest_lunchbox", "tempura_set", "noodle_bowl", "moonbroth",
+	"starfruit_feast", "mushroom_soup", "sushi_platter", "frost_broth",
+]
+
+
+static func is_preparation_meal(item: Dictionary) -> bool:
+	return String(item.get("id", "")) in PREPARATION_MEAL_IDS \
+		and String(item.get("kind", "")) == "consumable" \
+		and int(item.get("heal", 0)) > 0 \
+		and String(item.get("buffType", "")).is_empty()
+
 
 static func is_supported_healing(item: Dictionary) -> bool:
 	return String(item.get("id", "")) in INSTANT_HEAL_IDS \

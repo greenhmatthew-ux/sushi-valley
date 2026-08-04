@@ -12,6 +12,7 @@ func _initialize() -> void:
 	_pure_rules()
 	_autoload_consumption()
 	_combat_item_action()
+	_prepared_meal_action()
 	_energy_item_action()
 	_structured_meal_actions()
 	_direct_damage_actions()
@@ -32,7 +33,11 @@ func _pure_rules() -> void:
 		not ConsumableRules.is_supported_healing(hybrid)
 		and ConsumableRules.is_supported_timed_buff(hybrid))
 	check_true("meal waits for the preparation loop",
-		not ConsumableRules.is_supported_healing(meal))
+		not ConsumableRules.is_supported_healing(meal)
+		and ConsumableRules.is_preparation_meal(meal))
+	for item_id in ConsumableRules.PREPARATION_MEAL_IDS:
+		check_true("real %s data is preparation food" % item_id,
+			ConsumableRules.is_preparation_meal(db.item(item_id)))
 	check_true("a pure Energy tonic is supported",
 		ConsumableRules.is_supported_energy(energy))
 	check_true("authored direct-damage consumable is supported",
@@ -70,6 +75,27 @@ func _combat_item_action() -> void:
 	check_eq("combat item reports actual healing", result.player_healed, 9)
 	check_true("enemy responds after the item", result.enemy_damage_dealt > 0)
 	check_true("item action leaves player better off", encounter.player_hp > 3)
+
+
+func _prepared_meal_action() -> void:
+	var enemy := {"id": "mushroom", "name": "Mushroom", "maxHp": 100,
+		"atk": 6, "def": 1, "speed": 3}
+	var meal := {"id": "forest_lunchbox", "kind": "consumable", "heal": 48}
+	var encounter := CombatEncounter.new(enemy, 30, 100, 6, 2, 5)
+	encounter.begin_player_round()
+	check_true("prepared meal is available when HP is missing",
+		encounter.can_use_prepared_meal(meal))
+	var result := encounter.use_prepared_meal(meal, false)
+	check_eq("prepared meal uses its authored heal", result.player_healed, 48)
+	check_eq("prepared meal identifies its action type", result.action_type, "meal")
+	check_true("prepared meal does not trigger an immediate enemy response",
+		not result.enemy_acted)
+	check_true("prepared meal shares the one-item-per-turn limit",
+		not encounter.can_use_prepared_meal(meal))
+	var full := CombatEncounter.new(enemy, 100, 100, 6, 2, 5)
+	full.begin_player_round()
+	check_true("prepared meal cannot be wasted at full HP",
+		not full.can_use_prepared_meal(meal))
 
 
 func _energy_item_action() -> void:

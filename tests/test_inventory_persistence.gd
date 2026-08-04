@@ -37,6 +37,7 @@ func _initialize() -> void:
 	_autosaves_without_an_explicit_quit()
 	_v1_save_still_loads()
 	_v2_save_defaults_to_empty_equipment()
+	_v3_save_defaults_to_no_prepared_meal()
 	_learning_save_does_not_clobber_the_bag()
 
 	save_game.clear()
@@ -52,9 +53,11 @@ func _round_trips_items_and_coins() -> void:
 	inv.add_coins(137)
 	inv.add("wooden_katana", 1)
 	check_true("test weapon equips", inv.equip("wooden_katana"))
+	inv.add("forest_lunchbox", 1)
+	check_true("test meal prepares", inv.prepare_meal("forest_lunchbox"))
 
 	var snapshot: Dictionary = save_game.build_snapshot({}, Vector2(10, 20), "left", inv.to_dict())
-	check_eq("snapshot records the new schema version", int(snapshot["version"]), 3)
+	check_eq("snapshot records the new schema version", int(snapshot["version"]), 4)
 	check_true("snapshot carries an inventory section", snapshot.has("inventory"))
 
 	# Wipe the live bag, then restore from the snapshot the way world.gd does.
@@ -68,6 +71,8 @@ func _round_trips_items_and_coins() -> void:
 	check_eq("coins survive the round trip", inv.coins, 137)
 	check_eq("equipped weapon survives the round trip",
 		inv.equipped_id("weapon"), "wooden_katana")
+	check_eq("prepared meal survives the round trip",
+		inv.prepared_meal_id(), "forest_lunchbox")
 
 
 func _equipment_updates_live_player_stats() -> void:
@@ -140,6 +145,26 @@ func _v2_save_defaults_to_empty_equipment() -> void:
 	check_eq("v2 bag still loads", inv.count("straw_hat"), 1)
 	check_eq("v2 coins still load", inv.coins, 9)
 	check_true("v2 begins with empty equipment", inv.equipment().is_empty())
+
+
+## v3 added equipment and favorites but predates the prepared-meal slot. Every
+## existing field remains intact and the new reservation starts empty.
+func _v3_save_defaults_to_no_prepared_meal() -> void:
+	var v3 := {
+		"version": 3,
+		"learning": {},
+		"inventory": {
+			"inventory": {"forest_lunchbox": 2}, "coins": 11,
+			"equipment": {"head": "straw_hat"}, "favorites": ["forest_lunchbox"],
+		},
+		"world": {},
+	}
+	var restored: Dictionary = save_game.apply_snapshot(v3)
+	inv.load_dict(restored["inventory"])
+	check_eq("v3 bag remains intact", inv.count("forest_lunchbox"), 2)
+	check_eq("v3 equipment remains intact", inv.equipped_id("head"), "straw_hat")
+	check_true("v3 favorite remains intact", inv.is_favorite("forest_lunchbox"))
+	check_eq("v3 starts with no prepared meal", inv.prepared_meal_id(), "")
 
 
 ## Learning saves fire constantly (every review). They must not wipe the bag.

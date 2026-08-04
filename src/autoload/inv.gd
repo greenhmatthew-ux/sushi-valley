@@ -92,6 +92,40 @@ func craft_transaction(inputs: Array, output_id: String, output_qty: int) -> boo
 	return true
 
 
+# --- prepared meal ---------------------------------------------------------
+
+func prepared_meal_id() -> String:
+	return logic.prepared_meal_id()
+
+
+func prepared_meal_def() -> Dictionary:
+	var item_id := prepared_meal_id()
+	return {} if item_id.is_empty() else DB.item(item_id)
+
+
+func prepare_meal(item_id: String) -> bool:
+	if not ConsumableRules.is_preparation_meal(DB.item(item_id)) \
+			or not logic.prepare_meal(item_id):
+		return false
+	Bus.inventory_changed.emit()
+	return true
+
+
+func unprepare_meal() -> bool:
+	if not logic.unprepare_meal():
+		return false
+	Bus.inventory_changed.emit()
+	return true
+
+
+func consume_prepared_meal(expected_id: String = "") -> String:
+	var consumed := logic.consume_prepared_meal(expected_id)
+	if not consumed.is_empty():
+		Bus.item_removed.emit(consumed, 1)
+		Bus.inventory_changed.emit()
+	return consumed
+
+
 # --- equipment -------------------------------------------------------------
 
 func equipped_id(slot: String) -> String:

@@ -19,6 +19,7 @@ func _initialize() -> void:
 	_capacity()
 	_equipment_swaps()
 	_full_stack_cannot_delete_displaced_gear()
+	_prepared_meals()
 	_round_trip()
 	_favorites()
 	_finish()
@@ -140,6 +141,44 @@ func _full_stack_cannot_delete_displaced_gear() -> void:
 	check_eq("failed swap keeps new gear in bag", inv.count("samurai_helmet"), 1)
 
 
+func _prepared_meals() -> void:
+	var inv := InventoryLogic.new()
+	inv.add("forest_lunchbox", 2)
+	check_true("held meal moves into the preparation slot",
+		inv.prepare_meal("forest_lunchbox"))
+	check_eq("preparing removes exactly one from the bag", inv.count("forest_lunchbox"), 1)
+	check_eq("slot records the prepared meal", inv.prepared_meal_id(), "forest_lunchbox")
+	check_true("preparing the same meal twice is rejected",
+		not inv.prepare_meal("forest_lunchbox"))
+
+	inv.add("noodle_bowl", 1)
+	check_true("a second meal atomically replaces the first", inv.prepare_meal("noodle_bowl"))
+	check_eq("replaced meal returns to its bag stack", inv.count("forest_lunchbox"), 2)
+	check_eq("new meal leaves its bag stack", inv.count("noodle_bowl"), 0)
+	check_eq("slot now records the replacement", inv.prepared_meal_id(), "noodle_bowl")
+	check_true("unprepare returns the meal", inv.unprepare_meal())
+	check_eq("returned meal is back in the bag", inv.count("noodle_bowl"), 1)
+	check_eq("returning clears the slot", inv.prepared_meal_id(), "")
+
+	inv.prepare_meal("forest_lunchbox")
+	check_eq("consume returns the reserved id",
+		inv.consume_prepared_meal("forest_lunchbox"), "forest_lunchbox")
+	check_eq("consume clears the slot", inv.prepared_meal_id(), "")
+	check_eq("a stale expected id cannot consume", inv.consume_prepared_meal("noodle_bowl"), "")
+
+	# Replacing must not delete the old meal when its returning stack would overflow.
+	var full := InventoryLogic.new()
+	full.add("forest_lunchbox", 1)
+	full.prepare_meal("forest_lunchbox")
+	full.add("forest_lunchbox", InventoryLogic.MAX_STACK)
+	full.add("noodle_bowl", 1)
+	check_true("full old stack blocks replacement without mutation",
+		not full.prepare_meal("noodle_bowl"))
+	check_eq("failed replacement keeps the old meal prepared",
+		full.prepared_meal_id(), "forest_lunchbox")
+	check_eq("failed replacement keeps the new meal in the bag", full.count("noodle_bowl"), 1)
+
+
 func _round_trip() -> void:
 	var inv := InventoryLogic.new()
 	inv.add("rice_ball", 5)
@@ -147,6 +186,8 @@ func _round_trip() -> void:
 	inv.add_coins(42)
 	inv.add("straw_hat")
 	inv.equip("straw_hat", "head")
+	inv.add("forest_lunchbox")
+	inv.prepare_meal("forest_lunchbox")
 	var saved := inv.to_dict()
 	check_true("save dict carries the coins", saved["coins"] == 42)
 	check_true("save dict carries the bag", saved["inventory"]["rice_ball"] == 5)
@@ -157,6 +198,7 @@ func _round_trip() -> void:
 	check_eq("loaded bag restores second stack", loaded.count("wild_herb"), 3)
 	check_eq("loaded coins restored", loaded.coins, 42)
 	check_eq("loaded equipment restored", loaded.equipped_id("head"), "straw_hat")
+	check_eq("prepared meal survives save/load", loaded.prepared_meal_id(), "forest_lunchbox")
 
 	# A hand-edited save with junk quantities is sanitized on load.
 	var dirty := InventoryLogic.new()
@@ -206,6 +248,8 @@ func _favorites() -> void:
 	legacy.load_dict({"inventory": {"rice_ball": 1}, "coins": 0})
 	check_true("a save with no favorites key loads as no favorites",
 		not legacy.is_favorite("rice_ball"))
+	check_eq("a save with no prepared meal loads an empty slot",
+		legacy.prepared_meal_id(), "")
 
 
 # --- harness ---------------------------------------------------------------

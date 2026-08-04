@@ -23,6 +23,8 @@ func _initialize() -> void:
 	inv.add("rice_ball", 1)
 	inv.add("bamboo_tonic", 1)
 	inv.add("stone_soup", 1)
+	inv.add("forest_lunchbox", 1)
+	check_true("test meal prepares", inv.prepare_meal("forest_lunchbox"))
 	learning.profile.unlock_card("kana-a")
 	var panel := CanvasLayer.new()
 	panel.set_script(load("res://src/ui/combat_panel.gd"))
@@ -87,8 +89,12 @@ func _initialize() -> void:
 	var encounter: CombatEncounter = panel.get("_encounter")
 	encounter.player_hp = 5
 	panel.call("_build_actions")
-	var item_button := _find_button(actions, "Items (3)") as MenuButton
+	var item_button := _find_button(actions, "Items (4)") as MenuButton
 	var item_popup := item_button.get_popup()
+	var prepared_id := _popup_item_id(item_popup, "Prepared · Forest Lunchbox")
+	check_true("prepared meal is distinct from carried combat items",
+		prepared_id >= 0 and item_popup.get_item_tooltip(
+			item_popup.get_item_index(prepared_id)).contains("Restores 48 HP"))
 	var rice_id := _popup_item_id(item_popup, "Rice Ball x1")
 	check_true("healing item becomes usable inside the Items menu",
 		item_button != null and rice_id >= 0
@@ -122,7 +128,7 @@ func _initialize() -> void:
 	var second_encounter: CombatEncounter = panel.get("_encounter")
 	second_encounter.spend_and_resolve("mi", "mi")
 	panel.call("_build_actions")
-	var second_items := _find_button(actions, "Items (2)") as MenuButton
+	var second_items := _find_button(actions, "Items (3)") as MenuButton
 	var second_popup := second_items.get_popup()
 	var tonic_id := _popup_item_id(second_popup, "Bamboo Breeze Tonic x1")
 	check_true("Energy tonic becomes usable after Energy is spent",
@@ -140,7 +146,7 @@ func _initialize() -> void:
 	await process_frame
 	continue_btn.pressed.emit()
 	await process_frame
-	var soup_menu := _find_button(actions, "Items (1)") as MenuButton
+	var soup_menu := _find_button(actions, "Items (2)") as MenuButton
 	var soup_popup := soup_menu.get_popup()
 	var soup_id := _popup_item_id(soup_popup, "Stone Soup x1")
 	var soup_index := soup_popup.get_item_index(soup_id)
@@ -202,7 +208,7 @@ func _initialize() -> void:
 	item_encounter.enemy_hp = 20
 	panel.call("_render_bars")
 	panel.call("_build_actions")
-	var attack_menu := _find_button(actions, "Items (1)") as MenuButton
+	var attack_menu := _find_button(actions, "Items (2)") as MenuButton
 	var attack_popup := attack_menu.get_popup()
 	var oil_id := _popup_item_id(attack_popup, "Fire Oil Flask x1")
 	var oil_index := attack_popup.get_item_index(oil_id)
@@ -220,6 +226,29 @@ func _initialize() -> void:
 	continue_btn.pressed.emit()
 	await process_frame
 	check_true("continuing a damage-item victory closes combat", not bool(panel.get("_active")))
+
+	# Exercise the full reservation -> combat popup -> saved consumption path, not
+	# only the pure encounter rule. Every carried combat item is gone by this point,
+	# so the one remaining menu entry must be the prepared meal.
+	bus.combat_started.emit(String(db.enemy_order[0]))
+	await process_frame
+	var meal_encounter: CombatEncounter = panel.get("_encounter")
+	meal_encounter.player_hp = 5
+	panel.call("_render_bars")
+	panel.call("_build_actions")
+	var meal_menu := _find_button(actions, "Items (1)") as MenuButton
+	var meal_popup := meal_menu.get_popup()
+	var meal_id := _popup_item_id(meal_popup, "Prepared · Forest Lunchbox")
+	meal_popup.id_pressed.emit(meal_id)
+	await process_frame
+	check_true("prepared meal heals through the combat UI", meal_encounter.player_hp > 5)
+	check_eq("successful battle meal clears the persistent slot",
+		inv.prepared_meal_id(), "")
+	check_true("meal feedback names the authored food and restored HP",
+		(panel.get("_feedback") as Label).text.contains("Forest Lunchbox")
+		and (panel.get("_feedback") as Label).text.contains("restored"))
+	flee.pressed.emit()
+	await process_frame
 
 	# Fighting IS the review session, so a missed rune has to teach: say the word
 	# out loud and show how it is read. Combat was silent even after 1,311 cards

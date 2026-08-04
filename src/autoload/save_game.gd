@@ -10,7 +10,7 @@ extends Node
 ## --- Save document shape (Slice: Persistence) ---
 ## The file is a single versioned document that wraps every persisted subsystem:
 ##
-##   { "version": 3,
+##   { "version": 4,
 ##     "learning":  { ...slim LearningProfile save dict (cards/flags/stats/build)... },
 ##     "inventory": { ...InventoryLogic.to_dict(): bag + coins + equipment... },
 ##     "world":     { "player": { "x": <float>, "y": <float>, "facing": "down" } } }
@@ -26,6 +26,10 @@ extends Node
 ## `coins`. InventoryLogic defaults a missing `equipment` map to {}, so every v2 save keeps
 ## its bag and purse unchanged and begins with the same unequipped loadout it had before.
 ##
+## MIGRATION v3 -> v4 (prepared meal). v3 inventory sections have no `preparedMeal`.
+## InventoryLogic defaults that missing string to empty, preserving the entire bag,
+## purse, equipment, and favorites while beginning with no reserved battle meal.
+##
 ## `version` is SAVE_SCHEMA_VERSION and exists so future shape changes have a
 ## migration hook (the project rule: no schema change without a migration plan).
 ##
@@ -35,7 +39,7 @@ extends Node
 ## (flat) profile.json is migrated on the first read: a document with no "learning"
 ## key is treated as the legacy learning dict and wrapped on the next save.
 
-const SAVE_SCHEMA_VERSION := 3
+const SAVE_SCHEMA_VERSION := 4
 const PROFILE_PATH := "user://profile.json"
 
 ## Whether a save existed when the game booted — i.e. there was a previous session.

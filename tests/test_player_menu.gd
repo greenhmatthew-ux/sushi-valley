@@ -116,6 +116,28 @@ func _initialize() -> void:
 
 	all_btn.pressed.emit()
 	panel.call("_refresh")
+
+	# Large meals occupy a visible preparation slot instead of pretending to be
+	# Bag potions or remaining inert forever.
+	inv.add("forest_lunchbox", 1)
+	panel.call("_refresh")
+	var prepare_meal: Button = panel.find_child("PrepareMeal_forest_lunchbox", true, false)
+	check_true("large meal offers a preparation action",
+		prepare_meal != null and prepare_meal.text == "Prepare")
+	prepare_meal.pressed.emit()
+	await process_frame
+	var prepared_label: Label = panel.find_child("PreparedMealLabel", true, false)
+	check_true("prepared slot names its meal and battle heal",
+		prepared_label != null and prepared_label.text.contains("Forest Lunchbox")
+		and prepared_label.text.contains("48 HP"))
+	check_eq("prepared meal leaves the ordinary bag stack",
+		inv.count("forest_lunchbox"), 0)
+	var return_meal: Button = panel.find_child("UnprepareMeal", true, false)
+	check_true("prepared meal can be returned without entering combat", return_meal != null)
+	return_meal.pressed.emit()
+	await process_frame
+	check_eq("returning restores exactly one meal to the bag",
+		inv.count("forest_lunchbox"), 1)
 	inv.reset()
 
 	panel.call("_set_tab", "character")

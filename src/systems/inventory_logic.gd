@@ -27,6 +27,7 @@ var bag: Dictionary = {}       # item_id -> qty (>0); empty stacks are deleted
 var coins: int = 0
 var equipment: Dictionary = {} # slot -> item_id; equipped items are not also in the bag
 var favorites: Dictionary = {} # item_id -> true; absence means not favorited
+var prepared_meal: String = "" # one meal reserved outside the bag for combat
 
 
 # --- items -----------------------------------------------------------------
@@ -184,6 +185,49 @@ func toggle_favorite(id: String) -> bool:
 	return next
 
 
+# --- prepared meal ---------------------------------------------------------
+
+func prepared_meal_id() -> String:
+	return prepared_meal
+
+
+## Move one held meal into the preparation slot. Replacing a meal is atomic: the
+## previous meal must fit back into the post-removal bag or nothing changes.
+## Item-definition validation stays in Inv, alongside gear validation.
+func prepare_meal(item_id: String) -> bool:
+	if item_id.is_empty() or item_id == prepared_meal or not has(item_id):
+		return false
+	var next_bag := bag.duplicate(true)
+	_remove_from(next_bag, item_id, 1)
+	if not prepared_meal.is_empty() and not _add_to(next_bag, prepared_meal, 1):
+		return false
+	bag = next_bag
+	prepared_meal = item_id
+	return true
+
+
+## Return the prepared meal to the bag without loss. A full matching stack leaves
+## the slot untouched so the player can use or replace it later.
+func unprepare_meal() -> bool:
+	if prepared_meal.is_empty():
+		return false
+	var next_bag := bag.duplicate(true)
+	if not _add_to(next_bag, prepared_meal, 1):
+		return false
+	bag = next_bag
+	prepared_meal = ""
+	return true
+
+
+## Clear and return the prepared id after combat has successfully resolved it.
+func consume_prepared_meal(expected_id: String = "") -> String:
+	if prepared_meal.is_empty() or (not expected_id.is_empty() and expected_id != prepared_meal):
+		return ""
+	var consumed := prepared_meal
+	prepared_meal = ""
+	return consumed
+
+
 # --- persistence hooks (the save slice wires these to SaveGame) --------------
 
 ## Serialize the bag, coin purse, and equipped slot map. Old saves omit equipment;
@@ -194,6 +238,7 @@ func to_dict() -> Dictionary:
 		"coins": coins,
 		"equipment": equipment.duplicate(true),
 		"favorites": favorites.keys(),
+		"preparedMeal": prepared_meal,
 	}
 
 
@@ -204,6 +249,7 @@ func load_dict(data: Dictionary) -> void:
 	bag.clear()
 	equipment.clear()
 	favorites.clear()
+	prepared_meal = ""
 	var raw: Dictionary = data.get("inventory", {})
 	for id in raw:
 		var qty := int(raw[id])
@@ -221,6 +267,7 @@ func load_dict(data: Dictionary) -> void:
 	for id in data.get("favorites", []):
 		if not String(id).is_empty():
 			favorites[String(id)] = true
+	prepared_meal = String(data.get("preparedMeal", ""))
 
 
 ## Drop everything — used by a "new game" reset.
@@ -228,6 +275,7 @@ func clear() -> void:
 	bag.clear()
 	equipment.clear()
 	favorites.clear()
+	prepared_meal = ""
 	coins = 0
 
 

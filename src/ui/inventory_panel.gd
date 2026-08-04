@@ -89,6 +89,7 @@ var _bag_category := "all"
 var _bag_search := ""
 var _bag_category_buttons: Dictionary = {}   # category key -> Button
 var _bag_search_box: LineEdit
+var _prepared_meal_box: HBoxContainer
 var _stats_label: Label
 var _attribute_points_label: Label
 var _attribute_value_labels: Dictionary = {}
@@ -335,6 +336,7 @@ func _refresh() -> void:
 			_skills_box.add_child(_make_talent_card(ability))
 
 	var all_items: Array = Inv.entries()
+	_refresh_prepared_meal()
 	var items: Array = all_items.filter(_matches_bag_filter)
 	# Sort by display name for a stable, human-friendly order (TS bag() did this).
 	items.sort_custom(func(a, b): return _name_of(a["id"]).naturalnocasecmp_to(_name_of(b["id"])) < 0)
@@ -1070,6 +1072,25 @@ func _make_card(id: String, qty: int) -> Control:
 		equip_button.focus_mode = Control.FOCUS_ALL
 		equip_button.pressed.connect(_on_equip.bind(id))
 		vbox.add_child(equip_button)
+	elif ConsumableRules.is_preparation_meal(def):
+		var meal_label := Label.new()
+		meal_label.text = "Prepare · Restores %d HP" % int(def.get("heal", 0))
+		meal_label.tooltip_text = "Reserve one for battle. Only one meal can be prepared."
+		meal_label.add_theme_font_size_override("font_size", 9)
+		meal_label.add_theme_color_override("font_color", COL_TEXT)
+		meal_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		meal_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		vbox.add_child(meal_label)
+
+		var prepare_button := Button.new()
+		prepare_button.name = "PrepareMeal_" + id
+		prepare_button.text = "Prepared" if Inv.prepared_meal_id() == id else "Prepare"
+		prepare_button.disabled = Inv.prepared_meal_id() == id
+		prepare_button.tooltip_text = "Already reserved for the next fight." \
+			if prepare_button.disabled else "Move one into your prepared-meal slot."
+		prepare_button.focus_mode = Control.FOCUS_ALL
+		prepare_button.pressed.connect(_on_prepare_meal.bind(id))
+		vbox.add_child(prepare_button)
 	elif ConsumableRules.is_supported_healing(def):
 		var heal_label := Label.new()
 		heal_label.text = "Restores %d HP" % int(def.get("heal", 0))
@@ -1442,6 +1463,54 @@ func _on_use_healing(item_id: String) -> void:
 	player.set_hp(int(player.hp) + restored)
 	_refresh()
 	Bus.toast.emit("%s restored %d HP." % [DB.item(item_id).get("name", item_id), restored])
+
+
+func _on_prepare_meal(item_id: String) -> void:
+	var replacing := not Inv.prepared_meal_id().is_empty()
+	if Inv.prepare_meal(item_id):
+		Bus.toast.emit("%s %s for battle." % [
+			DB.item(item_id).get("name", item_id), "replaced your meal" if replacing else "prepared"])
+	else:
+		Bus.toast.emit("Could not prepare that meal; its old stack may be full.")
+
+
+func _on_unprepare_meal() -> void:
+	var item_id := Inv.prepared_meal_id()
+	if Inv.unprepare_meal():
+		Bus.toast.emit("Returned %s to the Bag." % DB.item(item_id).get("name", item_id))
+	else:
+		Bus.toast.emit("That meal's Bag stack is full, so it stayed prepared.")
+
+
+func _refresh_prepared_meal() -> void:
+	if _prepared_meal_box == null:
+		return
+	for child in _prepared_meal_box.get_children():
+		_prepared_meal_box.remove_child(child)
+		child.queue_free()
+	var item_id := Inv.prepared_meal_id()
+	var label := Label.new()
+	label.name = "PreparedMealLabel"
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label.add_theme_font_size_override("font_size", 11)
+	if item_id.is_empty():
+		label.text = "Prepared meal · None — reserve a large meal for one battle heal."
+		label.add_theme_color_override("font_color", COL_HEADING)
+		_prepared_meal_box.add_child(label)
+		return
+	var item: Dictionary = DB.item(item_id)
+	label.text = "Prepared · %s · Restores %d HP in battle" % [
+		item.get("name", item_id), int(item.get("heal", 0))]
+	label.add_theme_color_override("font_color", UiTheme.STATE_SUCCESS)
+	_prepared_meal_box.add_child(label)
+	var button := Button.new()
+	button.name = "UnprepareMeal"
+	button.text = "Return"
+	button.tooltip_text = "Move this meal back into the Bag."
+	button.custom_minimum_size = Vector2(60, 22)
+	button.focus_mode = Control.FOCUS_ALL
+	button.pressed.connect(_on_unprepare_meal)
+	_prepared_meal_box.add_child(button)
 
 
 func _on_equip(item_id: String) -> void:
@@ -1946,6 +2015,15 @@ func _build_scaffold() -> void:
 	bag_hint.add_theme_font_size_override("font_size", 12)
 	bag_hint.add_theme_color_override("font_color", COL_HEADING)
 	_bag_view.add_child(bag_hint)
+
+	var prepared_panel := PanelContainer.new()
+	prepared_panel.name = "PreparedMealPanel"
+	prepared_panel.add_theme_stylebox_override("panel", _card_style(UiTheme.STATE_SUCCESS))
+	_bag_view.add_child(prepared_panel)
+	_prepared_meal_box = HBoxContainer.new()
+	_prepared_meal_box.name = "PreparedMealSlot"
+	_prepared_meal_box.add_theme_constant_override("separation", 6)
+	prepared_panel.add_child(_prepared_meal_box)
 
 	# Grid of cards, height-capped so overflow scrolls instead of the whole page.
 	var bag_scroll := ScrollContainer.new()

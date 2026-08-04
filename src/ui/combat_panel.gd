@@ -333,7 +333,10 @@ func _build_actions() -> void:
 	for entry in Inv.entries():
 		var item: Dictionary = DB.item(String(entry.get("id", "")))
 		if ConsumableRules.is_supported_combat_item(item):
-			combat_items.append({"item": item, "qty": int(entry.get("qty", 0))})
+			combat_items.append({"item": item, "qty": int(entry.get("qty", 0)), "prepared": false})
+	var prepared_item: Dictionary = Inv.prepared_meal_def()
+	if ConsumableRules.is_preparation_meal(prepared_item):
+		combat_items.append({"item": prepared_item, "qty": 1, "prepared": true})
 	if not combat_items.is_empty():
 		_add_items_menu(combat_items)
 	var selected_id := String(_selected_ability.get("id", "basic_attack"))
@@ -388,12 +391,15 @@ func _add_items_menu(entries: Array[Dictionary]) -> void:
 	for entry in entries:
 		var item: Dictionary = entry.get("item", {})
 		var item_id := String(item.get("id", ""))
+		var prepared := bool(entry.get("prepared", false))
 		var index := popup.item_count
-		popup.add_item("%s x%d" % [item.get("name", item_id), int(entry.get("qty", 0))], index)
-		popup.set_item_metadata(index, item_id)
+		popup.add_item(("Prepared · %s" if prepared else "%s x%d") % (
+			[item.get("name", item_id)] if prepared else [item.get("name", item_id), int(entry.get("qty", 0))]), index)
+		popup.set_item_metadata(index, {"item_id": item_id, "prepared": prepared})
 		popup.set_item_tooltip(index, "%s\n%s" % [
 			item.get("desc", ""), ConsumableRules.effect_summary(item)])
-		var usable := _encounter.can_use_combat_item(item)
+		var usable := _encounter.can_use_prepared_meal(item) if prepared \
+			else _encounter.can_use_combat_item(item)
 		popup.set_item_disabled(index, not usable)
 		any_usable = any_usable or usable
 	popup.id_pressed.connect(_on_combat_item_menu.bind(popup))
@@ -404,7 +410,8 @@ func _add_items_menu(entries: Array[Dictionary]) -> void:
 func _on_combat_item_menu(id: int, popup: PopupMenu) -> void:
 	var index := popup.get_item_index(id)
 	if index >= 0:
-		_on_combat_item(String(popup.get_item_metadata(index)))
+		var metadata: Dictionary = popup.get_item_metadata(index)
+		_on_combat_item(String(metadata.get("item_id", "")), bool(metadata.get("prepared", false)))
 
 
 func _select_action(ability_id: String) -> void:
@@ -418,15 +425,27 @@ func _select_action(ability_id: String) -> void:
 		_refresh_guard_hint()
 
 
-func _on_combat_item(item_id: String) -> void:
+func _on_combat_item(item_id: String, prepared: bool = false) -> void:
 	if _answered or not _encounter.can_use_item():
 		return
 	var item: Dictionary = DB.item(item_id)
-	if not _encounter.can_use_combat_item(item) or Inv.remove(item_id, 1) != 1:
+	var usable := _encounter.can_use_prepared_meal(item) if prepared \
+		else _encounter.can_use_combat_item(item)
+	if not usable:
 		Bus.toast.emit("That item cannot be used right now.")
 		return
+	var result: CombatEncounter.RoundResult
+	if prepared:
+		result = _encounter.use_prepared_meal(item, false)
+		if not result.action_resolved or Inv.consume_prepared_meal(item_id) != item_id:
+			Bus.toast.emit("That prepared meal could not be consumed.")
+			return
+	else:
+		if Inv.remove(item_id, 1) != 1:
+			Bus.toast.emit("That item is no longer in the Bag.")
+			return
+		result = _encounter.use_combat_item(item, false)
 	_answered = true
-	var result := _encounter.use_combat_item(item, false)
 	for choice in _choices_box.get_children():
 		if choice is Button:
 			(choice as Button).disabled = true

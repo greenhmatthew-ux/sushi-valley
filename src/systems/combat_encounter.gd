@@ -225,6 +225,11 @@ func can_use_combat_item(item: Dictionary) -> bool:
 	return false
 
 
+func can_use_prepared_meal(item: Dictionary) -> bool:
+	return can_use_item() and ConsumableLogic.is_preparation_meal(item) \
+		and int(item.get("heal", 0)) > 0 and player_hp < player_max_hp
+
+
 ## Honest enemy intent for the UI. Runtime damage varies by +/-15%, so preview the full
 ## reachable HP-loss range instead of showing a false exact number. Current Guard is included.
 func enemy_damage_range() -> Vector2i:
@@ -545,6 +550,28 @@ func use_combat_item(item: Dictionary, enemy_responds: bool = true) -> RoundResu
 	item_used_this_turn = r.action_resolved
 	r.flow_after = flow
 	r.enemy_defeated = CombatLogic.is_dead(enemy_hp)
+	if r.action_resolved and enemy_responds:
+		_enemy_response(r)
+		if r.enemy_acted:
+			_tick_timed_buffs()
+	return r
+
+
+## A prepared meal is intentionally narrower than a carried combat item: it uses
+## only its authored heal, shares the once-per-turn item budget, and never becomes
+## an instant-use Bag potion merely because it has a large heal value.
+func use_prepared_meal(item: Dictionary, enemy_responds: bool = true) -> RoundResult:
+	var r := RoundResult.new()
+	if not can_use_prepared_meal(item):
+		return r
+	r.action_id = String(item.get("id", "meal"))
+	r.action_type = "meal"
+	var hp_before := player_hp
+	player_hp = mini(player_max_hp, player_hp + maxi(0, int(item.get("heal", 0))))
+	r.player_healed = player_hp - hp_before
+	r.action_resolved = r.player_healed > 0
+	item_used_this_turn = r.action_resolved
+	r.flow_after = flow
 	if r.action_resolved and enemy_responds:
 		_enemy_response(r)
 		if r.enemy_acted:
