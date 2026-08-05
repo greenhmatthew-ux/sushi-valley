@@ -55,6 +55,10 @@ func _room_stages() -> void:
 	check_true("at the first stage the guard blocks the trail", guard.visible)
 	check_true("and the wraith is still asleep", not boss.visible)
 	check_true("a sleeping wraith cannot be touched", boss.collision_layer == 0)
+	check_eq("its separate melee hurtbox is also dormant",
+		boss.get_node("Hurtbox").collision_layer, 0)
+	check_true("its dormant hurtbox cannot be monitored",
+		not boss.get_node("Hurtbox").monitorable)
 	_check_trail_is_walkable(room)
 	room.queue_free()
 	await process_frame
@@ -72,6 +76,10 @@ func _room_stages() -> void:
 	boss = room.get_node_or_null("Entities/ForestWraith")
 	check_true("the cleared recall wakes the wraith", boss.visible)
 	check_eq("and it returns on the dedicated enemy layer", boss.collision_layer, 4)
+	check_eq("its melee hurtbox returns on layer 9",
+		boss.get_node("Hurtbox").collision_layer, 256)
+	check_true("its active hurtbox can be monitored",
+		boss.get_node("Hurtbox").monitorable)
 	check_true("the guard stays down", not guard.visible)
 	room.queue_free()
 	await process_frame

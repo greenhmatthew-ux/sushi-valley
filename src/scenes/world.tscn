@@ -1190,19 +1190,19 @@ spawn_id = "village_south"
 y_sort_enabled = true
 position = Vector2(248, 168)
 script = ExtResource("17_gobyi")
-behavior = 1
+sparring_partner = true
 
 [node name="Slime2" type="CharacterBody2D" parent="Props" unique_id=57470150 instance=ExtResource("12_enemy")]
 y_sort_enabled = true
 position = Vector2(288, 196)
 script = ExtResource("17_gobyi")
-behavior = 1
+sparring_partner = true
 
 [node name="Slime3" type="CharacterBody2D" parent="Props" unique_id=858110252 instance=ExtResource("12_enemy")]
 y_sort_enabled = true
 position = Vector2(232, 212)
 script = ExtResource("17_gobyi")
-behavior = 1
+sparring_partner = true
 
 [node name="FieldLoot" type="Area2D" parent="Props" unique_id=1702539819 instance=ExtResource("40_pickup")]
 y_sort_enabled = true

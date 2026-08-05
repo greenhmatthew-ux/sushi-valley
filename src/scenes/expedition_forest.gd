@@ -128,6 +128,12 @@ func _set_active(node: Node, active: bool) -> void:
 	node.process_mode = Node.PROCESS_MODE_INHERIT if active else Node.PROCESS_MODE_DISABLED
 	if node is CollisionObject2D:
 		(node as CollisionObject2D).set_deferred("collision_layer", 4 if active else 0)
+	# The melee sensor is a separate CollisionObject2D. Hiding only the root body leaves
+	# a sleeping boss hittable through PlayerCombat's layer-9 overlap query.
+	var hurtbox := node.get_node_or_null("Hurtbox") as Area2D
+	if hurtbox != null:
+		hurtbox.set_deferred("collision_layer", 256 if active else 0)
+		hurtbox.set_deferred("monitorable", active)
 
 
 func _on_enemy_died(enemy_id: String) -> void:

@@ -162,7 +162,6 @@ foot_offset = Vector2(0, -3)
 
 [node name="Mushroom" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(300, 180)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("15_mush")
 enemy_id = "mushroom"
@@ -171,7 +170,6 @@ coin_variance = 2
 
 [node name="Kappa" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(432, 244)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("16_kappa")
 enemy_id = "kappa"
@@ -180,7 +178,6 @@ coin_variance = 2
 
 [node name="Lantern" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(352, 240)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("17_lantern")
 enemy_id = "lantern"
@@ -189,7 +186,6 @@ coin_variance = 3
 
 [node name="Racoon" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(250, 240)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("26_racoon")
 enemy_id = "racoon"
@@ -198,7 +194,6 @@ coin_variance = 2
 
 [node name="Snake" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(464, 400)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("25_snake")
 enemy_id = "snake"
@@ -207,7 +202,6 @@ coin_variance = 2
 
 [node name="Owl" parent="Entities" instance=ExtResource("11_enemy")]
 position = Vector2(620, 290)
-behavior = 2
 enemy_atk = 4
 sprite_sheet = ExtResource("27_owl")
 enemy_id = "owl"

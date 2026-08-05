@@ -11,6 +11,8 @@ extends SceneTree
 ## A region is only content if you can actually reach it and get back, so the link in
 ## both directions is asserted here rather than left to be discovered by walking.
 
+const MIN_PROACTIVE_AGGRO_LEVEL := 2 # Enemy.AggroLevel.WARY
+
 var failures: int = 0
 var db: Node
 var scene: Node
@@ -154,7 +156,7 @@ func _enemies_are_real_and_hostile() -> void:
 		if id == null or not child.has_method("take_damage"):
 			continue
 		ids.append(String(id))
-		if int(child.get("behavior")) != 2:   # Behavior.AGGRO
+		if int(child.get("aggro_level")) < MIN_PROACTIVE_AGGRO_LEVEL:
 			passive.append(String(child.name))
 	check_true("the pass is populated (%d foes)" % ids.size(), ids.size() >= 8)
 	check_true("this is a hostile frontier, not a petting zoo (%s)" % str(passive),

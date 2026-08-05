@@ -56,7 +56,6 @@ label_offset = Vector2(62, -44)
 
 [node name="TrailGuard" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(240, 224)
-behavior = 2
 max_hp = 76
 enemy_def = 8
 enemy_atk = 16
@@ -80,7 +79,6 @@ shape = SubResource("reach")
 
 [node name="ForestWraith" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(624, 224)
-behavior = 2
 max_hp = 220
 enemy_def = 10
 enemy_atk = 22

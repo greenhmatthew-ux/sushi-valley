@@ -123,7 +123,6 @@ foot_offset = Vector2(0, -2)
 
 [node name="Lizard1" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(296, 400)
-behavior = 2
 enemy_id = "lizard"
 max_hp = 34
 enemy_def = 5
@@ -134,7 +133,6 @@ coin_variance = 4
 
 [node name="Lizard2" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(392, 320)
-behavior = 2
 enemy_id = "lizard"
 max_hp = 34
 enemy_def = 5
@@ -145,7 +143,6 @@ coin_variance = 4
 
 [node name="Lizard3" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(216, 232)
-behavior = 2
 enemy_id = "lizard"
 max_hp = 34
 enemy_def = 5
@@ -156,31 +153,26 @@ coin_variance = 4
 
 [node name="Bat1" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(480, 344)
-behavior = 2
 enemy_id = "bat"
 max_hp = 22
 enemy_def = 3
 enemy_atk = 9
-move_speed = 54.0
 sprite_sheet = ExtResource("11_bat")
 coin_reward = 8
 coin_variance = 3
 
 [node name="Bat2" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(600, 264)
-behavior = 2
 enemy_id = "bat"
 max_hp = 22
 enemy_def = 3
 enemy_atk = 9
-move_speed = 54.0
 sprite_sheet = ExtResource("11_bat")
 coin_reward = 8
 coin_variance = 3
 
 [node name="Mole1" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(160, 328)
-behavior = 2
 enemy_id = "mole"
 max_hp = 38
 enemy_def = 6
@@ -191,7 +183,6 @@ coin_variance = 5
 
 [node name="Mole2" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(344, 200)
-behavior = 2
 enemy_id = "mole"
 max_hp = 38
 enemy_def = 6
@@ -202,38 +193,30 @@ coin_variance = 5
 
 [node name="Bear1" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(504, 200)
-behavior = 2
 enemy_id = "bear"
 max_hp = 56
 enemy_def = 8
 enemy_atk = 20
-detect_radius = 112.0
 sprite_sheet = ExtResource("13_bear")
 coin_reward = 24
 coin_variance = 8
 
 [node name="Tengu1" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(464, 120)
-behavior = 2
 enemy_id = "tengu"
 max_hp = 48
 enemy_def = 7
 enemy_atk = 17
-detect_radius = 112.0
-move_speed = 50.0
 sprite_sheet = ExtResource("14_tengu")
 coin_reward = 20
 coin_variance = 6
 
 [node name="Tengu2" parent="Entities" instance=ExtResource("9_enemy")]
 position = Vector2(584, 104)
-behavior = 2
 enemy_id = "tengu"
 max_hp = 48
 enemy_def = 7
 enemy_atk = 17
-detect_radius = 112.0
-move_speed = 50.0
 sprite_sheet = ExtResource("14_tengu")
 coin_reward = 20
 coin_variance = 6
