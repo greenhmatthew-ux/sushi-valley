@@ -11,8 +11,12 @@ extends SceneTree
 ## the plumbing, not a designed map.
 
 const TILE := 16
-const MAP_W := 44
-const MAP_H := 30
+## The authored town is 44x30; world.gd paints fields east of it at runtime. The checks
+## below derive the footprint from the map itself — pinning the old numbers meant a region
+## could not grow without a test edit, while these still catch the things that matter: holes
+## in the ground, an underlay that misses part of it, and a camera clamped to stale bounds.
+const MIN_MAP_W := 44
+const MIN_MAP_H := 30
 
 var failures: int = 0
 
@@ -52,11 +56,17 @@ func _run() -> void:
 		_finish()
 		return
 
-	check_true("ground is fully tiled (%d cells)" % ground.get_used_cells().size(),
-		ground.get_used_cells().size() == MAP_W * MAP_H)
+	var used := ground.get_used_rect()
+	var footprint: int = used.size.x * used.size.y
+	check_true("the village is at least the size it was authored (%dx%d)"
+		% [used.size.x, used.size.y],
+		used.size.x >= MIN_MAP_W and used.size.y >= MIN_MAP_H)
+	check_true("ground is fully tiled, with no holes (%d of %d cells)"
+		% [ground.get_used_cells().size(), footprint],
+		ground.get_used_cells().size() == footprint)
 	if edge_ground != null:
 		check_true("edge underlay covers the full camera footprint",
-			edge_ground.get_used_cells().size() == MAP_W * MAP_H)
+			edge_ground.get_used_cells().size() == footprint)
 		check_true("northwest edge uses real Serene Village grass",
 			edge_ground.get_cell_atlas_coords(Vector2i.ZERO) == Vector2i(4, 0))
 		check_true("edge underlay stays behind authored paths and props",
@@ -73,8 +83,10 @@ func _run() -> void:
 
 	# --- camera is clamped to the map ---
 	var camera: Camera2D = player.get_node("Camera")
-	check_true("camera limits match the map",
-		camera.limit_right == MAP_W * TILE and camera.limit_bottom == MAP_H * TILE)
+	check_true("camera limits match the map (%d x %d)"
+		% [camera.limit_right, camera.limit_bottom],
+		camera.limit_right == used.end.x * TILE
+		and camera.limit_bottom == used.end.y * TILE)
 
 	# --- the sheet actually became animations ---
 	var sprite: AnimatedSprite2D = player.get_node("Sprite")

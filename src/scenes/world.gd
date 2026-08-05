@@ -27,16 +27,213 @@ const TRAIL_TOP_RIGHT := Vector2i(3, 2)
 const TRAIL_BOTTOM_LEFT := Vector2i(5, 1)
 const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
 
+## Placement maths shared with the Wilds and the Mountain Pass. Preloaded rather than named
+## globally, so a clean headless checkout does not depend on the editor's class cache.
+const Scatter = preload("res://src/systems/terrain_scatter.gd")
+
+## How far the fields run east past the authored map. The market road used to reach the edge
+## of the tile data and simply stop, which is what made the village read as cut off.
+const OUTSKIRTS_TILES := 22
+const OUTSKIRTS_SEED := 20260804
+
+const PROP_SCENE := preload("res://src/entities/prop.tscn")
+const OUTSKIRT_TREES: Array[Texture2D] = [
+	preload("res://assets/props/tree_green.png"),
+	preload("res://assets/props/tree_leafy.png"),
+	preload("res://assets/props/tree_sakura.png"),
+]
+const OUTSKIRT_ROCK: Texture2D = preload("res://assets/props/rock.png")
+const OUTSKIRT_BUSH: Texture2D = preload("res://assets/props/berry_bush.png")
+const TREE_FOOT := Vector2(10, 5)
+const ROCK_FOOT := Vector2(20, 8)
+const PROP_FOOT_OFFSET := Vector2(0, -2)
+
 @onready var ground: TileMapLayer = $Ground
 
 
 func _ready() -> void:
 	Audio.play_music("village")
+	_build_east_outskirts()
 	_build_edge_underlay()
 	_clamp_camera_to_map()
 	_build_meadow()
 	_build_south_spur()
 	_load_game()
+
+
+## Fields east of town. The authored tile data stops dead at its own edge, so the market road
+## ran east and ended in grey — the "cut off" edge. Rather than operating on a hand-made
+## tilemap, the strip is painted into the Ground layer at runtime: `get_used_rect()` then
+## grows on its own, so the camera clamp and the edge underlay follow without being told.
+##
+## Runs before the underlay and the clamp, and paints nothing the authored map already owns.
+func _build_east_outskirts() -> void:
+	if ground.tile_set == null:
+		return
+	var used := ground.get_used_rect()
+	if used.size == Vector2i.ZERO:
+		return
+	var first_new_x := used.end.x
+	var last_new_x := first_new_x + OUTSKIRTS_TILES
+
+	for x in range(first_new_x, last_new_x):
+		for y in range(used.position.y, used.end.y):
+			ground.set_cell(Vector2i(x, y), 0, GRASS_ATLAS)
+
+	_continue_market_road(used, first_new_x, last_new_x)
+	_enclose_outskirts(used, last_new_x)
+	_plant_outskirts(used, first_new_x, last_new_x)
+
+
+## Carry whatever the authored map has at its east edge — the market road — straight out
+## into the fields, so the road leaves town instead of stopping at the tile data.
+func _continue_market_road(used: Rect2i, first_new_x: int, last_new_x: int) -> void:
+	var trail_frames: Dictionary = {}
+	for coord in _trail_coords():
+		trail_frames[coord] = true
+	# The authored road stops three tiles short of its own data edge, so each row is scanned
+	# back for the last trail tile. Matching the trail frames rather than "not grass" is what
+	# keeps the pond — which also reaches the east side — from being mistaken for a road.
+	var road_end: Dictionary = {}   # row -> east-most authored road tile
+	var scan_limit: int = maxi(used.end.x - 8, used.position.x)
+	for y in range(used.position.y, used.end.y):
+		for x in range(used.end.x - 1, scan_limit - 1, -1):
+			if trail_frames.has(ground.get_cell_atlas_coords(Vector2i(x, y))):
+				road_end[y] = x
+				break
+	if road_end.is_empty():
+		return
+
+	# Register the trail frames on the authored TileSet's source, or set_cell draws nothing.
+	var source := ground.tile_set.get_source(0) as TileSetAtlasSource
+	if source == null:
+		return
+	for coord in _trail_coords():
+		if not source.has_tile(coord):
+			source.create_tile(coord)
+
+	# The track stops short of the hedgerow and ends among the fields. Running it to the
+	# boundary would just move the "road that stops at nothing" problem further out.
+	var track_end: int = last_new_x - 4
+	var rows: Array[int] = []
+	var join_x := 0
+	for raw_row in road_end:
+		rows.append(int(raw_row))
+		join_x = maxi(join_x, int(road_end[raw_row]))
+	rows.sort()
+	var centre_row: int = rows[rows.size() / 2]
+
+	var cells: Dictionary = {}
+	# Two columns at the full market width, so the join reads as the same road...
+	for y in rows:
+		for x in range(int(road_end[y]), join_x + 3):
+			cells[Vector2i(x, y)] = true
+	# ...then it narrows to a farm track and wanders. Carrying all four market rows straight
+	# out to the fields drew a stamped brown slab, which is the thing paths must never be.
+	var waypoints: Array[Vector2i] = [
+		Vector2i(join_x + 3, centre_row),
+		Vector2i(join_x + 8, centre_row + 1),
+		Vector2i((join_x + track_end) / 2, centre_row - 1),
+		Vector2i(track_end, centre_row),
+	]
+	for i in waypoints.size() - 1:
+		var width := 3 if i == 0 else 2
+		for center in _raster_line(waypoints[i], waypoints[i + 1]):
+			for cell in Scatter.brush_cells(center, width):
+				cells[cell] = true
+
+	for raw_cell in cells:
+		var cell: Vector2i = raw_cell
+		if cell.x <= int(road_end.get(cell.y, -1)):
+			continue   # never repaint an authored tile; it only anchors the join
+		if cell.x < used.position.x or cell.x >= last_new_x \
+				or cell.y < used.position.y or cell.y >= used.end.y:
+			continue
+		ground.set_cell(cell, 0, _trail_tile(cells, cell))
+
+
+## The village has no bounds body — town is held in by its own tree line and water. The new
+## fields need their own edge, so they get a wall on three sides and a tree line drawn along
+## it, which is what the player actually reads as "the fields end here".
+func _enclose_outskirts(used: Rect2i, last_new_x: int) -> void:
+	var tile: Vector2i = ground.tile_set.tile_size
+	var bounds := StaticBody2D.new()
+	bounds.name = "OutskirtBounds"
+	bounds.collision_layer = 1
+	bounds.collision_mask = 0
+	add_child(bounds)
+
+	var origin := ground.position
+	var top := origin.y + used.position.y * tile.y
+	var bottom := origin.y + used.end.y * tile.y
+	var east := origin.x + last_new_x * tile.x
+	var west := origin.x + used.end.x * tile.x
+	_add_bound(bounds, "East", Vector2(east + 4, (top + bottom) / 2.0),
+		Vector2(8, bottom - top))
+	_add_bound(bounds, "North", Vector2((west + east) / 2.0, top - 4),
+		Vector2(east - west, 8))
+	_add_bound(bounds, "South", Vector2((west + east) / 2.0, bottom + 4),
+		Vector2(east - west, 8))
+
+
+func _add_bound(parent: StaticBody2D, shape_name: String,
+		position: Vector2, size: Vector2) -> void:
+	var collision := CollisionShape2D.new()
+	collision.name = shape_name
+	collision.position = position
+	var rectangle := RectangleShape2D.new()
+	rectangle.size = size
+	collision.shape = rectangle
+	parent.add_child(collision)
+
+
+## Hedgerow along the new edge, then scattered cover through the fields, using the shared
+## placement module and the same props the village already plants by hand.
+func _plant_outskirts(used: Rect2i, first_new_x: int, last_new_x: int) -> void:
+	var blocked := _occupied_tiles()
+	for cell in ground.get_used_cells():
+		if ground.get_cell_atlas_coords(cell) != GRASS_ATLAS:
+			blocked[cell] = true   # the road and everything authored stay clear
+
+	var rng := RandomNumberGenerator.new()
+	rng.seed = OUTSKIRTS_SEED
+	var size := Vector2i(last_new_x + 1, used.end.y)
+	var mix := func(cell: Vector2i) -> Dictionary:
+		if cell.x < first_new_x + 1 or cell.x > last_new_x - 1:
+			return {}
+		if cell.x >= last_new_x - 2:
+			return {"tree": 0.9, "rock": 0.05, "bush": 0.02}   # the hedgerow edge
+		return {"tree": 0.14, "rock": 0.05, "bush": 0.16}      # open field
+	var clumped: Array[String] = ["tree", "bush"]
+	for entry in Scatter.plan_cover(size, blocked, mix, clumped, OUTSKIRTS_SEED):
+		var cell: Vector2i = entry["cell"]
+		match String(entry["kind"]):
+			"tree":
+				_add_outskirt_prop(cell, OUTSKIRT_TREES[rng.randi() % OUTSKIRT_TREES.size()],
+					true, TREE_FOOT)
+			"rock":
+				_add_outskirt_prop(cell, OUTSKIRT_ROCK, true, ROCK_FOOT)
+			"bush":
+				_add_outskirt_prop(cell, OUTSKIRT_BUSH, false, Vector2.ZERO)
+
+
+func _add_outskirt_prop(cell: Vector2i, texture: Texture2D, solid: bool,
+		foot_size: Vector2) -> void:
+	var props := get_node_or_null("Props")
+	if props == null:
+		return
+	var prop := PROP_SCENE.instantiate() as Prop
+	if prop == null:
+		return
+	prop.texture = texture
+	prop.solid = solid
+	if solid:
+		prop.foot_size = foot_size
+		prop.foot_offset = PROP_FOOT_OFFSET
+	var tile: Vector2i = ground.tile_set.tile_size
+	prop.position = ground.position + Vector2(
+		cell.x * tile.x + tile.x / 2.0, (cell.y + 1) * tile.y)
+	props.add_child(prop)
 
 
 ## The hand-authored Ground layer is intentionally offset to align its paths and water with
