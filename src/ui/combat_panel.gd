@@ -33,7 +33,17 @@ var _answered := false
 var _rng := RandomNumberGenerator.new()
 var _weapon_name := "Unarmed"
 
+## Rendered at 3x the 16px sheet frame, so the foe reads at a glance without the panel
+## having to give up a row to it.
+const PORTRAIT_PX := 48
+## How hard a struck target punches, and for how long. Short and small on purpose: the
+## point is to make a hit register, not to hold up the round.
+const HIT_PUNCH := 1.12
+const HIT_SECONDS := 0.26
+
 var _root: Control
+var _hit_layer: Control
+var _enemy_portrait: TextureRect
 var _enemy_label: Label
 var _enemy_hp_bar: ProgressBar
 var _intent_label: Label
@@ -93,6 +103,7 @@ func _on_combat_requested(token: String, enemy_id: String) -> void:
 	_active = true
 	get_tree().paused = true
 	_enemy_label.text = _encounter.enemy_name
+	_set_enemy_portrait(enemy_id)
 	_flee_btn.show()
 	_root.show()
 	if CombatEncounter.player_acts_first(_encounter.player_speed, _encounter.enemy_speed):
@@ -113,6 +124,7 @@ func _show_enemy_opening() -> void:
 	_feedback.add_theme_color_override("font_color", COL_BAD)
 	_feedback.text = "%s opens for %d damage." % [
 		_encounter.enemy_name, result.enemy_damage_dealt]
+	_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
 	_render_bars()
 	_end_turn_btn.hide()
 	_continue_btn.text = "Continue" if _encounter.is_over() else "Your turn"
@@ -160,6 +172,80 @@ func _refresh_guard_hint() -> void:
 	var action_name := String(_selected_ability.get("name", "Basic Attack"))
 	_guard_hint.text = "%s: choose the matching rune" % action_name if not Settings.english_visible() \
 		else "%s: choose the rune meaning \"%s\"" % [action_name, _challenge.get("guard", "")]
+
+
+## The foe's own walk-sheet still, honouring `spriteAlias` the way the Bestiary does — the
+## JSON `sprite` field is inherited from the source pack's naming and does not resolve for
+## most of the roster. Hidden rather than shown as a placeholder box when no art exists.
+func _set_enemy_portrait(enemy_id: String) -> void:
+	if _enemy_portrait == null:
+		return
+	var enemy: Dictionary = DB.enemy(enemy_id)
+	var sprite_id := String(enemy.get("spriteAlias", enemy.get("sprite", "")))
+	var path := "res://assets/sprites/%s.png" % sprite_id
+	var texture: Texture2D = load(path) as Texture2D if \
+		not sprite_id.is_empty() and ResourceLoader.exists(path) else null
+	_enemy_portrait.texture = SpriteSheets.portrait(texture) if texture != null else null
+	_enemy_portrait.visible = texture != null
+	_enemy_portrait.modulate = Color.WHITE
+	_enemy_portrait.position = Vector2.ZERO
+
+
+## Make a hit look like one: the struck side flashes its colour and lurches, and the number
+## floats off it. Combat reported damage only in a sentence, so a big hit and a scratch felt
+## identical — the bar moved and the text changed, and nothing else happened.
+func _show_hit(target: Control, amount: int, tint: Color) -> void:
+	if target == null or amount <= 0 or not is_inside_tree():
+		return
+	_flash(target, tint)
+	_float_damage(target, amount, tint)
+
+
+## Colour flash plus a scale punch.
+##
+## Deliberately NOT a position shake: these are container children, and a container owns its
+## children's position and size. Tweening `position` fought the layout and left the player's
+## HP bar parked at the top of the panel. Scale is not managed by the container, so it is the
+## one transform that can punch without moving anything.
+func _flash(target: Control, tint: Color) -> void:
+	if not target.visible:
+		return
+	target.pivot_offset = target.size * 0.5
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(target, "modulate", tint, HIT_SECONDS * 0.25)
+	tween.chain().tween_property(target, "modulate", Color.WHITE, HIT_SECONDS * 0.75)
+	var punch := create_tween()
+	punch.tween_property(target, "scale", Vector2.ONE * HIT_PUNCH, HIT_SECONDS * 0.25) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	punch.tween_property(target, "scale", Vector2.ONE, HIT_SECONDS * 0.75) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+func _float_damage(anchor: Control, amount: int, tint: Color) -> void:
+	# The opening hit lands in the same frame the shell is first shown, before anything has
+	# a rect — anchoring then put the number in the screen corner. Wait for the layout.
+	await get_tree().process_frame
+	if _hit_layer == null or not is_instance_valid(anchor) or not is_inside_tree():
+		return
+	var number := Label.new()
+	number.name = "HitNumber"
+	number.text = "-%d" % amount
+	number.add_theme_font_size_override("font_size", 20)
+	number.add_theme_color_override("font_color", tint)
+	number.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	number.add_theme_constant_override("outline_size", 4)
+	number.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_hit_layer.add_child(number)
+	# Anchor in the overlay's own space: the whole layer is scaled by the UI-scale setting,
+	# so a raw global position would drift at anything other than 100%.
+	var to_local := _hit_layer.get_global_transform().affine_inverse()
+	number.position = to_local * anchor.get_global_rect().get_center() - Vector2(8, 12)
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(number, "position:y", number.position.y - 26.0, HIT_SECONDS * 3.0)
+	tween.tween_property(number, "modulate:a", 0.0, HIT_SECONDS * 3.0).set_delay(HIT_SECONDS)
+	tween.chain().tween_callback(number.queue_free)
 
 
 func _render_bars() -> void:
@@ -259,6 +345,7 @@ func _on_rune(rune: String, btn: Button) -> void:
 		else String(result.answer)
 	_feedback.text = outcome if result.correct \
 		else "%s was the rune. Weakened %s" % [revealed, outcome]
+	_show_hit(_enemy_portrait, result.player_damage_dealt, COL_BAD)
 	if result.correct and result.flow_after > 1:
 		_feedback.text += "   Flow x%d" % result.flow_after
 	if _encounter.is_over():
@@ -318,6 +405,8 @@ func _resolve_end_turn() -> void:
 				_encounter.enemy_name, result.enemy_damage_dealt]
 		if result.counter_damage_dealt > 0:
 			_feedback.text += "   Returned %d damage." % result.counter_damage_dealt
+		_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
+		_show_hit(_enemy_portrait, result.counter_damage_dealt, COL_GOOD)
 	_render_bars()
 	_continue_btn.text = "Continue" if _encounter.is_over() \
 		else ("Bonus turn" if result.bonus_turn_granted else "Next turn")
@@ -587,9 +676,28 @@ func _build() -> void:
 	vbox.add_theme_constant_override("separation", 4)
 	scroll.add_child(vbox)
 
+	# Floating damage numbers live on their own overlay so a hit never reflows the round.
+	_hit_layer = Control.new()
+	_hit_layer.name = "HitLayer"
+	_hit_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_hit_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_root.add_child(_hit_layer)
+
 	# enemy
 	var enemy_row := HBoxContainer.new()
 	enemy_row.add_theme_constant_override("separation", 10)
+	# The foe you are fighting was never on screen — combat was a name, two bars and a
+	# line of text, which reads as a form rather than a fight. Its own walk sheet supplies
+	# the portrait, the same still the Bestiary uses.
+	_enemy_portrait = TextureRect.new()
+	_enemy_portrait.name = "CombatEnemyPortrait"
+	_enemy_portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_enemy_portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_enemy_portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_enemy_portrait.custom_minimum_size = Vector2(PORTRAIT_PX, PORTRAIT_PX)
+	_enemy_portrait.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_enemy_portrait.pivot_offset = Vector2(PORTRAIT_PX, PORTRAIT_PX) * 0.5
+	enemy_row.add_child(_enemy_portrait)
 	_enemy_label = _label(17, COL_BORDER)
 	_enemy_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	# An enemy's name and its active effects are information the player is meant to
