@@ -88,6 +88,29 @@ func _run() -> void:
 		camera.limit_right == used.end.x * TILE
 		and camera.limit_bottom == used.end.y * TILE)
 
+	# A region can render perfectly and still be impossible to walk to. The village's
+	# authored bounds were built for the town alone, so its east wall stood inside the map
+	# once the fields were added: every screenshot looked right and the fields were sealed
+	# off. Any side wall left standing between the west and east edges does that again.
+	var map_west: float = ground.position.x + used.position.x * TILE
+	var map_east: float = ground.position.x + used.end.x * TILE
+	var walls_inside := 0
+	for body in [world.get_node_or_null("Bounds"), world.get_node_or_null("OutskirtBounds")]:
+		if body == null:
+			continue
+		for child in body.get_children():
+			var collision := child as CollisionShape2D
+			if collision == null or collision.disabled:
+				continue
+			var rectangle := collision.shape as RectangleShape2D
+			if rectangle == null or rectangle.size.x >= rectangle.size.y:
+				continue   # north/south walls run the other way
+			var wall_x: float = body.position.x + collision.position.x
+			if wall_x > map_west + TILE and wall_x < map_east - TILE:
+				walls_inside += 1
+	check_true("no side wall seals off part of the map (%d found)" % walls_inside,
+		walls_inside == 0)
+
 	# --- the sheet actually became animations ---
 	var sprite: AnimatedSprite2D = player.get_node("Sprite")
 	var frames := sprite.sprite_frames

@@ -167,13 +167,40 @@ func _enclose_outskirts(used: Rect2i, last_new_x: int) -> void:
 	var top := origin.y + used.position.y * tile.y
 	var bottom := origin.y + used.end.y * tile.y
 	var east := origin.x + last_new_x * tile.x
-	var west := origin.x + used.end.x * tile.x
+	# The authored Bounds box was built for the town alone and its east wall stands well
+	# inside the new fields — leave it up and the fields render perfectly and cannot be
+	# walked to. Retire it, and start the new north/south walls where it stood, so the
+	# enclosure stays continuous instead of leaving a gap to walk out through.
+	var west: float = minf(_retire_town_east_wall(), origin.x + used.end.x * tile.x)
 	_add_bound(bounds, "East", Vector2(east + 4, (top + bottom) / 2.0),
 		Vector2(8, bottom - top))
 	_add_bound(bounds, "North", Vector2((west + east) / 2.0, top - 4),
 		Vector2(east - west, 8))
 	_add_bound(bounds, "South", Vector2((west + east) / 2.0, bottom + 4),
 		Vector2(east - west, 8))
+
+
+## Take down the town's east wall and report where it stood. It is found by shape rather
+## than by node name: the authored bounds children carry generated names like
+## "@CollisionShape2D@330", which are not something to depend on.
+func _retire_town_east_wall() -> float:
+	var bounds := get_node_or_null("Bounds") as StaticBody2D
+	if bounds == null:
+		return INF
+	var east_wall: CollisionShape2D = null
+	for child in bounds.get_children():
+		var collision := child as CollisionShape2D
+		if collision == null:
+			continue
+		var rectangle := collision.shape as RectangleShape2D
+		if rectangle == null or rectangle.size.x >= rectangle.size.y:
+			continue   # a north or south wall, not one of the side walls
+		if east_wall == null or collision.position.x > east_wall.position.x:
+			east_wall = collision
+	if east_wall == null:
+		return INF
+	east_wall.disabled = true
+	return east_wall.position.x
 
 
 func _add_bound(parent: StaticBody2D, shape_name: String,
