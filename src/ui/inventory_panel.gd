@@ -1269,7 +1269,14 @@ func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	var caption := Label.new()
 	caption.name = "SlotCaption"
 	caption.text = slot.capitalize()
-	caption.add_theme_font_size_override("font_size", 9)
+	# Two wrapped lines with an ellipsis rather than a hard clip: a tile that reads
+	# "Wooden Katan" looks broken, and a name you cannot finish reading is worse than a
+	# name that admits it was shortened.
+	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	caption.max_lines_visible = 2
+	caption.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	caption.custom_minimum_size = Vector2(SLOT_TILE - 6, 0)
+	caption.add_theme_font_size_override("font_size", 8)
 	caption.add_theme_color_override("font_color",
 		COL_HEADING if item_id.is_empty() else COL_TEXT)
 	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
