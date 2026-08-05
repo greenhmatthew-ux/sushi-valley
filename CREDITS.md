@@ -18,6 +18,10 @@ verified against the running scenes — not an aspirational or inherited list.
   native 16px Pickaxe, Axe, and Sickle icons used by the three permanent gathering tools. The
   Mountain Pass is built from the pack's `TilesetRelief` rock terrain and `TilesetReliefDetail` scree, and its foes use the
   pack's Lizard, Mole, Bear, BlueBat and Tengu sheets.
+  `assets/props/building_lake_house.png` is the pack's `Backgrounds/Tilesets/TilesetHouse.png`
+  timber house, tiles x25-28 of rows 8, 9, 12 and 13 assembled at the width the art was drawn
+  for, giving the lake house a Japanese building of its own instead of a second copy of
+  House1's red-roofed cottage.
   Ki Focus, Rune Ward,
   Riposte, and Blood Blade are the unmodified
   `Ui/Skill Icon/Spell/AttackUpgrade.png`, `Ui/Skill Icon/Spell/DefenseUpgrade.png`,
