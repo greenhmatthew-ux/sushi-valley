@@ -6,7 +6,8 @@ extends CharacterBody2D
 ## persistence can react later without holding a reference to this node.
 ##
 ## Node origin = the feet (bottom-center), matching the player, so Y-sort and spawns key
-## off the same point. The body collides on layer 1 (solid, like the world). Hits land on
+## off the same point. The body uses enemy layer 4 and masks terrain layer 1, so it cannot
+## body-block the player on layer 2. Hits land on
 ## the Hurtbox Area2D (layer 9), whose solid footprint — not the full art bounds — is what
 ## the player's attack must overlap.
 ##
@@ -91,13 +92,18 @@ func _physics_process(delta: float) -> void:
 
 ## Catching the player starts a turn-based recall fight rather than chipping HP in real
 ## time — combat is where the Japanese gets used, so it needs a UI turn to happen in.
-## Deferred because this runs inside a physics callback.
+## EncounterDirector reserves ownership synchronously, then dispatches the UI request
+## deferred so this coroutine is already waiting before any immediate rejection resolves.
 func _engage() -> void:
 	if _in_combat:
 		return
+	var token := EncounterDirector.request(enemy_id, self)
+	if token.is_empty():
+		# Another enemy owns the active encounter. Back off instead of joining its result.
+		_attack_timer = maxf(attack_cooldown, 1.5)
+		return
 	_in_combat = true
-	Bus.combat_started.emit.call_deferred(enemy_id)
-	var victory: bool = await Bus.combat_ended
+	var victory: bool = await EncounterDirector.wait_for_result(token)
 	_in_combat = false
 	if victory:
 		_drop_loot()

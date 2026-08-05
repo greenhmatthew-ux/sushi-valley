@@ -173,7 +173,9 @@ func _check_combat(bus: Node, db: Node) -> void:
 	await process_frame
 	# A starter enemy: with no player node in this harness the base 12 HP applies,
 	# and a late-game enemy simply one-shots it before any rune round is drawn.
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	var director: Node = root.get_node("EncounterDirector")
+	check_true("combat fit harness owns an encounter token",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	await process_frame
 	_audit(panel, "combat")

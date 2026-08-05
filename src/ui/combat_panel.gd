@@ -2,7 +2,8 @@ extends CanvasLayer
 ## Turn-based recall combat. The enemy raises a guard word; your four moves are Japanese
 ## runes and picking the matching one IS the attack — no quiz popup in front of the game.
 ##
-## Bus-driven: opens on `combat_started(enemy_id)`, replies with `combat_ended(victory)`.
+## EncounterDirector-driven: opens only for its owned token and resolves that same token.
+## Legacy combat_started/combat_ended remain lifecycle notifications for other UI/audio.
 ## All rules live in the pure CombatEncounter; this only renders it and feeds it choices.
 ##
 ## Every round's card comes from the ONE shared scheduler (Learning.build_prompt) and every
@@ -24,6 +25,7 @@ const COL_BTN := UiTheme.SURFACE_RAISED
 const COL_BTN_BORDER := UiTheme.BORDER_STRONG
 
 var _active := false
+var _encounter_token := ""
 var _encounter: CombatEncounter
 var _current_card: Dictionary = {}
 var _challenge: Dictionary = {}
@@ -57,18 +59,20 @@ func _ready() -> void:
 	_rng.randomize()
 	_build()
 	_root.hide()
-	Bus.combat_started.connect(_on_combat_started)
+	Bus.combat_requested.connect(_on_combat_requested)
 	Bus.language_changed.connect(func(_v): if _active: _refresh_guard_hint())
 	Bus.ui_scale_changed.connect(func(_s): UiTheme.fit_layer(self, _root))
 
 
-func _on_combat_started(enemy_id: String) -> void:
+func _on_combat_requested(token: String, enemy_id: String) -> void:
 	if _active:
 		return
+	_encounter_token = token
 	var enemy: Dictionary = DB.enemy(enemy_id)
 	if enemy.is_empty():
 		push_warning("[Combat] unknown enemy '%s'" % enemy_id)
-		Bus.combat_ended.emit(false)
+		_encounter_token = ""
+		EncounterDirector.resolve(token, false)
 		return
 
 	# Stats come from the player, which derives them from learning level (PlayerStats) —
@@ -485,7 +489,22 @@ func _finish(victory: bool, message: String) -> void:
 		Bus.toast.emit(message)
 	elif victory:
 		Bus.enemy_died.emit(_encounter.enemy_id)
-	Bus.combat_ended.emit(victory)
+	var token := _encounter_token
+	_encounter_token = ""
+	EncounterDirector.resolve(token, victory)
+
+
+func _exit_tree() -> void:
+	if not _active and _encounter_token.is_empty():
+		return
+	_active = false
+	if get_tree() != null:
+		get_tree().paused = false
+	var token := _encounter_token
+	_encounter_token = ""
+	var director := get_node_or_null("/root/EncounterDirector")
+	if director != null:
+		director.resolve(token, false)
 
 
 func _input(event: InputEvent) -> void:

@@ -77,8 +77,12 @@ func _run_raid(raid: Dictionary) -> void:
 
 
 func _launch_boss(raid: Dictionary) -> void:
-	Bus.combat_started.emit(String(raid.get("encounterId", "")))
-	var victory: bool = await Bus.combat_ended
+	var encounter_id := String(raid.get("encounterId", ""))
+	var token := EncounterDirector.request(encounter_id, self)
+	if token.is_empty():
+		Bus.toast.emit("Another encounter is already active.")
+		return
+	var victory: bool = await EncounterDirector.wait_for_result(token)
 	if not victory:
 		# Progress stays at recall-cleared: ask again and go straight back in.
 		return

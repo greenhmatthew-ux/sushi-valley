@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 Bus="*res://src/autoload/bus.gd"
+EncounterDirector="*res://src/autoload/encounter_director.gd"
 DB="*res://src/autoload/db.gd"
 Audio="*res://src/autoload/audio.gd"
 SaveGame="*res://src/autoload/save_game.gd"

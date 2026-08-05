@@ -18,6 +18,7 @@ func _initialize() -> void:
 	var learning: Node = root.get_node("Learning")
 	var db: Node = root.get_node("DB")
 	var bus: Node = root.get_node("Bus")
+	var director: Node = root.get_node("EncounterDirector")
 	var inv: Node = root.get_node("Inv")
 	inv.reset()
 	inv.add("rice_ball", 1)
@@ -44,7 +45,8 @@ func _initialize() -> void:
 	await process_frame
 	check_true("world HUD layers start visible",
 		hud.visible and objective.visible and prompt.visible)
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	check_true("first encounter request is accepted",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	check_true("world HUD steps out of combat",
 		not hud.visible and not objective.visible and not prompt.visible)
@@ -120,7 +122,8 @@ func _initialize() -> void:
 	check_eq("Flee reports no victory rewards", outcomes, [false])
 	inv.add("wooden_katana", 1)
 	check_true("test weapon equips", inv.equip("wooden_katana"))
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	check_true("second encounter request is accepted",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	check_true("combat HUD uses the actual equipped weapon",
 		energy.text.contains("Wooden Katana"))
@@ -202,7 +205,8 @@ func _initialize() -> void:
 
 	panel.call("_finish", false, "")
 	inv.add("fire_oil", 1)
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	check_true("damage-item encounter request is accepted",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	var item_encounter: CombatEncounter = panel.get("_encounter")
 	item_encounter.enemy_hp = 20
@@ -230,7 +234,8 @@ func _initialize() -> void:
 	# Exercise the full reservation -> combat popup -> saved consumption path, not
 	# only the pure encounter rule. Every carried combat item is gone by this point,
 	# so the one remaining menu entry must be the prepared meal.
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	check_true("prepared-meal encounter request is accepted",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	var meal_encounter: CombatEncounter = panel.get("_encounter")
 	meal_encounter.player_hp = 5
@@ -258,7 +263,8 @@ func _initialize() -> void:
 	# of them comes up, so the playback assertion below actually runs instead of
 	# quietly skipping on a silent authored kana card.
 	learning.profile.unlock_lesson("travel-vocab-1")
-	bus.combat_started.emit(String(db.enemy_order[0]))
+	check_true("audio encounter request is accepted",
+		not String(director.request(String(db.enemy_order[0]))).is_empty())
 	await process_frame
 	var audio_node: Node = root.get_node("Audio")
 	for attempt in 50:
@@ -303,9 +309,17 @@ func _initialize() -> void:
 		panel.call("_next_round")
 		await process_frame
 		check_true("replay disappears once the next answer is hidden", not listen.visible)
+	var removal_outcomes: Array[bool] = []
+	bus.combat_ended.connect(
+		func(victory: bool): removal_outcomes.append(victory), CONNECT_ONE_SHOT)
+	check_true("the final panel still owns its active encounter", director.is_busy())
 	inv.reset()
 	panel.queue_free()
 	await process_frame
+	check_true("removing an active panel releases its encounter token",
+		not director.is_busy())
+	check_true("removing an active panel resumes the world", not paused)
+	check_eq("panel removal resolves as a non-victory", removal_outcomes, [false])
 	_finish()
 
 

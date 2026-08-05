@@ -67,6 +67,10 @@ signal shop_open(shop_id: String)
 signal item_purchased(item_id: String, price: int)
 
 # --- combat ---
+## Command path for owned encounters. `combat_started` / `combat_ended` remain lifecycle
+## notifications for HUD, audio, learning, and tests; they are not ownership commands.
+signal combat_requested(token: String, enemy_id: String)
+signal combat_resolved(token: String, victory: bool)
 signal combat_started(enemy_id: String)
 signal combat_ended(victory: bool)
 ## Per-hit resolution: a single strike landed on an enemy.

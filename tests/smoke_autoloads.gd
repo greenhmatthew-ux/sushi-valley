@@ -28,6 +28,7 @@ func _initialize() -> void:
 	var weather := root.get_node_or_null("WeatherSystem")
 	var fishing := root.get_node_or_null("Fishing")
 	var gathering := root.get_node_or_null("Gathering")
+	var encounters := root.get_node_or_null("EncounterDirector")
 	check_true("DB autoload present", db != null)
 	check_true("SaveGame autoload present", save != null)
 	check_true("Learning autoload present", learning != null)
@@ -35,6 +36,11 @@ func _initialize() -> void:
 	check_true("Weather autoload present", weather != null)
 	check_true("Fishing autoload present", fishing != null)
 	check_true("Gathering autoload present", gathering != null)
+	check_true("EncounterDirector autoload present", encounters != null)
+	if encounters != null:
+		check_true("EncounterDirector exposes the ownership API",
+			encounters.has_method("request") and encounters.has_method("resolve")
+			and encounters.has_method("wait_for_result"))
 	if audio != null:
 		check_true("Audio exposes has_pronunciation",
 			audio.has_method("has_pronunciation"))

@@ -127,7 +127,7 @@ func _set_active(node: Node, active: bool) -> void:
 	(node as Node2D).visible = active
 	node.process_mode = Node.PROCESS_MODE_INHERIT if active else Node.PROCESS_MODE_DISABLED
 	if node is CollisionObject2D:
-		(node as CollisionObject2D).set_deferred("collision_layer", 1 if active else 0)
+		(node as CollisionObject2D).set_deferred("collision_layer", 4 if active else 0)
 
 
 func _on_enemy_died(enemy_id: String) -> void:

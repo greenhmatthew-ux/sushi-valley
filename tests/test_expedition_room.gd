@@ -71,7 +71,7 @@ func _room_stages() -> void:
 	guard = room.get_node_or_null("Entities/TrailGuard")
 	boss = room.get_node_or_null("Entities/ForestWraith")
 	check_true("the cleared recall wakes the wraith", boss.visible)
-	check_true("and it can now be fought", boss.collision_layer != 0)
+	check_eq("and it returns on the dedicated enemy layer", boss.collision_layer, 4)
 	check_true("the guard stays down", not guard.visible)
 	room.queue_free()
 	await process_frame
