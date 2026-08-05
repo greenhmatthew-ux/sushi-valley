@@ -86,6 +86,16 @@ including "unstated" or "unknown", and move on.
 - Paths must not be stamped as large rectangles of one center tile. Use edge, corner,
   transition, and alternate center tiles; vary width and shape enough to feel hand-placed.
 - Use Y-sort for anything the player can walk behind.
+- **No two interiors may be identical.** Every interior is furnished for what its building
+  is for — a forge is not a kitchen is not a home. Reusing one room layout for the second
+  building is the same placeholder failure as reusing one NPC sprite.
+- Resource nodes are placed for a reason the player can read: ore against rock and cliffs,
+  herbs in damp or shaded ground, bamboo in stands. A node dropped on open grass because
+  there was space looks unintentional, because it is.
+- **Branch out across `D:\Asset Library`.** It holds ~102 packs in TWO roots — `Assets` and
+  `Assets 2` (the latter is almost entirely icons and UI). Shipping from three packs is a
+  choice, not a limit. Match 16px scale and the village palette; record provenance in
+  `CREDITS.md`.
 
 ## Testing
 - Headless logic tests live in `tests/` and run with:
