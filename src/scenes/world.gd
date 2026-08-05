@@ -61,6 +61,7 @@ func _ready() -> void:
 	_clamp_camera_to_map()
 	_build_meadow()
 	_build_south_spur()
+	_build_door_spurs()
 	_anchor_resource_nodes()
 	_load_game()
 
@@ -501,6 +502,85 @@ func _build_south_spur() -> void:
 		if source != -1 and ground.get_cell_atlas_coords(cell) != GRASS_ATLAS:
 			continue
 		road.set_cell(cell, 0, _trail_tile(cells, cell))
+
+
+## A worn footpath from every building door out to the road it stands on.
+##
+## The Wilds gate has had a spur since it was built, but the house doors never did: both
+## buildings sat on unbroken grass, so the only clue a door was a door was walking into it.
+## A door nobody has worn a path to does not read as one.
+##
+## Width is deliberately not constant. The market road is three tiles, these run two where
+## they meet it and narrow to one at the step, which is what a path used by one household
+## looks like next to a road used by the village.
+func _build_door_spurs() -> void:
+	var props := get_node_or_null("Props")
+	if props == null or ground.tile_set == null:
+		return
+	var tile: Vector2i = ground.tile_set.tile_size
+	var used := ground.get_used_rect()
+	var trail_frames: Dictionary = {}
+	for coord in _trail_coords():
+		trail_frames[coord] = true
+
+	var cells: Dictionary = {}
+	for door in props.get_children():
+		if not (door is Node2D):
+			continue
+		var target: Variant = door.get("target_scene")
+		if target == null or not String(target).contains("interior"):
+			continue
+		var step := Vector2i(
+			floori((door.position.x - ground.position.x) / tile.x),
+			floori((door.position.y - ground.position.y) / tile.y))
+		var road_row := _road_row_below(step, used, trail_frames)
+		if road_row < 0:
+			continue
+		# One tile wide at the doorstep, two once it is clear of the building.
+		for y in range(step.y, road_row + 1):
+			var width := 1 if y <= step.y + 1 else 2
+			for cell in Scatter.brush_cells(Vector2i(step.x, y), width):
+				cells[cell] = true
+	if cells.is_empty():
+		return
+
+	var paths := TileMapLayer.new()
+	paths.name = "DoorPaths"
+	paths.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	paths.position = ground.position
+	var src := TileSetAtlasSource.new()
+	src.texture = preload("res://assets/tilesets/serene_village.png")
+	src.texture_region_size = tile
+	for c in _trail_coords():
+		src.create_tile(c)
+	var ts := TileSet.new()
+	ts.tile_size = tile
+	ts.add_source(src, 0)
+	paths.tile_set = ts
+	add_child(paths)
+	move_child(paths, ground.get_index() + 1)
+
+	for raw_cell in cells:
+		var cell: Vector2i = raw_cell
+		if not used.has_point(cell):
+			continue
+		# Never paint over authored ground that is already something — a road, the pond,
+		# a yard. The spur only ever crosses plain grass.
+		var source := ground.get_cell_source_id(cell)
+		if source != -1 and ground.get_cell_atlas_coords(cell) != GRASS_ATLAS:
+			continue
+		paths.set_cell(cell, 0, _trail_tile(cells, cell))
+
+
+## The row of the first road tile below a doorstep, or -1 if the door does not face one
+## within a short walk — in which case it gets no spur rather than a path to nowhere.
+func _road_row_below(step: Vector2i, used: Rect2i, trail_frames: Dictionary) -> int:
+	for y in range(step.y + 1, mini(step.y + 14, used.end.y)):
+		for dx in range(-2, 3):
+			var probe := Vector2i(step.x + dx, y)
+			if trail_frames.has(ground.get_cell_atlas_coords(probe)):
+				return y
+	return -1
 
 
 func _trail_coords() -> Array[Vector2i]:
