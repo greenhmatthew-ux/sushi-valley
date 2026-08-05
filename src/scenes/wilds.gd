@@ -14,6 +14,11 @@ extends Node2D
 ## the outpost clearing, the deep east woods, and the bamboo hollow — with scatter density,
 ## species and threat authored per zone rather than one uniform wash.
 
+## Placement maths (trail brushes, the scatter lattice, clumping) is shared with the
+## Mountain Pass. Preloaded rather than named globally, so a clean headless checkout does
+## not depend on the editor's class cache having been rebuilt.
+const Scatter = preload("res://src/systems/terrain_scatter.gd")
+
 const TILE := 16
 const W := 72   # tiles wide
 const H := 50   # tiles tall
@@ -196,29 +201,9 @@ func _build_route() -> void:
 func _add_route(waypoints: Array[Vector2i], width: int) -> void:
 	for i in range(waypoints.size() - 1):
 		for center in _raster_line(waypoints[i], waypoints[i + 1]):
-			for cell in _brush_cells(center, width):
+			for cell in Scatter.brush_cells(center, width):
 				if cell.x >= 0 and cell.x < W and cell.y >= 0 and cell.y < H:
 					_route_cells[cell] = true
-
-
-## The outer band of a wide brush is dropped on a hash of the cell, so the trail edge looks
-## walked rather than stamped. The centreline is never dropped — the path stays connected.
-func _brush_cells(center: Vector2i, width: int) -> Array[Vector2i]:
-	var cells: Array[Vector2i] = []
-	var lo := -(width - 1) / 2
-	var hi := width / 2
-	for dx in range(lo, hi + 1):
-		for dy in range(lo, hi + 1):
-			var cell := center + Vector2i(dx, dy)
-			var is_centerline := dx == 0 and dy == 0
-			var on_edge := dx == lo or dx == hi or dy == lo or dy == hi
-			if width > 1 and on_edge and not is_centerline \
-					and ((cell.x * 7 + cell.y * 13) & 3) == 0:
-				continue
-			cells.append(cell)
-	if cells.is_empty():
-		cells.append(center)
-	return cells
 
 
 ## Integer Bresenham keeps diagonal waypoint segments connected without any float rounding.
@@ -338,30 +323,20 @@ func _mark_prop_tiles(position: Vector2, pad: int) -> void:
 ## three-tile one reads as an orchard. Every candidate must clear the walked trail and any
 ## authored entity by a full tile, so cover never closes a route or crowds a landmark.
 func _scatter_cover() -> void:
-	for lattice_x in range(2, W - 2, 2):
-		for lattice_y in range(2, H - 2, 2):
-			var cell := Vector2i(
-				lattice_x + _rng.randi_range(-1, 1),
-				lattice_y + _rng.randi_range(-1, 1))
-			var mix := _zone_cover_mix(cell)
-			var clump := _clump_weight(cell)
-			var roll := _rng.randf()
-			# Trees and bushes clump; rocks stay incidental, so a thicket still has bare
-			# stone in it and a glade is not swept perfectly clean.
-			var tree_chance := float(mix["tree"]) * clump
-			var rock_chance := float(mix["rock"])
-			var bush_chance := float(mix["bush"]) * clump
-			if roll >= tree_chance + rock_chance + bush_chance:
-				continue
-			if not _can_build_cover(cell):
-				continue
-			if roll < tree_chance:
+	# Trees and bushes clump; rocks stay incidental, so a thicket still has bare stone in
+	# it and a glade is not swept perfectly clean.
+	var clumped: Array[String] = ["tree", "bush"]
+	for entry in Scatter.plan_cover(Vector2i(W, H), _blocked,
+			_zone_cover_mix, clumped, GEN_SEED):
+		var cell: Vector2i = entry["cell"]
+		match String(entry["kind"]):
+			"tree":
 				_add_cover(cell, TREE_TEXTURES[_rng.randi() % TREE_TEXTURES.size()],
 					true, TREE_FOOT, TREE_FOOT_OFFSET)
-			elif roll < tree_chance + rock_chance:
+			"rock":
 				_add_cover(cell, ROCK_TEXTURE, true, ROCK_FOOT, ROCK_FOOT_OFFSET)
-			else:
-				# Berry bushes are walk-through in the village; keep them walk-through here.
+			"bush":
+				# Berry bushes are walk-through in the village; keep them so here.
 				_add_cover(cell, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
 
 
@@ -378,28 +353,6 @@ func _zone_cover_mix(cell: Vector2i) -> Dictionary:
 	if ZONE_DOWNS.has_point(cell):
 		return {"tree": 0.14, "rock": 0.06, "bush": 0.16}
 	return {"tree": 0.06, "rock": 0.03, "bush": 0.05}
-
-
-## Cover clumps rather than spreads. A coarse per-block weight turns a uniform roll into
-## thickets and glades — without it the woods came out as an evenly spaced orchard, which
-## is the giveaway that nobody placed it.
-func _clump_weight(cell: Vector2i) -> float:
-	var block_x := cell.x / 5
-	var block_y := cell.y / 5
-	var hashed := absi((block_x * 73856093) ^ (block_y * 19349663))
-	return 0.15 + 1.6 * (float(hashed % 997) / 997.0)
-
-
-## Clear of the map edge, of anything authored, and of the trail by one tile. `_blocked`
-## already carries the route cells, so one probe answers both.
-func _can_build_cover(cell: Vector2i) -> bool:
-	if cell.x < 1 or cell.x >= W - 1 or cell.y < 1 or cell.y >= H - 1:
-		return false
-	for dx in range(-1, 2):
-		for dy in range(-1, 2):
-			if _blocked.has(cell + Vector2i(dx, dy)):
-				return false
-	return true
 
 
 func _add_cover(cell: Vector2i, texture: Texture2D, solid: bool,
