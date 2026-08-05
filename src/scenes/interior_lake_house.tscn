@@ -1,0 +1,180 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/interior_house.gd" id="1_int"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="Texture2D" path="res://assets/objects/ninja_interior_elements.png" id="6_elements"]
+[ext_resource type="Texture2D" path="res://assets/objects/ninja_beds.png" id="7_beds"]
+[ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="8_pickup"]
+[ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="12_prop"]
+[ext_resource type="PackedScene" path="res://src/entities/sleep_spot.tscn" id="13_sleep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_door"]
+atlas = ExtResource("6_elements")
+region = Rect2(128, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_entry_mat"]
+atlas = ExtResource("6_elements")
+region = Rect2(208, 64, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fish_rack"]
+atlas = ExtResource("6_elements")
+region = Rect2(224, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_basin"]
+atlas = ExtResource("6_elements")
+region = Rect2(224, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fish_board"]
+atlas = ExtResource("6_elements")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hearth"]
+atlas = ExtResource("6_elements")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cook_pot"]
+atlas = ExtResource("6_elements")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_creel"]
+atlas = ExtResource("6_elements")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bait_tub"]
+atlas = ExtResource("6_elements")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crate"]
+atlas = ExtResource("6_elements")
+region = Rect2(16, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_water_jar"]
+atlas = ExtResource("6_elements")
+region = Rect2(0, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hanging_scroll"]
+atlas = ExtResource("6_elements")
+region = Rect2(0, 80, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_futon"]
+atlas = ExtResource("7_beds")
+region = Rect2(0, 0, 16, 48)
+
+[node name="InteriorLakeHouse" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_int")
+room_width = 15
+room_height = 8
+doorway_x = 7
+wall_tint = Color(0.5, 0.54, 0.6, 1)
+
+[node name="Floor" type="TileMapLayer" parent="."]
+texture_filter = 1
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="DoorSprite" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(120, 128)
+texture = SubResource("AtlasTexture_door")
+offset = Vector2(0, -8)
+
+[node name="EntryMat" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(120, 104)
+texture = SubResource("AtlasTexture_entry_mat")
+offset = Vector2(0, -24)
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="DryingRack" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(56, 44)
+texture = SubResource("AtlasTexture_fish_rack")
+solid = false
+
+[node name="HangingScroll" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(152, 44)
+texture = SubResource("AtlasTexture_hanging_scroll")
+solid = false
+
+[node name="Hearth" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(200, 48)
+texture = SubResource("AtlasTexture_hearth")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="RinsingBasin" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(72, 72)
+texture = SubResource("AtlasTexture_basin")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="CuttingBoard" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(96, 72)
+texture = SubResource("AtlasTexture_fish_board")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="CookPot" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(152, 72)
+texture = SubResource("AtlasTexture_cook_pot")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Futon" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(32, 104)
+texture = SubResource("AtlasTexture_futon")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="SleepSpot" parent="Entities" instance=ExtResource("13_sleep")]
+position = Vector2(32, 104)
+
+[node name="TackleCrate" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(72, 104)
+texture = SubResource("AtlasTexture_crate")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Creel" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(96, 104)
+texture = SubResource("AtlasTexture_creel")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="WaterJar" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(168, 104)
+texture = SubResource("AtlasTexture_water_jar")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="BaitTub" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(200, 104)
+texture = SubResource("AtlasTexture_bait_tub")
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -3)
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(120, 92)
+
+[node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(120, 120)
+target_scene = "res://src/scenes/world.tscn"
+uses_return_spawn = true
+auto_enter = true
+destination = "the Village"
+label_offset = Vector2(0, -18)
+
+[node name="EntryMarker" type="Marker2D" parent="Entities"]
+position = Vector2(120, 92)
+script = ExtResource("5_spawn")
+spawn_id = "interior_entry"
+
+[node name="Catch" parent="Entities" instance=ExtResource("8_pickup")]
+position = Vector2(184, 72)
+item_id = "river_fish"
+qty = 2
+pickup_id = "lake_house_catch"

@@ -10,12 +10,18 @@ extends Node2D
 ## via a darker modulate on its own TileMapLayer: the same material in shadow, not a collage.
 
 const TILE := 16
-const W := 13   # room width in tiles
-const H := 9    # room height in tiles
+
+## Room shape is per-scene, not per-script. Two buildings that share this script must not
+## share a room: an interior reused wholesale is the same placeholder failure as two NPCs
+## sharing a face, so the shape, the doorway and the wall shade are all set by the scene.
+@export var room_width: int = 13    # in tiles
+@export var room_height: int = 9    # in tiles
+## The tile the front door occupies in the bottom wall.
+@export var doorway_x: int = 6
+@export var wall_tint: Color = Color(0.62, 0.5, 0.4)
 
 const FLOOR_TEX := preload("res://assets/tilesets/ninja_interior_floor.png")
 const FLOOR_TILE := Vector2i(4, 2)   # complete warm brick centre tile; repeats without seams
-const WALL_TINT := Color(0.62, 0.5, 0.4)   # same tile, shaded darker to read as a wall
 
 @onready var floor_layer: TileMapLayer = $Floor
 @onready var entities: Node2D = $Entities
@@ -46,23 +52,19 @@ func _build_tileset() -> void:
 	wall_layer.name = "Walls"
 	wall_layer.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	wall_layer.tile_set = ts
-	wall_layer.modulate = WALL_TINT
+	wall_layer.modulate = wall_tint
 	add_child(wall_layer)
 	move_child(wall_layer, floor_layer.get_index() + 1)
 
 
-## The tile the front door occupies in the bottom wall.
-const DOORWAY_X := 6
-
-
 func _build_room() -> void:
 	# Rows 0-1, the outer columns, and the bottom row are wall (darker layer); the rest is
-	# floor. The bottom wall has a one-tile gap at DOORWAY_X — that is the doorway, and the
+	# floor. The bottom wall has a one-tile gap at `doorway_x` — that is the doorway, and the
 	# door sprite sits IN it, attached to the wall, rather than floating on open floor.
-	for x in W:
-		for y in H:
-			var is_wall := y == 0 or y == 1 or x == 0 or x == W - 1 \
-				or (y == H - 1 and x != DOORWAY_X)
+	for x in room_width:
+		for y in room_height:
+			var is_wall := y == 0 or y == 1 or x == 0 or x == room_width - 1 \
+				or (y == room_height - 1 and x != doorway_x)
 			var layer := wall_layer if is_wall else floor_layer
 			layer.set_cell(Vector2i(x, y), 0, FLOOR_TILE)
 
@@ -76,9 +78,9 @@ func _build_walls() -> void:
 	body.collision_mask = 0
 	add_child(body)
 	var l := float(TILE)               # inner left (right of the col-0 wall)
-	var r := float((W - 1) * TILE)     # inner right (left of the last-col wall)
+	var r := float((room_width - 1) * TILE)   # inner right (left of the last-col wall)
 	var t := float(2 * TILE)           # inner top (below the back wall)
-	var b := float(H * TILE)           # inner bottom (the open doorway edge)
+	var b := float(room_height * TILE)  # inner bottom (the open doorway edge)
 	# [center, size]: seal top/left/right; the bottom rect stops a walk-off past the door.
 	var rects := [
 		[Vector2((l + r) * 0.5, t - 4.0), Vector2(r - l, 8.0)],
@@ -126,6 +128,6 @@ func _clamp_camera() -> void:
 		return
 	cam.limit_left = 0
 	cam.limit_top = 0
-	cam.limit_right = W * TILE
-	cam.limit_bottom = H * TILE
+	cam.limit_right = room_width * TILE
+	cam.limit_bottom = room_height * TILE
 	cam.reset_smoothing()

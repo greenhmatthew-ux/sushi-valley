@@ -1172,10 +1172,10 @@ spawn_id = "house1_door"
 position = Vector2(529, 273)
 collision_layer = 8
 script = ExtResource("14_v8imb")
-target_scene = "res://src/scenes/interior_house.tscn"
+target_scene = "res://src/scenes/interior_lake_house.tscn"
 target_spawn = "interior_entry"
 return_spawn = "house2_door"
-destination = "the House"
+destination = "the Angler's House"
 sign_offset = Vector2(-48, 8)
 
 [node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
