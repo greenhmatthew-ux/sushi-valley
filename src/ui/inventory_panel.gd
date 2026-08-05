@@ -1956,6 +1956,10 @@ func _build_scaffold() -> void:
 	equipment_heading.add_theme_font_size_override("font_size", 13)
 	equipment_heading.add_theme_color_override("font_color", COL_HEADING)
 	_character_view.add_child(equipment_heading)
+	# Gear leads the Character tab. It used to be built last, which put twelve slots below
+	# the stats readout and three attribute rows — off the bottom of a 360-tall screen — so
+	# the tab opened on a wall of numbers and looked like it had no gear system at all.
+	var equipment_nodes: Array[Control] = [equipment_heading]
 
 	# Grouped by type (Weapon / Armor / Accessories) rather than one flat wrapping
 	# row: "gear slots and types" is only readable if the types are visible.
@@ -1967,13 +1971,21 @@ func _build_scaffold() -> void:
 		group_header.add_theme_font_size_override("font_size", 11)
 		group_header.add_theme_color_override("font_color", COL_BORDER)
 		_character_view.add_child(group_header)
+		equipment_nodes.append(group_header)
 
-		var group_box := HFlowContainer.new()
+		# A fixed four-column grid rather than a flow row: slots then sit in the same
+		# place every time, which is what makes a gear screen readable at a glance.
+		var group_box := GridContainer.new()
 		group_box.name = "EquipmentSlots_" + group_name
+		group_box.columns = 4
 		group_box.add_theme_constant_override("h_separation", 6)
 		group_box.add_theme_constant_override("v_separation", 4)
 		_character_view.add_child(group_box)
 		_equipment_group_boxes[group_name] = group_box
+		equipment_nodes.append(group_box)
+
+	for index in equipment_nodes.size():
+		_character_view.move_child(equipment_nodes[index], index)
 
 	_skills_view = VBoxContainer.new()
 	_skills_view.name = "SkillsView"
