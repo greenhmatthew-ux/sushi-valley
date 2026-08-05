@@ -8,11 +8,23 @@ extends Node2D
 ##
 ## Detail comes from the same Serene Village sheet as the terrain. Density is deliberately
 ## low: textured, not overgrown.
+##
+## The region was widened south and east in 2026-08: the old 42x28 field was one flat green
+## rectangle you could cross in seconds. It is now four readable zones — the arrival downs,
+## the outpost clearing, the deep east woods, and the bamboo hollow — with scatter density,
+## species and threat authored per zone rather than one uniform wash.
 
 const TILE := 16
-const W := 42   # tiles wide
-const H := 28   # tiles tall
+const W := 72   # tiles wide
+const H := 50   # tiles tall
 const GEN_SEED := 20260727   # fixed so the generated meadow is stable run-to-run
+
+## Zones drive scatter density and species. Rects are in tiles and are tested in order, so
+## the knoll wins inside the woods; anything unclaimed is the original outpost clearing.
+const ZONE_KNOLL := Rect2i(54, 1, 18, 13)    # bare rocky rise holding the ore seams
+const ZONE_WOODS := Rect2i(42, 0, 30, 30)    # deep east woods: shrubs, few blossoms
+const ZONE_GROVE := Rect2i(32, 30, 40, 20)   # south-east bamboo hollow
+const ZONE_DOWNS := Rect2i(0, 30, 32, 20)    # open arrival meadow from the village
 
 const GRASS := Vector2i(4, 0)   # serene_village grass (ground, source 0)
 
@@ -28,13 +40,15 @@ const TRAIL_TOP_RIGHT := Vector2i(3, 2)
 const TRAIL_BOTTOM_LEFT := Vector2i(5, 1)
 const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
 
-# Fixed route waypoints, in tile coordinates. A three-tile brush turns each centreline into
-# a readable trail: the main north road, the outpost spur, and an east-side hunt loop.
+# Fixed route waypoints, in tile coordinates. Each route carries its own width so the
+# network reads as a hierarchy instead of one uniform brown ribbon: a walked main road,
+# thinner spurs, and single-file hunting tracks that peter out in the woods.
 ## The north end runs all the way to the map edge — past the PassDoor's own tile — so
 ## the trail visibly leaves the region instead of petering out four tiles short of it,
 ## which read as "the road ends here" rather than "the road continues north".
 const MAIN_ROUTE: Array[Vector2i] = [
-	Vector2i(21, 27), Vector2i(21, 23), Vector2i(20, 20),
+	Vector2i(21, 49), Vector2i(21, 45), Vector2i(19, 40), Vector2i(20, 34),
+	Vector2i(21, 30), Vector2i(21, 27), Vector2i(21, 23), Vector2i(20, 20),
 	Vector2i(18, 15), Vector2i(19, 11), Vector2i(20, 5),
 	Vector2i(20, 1),
 ]
@@ -47,12 +61,48 @@ const EAST_HUNT_LOOP: Array[Vector2i] = [
 	Vector2i(38, 18), Vector2i(38, 20), Vector2i(34, 22),
 	Vector2i(29, 22), Vector2i(24, 20), Vector2i(20, 20),
 ]
+## Into the new east woods, then north to the ore on the knoll. Single file: the woods are
+## meant to feel like somewhere you push through, not somewhere a cart goes.
+const WOODS_TRACK: Array[Vector2i] = [
+	Vector2i(38, 18), Vector2i(45, 17), Vector2i(51, 14),
+	Vector2i(55, 11), Vector2i(60, 8), Vector2i(63, 5),
+]
+const KNOLL_SPUR: Array[Vector2i] = [
+	Vector2i(60, 8), Vector2i(64, 9), Vector2i(67, 7),
+]
+## The hollow track leaves the main road below the clearing and loops through the bamboo.
+const HOLLOW_TRACK: Array[Vector2i] = [
+	Vector2i(20, 34), Vector2i(28, 35), Vector2i(35, 37),
+	Vector2i(42, 39), Vector2i(50, 41), Vector2i(56, 44),
+	Vector2i(62, 45),
+]
+## A short walked loop around the arrival meadow, so the downs are not one straight run.
+const DOWNS_LOOP: Array[Vector2i] = [
+	Vector2i(21, 45), Vector2i(15, 44), Vector2i(11, 40),
+	Vector2i(13, 36), Vector2i(19, 40),
+]
 
 # Complete, standalone Serene Village detail frames (source 1).
 const MEADOW_FLOWERS: Array[Vector2i] = [
 	Vector2i(2, 13), Vector2i(17, 24), Vector2i(17, 25), Vector2i(18, 25)]
 const FLOWER_BEDS: Array[Vector2i] = [Vector2i(2, 14), Vector2i(18, 24)]
 const SHRUB := Vector2i(7, 12)
+
+# Woodland cover. The same real 16px-native props the landmarks in the .tscn use — the
+# scatter only decides *where*, never what the art is.
+const PROP_SCENE := preload("res://src/entities/prop.tscn")
+const TREE_TEXTURES: Array[Texture2D] = [
+	preload("res://assets/props/tree_green.png"),
+	preload("res://assets/props/tree_leafy.png"),
+	preload("res://assets/props/tree_sakura.png"),
+]
+const ROCK_TEXTURE: Texture2D = preload("res://assets/props/rock.png")
+const BUSH_TEXTURE: Texture2D = preload("res://assets/props/berry_bush.png")
+## Trunk/base footprints, matching the hand-authored props in wilds.tscn exactly.
+const TREE_FOOT := Vector2(10, 5)
+const TREE_FOOT_OFFSET := Vector2(0, -2)
+const ROCK_FOOT := Vector2(20, 8)
+const ROCK_FOOT_OFFSET := Vector2(0, -3)
 
 @onready var ground: TileMapLayer = $Ground
 @onready var entities: Node2D = $Entities
@@ -70,6 +120,7 @@ func _ready() -> void:
 	_build_ground()
 	_build_bounds()
 	_mark_occupied()
+	_scatter_cover()
 	_build_detail()
 	_place_player()
 	_clamp_camera()
@@ -122,28 +173,52 @@ func _build_ground() -> void:
 	_build_route()
 
 
-## Rasterize fixed waypoints with a three-tile brush, then pick real edge/corner art from
+## Rasterize fixed waypoints with a per-route brush, then pick real edge/corner art from
 ## each cell's missing cardinal neighbours. Route cells also join `_blocked`, keeping grass
 ## tufts and flowers off the walked trail.
 func _build_route() -> void:
 	_route_cells.clear()
-	_add_route(MAIN_ROUTE)
-	_add_route(OUTPOST_SPUR)
-	_add_route(EAST_HUNT_LOOP)
+	_add_route(MAIN_ROUTE, 2)
+	_add_route(OUTPOST_SPUR, 2)
+	_add_route(EAST_HUNT_LOOP, 2)
+	_add_route(DOWNS_LOOP, 1)
+	_add_route(HOLLOW_TRACK, 1)
+	_add_route(WOODS_TRACK, 1)
+	_add_route(KNOLL_SPUR, 1)
 	for raw_cell in _route_cells:
 		var cell: Vector2i = raw_cell
 		ground.set_cell(cell, 0, _trail_tile(cell))
 		_blocked[cell] = true
 
 
-func _add_route(waypoints: Array[Vector2i]) -> void:
+## `width` is the brush square in tiles. The waypoint cell itself is always stamped, so a
+## door sitting on a waypoint is always reached however ragged the edges get.
+func _add_route(waypoints: Array[Vector2i], width: int) -> void:
 	for i in range(waypoints.size() - 1):
 		for center in _raster_line(waypoints[i], waypoints[i + 1]):
-			for dx in range(-1, 2):
-				for dy in range(-1, 2):
-					var cell := center + Vector2i(dx, dy)
-					if cell.x >= 0 and cell.x < W and cell.y >= 0 and cell.y < H:
-						_route_cells[cell] = true
+			for cell in _brush_cells(center, width):
+				if cell.x >= 0 and cell.x < W and cell.y >= 0 and cell.y < H:
+					_route_cells[cell] = true
+
+
+## The outer band of a wide brush is dropped on a hash of the cell, so the trail edge looks
+## walked rather than stamped. The centreline is never dropped — the path stays connected.
+func _brush_cells(center: Vector2i, width: int) -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+	var lo := -(width - 1) / 2
+	var hi := width / 2
+	for dx in range(lo, hi + 1):
+		for dy in range(lo, hi + 1):
+			var cell := center + Vector2i(dx, dy)
+			var is_centerline := dx == 0 and dy == 0
+			var on_edge := dx == lo or dx == hi or dy == lo or dy == hi
+			if width > 1 and on_edge and not is_centerline \
+					and ((cell.x * 7 + cell.y * 13) & 3) == 0:
+				continue
+			cells.append(cell)
+	if cells.is_empty():
+		cells.append(center)
+	return cells
 
 
 ## Integer Bresenham keeps diagonal waypoint segments connected without any float rounding.
@@ -231,41 +306,163 @@ func _add_bound(parent: StaticBody2D, shape_name: String,
 
 
 ## Record the tiles a prop/building sits on so scattered detail never pokes through a house
-## base or a trunk. The outpost gets a bigger pad; small props just their own tile.
+## base or a trunk, and so the tree scatter below has somewhere it must not build. Doors,
+## spawn markers and the expedition gate get the widest pad: a 32px tree dropped next to a
+## walk-in door would hide the way out and crowd its auto-enter radius.
 func _mark_occupied() -> void:
 	for e in entities.get_children():
 		if not (e is Node2D):
 			continue
-		var t := _to_tile((e as Node2D).position)
-		var pad := 2 if String(e.name).begins_with("Outpost") else 1
-		for dx in range(-pad, pad + 1):
-			for dy in range(-pad, pad + 1):
-				_blocked[t + Vector2i(dx, dy)] = true
+		_mark_prop_tiles((e as Node2D).position, _occupancy_pad(e))
 
 
-## Restrained meadow: a light wash of blossoms across the open grass, tight wildflower
-## patches for colour, and rare shrub accents. Then a flower bed framing the yard.
+func _occupancy_pad(node: Node) -> int:
+	var node_name := String(node.name)
+	if node is Marker2D or node is Area2D or node_name.ends_with("Door"):
+		return 3
+	if node_name.begins_with("Outpost"):
+		return 2
+	return 1
+
+
+func _mark_prop_tiles(position: Vector2, pad: int) -> void:
+	var t := _to_tile(position)
+	for dx in range(-pad, pad + 1):
+		for dy in range(-pad, pad + 1):
+			_blocked[t + Vector2i(dx, dy)] = true
+
+
+## Fill the new zones with real cover, using the same props the .tscn authors by hand — the
+## scatter decides *where*, never what the art is. Candidates sit on a jittered two-tile
+## lattice because the tree art is 32px: a one-tile lattice mats canopies into a wall, and a
+## three-tile one reads as an orchard. Every candidate must clear the walked trail and any
+## authored entity by a full tile, so cover never closes a route or crowds a landmark.
+func _scatter_cover() -> void:
+	for lattice_x in range(2, W - 2, 2):
+		for lattice_y in range(2, H - 2, 2):
+			var cell := Vector2i(
+				lattice_x + _rng.randi_range(-1, 1),
+				lattice_y + _rng.randi_range(-1, 1))
+			var mix := _zone_cover_mix(cell)
+			var clump := _clump_weight(cell)
+			var roll := _rng.randf()
+			# Trees and bushes clump; rocks stay incidental, so a thicket still has bare
+			# stone in it and a glade is not swept perfectly clean.
+			var tree_chance := float(mix["tree"]) * clump
+			var rock_chance := float(mix["rock"])
+			var bush_chance := float(mix["bush"]) * clump
+			if roll >= tree_chance + rock_chance + bush_chance:
+				continue
+			if not _can_build_cover(cell):
+				continue
+			if roll < tree_chance:
+				_add_cover(cell, TREE_TEXTURES[_rng.randi() % TREE_TEXTURES.size()],
+					true, TREE_FOOT, TREE_FOOT_OFFSET)
+			elif roll < tree_chance + rock_chance:
+				_add_cover(cell, ROCK_TEXTURE, true, ROCK_FOOT, ROCK_FOOT_OFFSET)
+			else:
+				# Berry bushes are walk-through in the village; keep them walk-through here.
+				_add_cover(cell, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
+
+
+## Per-zone chance of a tree / a rock / a bush at any one lattice point, before clumping.
+## The default is the outpost clearing: thin cover only, because its landmarks, yard and
+## NPCs are hand-authored and the open ground in front of them is the region's arena.
+func _zone_cover_mix(cell: Vector2i) -> Dictionary:
+	if ZONE_KNOLL.has_point(cell):
+		return {"tree": 0.05, "rock": 0.34, "bush": 0.02}
+	if ZONE_WOODS.has_point(cell):
+		return {"tree": 0.88, "rock": 0.06, "bush": 0.08}
+	if ZONE_GROVE.has_point(cell):
+		return {"tree": 0.46, "rock": 0.03, "bush": 0.20}
+	if ZONE_DOWNS.has_point(cell):
+		return {"tree": 0.14, "rock": 0.06, "bush": 0.16}
+	return {"tree": 0.06, "rock": 0.03, "bush": 0.05}
+
+
+## Cover clumps rather than spreads. A coarse per-block weight turns a uniform roll into
+## thickets and glades — without it the woods came out as an evenly spaced orchard, which
+## is the giveaway that nobody placed it.
+func _clump_weight(cell: Vector2i) -> float:
+	var block_x := cell.x / 5
+	var block_y := cell.y / 5
+	var hashed := absi((block_x * 73856093) ^ (block_y * 19349663))
+	return 0.15 + 1.6 * (float(hashed % 997) / 997.0)
+
+
+## Clear of the map edge, of anything authored, and of the trail by one tile. `_blocked`
+## already carries the route cells, so one probe answers both.
+func _can_build_cover(cell: Vector2i) -> bool:
+	if cell.x < 1 or cell.x >= W - 1 or cell.y < 1 or cell.y >= H - 1:
+		return false
+	for dx in range(-1, 2):
+		for dy in range(-1, 2):
+			if _blocked.has(cell + Vector2i(dx, dy)):
+				return false
+	return true
+
+
+func _add_cover(cell: Vector2i, texture: Texture2D, solid: bool,
+		foot_size: Vector2, foot_offset: Vector2) -> void:
+	var prop := PROP_SCENE.instantiate() as Prop
+	if prop == null:
+		push_error("wilds: prop.tscn did not instantiate as a Prop")
+		return
+	prop.texture = texture
+	prop.solid = solid
+	if solid:
+		prop.foot_size = foot_size
+		prop.foot_offset = foot_offset
+	# Origin is the feet, so sit the prop on the bottom-centre of its tile.
+	prop.position = Vector2(cell.x * TILE + TILE / 2.0, (cell.y + 1) * TILE)
+	entities.add_child(prop)
+	# Its own tile only: neighbours stay open so trunks can stand two tiles apart and the
+	# canopies actually touch, which is what makes the woods read as woods.
+	_blocked[cell] = true
+
+
+## Restrained meadow, but no longer one uniform wash: the arrival downs are the flowery
+## ones, the woods floor trades blossoms for shrubs, and the knoll is nearly bare so the
+## rock reads as rock. Then clustered wildflower patches and the flower bed framing the yard.
 func _build_detail() -> void:
 	for x in range(1, W - 1):
 		for y in range(1, H - 1):
 			var c := Vector2i(x, y)
 			if _blocked.has(c):
 				continue
+			var mix := _zone_detail_mix(c)
 			var roll := _rng.randf()
-			if roll < 0.08:
+			if roll < float(mix["flower"]):
 				_set_detail(c, MEADOW_FLOWERS[_rng.randi() % MEADOW_FLOWERS.size()])
-			elif roll < 0.086:
+			elif roll < float(mix["flower"]) + float(mix["shrub"]):
 				_set_detail(c, SHRUB)
 
-	# Wildflower patches — clustered so colour reads as beds, not confetti.
-	for i in 7:
-		var center := Vector2i(_rng.randi_range(3, W - 4), _rng.randi_range(3, H - 4))
-		var species: Vector2i = FLOWER_BEDS[_rng.randi() % FLOWER_BEDS.size()]
-		for j in _rng.randi_range(4, 7):
-			var c := center + Vector2i(_rng.randi_range(-2, 2), _rng.randi_range(-1, 1))
-			_set_detail(c, species)
+	# Wildflower patches — clustered so colour reads as beds, not confetti. They belong to
+	# the open ground; the woods and the knoll are deliberately left out.
+	for patch_zone in [ZONE_DOWNS, ZONE_GROVE, Rect2i(1, 1, 40, 28)]:
+		for i in 5:
+			var center := Vector2i(
+				_rng.randi_range(patch_zone.position.x + 2, patch_zone.end.x - 3),
+				_rng.randi_range(patch_zone.position.y + 2, patch_zone.end.y - 3))
+			var species: Vector2i = FLOWER_BEDS[_rng.randi() % FLOWER_BEDS.size()]
+			for j in _rng.randi_range(4, 7):
+				var c := center + Vector2i(_rng.randi_range(-2, 2), _rng.randi_range(-1, 1))
+				_set_detail(c, species)
 
 	_build_outpost_yard()
+
+
+## Per-zone chance of a blossom / a shrub on any one open tile.
+func _zone_detail_mix(cell: Vector2i) -> Dictionary:
+	if ZONE_KNOLL.has_point(cell):
+		return {"flower": 0.01, "shrub": 0.02}
+	if ZONE_WOODS.has_point(cell):
+		return {"flower": 0.02, "shrub": 0.05}
+	if ZONE_GROVE.has_point(cell):
+		return {"flower": 0.11, "shrub": 0.03}
+	if ZONE_DOWNS.has_point(cell):
+		return {"flower": 0.10, "shrub": 0.01}
+	return {"flower": 0.08, "shrub": 0.006}
 
 
 ## A tended flower bed flanking the outpost front, so it reads as someone's frontier post.

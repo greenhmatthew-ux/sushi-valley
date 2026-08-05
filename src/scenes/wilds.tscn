@@ -33,6 +33,11 @@
 [ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="29_expgate"]
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="30_weather"]
 [ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="31_gather"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_slime.png" id="32_slime"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_lizard.png" id="33_lizard"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_bat.png" id="34_bat"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_bear.png" id="35_bear"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_mole.png" id="36_mole"]
 
 [sub_resource type="CircleShape2D" id="exp_reach"]
 radius = 28.0
@@ -57,15 +62,15 @@ tile_set = SubResource("ts_g")
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("3_player")]
-position = Vector2(336, 400)
+position = Vector2(336, 752)
 
 [node name="WildsEntry" type="Marker2D" parent="Entities"]
-position = Vector2(336, 400)
+position = Vector2(336, 752)
 script = ExtResource("5_spawn")
 spawn_id = "wilds_entry"
 
 [node name="ExitDoor" parent="Entities" instance=ExtResource("4_door")]
-position = Vector2(336, 440)
+position = Vector2(336, 792)
 target_scene = "res://src/scenes/world.tscn"
 uses_return_spawn = true
 auto_enter = true
@@ -338,7 +343,7 @@ intro_lines = PackedStringArray("Heading further out? You'll need to ask the way
 sprite_sheet = ExtResource("22_merch")
 
 [node name="SignTrail" parent="Entities" instance=ExtResource("21_sign")]
-position = Vector2(304, 400)
+position = Vector2(304, 752)
 sign_id = "wilds_trail"
 shows_card = "kana-mo"
 caption = "A trail marker, half-swallowed by grass."
@@ -397,3 +402,197 @@ speaker = "Hermit"
 teaches_category = "grammar"
 intro_lines = PackedStringArray("Words are only half of it. How they fit together is the other half.", "Two lessons. Small, but they change every sentence you will ever build.")
 sprite_sheet = ExtResource("24_vil1")
+
+[node name="DownsSlime" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(240, 704)
+enemy_id = "slime"
+max_hp = 18
+enemy_def = 2
+enemy_atk = 3
+sprite_sheet = ExtResource("32_slime")
+coin_reward = 3
+coin_variance = 1
+
+[node name="DownsRacoon" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(144, 640)
+enemy_id = "racoon"
+max_hp = 24
+enemy_def = 3
+enemy_atk = 4
+sprite_sheet = ExtResource("26_racoon")
+coin_reward = 5
+coin_variance = 2
+
+[node name="DownsSnake" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(400, 688)
+enemy_id = "snake"
+max_hp = 24
+enemy_def = 3
+enemy_atk = 4
+sprite_sheet = ExtResource("25_snake")
+coin_reward = 5
+coin_variance = 2
+
+[node name="StudyWayside" parent="Entities" instance=ExtResource("22_study")]
+position = Vector2(208, 632)
+spot_id = "wayside_crate"
+caption = "You perch on a supply crate someone left at the wayside and go back over your cards."
+session_size = 5
+sprite = ExtResource("14_crate")
+
+[node name="WaysideBarrel" parent="Entities" instance=ExtResource("6_prop")]
+position = Vector2(240, 636)
+texture = ExtResource("13_bar")
+foot_size = Vector2(10, 5)
+foot_offset = Vector2(0, -2)
+
+[node name="DownsHerbPatch" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(128, 704)
+node_id = "wilds_downs_herbs"
+display_name = "Wayside Rainleaf"
+item_id = "wild_herb"
+base_qty = 2
+reset_days = 1
+skill_station = "kitchen"
+level_req = 1
+resource_kind = "herb"
+
+[node name="HollowMushroom" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(640, 592)
+enemy_id = "mushroom"
+enemy_atk = 4
+sprite_sheet = ExtResource("15_mush")
+coin_reward = 5
+coin_variance = 2
+
+[node name="HollowKappa" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(816, 672)
+enemy_id = "kappa"
+enemy_atk = 5
+sprite_sheet = ExtResource("16_kappa")
+coin_reward = 8
+coin_variance = 2
+
+[node name="HollowOwl" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(976, 560)
+enemy_id = "owl"
+enemy_atk = 5
+sprite_sheet = ExtResource("27_owl")
+coin_reward = 9
+coin_variance = 3
+
+[node name="HollowBamboo" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(704, 640)
+node_id = "wilds_hollow_bamboo"
+display_name = "Hollow Bamboo"
+item_id = "bamboo_shoot"
+base_qty = 3
+reset_days = 1
+skill_station = "workshop"
+level_req = 1
+resource_kind = "bamboo"
+
+[node name="HollowRainleaf" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(896, 720)
+node_id = "wilds_hollow_rainleaf"
+display_name = "Hollow Rainleaf"
+item_id = "wild_herb"
+base_qty = 3
+reset_days = 2
+skill_station = "kitchen"
+level_req = 2
+resource_kind = "herb"
+
+[node name="SignHollow" parent="Entities" instance=ExtResource("21_sign")]
+position = Vector2(752, 592)
+sign_id = "hollow_marker"
+shows_card = "kana-ha"
+caption = "A weathered post at the mouth of the hollow."
+
+[node name="WoodsLizard1" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(752, 336)
+enemy_id = "lizard"
+max_hp = 32
+enemy_def = 4
+enemy_atk = 7
+sprite_sheet = ExtResource("33_lizard")
+coin_reward = 9
+coin_variance = 3
+
+[node name="WoodsLizard2" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(896, 240)
+enemy_id = "lizard"
+max_hp = 32
+enemy_def = 4
+enemy_atk = 7
+sprite_sheet = ExtResource("33_lizard")
+coin_reward = 9
+coin_variance = 3
+
+[node name="WoodsBat1" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(992, 400)
+enemy_id = "bat"
+max_hp = 24
+enemy_def = 3
+enemy_atk = 6
+sprite_sheet = ExtResource("34_bat")
+coin_reward = 7
+coin_variance = 2
+
+[node name="WoodsBat2" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(1072, 288)
+enemy_id = "bat"
+max_hp = 24
+enemy_def = 3
+enemy_atk = 6
+sprite_sheet = ExtResource("34_bat")
+coin_reward = 7
+coin_variance = 2
+
+[node name="WoodsMole" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(736, 160)
+enemy_id = "mole"
+max_hp = 34
+enemy_def = 5
+enemy_atk = 8
+sprite_sheet = ExtResource("36_mole")
+coin_reward = 11
+coin_variance = 4
+
+[node name="KnollBear" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(1088, 224)
+enemy_id = "bear"
+max_hp = 44
+enemy_def = 6
+enemy_atk = 12
+sprite_sheet = ExtResource("35_bear")
+coin_reward = 20
+coin_variance = 6
+
+[node name="KnollIronSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(1008, 112)
+node_id = "wilds_knoll_iron"
+display_name = "Knoll Iron Seam"
+item_id = "raw_iron_ore"
+base_qty = 3
+reset_days = 2
+skill_station = "forge"
+level_req = 2
+resource_kind = "ore"
+
+[node name="KnollCopperSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(944, 144)
+node_id = "wilds_knoll_copper"
+display_name = "Knoll Copper Seam"
+item_id = "copper_ore"
+base_qty = 2
+reset_days = 1
+skill_station = "forge"
+level_req = 1
+resource_kind = "ore"
+
+[node name="SignWoods" parent="Entities" instance=ExtResource("21_sign")]
+position = Vector2(704, 288)
+sign_id = "woods_marker"
+shows_card = "kana-su"
+caption = "A blaze cut into a trunk where the track enters the deep woods."
