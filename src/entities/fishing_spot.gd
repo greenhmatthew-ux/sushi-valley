@@ -8,8 +8,9 @@ extends Area2D
 ## code: a spot on cooldown dims, because that is information, not decoration.
 
 ## Ninja Adventure `Backgrounds/Animated/Water Ripples` — 4 frames of 16px on one row.
-const RIPPLE_SHEET := preload("res://assets/tilesets/water_ripple.png")
-const RIPPLE_FRAMES := 4
+const Art := preload("res://src/systems/world_art_catalog.gd")
+const RIPPLE_SHEET := Art.RIPPLE_SHEET
+const RIPPLE_FRAMES := Art.RIPPLE_FRAMES
 const RIPPLE_FPS := 6.0
 
 @export var site_id := "valley_pond"
@@ -78,5 +79,4 @@ func interaction_label() -> String:
 	if Farm.season() not in seasons:
 		return "Check the quiet pond"
 	return "Fish at %s" % display_name
-
 

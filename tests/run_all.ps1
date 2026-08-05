@@ -40,6 +40,7 @@ $suites = @(
 	"smoke_autoloads"
 )
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
+$scriptFailure = "SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script|Failed loading resource"
 
 $originalAppData = $env:APPDATA
 $tempRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
@@ -59,10 +60,18 @@ try {
 	$env:APPDATA = $testAppData
 	foreach ($s in $suites) {
 		Write-Host "===== $s =====" -ForegroundColor Cyan
-		& $godot --headless --path $project --script "res://tests/$s.gd" 2>&1 |
+		# Capture before filtering. Godot can occasionally report a parser/compiler
+		# failure while the SceneTree entry script still exits 0, so the native exit
+		# code alone is not sufficient evidence that a suite actually loaded.
+		$rawOutput = @(& $godot --headless --path $project --script "res://tests/$s.gd" 2>&1)
+		$exitCode = $LASTEXITCODE
+		$outputLines = @($rawOutput | ForEach-Object { $_.ToString() })
+		$outputLines |
 			Select-String -NotMatch $noise |
 			ForEach-Object { $_.Line }
-		if ($LASTEXITCODE -ne 0) { $failed += $s }
+		$hadScriptFailure = $null -ne ($outputLines |
+			Select-String -Pattern $scriptFailure | Select-Object -First 1)
+		if ($exitCode -ne 0 -or $hadScriptFailure) { $failed += $s }
 		Write-Host ""
 	}
 } finally {

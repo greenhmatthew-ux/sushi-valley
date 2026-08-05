@@ -13,15 +13,9 @@ extends SceneTree
 ## fails, and the object simply looks wrong — which is exactly how the code-drawn
 ## versions survived so long. Every region is therefore checked against real sheet bounds.
 
-## Expect three "Identifier not found: Farm / Fishing / Gathering" compile errors when
-## this runs. The entity scripts below reference autoloads, which a `--script` harness
-## does not register, so preloading them always logs that. Their *constants* still
-## resolve, and constants are all this suite reads — but nothing instantiated in this
-## file will carry its script, which is why no check here touches a scene node.
-
-const FarmPlot = preload("res://src/entities/farm_plot.gd")
-const FishingSpot = preload("res://src/entities/fishing_spot.gd")
-const ResourceNode = preload("res://src/entities/resource_node.gd")
+## Atlas coordinates live in a pure catalogue so this entry script never has to preload
+## runtime entities whose Farm/Fishing/Gathering autoloads register later in startup.
+const Art := preload("res://src/systems/world_art_catalog.gd")
 
 var failures: int = 0
 
@@ -37,14 +31,14 @@ func _initialize() -> void:
 
 func _regions_land_on_their_sheets() -> void:
 	var checks := [
-		["farm soil", FarmPlot.SOIL_SHEET, FarmPlot.SOIL_REGION],
-		["water ripple frame 0", FishingSpot.RIPPLE_SHEET, Rect2(0, 0, 16, 16)],
-		["water ripple last frame", FishingSpot.RIPPLE_SHEET,
-			Rect2((FishingSpot.RIPPLE_FRAMES - 1) * 16, 0, 16, 16)],
-		["tan ore rock", ResourceNode.NATURE_SHEET, ResourceNode.ROCK_TAN],
-		["grey ore rock", ResourceNode.NATURE_SHEET, ResourceNode.ROCK_GREY],
-		["herb plant", ResourceNode.NATURE_SHEET, ResourceNode.PLANT_HERB],
-		["bamboo plant", ResourceNode.NATURE_SHEET, ResourceNode.PLANT_BAMBOO],
+		["farm soil", Art.SOIL_SHEET, Art.SOIL_REGION],
+		["water ripple frame 0", Art.RIPPLE_SHEET, Rect2(0, 0, 16, 16)],
+		["water ripple last frame", Art.RIPPLE_SHEET,
+			Rect2((Art.RIPPLE_FRAMES - 1) * 16, 0, 16, 16)],
+		["tan ore rock", Art.NATURE_SHEET, Art.ROCK_TAN],
+		["grey ore rock", Art.NATURE_SHEET, Art.ROCK_GREY],
+		["herb plant", Art.NATURE_SHEET, Art.PLANT_HERB],
+		["bamboo plant", Art.NATURE_SHEET, Art.PLANT_BAMBOO],
 	]
 	for check in checks:
 		_region_fits(String(check[0]), check[1], check[2])
@@ -63,51 +57,45 @@ func _region_fits(label: String, sheet: Texture2D, region: Rect2) -> void:
 ## including a crop with no authored row, which falls back rather than drawing nothing.
 func _every_crop_and_stage_resolves() -> void:
 	var db: Node = root.get_node("DB")
-	var sheet: Texture2D = FarmPlot.CROP_SHEET
+	var sheet: Texture2D = Art.CROP_SHEET
 	var bounds := Rect2(Vector2.ZERO, sheet.get_size())
 	var missing: Array[String] = []
 	for crop_id in db.crops:
-		if not FarmPlot.CROP_ROWS.has(String(crop_id)):
+		if not Art.CROP_ROWS.has(String(crop_id)):
 			missing.append(String(crop_id))
 	check_true("every authored crop has its own art row (%s)" % str(missing),
 		missing.is_empty())
 
 	var off_sheet: Array[String] = []
-	var rows: Array = FarmPlot.CROP_ROWS.values() + [FarmPlot.CROP_FALLBACK_ROW]
+	var rows: Array = Art.CROP_ROWS.values() + [Art.CROP_FALLBACK_ROW]
 	for row in rows:
-		for column in FarmPlot.CROP_STAGE_COLUMNS:
+		for column in Art.CROP_STAGE_COLUMNS:
 			var region := Rect2(int(column) * 16, int(row) * 16, 16, 16)
 			if not bounds.encloses(region):
 				off_sheet.append(str(region))
 	check_true("every crop stage lands on the sheet (%s)" % str(off_sheet),
 		off_sheet.is_empty())
 	check_eq("the four growth stages are distinct columns",
-		FarmPlot.CROP_STAGE_COLUMNS.size(),
-		_unique(FarmPlot.CROP_STAGE_COLUMNS).size())
+		Art.CROP_STAGE_COLUMNS.size(),
+		_unique(Art.CROP_STAGE_COLUMNS).size())
 	# A plot that looks finished has to be the harvestable one.
 	check_eq("the last stage is the sheet's mature column",
-		int(FarmPlot.CROP_STAGE_COLUMNS[-1]), 5)
+		int(Art.CROP_STAGE_COLUMNS[-1]), 5)
 
 
 ## Copper and iron seams were the same grey blob with the same orange flecks, so the
 ## only way to tell them apart was to walk up and read the prompt.
-## Asserted from the constants rather than by instantiating the node: entity scripts
-## reference autoloads, which do not resolve under a `--script` harness, so an
-## instantiated resource_node silently comes back as a plain Area2D with no script and
-## every check against it is skipped instead of failed.
+## Asserted from the pure catalogue rather than by instantiating a runtime node.
 func _ore_kinds_are_told_apart() -> void:
 	check_true("a copper seam and an iron seam do not share one sprite",
-		ResourceNode.ROCK_TAN != ResourceNode.ROCK_GREY)
+		Art.ROCK_TAN != Art.ROCK_GREY)
 	check_true("a herb patch and a bamboo stand do not share one sprite",
-		ResourceNode.PLANT_HERB != ResourceNode.PLANT_BAMBOO)
+		Art.PLANT_HERB != Art.PLANT_BAMBOO)
 	check_true("iron is routed to the grey rock",
-		"raw_iron_ore" in ResourceNode.GREY_ORES)
+		"raw_iron_ore" in Art.GREY_ORES)
 	check_true("copper is left on the tan rock",
-		"copper_ore" not in ResourceNode.GREY_ORES)
-	# Which ores exist in the shipped regions is asserted by test_smithing_chain. It
-	# cannot be checked here: preloading the entity scripts above fails to compile under
-	# this harness (they reference autoloads), which detaches the script from any scene
-	# instantiated in this file, so every exported property would read as null.
+		"copper_ore" not in Art.GREY_ORES)
+	# Which ores exist in shipped regions is asserted by test_smithing_chain.
 
 
 ## The art replaced the object, not the information. These cues have no sprite in any

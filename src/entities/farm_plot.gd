@@ -13,14 +13,16 @@ extends Area2D
 
 @export var plot_id := "valley_plot_1"
 
+const Art := preload("res://src/systems/world_art_catalog.gd")
+
 ## Sprout Lands tilled dirt, tile (0,5): the sheet's solid fill. Plots are laid on the
 ## 16px grid one beside another, so four of them read as a single worked field rather
 ## than four separate spots — which is what the sheet's isolated single-tile patch gave,
 ## and at plot spacing it looked like scattered brown dots on the grass.
-const SOIL_SHEET := preload("res://assets/tilesets/tilled_dirt.png")
+const SOIL_SHEET := Art.SOIL_SHEET
 ## Tile (1,5) rather than the plain fill beside it: it carries the sheet's clod texture,
 ## and four plain tiles together read as one flat painted rectangle.
-const SOIL_REGION := Rect2(16, 80, 16, 16)
+const SOIL_REGION := Art.SOIL_REGION
 const SOIL_DRY := Color(1, 1, 1, 1)
 ## Damp earth stays brown. An even grey multiply desaturated it to concrete, which is
 ## the one thing wet soil never looks like.
@@ -29,18 +31,13 @@ const SOIL_WET := Color(0.74, 0.63, 0.55, 1)
 ## Farm RPG "Spring Crops": each crop is a row, columns 1..5 are its growth stages.
 ## The game has four stages, so the four most distinct columns are used and the mature
 ## column is always last — a plot that looks finished must be harvestable.
-const CROP_SHEET := preload("res://assets/props/crop_stages.png")
-const CROP_STAGE_COLUMNS := [1, 2, 4, 5]
+const CROP_SHEET := Art.CROP_SHEET
+const CROP_STAGE_COLUMNS := Art.CROP_STAGE_COLUMNS
 ## Chosen by silhouette, since the sheet's crops are not the valley's crops: stalks for
 ## rice, a fruiting vine for cucumber, a low earthy tuber for mushroom, leaf clusters
 ## for herb. One sheet keeps the field coherent.
-const CROP_ROWS := {
-	"rice": 3,
-	"cucumber": 1,
-	"mushroom": 5,
-	"herb": 7,
-}
-const CROP_FALLBACK_ROW := 5
+const CROP_ROWS := Art.CROP_ROWS
+const CROP_FALLBACK_ROW := Art.CROP_FALLBACK_ROW
 
 
 var _soil: Sprite2D

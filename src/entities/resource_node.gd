@@ -15,15 +15,16 @@ extends Area2D
 ## iron, which is what the ores themselves look like.
 
 ## Ninja Adventure `Backgrounds/Tilesets/TilesetNature.png`, 24x21 tiles of 16px.
-const NATURE_SHEET := preload("res://assets/tilesets/ninja_nature.png")
+const Art := preload("res://src/systems/world_art_catalog.gd")
+const NATURE_SHEET := Art.NATURE_SHEET
 ## Isolated single-tile boulders, not slices of the big multi-tile clusters beside them.
-const ROCK_TAN := Rect2(18 * 16, 13 * 16, 16, 16)
-const ROCK_GREY := Rect2(18 * 16, 17 * 16, 16, 16)
+const ROCK_TAN := Art.ROCK_TAN
+const ROCK_GREY := Art.ROCK_GREY
 ## Leafy plant and tall blades from the same sheet's plant rows.
-const PLANT_HERB := Rect2(4 * 16, 11 * 16, 16, 16)
-const PLANT_BAMBOO := Rect2(7 * 16, 11 * 16, 16, 16)
+const PLANT_HERB := Art.PLANT_HERB
+const PLANT_BAMBOO := Art.PLANT_BAMBOO
 ## Ores that read as grey stone. Anything else falls back to the tan rock.
-const GREY_ORES := ["raw_iron_ore", "iron_ore", "stone"]
+const GREY_ORES := Art.GREY_ORES
 
 @export var node_id := "wilds_herb_1"
 @export var display_name := "Wild Herb Patch"
