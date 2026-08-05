@@ -20,9 +20,28 @@ const Art := preload("res://src/systems/world_art_catalog.gd")
 ## than four separate spots — which is what the sheet's isolated single-tile patch gave,
 ## and at plot spacing it looked like scattered brown dots on the grass.
 const SOIL_SHEET := Art.SOIL_SHEET
-## Tile (1,5) rather than the plain fill beside it: it carries the sheet's clod texture,
-## and four plain tiles together read as one flat painted rectangle.
+## Kept as the fallback for a plot that cannot see its neighbours yet.
 const SOIL_REGION := Art.SOIL_REGION
+
+## The sheet's minimal autotile set, in tiles. A worked field has ends, sides and corners;
+## repeating one fill tile is what made four plots in a row read as a flat brown slab.
+## Which tile a plot draws is decided by which of its four neighbours are also plots, so a
+## field is always bounded correctly rather than randomly varied.
+## Every tile on this sheet was measured — opaque coverage and which of its four edges are
+## solid — rather than read by eye. Only six tiles are fully solid, and these are they. The
+## sheet's other blocks are border rings drawn *around* filled ground, so using them for a
+## plot's own tile leaves a sliver of edge and no soil.
+##
+## A plot picks its variant from its own position, so the field has clod texture and worked
+## rows instead of one tile stamped four times — and picks the same one every load, which is
+## what keeps it looking intentional rather than randomly speckled.
+const SOIL_FILLS: Array[Vector2i] = [
+	Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5),
+	Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6),
+]
+
+const PLOT_GROUP := "farm_plot"
+const TILE := 16.0
 const SOIL_DRY := Color(1, 1, 1, 1)
 ## Damp earth stays brown. An even grey multiply desaturated it to concrete, which is
 ## the one thing wet soil never looks like.
@@ -46,11 +65,25 @@ var _crop: Sprite2D
 
 func _ready() -> void:
 	add_to_group("interactable")
+	add_to_group(PLOT_GROUP)
 	y_sort_enabled = true
 	_build_sprites()
 	Farm.register_plot(plot_id)
 	Bus.farm_changed.connect(_refresh)
 	_refresh()
+	# Every plot has to be in the group before any of them can see its neighbours.
+	_apply_field_edges.call_deferred()
+
+
+## Give each plot its own worked-earth variant, chosen from where it sits so a field reads
+## as tilled rows rather than one tile repeated across the whole patch.
+func _apply_field_edges() -> void:
+	if _soil == null or not is_inside_tree():
+		return
+	var cell := Vector2i(roundi(global_position.x / TILE), roundi(global_position.y / TILE))
+	var index: int = posmod(cell.x + cell.y * 2, SOIL_FILLS.size())
+	var tile: Vector2i = SOIL_FILLS[index]
+	(_soil.texture as AtlasTexture).region = Rect2(Vector2(tile) * TILE, Vector2(TILE, TILE))
 
 
 func interact(_player: Node = null) -> void:

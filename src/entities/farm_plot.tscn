@@ -7,7 +7,6 @@ size = Vector2(28, 18)
 
 [node name="FarmPlot" type="Area2D"]
 y_sort_enabled = true
-z_index = -1
 collision_layer = 8
 collision_mask = 0
 monitoring = false
