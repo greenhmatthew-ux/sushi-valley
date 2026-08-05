@@ -46,6 +46,7 @@ const OUTSKIRT_ROCK: Texture2D = preload("res://assets/props/rock.png")
 const OUTSKIRT_BUSH: Texture2D = preload("res://assets/props/berry_bush.png")
 const TREE_FOOT := Vector2(10, 5)
 const ROCK_FOOT := Vector2(20, 8)
+const BUSH_FOOT := Vector2(12, 6)
 const PROP_FOOT_OFFSET := Vector2(0, -2)
 
 @onready var ground: TileMapLayer = $Ground
@@ -241,7 +242,9 @@ func _plant_outskirts(used: Rect2i, first_new_x: int, last_new_x: int) -> void:
 			"rock":
 				_add_outskirt_prop(cell, OUTSKIRT_ROCK, true, ROCK_FOOT)
 			"bush":
-				_add_outskirt_prop(cell, OUTSKIRT_BUSH, false, Vector2.ZERO)
+				# Bushes block. Scenery the player walks straight through reads as a
+				# painted-on decal rather than something growing in the field.
+				_add_outskirt_prop(cell, OUTSKIRT_BUSH, true, BUSH_FOOT)
 
 
 func _add_outskirt_prop(cell: Vector2i, texture: Texture2D, solid: bool,

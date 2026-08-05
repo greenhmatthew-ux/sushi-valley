@@ -974,6 +974,13 @@ texture = ExtResource("38_house")
 foot_size = Vector2(64, 22)
 foot_offset = Vector2(0, -11)
 
+[node name="House2" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(529, 277)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("38_house")
+solid = false
+
 [node name="House2Collision" type="StaticBody2D" parent="Props" unique_id=1344327697]
 position = Vector2(529, 243)
 
@@ -1522,14 +1529,16 @@ y_sort_enabled = true
 position = Vector2(120, 420)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("25_bb")
-solid = false
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
 
 [node name="Berry2" type="Node2D" parent="Props" unique_id=730197266 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(600, 175)
+position = Vector2(648, 300)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("25_bb")
-solid = false
+foot_size = Vector2(12, 6)
+foot_offset = Vector2(0, -2)
 
 [node name="ForgeStation" type="Area2D" parent="Props" unique_id=1022755490 instance=ExtResource("39_crafting")]
 y_sort_enabled = true
