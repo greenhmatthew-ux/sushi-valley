@@ -59,6 +59,11 @@ const VERIFIED_ABILITY_ICONS := [
 ## gear layout instead of one flat wrapping row. Every slot in
 ## InventoryLogic.EQUIPMENT_SLOTS must appear exactly once across these groups —
 ## test_player_menu.gd checks that, so a new slot added there cannot go missing here.
+## Gear tiles are square so the board reads as slots rather than a list of settings rows.
+## Sized to fit four across the panel at 640x360, the smallest screen the UI supports.
+const SLOT_TILE := 58
+const SLOT_ICON := 32
+
 const EQUIPMENT_GROUPS := [
 	["Weapon", ["weapon", "offhand"]],
 	["Armor", ["head", "shoulders", "body", "cape", "belt", "hands", "legs", "feet"]],
@@ -1229,18 +1234,54 @@ func _comparison_tooltip(def: Dictionary) -> String:
 		DB.item(equipped_id).get("name", equipped_id))
 
 
+## A gear slot is a square tile carrying the item's own icon, not a line of text. A slot
+## you can recognise at a glance is the whole point of a gear screen; "Head: Straw Hat"
+## reads as a settings row. Empty slots keep the same tile so the grid never reflows as
+## you equip, and the slot name stays under the art so an empty board is still legible.
 func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	var button := Button.new()
 	button.name = "EquipSlot_" + slot
-	button.custom_minimum_size = Vector2(150, 34)
+	button.custom_minimum_size = Vector2(SLOT_TILE, SLOT_TILE)
 	button.focus_mode = Control.FOCUS_ALL
+	button.clip_contents = true
+
+	var tile := VBoxContainer.new()
+	tile.name = "SlotTile"
+	tile.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tile.set_anchors_preset(Control.PRESET_FULL_RECT)
+	tile.add_theme_constant_override("separation", 0)
+	tile.alignment = BoxContainer.ALIGNMENT_CENTER
+	button.add_child(tile)
+
+	var art: Control = null
 	if item_id.is_empty():
-		button.text = "%s: —" % slot.capitalize()
+		var empty := ColorRect.new()
+		empty.color = Color(COL_CARD_BORDER, 0.25)
+		empty.custom_minimum_size = Vector2(SLOT_ICON, SLOT_ICON)
+		art = empty
+	else:
+		art = _icon_node(item_id)
+		art.custom_minimum_size = Vector2(SLOT_ICON, SLOT_ICON)
+	art.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tile.add_child(art)
+
+	var caption := Label.new()
+	caption.name = "SlotCaption"
+	caption.text = slot.capitalize()
+	caption.add_theme_font_size_override("font_size", 9)
+	caption.add_theme_color_override("font_color",
+		COL_HEADING if item_id.is_empty() else COL_TEXT)
+	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tile.add_child(caption)
+
+	if item_id.is_empty():
 		button.tooltip_text = "Empty %s slot." % slot
 		button.disabled = true
 	else:
 		var item: Dictionary = DB.item(item_id)
-		button.text = "%s: %s" % [slot.capitalize(), item.get("name", item_id)]
+		caption.text = String(item.get("name", item_id))
 		# Weapon type/handedness is real, complete data for every one of the 36
 		# weapons (it already gates which Talents work) — unlike armorType, which
 		# only six pieces across the whole game bother to set, so showing it for
