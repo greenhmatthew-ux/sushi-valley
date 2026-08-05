@@ -98,6 +98,49 @@ static func is_clear(cell: Vector2i, size: Vector2i, blocked: Dictionary,
 	return true
 
 
+## Tiles that give a resource node a reason to be where it is — ore against stone, bamboo in
+## a stand, herbs under cover.
+##
+## `plan_cover` deliberately holds a clear ring around everything in `blocked`, and resource
+## nodes are blocked, so the ground beside a seam always came out bare and the node read as
+## dropped wherever the scatter left a gap. This is the opposite job: pick tiles that *touch*
+## the node.
+##
+## Only diagonals are ever used, so all four straight approaches stay walkable no matter how
+## much cover is asked for — cover that seals a node off is a worse failure than cover that is
+## missing. `reserved` (routes, doorways) is skipped outright.
+##
+## Gaps are measured in pixels against where the prop's feet will actually land, not in tiles.
+## Props are drawn from their feet and nodes sit wherever they were authored inside their
+## tile — often right on a grid corner — so "one tile diagonally" can put a boulder 8px from
+## the seam it is meant to explain, drawn straight over it. Candidates are tried from the
+## node outwards and anything closer than `MIN_ANCHOR_GAP` is skipped.
+const MIN_ANCHOR_GAP := 26.0
+## Diagonals only, nearest first. No offset has dx == 0, so the straight approaches stay open.
+const ANCHOR_OFFSETS: Array[Vector2i] = [
+	Vector2i(-1, -2), Vector2i(1, -2), Vector2i(-1, 1), Vector2i(1, 1),
+	Vector2i(-2, -2), Vector2i(2, -2), Vector2i(-2, 2), Vector2i(2, 2),
+	Vector2i(-2, -3), Vector2i(2, -3), Vector2i(-2, 3), Vector2i(2, 3),
+]
+static func anchor_cells(origin: Vector2, tile_px: int, wanted: int, size: Vector2i,
+		blocked: Dictionary, reserved: Dictionary) -> Array[Vector2i]:
+	var center := Vector2i((origin / float(tile_px)).floor())
+	var out: Array[Vector2i] = []
+	for offset in ANCHOR_OFFSETS:
+		if out.size() >= wanted:
+			break
+		var cell: Vector2i = center + offset
+		if cell.x < 1 or cell.x >= size.x - 1 or cell.y < 1 or cell.y >= size.y - 1:
+			continue
+		if blocked.has(cell) or reserved.has(cell):
+			continue
+		var feet := Vector2(cell.x * tile_px + tile_px / 2.0, (cell.y + 1) * tile_px)
+		if feet.distance_to(origin) < MIN_ANCHOR_GAP:
+			continue
+		out.append(cell)
+	return out
+
+
 static func _kind_for(cell: Vector2i, roll: float, mix_for: Callable,
 		clumped_kinds: Array[String], clump_block: int) -> String:
 	var mix: Dictionary = mix_for.call(cell)

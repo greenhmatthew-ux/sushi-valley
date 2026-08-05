@@ -64,6 +64,8 @@ const ROCK_TEXTURE: Texture2D = preload("res://assets/props/rock.png")
 const PINE_TEXTURE: Texture2D = preload("res://assets/props/tree_green.png")
 const ROCK_FOOT := Vector2(12, 6)
 const PINE_FOOT := Vector2(10, 5)
+## Diagonal tiles of stone planted around each seam so its siting reads as chosen.
+const ANCHOR_COVER := 3
 const PROP_FOOT_OFFSET := Vector2(0, -2)
 
 ## The route north, in tile coordinates. Each route carries its own width: the climb is a
@@ -97,6 +99,10 @@ var detail: TileMapLayer
 
 var _rng := RandomNumberGenerator.new()
 var _blocked: Dictionary = {}
+## Tiles a solid thing actually stands on. `_blocked` also carries the generous approach pad
+## around doors and seams, which is a reservation rather than an obstacle — anchoring stone
+## to a seam has to be able to use that reserved ring, and only this says what is truly taken.
+var _prop_cells: Dictionary = {}
 var _route_cells: Dictionary = {}
 
 
@@ -109,6 +115,7 @@ func _ready() -> void:
 	_build_bounds()
 	_mark_occupied()
 	_scatter_cover()
+	_anchor_resource_nodes()
 	_build_detail()
 	_place_player()
 	_clamp_camera()
@@ -242,6 +249,7 @@ func _mark_occupied() -> void:
 		if not (e is Node2D):
 			continue
 		var t := _to_tile((e as Node2D).position)
+		_prop_cells[t] = true
 		var pad := 3 if (e is Marker2D or e is Area2D
 			or String(e.name).ends_with("Door")) else 1
 		for dx in range(-pad, pad + 1):
@@ -263,6 +271,30 @@ func _scatter_cover() -> void:
 		else:
 			_add_cover(cell, ROCK_TEXTURE, ROCK_FOOT)
 		_blocked[cell] = true
+		_prop_cells[cell] = true
+
+
+## Put stone against every seam. The pass is bare rock, but `plan_cover` holds a clear ring
+## around everything in `_blocked`, so the one place guaranteed to have no boulder near it
+## was the ore — which is the reverse of the reason the seam is there. Diagonals only, so
+## the seam never gets walled off its own approach.
+func _anchor_resource_nodes() -> void:
+	for node in _resource_nodes():
+		for anchor in Scatter.anchor_cells(node.position, TILE, ANCHOR_COVER,
+				Vector2i(W, H), _prop_cells, _route_cells):
+			_add_cover(anchor, ROCK_TEXTURE, ROCK_FOOT)
+			_blocked[anchor] = true
+			_prop_cells[anchor] = true
+
+
+## Resource nodes are plain Area2Ds with no class of their own, so they are found by the
+## export every one of them carries rather than by type.
+func _resource_nodes() -> Array:
+	var out: Array = []
+	for candidate in find_children("*", "Area2D", true, false):
+		if candidate.get("resource_kind") != null:
+			out.append(candidate)
+	return out
 
 
 ## Per-zone chance of a boulder / a pine at any one lattice point, before clumping. The

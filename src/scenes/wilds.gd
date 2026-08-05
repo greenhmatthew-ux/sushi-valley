@@ -108,6 +108,8 @@ const TREE_FOOT := Vector2(10, 5)
 const TREE_FOOT_OFFSET := Vector2(0, -2)
 const ROCK_FOOT := Vector2(20, 8)
 const ROCK_FOOT_OFFSET := Vector2(0, -3)
+## Diagonal tiles of cover planted around each resource node so its siting reads as chosen.
+const ANCHOR_COVER := 3
 
 @onready var ground: TileMapLayer = $Ground
 @onready var entities: Node2D = $Entities
@@ -115,6 +117,10 @@ var detail: TileMapLayer
 
 var _rng := RandomNumberGenerator.new()
 var _blocked: Dictionary = {}   # tiles under props/buildings — kept clear of detail
+## Tiles a solid thing actually stands on. `_blocked` also carries the generous approach pad
+## around doors and nodes, which is a reservation rather than an obstacle — anchoring cover
+## to a node has to be able to use that reserved ring, and only this says what is truly taken.
+var _prop_cells: Dictionary = {}
 var _route_cells: Dictionary = {}
 
 
@@ -126,6 +132,7 @@ func _ready() -> void:
 	_build_bounds()
 	_mark_occupied()
 	_scatter_cover()
+	_anchor_resource_nodes()
 	_build_detail()
 	_place_player()
 	_clamp_camera()
@@ -312,6 +319,7 @@ func _occupancy_pad(node: Node) -> int:
 
 func _mark_prop_tiles(position: Vector2, pad: int) -> void:
 	var t := _to_tile(position)
+	_prop_cells[t] = true
 	for dx in range(-pad, pad + 1):
 		for dy in range(-pad, pad + 1):
 			_blocked[t + Vector2i(dx, dy)] = true
@@ -338,6 +346,38 @@ func _scatter_cover() -> void:
 			"bush":
 				# Berry bushes are walk-through in the village; keep them so here.
 				_add_cover(cell, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
+
+
+## Give every seam and patch a reason to be where it is: ore against stone, bamboo in a
+## stand, rainleaf under cover. `plan_cover` holds a clear tile ring around everything in
+## `_blocked` — resource nodes included — so the ground beside a node came out deliberately
+## bare and the node read as dropped wherever the scatter left room. This is the corrective
+## pass, and it runs after the scatter so it fills what the scatter was forbidden to.
+##
+## Only diagonals are used (see `Scatter.anchor_cells`), so all four straight approaches to
+## a node stay walkable however much cover it gets.
+func _anchor_resource_nodes() -> void:
+	for node in _resource_nodes():
+		for anchor in Scatter.anchor_cells(node.position, TILE, ANCHOR_COVER,
+				Vector2i(W, H), _prop_cells, _route_cells):
+			match String(node.get("resource_kind")):
+				"ore":
+					_add_cover(anchor, ROCK_TEXTURE, true, ROCK_FOOT, ROCK_FOOT_OFFSET)
+				"bamboo":
+					_add_cover(anchor, TREE_TEXTURES[_rng.randi() % TREE_TEXTURES.size()],
+						true, TREE_FOOT, TREE_FOOT_OFFSET)
+				"herb":
+					_add_cover(anchor, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
+
+
+## Resource nodes are plain Area2Ds with no class of their own, so they are found by the
+## export every one of them carries rather than by type.
+func _resource_nodes() -> Array:
+	var out: Array = []
+	for candidate in find_children("*", "Area2D", true, false):
+		if candidate.get("resource_kind") != null:
+			out.append(candidate)
+	return out
 
 
 ## Per-zone chance of a tree / a rock / a bush at any one lattice point, before clumping.
@@ -372,6 +412,7 @@ func _add_cover(cell: Vector2i, texture: Texture2D, solid: bool,
 	# Its own tile only: neighbours stay open so trunks can stand two tiles apart and the
 	# canopies actually touch, which is what makes the woods read as woods.
 	_blocked[cell] = true
+	_prop_cells[cell] = true
 
 
 ## Restrained meadow, but no longer one uniform wash: the arrival downs are the flowery

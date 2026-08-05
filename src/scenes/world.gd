@@ -47,6 +47,8 @@ const OUTSKIRT_BUSH: Texture2D = preload("res://assets/props/berry_bush.png")
 const TREE_FOOT := Vector2(10, 5)
 const ROCK_FOOT := Vector2(20, 8)
 const BUSH_FOOT := Vector2(12, 6)
+## Diagonal tiles of cover planted around each resource node so its siting reads as chosen.
+const ANCHOR_COVER := 3
 const PROP_FOOT_OFFSET := Vector2(0, -2)
 
 @onready var ground: TileMapLayer = $Ground
@@ -59,6 +61,7 @@ func _ready() -> void:
 	_clamp_camera_to_map()
 	_build_meadow()
 	_build_south_spur()
+	_anchor_resource_nodes()
 	_load_game()
 
 
@@ -245,6 +248,53 @@ func _plant_outskirts(used: Rect2i, first_new_x: int, last_new_x: int) -> void:
 				# Bushes block. Scenery the player walks straight through reads as a
 				# painted-on decal rather than something growing in the field.
 				_add_outskirt_prop(cell, OUTSKIRT_BUSH, true, BUSH_FOOT)
+
+
+## Give the village's herb and bamboo patches the same reason to be where they are that the
+## Wilds and the Pass now give theirs. `plan_cover` holds a clear ring around everything
+## occupied, so the field nodes stood alone in mown grass; these plant cover touching them.
+## Diagonals only, so all four straight approaches to a patch stay walkable.
+func _anchor_resource_nodes() -> void:
+	# Centre tiles only. `_occupied_tiles` pads every prop by a tile, and that pad is a
+	# reservation rather than an obstacle — it is exactly the ring the cover needs to use.
+	var blocked := _prop_centre_tiles()
+	var tile: Vector2i = ground.tile_set.tile_size
+	var used: Rect2i = ground.get_used_rect()
+	for node in _resource_nodes():
+		var local: Vector2 = node.position - ground.position
+		for anchor in Scatter.anchor_cells(local, tile.x, ANCHOR_COVER,
+				used.end, blocked, {}):
+			match String(node.get("resource_kind")):
+				"bamboo":
+					_add_outskirt_prop(anchor,
+						OUTSKIRT_TREES[anchor.x % OUTSKIRT_TREES.size()], true, TREE_FOOT)
+				_:
+					_add_outskirt_prop(anchor, OUTSKIRT_BUSH, true, BUSH_FOOT)
+			blocked[anchor] = true
+
+
+## The tile each authored prop actually stands on, with no approach padding.
+func _prop_centre_tiles() -> Dictionary:
+	var taken: Dictionary = {}
+	var props := get_node_or_null("Props")
+	if props == null:
+		return taken
+	var tile: Vector2i = ground.tile_set.tile_size
+	for e in props.get_children():
+		if not (e is Node2D) or e.name == "Player":
+			continue
+		taken[Vector2i(((e as Node2D).position - ground.position) / Vector2(tile))] = true
+	return taken
+
+
+## Resource nodes are plain Area2Ds with no class of their own, so they are found by the
+## export every one of them carries rather than by type.
+func _resource_nodes() -> Array:
+	var out: Array = []
+	for candidate in find_children("*", "Area2D", true, false):
+		if candidate.get("resource_kind") != null:
+			out.append(candidate)
+	return out
 
 
 func _add_outskirt_prop(cell: Vector2i, texture: Texture2D, solid: bool,
