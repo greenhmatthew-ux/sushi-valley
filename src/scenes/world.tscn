@@ -1826,6 +1826,72 @@ shape = SubResource("RectangleShape2D_h76i2")
 position = Vector2(708, 240)
 shape = SubResource("RectangleShape2D_axmu7")
 
+[node name="EastFieldHerbs" type="Area2D" parent="Props" instance=ExtResource("46_gather")]
+y_sort_enabled = true
+position = Vector2(872, 248)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("39_i0c8o")
+node_id = "village_east_field_herbs"
+display_name = "Field Rainleaf"
+item_id = "wild_herb"
+base_qty = 2
+reset_days = 1
+skill_station = "kitchen"
+level_req = 1
+resource_kind = "herb"
+
+[node name="EastFieldBamboo" type="Area2D" parent="Props" instance=ExtResource("46_gather")]
+y_sort_enabled = true
+position = Vector2(1000, 424)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("39_i0c8o")
+node_id = "village_east_field_bamboo"
+display_name = "Field Bamboo"
+item_id = "bamboo_shoot"
+base_qty = 2
+reset_days = 1
+skill_station = "workshop"
+level_req = 1
+resource_kind = "bamboo"
+
+[node name="SignEastFields" type="Area2D" parent="Props" instance=ExtResource("36_sign")]
+y_sort_enabled = true
+position = Vector2(824, 296)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("45_5nrvb")
+sign_id = "east_fields"
+shows_card = "kana-ka"
+caption = "A field marker where the market road leaves town."
+
+[node name="StudyEastStile" type="Area2D" parent="Props" instance=ExtResource("37_study")]
+y_sort_enabled = true
+position = Vector2(944, 208)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("47_pbdae")
+spot_id = "east_field_stile"
+caption = "You lean on a crate at the field's edge and go back over your cards."
+sprite = ExtResource("32_crate")
+
+[node name="FieldSlime1" type="CharacterBody2D" parent="Props" instance=ExtResource("12_enemy")]
+y_sort_enabled = true
+position = Vector2(896, 392)
+script = ExtResource("17_gobyi")
+sparring_partner = true
+
+[node name="FieldSlime2" type="CharacterBody2D" parent="Props" instance=ExtResource("12_enemy")]
+y_sort_enabled = true
+position = Vector2(936, 416)
+script = ExtResource("17_gobyi")
+sparring_partner = true
+
 [node name="UILayer" type="Node" parent="." unique_id=736602985 instance=ExtResource("8_qrxgn")]
 
 [node name="WeatherOverlay" type="CanvasLayer" parent="." unique_id=1942136557 instance=ExtResource("45_weather")]
