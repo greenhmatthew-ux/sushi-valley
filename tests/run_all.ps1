@@ -5,6 +5,10 @@
 # Each suite is its own SceneTree script (quit code 0 = pass). Godot's shutdown
 # leak/RID warnings are filtered so real output stays readable.
 
+param(
+	[string[]]$Suite = @()
+)
+
 # NOT "Stop": Godot writes shutdown warnings to stderr, and with 2>&1 on a native
 # exe PowerShell 5.1 turns each stderr line into a terminating error. Pass/fail is
 # read from $LASTEXITCODE (each suite quits non-zero on failure) instead.
@@ -32,13 +36,23 @@ if (-not $godot -or -not (Test-Path -LiteralPath $godot)) {
 	throw "Godot console exe not found. Set GODOT_EXE to its full path."
 }
 $project = Split-Path -Parent $PSScriptRoot
-$suites = @(
+$allSuites = @(
 	"smoke_db", "test_pronunciation_audio", "test_deck_audio", "test_audio_music", "smoke_world", "test_mountain_pass", "test_srs", "test_learning",
 	"test_lesson_gate", "test_recall_loop", "test_recall_panel", "test_notebook_panel", "test_inventory", "test_combat",
 	"test_save", "test_inventory_persistence", "test_farm", "test_weather", "test_fishing", "test_gathering", "test_transitions", "test_quest", "test_quest_journal", "test_activity_tracker", "test_quest_giver", "test_teacher_npc", "test_raid", "test_expedition", "test_expedition_room", "test_sign_post", "test_study_spot", "test_combat_encounter", "test_player_stats", "test_shop_haggle", "test_japanese_sourcing", "test_card_content", "test_bestiary",
-	"test_ability_logic", "test_consumables", "test_crafting", "test_smithing_chain", "test_combat_panel", "test_input_hints", "test_world_map_graph", "test_player_menu", "test_session_summary", "test_toast_feed", "test_hud_review_cue", "test_objective_hud", "test_ui_fits", "test_door_signage", "test_world_art",
+	"test_role_logic", "test_ability_logic", "test_consumables", "test_crafting", "test_smithing_chain", "test_combat_panel", "test_input_hints", "test_world_map_graph", "test_player_menu", "test_session_summary", "test_toast_feed", "test_hud_review_cue", "test_objective_hud", "test_ui_fits", "test_door_signage", "test_world_art",
 	"smoke_autoloads"
 )
+$requestedSuites = @($Suite | ForEach-Object { $_ -split "," } |
+	Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+$unknownSuites = @($requestedSuites | Where-Object { $_ -notin $allSuites })
+if ($unknownSuites.Count -gt 0) {
+	throw "Unknown test suite(s): $($unknownSuites -join ', ')"
+}
+$suites = $allSuites
+if ($requestedSuites.Count -gt 0) {
+	$suites = $requestedSuites
+}
 $noise = "leaked|RID alloc|still in use|_free_rids|at: cleanup|core/io/resource|Godot Engine v|OpenGL API"
 $scriptFailure = "SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script|Failed loading resource"
 

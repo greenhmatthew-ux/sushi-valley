@@ -1,5 +1,7 @@
 class_name PlayerStats
 extends RefCounted
+
+const Roles = preload("res://src/systems/role_logic.gd")
 ## Player level and combat stats, derived from learning XP. Pure and node-free.
 ##
 ## COMBAT_DESIGN.md: "Player stats derive from learning XP level, vitality/power/agility
@@ -15,6 +17,8 @@ extends RefCounted
 ## XP for one level. LearningProgression awards 6-12 per correct answer, so a level is roughly
 ## a dozen reviews — frequent enough to feel earned, slow enough to matter.
 const XP_PER_LEVEL := 100
+const MAX_LEVEL := 60
+const XP_FOR_MAX_LEVEL := (MAX_LEVEL - 1) * XP_PER_LEVEL
 
 const BASE_MAX_HP := 12
 const BASE_ATK := 6
@@ -47,11 +51,18 @@ const RARITY_GROWTH := {
 
 
 static func level_from_xp(xp: int) -> int:
-	return 1 + int(floor(float(maxi(0, xp)) / float(XP_PER_LEVEL)))
+	return mini(MAX_LEVEL,
+		1 + int(floor(float(maxi(0, xp)) / float(XP_PER_LEVEL))))
+
+
+static func is_at_level_cap(xp: int) -> bool:
+	return maxi(0, xp) >= XP_FOR_MAX_LEVEL
 
 
 ## XP still needed for the next level, for a progress readout.
 static func xp_into_level(xp: int) -> int:
+	if is_at_level_cap(xp):
+		return 0
 	return maxi(0, xp) % XP_PER_LEVEL
 
 
@@ -95,20 +106,20 @@ static func adjust_allocation(raw: Dictionary, key: String, delta: int, xp: int)
 
 
 static func max_hp(level: int) -> int:
-	return BASE_MAX_HP + (maxi(1, level) - 1) * HP_PER_LEVEL
+	return BASE_MAX_HP + (clampi(level, 1, MAX_LEVEL) - 1) * HP_PER_LEVEL
 
 
 static func atk(level: int) -> int:
-	return BASE_ATK + (maxi(1, level) - 1) * ATK_PER_LEVEL
+	return BASE_ATK + (clampi(level, 1, MAX_LEVEL) - 1) * ATK_PER_LEVEL
 
 
 static func def(level: int) -> int:
-	return BASE_DEF + (maxi(1, level) - 1) / LEVELS_PER_DEF
+	return BASE_DEF + (clampi(level, 1, MAX_LEVEL) - 1) / LEVELS_PER_DEF
 
 
 ## Preserve Kana's gentle base curve: +1 SPD about every three learning levels.
 static func speed(level: int) -> int:
-	return BASE_SPEED + int(floor((maxi(1, level) - 1) * 0.3))
+	return BASE_SPEED + int(floor((clampi(level, 1, MAX_LEVEL) - 1) * 0.3))
 
 
 ## Rarity inference and positive-stat scaling preserve Kana's authored gear rules:
@@ -136,7 +147,7 @@ static func scaled_item_stats(item: Dictionary, level: int) -> Dictionary:
 	if item.get("kind", "") != "gear":
 		return base.duplicate(true)
 	var floor_level := int(item.get("requiredLevel", 1))
-	var levels := maxi(0, level - floor_level)
+	var levels := maxi(0, clampi(level, 1, MAX_LEVEL) - floor_level)
 	var growth := float(RARITY_GROWTH.get(item_rarity(item), RARITY_GROWTH["common"]))
 	var multiplier := 1.0 + levels * growth
 	var scaled: Dictionary = {}
@@ -159,19 +170,25 @@ static func gear_bonus(gear_defs: Array[Dictionary], level: int) -> Dictionary:
 
 ## Everything a fight needs, from learning XP, allocations, and equipped gear.
 static func from_xp(xp: int, gear_defs: Array[Dictionary] = [],
-		allocation_data: Dictionary = {}) -> Dictionary:
+		allocation_data: Dictionary = {}, weapon_type: String = "") -> Dictionary:
 	var lv := level_from_xp(xp)
 	var gear := gear_bonus(gear_defs, lv)
 	var allocations := normalized_allocations(allocation_data)
+	var role_id := Roles.role_for_weapon_type(weapon_type)
 	return {
 		"level": lv,
+		"total_xp": maxi(0, xp),
+		"at_level_cap": is_at_level_cap(xp),
+		"role": role_id,
+		"role_def": Roles.definition(role_id),
 		"max_hp": maxi(1, max_hp(lv) + int(gear["hp"])
 			+ int(allocations["vitality"]) * VITALITY_HP),
 		"atk": maxi(1, atk(lv) + int(gear["atk"])
 			+ int(allocations["power"]) * POWER_ATK),
 		"def": maxi(0, def(lv) + int(gear["def"])),
 		"speed": maxi(1, speed(lv) + int(gear["spd"])
-			+ int(allocations["agility"]) * AGILITY_SPEED),
+			+ int(allocations["agility"]) * AGILITY_SPEED
+			+ Roles.speed_bonus(role_id)),
 		"xp_into_level": xp_into_level(xp),
 		"xp_per_level": XP_PER_LEVEL,
 	}

@@ -212,6 +212,22 @@ func _initialize() -> void:
 	check_true("skills tab states the six-slot loadout", summary.text.contains("/ 6"))
 	check_true("skills tab shows the separate Talent Point budget",
 		summary.text.contains("Talent Points"))
+	for role_id in ["samurai", "ranger", "scholar", "guardian"]:
+		check_true("complete Talent board includes the %s role" % role_id,
+			panel.find_child("TalentRole_" + role_id, true, false) != null)
+	var expected_talents := 0
+	for ability_id in db.ability_order:
+		if AbilityLogic.is_honest_talent(db.ability(String(ability_id))):
+			expected_talents += 1
+	check_eq("Talent board shows every combat-ready authored Talent",
+		panel.find_children("TalentState_*", "Label", true, false).size(), expected_talents)
+	var fresh_sweep_state: Label = panel.find_child("TalentState_sweep", true, false)
+	check_true("level-ready Talents state Available instead of disappearing (%s)" % [
+		fresh_sweep_state.text if fresh_sweep_state != null else "missing"],
+		fresh_sweep_state != null and fresh_sweep_state.text.contains("Available"))
+	var future_state: Label = panel.find_child("TalentState_crescent_cut", true, false)
+	check_true("future-band Talents state Level Locked instead of disappearing",
+		future_state != null and future_state.text.contains("Level Locked"))
 	for station in ["forge", "workshop", "kitchen"]:
 		var life_card: Control = panel.find_child("LifeSkill_" + station, true, false)
 		var life_detail: Label = panel.find_child(
@@ -299,6 +315,12 @@ func _initialize() -> void:
 	sweep_unlock.pressed.emit()
 	check_true("Talent control permanently learns the action",
 		"sweep" in learning.profile.build()["unlockedAbilities"])
+	var sweep_state: Label = panel.find_child("TalentState_sweep", true, false)
+	var sweep_toggle: Button = panel.find_child("TalentToggle_sweep", true, false)
+	check_true("known role Talent reports Wrong Weapon while unarmed",
+		sweep_state != null and sweep_state.text.contains("Wrong Weapon"))
+	check_true("known role Talent asks for its weapon before equipping",
+		sweep_toggle != null and sweep_toggle.disabled and sweep_toggle.text.contains("Blade"))
 	var iaido_unlock: Button = panel.find_child("TalentUnlock_iaido", true, false)
 	var iaido_detail: Label = panel.find_child("TalentDetail_iaido", true, false)
 	check_true("the next Samurai Talent remains visible", iaido_unlock != null)

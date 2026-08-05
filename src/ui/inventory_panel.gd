@@ -12,6 +12,7 @@ extends CanvasLayer
 ## above the bag and can be removed there, so equipment never becomes hidden state.
 
 const AbilityRules = preload("res://src/systems/ability_logic.gd")
+const Roles = preload("res://src/systems/role_logic.gd")
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
 const Activities = preload("res://src/systems/activity_tracker.gd")
 const WorldMapGraph = preload("res://src/ui/world_map_graph.gd")
@@ -315,17 +316,23 @@ func _refresh() -> void:
 	if Learning.profile != null:
 		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
 	var allocations: Dictionary = Learning.allocations()
-	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations)
+	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations, weapon_type)
 	var gear := PlayerStats.gear_bonus(Inv.equipped_defs(), int(stats["level"]))
 	var player := get_tree().get_first_node_in_group("player")
 	var current_hp := int(player.hp) if player != null else int(stats["max_hp"])
+	var xp_progress := "MAX LEVEL - %d total XP" % int(stats["total_xp"]) \
+		if bool(stats["at_level_cap"]) else "%d / %d" % [
+			int(stats["xp_into_level"]), int(stats["xp_per_level"])]
+	var role_def: Dictionary = stats["role_def"]
 	_stats_label.text = (
-		"Level %d\nLearning XP  %d / %d\n\n"
+		"Level %d\nLearning XP  %s\n%s - %s\n\n"
 		+ "HP   %d / %d\nATK  %d   DEF  %d   SPD  %d\n\n"
 		+ "Gear bonus  %+d HP   %+d ATK   %+d DEF   %+d SPD\n"
 		+ "Japanese study raises your base stats; equipped gear is included above."
 	) % [
-		stats["level"], stats["xp_into_level"], stats["xp_per_level"],
+		stats["level"], xp_progress, role_def.get("name", "Adventurer"),
+		role_def.get("passive", ""),
 		current_hp, stats["max_hp"], stats["atk"], stats["def"], stats["speed"],
 		gear["hp"], gear["atk"], gear["def"], gear["spd"],
 	]
@@ -346,20 +353,31 @@ func _refresh() -> void:
 	_skills_box.add_child(_section_label("Life Skills - gather, refine, and cook"))
 	for definition in LIFE_SKILLS:
 		_skills_box.add_child(_make_life_skill_card(definition))
-	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
-	# Grouped by role so a grown collection reads as four styles, not one long
-	# list — and so the tag a talent was bought under stays visible afterward.
-	for group in Learning.known_ability_defs_by_role():
-		_skills_box.add_child(_section_label(
-			"%s Actions" % String(group["role"]).capitalize()))
-		for ability in group["defs"]:
-			_skills_box.add_child(_make_skill_card(ability, weapon_type,
-				String(ability.get("id", "")) in equipped_skills))
-	var talents := Learning.next_talent_defs()
-	if not talents.is_empty():
-		_skills_box.add_child(_section_label("Next Talents — one honest action per style"))
-		for ability in talents:
-			_skills_box.add_child(_make_talent_card(ability))
+	# Starter actions stay separate from the permanent role Talent board below.
+	_skills_box.add_child(_section_label("Core Actions"))
+	for ability in Learning.known_ability_defs():
+		if not bool(ability.get("starter", false)):
+			continue
+		_skills_box.add_child(_make_skill_card(ability, weapon_type,
+			String(ability.get("id", "")) in equipped_skills))
+	var active_role := Roles.role_for_weapon_type(weapon_type)
+	_skills_box.add_child(_section_label(
+		"Talent Board - active role: %s" % Roles.definition(active_role).get("name", "Adventurer")))
+	for group in Learning.talent_groups(weapon_type):
+		var role_id := String(group["role"])
+		var board_heading := _section_label("%s%s - %s" % [
+			String(group["role_def"].get("name", role_id.capitalize())),
+			" (Active)" if role_id == active_role else "",
+			String(group["role_def"].get("passive", ""))])
+		board_heading.name = "TalentRole_" + role_id
+		_skills_box.add_child(board_heading)
+		for band in group["bands"]:
+			var band_heading := _section_label("Levels %d-%d" % [
+				int(band["start_level"]), int(band["end_level"])])
+			band_heading.name = "TalentBand_%s_%d" % [role_id, int(band["start_level"])]
+			_skills_box.add_child(band_heading)
+			for state in band["states"]:
+				_skills_box.add_child(_make_talent_card(state["ability"], state))
 
 	var all_items: Array = Inv.entries()
 	_refresh_prepared_meal()
@@ -1377,7 +1395,11 @@ func _make_life_skill_card(definition: Dictionary) -> Control:
 	return card
 
 
-func _make_talent_card(ability: Dictionary) -> Control:
+func _make_talent_card(ability: Dictionary, talent_data: Dictionary = {}) -> Control:
+	if talent_data.is_empty():
+		var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+		talent_data = AbilityRules.talent_state(
+			ability, _player_level(), Learning.profile.build(), DB.abilities, weapon_type)
 	var card := PanelContainer.new()
 	card.add_theme_stylebox_override("panel", _card_style())
 	card.custom_minimum_size = Vector2(0, 54)
@@ -1398,6 +1420,8 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	var role := String(ability.get("role", "adventurer")).capitalize()
 	var cost := int(ability.get("spCost", 0))
 	title.text = "%s  ·  %s  ·  %d TP" % [ability.get("name", "Talent"), role, cost]
+	title.name = "TalentState_" + String(ability.get("id", ""))
+	title.text += " - " + _talent_state_label(talent_data)
 	title.add_theme_font_size_override("font_size", 13)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	text.add_child(title)
@@ -1419,25 +1443,63 @@ func _make_talent_card(ability: Dictionary) -> Control:
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.add_child(detail)
 	var button := Button.new()
-	button.name = "TalentUnlock_" + String(ability.get("id", ""))
+	var ability_id := String(ability.get("id", ""))
+	var known := bool(talent_data.get("known", false))
+	var equipped := bool(talent_data.get("equipped", false))
+	button.name = ("TalentToggle_" if known else "TalentUnlock_") + ability_id
 	button.custom_minimum_size = Vector2(76, 32)
 	button.focus_mode = Control.FOCUS_ALL
 	var required_level := int(ability.get("requiredLevel", 1))
-	var current_level := _player_level()
-	var can_unlock := Learning.can_unlock_talent(String(ability.get("id", "")))
-	button.disabled = not can_unlock
-	if current_level < required_level:
+	var ownership_state := String(talent_data.get("ownership_state", "unsupported"))
+	if known and equipped:
+		button.text = "Remove"
+		button.pressed.connect(_on_skill_toggle.bind(ability_id, false))
+	elif known and not bool(talent_data.get("runtime_supported", false)):
+		button.text = "Later"
+		button.disabled = true
+		button.tooltip_text = "This legacy Talent remains known but is not combat-ready yet."
+	elif known and not bool(talent_data.get("weapon_ready", false)):
+		var needed_weapon := required
+		if needed_weapon.is_empty():
+			needed_weapon = String(Roles.definition(String(talent_data.get("role", ""))).get(
+				"weapon_type", ""))
+		button.text = "Needs %s" % needed_weapon.capitalize()
+		button.disabled = true
+		button.tooltip_text = "Equip the matching role weapon to use this Talent."
+	elif known and Learning.equipped_ability_ids().size() >= AbilityRules.MAX_SKILLS:
+		button.text = "Full"
+		button.disabled = true
+	elif known:
+		button.text = "Equip"
+		button.pressed.connect(_on_skill_toggle.bind(ability_id, true))
+	elif ownership_state == "level_locked":
 		button.text = "Lv %d" % required_level
+		button.disabled = true
 		button.tooltip_text = "Reach level %d to unlock this Talent." % required_level
-	elif Learning.unspent_talent_points() < cost:
+	elif ownership_state == "points_locked":
 		button.text = "Need %d TP" % cost
+		button.disabled = true
 		button.tooltip_text = "Earn Talent Points by gaining levels."
-	else:
+	elif ownership_state == "available":
 		button.text = "Unlock"
 		button.tooltip_text = "Permanently learn this action."
-	button.pressed.connect(_on_talent_unlock.bind(String(ability.get("id", ""))))
+		button.pressed.connect(_on_talent_unlock.bind(ability_id))
+	else:
+		button.text = "Later"
+		button.disabled = true
 	row.add_child(button)
 	return card
+
+
+func _talent_state_label(talent_data: Dictionary) -> String:
+	match String(talent_data.get("state", "unsupported")):
+		"known": return "Known"
+		"available": return "Available"
+		"level_locked": return "Level Locked"
+		"points_locked": return "Talent Points Locked"
+		"equipped": return "Equipped"
+		"wrong_weapon": return "Wrong Weapon"
+		_: return "Unavailable"
 
 
 func _ability_cadence(ability: Dictionary) -> String:

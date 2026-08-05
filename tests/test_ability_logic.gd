@@ -52,6 +52,7 @@ func _initialize() -> void:
 	_weapon_and_runtime_gates()
 	_six_slot_mutation()
 	_talent_unlocks()
+	_complete_talent_states()
 	_role_grouping()
 	_finish()
 
@@ -167,6 +168,50 @@ func _role_grouping() -> void:
 		groups[1]["defs"].map(func(a): return a["id"]), ["sweep", "storm_draw"])
 	check_true("locked iaido is not listed in any group",
 		groups.all(func(g): return not g["defs"].map(func(a): return a["id"]).has("iaido")))
+
+
+func _complete_talent_states() -> void:
+	check_eq("Talent Points stop at the 59-point lifetime budget",
+		AbilityRules.talent_points_earned(999), 59)
+	var empty_build := {"skills": [], "unlockedAbilities": []}
+	var wrong_weapon := AbilityRules.talent_state(
+		abilities["sweep"], 2, empty_build, abilities, "ranged")
+	check_eq("an affordable unknown Talent is Available",
+		wrong_weapon["ownership_state"], "available")
+	check_eq("the board separately reports Wrong Weapon",
+		wrong_weapon["weapon_state"], "wrong_weapon")
+	check_true("Wrong Weapon does not prevent permanent purchase",
+		wrong_weapon["unlockable"])
+	check_true("Wrong Weapon does prevent equipping",
+		not wrong_weapon["equipable"])
+
+	var known_build := {"skills": ["sweep"], "unlockedAbilities": ["sweep"]}
+	var equipped := AbilityRules.talent_state(
+		abilities["sweep"], 2, known_build, abilities, "blade")
+	check_eq("the board reports equipped compatible Talents", equipped["state"], "equipped")
+	var locked := AbilityRules.talent_state(
+		abilities["iaido"], 3, known_build, abilities, "blade")
+	check_eq("the board retains future Talents as Level Locked",
+		locked["ownership_state"], "level_locked")
+	var point_locked := AbilityRules.talent_state(
+		abilities["storm_draw"], 3, known_build, abilities, "blade")
+	check_eq("the board distinguishes an insufficient point budget",
+		point_locked["ownership_state"], "points_locked")
+
+	var order := ["strike", "sweep", "iaido", "kunai", "mana_tea", "bulwark"]
+	var groups := AbilityRules.talent_groups(2, empty_build, abilities, "blade", order)
+	check_eq("the complete board always exposes the four role columns",
+		groups.map(func(group): return group["role"]),
+		["samurai", "ranger", "scholar", "guardian"])
+	var listed_ids: Array = []
+	for group in groups:
+		for band in group["bands"]:
+			for state in band["states"]:
+				listed_ids.append(state["ability_id"])
+	check_true("starter actions are not misrepresented as Talents",
+		not listed_ids.has("strike"))
+	for talent_id in ["sweep", "iaido", "kunai", "mana_tea", "bulwark"]:
+		check_true("complete board includes %s" % talent_id, listed_ids.has(talent_id))
 
 
 func _finish() -> void:

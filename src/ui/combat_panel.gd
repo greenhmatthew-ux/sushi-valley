@@ -10,6 +10,7 @@ extends CanvasLayer
 ## deck and no schedule of its own (SITE_WIDE_LEARNING_ARCHITECTURE.md).
 
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
+const Roles = preload("res://src/systems/role_logic.gd")
 
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
@@ -81,8 +82,9 @@ func _on_combat_started(enemy_id: String) -> void:
 	var p_speed: int = player.speed if player != null else PlayerStats.BASE_SPEED
 	var weapon: Dictionary = Inv.equipped_def("weapon")
 	_weapon_name = String(weapon.get("name", "Unarmed"))
+	var role_id := Roles.role_for_weapon_type(String(weapon.get("weaponType", "")))
 
-	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def, p_speed)
+	_encounter = CombatEncounter.new(enemy, hp, max_hp, p_atk, p_def, p_speed, role_id)
 	_selected_ability = {}
 	_active = true
 	get_tree().paused = true
@@ -171,7 +173,7 @@ func _render_bars() -> void:
 	var speed_note := " · Extra turn" if _encounter.bonus_turn else ""
 	var buffs := _encounter.timed_buff_summary()
 	_energy_label.text = "Energy %d/%d · SPD %d · %s%s%s" % [
-		_encounter.energy, CombatEncounter.MAX_ENERGY, _encounter.effective_speed(),
+		_encounter.energy, _encounter.max_energy, _encounter.effective_speed(),
 		_weapon_name, speed_note, " · " + buffs if not buffs.is_empty() else ""]
 
 

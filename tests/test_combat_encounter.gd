@@ -26,6 +26,7 @@ func _initialize() -> void:
 	_lifesteal_uses_actual_damage()
 	_speed_grants_one_extra_full_turn()
 	_speed_decides_the_opening_action()
+	_role_passives_apply_once()
 	_enemy_intent_is_truthful()
 	_items_are_limited_per_turn()
 	_challenge_is_japanese_and_solvable()
@@ -480,6 +481,33 @@ func _items_are_limited_per_turn() -> void:
 	check_eq("items do not spend Energy", e.energy, 5)
 	e.end_player_turn()
 	check_true("the next full turn restores item access", e.can_use_item())
+
+
+func _role_passives_apply_once() -> void:
+	var neutral := CombatEncounter.new(enemy_def, 12, 12, 6, 2, 5)
+	check_eq("Adventurer keeps the five-Energy baseline", neutral.max_energy, 5)
+	check_eq("Adventurer has no opening Flow", neutral.flow, 0)
+	check_eq("Adventurer has no opening Shield", neutral.shield, 0)
+
+	var samurai := CombatEncounter.new(enemy_def, 12, 12, 6, 2, 5, "samurai")
+	check_eq("Samurai starts each encounter with one Flow", samurai.flow, 1)
+	samurai.flow = 0
+	samurai.begin_player_round()
+	check_eq("Samurai Flow is not reapplied every round", samurai.flow, 0)
+
+	var ranger := CombatEncounter.new(enemy_def, 12, 12, 6, 2, 6, "ranger")
+	check_eq("Combat does not double-apply the Ranger stat passive", ranger.player_speed, 6)
+
+	var scholar := CombatEncounter.new(enemy_def, 12, 12, 6, 2, 5, "scholar")
+	scholar.begin_player_round()
+	check_eq("Scholar raises maximum Energy from five to six", scholar.max_energy, 6)
+	check_eq("Scholar begins a full turn with all six Energy", scholar.energy, 6)
+
+	var guardian := CombatEncounter.new(enemy_def, 100, 100, 6, 2, 5, "guardian")
+	check_eq("Guardian starts with ten-percent max-HP Shield", guardian.shield, 10)
+	guardian.shield = 0
+	guardian.begin_player_round()
+	check_eq("Guardian Shield is not reapplied every round", guardian.shield, 0)
 
 
 ## The menu must be Japanese, contain the answer exactly once, and never repeat a rune.

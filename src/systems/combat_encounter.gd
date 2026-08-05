@@ -1,5 +1,7 @@
 class_name CombatEncounter
 extends RefCounted
+
+const Roles = preload("res://src/systems/role_logic.gd")
 ## One turn-based fight, as pure state + math. Node-free and headless-testable: the panel
 ## renders this and feeds it choices, but every rule lives here.
 ##
@@ -48,6 +50,8 @@ var player_max_hp: int
 var player_atk: int
 var player_def: int
 var player_speed: int
+var role_id: String = Roles.ADVENTURER
+var max_energy: int = MAX_ENERGY
 
 var enemy_id: String
 var enemy_name: String
@@ -87,7 +91,8 @@ var roll: float = -1.0
 
 
 func _init(enemy_def_dict: Dictionary, hp: int, max_hp: int, atk: int = 6,
-		def_stat: int = 2, speed_stat: int = 5) -> void:
+		def_stat: int = 2, speed_stat: int = 5,
+		active_role: String = Roles.ADVENTURER) -> void:
 	enemy_id = String(enemy_def_dict.get("id", "enemy"))
 	enemy_name = String(enemy_def_dict.get("name", enemy_id))
 	enemy_max_hp = int(enemy_def_dict.get("maxHp", 30))
@@ -100,6 +105,10 @@ func _init(enemy_def_dict: Dictionary, hp: int, max_hp: int, atk: int = 6,
 	player_atk = atk
 	player_def = def_stat
 	player_speed = maxi(1, speed_stat)
+	role_id = String(Roles.definition(active_role).get("id", Roles.ADVENTURER))
+	max_energy = MAX_ENERGY + Roles.max_energy_bonus(role_id)
+	flow = Roles.opening_flow(role_id)
+	shield = Roles.opening_shield(role_id, player_max_hp)
 
 
 ## Kana's authored Speed mode: ties favour the player, and a lead of four or more grants
@@ -211,7 +220,7 @@ func can_use_combat_item(item: Dictionary) -> bool:
 		return true
 	if ConsumableLogic.combat_restored_hp(item, player_hp, player_max_hp) > 0:
 		return true
-	if ConsumableLogic.restored_energy(item, energy, MAX_ENERGY) > 0:
+	if ConsumableLogic.restored_energy(item, energy, max_energy) > 0:
 		return true
 	var buff_type := String(item.get("buffType", ""))
 	var value := int(item.get("buffValue", 0))
@@ -298,7 +307,7 @@ func begin_player_round() -> void:
 
 
 func _begin_player_turn() -> void:
-	energy = MAX_ENERGY
+	energy = max_energy
 	item_used_this_turn = false
 	ability_uses_this_turn.clear()
 	for raw_id in ability_cooldowns.keys():
@@ -426,7 +435,7 @@ func resolve(chosen: String, answer: String, ability: Dictionary = {},
 		amount = amount if r.correct else maxi(1, roundi(amount * 0.5))
 		if buff_type == "energy":
 			var energy_before := energy
-			energy = mini(MAX_ENERGY, energy + amount)
+			energy = mini(max_energy, energy + amount)
 			r.energy_restored = energy - energy_before
 		elif buff_type == "shield":
 			var shield_before := shield
@@ -482,12 +491,12 @@ func use_healing_item(item_id: String, healing: int, enemy_responds: bool = true
 ## current full turn's budget and never overflow, so using one at full Energy is rejected.
 func use_energy_item(item_id: String, amount: int, enemy_responds: bool = true) -> RoundResult:
 	var r := RoundResult.new()
-	if not can_use_item() or energy >= MAX_ENERGY:
+	if not can_use_item() or energy >= max_energy:
 		return r
 	r.action_id = item_id
 	r.action_type = "item"
 	var before := energy
-	energy = mini(MAX_ENERGY, energy + maxi(0, amount))
+	energy = mini(max_energy, energy + maxi(0, amount))
 	r.energy_restored = energy - before
 	r.action_resolved = r.energy_restored > 0
 	item_used_this_turn = r.action_resolved
@@ -520,7 +529,7 @@ func use_combat_item(item: Dictionary, enemy_responds: bool = true) -> RoundResu
 
 	if ConsumableLogic.is_supported_energy(item):
 		var energy_before := energy
-		energy = mini(MAX_ENERGY, energy + int(item.get("buffValue", 0)))
+		energy = mini(max_energy, energy + int(item.get("buffValue", 0)))
 		r.energy_restored = energy - energy_before
 
 	var buff_type := String(item.get("buffType", ""))

@@ -26,6 +26,7 @@ func _initialize() -> void:
 
 	_level_curve_is_monotonic()
 	_xp_maps_to_levels()
+	_level_cap_and_weapon_roles()
 	_attribute_allocations()
 	_gear_bonuses_and_scaling()
 	_winnable_at_the_right_levels()
@@ -39,6 +40,28 @@ func _xp_maps_to_levels() -> void:
 	check_eq("one level's xp is level 2", PlayerStats.level_from_xp(PlayerStats.XP_PER_LEVEL), 2)
 	check_eq("just under is still level 1", PlayerStats.level_from_xp(PlayerStats.XP_PER_LEVEL - 1), 1)
 	check_eq("progress within a level", PlayerStats.xp_into_level(PlayerStats.XP_PER_LEVEL + 30), 30)
+
+
+func _level_cap_and_weapon_roles() -> void:
+	var continued_xp := PlayerStats.XP_FOR_MAX_LEVEL + 1234
+	var capped := PlayerStats.from_xp(continued_xp, [], {}, "ranged")
+	check_eq("character level caps at 60", capped["level"], PlayerStats.MAX_LEVEL)
+	check_true("the cap has an explicit state", capped["at_level_cap"])
+	check_eq("Japanese XP remains intact beyond the combat cap",
+		capped["total_xp"], continued_xp)
+	check_eq("a capped character does not show a fake next-level bar",
+		capped["xp_into_level"], 0)
+	check_eq("the lifetime Attribute Point budget is 59",
+		PlayerStats.attribute_points_earned(continued_xp), 59)
+	check_eq("direct stat helpers also stop growing after level 60",
+		PlayerStats.max_hp(999), PlayerStats.max_hp(PlayerStats.MAX_LEVEL))
+	check_eq("ranged weapons derive the Ranger role", capped["role"], "ranger")
+	check_eq("the Ranger passive adds Speed exactly once", capped["speed"],
+		PlayerStats.speed(PlayerStats.MAX_LEVEL) + 1)
+	var neutral := PlayerStats.from_xp(0, [], {}, "")
+	check_eq("no weapon derives the neutral Adventurer", neutral["role"], "adventurer")
+	check_eq("Adventurer has no hidden Speed bonus", neutral["speed"],
+		PlayerStats.BASE_SPEED)
 
 
 ## Stats must never go backwards as you learn — a level-up that lowered a stat would silently

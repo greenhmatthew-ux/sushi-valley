@@ -69,7 +69,8 @@ func _sync_stats(heal: bool) -> void:
 	if Learning.profile != null:
 		xp = int(Learning.profile.data.get("stats", {}).get("xp", 0))
 	var allocations: Dictionary = Learning.allocations() if Learning.profile != null else {}
-	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations)
+	var weapon_type := String(Inv.equipped_def("weapon").get("weaponType", ""))
+	var stats := PlayerStats.from_xp(xp, Inv.equipped_defs(), allocations, weapon_type)
 	var new_max: int = stats["max_hp"]
 	var new_atk: int = stats["atk"]
 	var new_def: int = stats["def"]
