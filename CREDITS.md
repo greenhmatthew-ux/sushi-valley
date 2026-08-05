@@ -8,7 +8,8 @@ verified against the running scenes — not an aspirational or inherited list.
 
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
-  merchant), hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
+  merchant, plus the pack's Villager4, Monk, Hunter and Inspector sheets, added so the
+  village's people stop sharing one look), hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
   furniture and exit door, and the twelve rendered Talent icons (Blade Sweep, Kunai Toss,
   Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade, Iaido Cut, Pinning Shot,
   Glyph Storm, Fortress Wall), plus the 16px treasure

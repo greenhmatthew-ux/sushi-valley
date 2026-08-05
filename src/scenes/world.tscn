@@ -33,6 +33,10 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="34_woman"]
 [ext_resource type="Script" path="res://src/entities/farm_plot.gd" id="35_dmov6"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="35_vil3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager4.png" id="51_vil4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_monk.png" id="52_monk"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_hunter.png" id="53_hunter"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_inspector.png" id="54_insp"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
 [ext_resource type="Script" path="res://src/entities/fishing_spot.gd" id="37_rjtf1"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="37_study"]
@@ -1651,7 +1655,7 @@ monitoring = false
 script = ExtResource("21_f3ebj")
 quest_id = "valley_morning"
 greeting_card = "greet-ohayou"
-sprite_sheet = ExtResource("34_woman")
+sprite_sheet = ExtResource("51_vil4")
 
 [node name="TeacherHana" type="Area2D" parent="Props" unique_id=1072809989 instance=ExtResource("33_teacher")]
 y_sort_enabled = true
@@ -1737,7 +1741,7 @@ npc_id = "phrase_keeper"
 speaker = "Ren"
 teaches_category = "phrases"
 intro_lines = PackedStringArray("Travellers always need the same handful of words.", "Yes, no, where, what, how much. Learn these and you can ask for anything.")
-sprite_sheet = ExtResource("34_woman")
+sprite_sheet = ExtResource("52_monk")
 
 [node name="SignPond" type="Area2D" parent="Props" unique_id=1180052144 instance=ExtResource("36_sign")]
 y_sort_enabled = true
@@ -1769,7 +1773,7 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("21_f3ebj")
 quest_id = "river_guard"
-sprite_sheet = ExtResource("34_woman")
+sprite_sheet = ExtResource("53_hunter")
 greeting_card = "greet-ohayou"
 
 [node name="TeacherArrival" type="Area2D" parent="Props" unique_id=256618223 instance=ExtResource("33_teacher")]
@@ -1783,7 +1787,7 @@ npc_id = "gatekeeper"
 speaker = "Toma"
 teaches_lesson = "travel-arrival"
 intro_lines = PackedStringArray("New here? Then start with the words that get you unstuck.", "Excuse me, thank you, say that again, and where is the bathroom. In that order, usually.")
-sprite_sheet = ExtResource("34_woman")
+sprite_sheet = ExtResource("54_insp")
 
 [node name="TeacherScholar" type="Area2D" parent="Props" unique_id=997613769 instance=ExtResource("33_teacher")]
 y_sort_enabled = true
