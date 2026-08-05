@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_monk.png" id="52_monk"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_hunter.png" id="53_hunter"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_inspector.png" id="54_insp"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager6.png" id="55_vil6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_noble.png" id="56_noble"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_oldman.png" id="57_oldman"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
 [ext_resource type="Script" path="res://src/entities/fishing_spot.gd" id="37_rjtf1"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="37_study"]
@@ -1683,6 +1686,7 @@ npc_id = "yuki"
 speaker = "Yuki"
 teaches_lesson = "food-words"
 intro_lines = PackedStringArray("You look hungry, traveler.", "Learn the words for what you eat and you will never go hungry here.")
+sprite_sheet = ExtResource("55_vil6")
 
 [node name="SignVillage" type="Area2D" parent="Props" unique_id=703673281 instance=ExtResource("36_sign")]
 y_sort_enabled = true
@@ -1729,6 +1733,7 @@ npc_id = "kana_master"
 speaker = "Sensei"
 teaches_category = "kana-hiragana"
 intro_lines = PackedStringArray("Every sign in this valley is written in kana.", "Learn them a row at a time and the whole world opens up. Come back to me for the next row.")
+sprite_sheet = ExtResource("56_noble")
 
 [node name="TeacherPhrases" type="Area2D" parent="Props" unique_id=343318394 instance=ExtResource("33_teacher")]
 y_sort_enabled = true
@@ -1800,6 +1805,7 @@ npc_id = "scholar"
 speaker = "Scholar"
 teaches_category = "vocab-core"
 intro_lines = PackedStringArray("You have the look of someone who collects words.", "Six hundred of them, one lesson at a time. Come back whenever you are ready for more.")
+sprite_sheet = ExtResource("57_oldman")
 
 [node name="StudyBench" type="Area2D" parent="Props" unique_id=698376195 instance=ExtResource("37_study")]
 y_sort_enabled = true

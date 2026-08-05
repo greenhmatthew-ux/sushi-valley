@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="23_vil3"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager5.png" id="39_vil5"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_master.png" id="40_master"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager2.png" id="41_vil2"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager.png" id="24_vil1"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
@@ -342,7 +343,7 @@ npc_id = "outpost_keeper"
 speaker = "Keeper"
 teaches_lesson = "travel-transit"
 intro_lines = PackedStringArray("Heading further out? You'll need to ask the way.", "These are the phrases that get you onto the right train and off at the right stop.")
-sprite_sheet = ExtResource("22_merch")
+sprite_sheet = ExtResource("41_vil2")
 
 [node name="SignTrail" parent="Entities" instance=ExtResource("21_sign")]
 position = Vector2(304, 752)

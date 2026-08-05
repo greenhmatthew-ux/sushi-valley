@@ -26,7 +26,48 @@ func _initialize() -> void:
 	_every_crop_and_stage_resolves()
 	_ore_kinds_are_told_apart()
 	_state_cues_are_still_drawn()
+	_people_in_a_region_look_different()
 	_finish()
+
+
+## Five of the village's NPCs were once drawn with the same sheet, and two people stood
+## yards apart in the Wilds wearing the same face. Sharing a sheet across regions is fine —
+## nobody sees both at once — but two characters in one scene must not.
+func _people_in_a_region_look_different() -> void:
+	for scene_path: String in [
+		"res://src/scenes/world.tscn",
+		"res://src/scenes/wilds.tscn",
+		"res://src/scenes/mountain_pass.tscn",
+	]:
+		var scene: Node = load(scene_path).instantiate()
+		var by_sheet: Dictionary = {}
+		for node in _people(scene):
+			var sheet := node.get("sprite_sheet") as Texture2D
+			if sheet == null:
+				continue
+			var key := sheet.resource_path
+			if not by_sheet.has(key):
+				by_sheet[key] = []
+			(by_sheet[key] as Array).append(String(node.name))
+		var shared: Array[String] = []
+		for raw_key in by_sheet:
+			var users: Array = by_sheet[raw_key]
+			if users.size() > 1:
+				shared.append("%s: %s" % [String(raw_key).get_file(), ", ".join(users)])
+		check_true("%s gives each of its people their own face%s"
+			% [scene_path.get_file(), "" if shared.is_empty() else " — %s" % "; ".join(shared)],
+			shared.is_empty())
+		scene.free()
+
+
+## Talking characters only. Enemies of the same species are meant to share a sheet.
+func _people(node: Node) -> Array[Node]:
+	var found: Array[Node] = []
+	if node.get("sprite_sheet") != null and node.get("enemy_id") == null:
+		found.append(node)
+	for child in node.get_children():
+		found.append_array(_people(child))
+	return found
 
 
 func _regions_land_on_their_sheets() -> void:
