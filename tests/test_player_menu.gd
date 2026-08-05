@@ -56,10 +56,12 @@ func _initialize() -> void:
 		bag_hint.text.contains("Equip gear")
 		and bag_hint.text.contains("healing food")
 		and bag_hint.text.contains("combat-only"))
-	var alias_icon := panel.call("_icon_node", "spicy_curry") as TextureRect
-	check_eq("Bag resolves authored item icon aliases",
-		alias_icon.texture.resource_path, "res://assets/icons/items/noodle_bowl.png")
-	alias_icon.free()
+	# Spicy Curry used to borrow the Noodle Bowl's picture. Every item now owns its art,
+	# so a bag full of loot is readable at a glance — see tests/test_item_icons.gd.
+	var curry_icon := panel.call("_icon_node", "spicy_curry") as TextureRect
+	check_eq("Bag draws each item's own icon",
+		curry_icon.texture.resource_path, "res://assets/icons/items/spicy_curry.png")
+	curry_icon.free()
 	var compost_icon := panel.call("_icon_node", "compost") as TextureRect
 	check_eq("Garden Compost uses its audited sack art",
 		compost_icon.texture.resource_path, "res://assets/icons/items/compost.png")

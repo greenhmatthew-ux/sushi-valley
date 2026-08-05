@@ -30,8 +30,25 @@ verified against the running scenes — not an aspirational or inherited list.
   building exteriors, and village meadow/edge flower details. **Re-confirm entitlement before
   any commercial release.**
 - **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
-  ("Icons by Kyrise, https://kyrise.itch.io/"). Item icons in `assets/icons/items/`, including
-  the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.
+  ("Icons by Kyrise, https://kyrise.itch.io/"). The primary source for `assets/icons/items/`,
+  including the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.
+- **Free Pixel Food (16x16)** by Alex — **CC BY 4.0** per the pack's own
+  `Note from the artist.txt`. Two drinks: `herb_tea` (`coffee_tea.png`) and
+  `matcha_latte` (`boba_matcha.png`).
+- **16x16 RPG Item Pack** — **no license file ships with the pack; terms unstated.** Used for
+  the diagonal polearms, blunt weapons, armour and boots Kyrise has no equivalent of
+  (`bamboo_spear`, `storm_ram`, `iron_maul`, `canyon_crusher`, `red_dragon_maul`,
+  `hunter_crossbow`, `quilted_armor`, `scale_armor`, `iron_pauldrons`, `iron_sabatons`,
+  `bear_greaves`, and the leather-shoulder recolour).
+- **`Asset Library/Assets 2/items`** (1,244 16px icons) — **no license file ships with the
+  folder; terms unstated.** Used for the organic monster drops, ores, cooked dishes and
+  cloaks no other pack covers: pelts, tails, hides, scales, horns, fangs, wings, eyes,
+  slime, mushrooms, ore and ingot chunks, the soups/curry/feast bowls, and the two cloaks.
+
+The six dragon scales, the two belts, the leather shoulders, the straw sandals, the
+ice-claw boots, and the beast/gold pelts are **hue-and-saturation recolours** of another
+icon in this set — the same object in a different material, which is what those items are.
+Provenance follows the base icon named above.
 
 ## Not currently verified
 

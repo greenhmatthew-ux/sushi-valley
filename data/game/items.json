@@ -220,7 +220,6 @@
         "kind":  "material",
         "value":  40,
         "rarity":  "rare",
-        "iconAlias":  "fortune_cookie",
         "desc":  "Hana's permanent seal for completing an applied food-recall trial.",
         "icon":  true
     },
@@ -231,7 +230,6 @@
         "heal":  48,
         "value":  52,
         "rarity":  "rare",
-        "iconAlias":  "sushi_platter",
         "desc":  "A trail bento of rice, mushrooms, and woodland herbs. The recovered recipe restores a hearty amount of HP.",
         "icon":  true
     },
@@ -241,7 +239,6 @@
         "kind":  "material",
         "value":  85,
         "rarity":  "rare",
-        "iconAlias":  "stormglass",
         "desc":  "A blue-white fragment recovered from a temporary Mountain Pass starfall vein.",
         "icon":  true
     },
@@ -254,7 +251,6 @@
         "stats":  { "hp":  10, "spd":  1 },
         "value":  210,
         "rarity":  "rare",
-        "iconAlias":  "omamori_charm",
         "desc":  "A scalable level-12 charm made from two recurring Starfall Vein discoveries.",
         "icon":  true
     },
@@ -273,7 +269,6 @@
         "heal":  32,
         "value":  28,
         "rarity":  "uncommon",
-        "iconAlias":  "herb_tea",
         "desc":  "Aoi's field dressing of fragrant herbs and garden compost. Restores a moderate amount of HP.",
         "icon":  true
     },
@@ -405,7 +400,6 @@
         "value":  125,
         "rarity":  "rare",
         "dragonScaleColor":  "blue",
-        "iconAlias":  "dragon_scale",
         "desc":  "A focus-aligned scale that holds cold and arcane energy.",
         "icon":  true
     },
@@ -416,7 +410,6 @@
         "value":  180,
         "rarity":  "epic",
         "dragonScaleColor":  "silver",
-        "iconAlias":  "dragon_scale",
         "desc":  "A defense-aligned scale with the sheen and resilience of moonlit steel.",
         "icon":  true
     },
@@ -427,7 +420,6 @@
         "value":  240,
         "rarity":  "epic",
         "dragonScaleColor":  "black",
-        "iconAlias":  "dragon_scale",
         "desc":  "A precision-aligned scale that drinks in light around its edge.",
         "icon":  true
     },
@@ -438,7 +430,6 @@
         "value":  320,
         "rarity":  "legendary",
         "dragonScaleColor":  "red",
-        "iconAlias":  "dragon_scale",
         "desc":  "A power-aligned scale warm enough to temper starsteel.",
         "icon":  true
     },
@@ -449,7 +440,6 @@
         "value":  450,
         "rarity":  "legendary",
         "dragonScaleColor":  "gold",
-        "iconAlias":  "dragon_scale",
         "desc":  "The rare balanced affinity, prized for apex Dragon Scale equipment.",
         "icon":  true
     },
@@ -1086,7 +1076,6 @@
         "setId":  "dragon_scale",
         "stats":  { "atk":  23, "def":  9, "spd":  -2 },
         "value":  900,
-        "iconAlias":  "titan_maul",
         "desc":  "The highest normally craftable heavy weapon, forged around red dragon scale.",
         "icon":  true
     },
@@ -1406,8 +1395,7 @@
         "kind": "material",
         "value": 4,
         "desc": "Unrefined copper ore found in the Whispering Woods. Smelt it with iron.",
-        "icon": true,
-        "iconAlias": "raw_iron_ore"
+        "icon": true
     },
     {
         "id": "bronze_ingot",
@@ -1415,8 +1403,7 @@
         "kind": "material",
         "value": 18,
         "desc": "A strong alloy of copper and iron ore, useful for intermediate smithing.",
-        "icon": true,
-        "iconAlias": "iron_ingot"
+        "icon": true
     },
     {
         "id": "kitsune_dango",
@@ -1425,8 +1412,7 @@
         "heal": 24,
         "value": 15,
         "desc": "A sweet skewered treat made from local honey and kitsune tails.",
-        "icon": true,
-        "iconAlias": "fortune_cookie"
+        "icon": true
     },
     {
         "id": "fire_ward_amulet",
@@ -1439,8 +1425,7 @@
         },
         "value": 110,
         "desc": "A heavy stone amulet that shields the wearer from intense heat.",
-        "icon": true,
-        "iconAlias": "spirit_amulet"
+        "icon": true
     },
     {
         "id": "canyon_crusher",
@@ -1455,8 +1440,7 @@
         },
         "value": 140,
         "desc": "A heavy sandstone mallet. Slow but devastating. Required by guardian skills.",
-        "icon": true,
-        "iconAlias": "iron_maul"
+        "icon": true
     },
     {
         "id": "canyon_carp",
@@ -1464,8 +1448,7 @@
         "kind": "material",
         "value": 8,
         "desc": "A hardy, gold-scaled carp caught in the desert stream of Southern Reach.",
-        "icon": true,
-        "iconAlias": "river_fish"
+        "icon": true
     },
     {
         "id": "boreal_salmon",
@@ -1473,8 +1456,7 @@
         "kind": "material",
         "value": 15,
         "desc": "A silver salmon swimming in ice-cold waters of Northern Reach.",
-        "icon": true,
-        "iconAlias": "river_fish"
+        "icon": true
     },
     {
         "id": "void_eel",
@@ -1482,8 +1464,7 @@
         "kind": "material",
         "value": 25,
         "desc": "A shimmering violet eel found in deep mountain crevice pools.",
-        "icon": true,
-        "iconAlias": "river_fish"
+        "icon": true
     },
     {
         "id": "spicy_curry",
@@ -1492,7 +1473,6 @@
         "value": 50,
         "desc": "A burning curry cooked with desert herbs. Grants +6 ATK for 3 turns in combat.",
         "icon": true,
-        "iconAlias": "noodle_bowl",
         "buffType": "atk",
         "buffValue": 6,
         "buffDuration": 3
@@ -1505,7 +1485,6 @@
         "value": 80,
         "desc": "Premium sushi rolled with boreal salmon. Restores 35 HP and grants 20 Shield.",
         "icon": true,
-        "iconAlias": "sushi_platter",
         "buffType": "shield",
         "buffValue": 20
     },
@@ -1526,7 +1505,6 @@
         "value": 120,
         "desc": "A dark potion made from void eel. Restores 4 Energy instantly.",
         "icon": true,
-        "iconAlias": "sovereign_elixir",
         "buffType": "energy",
         "buffValue": 4
     },
@@ -1538,7 +1516,6 @@
         "value": 60,
         "desc": "A mineral-dense soup. Restores 15 HP and grants +4 DEF for 4 turns.",
         "icon": true,
-        "iconAlias": "mushroom_soup",
         "buffType": "def",
         "buffValue": 4,
         "buffDuration": 4
@@ -1550,7 +1527,6 @@
         "value": 45,
         "desc": "A highly combustible oil flask. Throw in combat to deal 25 damage.",
         "icon": true,
-        "iconAlias": "lantern_oil",
         "attackDmg": 25
     },
     {
@@ -1984,7 +1960,6 @@
                   },
         "value":  110,
         "rarity":  "uncommon",
-        "iconAlias":  "omamori_charm",
         "icon":  true,
         "desc":  "Kaji's knot for a proven field artisan. Light enough for long gathering routes."
     },
