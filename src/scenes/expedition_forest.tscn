@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="9_enemy"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_bear.png" id="10_bear"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_tengu.png" id="11_tengu"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_spirit.png" id="30_spirit"]
 [ext_resource type="Script" path="res://src/entities/expedition_objective.gd" id="12_objective"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="13_ui"]
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="14_weather"]
@@ -82,7 +83,7 @@ position = Vector2(624, 224)
 max_hp = 220
 enemy_def = 10
 enemy_atk = 22
-sprite_sheet = ExtResource("11_tengu")
+sprite_sheet = ExtResource("30_spirit")
 enemy_id = "forest_wraith"
 coin_reward = 60
 coin_variance = 10

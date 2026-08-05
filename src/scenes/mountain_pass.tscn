@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="15_quest"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager2.png" id="16_vil2"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="17_woman"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_shaman.png" id="26_shaman"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="18_pickup"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="19_study"]
 [ext_resource type="PackedScene" path="res://src/entities/crafting_station.tscn" id="20_station"]
@@ -234,7 +235,7 @@ position = Vector2(168, 248)
 quest_id = "pass_tengu_fan"
 speaker = "Rin"
 greeting_card = "greet-ohayou"
-sprite_sheet = ExtResource("17_woman")
+sprite_sheet = ExtResource("26_shaman")
 
 [node name="LookoutStudy" parent="Entities" instance=ExtResource("19_study")]
 position = Vector2(112, 288)

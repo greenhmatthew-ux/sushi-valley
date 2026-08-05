@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="22_study"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_merchant_walk.png" id="22_merch"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager3.png" id="23_vil3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager5.png" id="39_vil5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_master.png" id="40_master"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager.png" id="24_vil1"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_mushroom.png" id="15_mush"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_kappagreen.png" id="16_kappa"]
@@ -328,7 +330,7 @@ vendor_name = "Forest Trader"
 position = Vector2(96, 304)
 quest_id = "woods_quiet_steps"
 greeting_card = "greet-sumimasen"
-sprite_sheet = ExtResource("23_vil3")
+sprite_sheet = ExtResource("39_vil5")
 
 [node name="UILayer" parent="." instance=ExtResource("18_ui")]
 
@@ -373,7 +375,7 @@ npc_id = "guide"
 speaker = "Guide"
 teaches_category = "travel"
 intro_lines = PackedStringArray("The road teaches you words faster than any book.", "Stations, tickets, platforms, transfers. Learn the travel set and no journey will strand you.")
-sprite_sheet = ExtResource("23_vil3")
+sprite_sheet = ExtResource("40_master")
 
 [node name="ExpeditionGate" type="Area2D" parent="Entities"]
 position = Vector2(496, 296)
