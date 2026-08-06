@@ -1,10 +1,16 @@
 # Project Instructions — Sushi Valley (Godot)
 
 ## Project Identity
-A solo-built single-player web-free desktop game inspired by RuneScape, Stardew Valley,
+A solo-built single-player desktop-first game inspired by RuneScape, Stardew Valley,
 and Terraria, with educational recall-gating: the player learns Japanese by playing.
 Godot 4.7, GDScript, desktop-first (Windows). The priority is to ship useful, stable,
 understandable features quickly.
+
+**It also ships to the web.** `.github/workflows/deploy.yml` exports the Web preset and
+publishes to GitHub Pages on every push to master, live at
+https://greenhmatthew-ux.github.io/sushi-valley/ . The build is never committed (`build/`
+is gitignored) — CI rebuilds from source, so the site cannot drift from the repo. A push to
+master IS a release: check the run before calling work shipped.
 
 This is a port of an earlier Vite + TypeScript + Phaser build. That local copy was
 **deleted 2026-07** — this Godot project is now the one and only Sushi Valley. If you ever
