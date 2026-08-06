@@ -76,6 +76,11 @@ was used and where it came from*, not a gate on using it. State provenance hones
 including "unstated" or "unknown", and move on.
 
 ## Art And Map Rules
+`docs/LEVEL_DESIGN_BIBLE.md` is the full contract for analyzing, repairing, and building
+gameplay spaces — area roles, the required review workflow and output format, placement and
+collision rules, resource/enemy/lesson-gate ecology, pacing, the scoring rubric, and the
+definition of done. Read it before any level-design work. The rules below are the short form.
+
 - 16px native tile art, rendered at zoom 2. Texture filter is Nearest project-wide;
   never override it per-texture.
 - The candidate art pool is the entire `D:\Asset Library` tree. Search broadly, then
