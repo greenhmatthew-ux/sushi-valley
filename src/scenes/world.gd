@@ -32,9 +32,19 @@ const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
 const Scatter = preload("res://src/systems/terrain_scatter.gd")
 ## Swaps Serene's flat grass fill for textured grass once the region has finished building.
 const GroundCover = preload("res://src/systems/ground_cover.gd")
+## Animated ripples that break up the pond's solid blue fill.
+const PondRipples = preload("res://src/entities/pond_ripples.gd")
+## Serene's open-water centre frame. Only this one gets ripples: the bank frames are half
+## shoreline, and a ripple drawn over one sits on the grass.
+const WATER_CENTER := Vector2i(12, 1)
+## Share of open-water tiles carrying a ripple. Enough that the surface is never still
+## anywhere you look, sparse enough that it reads as water rather than as rain.
+const RIPPLE_SHARE := 18
 
 ## How far the fields run east past the authored map. The market road used to reach the edge
 ## of the tile data and simply stop, which is what made the village read as cut off.
+## How far the grass underlay runs past the map edge, in tiles.
+const EDGE_MARGIN_TILES := 10
 const OUTSKIRTS_TILES := 22
 const OUTSKIRTS_SEED := 20260804
 
@@ -66,7 +76,9 @@ func _ready() -> void:
 	_build_south_spur()
 	_build_door_spurs()
 	_anchor_resource_nodes()
+	_build_pond_ripples()
 	_texture_grass()
+	_order_ground_layers()
 	_load_game()
 
 
@@ -128,6 +140,51 @@ func _worn_shoulder(cell: Vector2i) -> bool:
 	var h: int = block.x * 374761393 + block.y * 668265263
 	h = (h ^ (h >> 13)) * 1274126177
 	return absi(h >> 5) % 100 < 24
+
+
+## Put the generated ground layers in a deliberate stack, once, at the end.
+##
+## Each builder used to place its own layer with move_child and a literal index, which only
+## worked for whichever one ran first: EdgeGround inserts at 0 and shifts everything after it,
+## so the meadow's "move to 1" actually pushed Ground above it and the village's entire flower
+## wash rendered behind the ground it decorates. Ordering here, after every layer exists, is
+## the only version that cannot be invalidated by a later builder.
+##
+## Bottom to top: the underlay that hides the map edge, the ground, its flower wash, the two
+## road spurs (a path laid over a flower must cover it), then the pond ripples. Everything
+## after this in the child list -- Props and up -- keeps drawing over all of it.
+func _order_ground_layers() -> void:
+	var stack: Array[String] = ["EdgeGround", "Ground", "Meadow", "SouthRoad", "DoorPaths",
+		"PondRipples"]
+	var index := 0
+	for layer_name in stack:
+		var layer := get_node_or_null(NodePath(layer_name))
+		if layer == null:
+			continue
+		move_child(layer, index)
+		index += 1
+
+
+## The pond centre tile is a solid blue fill and there is no textured water frame on the
+## sheet. Water is the one surface that should be moving, so it is broken up with motion:
+## the same 4-frame ripple the fishing spot uses, scattered over open water and phase-offset
+## per tile so the pond does not blink in unison.
+func _build_pond_ripples() -> void:
+	var open_water: Array[Vector2i] = []
+	for cell in ground.get_used_cells():
+		if ground.get_cell_atlas_coords(cell) != WATER_CENTER:
+			continue
+		if absi(cell.x * 73856093 ^ cell.y * 19349663) % 100 < RIPPLE_SHARE:
+			open_water.append(cell)
+	if open_water.is_empty():
+		return
+	var ripples := PondRipples.new()
+	ripples.name = "PondRipples"
+	add_child(ripples)
+	# Above Ground, below the y-sorted Props, so the player and the bank trees still draw over
+	# the water they overlap. Ground's live index for the same reason as the meadow above.
+	move_child(ripples, ground.get_index() + 1)
+	ripples.build(open_water, ground.position)
 
 
 ## Everything above plants against the flat grass coord, so the grass is only re-textured
@@ -402,7 +459,16 @@ func _build_edge_underlay() -> void:
 	edge_ground.z_index = -10
 	edge_ground.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	edge_ground.tile_set = ground.tile_set
-	var used := ground.get_used_rect()
+	# Ground is offset inside the scene, so a layer left at the origin paints the same cells
+	# 89,21px away from them. The underlay was drawing as a rectangle visibly shifted off the
+	# map corner; SouthRoad and DoorPaths already do this and line up because of it.
+	edge_ground.position = ground.position
+	# Grown past the map on every side. Aligning the layer above fixed where it draws but also
+	# revealed what its old 89,21px offset had been hiding by accident: the authored tree line
+	# west of the tile data stood on bare grey. The underlay exists to cover exactly that --
+	# camera overshoot and props outside the ground rect -- so it is sized for the job instead
+	# of matching the map exactly.
+	var used := ground.get_used_rect().grow(EDGE_MARGIN_TILES)
 	for x in range(used.position.x, used.end.x):
 		for y in range(used.position.y, used.end.y):
 			edge_ground.set_cell(Vector2i(x, y), 0, GRASS_ATLAS)
@@ -430,8 +496,15 @@ func _build_meadow() -> void:
 		src.create_tile(c)
 	ts.add_source(src, 0)
 	detail.tile_set = ts
+	# Same offset bug as the underlay: without this the flower wash is painted 89,21px from
+	# the grass it is meant to decorate.
+	detail.position = ground.position
 	add_child(detail)
-	move_child(detail, 1)   # after Ground(0), before the y-sorted Props
+	# Anchored to Ground's live index, never a literal. It used to be moved to index 1 on the
+	# assumption Ground sat at 0 -- but _build_edge_underlay has already inserted EdgeGround at
+	# 0 by this point, so Ground is at 1 and this pushed it to 2, leaving the meadow BELOW the
+	# ground that draws over it. The village's whole flower wash was invisible.
+	move_child(detail, ground.get_index() + 1)
 
 	var blocked := _occupied_tiles()
 	var grass: Array[Vector2i] = []

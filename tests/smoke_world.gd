@@ -68,8 +68,12 @@ func _run() -> void:
 		% [ground.get_used_cells().size(), footprint],
 		ground.get_used_cells().size() == footprint)
 	if edge_ground != null:
-		check_true("edge underlay covers the full camera footprint",
-			edge_ground.get_used_cells().size() == footprint)
+		# "At least", not "exactly". The underlay's job is to cover camera overshoot and any
+		# prop sitting outside the ground rect, so it is deliberately grown past the map; an
+		# equality check here would forbid the layer from doing the thing it exists for.
+		check_true("edge underlay covers at least the full camera footprint (%d of %d)"
+			% [edge_ground.get_used_cells().size(), footprint],
+			edge_ground.get_used_cells().size() >= footprint)
 		# The underlay used to be pinned to Serene's grass coord (4, 0). That tile is a flat
 		# fill, and the whole map is now re-textured off it at the end of _ready, so the
 		# check would only pass if the re-texture had failed to reach the underlay -- which
