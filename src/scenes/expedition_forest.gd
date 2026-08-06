@@ -17,6 +17,8 @@ extends Node2D
 ## stage placements, so the route the player must walk is the route they see.
 
 const ExpeditionLogic = preload("res://src/systems/expedition_logic.gd")
+## Swaps Serene's flat grass fill for textured grass once the region has finished building.
+const GroundCover = preload("res://src/systems/ground_cover.gd")
 
 const EXPEDITION_ID := "forest_lunchbox"
 const TILE := 16
@@ -95,6 +97,7 @@ func _ready() -> void:
 	_mark_occupied()
 	_build_forest()
 	_build_detail()
+	_texture_grass()
 	_place_player()
 	_clamp_camera()
 
@@ -409,6 +412,11 @@ func _set_detail(c: Vector2i, tile: Vector2i) -> void:
 
 func _to_tile(p: Vector2) -> Vector2i:
 	return Vector2i(int(floor(p.x / TILE)), int(floor(p.y / TILE)))
+
+
+## Last, so the forest and detail passes above still see the flat grass they key off.
+func _texture_grass() -> void:
+	GroundCover.repaint(ground, GRASS)
 
 
 func _place_player() -> void:

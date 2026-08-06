@@ -24,6 +24,7 @@ const REGIONS := {
 	"village": "res://src/scenes/world.tscn",
 	"wilds": "res://src/scenes/wilds.tscn",
 	"mountain pass": "res://src/scenes/mountain_pass.tscn",
+	"expedition forest": "res://src/scenes/expedition_forest.tscn",
 }
 
 ## Regions still carpeted in a flat tile, recorded rather than hidden.
