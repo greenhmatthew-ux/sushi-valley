@@ -64,61 +64,61 @@ post_offset = Vector2(20, 0)
 sign_offset = Vector2(-44, 0)
 
 [node name="RockA" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(120, 360)
+position = Vector2(112, 352)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockB" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(232, 296)
+position = Vector2(240, 288)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockC" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(456, 408)
+position = Vector2(464, 416)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockD" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(568, 328)
+position = Vector2(560, 320)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockE" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(632, 200)
+position = Vector2(624, 192)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockF" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(88, 264)
+position = Vector2(80, 256)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="RockG" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(408, 168)
+position = Vector2(400, 160)
 texture = ExtResource("7_rock")
 foot_size = Vector2(12, 6)
 foot_offset = Vector2(0, -2)
 
 [node name="PineA" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(56, 424)
+position = Vector2(48, 416)
 texture = ExtResource("8_tree")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="PineB" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(184, 448)
+position = Vector2(176, 448)
 texture = ExtResource("8_tree")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="PineC" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(536, 456)
+position = Vector2(528, 448)
 texture = ExtResource("8_tree")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)

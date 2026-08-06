@@ -97,25 +97,25 @@ sign_offset = Vector2(44, 0)
 label_offset = Vector2(0, 26)
 
 [node name="Tree0" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(56, 72)
+position = Vector2(48, 64)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree1" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(104, 60)
+position = Vector2(112, 64)
 texture = ExtResource("8_tl")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree2" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(72, 120)
+position = Vector2(80, 128)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree3" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(600, 80)
+position = Vector2(592, 80)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
@@ -127,7 +127,7 @@ foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree5" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(600, 352)
+position = Vector2(592, 352)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
@@ -145,25 +145,25 @@ foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree8" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(40, 296)
+position = Vector2(48, 288)
 texture = ExtResource("9_ts")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Tree9" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(108, 256)
+position = Vector2(96, 256)
 texture = ExtResource("7_tg")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Rock0" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(212, 272)
+position = Vector2(224, 272)
 texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
 
 [node name="Rock1" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(576, 152)
+position = Vector2(576, 160)
 texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
@@ -217,19 +217,19 @@ coin_reward = 8
 coin_variance = 2
 
 [node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(160, 300)
+position = Vector2(160, 304)
 texture = ExtResource("12_bld")
 foot_size = Vector2(56, 12)
 foot_offset = Vector2(0, -4)
 
 [node name="Barrel" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(198, 326)
+position = Vector2(200, 320)
 texture = ExtResource("13_bar")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Crate" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(126, 326)
+position = Vector2(120, 320)
 texture = ExtResource("14_crate")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
@@ -444,7 +444,7 @@ session_size = 5
 sprite = ExtResource("14_crate")
 
 [node name="WaysideBarrel" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(240, 636)
+position = Vector2(232, 640)
 texture = ExtResource("13_bar")
 foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)

@@ -977,13 +977,13 @@ foot_offset = Vector2(0, -11)
 
 [node name="House2" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(537, 293)
+position = Vector2(544, 288)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("39_lakehouse")
 solid = false
 
 [node name="House2Collision" type="StaticBody2D" parent="Props" unique_id=1344327697]
-position = Vector2(537, 267)
+position = Vector2(544, 262)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Props/House2Collision" unique_id=1154662069]
 shape = SubResource("RectangleShape2D_big_house")
@@ -1169,7 +1169,7 @@ script = ExtResource("11_spawn")
 spawn_id = "house1_door"
 
 [node name="House2Door" type="Area2D" parent="Props" unique_id=1108494604 instance=ExtResource("10_door")]
-position = Vector2(529, 289)
+position = Vector2(536, 284)
 collision_layer = 8
 script = ExtResource("14_v8imb")
 target_scene = "res://src/scenes/interior_lake_house.tscn"
@@ -1179,7 +1179,7 @@ destination = "the Angler's House"
 sign_offset = Vector2(-48, 8)
 
 [node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
-position = Vector2(529, 305)
+position = Vector2(536, 300)
 script = ExtResource("11_spawn")
 spawn_id = "house2_door"
 
@@ -1239,7 +1239,7 @@ greeting_card = "greet-konnichiwa"
 
 [node name="Tree0" type="Node2D" parent="Props" unique_id=1439562200 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 32)
+position = Vector2(16, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1247,7 +1247,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree1" type="Node2D" parent="Props" unique_id=1030651444 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 128)
+position = Vector2(16, 128)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1255,7 +1255,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree2" type="Node2D" parent="Props" unique_id=537564946 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 192)
+position = Vector2(16, 192)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1263,7 +1263,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree3" type="Node2D" parent="Props" unique_id=421601236 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 256)
+position = Vector2(16, 256)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1271,7 +1271,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree4" type="Node2D" parent="Props" unique_id=1010463567 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 320)
+position = Vector2(16, 320)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1279,7 +1279,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree5" type="Node2D" parent="Props" unique_id=1754085315 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(24, 464)
+position = Vector2(16, 464)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1287,7 +1287,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree6" type="Node2D" parent="Props" unique_id=1778732479 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(88, 64)
+position = Vector2(80, 64)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1295,7 +1295,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree7" type="Node2D" parent="Props" unique_id=551252523 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(104, 464)
+position = Vector2(112, 464)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1303,7 +1303,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree8" type="Node2D" parent="Props" unique_id=853149424 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(120, 176)
+position = Vector2(112, 176)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1311,7 +1311,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree9" type="Node2D" parent="Props" unique_id=1632598915 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(136, 32)
+position = Vector2(144, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1319,7 +1319,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree10" type="Node2D" parent="Props" unique_id=907041929 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(136, 416)
+position = Vector2(144, 416)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1327,7 +1327,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree11" type="Node2D" parent="Props" unique_id=1408995664 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(168, 208)
+position = Vector2(176, 192)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1335,7 +1335,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree12" type="Node2D" parent="Props" unique_id=1863568090 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(168, 464)
+position = Vector2(176, 464)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1343,7 +1343,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree13" type="Node2D" parent="Props" unique_id=2034759990 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(216, 32)
+position = Vector2(208, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1351,7 +1351,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree14" type="Node2D" parent="Props" unique_id=975402852 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(232, 432)
+position = Vector2(240, 432)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1359,7 +1359,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree15" type="Node2D" parent="Props" unique_id=1652348327 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(280, 32)
+position = Vector2(272, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1367,7 +1367,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree16" type="Node2D" parent="Props" unique_id=1117674040 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(216, 472)
+position = Vector2(208, 480)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1375,7 +1375,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree17" type="Node2D" parent="Props" unique_id=1378093310 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(344, 48)
+position = Vector2(336, 48)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1383,7 +1383,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree18" type="Node2D" parent="Props" unique_id=2003757647 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(360, 464)
+position = Vector2(368, 464)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1391,7 +1391,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree19" type="Node2D" parent="Props" unique_id=1920536811 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(408, 48)
+position = Vector2(400, 48)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1399,7 +1399,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree20" type="Node2D" parent="Props" unique_id=217217219 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(408, 208)
+position = Vector2(400, 208)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1407,7 +1407,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree21" type="Node2D" parent="Props" unique_id=1564709472 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(424, 448)
+position = Vector2(432, 448)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1415,7 +1415,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree22" type="Node2D" parent="Props" unique_id=1139008406 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(472, 48)
+position = Vector2(464, 48)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1423,7 +1423,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree23" type="Node2D" parent="Props" unique_id=1827579498 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(488, 448)
+position = Vector2(496, 448)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1431,7 +1431,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree24" type="Node2D" parent="Props" unique_id=1222377840 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(536, 416)
+position = Vector2(528, 416)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1439,7 +1439,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree25" type="Node2D" parent="Props" unique_id=822257177 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(568, 32)
+position = Vector2(560, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1447,7 +1447,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree26" type="Node2D" parent="Props" unique_id=24674605 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(600, 416)
+position = Vector2(592, 416)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1455,7 +1455,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree27" type="Node2D" parent="Props" unique_id=748785525 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(616, 64)
+position = Vector2(624, 64)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1463,7 +1463,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree28" type="Node2D" parent="Props" unique_id=1064298695 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(632, 464)
+position = Vector2(624, 464)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1471,7 +1471,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree29" type="Node2D" parent="Props" unique_id=1505341738 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(664, 32)
+position = Vector2(656, 32)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1479,7 +1479,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree30" type="Node2D" parent="Props" unique_id=483214108 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(664, 112)
+position = Vector2(656, 112)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1487,7 +1487,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree31" type="Node2D" parent="Props" unique_id=201464047 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(664, 192)
+position = Vector2(656, 192)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("22_tl")
 foot_size = Vector2(10, 5)
@@ -1495,7 +1495,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree32" type="Node2D" parent="Props" unique_id=93658413 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(664, 256)
+position = Vector2(656, 256)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("23_ts")
 foot_size = Vector2(10, 5)
@@ -1503,7 +1503,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Tree33" type="Node2D" parent="Props" unique_id=1105573072 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(664, 384)
+position = Vector2(656, 384)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("21_tg")
 foot_size = Vector2(10, 5)
@@ -1511,7 +1511,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Rock1" type="Node2D" parent="Props" unique_id=735096805 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(150, 205)
+position = Vector2(128, 192)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("24_rk")
 foot_size = Vector2(20, 8)
@@ -1519,7 +1519,7 @@ foot_offset = Vector2(0, -3)
 
 [node name="Rock2" type="Node2D" parent="Props" unique_id=838438066 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(560, 430)
+position = Vector2(560, 432)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("24_rk")
 foot_size = Vector2(20, 8)
@@ -1527,7 +1527,7 @@ foot_offset = Vector2(0, -3)
 
 [node name="Berry1" type="Node2D" parent="Props" unique_id=1838548248 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(120, 420)
+position = Vector2(112, 416)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("25_bb")
 foot_size = Vector2(12, 6)
@@ -1535,7 +1535,7 @@ foot_offset = Vector2(0, -2)
 
 [node name="Berry2" type="Node2D" parent="Props" unique_id=730197266 instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(648, 300)
+position = Vector2(656, 304)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("25_bb")
 foot_size = Vector2(12, 6)
