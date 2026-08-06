@@ -59,6 +59,7 @@ const PROP_FOOT_OFFSET := Vector2(0, -2)
 func _ready() -> void:
 	Audio.play_music("village")
 	_build_east_outskirts()
+	_weather_road_edges()
 	_build_edge_underlay()
 	_clamp_camera_to_map()
 	_build_meadow()
@@ -67,6 +68,66 @@ func _ready() -> void:
 	_anchor_resource_nodes()
 	_texture_grass()
 	_load_game()
+
+
+## The authored market road is stamped as straight-sided rectangles of the centre tile: its
+## two arms hold a uniform width for their whole run, which is the "large rectangle of one
+## centre tile" the art rules forbid and the reason the village reads as stencilled.
+##
+## Rather than re-cutting hand-made tile data, the shoulder is worn outward in patches. Every
+## grass tile touching the road is a candidate, decided by a hash of its 3x3 block so the
+## widening arrives in bulges a few tiles long instead of a dotted fringe, and the whole road
+## is then re-autotiled through the same `_trail_tile` the Wilds trail uses — so the new edges
+## get real edge and corner art rather than more centre tile.
+##
+## Widening only, never narrowing: a road that loses cells can pinch shut or strand a door
+## spur, while one that only gains them cannot. Grass is the only surface eaten, so the pond
+## and the authored paths are untouched, and occupied tiles are skipped so no shoulder opens
+## under a building. Both surfaces are walkable, so this cannot change where the player can go.
+##
+## Runs before the meadow, or the flower wash would already have been scattered onto tiles
+## that are about to become road.
+func _weather_road_edges() -> void:
+	var trail_frames: Dictionary = {}
+	for coord in _trail_coords():
+		trail_frames[coord] = true
+
+	var road: Dictionary = {}
+	for cell in ground.get_used_cells():
+		if trail_frames.has(ground.get_cell_atlas_coords(cell)):
+			road[cell] = true
+	if road.is_empty():
+		return
+
+	var blocked := _occupied_tiles()
+	var used := ground.get_used_rect()
+	var shoulder: Dictionary = {}
+	for raw_cell in road:
+		var cell: Vector2i = raw_cell
+		for step in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+			var probe: Vector2i = cell + step
+			if road.has(probe) or shoulder.has(probe) or blocked.has(probe):
+				continue
+			if not used.has_point(probe):
+				continue
+			if ground.get_cell_atlas_coords(probe) != GRASS_ATLAS:
+				continue
+			if _worn_shoulder(probe):
+				shoulder[probe] = true
+	for raw_cell in shoulder:
+		road[raw_cell] = true
+	for raw_cell in road:
+		var cell: Vector2i = raw_cell
+		ground.set_cell(cell, 0, _trail_tile(road, cell))
+
+
+## Hashed on the cell's 3x3 block, not the cell, so neighbours mostly agree and the shoulder
+## comes out as a run of worn ground rather than single scattered tiles.
+func _worn_shoulder(cell: Vector2i) -> bool:
+	var block := Vector2i(floori(cell.x / 3.0), floori(cell.y / 3.0))
+	var h: int = block.x * 374761393 + block.y * 668265263
+	h = (h ^ (h >> 13)) * 1274126177
+	return absi(h >> 5) % 100 < 24
 
 
 ## Everything above plants against the flat grass coord, so the grass is only re-textured
