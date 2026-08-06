@@ -36,6 +36,12 @@ const REGIONS := {
 ## into an obvious grid when tiled, and shipping a visible wallpaper grid would be worse than
 ## shipping flat.
 ##
+## The pass's route is hard to see for the same reason. Its trail tile (7,6) differs from the
+## floor by only ~20 per channel (59 summed), so the path barely separates from the ground it
+## crosses. The sheet's one high-contrast seamless alternative, (5,6) at 220, renders as
+## vertical wood planks when tiled -- a boardwalk, not a mountain track -- so it was measured,
+## looked at, and rejected rather than swapped in for the contrast number alone.
+##
 ## This list must only ever shrink. A region here that has since been fixed fails the test on
 ## purpose, so the entry gets deleted instead of quietly outliving the problem.
 const KNOWN_FLAT: Array[String] = ["mountain pass"]
