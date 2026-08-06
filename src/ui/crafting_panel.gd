@@ -89,7 +89,7 @@ func _recipe_row(recipe: Dictionary) -> Control:
 	heading.text = "%s  →  %s x%d" % [recipe.get("name", "Recipe"),
 		DB.item(String(output.get("item", ""))).get("name", output.get("item", "")),
 		int(output.get("qty", 0))]
-	heading.add_theme_font_size_override("font_size", 13)
+	heading.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	heading.add_theme_color_override("font_color", COL_TEXT)
 	info.add_child(heading)
 	var output_item: Dictionary = DB.item(String(output.get("item", "")))
@@ -98,7 +98,7 @@ func _recipe_row(recipe: Dictionary) -> Control:
 		var output_label := Label.new()
 		output_label.name = "CraftOutputDetail"
 		output_label.text = output_detail
-		output_label.add_theme_font_size_override("font_size", 10)
+		output_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		output_label.add_theme_color_override("font_color", COL_MUTED)
 		info.add_child(output_label)
 	var ingredients: Array[String] = []
@@ -108,7 +108,7 @@ func _recipe_row(recipe: Dictionary) -> Control:
 			Inv.count(item_id), int(input.get("qty", 0))])
 	var detail := Label.new()
 	detail.text = " · ".join(ingredients)
-	detail.add_theme_font_size_override("font_size", 10)
+	detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	detail.add_theme_color_override("font_color", COL_MUTED)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	info.add_child(detail)
@@ -177,11 +177,11 @@ func _build() -> void:
 	content.add_theme_constant_override("separation", 8)
 	margin.add_child(content)
 	_title = Label.new()
-	_title.add_theme_font_size_override("font_size", 20)
+	_title.add_theme_font_size_override("font_size", UiTheme.FONT_HEADING)
 	_title.add_theme_color_override("font_color", COL_BORDER)
 	content.add_child(_title)
 	_progress = Label.new()
-	_progress.add_theme_font_size_override("font_size", 11)
+	_progress.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	_progress.add_theme_color_override("font_color", COL_MUTED)
 	content.add_child(_progress)
 	var scroll := ScrollContainer.new()
@@ -195,7 +195,7 @@ func _build() -> void:
 	scroll.add_child(_list)
 	_input_hint = Label.new()
 	_input_hint.name = "InputHint"
-	_input_hint.add_theme_font_size_override("font_size", 10)
+	_input_hint.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	_input_hint.add_theme_color_override("font_color", COL_MUTED)
 	content.add_child(_input_hint)
 	_refresh_input_hint()

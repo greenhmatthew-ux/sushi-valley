@@ -142,12 +142,12 @@ func _build_scaffold() -> void:
 	margin.add_child(vbox)
 
 	_name_label = Label.new()
-	_name_label.add_theme_font_size_override("font_size", 15)
+	_name_label.add_theme_font_size_override("font_size", UiTheme.FONT_BODY)
 	_name_label.add_theme_color_override("font_color", COL_NAME)
 	vbox.add_child(_name_label)
 
 	_line_label = Label.new()
-	_line_label.add_theme_font_size_override("font_size", 16)
+	_line_label.add_theme_font_size_override("font_size", UiTheme.FONT_SECTION)
 	_line_label.add_theme_color_override("font_color", Color.WHITE)
 	_line_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_line_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -156,7 +156,7 @@ func _build_scaffold() -> void:
 	# Translation, tucked under the Japanese and tinted so it reads as a hint rather than
 	# the primary text. Hidden unless the player asks for it.
 	_en_label = Label.new()
-	_en_label.add_theme_font_size_override("font_size", 13)
+	_en_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_en_label.add_theme_color_override("font_color", COL_EN)
 	_en_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_en_label.hide()
@@ -164,7 +164,7 @@ func _build_scaffold() -> void:
 
 	_hint_label = Label.new()
 	_hint_label.name = "InputHint"
-	_hint_label.add_theme_font_size_override("font_size", 12)
+	_hint_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_hint_label.add_theme_color_override("font_color", Color(0.6, 0.66, 0.75))
 	_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	vbox.add_child(_hint_label)

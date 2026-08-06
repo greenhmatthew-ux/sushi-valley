@@ -133,7 +133,7 @@ func _make_card(id: String, price: int) -> Control:
 
 	var name_label := Label.new()
 	name_label.text = String(def.get("name", id))
-	name_label.add_theme_font_size_override("font_size", 12)
+	name_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	name_label.add_theme_color_override("font_color",
 		KIND_COLORS.get(String(def.get("kind", "")), COL_TEXT))
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -146,7 +146,7 @@ func _make_card(id: String, price: int) -> Control:
 		var detail_label := Label.new()
 		detail_label.name = "ShopItemDetail"
 		detail_label.text = detail_text
-		detail_label.add_theme_font_size_override("font_size", 9)
+		detail_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		detail_label.add_theme_color_override("font_color", COL_HEADING)
 		detail_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -155,7 +155,7 @@ func _make_card(id: String, price: int) -> Control:
 
 	var price_label := Label.new()
 	price_label.text = "%d c" % price
-	price_label.add_theme_font_size_override("font_size", 12)
+	price_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	price_label.add_theme_color_override("font_color", COL_COIN)
 	price_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(price_label)
@@ -309,17 +309,17 @@ func _build_scaffold() -> void:
 
 	_title_label = Label.new()
 	_title_label.text = "Shop"
-	_title_label.add_theme_font_size_override("font_size", 22)
+	_title_label.add_theme_font_size_override("font_size", UiTheme.FONT_TITLE)
 	_title_label.add_theme_color_override("font_color", COL_BORDER)
 	titles.add_child(_title_label)
 
 	_region_label = Label.new()
-	_region_label.add_theme_font_size_override("font_size", 12)
+	_region_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_region_label.add_theme_color_override("font_color", COL_HEADING)
 	titles.add_child(_region_label)
 
 	_coins_label = Label.new()
-	_coins_label.add_theme_font_size_override("font_size", 16)
+	_coins_label.add_theme_font_size_override("font_size", UiTheme.FONT_SECTION)
 	_coins_label.add_theme_color_override("font_color", COL_COIN)
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_coins_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -343,14 +343,14 @@ func _build_scaffold() -> void:
 
 	_empty_label = Label.new()
 	_empty_label.text = "Nothing in stock right now."
-	_empty_label.add_theme_font_size_override("font_size", 14)
+	_empty_label.add_theme_font_size_override("font_size", UiTheme.FONT_BODY)
 	_empty_label.add_theme_color_override("font_color", COL_HEADING)
 	_empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	scroll.add_child(_empty_label)
 
 	_close_hint = Label.new()
 	_close_hint.name = "InputHint"
-	_close_hint.add_theme_font_size_override("font_size", 12)
+	_close_hint.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_close_hint.add_theme_color_override("font_color", COL_HEADING)
 	_close_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	vbox.add_child(_close_hint)

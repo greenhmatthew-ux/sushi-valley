@@ -453,7 +453,7 @@ func _refresh_quests() -> void:
 		var more := Label.new()
 		more.name = "QuestsUndiscovered"
 		more.text = "%d more waiting to be found in the world." % counts["unmet"]
-		more.add_theme_font_size_override("font_size", 11)
+		more.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		more.add_theme_color_override("font_color", COL_HEADING)
 		_quests_box.add_child(more)
 
@@ -461,7 +461,7 @@ func _refresh_quests() -> void:
 		var heading := Label.new()
 		heading.name = "StructuredMissionsHeading"
 		heading.text = "Raids & Expeditions"
-		heading.add_theme_font_size_override("font_size", 13)
+		heading.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 		heading.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
 		_quests_box.add_child(heading)
 		for activity in activities:
@@ -547,7 +547,7 @@ func _refresh_learning() -> void:
 		var none := Label.new()
 		none.name = "LearningEmpty"
 		none.text = "Nothing learned yet. The villagers teach the first words."
-		none.add_theme_font_size_override("font_size", 11)
+		none.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		none.add_theme_color_override("font_color", COL_HEADING)
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_learning_box.add_child(none)
@@ -599,7 +599,7 @@ func _make_category_row(category: String, counts: Dictionary) -> Control:
 
 	var title := Label.new()
 	title.text = category.capitalize()
-	title.add_theme_font_size_override("font_size", 12)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(title)
@@ -607,7 +607,7 @@ func _make_category_row(category: String, counts: Dictionary) -> Control:
 	var state := Label.new()
 	state.name = "CategoryDue_" + category
 	state.text = "%d due of %d" % [due, int(counts["known"])] if due > 0 		else "%d learned" % int(counts["known"])
-	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	state.add_theme_color_override("font_color",
 		UiTheme.ACCENT_GOLD if due > 0 else UiTheme.TEXT_MUTED)
 	line.add_child(state)
@@ -684,7 +684,7 @@ func _make_setting_choice(control_name: String, label: String, labels: Array,
 
 	var caption := Label.new()
 	caption.text = label
-	caption.add_theme_font_size_override("font_size", 12)
+	caption.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	caption.add_theme_color_override("font_color", COL_TEXT)
 	caption.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(caption)
@@ -720,7 +720,7 @@ func _make_setting_slider(slider_name: String, label: String, value: float,
 
 	var caption := Label.new()
 	caption.name = slider_name + "Label"
-	caption.add_theme_font_size_override("font_size", 12)
+	caption.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	caption.add_theme_color_override("font_color", COL_TEXT)
 	caption.text = "%s:  %s" % [label, format.call(value)]
 	row.add_child(caption)
@@ -764,7 +764,7 @@ func _refresh_bestiary() -> void:
 		more.name = "BestiaryUndiscovered"
 		more.text = "%d more creature%s out there, unfought." % [
 			counts["unseen"], "" if int(counts["unseen"]) == 1 else "s"]
-		more.add_theme_font_size_override("font_size", 11)
+		more.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		more.add_theme_color_override("font_color", COL_HEADING)
 		_bestiary_box.add_child(more)
 
@@ -796,7 +796,7 @@ func _make_bestiary_card(entry: Dictionary) -> Control:
 	var title := Label.new()
 	title.name = "BestiaryName_" + String(entry["id"])
 	title.text = "%s  ·  Lv %d" % [String(entry["name"]), int(entry["level"])]
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", accent)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
@@ -805,7 +805,7 @@ func _make_bestiary_card(entry: Dictionary) -> Control:
 	var kills := int(entry["kills"])
 	state.text = "%s x%d" % [Bestiary.stage_label(stage), kills] if kills > 0 \
 		else Bestiary.stage_label(stage)
-	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	state.add_theme_color_override("font_color", accent)
 	header.add_child(state)
 
@@ -820,7 +820,7 @@ func _make_bestiary_card(entry: Dictionary) -> Control:
 			var drops := Label.new()
 			drops.name = "BestiaryDrops_" + String(entry["id"])
 			drops.text = "Drops: " + ", ".join(names)
-			drops.add_theme_font_size_override("font_size", 10)
+			drops.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 			drops.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 			drops.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			box.add_child(drops)
@@ -828,7 +828,7 @@ func _make_bestiary_card(entry: Dictionary) -> Control:
 		var stats := Label.new()
 		stats.text = "HP %d   ATK %d   DEF %d" % [
 			int(entry["max_hp"]), int(entry["atk"]), int(entry["def"])]
-		stats.add_theme_font_size_override("font_size", 10)
+		stats.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		stats.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 		box.add_child(stats)
 	return card
@@ -880,7 +880,7 @@ func _make_quest_card(entry: Dictionary) -> Control:
 	var title := Label.new()
 	title.name = "QuestTitle_" + String(entry["id"])
 	title.text = String(entry["title"])
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", accent)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
@@ -888,7 +888,7 @@ func _make_quest_card(entry: Dictionary) -> Control:
 	var state := Label.new()
 	state.name = "QuestStage_" + String(entry["id"])
 	state.text = String(entry["state"])
-	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	state.add_theme_color_override("font_color", accent)
 	header.add_child(state)
 	var track_button := _make_track_button(entry)
@@ -899,7 +899,7 @@ func _make_quest_card(entry: Dictionary) -> Control:
 	var detail := Label.new()
 	detail.name = "QuestDetail_" + String(entry["id"])
 	detail.text = String(entry["detail"])
-	detail.add_theme_font_size_override("font_size", 11)
+	detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(detail)
@@ -907,7 +907,7 @@ func _make_quest_card(entry: Dictionary) -> Control:
 		var reward := Label.new()
 		reward.name = "QuestReward_" + String(entry["id"])
 		reward.text = String(entry["reward"])
-		reward.add_theme_font_size_override("font_size", 11)
+		reward.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		reward.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
 		reward.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		box.add_child(reward)
@@ -935,7 +935,7 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	var title := Label.new()
 	title.name = "ActivityTitle_" + String(entry["id"])
 	title.text = "%s · %s" % [entry["kind"], entry["title"]]
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", accent)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
@@ -943,7 +943,7 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	var state := Label.new()
 	state.name = "ActivityStage_" + String(entry["id"])
 	state.text = String(entry["state"])
-	state.add_theme_font_size_override("font_size", 11)
+	state.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	state.add_theme_color_override("font_color", accent)
 	header.add_child(state)
 	var track_button := _make_track_button(entry)
@@ -953,7 +953,7 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	var detail := Label.new()
 	detail.name = "ActivityDetail_" + String(entry["id"])
 	detail.text = String(entry["detail"])
-	detail.add_theme_font_size_override("font_size", 11)
+	detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(detail)
@@ -961,7 +961,7 @@ func _make_activity_card(entry: Dictionary) -> Control:
 	var reward := Label.new()
 	reward.name = "ActivityReward_" + String(entry["id"])
 	reward.text = String(entry["reward"])
-	reward.add_theme_font_size_override("font_size", 11)
+	reward.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	reward.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
 	reward.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(reward)
@@ -981,7 +981,7 @@ func _make_track_button(entry: Dictionary) -> Button:
 	button.disabled = selected
 	button.focus_mode = Control.FOCUS_ALL
 	button.custom_minimum_size = Vector2(58, 24)
-	button.add_theme_font_size_override("font_size", 10)
+	button.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	if not selected:
 		button.pressed.connect(_track_activity.bind(key))
 	return button
@@ -1046,7 +1046,7 @@ func _make_card(id: String, qty: int) -> Control:
 
 	var name_label := Label.new()
 	name_label.text = String(def.get("name", id))
-	name_label.add_theme_font_size_override("font_size", 12)
+	name_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	name_label.add_theme_color_override("font_color",
 		KIND_COLORS.get(String(def.get("kind", "")), COL_TEXT))
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -1064,7 +1064,7 @@ func _make_card(id: String, qty: int) -> Control:
 
 	var qty_label := Label.new()
 	qty_label.text = "x%d" % qty
-	qty_label.add_theme_font_size_override("font_size", 12)
+	qty_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	qty_label.add_theme_color_override("font_color", COL_HEADING)
 	qty_row.add_child(qty_label)
 
@@ -1077,7 +1077,7 @@ func _make_card(id: String, qty: int) -> Control:
 	favorite_btn.toggle_mode = true
 	favorite_btn.button_pressed = favorited
 	favorite_btn.focus_mode = Control.FOCUS_ALL
-	favorite_btn.add_theme_font_size_override("font_size", 9)
+	favorite_btn.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	favorite_btn.custom_minimum_size = Vector2(0, 18)
 	if favorited:
 		favorite_btn.add_theme_color_override("font_color", UiTheme.ACCENT_GOLD)
@@ -1088,7 +1088,7 @@ func _make_card(id: String, qty: int) -> Control:
 		var stats_label := Label.new()
 		stats_label.name = "ItemStats_" + id
 		stats_label.text = _stats_line(PlayerStats.scaled_item_stats(def, _player_level()))
-		stats_label.add_theme_font_size_override("font_size", 10)
+		stats_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		stats_label.add_theme_color_override("font_color", COL_TEXT)
 		stats_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		vbox.add_child(stats_label)
@@ -1106,7 +1106,7 @@ func _make_card(id: String, qty: int) -> Control:
 		if change_label.text == stats_label.text:
 			change_label.text = ""
 		change_label.visible = not change_label.text.is_empty()
-		change_label.add_theme_font_size_override("font_size", 10)
+		change_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		change_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		change_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		change_label.add_theme_color_override("font_color", UiTheme.STATE_INFO)
@@ -1125,7 +1125,7 @@ func _make_card(id: String, qty: int) -> Control:
 		var meal_label := Label.new()
 		meal_label.text = "Prepare · Restores %d HP" % int(def.get("heal", 0))
 		meal_label.tooltip_text = "Reserve one for battle. Only one meal can be prepared."
-		meal_label.add_theme_font_size_override("font_size", 9)
+		meal_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		meal_label.add_theme_color_override("font_color", COL_TEXT)
 		meal_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		meal_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -1143,7 +1143,7 @@ func _make_card(id: String, qty: int) -> Control:
 	elif ConsumableRules.is_supported_healing(def):
 		var heal_label := Label.new()
 		heal_label.text = "Restores %d HP" % int(def.get("heal", 0))
-		heal_label.add_theme_font_size_override("font_size", 10)
+		heal_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		heal_label.add_theme_color_override("font_color", COL_TEXT)
 		heal_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		vbox.add_child(heal_label)
@@ -1161,7 +1161,7 @@ func _make_card(id: String, qty: int) -> Control:
 		var energy_label := Label.new()
 		energy_label.text = "Combat only · Restores %d Energy" % int(def.get("buffValue", 0))
 		energy_label.tooltip_text = "Use during your turn after spending Energy."
-		energy_label.add_theme_font_size_override("font_size", 9)
+		energy_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		energy_label.add_theme_color_override("font_color", COL_TEXT)
 		energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		energy_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -1170,7 +1170,7 @@ func _make_card(id: String, qty: int) -> Control:
 		var combat_label := Label.new()
 		combat_label.text = "Combat only · %s" % ConsumableRules.effect_summary(def)
 		combat_label.tooltip_text = "Use during your turn; limited to one item per turn."
-		combat_label.add_theme_font_size_override("font_size", 9)
+		combat_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		combat_label.add_theme_color_override("font_color", COL_TEXT)
 		combat_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		combat_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -1179,7 +1179,7 @@ func _make_card(id: String, qty: int) -> Control:
 		var later_label := Label.new()
 		later_label.text = "Effect not active yet"
 		later_label.tooltip_text = "Attack items stay stored until their damage effect is implemented."
-		later_label.add_theme_font_size_override("font_size", 9)
+		later_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		later_label.add_theme_color_override("font_color", COL_HEADING)
 		later_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		later_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -1276,7 +1276,7 @@ func _make_equipment_slot_button(slot: String, item_id: String) -> Button:
 	caption.max_lines_visible = 2
 	caption.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	caption.custom_minimum_size = Vector2(SLOT_TILE - 6, 0)
-	caption.add_theme_font_size_override("font_size", 8)
+	caption.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	caption.add_theme_color_override("font_color",
 		COL_HEADING if item_id.is_empty() else COL_TEXT)
 	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -1338,7 +1338,7 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	title.text = "%s  ·  %s  ·  %dE%s" % [
 		ability.get("name", ability.get("id", "Skill")),
 		_ability_effect_text(ability), CombatEncounter.action_cost(ability), state]
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	text.add_child(title)
 	var detail := Label.new()
@@ -1347,7 +1347,7 @@ func _make_skill_card(ability: Dictionary, weapon_type: String, equipped: bool) 
 	var cadence := _ability_cadence(ability)
 	detail.text = "%s%s  ·  %s" % [requirement,
 		"  ·  " + cadence if not cadence.is_empty() else "", ability.get("desc", "")]
-	detail.add_theme_font_size_override("font_size", 10)
+	detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	detail.add_theme_color_override("font_color", COL_HEADING)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	detail.custom_minimum_size = Vector2(0, 24)
@@ -1403,7 +1403,7 @@ func _make_life_skill_card(definition: Dictionary) -> Control:
 	var title := Label.new()
 	title.name = "LifeSkillTitle_" + station
 	title.text = "%s  ·  Level %d" % [definition.get("name", station.capitalize()), level]
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", UiTheme.STATE_SUCCESS)
 	box.add_child(title)
 
@@ -1411,7 +1411,7 @@ func _make_life_skill_card(definition: Dictionary) -> Control:
 	progress_text.name = "LifeSkillDetail_" + station
 	progress_text.text = "Mastery level reached." if at_cap else "%d / %d XP to Level %d" % [
 		into_level, level_span, level + 1]
-	progress_text.add_theme_font_size_override("font_size", 10)
+	progress_text.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	progress_text.add_theme_color_override("font_color", COL_TEXT)
 	box.add_child(progress_text)
 
@@ -1436,7 +1436,7 @@ func _make_life_skill_card(definition: Dictionary) -> Control:
 	var loop := Label.new()
 	loop.name = "LifeSkillLoop_" + station
 	loop.text = "%s  %s" % [definition.get("loop", ""), definition.get("weather", "")]
-	loop.add_theme_font_size_override("font_size", 10)
+	loop.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	loop.add_theme_color_override("font_color", COL_HEADING)
 	loop.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(loop)
@@ -1470,7 +1470,7 @@ func _make_talent_card(ability: Dictionary, talent_data: Dictionary = {}) -> Con
 	title.text = "%s  ·  %s  ·  %d TP" % [ability.get("name", "Talent"), role, cost]
 	title.name = "TalentState_" + String(ability.get("id", ""))
 	title.text += " - " + _talent_state_label(talent_data)
-	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	title.add_theme_color_override("font_color", COL_TEXT)
 	text.add_child(title)
 	var detail := Label.new()
@@ -1486,7 +1486,7 @@ func _make_talent_card(ability: Dictionary, talent_data: Dictionary = {}) -> Con
 		effect += "  ·  " + cadence
 	detail.text = "%s weapon  ·  %s  ·  %s" % [
 		required.capitalize(), effect, ability.get("desc", "")]
-	detail.add_theme_font_size_override("font_size", 10)
+	detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	detail.add_theme_color_override("font_color", COL_HEADING)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.add_child(detail)
@@ -1592,7 +1592,7 @@ func _ability_effect_text(ability: Dictionary) -> String:
 func _section_label(text: String) -> Label:
 	var label := Label.new()
 	label.text = text
-	label.add_theme_font_size_override("font_size", 13)
+	label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	label.add_theme_color_override("font_color", COL_BORDER)
 	return label
 
@@ -1694,7 +1694,7 @@ func _refresh_prepared_meal() -> void:
 	var label := Label.new()
 	label.name = "PreparedMealLabel"
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label.add_theme_font_size_override("font_size", 11)
+	label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	if item_id.is_empty():
 		label.text = "Prepared meal · None — reserve a large meal for one battle heal."
 		label.add_theme_color_override("font_color", COL_HEADING)
@@ -1830,13 +1830,13 @@ func _build_scaffold() -> void:
 
 	var title := Label.new()
 	title.text = "Player"
-	title.add_theme_font_size_override("font_size", 22)
+	title.add_theme_font_size_override("font_size", UiTheme.FONT_TITLE)
 	title.add_theme_color_override("font_color", COL_BORDER)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
 
 	_coins_label = Label.new()
-	_coins_label.add_theme_font_size_override("font_size", 16)
+	_coins_label.add_theme_font_size_override("font_size", UiTheme.FONT_SECTION)
 	_coins_label.add_theme_color_override("font_color", COL_COIN)
 	_coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(_coins_label)
@@ -1932,7 +1932,7 @@ func _build_scaffold() -> void:
 
 	_stats_label = Label.new()
 	_stats_label.name = "StatsSummary"
-	_stats_label.add_theme_font_size_override("font_size", 14)
+	_stats_label.add_theme_font_size_override("font_size", UiTheme.FONT_BODY)
 	_stats_label.add_theme_color_override("font_color", COL_TEXT)
 	_stats_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_character_view.add_child(_stats_label)
@@ -1941,13 +1941,13 @@ func _build_scaffold() -> void:
 	_character_view.add_child(attribute_header)
 	var attribute_heading := Label.new()
 	attribute_heading.text = "Attributes — freely refundable"
-	attribute_heading.add_theme_font_size_override("font_size", 13)
+	attribute_heading.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	attribute_heading.add_theme_color_override("font_color", COL_HEADING)
 	attribute_heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	attribute_header.add_child(attribute_heading)
 	_attribute_points_label = Label.new()
 	_attribute_points_label.name = "AttributePoints"
-	_attribute_points_label.add_theme_font_size_override("font_size", 12)
+	_attribute_points_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_attribute_points_label.add_theme_color_override("font_color", COL_BORDER)
 	attribute_header.add_child(_attribute_points_label)
 
@@ -1977,7 +1977,7 @@ func _build_scaffold() -> void:
 		var effect_label := Label.new()
 		effect_label.text = String(row_data[2])
 		effect_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		effect_label.add_theme_font_size_override("font_size", 10)
+		effect_label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		effect_label.add_theme_color_override("font_color", COL_HEADING)
 		row.add_child(effect_label)
 		var minus := Button.new()
@@ -2001,7 +2001,7 @@ func _build_scaffold() -> void:
 
 	var equipment_heading := Label.new()
 	equipment_heading.text = "Equipment — press a filled slot to remove it"
-	equipment_heading.add_theme_font_size_override("font_size", 13)
+	equipment_heading.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	equipment_heading.add_theme_color_override("font_color", COL_HEADING)
 	_character_view.add_child(equipment_heading)
 	# Gear leads the Character tab. It used to be built last, which put twelve slots below
@@ -2016,7 +2016,7 @@ func _build_scaffold() -> void:
 		var group_header := Label.new()
 		group_header.name = "EquipmentGroup_" + group_name
 		group_header.text = group_name
-		group_header.add_theme_font_size_override("font_size", 11)
+		group_header.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		group_header.add_theme_color_override("font_color", COL_BORDER)
 		_character_view.add_child(group_header)
 		equipment_nodes.append(group_header)
@@ -2043,7 +2043,7 @@ func _build_scaffold() -> void:
 
 	_skills_summary = Label.new()
 	_skills_summary.name = "SkillsSummary"
-	_skills_summary.add_theme_font_size_override("font_size", 12)
+	_skills_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_skills_summary.add_theme_color_override("font_color", COL_HEADING)
 	_skills_view.add_child(_skills_summary)
 
@@ -2067,7 +2067,7 @@ func _build_scaffold() -> void:
 
 	_quests_summary = Label.new()
 	_quests_summary.name = "QuestsSummary"
-	_quests_summary.add_theme_font_size_override("font_size", 12)
+	_quests_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_quests_summary.add_theme_color_override("font_color", COL_HEADING)
 	_quests_view.add_child(_quests_summary)
 
@@ -2091,7 +2091,7 @@ func _build_scaffold() -> void:
 
 	_map_summary = Label.new()
 	_map_summary.name = "MapSummary"
-	_map_summary.add_theme_font_size_override("font_size", 12)
+	_map_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_map_summary.add_theme_color_override("font_color", COL_HEADING)
 	_map_view.add_child(_map_summary)
 
@@ -2102,7 +2102,7 @@ func _build_scaffold() -> void:
 
 	_map_detail = Label.new()
 	_map_detail.name = "MapRegionDetail"
-	_map_detail.add_theme_font_size_override("font_size", 10)
+	_map_detail.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	_map_detail.add_theme_color_override("font_color", UiTheme.TEXT_MUTED)
 	_map_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_map_detail.custom_minimum_size = Vector2(0, 34)
@@ -2116,7 +2116,7 @@ func _build_scaffold() -> void:
 
 	_learning_summary = Label.new()
 	_learning_summary.name = "LearningSummary"
-	_learning_summary.add_theme_font_size_override("font_size", 12)
+	_learning_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_learning_summary.add_theme_color_override("font_color", COL_HEADING)
 	_learning_view.add_child(_learning_summary)
 
@@ -2140,7 +2140,7 @@ func _build_scaffold() -> void:
 
 	_system_summary = Label.new()
 	_system_summary.name = "SystemSummary"
-	_system_summary.add_theme_font_size_override("font_size", 12)
+	_system_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_system_summary.add_theme_color_override("font_color", COL_HEADING)
 	_system_view.add_child(_system_summary)
 
@@ -2164,7 +2164,7 @@ func _build_scaffold() -> void:
 
 	_bestiary_summary = Label.new()
 	_bestiary_summary.name = "BestiarySummary"
-	_bestiary_summary.add_theme_font_size_override("font_size", 12)
+	_bestiary_summary.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_bestiary_summary.add_theme_color_override("font_color", COL_HEADING)
 	_bestiary_view.add_child(_bestiary_summary)
 
@@ -2208,7 +2208,7 @@ func _build_scaffold() -> void:
 		btn.toggle_mode = true
 		btn.button_pressed = key == _bag_category
 		btn.focus_mode = Control.FOCUS_ALL
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		btn.custom_minimum_size = Vector2(0, 22)
 		btn.pressed.connect(_on_bag_category_selected.bind(key))
 		filter_row.add_child(btn)
@@ -2225,7 +2225,7 @@ func _build_scaffold() -> void:
 	var bag_hint := Label.new()
 	bag_hint.name = "BagHint"
 	bag_hint.text = "Equip gear, use healing food, or inspect labeled combat-only items."
-	bag_hint.add_theme_font_size_override("font_size", 12)
+	bag_hint.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	bag_hint.add_theme_color_override("font_color", COL_HEADING)
 	_bag_view.add_child(bag_hint)
 
@@ -2254,7 +2254,7 @@ func _build_scaffold() -> void:
 
 	_empty_label = Label.new()
 	_empty_label.text = "Your bag is empty."
-	_empty_label.add_theme_font_size_override("font_size", 14)
+	_empty_label.add_theme_font_size_override("font_size", UiTheme.FONT_BODY)
 	_empty_label.add_theme_color_override("font_color", COL_HEADING)
 	_empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	# A search message can run longer than the static default text ever did.
@@ -2270,14 +2270,14 @@ func _build_scaffold() -> void:
 	vbox.add_child(footer)
 
 	_capacity_label = Label.new()
-	_capacity_label.add_theme_font_size_override("font_size", 12)
+	_capacity_label.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_capacity_label.add_theme_color_override("font_color", COL_HEADING)
 	_capacity_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(_capacity_label)
 
 	_input_hint = Label.new()
 	_input_hint.name = "InputHint"
-	_input_hint.add_theme_font_size_override("font_size", 12)
+	_input_hint.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_input_hint.add_theme_color_override("font_color", COL_HEADING)
 	_input_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	footer.add_child(_input_hint)

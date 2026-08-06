@@ -429,7 +429,7 @@ func _build_scaffold() -> void:
 	_listen_btn.tooltip_text = "Play the sourced Japanese recording"
 	_listen_btn.custom_minimum_size = Vector2(96, 26)
 	_listen_btn.focus_mode = Control.FOCUS_ALL
-	_listen_btn.add_theme_font_size_override("font_size", 12)
+	_listen_btn.add_theme_font_size_override("font_size", UiTheme.FONT_META)
 	_listen_btn.add_theme_stylebox_override("normal", _compact_button_style(COL_BTN, COL_BTN_BORDER))
 	_listen_btn.add_theme_stylebox_override("hover", _compact_button_style(COL_BTN.lightened(0.08), COL_BORDER))
 	_listen_btn.add_theme_stylebox_override("pressed", _compact_button_style(COL_BTN, COL_BORDER))

@@ -111,7 +111,7 @@ func _build() -> void:
 	_root.add_child(_panel)
 
 	_label = Label.new()
-	_label.add_theme_font_size_override("font_size", 14)
+	_label.add_theme_font_size_override("font_size", UiTheme.FONT_BODY)
 	_label.add_theme_color_override("font_color", UiTheme.TEXT_PRIMARY)
 	_panel.add_child(_label)
 	_panel.hide()

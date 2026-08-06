@@ -294,7 +294,7 @@ func _float_damage(anchor: Control, amount: int, tint: Color) -> void:
 	var number := Label.new()
 	number.name = "HitNumber"
 	number.text = "-%d" % amount
-	number.add_theme_font_size_override("font_size", 20)
+	number.add_theme_font_size_override("font_size", UiTheme.FONT_HEADING)
 	number.add_theme_color_override("font_color", tint)
 	number.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 	number.add_theme_constant_override("outline_size", 4)

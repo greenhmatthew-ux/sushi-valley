@@ -174,7 +174,7 @@ func _card_chip(card: Dictionary, show_en: bool) -> Control:
 		play.tooltip_text = "Hear this word"
 		play.focus_mode = Control.FOCUS_ALL
 		play.custom_minimum_size = Vector2(52, 20)
-		play.add_theme_font_size_override("font_size", 10)
+		play.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		play.pressed.connect(func() -> void:
 			Audio.stop_pronunciation()
 			Audio.play_pronunciation(card_id))

@@ -95,7 +95,7 @@ func _add_region_node(region_id: String, region: Dictionary, current: bool) -> v
 		"You are here" if current else ("Open" if playable else "Not built yet")]
 	button.set_meta("region_id", region_id)
 	button.set_meta("status", "current" if current else ("playable" if playable else "planned"))
-	button.add_theme_font_size_override("font_size", 10)
+	button.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 	button.add_theme_stylebox_override("normal", _node_style(UiTheme.SURFACE_RAISED, accent, 2))
 	button.add_theme_stylebox_override("hover", _node_style(UiTheme.SURFACE_RAISED.lightened(0.08), accent, 2))
 	button.add_theme_stylebox_override("pressed", _node_style(UiTheme.SURFACE_DEEP, accent, 2))
@@ -112,7 +112,7 @@ func _add_region_node(region_id: String, region: Dictionary, current: bool) -> v
 		label.name = "RegionLabel_" + region_id
 		label.text = String(region.get("name", region_id))
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		label.add_theme_font_size_override("font_size", 9)
+		label.add_theme_font_size_override("font_size", UiTheme.FONT_SMALL)
 		label.add_theme_color_override("font_color", accent)
 		add_child(label)
 		_labels[region_id] = label
