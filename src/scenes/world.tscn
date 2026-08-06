@@ -57,6 +57,10 @@
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="45_weather"]
 [ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="46_gather"]
 [ext_resource type="Script" path="res://src/entities/study_spot.gd" id="47_pbdae"]
+[ext_resource type="Texture2D" path="res://assets/props/building_cottage_green.png" id="48_cot_g"]
+[ext_resource type="Texture2D" path="res://assets/props/building_cottage_blue.png" id="49_cot_b"]
+[ext_resource type="Texture2D" path="res://assets/props/building_hall_red.png" id="50_hall"]
+[ext_resource type="Texture2D" path="res://assets/props/building_store_green.png" id="51_store"]
 [ext_resource type="Script" path="res://src/ui/weather_overlay.gd" id="50_p0gk1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7325u"]
@@ -981,6 +985,39 @@ position = Vector2(544, 288)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("39_lakehouse")
 solid = false
+
+
+[node name="MarketHall" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(481, 133)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("50_hall")
+foot_size = Vector2(66, 12)
+foot_offset = Vector2(-1, -6)
+
+[node name="CottageNorth" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(177, 117)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("48_cot_g")
+foot_size = Vector2(42, 12)
+foot_offset = Vector2(0, -6)
+
+[node name="CottageLane" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(241, 117)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("49_cot_b")
+foot_size = Vector2(42, 12)
+foot_offset = Vector2(0, -6)
+
+[node name="FieldStorehouse" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(737, 453)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("51_store")
+foot_size = Vector2(66, 12)
+foot_offset = Vector2(-1, -6)
 
 [node name="House2Collision" type="StaticBody2D" parent="Props" unique_id=1344327697]
 position = Vector2(544, 262)

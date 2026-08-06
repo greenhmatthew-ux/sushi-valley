@@ -48,8 +48,13 @@ verified against the running scenes — not an aspirational or inherited list.
   from the sheet at 166,464 (69x59) and padded to 80x64 so it aligns to the tile grid without
   any of the art being cut. It replaced a second copy of `building_house.png`, which had the
   frontier outpost rendering as a pixel-identical twin of the village's House 1. The sheet
-  carries six distinct complete house designs in three colourways each; only three are used
-  so far. **Re-confirm entitlement before any commercial release.**
+  carries six distinct complete house designs in three colourways each. Four more are now
+  placed in the village as `building_cottage_green`, `building_cottage_blue`,
+  `building_hall_red` and `building_store_green` -- each lifted whole and padded to whole
+  tiles, taking the village from two structures to six. They are exterior-only for now (no
+  doors, no interiors) but sited to read as purposeful: the hall on the market road, the
+  storehouse out by the fields, the cottages on the north lane.
+  **Re-confirm entitlement before any commercial release.**
 - **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
   ("Icons by Kyrise, https://kyrise.itch.io/"). The primary source for `assets/icons/items/`,
   including the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.
