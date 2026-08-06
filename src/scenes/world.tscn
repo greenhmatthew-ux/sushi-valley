@@ -865,7 +865,7 @@ texture = ExtResource("2_qxjwa")
 sources/3 = SubResource("TileSetAtlasSource_pa1cl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_big_house"]
-size = Vector2(64, 52)
+size = Vector2(64, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mor4u"]
 atlas = ExtResource("2_qxjwa")
@@ -977,13 +977,13 @@ foot_offset = Vector2(0, -11)
 
 [node name="House2" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
 y_sort_enabled = true
-position = Vector2(537, 277)
+position = Vector2(537, 293)
 script = ExtResource("5_s0qb0")
 texture = ExtResource("39_lakehouse")
 solid = false
 
 [node name="House2Collision" type="StaticBody2D" parent="Props" unique_id=1344327697]
-position = Vector2(537, 247)
+position = Vector2(537, 267)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Props/House2Collision" unique_id=1154662069]
 shape = SubResource("RectangleShape2D_big_house")
@@ -1169,7 +1169,7 @@ script = ExtResource("11_spawn")
 spawn_id = "house1_door"
 
 [node name="House2Door" type="Area2D" parent="Props" unique_id=1108494604 instance=ExtResource("10_door")]
-position = Vector2(529, 273)
+position = Vector2(529, 289)
 collision_layer = 8
 script = ExtResource("14_v8imb")
 target_scene = "res://src/scenes/interior_lake_house.tscn"
@@ -1179,7 +1179,7 @@ destination = "the Angler's House"
 sign_offset = Vector2(-48, 8)
 
 [node name="House2Spawn" type="Marker2D" parent="Props" unique_id=1222900550]
-position = Vector2(529, 295)
+position = Vector2(529, 305)
 script = ExtResource("11_spawn")
 spawn_id = "house2_door"
 
