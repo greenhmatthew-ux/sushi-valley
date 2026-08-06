@@ -39,8 +39,13 @@ verified against the running scenes — not an aspirational or inherited list.
 - **Serene Village Revamped** by LimeZu — commercial-use entitlement previously confirmed by
   the owner; no license file ships in the pack folder itself, so that confirmation is the
   only record. Village/wilds terrain, all props (trees, rocks, barrels, crates, berry bush),
-  building exteriors, and village meadow/edge flower details. **Re-confirm entitlement before
-  any commercial release.**
+  building exteriors, and village meadow/edge flower details. The Wilds outpost
+  (`assets/props/building_outpost.png`) is the pack's wide green-roofed lodge, lifted whole
+  from the sheet at 166,464 (69x59) and padded to 80x64 so it aligns to the tile grid without
+  any of the art being cut. It replaced a second copy of `building_house.png`, which had the
+  frontier outpost rendering as a pixel-identical twin of the village's House 1. The sheet
+  carries six distinct complete house designs in three colourways each; only three are used
+  so far. **Re-confirm entitlement before any commercial release.**
 - **Kyrise's 16x16 RPG Icon Pack V1.3** by Kyrise — **CC BY 4.0**, attribution required
   ("Icons by Kyrise, https://kyrise.itch.io/"). The primary source for `assets/icons/items/`,
   including the Bamboo Breeze Tonic added from `icons/16x16/potion_01h.png`.

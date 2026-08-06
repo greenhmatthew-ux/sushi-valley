@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_snake.png" id="25_snake"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_racoon.png" id="26_racoon"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_owl.png" id="27_owl"]
-[ext_resource type="Texture2D" path="res://assets/props/building_house.png" id="12_bld"]
+[ext_resource type="Texture2D" path="res://assets/props/building_outpost.png" id="12_bld"]
 [ext_resource type="Texture2D" path="res://assets/props/barrel.png" id="13_bar"]
 [ext_resource type="Texture2D" path="res://assets/props/crate.png" id="14_crate"]
 [ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="18_ui"]
@@ -157,7 +157,7 @@ foot_size = Vector2(10, 5)
 foot_offset = Vector2(0, -2)
 
 [node name="Rock0" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(224, 272)
+position = Vector2(240, 272)
 texture = ExtResource("10_rk")
 foot_size = Vector2(20, 8)
 foot_offset = Vector2(0, -3)
@@ -217,10 +217,10 @@ coin_reward = 8
 coin_variance = 2
 
 [node name="Outpost" parent="Entities" instance=ExtResource("6_prop")]
-position = Vector2(160, 304)
+position = Vector2(168, 304)
 texture = ExtResource("12_bld")
-foot_size = Vector2(56, 12)
-foot_offset = Vector2(0, -4)
+foot_size = Vector2(68, 12)
+foot_offset = Vector2(-1, -11)
 
 [node name="Barrel" parent="Entities" instance=ExtResource("6_prop")]
 position = Vector2(200, 320)
