@@ -59,10 +59,15 @@ static func clump_weight(cell: Vector2i, block: int = DEFAULT_CLUMP_BLOCK) -> fl
 ## A candidate must clear everything in `blocked` by a full tile, which is what keeps cover
 ## off trails, off doorways and out of authored landmarks. Placements also clear each other
 ## by a tile, so trunks stand at least two tiles apart.
+## `clearance` is the ring, in tiles, a candidate must keep from anything blocked. It has to
+## match the ART, not the tile: a 32px prop centred one tile from a trail still hangs its
+## right half over that trail, which is why cover kept ending up ON the paths. 32px art needs
+## 2.
 static func plan_cover(size: Vector2i, blocked: Dictionary, mix_for: Callable,
 		clumped_kinds: Array[String], rng_seed: int,
 		lattice: int = DEFAULT_LATTICE,
-		clump_block: int = DEFAULT_CLUMP_BLOCK) -> Array[Dictionary]:
+		clump_block: int = DEFAULT_CLUMP_BLOCK,
+		clearance: int = 1) -> Array[Dictionary]:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = rng_seed
 	var placed: Dictionary = {}
@@ -77,7 +82,7 @@ static func plan_cover(size: Vector2i, blocked: Dictionary, mix_for: Callable,
 			var kind := _kind_for(cell, roll, mix_for, clumped_kinds, clump_block)
 			if kind.is_empty():
 				continue
-			if not is_clear(cell, size, blocked, placed):
+			if not is_clear(cell, size, blocked, placed, clearance):
 				continue
 			placed[cell] = true
 			plan.append({"cell": cell, "kind": kind})
@@ -87,11 +92,12 @@ static func plan_cover(size: Vector2i, blocked: Dictionary, mix_for: Callable,
 ## Inside the map with a one-tile margin, a clear tile ring around it, and nothing already
 ## planned within that ring.
 static func is_clear(cell: Vector2i, size: Vector2i, blocked: Dictionary,
-		placed: Dictionary) -> bool:
-	if cell.x < 1 or cell.x >= size.x - 1 or cell.y < 1 or cell.y >= size.y - 1:
+		placed: Dictionary, clearance: int = 1) -> bool:
+	var margin: int = maxi(clearance, 1)
+	if cell.x < margin or cell.x >= size.x - margin 			or cell.y < margin or cell.y >= size.y - margin:
 		return false
-	for dx in range(-1, 2):
-		for dy in range(-1, 2):
+	for dx in range(-margin, margin + 1):
+		for dy in range(-margin, margin + 1):
 			var probe := cell + Vector2i(dx, dy)
 			if blocked.has(probe) or placed.has(probe):
 				return false
@@ -157,3 +163,59 @@ static func _kind_for(cell: Vector2i, roll: float, mix_for: Callable,
 		if roll < threshold:
 			return kind
 	return ""
+
+## Make a rasterised route network one connected, walkable ribbon.
+##
+## Two faults come out of the brush-and-hash rasteriser and both read to the player as
+## "broken path". Measured on the Wilds before this existed: 282 trail cells in THIRTY-FIVE
+## components -- a 199-cell main road plus 34 floating scraps of path tile sitting in open
+## grass with nothing leading to them.
+##
+##   1. The brush drops its outer band on a hash so edges look walked rather than stamped.
+##      That can sever a cell from its neighbours entirely.
+##   2. A diagonal step joins two cells corner-to-corner. That is not walkable ground and it
+##      does not read as a path; it reads as a gap.
+##
+## So: close every diagonal-only link into a real cardinal one, then keep only the component
+## the network's spine is in and discard the orphans. Returns the repaired set.
+static func repair_route(cells: Dictionary, size: Vector2i) -> Dictionary:
+	var fixed: Dictionary = cells.duplicate()
+	# 1. corner-to-corner joins become right-angle ones.
+	for raw in cells:
+		var c: Vector2i = raw
+		for step in [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)]:
+			var diag: Vector2i = c + step
+			if not cells.has(diag):
+				continue
+			var a := Vector2i(c.x + step.x, c.y)
+			var b := Vector2i(c.x, c.y + step.y)
+			if fixed.has(a) or fixed.has(b):
+				continue
+			var pick: Vector2i = a if a.x >= 0 and a.x < size.x and a.y >= 0 and a.y < size.y else b
+			if pick.x >= 0 and pick.x < size.x and pick.y >= 0 and pick.y < size.y:
+				fixed[pick] = true
+
+	# 2. keep only the largest component; the rest are orphans by definition.
+	var seen: Dictionary = {}
+	var best: Array[Vector2i] = []
+	for raw in fixed:
+		var start: Vector2i = raw
+		if seen.has(start):
+			continue
+		var stack: Array[Vector2i] = [start]
+		var group: Array[Vector2i] = []
+		seen[start] = true
+		while not stack.is_empty():
+			var cell: Vector2i = stack.pop_back()
+			group.append(cell)
+			for d in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+				var probe: Vector2i = cell + d
+				if fixed.has(probe) and not seen.has(probe):
+					seen[probe] = true
+					stack.append(probe)
+		if group.size() > best.size():
+			best = group
+	var out: Dictionary = {}
+	for cell in best:
+		out[cell] = true
+	return out

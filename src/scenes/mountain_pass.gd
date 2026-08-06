@@ -179,6 +179,9 @@ func _build_route() -> void:
 	_add_route(SHELF_TRACK, 1)
 	# No edge course: every "edge" tile in this sheet carries a notch or rim bar that
 	# reads as debris in open ground. The trail is legible from its darker stone alone.
+	# One connected ribbon before anything is painted: close diagonal-only joins and
+	# drop orphan scraps of path that nothing leads to.
+	_route_cells = Scatter.repair_route(_route_cells, Vector2i(W, H))
 	for raw_cell in _route_cells:
 		var cell: Vector2i = raw_cell
 		ground.set_cell(cell, 0, TRAIL)

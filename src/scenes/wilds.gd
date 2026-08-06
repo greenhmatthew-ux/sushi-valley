@@ -104,7 +104,10 @@ const TREE_TEXTURES: Array[Texture2D] = [
 	preload("res://assets/props/tree_sakura.png"),
 ]
 const ROCK_TEXTURE: Texture2D = preload("res://assets/props/rock.png")
-const BUSH_TEXTURE: Texture2D = preload("res://assets/props/berry_bush.png")
+## Grey-green stone studded with orange nodules. At map zoom this reads as ORE, not fruit,
+## so it is no longer scattered as decorative berry cover — every one of these is now a
+## mineable copper vein. Scenery that looks interactive and is not is worse than none.
+const VEIN_SCENE := preload("res://src/entities/resource_node.tscn")
 ## Trunk/base footprints, matching the hand-authored props in wilds.tscn exactly.
 const TREE_FOOT := Vector2(10, 5)
 const TREE_FOOT_OFFSET := Vector2(0, -2)
@@ -124,6 +127,8 @@ var _blocked: Dictionary = {}   # tiles under props/buildings — kept clear of 
 ## to a node has to be able to use that reserved ring, and only this says what is truly taken.
 var _prop_cells: Dictionary = {}
 var _route_cells: Dictionary = {}
+## Resource nodes placed by hand in the .tscn, captured before the scatter adds its own.
+var _authored_nodes: Array = []
 
 
 func _ready() -> void:
@@ -133,6 +138,11 @@ func _ready() -> void:
 	_build_ground()
 	_build_bounds()
 	_mark_occupied()
+	# Snapshot the authored seams before scattering. _anchor_resource_nodes plants cover
+	# around every node it finds, and the scatter now creates veins of its own -- anchoring
+	# those too would ring each one with rocks and re-carpet the region, which is the exact
+	# clutter this pass is removing.
+	_authored_nodes = _resource_nodes()
 	_scatter_cover()
 	_anchor_resource_nodes()
 	_build_detail()
@@ -200,6 +210,9 @@ func _build_route() -> void:
 	_add_route(HOLLOW_TRACK, 1)
 	_add_route(WOODS_TRACK, 1)
 	_add_route(KNOLL_SPUR, 1)
+	# One connected ribbon before anything is painted: close diagonal-only joins and
+	# drop orphan scraps of path that nothing leads to.
+	_route_cells = Scatter.repair_route(_route_cells, Vector2i(W, H))
 	for raw_cell in _route_cells:
 		var cell: Vector2i = raw_cell
 		ground.set_cell(cell, 0, _trail_tile(cell))
@@ -336,9 +349,13 @@ func _mark_prop_tiles(position: Vector2, pad: int) -> void:
 func _scatter_cover() -> void:
 	# Trees and bushes clump; rocks stay incidental, so a thicket still has bare stone in
 	# it and a glade is not swept perfectly clean.
-	var clumped: Array[String] = ["tree", "bush"]
+	var clumped: Array[String] = ["tree", "vein"]
+	# clearance 2: every prop here is 32px, so a 1-tile ring left its art hanging over the
+	# trail beside it. That is the cover-on-the-path problem, and it was a maths error, not
+	# a density one.
 	for entry in Scatter.plan_cover(Vector2i(W, H), _blocked,
-			_zone_cover_mix, clumped, GEN_SEED):
+			_zone_cover_mix, clumped, GEN_SEED, Scatter.DEFAULT_LATTICE,
+			Scatter.DEFAULT_CLUMP_BLOCK, 2):
 		var cell: Vector2i = entry["cell"]
 		match String(entry["kind"]):
 			"tree":
@@ -346,9 +363,8 @@ func _scatter_cover() -> void:
 					true, TREE_FOOT, TREE_FOOT_OFFSET)
 			"rock":
 				_add_cover(cell, ROCK_TEXTURE, true, ROCK_FOOT, ROCK_FOOT_OFFSET)
-			"bush":
-				# Berry bushes are walk-through in the village; keep them so here.
-				_add_cover(cell, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
+			"vein":
+				_add_vein(cell)
 
 
 ## Give every seam and patch a reason to be where it is: ore against stone, bamboo in a
@@ -360,7 +376,7 @@ func _scatter_cover() -> void:
 ## Only diagonals are used (see `Scatter.anchor_cells`), so all four straight approaches to
 ## a node stay walkable however much cover it gets.
 func _anchor_resource_nodes() -> void:
-	for node in _resource_nodes():
+	for node in _authored_nodes:
 		for anchor in Scatter.anchor_cells(node.position, TILE, ANCHOR_COVER,
 				Vector2i(W, H), _prop_cells, _route_cells):
 			match String(node.get("resource_kind")):
@@ -370,7 +386,10 @@ func _anchor_resource_nodes() -> void:
 					_add_cover(anchor, TREE_TEXTURES[_rng.randi() % TREE_TEXTURES.size()],
 						true, TREE_FOOT, TREE_FOOT_OFFSET)
 				"herb":
-					_add_cover(anchor, BUSH_TEXTURE, false, Vector2.ZERO, Vector2.ZERO)
+					# Shade, from a tree. The rule is herbs in damp or shaded ground; the
+					# berry bush was only ever standing in for that and it reads as ore.
+					_add_cover(anchor, TREE_TEXTURES[_rng.randi() % TREE_TEXTURES.size()],
+						true, TREE_FOOT, TREE_FOOT_OFFSET)
 
 
 ## Resource nodes are plain Area2Ds with no class of their own, so they are found by the
@@ -387,15 +406,39 @@ func _resource_nodes() -> Array:
 ## The default is the outpost clearing: thin cover only, because its landmarks, yard and
 ## NPCs are hand-authored and the open ground in front of them is the region's arena.
 func _zone_cover_mix(cell: Vector2i) -> Dictionary:
+	# The knoll is the ore ground, so it is the one zone where veins are common enough to be
+	# worth walking to. Everywhere else they are rare, which is what makes finding one mean
+	# something. Rock cover is cut roughly in half: it was reading as debris, not terrain.
 	if ZONE_KNOLL.has_point(cell):
-		return {"tree": 0.05, "rock": 0.34, "bush": 0.02}
+		return {"tree": 0.05, "rock": 0.18, "vein": 0.10}
 	if ZONE_WOODS.has_point(cell):
-		return {"tree": 0.88, "rock": 0.06, "bush": 0.08}
+		return {"tree": 0.72, "rock": 0.04, "vein": 0.01}
 	if ZONE_GROVE.has_point(cell):
-		return {"tree": 0.46, "rock": 0.03, "bush": 0.20}
+		return {"tree": 0.40, "rock": 0.02, "vein": 0.01}
 	if ZONE_DOWNS.has_point(cell):
-		return {"tree": 0.14, "rock": 0.06, "bush": 0.16}
-	return {"tree": 0.06, "rock": 0.03, "bush": 0.05}
+		return {"tree": 0.12, "rock": 0.03, "vein": 0.01}
+	return {"tree": 0.05, "rock": 0.02, "vein": 0.01}
+
+
+## A scattered copper vein. Its node_id is derived from the cell so the gather cooldown is
+## stable across reloads — an id that shifted would let the same vein be mined twice a day.
+func _add_vein(cell: Vector2i) -> void:
+	var vein := VEIN_SCENE.instantiate()
+	vein.node_id = "wilds_copper_%d_%d" % [cell.x, cell.y]
+	vein.display_name = "Copper Vein"
+	vein.item_id = "copper_ore"
+	vein.base_qty = 1
+	vein.reset_days = 1
+	vein.skill_station = "forge"
+	vein.level_req = 1
+	vein.resource_kind = "ore"
+	vein.position = Vector2(cell.x * TILE + TILE / 2.0, (cell.y + 1) * TILE)
+	entities.add_child(vein)
+	_blocked[cell] = true
+	_prop_cells[cell] = true
+	for anchor in Scatter.anchor_cells(vein.position, TILE, 1,
+			Vector2i(W, H), _prop_cells, _route_cells):
+		_add_cover(anchor, ROCK_TEXTURE, true, ROCK_FOOT, ROCK_FOOT_OFFSET)
 
 
 func _add_cover(cell: Vector2i, texture: Texture2D, solid: bool,

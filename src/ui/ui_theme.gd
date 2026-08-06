@@ -46,10 +46,20 @@ const PAD_PANEL := UNIT * 2      # 16
 const GAP_ROW := UNIT            # 8
 
 # --- type scale (minimums at the 800x600 logical size) -------------------
+## The type scale. It was 12/14/16/22 while the panels actually used ELEVEN different sizes
+## (8,9,10,11,12,13,14,15,16,20,22) via 85 hardcoded overrides -- six of them not in the scale
+## at all. A scale nothing conforms to is not a scale, and it is why type in this UI does not
+## respond to the UI-scale setting the way panels do.
+##
+## HEADING and SMALL are added because both were genuinely in use and had nowhere to go.
+## Everything else is mapped to its nearest tier, preferring the smaller one on a tie so
+## adoption shrinks text rather than growing it into a panel it used to fit.
 const FONT_TITLE := 22
+const FONT_HEADING := 20
 const FONT_SECTION := 16
 const FONT_BODY := 14
 const FONT_META := 12
+const FONT_SMALL := 10
 ## Japanese needs to be bigger than body text to stay legible at 16px-art scale.
 const FONT_JAPANESE := 30
 

@@ -19,7 +19,7 @@ region = Rect2(128, 208, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bed"]
 atlas = ExtResource("7_beds")
-region = Rect2(192, 0, 16, 48)
+region = Rect2(192, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dresser"]
 atlas = ExtResource("6_elements")
@@ -143,15 +143,6 @@ position = Vector2(152, 80)
 item_id = "rice"
 qty = 2
 pickup_id = "house_kitchen_rice"
-
-[node name="TeacherDining" parent="Entities" instance=ExtResource("9_teacher")]
-position = Vector2(40, 112)
-npc_id = "host"
-speaker = "Host"
-teaches_lesson = "travel-dining"
-intro_lines = PackedStringArray("Sit, sit. You cannot travel on an empty stomach.", "Learn how to order and a whole country opens its kitchens to you.")
-session_size = 3
-sprite_sheet = ExtResource("11_host")
 
 [node name="StudyDesk" parent="Entities" instance=ExtResource("10_study")]
 position = Vector2(168, 112)

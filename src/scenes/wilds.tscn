@@ -338,7 +338,7 @@ sprite_sheet = ExtResource("39_vil5")
 [node name="WeatherOverlay" parent="." instance=ExtResource("30_weather")]
 
 [node name="TeacherTransit" parent="Entities" instance=ExtResource("20_teacher")]
-position = Vector2(200, 296)
+position = Vector2(264, 320)
 npc_id = "outpost_keeper"
 speaker = "Keeper"
 teaches_lesson = "travel-transit"
