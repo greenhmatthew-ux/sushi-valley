@@ -191,7 +191,14 @@ func _refresh() -> void:
 	if _coins_label == null:
 		return
 	_clock_label.text = Farm.clock_text()
-	_weather_label.text = WeatherSystem.hud_text()
+	# A notable event rides the weather line rather than taking a row of its own: it is the
+	# same kind of fact (what today is like) and the HUD is already tight at 640x360.
+	var today := WorldEventLogic.event_for_day(Farm.day(), DB.events)
+	if WorldEventLogic.is_notable(today):
+		_weather_label.text = "%s · %s" % [
+			WeatherSystem.hud_text(), String(today.get("displayName", ""))]
+	else:
+		_weather_label.text = WeatherSystem.hud_text()
 	_coins_label.text = "%d coins" % Inv.coins
 
 	# Hidden at zero rather than showing "0 due" — an empty queue is not information.

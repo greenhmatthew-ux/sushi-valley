@@ -40,7 +40,12 @@ func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 	if remaining > 0:
 		return {"ok": false, "reason": _return_text(remaining), "remaining": remaining}
 	var bonus := Rules.weather_bonus(resource_kind, WeatherSystem.is_raining())
-	var quantity := maxi(1, base_qty) + bonus
+	# Today's world event stacks with the weather rather than replacing it: they are two
+	# different reasons for a good day, and a player who works out both is being rewarded
+	# for paying attention.
+	var event_bonus := WorldEventLogic.gather_bonus(
+		WorldEventLogic.event_for_day(Farm.day(), DB.events), resource_kind)
+	var quantity := maxi(1, base_qty) + bonus + event_bonus
 	if Inv.max_addable(item_id) < quantity:
 		return {"ok": false, "reason": "Your %s stack needs %d open spaces." % [
 			DB.item(item_id).get("name", item_id), quantity]}
@@ -49,6 +54,7 @@ func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 		"reason": "Ready.",
 		"qty": quantity,
 		"weather_bonus": bonus,
+		"event_bonus": event_bonus,
 		"xp": Rules.earned_xp(required),
 		"level": level,
 	}

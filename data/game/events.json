@@ -1,0 +1,42 @@
+[
+  {
+    "id": "quiet_day",
+    "displayName": "A Quiet Day",
+    "description": "Nothing out of the ordinary. The valley goes about its business.",
+    "weight": 6,
+    "resourceKinds": [],
+    "gatherBonus": 0
+  },
+  {
+    "id": "rich_seams",
+    "displayName": "Rich Seams",
+    "description": "Overnight rain has cut the hillsides back. Ore sits proud of the rock today.",
+    "weight": 2,
+    "resourceKinds": ["ore"],
+    "gatherBonus": 1
+  },
+  {
+    "id": "forager_bloom",
+    "displayName": "Forager's Bloom",
+    "description": "Warm ground has brought the herbs on early. They will not last the week.",
+    "weight": 2,
+    "resourceKinds": ["herb"],
+    "gatherBonus": 1
+  },
+  {
+    "id": "bamboo_shoot_rush",
+    "displayName": "Shoot Rush",
+    "description": "The stands have thrown up new shoots overnight. Cut them while they are tender.",
+    "weight": 2,
+    "resourceKinds": ["bamboo"],
+    "gatherBonus": 1
+  },
+  {
+    "id": "gathering_weather",
+    "displayName": "A Generous Season",
+    "description": "A rare day when everything is worth picking. Take what the valley offers.",
+    "weight": 1,
+    "resourceKinds": ["ore", "herb", "bamboo"],
+    "gatherBonus": 1
+  }
+]

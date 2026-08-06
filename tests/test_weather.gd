@@ -85,15 +85,20 @@ func _runtime_and_ui_contract() -> void:
 	await process_frame
 	var weather_label := hud.find_child("HudWeather", true, false) as Label
 	check_true("HUD exposes a dedicated weather line", weather_label != null)
-	check_eq("HUD names the current clear day", weather_label.text, "Clear")
+	# begins_with, not equality: a notable world event now rides this same line ("Clear ·
+	# Rich Seams") because both answer "what is today like" and the HUD has no spare row at
+	# 640x360. The property this test cares about -- the weather is named, and named first --
+	# is unchanged.
+	check_true("HUD names the current clear day (got %s)" % weather_label.text,
+		weather_label.text.begins_with("Clear"))
 
 	farm.logic.day = 3
 	farm.logic.season = "summer"
 	bus.farm_changed.emit()
 	await process_frame
 	check_eq("the runtime derives a storm from the changed calendar", weather.current(), "storm")
-	check_eq("HUD explains the storm's fishing consequence",
-		weather_label.text, "Storm - rough fishing")
+	check_true("HUD explains the storm's fishing consequence (got %s)" % weather_label.text,
+		weather_label.text.begins_with("Storm - rough fishing"))
 
 	var overlay := load("res://src/ui/weather_overlay.tscn").instantiate() as CanvasLayer
 	root.add_child(overlay)

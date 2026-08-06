@@ -95,6 +95,11 @@ func interact(_player: Node = null) -> void:
 	var bonus_text := ""
 	if int(result.get("weather_bonus", 0)) > 0:
 		bonus_text = " +1 weather bonus."
+	# Name the event too, or a bigger haul looks like a bug rather than a reason to come back.
+	if int(result.get("event_bonus", 0)) > 0:
+		var today := WorldEventLogic.event_for_day(Farm.day(), DB.events)
+		bonus_text += " +%d %s." % [
+			int(result.get("event_bonus", 0)), String(today.get("displayName", "event"))]
 	var level_text := " %s reached Lv %d!" % [skill_station.capitalize(),
 		int(result.get("level", 1))] if bool(result.get("leveled_up", false)) else ""
 	_start_feedback(int(result.get("qty", 0)))

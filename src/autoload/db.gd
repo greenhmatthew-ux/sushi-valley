@@ -36,7 +36,12 @@ var ability_order: Array[String] = []
 
 # --- keyed-object tables, kept as-is ---
 var shops: Dictionary = {}
+## Map-authoring constraints, despite the file name. Loaded for completeness; nothing reads
+## it yet. The daily random events are `events` below — a different file.
 var world_events: Dictionary = {}
+## Daily random events, in authored order. An Array, not an index: the roll walks it by
+## weight, so order and duplicates-by-id are not meaningful here.
+var events: Array = []
 
 # --- learning content ---
 var cards: Dictionary = {}          # card id -> definition (no scheduling state)
@@ -109,6 +114,7 @@ func _load_game_content() -> void:
 
 	shops = _read_dict(GAME_DIR + "shops.json")
 	world_events = _read_dict(GAME_DIR + "worldEvents.json")
+	events = _read_array(GAME_DIR + "events.json")
 
 
 func _load_learning_content() -> void:
