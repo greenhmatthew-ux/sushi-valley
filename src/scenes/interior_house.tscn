@@ -37,6 +37,18 @@ region = Rect2(48, 144, 16, 16)
 atlas = ExtResource("6_elements")
 region = Rect2(0, 144, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mat"]
+atlas = ExtResource("6_elements")
+region = Rect2(208, 64, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wardrobe"]
+atlas = ExtResource("6_elements")
+region = Rect2(16, 80, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_banner"]
+atlas = ExtResource("6_elements")
+region = Rect2(224, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bookcase"]
 atlas = ExtResource("6_elements")
 region = Rect2(48, 112, 16, 32)
@@ -56,6 +68,15 @@ position = Vector2(104, 144)
 texture = SubResource("AtlasTexture_door")
 offset = Vector2(0, -8)
 
+[node name="FloorMat" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(104, 88)
+texture = SubResource("AtlasTexture_mat")
+
+[node name="WallBanner" type="Sprite2D" parent="FloorDecor"]
+texture_filter = 1
+position = Vector2(48, 24)
+texture = SubResource("AtlasTexture_banner")
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -96,6 +117,11 @@ texture = SubResource("AtlasTexture_bookcase")
 foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
 
+[node name="Wardrobe" parent="Entities" instance=ExtResource("12_prop")]
+position = Vector2(104, 48)
+texture = SubResource("AtlasTexture_wardrobe")
+foot_size = Vector2(14, 6)
+foot_offset = Vector2(0, -3)
 [node name="Player" parent="Entities" instance=ExtResource("3_player")]
 position = Vector2(104, 112)
 
