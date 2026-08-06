@@ -22,6 +22,9 @@ verified against the running scenes — not an aspirational or inherited list.
   pass lookout Tomas -- those two had been sharing faces with Hana and the wilds Keeper
   across regions, which `tests/test_npc_faces_differ.gd` now prevents; the pack has ~76 more
   unused sheets at this exact 64x112 size),
+  the pack's `FX/Attack` set as `assets/fx/` -- Cut, CutDouble, CutX, Claw, ClawDouble,
+  CircularSlash and SlashCurved, seven sheets of uniform 32x32 frames, used for the attack
+  effect every ability now throws in combat,
   the pack's Spirit monster sheet for the Forest Wraith, hearts HUD icon, Forge anvil, Workshop hammer, the house interior floor,
   furniture and exit door, and the twelve rendered Talent icons (Blade Sweep, Kunai Toss,
   Kana Bolt, Iron Brace, Ki Focus, Rune Ward, Riposte, Blood Blade, Iaido Cut, Pinning Shot,

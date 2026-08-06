@@ -68,6 +68,48 @@ func _initialize() -> void:
 	else:
 		check_true("mushroom's sheet has walk rows to animate", false)
 
+	# --- every ability resolves with a visual, or deliberately with none ---
+	#
+	# All 68 used to resolve identically: a number moved. The effect is derived from the
+	# ability's own style/type/hits rather than a per-ability table, so this walks the whole
+	# roster -- a 69th ability added tomorrow is covered by construction, and one that maps to
+	# a sheet that does not exist fails here rather than throwing mid-fight.
+	var fx := load("res://src/ui/combat_fx.gd")
+	var offensive_without_effect: Array[String] = []
+	var defensive_with_effect: Array[String] = []
+	var unknown_sheet: Array[String] = []
+	for id in db.abilities:
+		var ability: Dictionary = db.abilities[id]
+		var effect := String(fx.effect_for(ability))
+		var kind := String(ability.get("type", "attack"))
+		if not effect.is_empty() and not fx.SHEETS.has(effect):
+			unknown_sheet.append(String(id))
+		if kind in ["block", "parry", "buff", "heal"]:
+			if not effect.is_empty():
+				defensive_with_effect.append(String(id))
+		elif effect.is_empty():
+			offensive_without_effect.append(String(id))
+	check_true("every ability maps to a sheet that exists (%d abilities)" % db.abilities.size(),
+		unknown_sheet.is_empty())
+	check_true("every offensive ability throws something (%s)"
+		% ", ".join(PackedStringArray(offensive_without_effect)),
+		offensive_without_effect.is_empty())
+	# A block that threw a sword arc would read as an attack.
+	check_true("no block/parry/buff/heal throws a slash (%s)"
+		% ", ".join(PackedStringArray(defensive_with_effect)),
+		defensive_with_effect.is_empty())
+
+	# A flurry must not look like a single blow.
+	check_true("hit count changes the blade effect",
+		fx.effect_for({"style": "blade", "type": "attack", "hits": 1})
+		!= fx.effect_for({"style": "blade", "type": "attack", "hits": 3}))
+
+	# The effect must live on the overlay, not in the laid-out round, and must clean itself up.
+	var overlay_children := hit_layer.get_child_count()
+	fx.play(hit_layer, portrait, "cut", Color.WHITE)
+	check_true("an effect is parented to the hit overlay",
+		hit_layer.get_child_count() == overlay_children + 1)
+
 	# A hit must not move a container child: the panel's bars and portrait are laid out by
 	# their container, so a position tween fought the layout and parked the player's HP bar
 	# at the top of the panel. Scale is the one transform a container does not own.

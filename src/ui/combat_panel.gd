@@ -12,6 +12,8 @@ extends CanvasLayer
 
 const ConsumableRules = preload("res://src/systems/consumable_logic.gd")
 const Roles = preload("res://src/systems/role_logic.gd")
+## Picks and plays an attack effect from the ability's own style/type/hits.
+const CombatFx = preload("res://src/ui/combat_fx.gd")
 
 const COL_DIM := UiTheme.SURFACE_BACKDROP
 const COL_PANEL := UiTheme.SURFACE_BASE
@@ -150,6 +152,8 @@ func _show_enemy_opening() -> void:
 		_encounter.enemy_name, result.enemy_damage_dealt]
 	_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
 	_strike_portrait()
+	if result.enemy_damage_dealt > 0:
+		CombatFx.play(_hit_layer, _player_hp_bar, "claw", CombatFx.TINTS["enemy"])
 	_render_bars()
 	_end_turn_btn.hide()
 	_continue_btn.text = "Continue" if _encounter.is_over() else "Your turn"
@@ -433,6 +437,9 @@ func _on_rune(rune: String, btn: Button) -> void:
 	_feedback.text = outcome if result.correct \
 		else "%s was the rune. Weakened %s" % [revealed, outcome]
 	_show_hit(_enemy_portrait, result.player_damage_dealt, COL_BAD)
+	if result.player_damage_dealt > 0:
+		CombatFx.play(_hit_layer, _enemy_portrait,
+			CombatFx.effect_for(_selected_ability), CombatFx.tint_for(_selected_ability))
 	if result.correct and result.flow_after > 1:
 		_feedback.text += "   Flow x%d" % result.flow_after
 	if _encounter.is_over():
@@ -534,7 +541,11 @@ func _resolve_end_turn() -> void:
 			_feedback.text += "   Returned %d damage." % result.counter_damage_dealt
 		_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
 		_strike_portrait()
+		if result.enemy_damage_dealt > 0:
+			CombatFx.play(_hit_layer, _player_hp_bar, "claw", CombatFx.TINTS["enemy"])
 		_show_hit(_enemy_portrait, result.counter_damage_dealt, COL_GOOD)
+		if result.counter_damage_dealt > 0:
+			CombatFx.play(_hit_layer, _enemy_portrait, "clawdouble", CombatFx.TINTS["counter"])
 	_render_bars()
 	_continue_btn.text = "Continue" if _encounter.is_over() \
 		else ("Bonus turn" if result.bonus_turn_granted else "Next turn")
