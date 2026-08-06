@@ -40,6 +40,9 @@ const PORTRAIT_PX := 48
 ## point is to make a hit register, not to hold up the round.
 const HIT_PUNCH := 1.12
 const HIT_SECONDS := 0.26
+## How long the win/loss beat holds before the panel closes. Long enough to read the result,
+## short enough that clearing a patrol of foes does not become a slideshow.
+const OUTCOME_SECONDS := 0.85
 
 var _root: Control
 var _hit_layer: Control
@@ -362,9 +365,48 @@ func _on_rune(rune: String, btn: Button) -> void:
 
 func _on_continue() -> void:
 	if _encounter.is_over():
-		_finish(_encounter.player_won(), "")
+		var won := _encounter.player_won()
+		await _play_outcome(won)
+		_finish(won, "")
 	else:
 		_next_round()
+
+
+## A fight used to end by the panel simply vanishing on the frame you pressed Continue —
+## no death, no result, nothing to register that you had won. This is the beat: the loser
+## goes down, the outcome is named, and only then does the panel close.
+##
+## Only the natural end gets it. Fleeing and the no-cards bail exit immediately, because
+## neither is an outcome worth dwelling on.
+func _play_outcome(victory: bool) -> void:
+	_continue_btn.hide()
+	_end_turn_btn.hide()
+	_flee_btn.hide()
+	_listen_btn.hide()
+	for choice in _choices_box.get_children():
+		if choice is Button:
+			(choice as Button).hide()
+	_intent_label.text = ""
+	_guard_label.add_theme_color_override("font_color", COL_GOOD if victory else COL_BAD)
+	_guard_label.text = "%s defeated" % _encounter.enemy_name if victory else "You are down"
+	_guard_hint.text = "" if victory else "You wake at the village, worse for wear."
+
+	if victory and _enemy_portrait.visible:
+		# The foe falls: it drops, greys out and fades rather than blinking off.
+		var tween := create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(_enemy_portrait, "modulate",
+			Color(0.4, 0.4, 0.4, 0.0), OUTCOME_SECONDS * 0.8)
+		tween.tween_property(_enemy_portrait, "scale", Vector2(1.0, 0.25), OUTCOME_SECONDS * 0.8) \
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	elif not victory:
+		_flash(_player_hp_bar, COL_BAD)
+
+	# The tree is paused for the whole fight, so the timer has to run anyway.
+	await get_tree().create_timer(OUTCOME_SECONDS, true, false, true).timeout
+	_guard_label.remove_theme_color_override("font_color")
+	_enemy_portrait.modulate = Color.WHITE
+	_enemy_portrait.scale = Vector2.ONE
 
 
 func _on_end_turn() -> void:

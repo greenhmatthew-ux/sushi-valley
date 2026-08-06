@@ -228,7 +228,10 @@ func _initialize() -> void:
 	check_true("killing item exposes the normal continue path",
 		continue_btn.visible and continue_btn.text == "Continue")
 	continue_btn.pressed.emit()
-	await process_frame
+	# Winning now plays a short outcome beat — the foe drops and the result is named —
+	# before the panel closes, so the close is no longer same-frame. Wait it out rather
+	# than asserting the old instant vanish.
+	await create_timer_beat()
 	check_true("continuing a damage-item victory closes combat", not bool(panel.get("_active")))
 
 	# Exercise the full reservation -> combat popup -> saved consumption path, not
@@ -358,6 +361,12 @@ func _finish() -> void:
 	print("PASS — combat actions are usable and viewport-safe." if failures == 0 \
 		else "FAIL — %d combat-panel check(s) failed." % failures)
 	quit(1 if failures > 0 else 0)
+
+
+## The combat panel holds a win/loss beat before closing, and the tree is paused for the
+## whole fight, so the wait has to ignore both pause and time scale.
+func create_timer_beat() -> Signal:
+	return get_root().get_tree().create_timer(1.1, true, false, true).timeout
 
 
 func check_true(label: String, ok: bool) -> void:
