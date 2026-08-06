@@ -414,8 +414,13 @@ func _set_anim(anim: String) -> void:
 func take_damage(amount: int) -> void:
 	if hp <= 0:
 		return
-	# A sparring partner shrugs off hits until the player has chosen to engage it.
-	if sparring_partner and not _engaged:
+	# A sparring partner is never damaged by contact. Its bout is the recall fight that
+	# begin_spar() opens, the same one every hostile encounter uses.
+	#
+	# It used to take physical hits once engaged and die to them, which made sparring the one
+	# route in the game where you won a fight by walking into something -- no card, no recall,
+	# no Japanese. That is the opposite of what combat is for here.
+	if sparring_partner:
 		return
 	# Hostile overworld HP is never a learning bypass. A swing is an explicit trigger for
 	# PASSIVE/PROVOKED foes and opens the same recall encounter used by contact aggro; only
@@ -430,13 +435,8 @@ func take_damage(amount: int) -> void:
 	_flash_hit()
 	if CombatLogic.is_dead(hp):
 		Bus.enemy_died.emit(enemy_id)
-		if sparring_partner:
-			Bus.toast.emit("You won the spar with the %s!" % enemy_id)
-			hp = max_hp
-			_engaged = false
-		else:
-			_drop_loot()
-			queue_free()
+		_drop_loot()
+		queue_free()
 
 
 ## Reward a hostile kill: coins plus this enemy's authored item drops. Sparring bouts route
@@ -469,10 +469,23 @@ func _drop_loot() -> void:
 ## Begin a practice bout — called through the player's interact probe (see SparZone) when
 ## they walk up to an authored sparring partner and press interact.
 func begin_spar(_player: Node = null) -> void:
-	if not sparring_partner or _engaged:
+	if not sparring_partner or _engaged or _in_combat:
+		return
+	var token := EncounterDirector.request(enemy_id, self)
+	if token.is_empty():
+		# Another encounter owns the panel; do not queue a second bout behind it.
 		return
 	_engaged = true
+	_in_combat = true
 	Bus.toast.emit("You square up to spar with the %s." % enemy_id)
+	var victory: bool = await EncounterDirector.wait_for_result(token)
+	_in_combat = false
+	_engaged = false
+	# A sparring partner is practice: it is never destroyed and never drops loot, so the
+	# village still has one tomorrow. Reset its HP either way.
+	hp = max_hp
+	if victory:
+		Bus.toast.emit("You won the spar with the %s!" % enemy_id)
 
 
 ## Brief bright flash on hit so the strike reads.

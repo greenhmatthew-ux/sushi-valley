@@ -380,6 +380,20 @@ func _check_active_region_speed_bands() -> void:
 	if spar_zone != null:
 		check_eq("starter interaction prompt says Spar",
 			String(spar_zone.call("interaction_label")), "Spar")
+	# A spar must be a RECALL fight, not a shoving match. It used to set a flag and then let
+	# the player win by walking into the partner until its HP hit zero -- the one route in the
+	# game where a fight was won with no card, no recall and no Japanese.
+	var slime: Node = village.get_node_or_null("Props/Slime1")
+	if slime != null:
+		check_true("the starter partner is a sparring partner",
+			bool(slime.get("sparring_partner")))
+		# Set HP explicitly: this scene is never added to the tree, so _ready has not run and
+		# hp would otherwise be 0, making the assertion below pass for the wrong reason.
+		slime.set("hp", 12)
+		slime.call("take_damage", 9999)
+		check_true("contact damage cannot beat a sparring partner (hp 12 -> %d)"
+			% int(slime.get("hp")),
+			int(slime.get("hp")) == 12 and is_instance_valid(slime))
 	village.free()
 
 
