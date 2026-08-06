@@ -43,9 +43,14 @@ const HIT_SECONDS := 0.26
 ## How long the win/loss beat holds before the panel closes. Long enough to read the result,
 ## short enough that clearing a patrol of foes does not become a slideshow.
 const OUTCOME_SECONDS := 0.85
+## The wind-up pulse: a warm threat tint, slow enough to read as breathing rather than a
+## strobe. Half a second each way.
+const TELEGRAPH_TINT := Color(1.0, 0.55, 0.45)
+const TELEGRAPH_SECONDS := 0.5
 
 var _root: Control
 var _hit_layer: Control
+var _telegraph: Tween
 var _enemy_portrait: TextureRect
 var _enemy_label: Label
 var _enemy_hp_bar: ProgressBar
@@ -274,6 +279,7 @@ func _render_enemy_intent() -> void:
 	if _encounter.is_over():
 		_intent_label.text = ""
 		_intent_label.tooltip_text = ""
+		_set_telegraph(false)
 		return
 	var damage := _encounter.enemy_damage_range()
 	_intent_label.text = "[!] Attack %d-%d HP" % [damage.x, damage.y]
@@ -283,6 +289,33 @@ func _render_enemy_intent() -> void:
 		else (" Current Guard is included." if _encounter.shield > 0 else "")
 	_intent_label.tooltip_text = "%s will use a basic attack %s. Damage varies by 15%%.%s" % [
 		_encounter.enemy_name, timing, guard_note]
+	_set_telegraph(_encounter.turns_left <= 1)
+
+
+## The foe winds up when its blow lands on the next End Turn.
+##
+## "It will hit you this turn" was information the player could only get by reading a small
+## line in the panel corner, so the difference between a safe turn and the dangerous one was
+## invisible at a glance. The foe itself now shows it.
+##
+## Pulses `self_modulate`, deliberately not `modulate`: hits tween `modulate`, and a looping
+## tween on the same property would fight every strike and leave the portrait stuck at
+## whatever colour the loop was mid-way through.
+func _set_telegraph(winding_up: bool) -> void:
+	if _enemy_portrait == null:
+		return
+	if _telegraph != null and _telegraph.is_valid():
+		_telegraph.kill()
+	_telegraph = null
+	_enemy_portrait.self_modulate = Color.WHITE
+	if not winding_up or not _enemy_portrait.visible:
+		return
+	_telegraph = create_tween()
+	_telegraph.set_loops()
+	_telegraph.tween_property(_enemy_portrait, "self_modulate",
+		TELEGRAPH_TINT, TELEGRAPH_SECONDS)
+	_telegraph.tween_property(_enemy_portrait, "self_modulate",
+		Color.WHITE, TELEGRAPH_SECONDS)
 
 
 func _on_rune(rune: String, btn: Button) -> void:
@@ -387,6 +420,7 @@ func _play_outcome(victory: bool) -> void:
 		if choice is Button:
 			(choice as Button).hide()
 	_intent_label.text = ""
+	_set_telegraph(false)
 	_guard_label.add_theme_color_override("font_color", COL_GOOD if victory else COL_BAD)
 	_guard_label.text = "%s defeated" % _encounter.enemy_name if victory else "You are down"
 	_guard_hint.text = "" if victory else "You wake at the village, worse for wear."

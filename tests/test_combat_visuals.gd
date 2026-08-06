@@ -55,6 +55,27 @@ func _initialize() -> void:
 	check_true("a hit leaves the struck bar where its container put it",
 		hp_bar.position.is_equal_approx(before))
 
+	# The wind-up. "It hits you this turn" was only ever a small line in the panel corner,
+	# so the dangerous turn looked exactly like a safe one. The foe shows it now.
+	var encounter: CombatEncounter = panel.get("_encounter")
+	encounter.turns_left = 3
+	panel.call("_render_enemy_intent")
+	check_true("a foe that is not about to swing stays still",
+		panel.get("_telegraph") == null)
+	encounter.turns_left = 1
+	panel.call("_render_enemy_intent")
+	var telegraph: Tween = panel.get("_telegraph")
+	check_true("a foe about to swing winds up", telegraph != null and telegraph.is_valid())
+	# It must pulse self_modulate, not modulate: hits tween modulate, and a looping tween on
+	# the same property would fight every strike and strand the portrait mid-colour.
+	panel.call("_show_hit", portrait, 5, Color.RED)
+	await process_frame
+	check_true("the wind-up survives being hit mid-pulse",
+		panel.get("_telegraph") != null and (panel.get("_telegraph") as Tween).is_valid())
+	panel.call("_set_telegraph", false)
+	check_true("the wind-up stops cleanly and restores the portrait",
+		panel.get("_telegraph") == null and portrait.self_modulate == Color.WHITE)
+
 	# Enemies with no art must degrade to no portrait rather than an empty box.
 	var artless := ""
 	for enemy_id in db.enemy_order:
