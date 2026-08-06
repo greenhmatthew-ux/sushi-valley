@@ -6,6 +6,14 @@ verified against the running scenes — not an aspirational or inherited list.
 
 ## Art in use
 
+- **Kenney Game Assets All-in-1 (Tiny Town)** by Kenney — **CC0 1.0**. The outdoor ground
+  grass, as `assets/tilesets/kenney_ground.png`: four 16px tiles sliced from Tiny Town's
+  `tilemap_packed.png` — plain grass (0,0), tufted grass (1,0), flowered grass (2,0) and
+  gravel (7,3). Only the first two are painted today; the village, its edge underlay and the
+  Wilds re-texture their grass off Serene's flat fill onto these at the end of `_ready`.
+  Chosen by scanning both library roots for a 16px, fully opaque, self-tiling green tile
+  nearest Serene's own grass colour — it won on palette distance by a wide margin, and was
+  checked beside Serene's houses, props and road edge tiles before adoption.
 - **Ninja Adventure - Asset Pack** by Pixel-boy & AAA — **CC0 1.0**. The player, all enemies
   (mushroom/kappa/lantern-ghost/slime/snake/raccoon/owl), NPCs (villager, quest-giver,
   merchant, plus the pack's Villager4, Villager5, Villager6, Noble, OldMan, Monk, Master,

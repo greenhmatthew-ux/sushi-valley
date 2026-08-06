@@ -30,6 +30,8 @@ const TRAIL_BOTTOM_RIGHT := Vector2i(3, 1)
 ## Placement maths shared with the Wilds and the Mountain Pass. Preloaded rather than named
 ## globally, so a clean headless checkout does not depend on the editor's class cache.
 const Scatter = preload("res://src/systems/terrain_scatter.gd")
+## Swaps Serene's flat grass fill for textured grass once the region has finished building.
+const GroundCover = preload("res://src/systems/ground_cover.gd")
 
 ## How far the fields run east past the authored map. The market road used to reach the edge
 ## of the tile data and simply stop, which is what made the village read as cut off.
@@ -63,7 +65,18 @@ func _ready() -> void:
 	_build_south_spur()
 	_build_door_spurs()
 	_anchor_resource_nodes()
+	_texture_grass()
 	_load_game()
+
+
+## Everything above plants against the flat grass coord, so the grass is only re-textured
+## once they have all run. The EdgeGround underlay shares the Ground TileSet, so it is
+## repainted too or the map would sit on a flat green mat with a textured island on it.
+func _texture_grass() -> void:
+	GroundCover.repaint(ground, GRASS_ATLAS)
+	var edge := get_node_or_null("EdgeGround") as TileMapLayer
+	if edge != null:
+		GroundCover.repaint(edge, GRASS_ATLAS)
 
 
 ## Fields east of town. The authored tile data stops dead at its own edge, so the market road

@@ -18,6 +18,8 @@ extends Node2D
 ## Mountain Pass. Preloaded rather than named globally, so a clean headless checkout does
 ## not depend on the editor's class cache having been rebuilt.
 const Scatter = preload("res://src/systems/terrain_scatter.gd")
+## Swaps Serene's flat grass fill for textured grass once the region has finished building.
+const GroundCover = preload("res://src/systems/ground_cover.gd")
 
 const TILE := 16
 const W := 72   # tiles wide
@@ -134,6 +136,7 @@ func _ready() -> void:
 	_scatter_cover()
 	_anchor_resource_nodes()
 	_build_detail()
+	_texture_grass()
 	_place_player()
 	_clamp_camera()
 
@@ -482,6 +485,11 @@ func _outpost_pos() -> Vector2:
 
 func _to_tile(p: Vector2) -> Vector2i:
 	return Vector2i(int(floor(p.x / TILE)), int(floor(p.y / TILE)))
+
+
+## Last, so the detail and cover passes above still see the flat grass they key off.
+func _texture_grass() -> void:
+	GroundCover.repaint(ground, GRASS)
 
 
 func _place_player() -> void:

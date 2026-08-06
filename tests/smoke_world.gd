@@ -11,6 +11,9 @@ extends SceneTree
 ## the plumbing, not a designed map.
 
 const TILE := 16
+## Preloaded, not referenced as a global: `--script` runs before the editor's class cache
+## is rebuilt, so a class_name here would not compile on a clean checkout.
+const GroundCover = preload("res://src/systems/ground_cover.gd")
 ## The authored town is 44x30; world.gd paints fields east of it at runtime. The checks
 ## below derive the footprint from the map itself — pinning the old numbers meant a region
 ## could not grow without a test edit, while these still catch the things that matter: holes
@@ -67,8 +70,15 @@ func _run() -> void:
 	if edge_ground != null:
 		check_true("edge underlay covers the full camera footprint",
 			edge_ground.get_used_cells().size() == footprint)
-		check_true("northwest edge uses real Serene Village grass",
-			edge_ground.get_cell_atlas_coords(Vector2i.ZERO) == Vector2i(4, 0))
+		# The underlay used to be pinned to Serene's grass coord (4, 0). That tile is a flat
+		# fill, and the whole map is now re-textured off it at the end of _ready, so the
+		# check would only pass if the re-texture had failed to reach the underlay -- which
+		# is the actual bug worth catching. Assert the underlay is textured grass instead.
+		var edge_source := edge_ground.get_cell_source_id(Vector2i.ZERO)
+		var edge_tile := edge_ground.get_cell_atlas_coords(Vector2i.ZERO)
+		check_true("northwest edge is textured grass, not the flat fill",
+			edge_source == GroundCover.SOURCE_ID
+			and (edge_tile == GroundCover.PLAIN or edge_tile == GroundCover.TUFT))
 		check_true("edge underlay stays behind authored paths and props",
 			edge_ground.z_index < ground.z_index)
 	if meadow != null:
