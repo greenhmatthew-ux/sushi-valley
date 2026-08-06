@@ -117,6 +117,7 @@ func _ready() -> void:
 	_scatter_cover()
 	_anchor_resource_nodes()
 	_build_detail()
+	_line_route()
 	_place_player()
 	_clamp_camera()
 
@@ -335,6 +336,37 @@ func _build_detail() -> void:
 				detail.set_cell(cell, 1, SCREE[_rng.randi_range(0, SCREE.size() - 1)])
 			elif roll < float(mix["scree"]) + float(mix["boulder"]):
 				detail.set_cell(cell, 1, BOULDERS[_rng.randi_range(0, BOULDERS.size() - 1)])
+
+
+## Frame the route with loose stone so it reads as a walked track.
+##
+## `_build_route` already records why the trail is hard to see: this sheet's worn stone is
+## barely darker than its floor. Measured, it is about 20 per channel -- the path and the
+## ground it crosses are nearly the same colour, and at map zoom the route all but vanishes.
+##
+## That comment then concluded the trail was "legible from its darker stone alone", and a
+## screenshot of the whole region says otherwise. The fix it rejected was an edge COURSE cut
+## from the ground sheet, and that rejection was right: every edge tile here carries a notch
+## or rim bar that reads as debris dropped in open ground.
+##
+## So the border is drawn on the DETAIL layer instead, out of the same scree already scattered
+## across the region -- no new art, no ground tile that pretends to be a kerb. Banking loose
+## stone along the verges is also just what a walked mountain track looks like.
+##
+## Cardinal neighbours only, so the scree hugs the path instead of fogging outward, and it
+## runs after `_build_detail` so it wins on the tiles it shares with the ambient scatter.
+func _line_route() -> void:
+	const VERGE_CHANCE := 0.55
+	for raw_cell in _route_cells:
+		var cell: Vector2i = raw_cell
+		for step in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+			var probe: Vector2i = cell + step
+			if _route_cells.has(probe) or _prop_cells.has(probe):
+				continue
+			if probe.x < 0 or probe.x >= W or probe.y <= CLIFF_ROWS or probe.y >= H:
+				continue
+			if _rng.randf() < VERGE_CHANCE:
+				detail.set_cell(probe, 1, SCREE[_rng.randi_range(0, SCREE.size() - 1)])
 
 
 func _zone_detail_mix(cell: Vector2i) -> Dictionary:
