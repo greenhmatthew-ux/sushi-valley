@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="8_pickup"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="9_teacher"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="10_study"]
-[ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="11_woman"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_host.png" id="11_host"]
 [ext_resource type="PackedScene" path="res://src/entities/prop.tscn" id="12_prop"]
 [ext_resource type="PackedScene" path="res://src/entities/sleep_spot.tscn" id="13_sleep"]
 
@@ -125,7 +125,7 @@ speaker = "Host"
 teaches_lesson = "travel-dining"
 intro_lines = PackedStringArray("Sit, sit. You cannot travel on an empty stomach.", "Learn how to order and a whole country opens its kitchens to you.")
 session_size = 3
-sprite_sheet = ExtResource("11_woman")
+sprite_sheet = ExtResource("11_host")
 
 [node name="StudyDesk" parent="Entities" instance=ExtResource("10_study")]
 position = Vector2(168, 96)

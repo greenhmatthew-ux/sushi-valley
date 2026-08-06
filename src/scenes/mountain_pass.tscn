@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_bear.png" id="13_bear"]
 [ext_resource type="Texture2D" path="res://assets/sprites/enemy_tengu.png" id="14_tengu"]
 [ext_resource type="PackedScene" path="res://src/entities/quest_giver.tscn" id="15_quest"]
-[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager2.png" id="16_vil2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_lookout.png" id="16_lookout"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_woman.png" id="17_woman"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_shaman.png" id="26_shaman"]
 [ext_resource type="PackedScene" path="res://src/entities/item_pickup.tscn" id="18_pickup"]
@@ -228,7 +228,7 @@ position = Vector2(128, 192)
 quest_id = "pass_scree_hides"
 speaker = "Tomas"
 greeting_card = "greet-konnichiwa"
-sprite_sheet = ExtResource("16_vil2")
+sprite_sheet = ExtResource("16_lookout")
 
 [node name="Windwatcher" parent="Entities" instance=ExtResource("15_quest")]
 position = Vector2(168, 248)
