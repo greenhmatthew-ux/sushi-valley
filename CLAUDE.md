@@ -97,6 +97,28 @@ including "unstated" or "unknown", and move on.
   choice, not a limit. Match 16px scale and the village palette; record provenance in
   `CREDITS.md`.
 
+### Placement rules (all learned from Matthew rejecting shipped work)
+
+- **Never cut an asset to fit a space.** If a complete building/prop does not fit, move what
+  is in the way, or choose a different *complete* asset. Assembling a sprite from
+  non-adjacent tile rows deletes the middle of the object — the lake house lost its whole
+  upper storey that way and shipped looking chopped.
+- **Feet land on a tile line.** `Prop` draws from the bottom-centre, so a prop whose y is
+  mid-tile reads as floating or sunk into the floor. Every prop's y must be a multiple of
+  the tile size; x should be a tile centre. An interior placed at y=44/72/104 instead of
+  48/64/80/96/112 is the single reason a room reads as "assets scattered on a background".
+- **Leave breathing room — no tangents.** An edge that just touches another object, a wall,
+  a path or a water line reads as a mistake, not as adjacency. Budget at least a tile of gap.
+  Check both sides: a building squeezed exactly between a pond bank and a road touches both.
+- **No plain filler.** Do not use a flat unbroken expanse — of roof, floor, ground or UI —
+  as a feature. Prefer the variant with detail; a large single-colour rectangle laid over a
+  scene reads as an unfinished box.
+- **Keep the entry path clear.** Nothing occupies the doorway column or the tiles a player
+  first walks through on arriving in a room.
+- **Verify with a screenshot every time, and look at the whole thing.** Green tests have
+  repeatedly coexisted with broken visuals here. Frame the entire object/room, not a
+  close-up: half the failures above are only visible at full extent.
+
 ## Testing
 - Headless logic tests live in `tests/` and run with:
   `godot --headless --path D:\SushiValleyGodot --script res://tests/<name>.gd`
