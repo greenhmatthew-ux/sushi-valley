@@ -6,8 +6,15 @@ extends Node2D
 ## placed at the arrival marker. Player-carried state (Inv, Learning) rides the autoloads
 ## across the scene swap, so only the arrival point is passed in.
 ##
-## Floor and walls share one warm Ninja Adventure interior tile. The wall reads as distinct
-## via a darker modulate on its own TileMapLayer: the same material in shadow, not a collage.
+## Floor and wall are DIFFERENT tiles from the Ninja Adventure interior sheet, chosen per
+## scene. They used to be the same tile with the wall layer tinted darker -- "the same
+## material in shadow" -- which is why a room read as a flat sheet with furniture dropped on
+## it rather than as somewhere with walls.
+##
+## The old floor tile (4,2) was worse than flat: it is the sheet's narrow vertical BORDER
+## strip, and it does not tile against itself (18.8 edge mismatch horizontally). Repeating it
+## banded the whole floor with seams. The defaults below are measured self-tiling tiles --
+## 0.0 mismatch on both axes -- with real brick courses in the art.
 
 const TILE := 16
 
@@ -18,10 +25,14 @@ const TILE := 16
 @export var room_height: int = 9    # in tiles
 ## The tile the front door occupies in the bottom wall.
 @export var doorway_x: int = 6
-@export var wall_tint: Color = Color(0.62, 0.5, 0.4)
+## Kept only to shade the wall material slightly; it is no longer what makes a wall a wall.
+@export var wall_tint: Color = Color(0.86, 0.82, 0.78)
 
 const FLOOR_TEX := preload("res://assets/tilesets/ninja_interior_floor.png")
-const FLOOR_TILE := Vector2i(4, 2)   # complete warm brick centre tile; repeats without seams
+
+## Per-scene so two buildings never share a room. Same rule as room shape and doorway.
+@export var floor_tile: Vector2i = Vector2i(1, 1)   # cream brick course, self-tiling
+@export var wall_tile: Vector2i = Vector2i(3, 15)   # tan plaster brick — a wall material
 
 @onready var floor_layer: TileMapLayer = $Floor
 @onready var entities: Node2D = $Entities
@@ -41,7 +52,9 @@ func _build_tileset() -> void:
 	var src := TileSetAtlasSource.new()
 	src.texture = FLOOR_TEX
 	src.texture_region_size = Vector2i(TILE, TILE)
-	src.create_tile(FLOOR_TILE)
+	src.create_tile(floor_tile)
+	if wall_tile != floor_tile:
+		src.create_tile(wall_tile)
 	var ts := TileSet.new()
 	ts.tile_size = Vector2i(TILE, TILE)
 	ts.add_source(src, 0)
@@ -66,7 +79,7 @@ func _build_room() -> void:
 			var is_wall := y == 0 or y == 1 or x == 0 or x == room_width - 1 \
 				or (y == room_height - 1 and x != doorway_x)
 			var layer := wall_layer if is_wall else floor_layer
-			layer.set_cell(Vector2i(x, y), 0, FLOOR_TILE)
+			layer.set_cell(Vector2i(x, y), 0, wall_tile if is_wall else floor_tile)
 
 
 ## A StaticBody border confining the player to the interior floor (inside the walls);

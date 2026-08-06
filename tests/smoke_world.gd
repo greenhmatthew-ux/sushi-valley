@@ -270,11 +270,12 @@ func _run() -> void:
 		Input.action_release("move_left")
 		check_true("house entry lane still reaches the Host side",
 			interior_player.position.x < room_start.x - 10.0)
-		# Probe the bed where it now stands. It moved when the room was re-seated onto the
-		# tile grid — furniture placed mid-tile was drawing half-sunk into the floor. The
+		# Probe the bed where it now stands. It moved again when the room was zoned -- it had
+		# been flush against the left wall -- after first moving when the room was re-seated
+		# onto the tile grid — furniture placed mid-tile was drawing half-sunk into the floor. The
 		# check itself is unchanged: walking up must stop at the bed's base, not pass under
 		# its full 48px art bounds.
-		interior_player.position = Vector2(24, 116)
+		interior_player.position = Vector2(40, 116)
 		Input.action_press("move_up")
 		await _physics_frames(30)
 		Input.action_release("move_up")

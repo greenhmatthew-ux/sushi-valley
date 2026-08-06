@@ -64,7 +64,9 @@ script = ExtResource("1_int")
 room_width = 15
 room_height = 8
 doorway_x = 7
-wall_tint = Color(0.5, 0.54, 0.6, 1)
+wall_tint = Color(0.82, 0.86, 0.9, 1)
+floor_tile = Vector2i(12, 9)
+wall_tile = Vector2i(14, 13)
 
 [node name="Floor" type="TileMapLayer" parent="."]
 texture_filter = 1

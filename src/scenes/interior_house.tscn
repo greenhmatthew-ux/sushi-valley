@@ -60,13 +60,13 @@ offset = Vector2(0, -8)
 y_sort_enabled = true
 
 [node name="Bed" parent="Entities" instance=ExtResource("12_prop")]
-position = Vector2(24, 96)
+position = Vector2(40, 96)
 texture = SubResource("AtlasTexture_bed")
 foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
 
 [node name="SleepSpot" parent="Entities" instance=ExtResource("13_sleep")]
-position = Vector2(24, 96)
+position = Vector2(40, 96)
 
 [node name="Dresser" parent="Entities" instance=ExtResource("12_prop")]
 position = Vector2(168, 48)
@@ -75,18 +75,18 @@ foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
 
 [node name="Plant" parent="Entities" instance=ExtResource("12_prop")]
-position = Vector2(56, 48)
+position = Vector2(72, 48)
 texture = SubResource("AtlasTexture_plant")
 solid = false
 
 [node name="Table" parent="Entities" instance=ExtResource("12_prop")]
-position = Vector2(56, 128)
+position = Vector2(120, 112)
 texture = SubResource("AtlasTexture_table")
 foot_size = Vector2(14, 6)
 foot_offset = Vector2(0, -3)
 
 [node name="Chair" parent="Entities" instance=ExtResource("12_prop")]
-position = Vector2(72, 128)
+position = Vector2(136, 112)
 texture = SubResource("AtlasTexture_chair")
 solid = false
 
@@ -113,7 +113,7 @@ script = ExtResource("5_spawn")
 spawn_id = "interior_entry"
 
 [node name="Loot" parent="Entities" instance=ExtResource("8_pickup")]
-position = Vector2(184, 64)
+position = Vector2(152, 80)
 item_id = "rice"
 qty = 2
 pickup_id = "house_kitchen_rice"
@@ -128,7 +128,7 @@ session_size = 3
 sprite_sheet = ExtResource("11_host")
 
 [node name="StudyDesk" parent="Entities" instance=ExtResource("10_study")]
-position = Vector2(168, 96)
+position = Vector2(168, 112)
 spot_id = "house_desk"
 caption = "You spread your notes across the dresser and go over them."
 session_size = 5
