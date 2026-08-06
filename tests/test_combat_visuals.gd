@@ -44,6 +44,30 @@ func _initialize() -> void:
 	check_true("the portrait is drawn at native scale, unsmoothed",
 		portrait.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST)
 
+	# The foe used to hold one frozen frame for the whole fight, which is most of why combat
+	# did not read as a fight. Drive the panel's own _process rather than waiting on frames:
+	# combat pauses the tree, and this asserts the animation survives that (the panel is
+	# PROCESS_MODE_ALWAYS, and losing that would silently freeze the foe again).
+	var atlas := portrait.texture as AtlasTexture
+	if int(panel.get("_portrait_rows")) > 1:
+		var first_row: float = atlas.region.position.y
+		var moved := false
+		for i in 30:
+			panel.call("_process", 0.1)
+			if atlas.region.position.y != first_row:
+				moved = true
+				break
+		check_true("the foe animates instead of holding one frame", moved)
+		check_true("its frames stay inside the sheet",
+			atlas.region.position.y >= 0
+			and atlas.region.end.y <= atlas.atlas.get_height())
+		# Striking must visibly change its cadence, not just the HP number.
+		panel.call("_strike_portrait")
+		check_true("striking kicks the foe into its fast cadence",
+			float(panel.get("_strike_left")) > 0.0)
+	else:
+		check_true("mushroom's sheet has walk rows to animate", false)
+
 	# A hit must not move a container child: the panel's bars and portrait are laid out by
 	# their container, so a position tween fought the layout and parked the player's HP bar
 	# at the top of the panel. Scale is the one transform a container does not own.

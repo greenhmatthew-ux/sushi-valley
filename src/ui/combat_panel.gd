@@ -47,11 +47,27 @@ const OUTCOME_SECONDS := 0.85
 ## strobe. Half a second each way.
 const TELEGRAPH_TINT := Color(1.0, 0.55, 0.45)
 const TELEGRAPH_SECONDS := 0.5
+## Idle breathing for the foe. The portrait was one frozen frame of a walk sheet, so the
+## enemy sat perfectly still through its own turn -- the single biggest reason combat did not
+## read as a fight. This cycles the sheet's walk rows in place.
+##
+## Well below the 8fps walk cadence: at walking speed a foe standing in a menu looks like it
+## is jogging on the spot. At 3 it reads as shifting its weight.
+const IDLE_FPS := 3.0
+## The attack cadence. Snapping to walk speed for the moment it strikes is what separates
+## "the number changed" from "it lunged at me".
+const STRIKE_FPS := 10.0
+const STRIKE_SECONDS := 0.34
 
 var _root: Control
 var _hit_layer: Control
 var _telegraph: Tween
 var _enemy_portrait: TextureRect
+## The foe's walk sheet, kept so the portrait can animate instead of holding one frame.
+var _portrait_sheet: Texture2D
+var _portrait_rows := 0
+var _portrait_phase := 0.0
+var _strike_left := 0.0
 var _enemy_label: Label
 var _enemy_hp_bar: ProgressBar
 var _intent_label: Label
@@ -133,6 +149,7 @@ func _show_enemy_opening() -> void:
 	_feedback.text = "%s opens for %d damage." % [
 		_encounter.enemy_name, result.enemy_damage_dealt]
 	_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
+	_strike_portrait()
 	_render_bars()
 	_end_turn_btn.hide()
 	_continue_btn.text = "Continue" if _encounter.is_over() else "Your turn"
@@ -197,6 +214,40 @@ func _set_enemy_portrait(enemy_id: String) -> void:
 	_enemy_portrait.visible = texture != null
 	_enemy_portrait.modulate = Color.WHITE
 	_enemy_portrait.position = Vector2.ZERO
+	# Keep the sheet so the portrait can be animated in place. A one-row sheet has no walk
+	# cycle to play, so it simply stays the still it already was.
+	_portrait_sheet = texture
+	_portrait_rows = SpriteSheets.row_count(texture) if texture != null else 0
+	_portrait_phase = 0.0
+	_strike_left = 0.0
+	set_process(_portrait_rows > 1)
+
+
+## Cycle the foe's own walk rows in place: slow while it waits, briefly fast when it strikes.
+##
+## Only the AtlasTexture's region is touched. The portrait is a container child, and the same
+## reason position tweens were rejected for the hit punch applies here -- the container owns
+## its children's position and size, and fighting it parked a bar at the top of the panel.
+## A region swap changes nothing the layout cares about.
+func _process(delta: float) -> void:
+	if _portrait_rows <= 1 or _enemy_portrait == null:
+		return
+	var atlas := _enemy_portrait.texture as AtlasTexture
+	if atlas == null:
+		return
+	var fps := IDLE_FPS
+	if _strike_left > 0.0:
+		_strike_left -= delta
+		fps = STRIKE_FPS
+	_portrait_phase = fmod(_portrait_phase + delta * fps, float(_portrait_rows))
+	var frame := int(_portrait_phase)
+	atlas.region = Rect2i(Vector2i(0, frame) * SpriteSheets.FRAME_SIZE, SpriteSheets.FRAME_SIZE)
+
+
+## Kick the portrait into its fast cadence for one beat, so the foe visibly moves on the turn
+## it hits you rather than only the HP bar moving.
+func _strike_portrait() -> void:
+	_strike_left = STRIKE_SECONDS
 
 
 ## Make a hit look like one: the struck side flashes its colour and lurches, and the number
@@ -482,6 +533,7 @@ func _resolve_end_turn() -> void:
 		if result.counter_damage_dealt > 0:
 			_feedback.text += "   Returned %d damage." % result.counter_damage_dealt
 		_show_hit(_player_hp_bar, result.enemy_damage_dealt, COL_BAD)
+		_strike_portrait()
 		_show_hit(_enemy_portrait, result.counter_damage_dealt, COL_GOOD)
 	_render_bars()
 	_continue_btn.text = "Continue" if _encounter.is_over() \
