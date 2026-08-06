@@ -111,8 +111,15 @@ including "unstated" or "unknown", and move on.
   upper storey that way and shipped looking chopped.
 - **Feet land on a tile line.** `Prop` draws from the bottom-centre, so a prop whose y is
   mid-tile reads as floating or sunk into the floor. Every prop's y must be a multiple of
-  the tile size; x should be a tile centre. An interior placed at y=44/72/104 instead of
-  48/64/80/96/112 is the single reason a room reads as "assets scattered on a background".
+  the tile size. An interior placed at y=44/72/104 instead of 48/64/80/96/112 is the single
+  reason a room reads as "assets scattered on a background".
+  For x, what has to land on a tile line is the sprite's **edge**, not its centre: the rule
+  is `(x - texture_width / 2) % 16 == 0`. So a 16px prop sits on a tile centre (x%16==8) but
+  a 32px tree or a 64px house sits on a tile line (x%16==0). This used to read "x should be
+  a tile centre", which is only true for 16px art — applying it literally put every 32px and
+  64px sprite's edges on half-tiles, and an audit written from it missed half the offenders
+  because it tested the wrong thing. `tests/test_ground_not_flat.gd` shows the pattern for
+  checking this kind of rule in pixels rather than restating it in prose.
 - **Leave breathing room — no tangents.** An edge that just touches another object, a wall,
   a path or a water line reads as a mistake, not as adjacency. Budget at least a tile of gap.
   Check both sides: a building squeezed exactly between a pond bank and a road touches both.
