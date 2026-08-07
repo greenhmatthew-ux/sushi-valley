@@ -27,6 +27,29 @@ signal stage_advanced
 @export var objective_name: String = "Lost Lunchbox"
 @export var recovered_name: String = "Recovered Lunchbox"
 
+## Per-stage flavour, authored per-instance for the same reason the gate's
+## `locked_lines` are: a second Expedition's objective sits in different country and
+## must not narrate a forest it is nowhere near. Every default below is the woods'
+## own wording, so the Lost Lunchbox reads exactly as it always did.
+@export var blocked_lines: PackedStringArray = PackedStringArray([
+	"The thornback has churned the trail into a wall of roots.",
+	"Clear the guard before reaching for the lunchbox.",
+])
+@export var opened_lines: PackedStringArray = PackedStringArray([
+	"Inside is a cedar bento card from the kitchen trial.",
+	"Recall the food kana correctly to break the seal on the wraith grove.",
+])
+@export var awakened_lines: PackedStringArray = PackedStringArray([
+	"The lunchbox is safe. A cold presence now waits in the eastern grove.",
+])
+@export var finished_lines: PackedStringArray = PackedStringArray([
+	"The lunchbox recipe has been copied into your kitchen notes.",
+])
+@export var recall_cleared_toast: String = \
+	"Lunchbox recall cleared — the Forest Wraith has awakened."
+@export var recall_failed_toast: String = \
+	"The grove remains sealed. Inspect the lunchbox to retry the recall."
+
 const CHEST := preload("res://assets/objects/ninja_little_treasure_chest.png")
 
 var _busy := false
@@ -65,34 +88,33 @@ func _run() -> void:
 		return
 	match String(ExpeditionLogic.progress(Learning.profile, expedition_id).get("stage", "")):
 		"active":
-			Bus.dialogue_open.emit(objective_name, [
-				"The thornback has churned the trail into a wall of roots.",
-				"Clear the guard before reaching for the lunchbox.",
-			])
+			Bus.dialogue_open.emit(objective_name, _lines(blocked_lines))
 			await Bus.dialogue_closed
 		"encounter-cleared":
 			ExpeditionLogic.recover_objective(Learning.profile, expedition_id)
 			refresh()
 			stage_advanced.emit()
 			Bus.hud_refresh.emit()
-			Bus.dialogue_open.emit(objective_name, [
-				"Inside is a cedar bento card from the kitchen trial.",
-				"Recall the food kana correctly to break the seal on the wraith grove.",
-			])
+			Bus.dialogue_open.emit(objective_name, _lines(opened_lines))
 			await Bus.dialogue_closed
 			await _run_recall(expedition)
 		"objective-recovered":
 			await _run_recall(expedition)
 		"recall-cleared":
-			Bus.dialogue_open.emit(recovered_name, [
-				"The lunchbox is safe. A cold presence now waits in the eastern grove.",
-			])
+			Bus.dialogue_open.emit(recovered_name, _lines(awakened_lines))
 			await Bus.dialogue_closed
 		_:
-			Bus.dialogue_open.emit(recovered_name, [
-				"The lunchbox recipe has been copied into your kitchen notes.",
-			])
+			Bus.dialogue_open.emit(recovered_name, _lines(finished_lines))
 			await Bus.dialogue_closed
+
+
+## `dialogue_open` takes a typed Array[String]; the exports are PackedStringArray so
+## they are editable per-instance. Same conversion the gate does for `locked_lines`.
+func _lines(authored: PackedStringArray) -> Array[String]:
+	var out: Array[String] = []
+	for line in authored:
+		out.append(String(line))
+	return out
 
 
 ## The focused three-card recall. Unlocks the lesson first so the session always
@@ -110,10 +132,10 @@ func _run_recall(expedition: Dictionary) -> void:
 	if int(res[0]) > 0 and int(res[1]) > 0 \
 			and ExpeditionLogic.mark_recall_cleared(Learning.profile, expedition_id):
 		stage_advanced.emit()
-		Bus.toast.emit("Lunchbox recall cleared — the Forest Wraith has awakened.")
+		Bus.toast.emit(recall_cleared_toast)
 		Bus.hud_refresh.emit()
 		return
-	Bus.toast.emit("The grove remains sealed. Inspect the lunchbox to retry the recall.")
+	Bus.toast.emit(recall_failed_toast)
 
 
 func _build_visual() -> void:

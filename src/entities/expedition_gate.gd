@@ -18,6 +18,13 @@ const ExpeditionLogic = preload("res://src/systems/expedition_logic.gd")
 @export var locked_lines: PackedStringArray = PackedStringArray([
 	"This forest route is sealed.",
 ])
+## What the confirmation calls the run, and what it promises about checkpoints.
+## Authored per-instance for the same reason `locked_lines` is: a second Expedition
+## is a different route through different country, and "the handcrafted forest
+## route" is a lie anywhere but the woods. Defaults are the woods' own wording.
+@export var route_name: String = "handcrafted forest route"
+@export var checkpoint_line: String = \
+	"Progress is saved after the encounter, the lunchbox, the recall, and the boss."
 
 const POST := preload("res://assets/tilesets/serene_village.png")
 ## Picket post from the Serene Village sheet — the same tile the lesson gate
@@ -62,8 +69,8 @@ func _run() -> void:
 	var underway := not existing.is_empty() \
 		and String(existing.get("stage", "")) != "complete"
 	Bus.dialogue_open.emit(title, [
-		"%s the handcrafted forest route?" % ("Resume" if underway else "Begin"),
-		"Progress is saved after the encounter, the lunchbox, the recall, and the boss.",
+		"%s the %s?" % ["Resume" if underway else "Begin", route_name],
+		checkpoint_line,
 	])
 	await Bus.dialogue_closed
 
