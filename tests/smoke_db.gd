@@ -14,16 +14,20 @@ func _initialize() -> void:
 	var db: Node = load("res://src/autoload/db.gd").new()
 	db.load_all()   # not add_child(): _ready() is deferred and would run too late
 
-	check("items", db.items.size(), 172)
-	check("enemies", db.enemies.size(), 76)
-	check("abilities", db.abilities.size(), 68)
-	check("recipes", db.recipes.size(), 84)
-	check("quests", db.quests.size(), 24)
+	# at_least, not exact equality, for the tables content is meant to GROW in. Pinning a
+	# count means every new raid, expedition, quest or item fails a smoke test that was only
+	# ever asking "did the table load", and the fix is always to edit the number -- which
+	# makes the check worthless. Tables with a fixed shape (crops, regions) stay exact.
+	at_least("items", db.items.size(), 172)
+	at_least("enemies", db.enemies.size(), 76)
+	at_least("abilities", db.abilities.size(), 68)
+	at_least("recipes", db.recipes.size(), 84)
+	at_least("quests", db.quests.size(), 24)
 	check("crops", db.crops.size(), 4)
-	check("expeditions", db.expeditions.size(), 1)
-	check("raids", db.raids.size(), 1)
+	at_least("expeditions", db.expeditions.size(), 1)
+	at_least("raids", db.raids.size(), 1)
 	check("regions", db.regions.size(), 12)
-	check("lessons", db.lessons.size(), 138)
+	at_least("lessons", db.lessons.size(), 138)
 	check("learning_content", db.learning_content.size(), 17)
 	var tool_quest: Dictionary = db.quest("tools_of_the_trail")
 	check("tool quest objectives", tool_quest.get("objectives", []).size(), 3)
@@ -167,6 +171,12 @@ func _initialize() -> void:
 	else:
 		print("FAIL — %d check(s) failed." % failures)
 	quit(1 if failures > 0 else 0)
+
+
+## For tables that are supposed to grow: the smoke test asks whether content loaded, not
+## whether it stopped changing.
+func at_least(label: String, got: int, want: int) -> void:
+	check_true("%s = %d (want >= %d)" % [label, got, want], got >= want)
 
 
 func check(label: String, got: int, want: int) -> void:

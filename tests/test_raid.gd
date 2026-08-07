@@ -90,7 +90,27 @@ func _initialize() -> void:
 	check_true("a reloaded profile still refuses to restart the raid",
 		not RaidLogic.can_start(reloaded, raid))
 
+	check_staging(db, reloaded)
 	_finish()
+
+
+## Staged content: a second raid exists only after the first is done.
+##
+## raid_logic already supported requiredFlags; with one raid authored, nothing had ever
+## chained one to another, so the mechanism was untested. This is the shape every later
+## unlock is meant to use -- lesson gates a raid, raid gates the next raid and the
+## expeditions in that area.
+func check_staging(db: Node, _profile) -> void:
+	var second: Dictionary = db.raid("gate_trial")
+	check_true("a second raid is authored", not second.is_empty())
+	if second.is_empty():
+		return
+	check_true("the second raid is gated on the first finishing",
+		Array(second.get("requiredFlags", [])).has("raid_sushi_prep_done"))
+	check_true("its boss encounter exists in the roster",
+		not db.enemy(String(second.get("encounterId", ""))).is_empty())
+	check_true("the two raids do not share a host NPC",
+		String(second.get("npcId", "")) != String(db.raid("sushi_prep").get("npcId", "")))
 
 
 func _finish() -> void:
