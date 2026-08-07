@@ -365,8 +365,13 @@ func _plant_outskirts(used: Rect2i, first_new_x: int, last_new_x: int) -> void:
 		if cell.x < first_new_x + 1 or cell.x > last_new_x - 1:
 			return {}
 		if cell.x >= last_new_x - 2:
-			return {"tree": 0.9, "rock": 0.05, "bush": 0.02}   # the hedgerow edge
-		return {"tree": 0.14, "rock": 0.05, "bush": 0.16}      # open field
+			return {"tree": 0.9, "rock": 0.04, "bush": 0.02}   # the hedgerow edge
+		# Berry bushes were 0.16 and rocks 0.05, which covered the open fields in grey-green
+		# lumps studded with orange. Read at a glance they look like ore seams or pickable
+		# berries — scenery pretending to be interactive — and at that density they stopped
+		# reading as anything at all. Both are now sparse enough to be punctuation, and
+		# because "bush" is clumped they land as occasional thickets rather than litter.
+		return {"tree": 0.13, "rock": 0.02, "bush": 0.045}     # open field
 	var clumped: Array[String] = ["tree", "bush"]
 	for entry in Scatter.plan_cover(size, blocked, mix, clumped, OUTSKIRTS_SEED):
 		var cell: Vector2i = entry["cell"]

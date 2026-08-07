@@ -1081,7 +1081,7 @@ offset = Vector2(0, -8)
 [node name="@Sprite2D@308" type="Sprite2D" parent="Props" unique_id=192617215]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(264, 368)
+position = Vector2(232, 368)
 texture = SubResource("AtlasTexture_1dq8c")
 offset = Vector2(0, -8)
 
