@@ -35,12 +35,22 @@ func _run() -> void:
 			continue
 		scanned += 1
 		var externals := _external_textures(text)
+		var scripts := _external_scripts(text)
 		for block in _node_blocks(text):
+			var sheet := ""
 			var sheet_id := _field(block, "sprite_sheet_ext")
-			if sheet_id.is_empty() or not externals.has(sheet_id):
-				continue
-			var sheet: String = externals[sheet_id]
-			if not sheet.contains("npc_"):
+			if not sheet_id.is_empty() and externals.has(sheet_id):
+				sheet = String(externals[sheet_id])
+			else:
+				# A node that sets no sprite_sheet still wears one — the @export default in
+				# its script. Skipping those is how the village quest giver shared
+				# npc_villager with a Wilds NPC for as long as this test has existed: Mako was
+				# invisible here precisely because she had been left on the defaults.
+				var script_id := _field(block, "script_ext")
+				if script_id.is_empty() or not scripts.has(script_id):
+					continue
+				sheet = _default_sheet_for(String(scripts[script_id]))
+			if sheet.is_empty() or not sheet.contains("npc_"):
 				continue
 			var who := _field(block, "speaker")
 			if who.is_empty():
@@ -83,6 +93,27 @@ func _external_textures(text: String) -> Dictionary:
 	return out
 
 
+## id -> res:// path, for every Script ext_resource in the file.
+func _external_scripts(text: String) -> Dictionary:
+	var out: Dictionary = {}
+	var re := RegEx.create_from_string(
+		'\\[ext_resource type="Script"[^\\]]*path="([^"]+)"[^\\]]*id="([^"]+)"\\]')
+	for m in re.search_all(text):
+		out[m.get_string(2)] = m.get_string(1)
+	return out
+
+
+## The sheet a script hands out when a scene sets none, read off its `@export` line.
+func _default_sheet_for(script_path: String) -> String:
+	var src := FileAccess.get_file_as_string(script_path)
+	if src.is_empty():
+		return ""
+	var re := RegEx.create_from_string(
+		'@export var sprite_sheet[^=]*=\\s*preload\\("([^"]+)"\\)')
+	var m := re.search(src)
+	return m.get_string(1) if m != null else ""
+
+
 func _node_blocks(text: String) -> Array[String]:
 	var blocks: Array[String] = []
 	var parts := text.split("[node ")
@@ -96,6 +127,8 @@ func _field(block: String, which: String) -> String:
 	match which:
 		"sprite_sheet_ext":
 			pattern = '\\n\\s*sprite_sheet = ExtResource\\("([^"]+)"\\)'
+		"script_ext":
+			pattern = '\\n\\s*script = ExtResource\\("([^"]+)"\\)'
 		"speaker":
 			pattern = '\\n\\s*speaker = "([^"]+)"'
 		"node_name":

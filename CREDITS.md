@@ -20,8 +20,15 @@ verified against the running scenes — not an aspirational or inherited list.
   Hunter, Inspector and Shaman sheets, added so no two people in a region share a look,
   plus Village6 as `npc_host.png` for the house Host and Eskimo as `npc_lookout.png` for the
   pass lookout Tomas -- those two had been sharing faces with Hana and the wilds Keeper
-  across regions, which `tests/test_npc_faces_differ.gd` now prevents; the pack has ~76 more
+  across regions, which `tests/test_npc_faces_differ.gd` now prevents; the pack has ~72 more
   unused sheets at this exact 64x112 size),
+  plus EggGirl as `npc_market_woman.png` for the stallholder Mako and Princess as
+  `npc_greeter.png` for the village greeter Emi -- Mako had been left on quest_giver.gd's
+  export default and so wore `npc_villager` unnoticed, and Emi on npc.gd's default, sharing
+  `npc_villager2` with the wilds Keeper; the face test counted only explicit `sprite_sheet`
+  assignments and now reads script defaults too,
+  the pack's `TilesetHouse.png` market awning (source x256-304 y256-288, cropped tight to
+  48x26) as `assets/props/market_stall.png` -- the stall Mako's own quest asks you to stock,
   the pack's `FX/Attack` set as `assets/fx/` -- Cut, CutDouble, CutX, Claw, ClawDouble,
   CircularSlash and SlashCurved, seven sheets of uniform 32x32 frames, used for the attack
   effect every ability now throws in combat,

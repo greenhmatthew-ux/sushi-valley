@@ -40,6 +40,9 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_villager6.png" id="55_vil6"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_noble.png" id="56_noble"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npc_oldman.png" id="57_oldman"]
+[ext_resource type="Texture2D" path="res://assets/props/market_stall.png" id="58_stall"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_greeter.png" id="60_greeter"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc_market_woman.png" id="59_mako"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="36_sign"]
 [ext_resource type="Script" path="res://src/entities/fishing_spot.gd" id="37_rjtf1"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="37_study"]
@@ -1019,6 +1022,14 @@ texture = ExtResource("51_store")
 foot_size = Vector2(66, 12)
 foot_offset = Vector2(-1, -6)
 
+[node name="MakoStall" type="Node2D" parent="Props" instance=ExtResource("20_prop")]
+y_sort_enabled = true
+position = Vector2(456, 192)
+script = ExtResource("5_s0qb0")
+texture = ExtResource("58_stall")
+foot_size = Vector2(44, 8)
+foot_offset = Vector2(0, -4)
+
 [node name="House2Collision" type="StaticBody2D" parent="Props" unique_id=1344327697]
 position = Vector2(544, 262)
 
@@ -1168,6 +1179,7 @@ collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("10_s5gw1")
+sprite_sheet = ExtResource("60_greeter")
 npc_id = "villager_greeter"
 speaker = "Emi"
 lines = PackedStringArray("Welcome to the valley, traveler!", "The torii to the north stays shut until you can recall your kana — study at the gate and it opens.", "Hold TAB any time to see the English for what you are reading.")
@@ -1264,13 +1276,16 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("19_kmle6")
 
-[node name="QuestGiver" type="Area2D" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
+[node name="QuestGiverMako" type="Area2D" parent="Props" unique_id=2040939577 instance=ExtResource("14_quest")]
 y_sort_enabled = true
-position = Vector2(344, 224)
+position = Vector2(456, 208)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("21_f3ebj")
+quest_id = "stock_the_stall"
+speaker = "Mako"
+sprite_sheet = ExtResource("59_mako")
 shop_id = "mako_stall"
 greeting_card = "greet-konnichiwa"
 

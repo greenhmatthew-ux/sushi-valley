@@ -110,9 +110,18 @@ func _mako_stocks_every_authored_crop_seed() -> void:
 
 func _village_mako_is_linked_to_the_stall() -> void:
 	var village: Node = load("res://src/scenes/world.tscn").instantiate()
-	var mako: Node = village.find_child("QuestGiver", true, false)
+	var mako: Node = village.find_child("QuestGiverMako", true, false)
 	check_true("the playable village contains Mako", mako != null)
 	check_eq("village Mako unlocks the starter stall", mako.get("shop_id"), "mako_stall")
+	# She ran on the export defaults for a long time, which is why an audit of explicit
+	# `quest_id =` assignments reported her quest as reachable by nobody. State it outright.
+	check_eq("village Mako offers her authored quest", mako.get("quest_id"), "stock_the_stall")
+	check_eq("village Mako is named in the scene", mako.get("speaker"), "Mako")
+	var stall: Node = village.find_child("MakoStall", true, false)
+	check_true("Mako has a stall to stock", stall != null)
+	check_true("the stall stands within a tile of her pitch",
+		stall != null and (stall.get("position") as Vector2).distance_to(
+			mako.get("position") as Vector2) <= 32.0)
 	village.free()
 
 
