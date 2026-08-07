@@ -88,6 +88,35 @@ position = Vector2(320, 72)
 script = ExtResource("5_spawn")
 spawn_id = "wilds_north"
 
+[node name="ApproachOwl" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(240, 120)
+enemy_atk = 4
+sprite_sheet = ExtResource("27_owl")
+enemy_id = "owl"
+coin_reward = 8
+coin_variance = 2
+
+[node name="ApproachLizard" parent="Entities" instance=ExtResource("11_enemy")]
+position = Vector2(400, 152)
+enemy_id = "lizard"
+max_hp = 32
+enemy_def = 4
+enemy_atk = 7
+sprite_sheet = ExtResource("33_lizard")
+coin_reward = 9
+coin_variance = 3
+
+[node name="ApproachIronSeam" parent="Entities" instance=ExtResource("31_gather")]
+position = Vector2(176, 152)
+node_id = "wilds_approach_iron"
+display_name = "Roadside Iron Seam"
+item_id = "raw_iron_ore"
+base_qty = 2
+reset_days = 2
+skill_station = "forge"
+level_req = 1
+resource_kind = "ore"
+
 [node name="PassGate" type="Area2D" parent="Entities" instance=ExtResource("60_gate")]
 y_sort_enabled = true
 position = Vector2(320, 104)
