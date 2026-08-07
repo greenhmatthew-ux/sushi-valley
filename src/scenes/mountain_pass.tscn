@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3]
+[gd_scene load_steps=32 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/mountain_pass.gd" id="1_pass"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/ninja_relief.png" id="2_relief"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="24_gather"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="25_sign"]
 [ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="27_expgate"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_dragon.png" id="28_dragon"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_relief"]
 texture = ExtResource("2_relief")
@@ -357,6 +358,16 @@ enemy_def = 8
 enemy_atk = 20
 sprite_sheet = ExtResource("13_bear")
 coin_reward = 24
+coin_variance = 8
+
+[node name="LedgeDrake" parent="Entities" instance=ExtResource("9_enemy")]
+position = Vector2(784, 240)
+enemy_id = "cliff_drake"
+max_hp = 110
+enemy_def = 12
+enemy_atk = 24
+sprite_sheet = ExtResource("28_dragon")
+coin_reward = 34
 coin_variance = 8
 
 [node name="SwitchbackIron" parent="Entities" instance=ExtResource("24_gather")]

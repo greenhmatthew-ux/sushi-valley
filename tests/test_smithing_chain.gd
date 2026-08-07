@@ -30,7 +30,11 @@ const REGIONS := [
 ]
 
 ## Kaji's line, in the order his giver hands it out.
-const KAJI_CHAIN := ["tools_of_the_trail", "smiths_first_order", "kaji_copper_testing"]
+## Kaji's line, in the order the resolver hands it out. `scale_spectrum` joined the end once
+## a Cliff Drake was placed on the Mountain Pass — before that its green scales dropped from
+## two enemies that appear in no scene, so pointing Kaji at it would have stranded the player.
+const KAJI_CHAIN := ["tools_of_the_trail", "smiths_first_order", "kaji_copper_testing",
+	"scale_spectrum"]
 
 var failures: int = 0
 var db: Node

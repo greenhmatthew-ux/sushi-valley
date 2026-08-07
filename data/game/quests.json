@@ -159,11 +159,11 @@
     "id": "scale_spectrum",
     "title": "The Scale Spectrum",
     "giver": "Kaji",
-    "desc": "Kaji is cataloguing dragon affinities. Bring three green scales from Lesser Dragons or Tyrant Lizards.",
+    "desc": "Kaji is cataloguing dragon affinities. Bring three green scales from the Cliff Drakes on the Mountain Pass.",
     "goal": { "item": "dragon_scale", "qty": 3 },
     "reward": { "coins": 160, "items": [{ "id": "silver_dragon_scale", "qty": 1 }] },
-    "offerLines": ["Dragon colors are not decoration. Green holds life; blue carries focus; silver braces the whole piece.", "Bring me three green scales. I will show you how the grain differs."],
-    "progressLines": ["Green scales: {progress}/{goal}. Lesser Dragons and Tyrant Lizards are the reliable source."],
+    "offerLines": ["Dragon colors are not decoration. Green holds life; blue carries focus; silver braces the whole piece.", "A drake works the wind ledge up on the pass. Bring me three of its green scales and I will show you how the grain differs."],
+    "progressLines": ["Green scales: {progress}/{goal}. The Cliff Drake on the pass's wind ledge is the one reliable source — and the summit climb keeps another."],
     "turnInLines": ["See the fibers under the light? Good. Keep this silver scale as your comparison piece."]
   },
   {
@@ -208,7 +208,8 @@
     "reward": { "coins": 80, "items": [{ "id": "copper_ore", "qty": 5 }] },
     "offerLines": ["Bronze is the beginning of the alloy path. Smelt copper ore and iron ore together at my forge.", "Smelt two bronze ingots and bring them here. Show me your hand is steady."],
     "progressLines": ["Two bronze ingots. Copper and iron seams in the woods are the raw source."],
-    "turnInLines": ["Perfect smelting color. You are ready for the forge's deeper plans. Keep these copper chunks for your next run."]
+    "turnInLines": ["Perfect smelting color. You are ready for the forge's deeper plans. Keep these copper chunks for your next run."],
+    "followUpQuest": "scale_spectrum"
   },
   {
     "id": "karim_canyon_golem_hunt",
