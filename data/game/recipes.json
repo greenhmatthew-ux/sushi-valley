@@ -275,7 +275,7 @@
     "output": { "item": "iron_geta", "qty": 1 },
     "xp": 28,
     "discovery": "scroll",
-    "discoverySource": "chest:MountainPass:summit_chest",
+    "discoverySource": "expedition:pass_summit",
     "desc": "Iron-shod sandals. Heavy, but they hold the trail."
   },
   {

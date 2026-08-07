@@ -14,7 +14,12 @@ const ENEMY_BODY_LAYER := 4
 const PLAYER_SCENE := "res://src/entities/player.tscn"
 const ENEMY_SCENE := "res://src/entities/enemy.tscn"
 const DOOR_SCENE := "res://src/entities/door.tscn"
-const EXPEDITION_SCRIPT := "res://src/scenes/expedition_forest.gd"
+## Every Expedition room hides and wakes its boss the same way, so every one of them
+## has to restore the enemy onto the enemy layer rather than onto terrain.
+const EXPEDITION_SCRIPTS: Array[String] = [
+	"res://src/scenes/expedition_forest.gd",
+	"res://src/scenes/expedition_pass.gd",
+]
 
 var failures: int = 0
 
@@ -67,13 +72,16 @@ func _check_door_detects_only_the_player(door_block: String) -> void:
 
 
 func _check_expedition_restores_the_enemy_layer() -> void:
-	var source := FileAccess.get_file_as_string(EXPEDITION_SCRIPT)
-	var active_block := _function_block(source, "_set_active")
-	check_true("expedition stage activation function is present", not active_block.is_empty())
-	check_true("expedition reactivation restores the dedicated enemy layer",
-		active_block.contains("\"collision_layer\", 4 if active else 0"))
-	check_true("expedition never restores an enemy onto the terrain layer",
-		not active_block.contains("\"collision_layer\", 1 if active else 0"))
+	for path in EXPEDITION_SCRIPTS:
+		var room := path.get_file().get_basename()
+		var source := FileAccess.get_file_as_string(path)
+		var active_block := _function_block(source, "_set_active")
+		check_true("%s stage activation function is present" % room,
+			not active_block.is_empty())
+		check_true("%s reactivation restores the dedicated enemy layer" % room,
+			active_block.contains("\"collision_layer\", 4 if active else 0"))
+		check_true("%s never restores an enemy onto the terrain layer" % room,
+			not active_block.contains("\"collision_layer\", 1 if active else 0"))
 
 
 func _root_node_block(path: String, node_name: String, node_type: String) -> String:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3]
+[gd_scene load_steps=31 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/mountain_pass.gd" id="1_pass"]
 [ext_resource type="Texture2D" path="res://assets/tilesets/ninja_relief.png" id="2_relief"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="23_weather"]
 [ext_resource type="PackedScene" path="res://src/entities/resource_node.tscn" id="24_gather"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="25_sign"]
+[ext_resource type="Script" path="res://src/entities/expedition_gate.gd" id="27_expgate"]
 
 [sub_resource type="TileSetAtlasSource" id="atlas_relief"]
 texture = ExtResource("2_relief")
@@ -34,6 +35,9 @@ texture = ExtResource("2_relief")
 [sub_resource type="TileSet" id="ts_relief"]
 tile_size = Vector2i(16, 16)
 sources/0 = SubResource("atlas_relief")
+
+[sub_resource type="CircleShape2D" id="trailhead_reach"]
+radius = 26.0
 
 [node name="MountainPass" type="Node2D"]
 y_sort_enabled = true
@@ -394,6 +398,27 @@ position = Vector2(720, 464)
 sign_id = "pass_ledge"
 shows_card = "kana-te"
 caption = "A post lashed with rope where the track turns onto the wind ledge."
+
+[node name="SummitTrailhead" type="Area2D" parent="Entities"]
+position = Vector2(744, 112)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+script = ExtResource("27_expgate")
+expedition_id = "pass_summit"
+room_scene = "res://src/scenes/expedition_pass.tscn"
+locked_lines = PackedStringArray("Rope and cairns mark a route on past the roost, and the last cairn has been knocked flat.", "Hold the valley gate in the Gatekeeper's Gate Trial, and the climb above the snow line is yours.")
+route_name = "climb to the summit cache"
+checkpoint_line = "Progress is saved after the narrows, the cache, the recall, and the king."
+
+[node name="Reach" type="CollisionShape2D" parent="Entities/SummitTrailhead"]
+shape = SubResource("trailhead_reach")
+
+[node name="SummitReturn" type="Marker2D" parent="Entities"]
+position = Vector2(704, 112)
+script = ExtResource("5_spawn")
+spawn_id = "summit_return"
 
 [node name="UILayer" parent="." instance=ExtResource("22_ui")]
 

@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/expedition_pass.gd" id="1_room"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/ninja_interior_floor.png" id="2_floor"]
+[ext_resource type="PackedScene" path="res://src/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://src/entities/door.tscn" id="4_door"]
+[ext_resource type="Script" path="res://src/entities/spawn_point.gd" id="5_spawn"]
+[ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="6_enemy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_dragon.png" id="7_dragon"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy_cyclope.png" id="8_cyclope"]
+[ext_resource type="Script" path="res://src/entities/expedition_objective.gd" id="9_objective"]
+[ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="10_study"]
+[ext_resource type="Texture2D" path="res://assets/props/rock.png" id="13_rock"]
+[ext_resource type="PackedScene" path="res://src/ui/ui_layer.tscn" id="11_ui"]
+[ext_resource type="PackedScene" path="res://src/ui/weather_overlay.tscn" id="12_weather"]
+
+[sub_resource type="TileSetAtlasSource" id="atlas_f"]
+texture = ExtResource("2_floor")
+11:11/0 = 0
+
+[sub_resource type="TileSet" id="ts_f"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("atlas_f")
+
+[sub_resource type="CircleShape2D" id="reach"]
+radius = 26.0
+
+[node name="ExpeditionPass" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_room")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("ts_f")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(248, 664)
+
+[node name="ExpeditionEntry" type="Marker2D" parent="Entities"]
+position = Vector2(248, 664)
+script = ExtResource("5_spawn")
+spawn_id = "expedition_entry"
+
+[node name="RetreatDoor" parent="Entities" instance=ExtResource("4_door")]
+position = Vector2(248, 712)
+target_scene = "res://src/scenes/mountain_pass.tscn"
+target_spawn = "summit_return"
+auto_enter = true
+destination = "the Mountain Pass"
+post_offset = Vector2(-22, 0)
+sign_offset = Vector2(26, -20)
+label_offset = Vector2(0, -40)
+
+[node name="TrailGuard" parent="Entities" instance=ExtResource("6_enemy")]
+position = Vector2(216, 536)
+max_hp = 168
+enemy_def = 16
+enemy_atk = 32
+sprite_sheet = ExtResource("7_dragon")
+enemy_id = "cliff_drake"
+coin_reward = 40
+coin_variance = 8
+
+[node name="SummitCairn" parent="Entities" instance=ExtResource("10_study")]
+position = Vector2(136, 440)
+spot_id = "summit_cairn"
+caption = "A cairn at the end of the spur, out of the wind. You warm your hands and go over the route cards."
+session_size = 5
+sprite = ExtResource("13_rock")
+
+[node name="SummitCache" type="Area2D" parent="Entities"]
+position = Vector2(296, 360)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = true
+y_sort_enabled = true
+script = ExtResource("9_objective")
+expedition_id = "pass_summit"
+objective_name = "Summit Cache"
+recovered_name = "Opened Cache"
+blocked_lines = PackedStringArray("A cliff drake holds the narrows below, and it has not moved aside for anyone yet.", "Clear the guard before climbing to the cache.")
+opened_lines = PackedStringArray("Under oiled cloth is a courier's bundle of route cards — the phrases for asking your way onward.", "Recall them correctly to read the cards through to the summit.")
+awakened_lines = PackedStringArray("The cache is yours. Something has stood up in the snow above the last cairn.")
+finished_lines = PackedStringArray("The cache stands open and empty. The route cards are copied into your notes.")
+recall_cleared_toast = "Route cards read — the Mountain King has risen."
+recall_failed_toast = "The route cards blur in the cold. Inspect the cache to retry the recall."
+
+[node name="Reach" type="CollisionShape2D" parent="Entities/SummitCache"]
+shape = SubResource("reach")
+
+[node name="MountainKing" parent="Entities" instance=ExtResource("6_enemy")]
+position = Vector2(248, 136)
+max_hp = 300
+enemy_def = 18
+enemy_atk = 30
+sprite_sheet = ExtResource("8_cyclope")
+enemy_id = "mountain_king"
+coin_reward = 110
+coin_variance = 20
+
+[node name="UILayer" parent="." instance=ExtResource("11_ui")]
+
+[node name="WeatherOverlay" parent="." instance=ExtResource("12_weather")]

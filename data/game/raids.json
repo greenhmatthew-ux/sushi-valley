@@ -51,9 +51,12 @@
       ]
     },
     "unlockFlags": [
-      "raid_gate_trial_done"
+      "raid_gate_trial_done",
+      "expedition_summit_unlocked"
     ],
-    "unlockExpeditionIds": [],
+    "unlockExpeditionIds": [
+      "pass_summit"
+    ],
     "repeatable": false
   }
 ]

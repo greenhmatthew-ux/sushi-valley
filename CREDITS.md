@@ -33,6 +33,12 @@ verified against the running scenes — not an aspirational or inherited list.
   native 16px Pickaxe, Axe, and Sickle icons used by the three permanent gathering tools. The
   Mountain Pass is built from the pack's `TilesetRelief` rock terrain and `TilesetReliefDetail` scree, and its foes use the
   pack's Lizard, Mole, Bear, BlueBat and Tengu sheets.
+  The Summit Cache Expedition above it is drawn from the same pack but deliberately not the
+  same sheets: its snow-over-stone ground is the grey-green alpine family on
+  `TilesetInterior` floor (swept stone, light snow, drift), its ravine walls are the rough
+  rock tile on `TilesetReliefDetail`, and its two foes are the pack's Dragon sheet as
+  `enemy_dragon.png` (Cliff Drake) and Cyclope as `enemy_cyclope.png` (Mountain King) —
+  both previously unused, and both at the native 64x64 every other enemy here uses.
   `assets/props/building_lake_house.png` is the pack's `Backgrounds/Tilesets/TilesetHouse.png`
   timber house, tiles x25-28 of rows 8, 9, 12 and 13 assembled at the width the art was drawn
   for, giving the lake house a Japanese building of its own instead of a second copy of

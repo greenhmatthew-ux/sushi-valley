@@ -96,9 +96,11 @@ func _live_roster_profiles_are_complete() -> void:
 		"tengu": Behaviors.HUNTER,
 		"thornback": Behaviors.TERRITORIAL,
 		"forest_wraith": Behaviors.HUNTER,
+		"cliff_drake": Behaviors.TERRITORIAL,
+		"mountain_king": Behaviors.TERRITORIAL,
 	}
-	check_eq("all 14 live enemies have authored world profiles",
-		Behaviors.ENEMY_PRESETS.size(), 14)
+	check_eq("all 16 live enemies have authored world profiles",
+		Behaviors.ENEMY_PRESETS.size(), 16)
 	for enemy_id: String in expected:
 		var profile := Behaviors.profile(enemy_id)
 		check_eq("%s keeps its authored disposition" % enemy_id,

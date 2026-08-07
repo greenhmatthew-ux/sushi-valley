@@ -421,6 +421,49 @@ const ENEMY_PRESETS: Dictionary = {
 		"recovery_seconds": 2.5,
 		"post_flee_grace_seconds": 1.8,
 	},
+	# The Summit Cache Expedition's pair. A guard that owns one place and a boss that
+	# owns the whole top of the mountain — the contrast is the point, so they are not
+	# two settings of the same aggressive profile.
+	"cliff_drake": {
+		"id": "cliff_drake",
+		"disposition": TERRITORIAL,
+		"detect_radius": 96.0,
+		# It is guarding a narrows, so it holds ground rather than patrolling. It was
+		# authored with a lunge first; the schema rejects that, because a pursuit burst
+		# belongs to a HUNTER and a thing that defends one spot is not hunting you. The
+		# rule is right, so the burst went rather than the disposition — the drake is a
+		# wall across the route, and the fast top end of the territorial chase band is
+		# what makes it feel like one.
+		"roam_radius": 56.0,
+		"leash_radius": 160.0,
+		"roam_speed": 22.0,
+		"chase_speed": 62.0,
+		"burst_speed": 0.0,
+		"burst_seconds": 0.0,
+		"warning_seconds": 0.8,
+		"memory_seconds": 4.0,
+		"recovery_seconds": 2.8,
+		"post_flee_grace_seconds": 2.0,
+	},
+	"mountain_king": {
+		"id": "mountain_king",
+		"disposition": TERRITORIAL,
+		# Slowest thing in the roster (enemies.json speed 5) and the heaviest: no burst at
+		# all, but the longest memory and reach of any authored profile. You do not
+		# outrun him in a sprint, you outlast him — which is the fight "the summit itself
+		# appears to stand and draw a weapon" should be.
+		"detect_radius": 120.0,
+		"roam_radius": 48.0,
+		"leash_radius": 208.0,
+		"roam_speed": 18.0,
+		"chase_speed": 52.0,
+		"burst_speed": 0.0,
+		"burst_seconds": 0.0,
+		"warning_seconds": 1.4,
+		"memory_seconds": 5.5,
+		"recovery_seconds": 3.5,
+		"post_flee_grace_seconds": 2.5,
+	},
 }
 
 const ENEMY_ID_ALIASES: Dictionary = {

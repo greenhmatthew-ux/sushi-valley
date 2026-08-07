@@ -33,9 +33,11 @@ func _run() -> void:
 	var first: Dictionary = db.raid("sushi_prep")
 	var second: Dictionary = db.raid("gate_trial")
 	var expedition: Dictionary = db.expedition("forest_lunchbox")
-	check_true("the chain's three pieces are authored",
-		not first.is_empty() and not second.is_empty() and not expedition.is_empty())
-	if first.is_empty() or second.is_empty() or expedition.is_empty():
+	var summit: Dictionary = db.expedition("pass_summit")
+	check_true("the chain's four pieces are authored",
+		not first.is_empty() and not second.is_empty()
+		and not expedition.is_empty() and not summit.is_empty())
+	if first.is_empty() or second.is_empty() or expedition.is_empty() or summit.is_empty():
 		_finish()
 		return
 
@@ -77,6 +79,23 @@ func _run() -> void:
 		RaidLogic.can_start(profile, second))
 	check_true("finishing the first raid arms the expedition gate",
 		ExpeditionLogic.unlock_ready(profile, expedition))
+	check_true("but NOT the summit expedition, which is two links further out",
+		not ExpeditionLogic.unlock_ready(profile, summit))
+
+	# --- finishing raid two opens the summit expedition ---
+	#
+	# This is the link the second raid was missing. `gate_trial` shipped with an
+	# unlockFlag that nothing anywhere consumed, so the deepest node of the chain paid
+	# out into nothing and the arc simply stopped. Walking it here is what keeps a
+	# future raid from being authored the same way.
+	RaidLogic.start(profile, second)
+	RaidLogic.mark_recall_cleared(profile, "gate_trial")
+	RaidLogic.complete_boss(profile, db, inv, second)
+	check_true("the second raid records itself complete",
+		String(RaidLogic.progress(profile, "gate_trial").get("stage", "")) == "complete")
+	check_true("finishing the second raid arms the summit expedition (%s)"
+		% str(summit.get("requiredFlags", [])),
+		ExpeditionLogic.unlock_ready(profile, summit))
 
 	# --- every flag a piece hands out is one some other piece asks for ---
 	# A renamed flag on either side is invisible to the pieces themselves and strands the
@@ -113,7 +132,43 @@ func _run() -> void:
 	check_true("no raid unlocks an expedition that does not exist (%s)"
 		% ("all links resolve" if bad_links.is_empty() else ", ".join(PackedStringArray(bad_links))),
 		bad_links.is_empty())
+
+	# --- and every authored expedition has a door into it ---
+	#
+	# The generic checks above only prove the DATA agrees with itself. An expedition can
+	# still be perfectly wired and completely unreachable, because the thing that opens
+	# one is a gate node placed in a region scene — and nothing in the data knows whether
+	# that node exists. This walks the scenes and asks.
+	var gated: Dictionary = {}
+	for scene_path in _region_scenes():
+		var text := FileAccess.get_file_as_string(scene_path)
+		if not text.contains("expedition_gate.gd"):
+			continue
+		for line in text.split("
+"):
+			var trimmed := String(line).strip_edges()
+			if trimmed.begins_with("expedition_id = \""):
+				gated[trimmed.trim_prefix("expedition_id = \"").trim_suffix("\"")] = scene_path
+	var unreachable: Array[String] = []
+	for exp_id in db.expeditions:
+		if not gated.has(String(exp_id)):
+			unreachable.append(String(exp_id))
+	check_true("every expedition has a gate placed in a region (%s)"
+		% ("all reachable" if unreachable.is_empty()
+			else "no way in: " + ", ".join(PackedStringArray(unreachable))),
+		unreachable.is_empty())
 	_finish()
+
+
+func _region_scenes() -> Array[String]:
+	var out: Array[String] = []
+	var dir := DirAccess.open("res://src/scenes")
+	if dir == null:
+		return out
+	for file in dir.get_files():
+		if file.ends_with(".tscn"):
+			out.append("res://src/scenes/%s" % file)
+	return out
 
 
 func check_true(label: String, condition: bool) -> void:

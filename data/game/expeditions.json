@@ -34,5 +34,40 @@
     "repeatable": true,
     "estimatedMinutes": 8,
     "status": "playable"
+  },
+  {
+    "id": "pass_summit",
+    "displayName": "Summit Cache Expedition",
+    "biomeId": "alpine",
+    "entryMap": "MountainPass",
+    "entrySpawn": "summit_return",
+    "mapLevelId": "SummitCacheExpedition",
+    "requiredFlags": ["expedition_summit_unlocked"],
+    "requiredRaidIds": ["gate_trial"],
+    "lessonFocus": "travel-transit",
+    "encounterIds": ["cliff_drake"],
+    "bossEncounterId": "mountain_king",
+    "objectiveId": "recover_summit_cache",
+    "rewardIds": ["recipe_stamp", "tempered_iron"],
+    "reward": {
+      "coins": 220,
+      "items": [
+        { "id": "recipe_stamp", "qty": 1 },
+        { "id": "tempered_iron", "qty": 2 }
+      ]
+    },
+    "unlockFlags": ["expedition_summit_done"],
+    "placements": {
+      "entryGate": { "x": 744, "y": 112 },
+      "entry": { "x": 248, "y": 664 },
+      "encounter": { "x": 216, "y": 536 },
+      "objective": { "x": 296, "y": 360 },
+      "boss": { "x": 248, "y": 136 }
+    },
+    "returnMap": "MountainPass",
+    "returnSpawn": "summit_return",
+    "repeatable": true,
+    "estimatedMinutes": 10,
+    "status": "playable"
   }
 ]

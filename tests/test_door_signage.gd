@@ -22,6 +22,7 @@ const SCENES := [
 	"res://src/scenes/mountain_pass.tscn",
 	"res://src/scenes/interior_house.tscn",
 	"res://src/scenes/expedition_forest.tscn",
+	"res://src/scenes/expedition_pass.tscn",
 ]
 ## Serene Village grass — anything else on a trail cell means dirt was laid there.
 const GRASS := Vector2i(4, 0)
@@ -109,7 +110,7 @@ func _check_route_reaches_doors(scene_name: String, scene: Node, doors: Array[No
 			for door in doors:
 				check_eq("the pass route reaches %s" % door.name,
 					ground.get_cell_atlas_coords(_tile_of(door, scene.TILE)), scene.TRAIL)
-		"expedition_forest.tscn":
+		"expedition_forest.tscn", "expedition_pass.tscn":
 			var route: Dictionary = scene.get("_route_cells")
 			for door in doors:
 				check_true("the expedition trail reaches %s" % door.name,

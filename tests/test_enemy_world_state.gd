@@ -13,6 +13,7 @@ const ACTIVE_REGION_SCENES: Array[String] = [
 	"res://src/scenes/wilds.tscn",
 	"res://src/scenes/mountain_pass.tscn",
 	"res://src/scenes/expedition_forest.tscn",
+	"res://src/scenes/expedition_pass.tscn",
 ]
 const REQUIRED_STATES: Array[String] = [
 	"IDLE", "ROAM", "ALERT", "CHASE", "ENGAGE", "RETURN",
