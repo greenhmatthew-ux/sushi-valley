@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" path="res://assets/props/tree_sakura.png" id="9_ts"]
 [ext_resource type="Texture2D" path="res://assets/props/rock.png" id="10_rk"]
 [ext_resource type="PackedScene" path="res://src/entities/enemy.tscn" id="11_enemy"]
+[ext_resource type="PackedScene" path="res://src/entities/lesson_gate.tscn" id="60_gate"]
+[ext_resource type="Script" path="res://src/entities/lesson_gate.gd" id="61_gate_script"]
 [ext_resource type="PackedScene" path="res://src/entities/teacher_npc.tscn" id="20_teacher"]
 [ext_resource type="PackedScene" path="res://src/entities/sign_post.tscn" id="21_sign"]
 [ext_resource type="PackedScene" path="res://src/entities/study_spot.tscn" id="22_study"]
@@ -85,6 +87,17 @@ sign_offset = Vector2(-44, 0)
 position = Vector2(320, 72)
 script = ExtResource("5_spawn")
 spawn_id = "wilds_north"
+
+[node name="PassGate" type="Area2D" parent="Entities" instance=ExtResource("60_gate")]
+y_sort_enabled = true
+position = Vector2(320, 104)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("61_gate_script")
+gate_id = "pass_torii"
+required_lesson = "travel-transit"
+fail_message = "The pass torii wants the words for getting where you are going."
 
 [node name="PassDoor" parent="Entities" instance=ExtResource("4_door")]
 position = Vector2(320, 24)
