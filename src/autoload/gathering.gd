@@ -43,8 +43,8 @@ func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 	# Today's world event stacks with the weather rather than replacing it: they are two
 	# different reasons for a good day, and a player who works out both is being rewarded
 	# for paying attention.
-	var event_bonus := WorldEventLogic.gather_bonus(
-		WorldEventLogic.event_for_day(Farm.day(), DB.events), resource_kind)
+	var today := WorldEventLogic.event_for_day(Farm.day(), DB.events)
+	var event_bonus := WorldEventLogic.gather_bonus(today, resource_kind)
 	var quantity := maxi(1, base_qty) + bonus + event_bonus
 	if Inv.max_addable(item_id) < quantity:
 		return {"ok": false, "reason": "Your %s stack needs %d open spaces." % [
@@ -55,6 +55,8 @@ func status(node_id: String, item_id: String, base_qty: int, reset_days: int,
 		"qty": quantity,
 		"weather_bonus": bonus,
 		"event_bonus": event_bonus,
+		"event_id": String(today.get("id", "")),
+		"leaves": WorldEventLogic.leaves_behind(today, resource_kind),
 		"xp": Rules.earned_xp(required),
 		"level": level,
 	}
@@ -73,6 +75,7 @@ func gather(node_id: String, item_id: String, base_qty: int, reset_days: int,
 	# Every validation happened before the first mutation. From here all three
 	# owned states commit exactly once: bag, station XP, then saved node day.
 	logic.mark_gathered(node_id, Farm.day(), reset_days)
+	check["found"] = _grant_event_find(check)
 	var previous_level := int(check["level"])
 	var new_level := Crafting.award_xp(skill_station, int(check["xp"]))
 	Learning.profile.record_activity(LearningProfile.ACTIVITY_RESOURCE_GATHER)
@@ -81,6 +84,28 @@ func gather(node_id: String, item_id: String, base_qty: int, reset_days: int,
 	check["level"] = new_level
 	check["leveled_up"] = new_level > previous_level
 	return check
+
+
+## Hand over the material today's event left in the ground, and teach the recipe that
+## material exists for. Returns the item id granted, or "" when today leaves nothing.
+##
+## The find and the recipe arrive in the same moment on purpose. `starfall_shard` and
+## `compost` are the only inputs to their recipes and had no source anywhere in the game, so
+## a player who found a shard with the recipe still hidden would be holding a material for
+## no stated reason — which is how it reads as a bug rather than as a discovery.
+##
+## A find that will not fit is dropped rather than failing the gather: the player asked for
+## the ore, not the shard, and losing the whole swing to a full bag would punish a good day.
+func _grant_event_find(check: Dictionary) -> String:
+	var leaves: Dictionary = check.get("leaves", {})
+	if leaves.is_empty():
+		return ""
+	var item := String(leaves.get("item", ""))
+	var qty := int(leaves.get("qty", 1))
+	if Inv.max_addable(item) < qty or Inv.add(item, qty) != 0:
+		return ""
+	Crafting.discover("world-event:%s" % String(check.get("event_id", "")))
+	return item
 
 
 func is_ready(node_id: String, reset_days: int = 1) -> bool:

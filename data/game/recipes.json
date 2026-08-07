@@ -411,7 +411,7 @@
     "output": { "item": "starfall_charm", "qty": 1 },
     "xp": 70,
     "discovery": "world-event",
-    "discoverySource": "world-event:mountain_starfall",
+    "discoverySource": "world-event:pass_starfall",
     "desc": "Bind two recurring starfall shards into a charm that scales beyond its level floor."
   },
   {
@@ -441,7 +441,7 @@
     "output": { "item": "foragers_poultice", "qty": 2 },
     "xp": 14,
     "discovery": "world-event",
-    "discoverySource": "world-event:valley_forager",
+    "discoverySource": "world-event:valley_windfall",
     "desc": "Bind fresh herbs into a practical field dressing using rich garden compost."
   },
   {

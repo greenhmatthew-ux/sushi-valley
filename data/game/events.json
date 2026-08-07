@@ -38,5 +38,23 @@
     "weight": 1,
     "resourceKinds": ["ore", "herb", "bamboo"],
     "gatherBonus": 1
+  },
+  {
+    "id": "pass_starfall",
+    "displayName": "Starfall",
+    "description": "Something came down over the pass in the night. The rock glitters where you break it.",
+    "weight": 1,
+    "resourceKinds": ["ore"],
+    "gatherBonus": 0,
+    "leaves": { "item": "starfall_shard", "qty": 1 }
+  },
+  {
+    "id": "valley_windfall",
+    "displayName": "Windfall",
+    "description": "A hard wind stripped the canopy overnight. Leaf mould lies thick around every herb patch.",
+    "weight": 1,
+    "resourceKinds": ["herb"],
+    "gatherBonus": 0,
+    "leaves": { "item": "compost", "qty": 1 }
   }
 ]

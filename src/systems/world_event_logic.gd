@@ -74,6 +74,35 @@ static func gather_bonus(event: Dictionary, resource_kind: String) -> int:
 	return maxi(0, int(event.get("gatherBonus", 0)))
 
 
+## What this event leaves in the ground today, when working `resource_kind`.
+##
+## The two `world-event:` recipes were authored against materials — starfall shards and
+## compost — that no node, drop table or shop has ever produced. Wiring their discovery on
+## its own would only have moved the dead end one step along: you would learn a recipe whose
+## ingredients do not exist. An event that changes *what* the ground yields is also the
+## strongest version of what this system is for. A quantity bonus makes today a better day
+## to gather; a material only today produces makes the same seam worth coming back to.
+##
+## Returns {} when the event leaves nothing, or leaves nothing for this kind of resource.
+static func leaves_behind(event: Dictionary, resource_kind: String) -> Dictionary:
+	if event.is_empty() or resource_kind.is_empty():
+		return {}
+	var kinds: Array = event.get("resourceKinds", [])
+	if not kinds.has(resource_kind):
+		return {}
+	var leaves: Dictionary = event.get("leaves", {})
+	var item := String(leaves.get("item", ""))
+	if item.is_empty():
+		return {}
+	return {"item": item, "qty": maxi(1, int(leaves.get("qty", 1)))}
+
+
 ## True when the event is worth telling the player about on arrival.
 static func is_notable(event: Dictionary) -> bool:
-	return not event.is_empty() and int(event.get("gatherBonus", 0)) > 0
+	if event.is_empty():
+		return false
+	if int(event.get("gatherBonus", 0)) > 0:
+		return true
+	# An event that leaves a material behind is notable even when it adds no quantity: the
+	# whole point of it is the thing an ordinary day cannot give you.
+	return not String(event.get("leaves", {}).get("item", "")).is_empty()

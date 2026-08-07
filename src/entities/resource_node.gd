@@ -100,6 +100,11 @@ func interact(_player: Node = null) -> void:
 		var today := WorldEventLogic.event_for_day(Farm.day(), DB.events)
 		bonus_text += " +%d %s." % [
 			int(result.get("event_bonus", 0)), String(today.get("displayName", "event"))]
+	# A material only today produces is the event's real payload, so it gets named outright
+	# rather than folded into the quantity line.
+	var found := String(result.get("found", ""))
+	if not found.is_empty():
+		bonus_text += " Found %s!" % String(DB.item(found).get("name", found))
 	var level_text := " %s reached Lv %d!" % [skill_station.capitalize(),
 		int(result.get("level", 1))] if bool(result.get("leveled_up", false)) else ""
 	_start_feedback(int(result.get("qty", 0)))

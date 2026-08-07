@@ -62,17 +62,17 @@ func _progression_and_discovery() -> void:
 ## actually breaks is the wiring, not the state machine behind it.
 const DISCOVERY_CALLERS: Array[String] = [
 	"res://src/autoload/crafting.gd",
+	"res://src/autoload/gathering.gd",
 	"res://src/systems/raid_logic.gd",
 	"res://src/systems/expedition_logic.gd",
 ]
 ## Prefixes authored ahead of the code that would fire them. MUST ONLY SHRINK.
 ##
-## `world-event:` names two events — `mountain_starfall` and `valley_forager` — that are not
-## in events.json at all, which currently holds bamboo_shoot_rush, forager_bloom,
-## gathering_weather, quiet_day and rich_seams. Wiring the prefix would not help until
-## somebody decides whether those are renames or genuinely missing events, and guessing the
-## mapping would be inventing content rather than connecting it.
-const KNOWN_UNWIRED: Array[String] = ["world-event"]
+## Empty, and meant to stay that way. `world-event:` was the last entry: it named two events,
+## `mountain_starfall` and `valley_forager`, that were never in events.json. Matthew's call
+## was to reinvent them rather than reconstruct the legacy pair, so they are now `pass_starfall`
+## and `valley_windfall` — authored for the valley that exists, and fired from Gathering.
+const KNOWN_UNWIRED: Array[String] = []
 
 
 func _discovery_sources_are_wired() -> void:

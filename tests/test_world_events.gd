@@ -14,6 +14,7 @@ extends SceneTree
 
 const Events = preload("res://src/systems/world_event_logic.gd")
 const Weather = preload("res://src/systems/weather_logic.gd")
+const CraftRules = preload("res://src/systems/crafting_logic.gd")
 
 var failures: int = 0
 
@@ -102,6 +103,66 @@ func _run() -> void:
 			"test_event_seam", "copper_ore", 1, 1, "forge", 1, "ore")
 		check_true("Gathering reports the event bonus it applied (%s)" % str(status),
 			int(status.get("event_bonus", 0)) > 0)
+
+	# --- a reinvented event leaves a material, and the material explains itself ---
+	#
+	# `starfall_shard` and `compost` are the only inputs to their recipes and had no source
+	# anywhere in the game, so the event that produces them is the entire reason those recipes
+	# are reachable. This drives a real gather rather than the logic directly: the grant, the
+	# bag and the discovery all have to land on one swing.
+	var inv: Node = root.get_node("Inv")
+	var learning: Node = root.get_node("Learning")
+	var quiet_day := -1
+	for candidate in range(1, 400):
+		if String(Events.event_for_day(candidate, events).get("id", "")) == "quiet_day":
+			quiet_day = candidate
+			break
+	for spec in [
+		{"event": "pass_starfall", "kind": "ore", "node": "copper_ore", "station": "forge",
+			"item": "starfall_shard", "recipe": "craft_starfall_charm"},
+		{"event": "valley_windfall", "kind": "herb", "node": "wild_herb", "station": "workshop",
+			"item": "compost", "recipe": "craft_foragers_poultice"},
+	]:
+		var event_id := String(spec["event"])
+		var day := -1
+		for candidate in range(1, 400):
+			if String(Events.event_for_day(candidate, events).get("id", "")) == event_id:
+				day = candidate
+				break
+		check_true("%s can occur at all (day %d)" % [event_id, day], day > 0)
+		if day < 0:
+			continue
+		farm.logic.day = day
+		inv.reset()
+		var discovered: Array = CraftRules.ensure_state(learning.profile.data)["discovered"]
+		discovered.erase(String(spec["recipe"]))
+		var result: Dictionary = gathering.gather("test_%s_node" % event_id,
+			String(spec["node"]), 1, 1, String(spec["station"]), 1, String(spec["kind"]))
+		check_true("%s: the gather succeeds (%s)" % [event_id, result.get("reason", "")],
+			bool(result.get("ok", false)))
+		check_true("%s leaves %s in the bag" % [event_id, spec["item"]],
+			inv.count(String(spec["item"])) >= 1)
+		check_true("%s names its find" % event_id,
+			String(result.get("found", "")) == String(spec["item"]))
+		check_true("%s teaches the recipe its material is the only input for" % event_id,
+			discovered.has(String(spec["recipe"])))
+		# The find is earned by the swing, not by the date: an ordinary day leaves nothing.
+		if quiet_day > 0:
+			inv.reset()
+			farm.logic.day = quiet_day
+			var plain: Dictionary = gathering.gather("test_%s_quiet" % event_id,
+				String(spec["node"]), 1, 1, String(spec["station"]), 1, String(spec["kind"]))
+			check_true("%s: an ordinary day leaves nothing behind" % event_id,
+				String(plain.get("found", "")).is_empty())
+		inv.reset()
+
+	# Every suite shares one profile on disk, so a discovery made here is still made when the
+	# next suite counts the rows in a station list — which is exactly how this first showed up,
+	# as test_crafting finding one extra Kitchen recipe. Put the profile back the way it was.
+	var state: Dictionary = CraftRules.ensure_state(learning.profile.data)
+	state["discovered"].erase("craft_starfall_charm")
+	state["discovered"].erase("craft_foragers_poultice")
+	learning.profile.save()
 	_finish()
 
 
