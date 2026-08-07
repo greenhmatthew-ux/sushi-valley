@@ -5,6 +5,42 @@ extends Node
 const Rules = preload("res://src/systems/crafting_logic.gd")
 
 
+func _ready() -> void:
+	Bus.enemy_died.connect(_on_enemy_died)
+
+
+## Recipes taught by killing something.
+##
+## `recipes.json` has carried `discoverySource: "boss:<id>"` entries since the port, and
+## nothing ever called that prefix — only raid and expedition completions discovered
+## anything. So the Flame Staff and the Oni Blade were fully authored, priced and placed
+## behind bosses that exist, and killing those bosses taught nothing at all.
+##
+## This listens to every death rather than to a "this one is a boss" flag, because the recipe
+## table is already the thing that decides whether a kill teaches something. An ordinary foe
+## matches no source and costs one walk of the recipe list.
+func _on_enemy_died(enemy_id: String) -> void:
+	discover("boss:%s" % enemy_id)
+
+
+## Reveal the single recipe a source teaches, once, and say so. Returns {} when the source
+## teaches nothing or its recipe is already known, so callers can stay quiet about it.
+##
+## Saving is this function's job: `Rules.discover_from_source` only mutates the dictionary,
+## which is why both existing callers follow it with `profile.save()`.
+func discover(source: String) -> Dictionary:
+	if Learning.profile == null:
+		return {}
+	var recipe := Rules.discover_from_source(
+		Learning.profile.data, DB.recipes.values(), source)
+	if recipe.is_empty():
+		return {}
+	Learning.profile.save()
+	Bus.toast.emit("Recipe learned — %s" % String(recipe.get("name", source)))
+	Bus.crafting_changed.emit(String(recipe.get("station", "")))
+	return recipe
+
+
 func recipes_for_station(station: String) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	for recipe in DB.recipes.values():

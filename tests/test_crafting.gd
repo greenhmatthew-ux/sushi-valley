@@ -22,6 +22,7 @@ func _logical_ui_rect() -> Rect2:
 func _initialize() -> void:
 	await process_frame
 	_progression_and_discovery()
+	_discovery_sources_are_wired()
 	_atomic_transaction()
 	_authored_station_access()
 	_starter_weapon_paths_are_reachable()
@@ -29,6 +30,7 @@ func _initialize() -> void:
 	_energy_tonic_path_is_reachable()
 	await _one_time_ingredients()
 	await _panel_contract()
+	await _boss_kill_teaches_its_recipe()
 	_finish()
 
 
@@ -44,6 +46,66 @@ func _progression_and_discovery() -> void:
 	check_true("discovered recipe becomes known", Rules.is_known(locked, profile))
 	check_eq("legacy quadratic curve reaches level 2 at 30 XP", Rules.level_from_xp(30), 2)
 	check_eq("station XP is separate from learning XP", Rules.station_level({"stats": {"xp": 9999}}, "kitchen"), 1)
+
+
+## Guard: a recipe locked behind a `discoverySource` nobody ever fires is unreachable
+## content that looks finished.
+##
+## `discover_from_source` is only ever called with a literal prefix, so the prefix is the
+## contract between the data and the code. `boss:` sat in recipes.json from the port with no
+## caller — the Flame Staff and the Oni Blade were priced and placed behind bosses that
+## exist in scenes, and killing them taught nothing. `chest:MountainPass:summit_chest` was
+## the same, against a chest that was never placed at all.
+##
+## This reads the source rather than the behaviour on purpose: firing every prefix for real
+## would need each boss, raid and expedition driven to completion, and the thing that
+## actually breaks is the wiring, not the state machine behind it.
+const DISCOVERY_CALLERS: Array[String] = [
+	"res://src/autoload/crafting.gd",
+	"res://src/systems/raid_logic.gd",
+	"res://src/systems/expedition_logic.gd",
+]
+## Prefixes authored ahead of the code that would fire them. MUST ONLY SHRINK.
+##
+## `world-event:` names two events — `mountain_starfall` and `valley_forager` — that are not
+## in events.json at all, which currently holds bamboo_shoot_rush, forager_bloom,
+## gathering_weather, quiet_day and rich_seams. Wiring the prefix would not help until
+## somebody decides whether those are renames or genuinely missing events, and guessing the
+## mapping would be inventing content rather than connecting it.
+const KNOWN_UNWIRED: Array[String] = ["world-event"]
+
+
+func _discovery_sources_are_wired() -> void:
+	var db: Node = root.get_node("DB")
+	var wired := ""
+	for path in DISCOVERY_CALLERS:
+		wired += FileAccess.get_file_as_string(path)
+
+	var prefixes: Dictionary = {}
+	for recipe in db.recipes.values():
+		var source := String((recipe as Dictionary).get("discoverySource", ""))
+		if source.is_empty():
+			continue
+		prefixes[source.get_slice(":", 0)] = String(recipe.get("name", ""))
+
+	check_true("recipes declare discovery sources at all (%d prefixes)" % prefixes.size(),
+		not prefixes.is_empty())
+
+	var dead: Array[String] = []
+	var revived: Array[String] = []
+	for prefix in prefixes:
+		var fired: bool = wired.contains('"%s:' % prefix)
+		if fired and prefix in KNOWN_UNWIRED:
+			revived.append(String(prefix))
+		elif not fired and prefix not in KNOWN_UNWIRED:
+			dead.append("%s: (%s)" % [prefix, prefixes[prefix]])
+	check_true("every discovery prefix has something that fires it (%s)"
+		% ("all wired" if dead.is_empty() else ", ".join(PackedStringArray(dead))),
+		dead.is_empty())
+	# A prefix that has since been wired must leave the list rather than outlive the problem.
+	check_true("KNOWN_UNWIRED holds nothing that now works (%s)"
+		% ("still accurate" if revived.is_empty() else ", ".join(PackedStringArray(revived))),
+		revived.is_empty())
 
 
 func _atomic_transaction() -> void:
@@ -322,6 +384,52 @@ func _panel_contract() -> void:
 	inv.reset()
 	panel.queue_free()
 	await process_frame
+
+
+## The other half of the guard above: `boss:` is wired, and killing the boss actually pays out.
+##
+## This drives the real `enemy_died` signal instead of calling `discover()` directly, because
+## the part that was missing was the listener, not the lookup — a direct call would still pass
+## with `_ready()`'s connection deleted.
+##
+## The negative checks look for "Recipe learned" rather than an empty toast: a kill also
+## records an activity, and that can award enough XP to fire a level-up toast of its own.
+func _boss_kill_teaches_its_recipe() -> void:
+	await process_frame
+	var bus: Node = root.get_node("Bus")
+	var learning: Node = root.get_node("Learning")
+	var db: Node = root.get_node("DB")
+	if not bus.toast.is_connected(_capture_toast):
+		bus.toast.connect(_capture_toast)
+
+	var staff: Dictionary = db.recipe("craft_flame_staff")
+	check_eq("the Flame Staff is still the Forest Wraith's recipe",
+		staff.get("discoverySource", ""), "boss:forest_wraith")
+	var discovered: Array = Rules.ensure_state(learning.profile.data)["discovered"]
+	discovered.erase("craft_flame_staff")
+	check_true("the Flame Staff starts undiscovered",
+		not Rules.is_known(staff, learning.profile.data))
+
+	last_toast = ""
+	bus.enemy_died.emit("forest_wraith")
+	check_true("killing the Forest Wraith discovers the Flame Staff",
+		Rules.is_known(staff, learning.profile.data))
+	check_true("the discovery announces the recipe by name (%s)" % last_toast,
+		"Flame Staff" in last_toast)
+
+	last_toast = ""
+	bus.enemy_died.emit("forest_wraith")
+	check_true("a second kill teaches nothing twice (%s)" % last_toast,
+		not ("Recipe learned" in last_toast))
+
+	var known_before := discovered.size()
+	last_toast = ""
+	bus.enemy_died.emit("slime")
+	check_eq("an ordinary foe teaches nothing", discovered.size(), known_before)
+	check_true("an ordinary foe stays quiet about recipes (%s)" % last_toast,
+		not ("Recipe learned" in last_toast))
+	discovered.erase("craft_flame_staff")
+	learning.profile.save()
 
 
 func _capture_toast(text: String) -> void:
